@@ -7,10 +7,6 @@ I did not intend to create "new" HLWS, but rather polish the existing one, makin
 
 All rights go to original creator, I do not own anything.
 
-The project is open to community, and all bug fixes / lag optimisations are very welcome.
-
-However, balance changes will be debated.
-
 I am not legally and morally responsible for other people's actions if someone will decide to claim authorship for this project.
 
 <h2>Usage:</h2>
@@ -40,3 +36,12 @@ Thus, if you want to update some dependency, it is recommended to update all sub
 Map is saved as .SC2Map Components folder. You can't open it directly via double-click, but can open in Editor:
 
 > File > Open... > [navigate to folder]
+
+<h3>Contribution</h3>
+
+To contribute to project, you must `Fork` it first. From that point, you will work on your own version of this repository. After doing some `commits` in your repo, you can then either:
+- create `pull requests` in this repository (which will be reviewed, and either accepted & merged, or declined),
+- or keep commiting into your own repo and eventually release "HLWS Fixed v2", lol.
+
+The project is open to community, and bug fixes / performance optimisations (that dont alter the gameplay) are very welcome.
+However, balance changes will be debated, or, possibly, declined without explanation.

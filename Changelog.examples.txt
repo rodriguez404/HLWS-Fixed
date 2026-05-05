@@ -1,0 +1,30 @@
+EXAMPLES OF WRITING INTO CHANGELOG
+
+If your changelog consists of 1-3 lines, you can write them like this:
+
+- [change] - [name]
+
+Examples:
+- Spectre: Bone Servants: Cooldown 10s -> 11s - rodriguez
+- lag optimisations - rodriguez
+
+
+If your changelog is big of multiple lines, you can try documenting all your changes with one name above the list:
+
+Example:
+---rodriguez
+- Life Glyph: complete rework to Magister Glyph (Lifesteal+Energy)
+- Added hotkeys for all shops
+- Phase Smith: Cannon Image: fixed target filters
+- Assassin: Surging Strike: damage 75 -> 150
+
+
+You are not forced to document "exactly" same as in given examples, but you should make your changelog clear and exhaustive, yet short enough.
+Avoid logging like this:
+
+Example 1 [TO AVOID]:
+- Increased cooldowns for some ultimates - rodriguez [what ultimates? For what amount increased? Unclear logs will be denied.]
+
+Example 2 [TO AVOID]:
+- Reduced HP of Spectre's Bone Servants by 20% on all levels. It was made to negate his late-game potential, as he was getting unnecessarily good for how easy he is to play, considering being immortal hero. - rodriguez
+[Noone, including me, will read that. That log would be disapproved. Only state actual changes and not your entire thought process. First sentence would be enough]

@@ -12,4 +12,4 @@ The project is open to community, and all bug fixes / lag optimisations are very
 However, balance changes will be debated.
 
 <h2>Usage:</h2>
-"Mods" folder should be put in your SC2 Installation folder: "StarCraft II/"![](/README_assets/mod_folder_in_game_installation_path.png)
+"Mods" folder should be put in your SC2 Installation folder: "StarCraft II/"![](README_assets/mod_folder_in_game_installation_path.png)

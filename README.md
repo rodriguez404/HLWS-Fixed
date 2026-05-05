@@ -14,4 +14,4 @@ However, balance changes will be debated.
 <h2>Usage:</h2>
 "Mods" folder should be put in your SC2 Installation folder: "StarCraft II/"
 
-![](https://raw.githubusercontent.com/rodriguez404/HLWS-Fixed/refs/heads/main/README_assets/Mod_placement.png)
+![](https://raw.githubusercontent.com/rodriguez404/HLWS-Fixed/refs/heads/main/README_assets/Mods_placement.png)

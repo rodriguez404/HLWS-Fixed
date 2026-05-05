@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CAbilEffectTarget default="1" id="Reposition">
+        <?token id="Placement" type="CUnitLink"?>
+        <?token id="Unit" type="CUnitLink"?>
+        <?token id="Button" type="CButtonLink"?>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Flags index="RequireTargetVision" value="0"/>
+        <!-- <?token id="Placement" type="CUnitLink"?> -->
+        <!-- <?token id="Unit" type="CUnitLink"?> -->
+        <!-- <?token id="Button" type="CButtonLink"?> -->
+        <Cost>
+            <Charge>
+                <CountMax value="60"/>
+                <CountStart value="60"/>
+                <CountUse value="4"/>
+                <Link value="Abil/Reposition"/>
+                <Location value="Player"/>
+                <TimeUse value="1.5"/>
+            </Charge>
+            <Cooldown Location="Unit" TimeUse="0.375"/>
+        </Cost>
+        <Placeholder value="##Unit##"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AINotifyEffect value=""/>
+        <ProducedUnitArray value="##Unit##"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="##Button##" Requirements="Reposition">
+            <Flags index="ShowInGlossary" value="0"/>
+        </CmdButtonArray>
+        <PlaceUnit value="##Placement##"/>
+        <PrepEffect value="##Placement##"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget default="1" id="Place">
+        <?token id="Placement" type="CUnitLink"?>
+        <?token id="Unit" type="CUnitLink"?>
+        <?token id="Button" type="CButtonLink"?>
+        <!-- <?token id="Placement" type="CUnitLink"?> -->
+        <!-- <?token id="Unit" type="CUnitLink"?> -->
+        <!-- <?token id="Button" type="CButtonLink"?> -->
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <PostEffectBehavior Behavior="##id##ChargeUsed" Count="1" Duration="0.0625">
+            <Flags index="UseDuration" value="1"/>
+        </PostEffectBehavior>
+        <Flags index="RequireTargetVision" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Charge Location="Player"/>
+        </Cost>
+        <Placeholder value="##Unit##"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <AINotifyEffect value=""/>
+        <ProducedUnitArray value="##Unit##"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="##Button##"/>
+        <PlaceUnit value="##Placement##"/>
+        <PrepEffect value="##Placement##"/>
+    </CAbilEffectTarget>
+    <CAbilInventory id="InventoryUnit">
+        <TargetFilters value="Item;Ally,Neutral,Enemy"/>
+        <Range value="500"/>
+        <MaxDropRange value="500"/>
+        <CmdButtonArray index="Drop" Requirements="ImpossibleRequirement"/>
+        <CmdButtonArray index="Move" Requirements="ImpossibleRequirement"/>
+        <InfoArray>
+            <Classes value="UnitItem"/>
+        </InfoArray>
+    </CAbilInventory>
+    <CAbilEffectTarget id="UnitItemReposition">
+        <Effect index="0" value="UnitItemRepositionSet"/>
+        <Flags index="Smart" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="1.25"/>
+        </Cost>
+        <TargetFilters value="-;Player,Ally,Neutral,Enemy"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Move"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ItemPickupSmartcast">
+        <Effect index="0" value="ItemPickupSmartcastSet"/>
+        <Flags index="Smart" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <TargetFilters value="-;Ally,Neutral,Enemy,Item"/>
+        <Range value="500"/>
+        <Arc value="360"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Move"/>
+    </CAbilEffectTarget>
+</Catalog>

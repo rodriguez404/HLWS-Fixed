@@ -21,7 +21,11 @@ I am not legally and morally responsible for other people's actions if someone w
 
 Some dependencies contain just textures, while others contain abilities and such stuff.
 
-When updating any of dependency, it is recommended to update all related dependencies.
+Dependencies are saved as .SC2Mod Components folder. You can't open it directly via double-click, but can open in Editor:
+
+> File > Open... > [navigate to folder]
+
+Some dependencies rely on other dependencies. When updating any dependency, it is recommended to update all related dependencies.
 Because of that, there's so-called "Dependency chain", in which order you should update your Mods (if change ones):
 1. Starlight UI, Starlight Imports Legacy (independent on anything)
 2. Starlight Assets Old1

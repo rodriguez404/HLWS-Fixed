@@ -1,0 +1,42 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Hero Icons
+//--------------------------------------------------------------------------------------------------
+// Constants
+const fixed libE17D8DC7_gv_lighterColorModifier = 1.6;
+const fixed libE17D8DC7_gv_lighterColorMin = 30.0;
+const int libE17D8DC7_gv_heroLimit = 4;
+
+// Variable Declarations
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroBorder;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroButton;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroIcon;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroVignette;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroReviveImage;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroReviveLabel;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroLife;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroLearnIcon;
+int[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroLifeBorder;
+unit[16][libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroUnit;
+playergroup[libE17D8DC7_gv_heroLimit + 1] libE17D8DC7_gv_heroIconGroup;
+int[16] libE17D8DC7_gv_heroSlotCurrent;
+
+// Function Declarations
+void libE17D8DC7_gf_StarlightHeroIcon (int lp_player, unit lp_hero, int lp_slot, int lp_hotkey, int lp_offsetX, int lp_offsetY, bool lp_state);
+void libE17D8DC7_gf_StarlightHeroIconSetAll (int lp_offsetX, int lp_offsetY);
+void libE17D8DC7_gf_StarlightHeroIconToggle (bool lp_toggle);
+
+// Trigger Declarations
+trigger libE17D8DC7_gt_HeroIconSetEffect;
+trigger libE17D8DC7_gt_HeroBorderSelect;
+trigger libE17D8DC7_gt_HeroDeath;
+trigger libE17D8DC7_gt_HeroReviveStart;
+trigger libE17D8DC7_gt_HeroIconsFade;
+trigger libE17D8DC7_gt_HeroReviveFinish;
+trigger libE17D8DC7_gt_HeroLearnOn;
+trigger libE17D8DC7_gt_HeroLearnOff;
+
+// Library Initialization
+void libE17D8DC7_InitVariables ();
+

@@ -1,0 +1,53 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Donations
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+int libBBFED31C_gv_lastActiveDay;
+int libBBFED31C_gv_lastActiveMonth;
+int libBBFED31C_gv_lastActiveYear;
+int[3] libBBFED31C_gv_editBox;
+int libBBFED31C_gv_donationDialog;
+int[17] libBBFED31C_gv_donationDialogItem;
+int libBBFED31C_gv_closeButton;
+int libBBFED31C_gv_mainButton;
+int libBBFED31C_gv_defeatDialog;
+int libBBFED31C_gv_defeatDialogItem;
+int libBBFED31C_gv_victoryDialog;
+int libBBFED31C_gv_victoryDialogItem;
+playergroup libBBFED31C_gv_usedEndGameDialog;
+string libBBFED31C_gv_donationLinkA;
+string libBBFED31C_gv_donationLinkB;
+string libBBFED31C_gv_donationLinkC;
+bool libBBFED31C_gv_donationDialogMoved;
+bool libBBFED31C_gv_hotkeyCreated;
+int[17] libBBFED31C_gv_victoryGlow;
+int libBBFED31C_gv_victoryGlowMain;
+int libBBFED31C_gv_defeatGlowMain;
+bool libBBFED31C_gv_showDonationDialogSetting;
+playergroup libBBFED31C_gv_winnerGroupSetting;
+bool libBBFED31C_gv_showPatreon;
+
+// Function Declarations
+void libBBFED31C_gf_DonationDialogForceOn ();
+void libBBFED31C_gf_DonationDialogChangeLink (string lp_link, string lp_linkType);
+void libBBFED31C_gf_DonationDialogVictory (int lp_player);
+void libBBFED31C_gf_DonationDialogDefeat (int lp_player);
+void libBBFED31C_gf_DonationDialogCreate ();
+void libBBFED31C_gf_EndGameDonationDialog (bool lp_showDonationDialog, playergroup lp_winners);
+void libBBFED31C_gf_VictoryDialog ();
+void libBBFED31C_gf_DefeatDialog ();
+
+// Trigger Declarations
+trigger libBBFED31C_gt_EndGameDonationRun;
+trigger libBBFED31C_gt_CreateDonationHotkey;
+trigger libBBFED31C_gt_DonationDialogRefresh;
+trigger libBBFED31C_gt_VictoryDialogUse;
+trigger libBBFED31C_gt_DefeatDialogUse;
+trigger libBBFED31C_gt_Open;
+trigger libBBFED31C_gt_Close;
+
+// Library Initialization
+void libBBFED31C_InitVariables ();
+

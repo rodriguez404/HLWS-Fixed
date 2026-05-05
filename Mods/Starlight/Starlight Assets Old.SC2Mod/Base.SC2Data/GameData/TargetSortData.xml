@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTargetSortVital id="TSEnergyLargestFirst">
+        <Descending value="1"/>
+        <Vital value="Energy"/>
+    </CTargetSortVital>
+    <CTargetSortPriority id="TSPriorityTarget">
+        <WhichUnit Value="Target"/>
+    </CTargetSortPriority>
+    <CTargetSortVital id="TSShieldsLargestFirst">
+        <Descending value="1"/>
+        <Vital value="Shields"/>
+    </CTargetSortVital>
+    <CTargetSortBehaviorCount id="TSArchangelStarlightFighterTarget">
+        <WhichUnit Value="Target"/>
+        <Behavior value="ArchangelStarlightFighterTarget"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSNovaFuryofOneTargeted">
+        <WhichUnit Value="Target"/>
+        <Behavior value="NovaFuryofOneTargeted"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSAdvancedBattlecruiserTarget">
+        <WhichUnit Value="Target"/>
+        <Behavior value="AdvancedBattlecruiserTarget"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSStukovInfection">
+        <WhichUnit Value="Target"/>
+        <Behavior value="StukovInfection"/>
+        <Descending value="1"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSDarkArchonStarlightConfusion">
+        <WhichUnit Value="Target"/>
+        <Behavior value="DarkArchonStarlightConfusion"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSShadowFuryTarget">
+        <WhichUnit Value="Target"/>
+        <Behavior value="ShadowFuryTarget"/>
+    </CTargetSortBehaviorCount>
+</Catalog>

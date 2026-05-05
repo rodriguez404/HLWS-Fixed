@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CAttachMethodFilter id="FilterChest">
+        <Keys Keyword="Chest"/>
+    </CAttachMethodFilter>
+    <CAttachMethodPattern id="AMPatternArchangelStarlightFighter">
+        <Keyword value="Weapon"/>
+        <Driver value="ArchangelStarlightFighterLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternDuskWingsStarlight">
+        <Keyword value="Weapon"/>
+        <Driver value="DuskWingsStarlightLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodFilter id="AMFilterAttachInfestedSiegeTankStarlightTentacle">
+        <Keys Keyword="TurretY"/>
+    </CAttachMethodFilter>
+    <CAttachMethodPattern id="AMPatternInfestedBansheeStarlight">
+        <Keyword value="Weapon"/>
+        <Driver value="InfestedBansheeStarlightLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodFilter id="FilterWeaponInfestedDiamondbackStarlight">
+        <Keys Keyword="Weapon" Index="1"/>
+        <Keys Keyword="Weapon" Index="2"/>
+        <Logic value="OR"/>
+    </CAttachMethodFilter>
+    <CAttachMethodPattern id="AMMothershipTaldarimAttack">
+        <Keyword value="Weapon"/>
+        <Base value="::RollingIndex"/>
+        <Driver value="MothershipTaldarimDummy"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternVanguard">
+        <Keyword value="Weapon"/>
+        <Base value="::RollingIndex"/>
+        <Driver value="VanguardLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternStrikeGoliathAir">
+        <Keyword value="SetB"/>
+        <Base value="::RollingIndex"/>
+        <Offset value="1"/>
+        <Multiplier value="2"/>
+        <Driver value="StrikeGoliathAirLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternCovertBansheeRocketBarrage">
+        <Keyword value="Weapon"/>
+        <Driver value="CovertBansheeRocketBarrageLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternCovertBanshee">
+        <Keyword value="Weapon"/>
+        <Driver value="CovertBansheeLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternLeviathanStarlightAir">
+        <Keyword value="Weapon"/>
+        <Driver value="LeviathanStarlightAirLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternInfestedThor">
+        <Keyword value="Weapon"/>
+        <Driver value="InfestedThorLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternInfestedThorAir">
+        <Keyword value="Weapon"/>
+        <Driver value="InfestedThorAirLM"/>
+    </CAttachMethodPattern>
+    <CAttachMethodPattern id="AMPatternAnnihilator">
+        <Keyword value="Weapon"/>
+        <Base value="::RollingIndex"/>
+        <Driver value="AnnihilatorShadowCannonLM"/>
+    </CAttachMethodPattern>
+</Catalog>

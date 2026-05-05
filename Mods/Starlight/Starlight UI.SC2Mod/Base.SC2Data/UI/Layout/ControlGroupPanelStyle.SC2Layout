@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton0/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton1/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton2/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton3/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton4/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton5/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton6/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton7/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton8/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton9/CountLabel" file="GameUI">
+        <Style val="ControlGroupCount"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton0/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton1/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton2/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton3/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton4/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton5/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton6/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton7/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton8/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ControlGroupPanel/ControlGroupButton9/IndexLabel" file="GameUI">
+        <Style val="ControlGroupIndex"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-2"/>
+    </Frame>
+</Desc>

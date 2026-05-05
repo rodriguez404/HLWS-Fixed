@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CLootItem id="ConsumableLoot">
+        <ClassArray value="ConsumableLoot"/>
+    </CLootItem>
+    <CLootItem id="EpicLoot">
+        <ClassArray value="PermanentEpic"/>
+    </CLootItem>
+    <CLootItem id="UncommonLoot">
+        <ClassArray value="UpgradeableGreen"/>
+    </CLootItem>
+    <CLootItem id="PermanentLoot">
+        <ClassArray value="PermanentLoot"/>
+    </CLootItem>
+    <CLootItem id="RareLoot">
+        <ClassArray value="UpgradeableBlue"/>
+    </CLootItem>
+</Catalog>

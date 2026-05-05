@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CKineticFollow id="KineticFollow">
+        <Follow value="Position"/>
+    </CKineticFollow>
+    <CKineticRotate id="KineticRotate">
+        <Duration value="5"/>
+        <Yaw value="360"/>
+    </CKineticRotate>
+    <CKineticSet id="KineticFollowRotateSet">
+        <KineticArray value="KineticFollow"/>
+        <KineticArray value="KineticRotate"/>
+    </CKineticSet>
+</Catalog>

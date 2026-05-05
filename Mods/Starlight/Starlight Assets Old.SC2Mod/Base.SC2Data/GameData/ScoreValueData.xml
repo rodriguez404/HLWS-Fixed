@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CScoreValueCustom id="BankDesertStrikeTotalGames"/>
+    <CScoreValueCustom id="BankDesertStrikeTotalVictories"/>
+    <CScoreValueCustom id="WaveUnitSpawnedValue"/>
+    <CScoreValueCustom id="WaveUnitTimedLifeFateCount"/>
+    <CScoreValueCustom id="BankDesertStrikeMasteryExperience" parent="AchievementScoreValue">
+        <Flags index="TriggerAchievement" value="0"/>
+        <UniqueTag value="MEXP"/>
+        <Collapse value="Maximize"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="MineralsLostToMineralIncomePause"/>
+    <CScoreValueCustom id="MineralMineCost"/>
+    <CScoreValueCombine id="StarlightExperience">
+        <ValueTable value="StarlightExperienceCustomValue"/>
+    </CScoreValueCombine>
+    <CScoreValueCustom id="StarlightExperienceCustomValue"/>
+    <CScoreValueCustom id="StarlightExperienceLevel"/>
+    <CScoreValueCustom id="StarlightExperienceCap"/>
+    <CScoreValueCustom id="StarlightExperienceTotal"/>
+    <CScoreValueCustom id="SpawnUnitSpending"/>
+    <CScoreValueCustom id="BankDesertStrikeTerranGames"/>
+    <CScoreValueCustom id="BankDesertStrikeProtossVictories"/>
+    <CScoreValueCustom id="BankDesertStrikeTerranVictories"/>
+    <CScoreValueCustom id="BankDesertStrikeTotalKills"/>
+    <CScoreValueCustom id="BankDesertStrikeProtossGames"/>
+    <CScoreValueCustom id="BankDesertStrikeTotalLosses"/>
+    <CScoreValueCustom id="BankDesertStrikeZergGames"/>
+    <CScoreValueCustom id="BankDesertStrikeZergVictories"/>
+    <CScoreValueCustom id="ScannerSweepSpending"/>
+    <CScoreValueCustom id="MineralMinesBuilt"/>
+    <CScoreValueCustom id="SecondsOwnedMid">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="WaveUnitSpawnedCount"/>
+    <CScoreValueCustom id="WaveUnitTimedLifeFateValue"/>
+</Catalog>

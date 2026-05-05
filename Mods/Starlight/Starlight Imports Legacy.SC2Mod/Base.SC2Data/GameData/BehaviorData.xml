@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CBehaviorBuff default="1" id="DefaultWorkerAir">
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoFlags index="AlwaysUseGameText" value="1"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <EditorCategories value="Race:Worker,AbilityorEffectType:Units"/>
+        <Period value="1.25"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="WorkerSwapAlertAir"/>
+        <Modification Height="3.75">
+            <StateFlags index="Radar" value="1"/>
+            <HeightTime index="Start" value="1.25"/>
+            <HeightTime index="Stop" value="1.25"/>
+            <AttributeChangeArray Attribute="Index"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff default="1" id="DefaultWorkerGround">
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoFlags index="AlwaysUseGameText" value="1"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <EditorCategories value="Race:Worker,AbilityorEffectType:Units"/>
+        <Period value="1.25"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffect value="WorkerSwapAlertGround"/>
+        <Modification AccelerationBonus="1000">
+            <StateFlags index="Radar" value="1"/>
+            <AttributeChangeArray Attribute="Index"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff default="1" id="ItemMissileBirth">
+        <Face value="##id##"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <BehaviorCategories index="User10" value="1"/>
+        <EditorCategories value="Race:Item,AbilityorEffectType:Units"/>
+        <DisableValidatorArray value="UnitItemFilter"/>
+        <TimeScaleSource Value="Global"/>
+        <InitialEffect value="##id##LMBirth"/>
+        <RefreshEffect value="##id##LMBirth"/>
+        <Modification>
+            <AbilLinkDisableArray value="Sell50"/>
+            <AbilLinkDisableArray value="Sell60"/>
+            <AbilLinkDisableArray value="Sell70"/>
+            <AbilLinkDisableArray value="SellFull"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AbilityRecentlyCast">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-faeriefire.dds"/>
+        <Duration value="1.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastCustom">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastAttack">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastChannel">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <RemoveValidatorArray value="SourceIsNotMovingWar3"/>
+        <Duration value="15"/>
+        <Modification>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastDeath">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressCollision" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastDirected">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastOmni">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastCustomA">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastCustomB">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HideItemModels">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PreventKnockback">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-defend.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorAttribute id="GlobalUnitModifier">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoFlags index="AlwaysUseGameText" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-menu-learn_sc.dds"/>
+        <MinPoints value="1"/>
+        <MaxPoints value="1"/>
+    </CBehaviorAttribute>
+    <CBehaviorBuff id="UnitItemReposition">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="1.125"/>
+        <Period value="0.5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemWeaponFired">
+        <InfoFlags index="Hidden" value="1"/>
+        <Duration value="0.0625"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemMinion">
+        <InfoFlags index="Hidden" value="1"/>
+        <DisableValidatorArray value="NotHiddenSelf"/>
+        <Modification>
+            <AbilClassDisableArray index="CAbilAttack" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectInstant" value="1"/>
+            <AbilClassDisableArray index="CAbilEffectTarget" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ItemAbilitiesEnable">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <Modification>
+            <AbilClassEnableArray index="CAbilQueueable" value="1"/>
+            <AbilClassEnableArray index="CAbilArmMagazine" value="1"/>
+            <AbilClassEnableArray index="CAbilAttack" value="1"/>
+            <AbilClassEnableArray index="CAbilQueue" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BasicUnitItemPassive" parent="ItemMissileBirth">
+        <InfoIcon value="Assets\Textures\btn-upgrade-terran-nova-personaldefensivematrix.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WorkerSwapAlertAir">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <Duration value="0.375"/>
+        <ExpireEffect value="AlertReady"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="WorkerSwapAlertGround">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <Duration value="0.375"/>
+        <ExpireEffect value="AlertReady"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Stun">
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-stun.dds"/>
+        <BehaviorCategories index="Temporary" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <RemoveValidatorArray value="NotInvulnerable"/>
+        <Modification>
+            <ModifyFlags index="DisableAbils" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressAttack" value="1"/>
+            <AbilClassEnableArray index="CAbilAttack" value="1"/>
+            <AbilClassEnableArray index="CAbilBehavior" value="1"/>
+            <AbilClassEnableArray index="CAbilMove" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+</Catalog>

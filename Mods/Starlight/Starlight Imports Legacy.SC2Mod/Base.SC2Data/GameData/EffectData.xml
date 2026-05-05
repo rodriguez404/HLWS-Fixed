@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CEffectDamage default="1" id="AbilityDamage">
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="1"/>
+        <AmountScoreArray Value="DamageDealtbyAbilities"/>
+        <AmountScoreArray Validator="IsSummonedUnitSource" Value="DamageDealtbySummons"/>
+        <AmountScoreArray Validator="IsHeroicCaster" Value="DamageDealtbyHeroes"/>
+        <AmountScoreArray Validator="IsStructureSource" Value="DamageDealtbyStructures"/>
+        <AmountScoreArray Validator="IsStructureTarget" Value="DamageDealttoStructures"/>
+    </CEffectDamage>
+    <CEffectDamage default="1" id="AbilityDamageDoT">
+        <Flags index="NoBehaviorResponse" value="1"/>
+        <Flags index="NoDamageTimerReset" value="1"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <SearchFlags index="OffsetByUnitRadius" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="1"/>
+        <AmountScoreArray Value="DamageDealtbyAbilities"/>
+        <AmountScoreArray Validator="IsSummonedUnitSource" Value="DamageDealtbySummons"/>
+        <AmountScoreArray Validator="IsHeroicCaster" Value="DamageDealtbyHeroes"/>
+        <AmountScoreArray Validator="IsStructureSource" Value="DamageDealtbyStructures"/>
+        <AmountScoreArray Validator="IsStructureTarget" Value="DamageDealttoStructures"/>
+    </CEffectDamage>
+    <CEffectCreateUnit default="1" id="DefaultPlace">
+        <ValidatorArray value="UnitSpawnerPlacementValidator"/>
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Placement" value="0"/>
+        <SpawnEffect value="UnitSpawnerHeight00Alert00Set"/>
+    </CEffectCreateUnit>
+    <CEffectSwitch id="ProcAbilityImpact"/>
+    <CEffectSwitch id="ProcAbilityLaunch"/>
+    <CEffectSwitch id="ProcWeaponImpact"/>
+    <CEffectSwitch id="ProcWeaponLaunch"/>
+    <CEffectApplyBehavior id="AbilityRecentlyCast">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustom10">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustom"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni03">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastAttack05">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastAttack"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastAttack10">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastAttack"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastDirected05">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastDirected"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastDirected075">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastDirected"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.75"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastDirected10">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastDirected"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastDirected1125">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastDirected"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.125"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastNoHalo20">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastDirected"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni02">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni05">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni06">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.6"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni10">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni15">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni20">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastOmni50">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastOmni"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA025">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.25"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA05">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA10">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA1125">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.125"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA15">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomA1625">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomA"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="1.625"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomB025">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomB"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.25"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomB05">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomB"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="CastCustomB40">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomB"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="4"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="AbilityRecentlyCast05">
+        <WhichUnit Value="Source"/>
+        <Behavior value="AbilityRecentlyCast"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="UnitItemRepositionDelay">
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="UnitItemRepositionTeleport"/>
+        <PeriodicPeriodArray value="0.5"/>
+    </CEffectCreatePersistent>
+    <CEffectDestroyPersistent id="UnitItemRepositionDelayDestroy">
+        <WhichLocation Value="SourceUnit"/>
+        <Effect value="UnitItemRepositionDelay"/>
+        <Count value="10"/>
+        <Radius value="0.25"/>
+    </CEffectDestroyPersistent>
+    <CEffectRemoveBehavior id="UnitItemRepositionRemove">
+        <WhichUnit Value="Source"/>
+        <BehaviorLink value="UnitItemReposition"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="UnitItemRepositionSet">
+        <EffectArray value="UnitItemReposition"/>
+        <EffectArray value="UnitItemRepositionDelayDestroy"/>
+        <EffectArray value="UnitItemRepositionDelay"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="UnitItemReposition">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectTeleport id="UnitItemRepositionTeleport">
+        <WhichUnit Value="Caster"/>
+        <TargetLocation Value="TargetPoint"/>
+        <MinDistance value="0"/>
+        <PlacementArc value="360"/>
+        <PlacementRange value="10"/>
+    </CEffectTeleport>
+    <CEffectSet id="ItemPickupSmartcastSet">
+        <EffectArray value="UnitItemRepositionRemove"/>
+        <EffectArray value="ItemPickupSmartcastUnitItem"/>
+    </CEffectSet>
+    <CEffectIssueOrder id="ItemPickupSmartcastUnitItem">
+        <Abil value="InventoryUnit"/>
+        <AbilCmdIndex value="2"/>
+        <Target Value="CasterUnit"/>
+    </CEffectIssueOrder>
+    <CEffectSet id="ItemMagazineSetCreate">
+        <EffectArray value="ItemMinion"/>
+        <EffectArray value="KillsToCasterRemove"/>
+        <EffectArray value="KillsToCaster"/>
+    </CEffectSet>
+    <CEffectSet id="ItemMagazineSetDeath">
+        <EffectArray value="ReleaseInterceptors"/>
+        <EffectArray value="SuicideBlast"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ItemMinion"/>
+    <CEffectApplyBehavior id="ItemWeaponFired">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="KillsToCasterRemove">
+        <BehaviorLink value="KillsToCaster"/>
+        <Count value="1"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="DummyEffect"/>
+    <CEffectLaunchMissile id="BasicUnitItemPassiveLMBirth">
+        <LaunchLocation Value="SourcePoint"/>
+        <ImpactLocation Value="SourceUnit"/>
+        <LaunchOffset value="-1,1,2"/>
+        <ImpactOffset value="0,0,0.05"/>
+        <ImpactEffect value="DummyEffect"/>
+        <AmmoUnit value="BasicUnitItemPassiveMissile"/>
+        <Movers Link="UnitItemBirthMover"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="WorkerSwapAlertGround">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="WorkerSwapAlertAir">
+        <WhichUnit Value="Source"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="AlertReady">
+        <Alert value="BuildComplete_NoIcon"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="CopyFacing">
+        <FacingLocation Value="CasterUnit"/>
+    </CEffectModifyUnit>
+    <CEffectModifyUnit id="SelectTarget">
+        <LaunchUnit Value="Caster"/>
+        <SelectTransferUnit Value="Caster"/>
+        <SelectTransferFlags index="DeselectSource" value="1"/>
+        <SelectTransferFlags index="IncludeControlGroups" value="1"/>
+    </CEffectModifyUnit>
+</Catalog>

@@ -1,0 +1,283 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83"
+
+include "Lib0C53947E_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Mutations
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib0C53947E_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+}
+
+// Variable Initialization
+bool lib0C53947E_InitVariables_completed = false;
+
+void lib0C53947E_InitVariables () {
+    if (lib0C53947E_InitVariables_completed) {
+        return;
+    }
+
+    lib0C53947E_InitVariables_completed = true;
+
+}
+
+// Functions
+void lib0C53947E_gf_StarlightMutationsStartx (fixed lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib0C53947E_gf_SetMutations();
+}
+
+void lib0C53947E_gf_StarlightMutationsStart () {
+    // Automatic Variable Declarations
+    // Implementation
+    lib0C53947E_gf_SetMutations();
+}
+
+void lib0C53947E_gf_SetMutations () {
+    // Variable Declarations
+    int lv_i;
+    string lv_mutationData;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_i = 1;
+    lv_mutationData = "UnknownUserType";
+
+    // Implementation
+    lv_i = RandomInt(1, UserDataInstanceCount(lv_mutationData));
+    lib0C53947E_gf_ApplyMutation(UserDataGetGameLink(lv_mutationData, UserDataInstance(lv_mutationData, lv_i), "Mutation", 1));
+    lib0C53947E_gf_ApplyMutation(UserDataGetGameLink(lv_mutationData, UserDataInstance(lv_mutationData, lv_i), "Mutation", 2));
+    lib0C53947E_gf_ApplyMutation(UserDataGetGameLink(lv_mutationData, UserDataInstance(lv_mutationData, lv_i), "Mutation", 3));
+}
+
+void lib0C53947E_gf_ApplyMutation (string lp_mutator) {
+    // Automatic Variable Declarations
+    string auto23ABE0A9_val;
+    playergroup auto352269D8_g;
+    int auto352269D8_var;
+    playergroup auto62AB3B0B_g;
+    int auto62AB3B0B_var;
+    playergroup auto649ED35E_g;
+    int auto649ED35E_var;
+    playergroup autoB1952DE7_g;
+    int autoB1952DE7_var;
+    playergroup auto329D8FDB_g;
+    int auto329D8FDB_var;
+    playergroup auto848516B9_g;
+    int auto848516B9_var;
+    playergroup auto1ED726A3_g;
+    int auto1ED726A3_var;
+
+    // Implementation
+    auto23ABE0A9_val = lp_mutator;
+    if (auto23ABE0A9_val == "MutatorFrenzy") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorFrenzy", lib0C53947E_gv_delay);
+        auto352269D8_g = PlayerGroupAll();
+        auto352269D8_var = -1;
+        while (true) {
+            auto352269D8_var = PlayerGroupNextPlayer(auto352269D8_g, auto352269D8_var);
+            if (auto352269D8_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto352269D8_var, "MutatorFrenzy", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorLongRange") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorLongRange", lib0C53947E_gv_delay);
+        auto62AB3B0B_g = PlayerGroupAll();
+        auto62AB3B0B_var = -1;
+        while (true) {
+            auto62AB3B0B_var = PlayerGroupNextPlayer(auto62AB3B0B_g, auto62AB3B0B_var);
+            if (auto62AB3B0B_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto62AB3B0B_var, "MutatorLongRange", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorAvenger") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorAvenger", lib0C53947E_gv_delay);
+        auto649ED35E_g = PlayerGroupAll();
+        auto649ED35E_var = -1;
+        while (true) {
+            auto649ED35E_var = PlayerGroupNextPlayer(auto649ED35E_g, auto649ED35E_var);
+            if (auto649ED35E_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto649ED35E_var, "MutatorAvenger", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorWarpTen") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorWarpTen", lib0C53947E_gv_delay);
+        autoB1952DE7_g = PlayerGroupAll();
+        autoB1952DE7_var = -1;
+        while (true) {
+            autoB1952DE7_var = PlayerGroupNextPlayer(autoB1952DE7_g, autoB1952DE7_var);
+            if (autoB1952DE7_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoB1952DE7_var, "MutatorWarpTen", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorUnderdog") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorUnderdog", lib0C53947E_gv_delay);
+        auto329D8FDB_g = PlayerGroupAll();
+        auto329D8FDB_var = -1;
+        while (true) {
+            auto329D8FDB_var = PlayerGroupNextPlayer(auto329D8FDB_g, auto329D8FDB_var);
+            if (auto329D8FDB_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto329D8FDB_var, "MutatorUnderdog", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorEarlyRoaring") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorEarlyRoaring", lib0C53947E_gv_delay);
+        auto848516B9_g = PlayerGroupAll();
+        auto848516B9_var = -1;
+        while (true) {
+            auto848516B9_var = PlayerGroupNextPlayer(auto848516B9_g, auto848516B9_var);
+            if (auto848516B9_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto848516B9_var, "MutatorEarlyRoaring", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "RiseandShine") {
+        libDDE92A83_gf_StarlightMutatorCreate("RiseandShine", lib0C53947E_gv_delay);
+        auto1ED726A3_g = PlayerGroupAll();
+        auto1ED726A3_var = -1;
+        while (true) {
+            auto1ED726A3_var = PlayerGroupNextPlayer(auto1ED726A3_g, auto1ED726A3_var);
+            if (auto1ED726A3_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto1ED726A3_var, "RiseandShine", 1);
+        }
+    }
+    else if (auto23ABE0A9_val == "MutatorStunOrb") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorStunOrb", lib0C53947E_gv_delay);
+        lib0C53947E_gf_ApplyHeroMutationArea("StunOrb", "StunOrb", 90, 2.5);
+    }
+    else if (auto23ABE0A9_val == "MutatorPromote") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorPromote", lib0C53947E_gv_delay);
+        lib0C53947E_gf_ApplyHeroMutationArea("Promote", "Promote", 90, 3.0);
+    }
+    else if (auto23ABE0A9_val == "MutatorArgusConstruct") {
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorArgusConstruct", lib0C53947E_gv_delay);
+        lib0C53947E_gf_ApplyHeroMutationArea("ArgusConstruct", "ArgusConstruct", 150, 2.0);
+    }
+    else if (auto23ABE0A9_val == "MutatorFinalCountdown") {
+        TriggerEnable(lib0C53947E_gt_MutatorFinalCountdown, true);
+        libDDE92A83_gf_StarlightMutatorCreate("MutatorFinalCountdown", lib0C53947E_gv_delay);
+        lib0C53947E_gf_ApplyHeroMutationPassive("MutatorFinalCountdown");
+    }
+    else {
+    }
+}
+
+void lib0C53947E_gf_ApplyHeroMutationPassive (string lp_button) {
+    // Variable Declarations
+    const string lv_button = "MutationButton";
+
+    // Automatic Variable Declarations
+    playergroup autoF69AAF92_g;
+    int autoF69AAF92_var;
+
+    // Variable Initialization
+
+    // Implementation
+    autoF69AAF92_g = PlayerGroupAll();
+    autoF69AAF92_var = -1;
+    while (true) {
+        autoF69AAF92_var = PlayerGroupNextPlayer(autoF69AAF92_g, autoF69AAF92_var);
+        if (autoF69AAF92_var < 0) { break; }
+        if ((PlayerType(autoF69AAF92_var) != c_playerTypeNeutral) && (PlayerType(autoF69AAF92_var) != c_playerTypeHostile)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoF69AAF92_var, "MutationArea", 0);
+            libNtve_gf_SetUpgradeLevelForPlayer(autoF69AAF92_var, "MutationPassive", 1);
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", autoF69AAF92_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", 0));
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", autoF69AAF92_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", 0));
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", autoF69AAF92_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0));
+        }
+
+    }
+}
+
+void lib0C53947E_gf_ApplyHeroMutationArea (string lp_button, string lp_ability, int lp_cooldown, fixed lp_radius) {
+    // Variable Declarations
+    const string lv_button = "MutationButton";
+    const string lv_ability = "MutationArea";
+    const string lv_abilityStructure = "MutationAreaStructure";
+
+    // Automatic Variable Declarations
+    playergroup auto5254081E_g;
+    int auto5254081E_var;
+
+    // Variable Initialization
+
+    // Implementation
+    auto5254081E_g = PlayerGroupAll();
+    auto5254081E_var = -1;
+    while (true) {
+        auto5254081E_var = PlayerGroupNextPlayer(auto5254081E_g, auto5254081E_var);
+        if (auto5254081E_var < 0) { break; }
+        if ((PlayerType(auto5254081E_var) != c_playerTypeNeutral) && (PlayerType(auto5254081E_var) != c_playerTypeHostile)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto5254081E_var, "MutationArea", 1);
+            libNtve_gf_SetUpgradeLevelForPlayer(auto5254081E_var, "MutationPassive", 0);
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", auto5254081E_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", 0));
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", auto5254081E_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", 0));
+            CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", auto5254081E_var, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Range[" + IntToString(0) + "]", auto5254081E_var, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "AutoCastRange", auto5254081E_var, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Range[" + IntToString(0) + "]", auto5254081E_var, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "AutoCastRange", auto5254081E_var, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+            CatalogFieldValueSet(c_gameCatalogEffect, "MutationAreaSearch", "AreaArray[" + IntToString(0) + "].Radius", auto5254081E_var, FixedToString(lp_radius, c_fixedPrecisionAny));
+            CatalogFieldValueSet(c_gameCatalogEffect, lv_ability, "EffectArray[" + IntToString(0) + "]", auto5254081E_var, ((lp_ability) + "SetCast"));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Cooldown.TimeUse", auto5254081E_var, IntToString(lp_cooldown));
+            CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Cooldown.TimeUse", auto5254081E_var, IntToString(lp_cooldown));
+        }
+
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mutator Final Countdown
+//--------------------------------------------------------------------------------------------------
+bool lib0C53947E_gt_MutatorFinalCountdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto16535CBB_g;
+    int auto16535CBB_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto16535CBB_g = PlayerGroupAll();
+    auto16535CBB_var = -1;
+    while (true) {
+        auto16535CBB_var = PlayerGroupNextPlayer(auto16535CBB_g, auto16535CBB_var);
+        if (auto16535CBB_var < 0) { break; }
+        TechTreeUpgradeAddLevel(auto16535CBB_var, "MutatorFinalCountdown", 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib0C53947E_gt_MutatorFinalCountdown_Init () {
+    lib0C53947E_gt_MutatorFinalCountdown = TriggerCreate("lib0C53947E_gt_MutatorFinalCountdown_Func");
+    TriggerEnable(lib0C53947E_gt_MutatorFinalCountdown, false);
+    TriggerAddEventTimePeriodic(lib0C53947E_gt_MutatorFinalCountdown, 168.0, c_timeGame);
+}
+
+void lib0C53947E_InitTriggers () {
+    lib0C53947E_gt_MutatorFinalCountdown_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib0C53947E_InitLib_completed = false;
+
+void lib0C53947E_InitLib () {
+    if (lib0C53947E_InitLib_completed) {
+        return;
+    }
+
+    lib0C53947E_InitLib_completed = true;
+
+    lib0C53947E_InitLibraries();
+    lib0C53947E_InitVariables();
+    lib0C53947E_InitTriggers();
+}
+

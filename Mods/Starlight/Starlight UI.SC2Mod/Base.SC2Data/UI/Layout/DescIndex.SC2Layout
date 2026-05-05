@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Include path="UI/Layout/ArmyButtonStyle.SC2Layout"/>
+    <Include path="UI/Layout/CommandPanelStyle.SC2Layout"/>
+    <Include path="UI/Layout/IdleButtonStyle.SC2Layout"/>
+    <Include path="UI/Layout/MenuStyle.SC2Layout"/>
+    <Include path="UI/Layout/MinimapStyle.SC2Layout"/>
+    <Include path="UI/Layout/TimePanelStyle.SC2Layout"/>
+    <Include path="UI/Layout/ConsoleStyle.SC2Layout"/>
+    <Include path="UI/Layout/SocialButtonHitTestFrame.SC2Layout"/>
+    <Include path="UI/Layout/ControlGroupPanelStyle.SC2Layout"/>
+    <Include path="UI/Layout/InfoPaneStyle.SC2Layout"/>
+</Desc>

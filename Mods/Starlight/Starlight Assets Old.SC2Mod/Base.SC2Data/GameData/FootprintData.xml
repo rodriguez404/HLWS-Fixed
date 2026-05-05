@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CFootprint id="RockCluster">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets Character="x">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="...."/>
+            <Rows value=".xx."/>
+            <Rows value=".xx."/>
+            <Rows value="...."/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Rows value="...."/>
+            <Rows value=".xx."/>
+            <Rows value=".xx."/>
+            <Rows value="...."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.236"/>
+            <Offsets value="-1,-2;1,-2;-1,2;1,2;-2,-1;-2,1;2,-1;2,1"/>
+            <Borders value="0,4,0;1,0,0;2,3,0;3,7,0;4,5,0;5,2,0;6,1,0;7,6,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="TreeCluster">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets Character="x">
+                <Negative index="NoBuild" value="1"/>
+                <Negative index="BlockVision" value="1"/>
+            </Sets>
+            <Rows value="...."/>
+            <Rows value=".xx."/>
+            <Rows value=".xx."/>
+            <Rows value="...."/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Sets index="0">
+                <Positive index="BlockVision" value="1"/>
+            </Sets>
+            <Rows value="...."/>
+            <Rows value=".xx."/>
+            <Rows value=".xx."/>
+            <Rows value="...."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.236"/>
+            <Offsets value="-1,-2;1,-2;-1,2;1,2;-2,-1;-2,1;2,-1;2,1"/>
+            <Borders value="0,4,0;1,0,0;2,3,0;3,7,0;4,5,0;5,2,0;6,1,0;7,6,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="Footprint3x3NoCollision">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Rows index="0" value="..."/>
+            <Rows index="1" value="..."/>
+            <Rows index="2" value="..."/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2"/>
+        <Layers index="Pathing" removed="1"/>
+    </CFootprint>
+    <CFootprint id="Footprint8x8Circle">
+        <Layers index="Check" Area="-4,-4,4,4">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..oooo.."/>
+            <Rows value=".oooooo."/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value=".oooooo."/>
+            <Rows value="..oooo.."/>
+        </Layers>
+        <Layers index="Place" Area="-4,-4,4,4">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..oooo.."/>
+            <Rows value=".oooooo."/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value="oooooooo"/>
+            <Rows value=".oooooo."/>
+            <Rows value="..oooo.."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="Footprint15x15Circle">
+        <Layers index="Check" Area="-7,-7,8,8">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value=".....ooooo....."/>
+            <Rows value="...ooooooooo..."/>
+            <Rows value="..ooooooooooo.."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value="..ooooooooooo.."/>
+            <Rows value="...ooooooooo..."/>
+            <Rows value=".....ooooo....."/>
+        </Layers>
+        <Layers index="Place" Area="-7,-7,8,8">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value=".....ooooo....."/>
+            <Rows value="...ooooooooo..."/>
+            <Rows value="..ooooooooooo.."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value="ooooooooooooooo"/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value=".ooooooooooooo."/>
+            <Rows value="..ooooooooooo.."/>
+            <Rows value="...ooooooooo..."/>
+            <Rows value=".....ooooo....."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="Area3x2Footprint">
+        <Layers index="Check" Area="-15,-15,16,16">
+            <Rows value=".........xxxxxxx..............."/>
+            <Rows value="........xxxx.xxxx.............."/>
+            <Rows value=".......xxxx...xxxx............."/>
+            <Rows value="......xxxx.....xxxx............"/>
+            <Rows value=".....xxxx.......xxxx..........."/>
+            <Rows value="....xxxx.........xxxx.........."/>
+            <Rows value="...xxxx...........xxxx........."/>
+            <Rows value="..xxxx.............xxxx........"/>
+            <Rows value=".xxxx...............xxxx......."/>
+            <Rows value="xxxx.................xxxx......"/>
+            <Rows value="xxx...................xxxx....."/>
+            <Rows value="xx.....................xxxx...."/>
+            <Rows value="x.......................xxxx..."/>
+            <Rows value="xx.......................xxxx.."/>
+            <Rows value="xxx.......................xxxx."/>
+            <Rows value="xxxx.......................xxxx"/>
+            <Rows value=".xxxx.......................xxx"/>
+            <Rows value="..xxxx.......................xx"/>
+            <Rows value="...xxxx.......................x"/>
+            <Rows value="....xxxx.....................xx"/>
+            <Rows value=".....xxxx...................xxx"/>
+            <Rows value="......xxxx.................xxxx"/>
+            <Rows value=".......xxxx...............xxxx."/>
+            <Rows value="........xxxx.............xxxx.."/>
+            <Rows value=".........xxxx...........xxxx..."/>
+            <Rows value="..........xxxx.........xxxx...."/>
+            <Rows value="...........xxxx.......xxxx....."/>
+            <Rows value="............xxxx.....xxxx......"/>
+            <Rows value=".............xxxx...xxxx......."/>
+            <Rows value="..............xxxx.xxxx........"/>
+            <Rows value="...............xxxxxxx........."/>
+        </Layers>
+        <Layers index="Place" Area="-15,-15,16,16">
+            <Sets index="0">
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".........xxxxxxx..............."/>
+            <Rows value="........xxxx.xxxx.............."/>
+            <Rows value=".......xxxx...xxxx............."/>
+            <Rows value="......xxxx.....xxxx............"/>
+            <Rows value=".....xxxx.......xxxx..........."/>
+            <Rows value="....xxxx.........xxxx.........."/>
+            <Rows value="...xxxx...........xxxx........."/>
+            <Rows value="..xxxx.............xxxx........"/>
+            <Rows value=".xxxx...............xxxx......."/>
+            <Rows value="xxxx.................xxxx......"/>
+            <Rows value="xxx...................xxxx....."/>
+            <Rows value="xx.....................xxxx...."/>
+            <Rows value="x.......................xxxx..."/>
+            <Rows value="xx.......................xxxx.."/>
+            <Rows value="xxx.......................xxxx."/>
+            <Rows value="xxxx.......................xxxx"/>
+            <Rows value=".xxxx.......................xxx"/>
+            <Rows value="..xxxx.......................xx"/>
+            <Rows value="...xxxx.......................x"/>
+            <Rows value="....xxxx.....................xx"/>
+            <Rows value=".....xxxx...................xxx"/>
+            <Rows value="......xxxx.................xxxx"/>
+            <Rows value=".......xxxx...............xxxx."/>
+            <Rows value="........xxxx.............xxxx.."/>
+            <Rows value=".........xxxx...........xxxx..."/>
+            <Rows value="..........xxxx.........xxxx...."/>
+            <Rows value="...........xxxx.......xxxx....."/>
+            <Rows value="............xxxx.....xxxx......"/>
+            <Rows value=".............xxxx...xxxx......."/>
+            <Rows value="..............xxxx.xxxx........"/>
+            <Rows value="...............xxxxxxx........."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="AreaFootprintEast">
+        <Layers index="Check" Area="-3,-5,4,6">
+            <Rows value=".x....."/>
+            <Rows value=".xx...."/>
+            <Rows value=".xxx..."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="..xxxx."/>
+            <Rows value="...xxxx"/>
+            <Rows value="..xxxx."/>
+            <Rows value=".xxxx.."/>
+            <Rows value=".xxx..."/>
+            <Rows value=".xx...."/>
+            <Rows value=".x....."/>
+        </Layers>
+        <Layers index="Place" Area="-3,-5,4,6">
+            <Sets index="0">
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".x....."/>
+            <Rows value=".xx...."/>
+            <Rows value=".xxx..."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="..xxxx."/>
+            <Rows value="...xxxx"/>
+            <Rows value="..xxxx."/>
+            <Rows value=".xxxx.."/>
+            <Rows value=".xxx..."/>
+            <Rows value=".xx...."/>
+            <Rows value=".x....."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="AreaFootprintNorth">
+        <Layers index="Check" Area="-5,-3,6,4">
+            <Rows value=".....x....."/>
+            <Rows value="....xxx...."/>
+            <Rows value="...xxxxx..."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value=".xxxx.xxxx."/>
+            <Rows value="xxxx...xxxx"/>
+            <Rows value="..........."/>
+        </Layers>
+        <Layers index="Place" Area="-5,-3,6,4">
+            <Sets index="0">
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".....x....."/>
+            <Rows value="....xxx...."/>
+            <Rows value="...xxxxx..."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value=".xxxx.xxxx."/>
+            <Rows value="xxxx...xxxx"/>
+            <Rows value="..........."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="AreaFootprintSouth">
+        <Layers index="Check" Area="-5,-3,6,4">
+            <Rows value="..........."/>
+            <Rows value="xxxx...xxxx"/>
+            <Rows value=".xxxx.xxxx."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value="...xxxxx..."/>
+            <Rows value="....xxx...."/>
+            <Rows value=".....x....."/>
+        </Layers>
+        <Layers index="Place" Area="-5,-3,6,4">
+            <Sets index="0">
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value="..........."/>
+            <Rows value="xxxx...xxxx"/>
+            <Rows value=".xxxx.xxxx."/>
+            <Rows value="..xxxxxxx.."/>
+            <Rows value="...xxxxx..."/>
+            <Rows value="....xxx...."/>
+            <Rows value=".....x....."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="AreaFootprintWest">
+        <Layers index="Check" Area="-3,-5,4,6">
+            <Rows value=".....x."/>
+            <Rows value="....xx."/>
+            <Rows value="...xxx."/>
+            <Rows value="..xxxx."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="xxxx..."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="..xxxx."/>
+            <Rows value="...xxx."/>
+            <Rows value="....xx."/>
+            <Rows value=".....x."/>
+        </Layers>
+        <Layers index="Place" Area="-3,-5,4,6">
+            <Sets index="0">
+                <Positive index="NoCreep" value="1"/>
+            </Sets>
+            <Rows value=".....x."/>
+            <Rows value="....xx."/>
+            <Rows value="...xxx."/>
+            <Rows value="..xxxx."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="xxxx..."/>
+            <Rows value=".xxxx.."/>
+            <Rows value="..xxxx."/>
+            <Rows value="...xxx."/>
+            <Rows value="....xx."/>
+            <Rows value=".....x."/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="4x1SpawnerPlacementDiagonal">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="x..."/>
+            <Rows value=".x.."/>
+            <Rows value="..x."/>
+            <Rows value="...x"/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Rows value="x..."/>
+            <Rows value=".x.."/>
+            <Rows value="..x."/>
+            <Rows value="...x"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="2x1SpawnerPlacementDiagonal">
+        <Layers index="Check">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="x."/>
+            <Rows value=".x"/>
+        </Layers>
+        <Layers index="Place">
+            <Rows value="x."/>
+            <Rows value=".x"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="6x1SpawnerPlacementDiagonal">
+        <Layers index="Check" Area="-3,-3,3,3">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="x....."/>
+            <Rows value=".x...."/>
+            <Rows value="..x..."/>
+            <Rows value="...x.."/>
+            <Rows value="....x."/>
+            <Rows value=".....x"/>
+        </Layers>
+        <Layers index="Place" Area="-3,-3,3,3">
+            <Rows value="x....."/>
+            <Rows value=".x...."/>
+            <Rows value="..x..."/>
+            <Rows value="...x.."/>
+            <Rows value="....x."/>
+            <Rows value=".....x"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="1x1SpawnerPlacement">
+        <Layers index="Check" Area="0,0,1,1">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="x"/>
+        </Layers>
+        <Layers index="Place" Area="0,0,1,1">
+            <Rows value="x"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="2x2SpawnerPlacement">
+        <Layers index="Check">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="xx"/>
+            <Rows value="xx"/>
+        </Layers>
+        <Layers index="Place">
+            <Rows value="xx"/>
+            <Rows value="xx"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="3x3SpawnerPlacement">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="xxx"/>
+            <Rows value="xxx"/>
+            <Rows value="xxx"/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Rows value="xxx"/>
+            <Rows value="xxx"/>
+            <Rows value="xxx"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="4x4SpawnerPlacement">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets index="0">
+                <Negative index="GroundNoSpawn" value="1"/>
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+            <Rows value="xxxx"/>
+        </Layers>
+    </CFootprint>
+</Catalog>

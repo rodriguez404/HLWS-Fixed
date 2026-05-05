@@ -1,0 +1,31 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Glyphs
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+int lib0E85F508_gv_glyphSet;
+text lib0E85F508_gv_glyphFooter;
+
+// Function Declarations
+void lib0E85F508_gf_ApplyGlyphPassive (int lp_player, string lp_button, string lp_behavior);
+void lib0E85F508_gf_ApplyGlyphArea (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount, fixed lp_radius);
+void lib0E85F508_gf_ApplyGlyphEnemy (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount);
+void lib0E85F508_gf_ApplyGlyphAlly (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount);
+void lib0E85F508_gf_ApplyGlyphInstant (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount);
+void lib0E85F508_gf_GlyphSet0 (int lp_player);
+void lib0E85F508_gf_GlyphSet1 (int lp_player);
+void lib0E85F508_gf_AssignGlyphs (int lp_player);
+void lib0E85F508_gf_StarlightGlyphsStartDefault (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection);
+void lib0E85F508_gf_StarlightGlyphsStartDefaultKills (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection);
+void lib0E85F508_gf_StarlightGlyphsStartAbilities (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection);
+void lib0E85F508_gf_StarlightGlyphsStartAbilitiesKills (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection);
+
+// Trigger Declarations
+trigger lib0E85F508_gt_GlyphSelectEnd;
+trigger lib0E85F508_gt_GlyphController;
+trigger lib0E85F508_gt_GlyphChange;
+
+// Library Initialization
+void lib0E85F508_InitVariables ();
+

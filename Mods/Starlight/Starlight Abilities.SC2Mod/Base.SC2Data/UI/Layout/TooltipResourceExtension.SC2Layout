@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel/CommandTooltip/ResourceLabel0" file="GameUI">
+        <Width val="90"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel/CommandTooltip/ResourceLabel1" file="GameUI">
+        <Width val="90"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel/CommandTooltip/ResourceLabel2" file="GameUI">
+        <Width val="90"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel/CommandTooltip/ResourceLabel3" file="GameUI">
+        <Width val="90"/>
+    </Frame>
+</Desc>

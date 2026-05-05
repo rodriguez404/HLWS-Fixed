@@ -1,0 +1,51 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Tug of War
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+int lib7550A90B_gv_maxTeams;
+playergroup lib7550A90B_gv_originalPlayers;
+fixed lib7550A90B_gv_spawnPeriod;
+timer lib7550A90B_gv_totalTimer;
+timer lib7550A90B_gv_spawnTimer;
+timer lib7550A90B_gv_spawnTimerExtra;
+int[2] lib7550A90B_gv_teamNextPlayer;
+int lib7550A90B_gv_laneCount;
+bool lib7550A90B_gv_initialized;
+bool lib7550A90B_gv_sizeChosen;
+bool lib7550A90B_gv_started;
+bool lib7550A90B_gv_setup;
+bool lib7550A90B_gv_cameraPanned;
+
+// Function Declarations
+void lib7550A90B_gf_TugofWarInitialization ();
+void lib7550A90B_gf_TugofWarCreateRacialWorkers (bool lp_select, int lp_controlGroup, playergroup lp_players);
+void lib7550A90B_gf_TugofWarSingleLane (playergroup lp_team0Group, point lp_team0Destination, point lp_team0Spawn, point lp_team0Origin1, point lp_team0Origin2, point lp_team0Origin3, point lp_team0Origin4, point lp_team0Origin5, point lp_team0Origin6, playergroup lp_team1Group, point lp_team1Destination, point lp_team1Spawn, point lp_team1Origin1, point lp_team1Origin2, point lp_team1Origin3, point lp_team1Origin4, point lp_team1Origin5, point lp_team1Origin6);
+void lib7550A90B_gf_TugofWarDualLane (playergroup lp_team0Group, point lp_team0Destination, point lp_team0Spawn0, point lp_team0Spawn0Waypoint, point lp_team0Spawn1, point lp_team0Spawn1Waypoint, point lp_team0Origin1, point lp_team0Origin2, point lp_team0Origin3, point lp_team0Origin4, point lp_team0Origin5, point lp_team0Origin6, playergroup lp_team1Group, point lp_team1Destination, point lp_team1Spawn0, point lp_team1Spawn0Waypoint, point lp_team1Spawn1, point lp_team1Spawn1Waypoint, point lp_team1Origin1, point lp_team1Origin2, point lp_team1Origin3, point lp_team1Origin4, point lp_team1Origin5, point lp_team1Origin6);
+void lib7550A90B_gf_TugofWarGameOver (unit lp_victoryUnit, playergroup lp_winners);
+void lib7550A90B_gf_TugofWarRemovePlayer (int lp_player);
+void lib7550A90B_gf_TugofWarPause (bool lp_pause, bool lp_pauseMissionTime, bool lp_pauseIncome);
+void lib7550A90B_gf_TugofWarPeriodicUpdate ();
+void lib7550A90B_gf_TugofWarAddSpawnTime (fixed lp_time);
+void lib7550A90B_gf_TugofWarStartDefault (playergroup lp_team0Group, region lp_team0Region, playergroup lp_team1Group, region lp_team1Region, point lp_center);
+void lib7550A90B_gf_TugofWarReset ();
+void lib7550A90B_gf_Preload ();
+void lib7550A90B_gf_GenericStartActions (fixed lp_spawnPeriod);
+void lib7550A90B_gf_FadeUI (bool lp_fade, fixed lp_fadeTime);
+void lib7550A90B_gf_UpdateSpawnTimer ();
+void lib7550A90B_gf_UpdateNPCColors ();
+void lib7550A90B_gf_IncreaseSpawnCount (int lp_team, int lp_modification);
+void lib7550A90B_gf_Spawn ();
+void lib7550A90B_gf_PrepareSpawnAreas ();
+
+// Trigger Declarations
+trigger lib7550A90B_gt_SpawnTimerActivate;
+trigger lib7550A90B_gt_SpawnTimerExtraActivate;
+trigger lib7550A90B_gt_Leaver;
+trigger lib7550A90B_gt_CinematicStart;
+trigger lib7550A90B_gt_CinematicEnd;
+
+// Library Initialization
+void lib7550A90B_InitVariables ();
+

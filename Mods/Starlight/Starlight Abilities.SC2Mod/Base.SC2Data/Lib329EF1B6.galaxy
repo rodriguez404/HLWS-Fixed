@@ -1,0 +1,629 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83"
+include "Lib452C8A48"
+include "Lib7AED044D_h"
+include "LibE17D8DC7_h"
+include "LibA91AB5FF_h"
+
+include "Lib329EF1B6_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Hero Selection
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib329EF1B6_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib452C8A48_InitVariables();
+    lib7AED044D_InitVariables();
+    libE17D8DC7_InitVariables();
+    libA91AB5FF_InitVariables();
+}
+
+// Variable Initialization
+bool lib329EF1B6_InitVariables_completed = false;
+
+void lib329EF1B6_InitVariables () {
+    int init_i;
+
+    if (lib329EF1B6_InitVariables_completed) {
+        return;
+    }
+
+    lib329EF1B6_InitVariables_completed = true;
+
+    lib329EF1B6_gv_playerUnselected = PlayerGroupEmpty();
+    lib329EF1B6_gv_players = PlayerGroupEmpty();
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib329EF1B6_gv_canRepick[init_i] = true;
+    }
+    lib329EF1B6_gv_levelBar = true;
+    lib329EF1B6_gv_repick = true;
+    lib329EF1B6_gv_allRandom = true;
+    lib329EF1B6_gv_birthEffects = true;
+    lib329EF1B6_gv_heroIcons = true;
+}
+
+// Functions
+void lib329EF1B6_gf_StarlightHeroSelection (point lp_point, playergroup lp_playerGroup, bool lp_useSpawnBuildings, fixed lp_panDuration, bool lp_repick, bool lp_levelBar, bool lp_heroIcons, bool lp_allRandom, bool lp_birthEffects, bool lp_starCraftHeroes) {
+    // Variable Declarations
+    const int lv_player = 0;
+    const fixed lv_distanceBetweenHeroes = 2.5;
+    fixed lv_x;
+    fixed lv_xBase;
+    fixed lv_y;
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    playergroup autoAA23DB17_g;
+    int autoAA23DB17_var;
+    playergroup auto66B230B8_g;
+    int auto66B230B8_var;
+
+    // Variable Initialization
+    lv_x = -7.5;
+    lv_xBase = -7.5;
+    lv_y = -2.5;
+
+    // Implementation
+    TriggerEnable(lib329EF1B6_gt_ComputerPlayers, true);
+    TriggerEnable(lib329EF1B6_gt_RandomHero, true);
+    TriggerEnable(lib329EF1B6_gt_SelectHero, true);
+    if ((lp_repick == true)) {
+        TriggerEnable(lib329EF1B6_gt_Repick, true);
+    }
+
+    PlayerSetColorIndex(lv_player, 5, true);
+    lib329EF1B6_gv_repick = lp_repick;
+    lib329EF1B6_gv_allRandom = lp_allRandom;
+    lib329EF1B6_gv_birthEffects = lp_birthEffects;
+    lib329EF1B6_gv_selectCamera = lp_point;
+    lib329EF1B6_gv_spawnStructure = lp_useSpawnBuildings;
+    lib329EF1B6_gv_levelBar = lp_levelBar;
+    lib329EF1B6_gv_heroIcons = lp_heroIcons;
+    lib329EF1B6_gv_panDuration = lp_panDuration;
+    PlayerGroupClear(lib329EF1B6_gv_playerUnselected);
+    PlayerGroupClear(lib329EF1B6_gv_players);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_playerGroup, lib329EF1B6_gv_playerUnselected);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_playerGroup, lib329EF1B6_gv_players);
+    autoAA23DB17_g = lp_playerGroup;
+    autoAA23DB17_var = -1;
+    while (true) {
+        autoAA23DB17_var = PlayerGroupNextPlayer(autoAA23DB17_g, autoAA23DB17_var);
+        if (autoAA23DB17_var < 0) { break; }
+        if ((PlayerType(autoAA23DB17_var) != c_playerTypeNeutral) && (PlayerType(autoAA23DB17_var) != c_playerTypeHostile)) {
+            if ((lib329EF1B6_gv_allRandom == false)) {
+                PlayerSetAlliance(lv_player, c_allianceIdVision, autoAA23DB17_var, true);
+                PlayerSetAlliance(lv_player, c_allianceIdControl, autoAA23DB17_var, true);
+                CameraPan(autoAA23DB17_var, PointWithOffset(lib329EF1B6_gv_selectCamera, 0.0, -1.63), lib329EF1B6_gv_panDuration, -1, 10.0, false);
+                CameraLockInput(autoAA23DB17_var, true);
+            }
+
+        }
+        else {
+            PlayerGroupRemove(lp_playerGroup, autoAA23DB17_var);
+        }
+    }
+    lv_x = lv_xBase;
+    UnitCreate(1, "MuradinExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "UtherExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "SamuroExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "IllidanExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "KelThuzadExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "MaievExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "SylvanasExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x = lv_xBase;
+    lv_y += lv_distanceBetweenHeroes;
+    UnitCreate(1, "AntonidasExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "KaelthasExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "VoljinExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "DrekTharExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "ArthasExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "MalGanisExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "TyrandeExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x = lv_xBase;
+    lv_x = -5.0;
+    lv_y += lv_distanceBetweenHeroes;
+    UnitCreate(1, "CairneExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "CenariusExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "AnubarakExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "MannorothExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    lv_x += lv_distanceBetweenHeroes;
+    UnitCreate(1, "RagnarosExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    if ((lp_starCraftHeroes == true)) {
+        lv_x = lv_xBase;
+        lv_x = -5.0;
+        lv_y += lv_distanceBetweenHeroes;
+        UnitCreate(1, "ArtanisExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+        lv_x += lv_distanceBetweenHeroes;
+        UnitCreate(1, "AlarakExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+        lv_x += lv_distanceBetweenHeroes;
+        UnitCreate(1, "NovaExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+        lv_x += lv_distanceBetweenHeroes;
+        lv_x += lv_distanceBetweenHeroes;
+        UnitCreate(1, "StukovExtended", c_unitCreateIgnorePlacement, lv_player, PointWithOffset(lp_point, lv_x, lv_y), 270.0);
+    }
+
+    lib329EF1B6_gf_SetNeutralHeroes(lv_player);
+    if ((lib329EF1B6_gv_allRandom == true)) {
+        auto66B230B8_g = lib329EF1B6_gv_playerUnselected;
+        auto66B230B8_var = -1;
+        while (true) {
+            auto66B230B8_var = PlayerGroupNextPlayer(auto66B230B8_g, auto66B230B8_var);
+            if (auto66B230B8_var < 0) { break; }
+            lv_u = UnitGroupRandomUnit(UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+            lib329EF1B6_gf_CreateHero(lv_u, auto66B230B8_var);
+        }
+    }
+
+}
+
+void lib329EF1B6_gf_StarlightHeroSelectionReset () {
+    // Automatic Variable Declarations
+    playergroup autoE191ABE1_g;
+    int autoE191ABE1_var;
+    unitgroup auto8A1FE17C_g;
+    int auto8A1FE17C_u;
+    unit auto8A1FE17C_var;
+
+    // Implementation
+    PlayerGroupClear(lib329EF1B6_gv_playerUnselected);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lib329EF1B6_gv_players, lib329EF1B6_gv_playerUnselected);
+    autoE191ABE1_g = lib329EF1B6_gv_players;
+    autoE191ABE1_var = -1;
+    while (true) {
+        autoE191ABE1_var = PlayerGroupNextPlayer(autoE191ABE1_g, autoE191ABE1_var);
+        if (autoE191ABE1_var < 0) { break; }
+        UnitClearSelection(autoE191ABE1_var);
+        if ((PlayerType(autoE191ABE1_var) != c_playerTypeNeutral) && (PlayerType(autoE191ABE1_var) != c_playerTypeHostile)) {
+            if ((lib329EF1B6_gv_allRandom == false)) {
+                PlayerSetAlliance(0, c_allianceIdVision, autoE191ABE1_var, true);
+                PlayerSetAlliance(0, c_allianceIdControl, autoE191ABE1_var, true);
+                CameraPan(autoE191ABE1_var, PointWithOffset(lib329EF1B6_gv_selectCamera, 0.0, -1.63), lib329EF1B6_gv_panDuration, -1, 10.0, false);
+                CameraLockInput(autoE191ABE1_var, true);
+            }
+
+        }
+
+    }
+    auto8A1FE17C_g = UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto8A1FE17C_u = UnitGroupCount(auto8A1FE17C_g, c_unitCountAll);
+    for (;; auto8A1FE17C_u -= 1) {
+        auto8A1FE17C_var = UnitGroupUnitFromEnd(auto8A1FE17C_g, auto8A1FE17C_u);
+        if (auto8A1FE17C_var == null) { break; }
+        UnitBehaviorRemove(auto8A1FE17C_var, "HeroSelectHide", 1);
+        libNtve_gf_PauseUnit(auto8A1FE17C_var, false);
+        libNtve_gf_SendActorMessageToUnit(auto8A1FE17C_var, "AnimSetPausedAll 0");
+        libNtve_gf_MakeUnitUncommandable(auto8A1FE17C_var, false);
+    }
+}
+
+void lib329EF1B6_gf_CreateHero (unit lp_hero, int lp_player) {
+    // Variable Declarations
+    string lv_icon;
+
+    // Automatic Variable Declarations
+    string auto61D5C1E9_val;
+
+    // Variable Initialization
+    lv_icon = (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_hero), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny));
+
+    // Implementation
+    if ((lib329EF1B6_gv_allRandom == false)) {
+        PlayerSetAlliance(0, c_allianceIdVision, lp_player, false);
+        PlayerSetAlliance(0, c_allianceIdControl, lp_player, false);
+        CameraLockInput(lp_player, false);
+    }
+
+    UnitBehaviorAdd(lp_hero, "HeroSelectHide", lp_hero, 1);
+    libNtve_gf_MakeUnitUncommandable(lp_hero, true);
+    PlayerGroupRemove(lib329EF1B6_gv_playerUnselected, lp_player);
+    if ((lib329EF1B6_gv_spawnStructure == true)) {
+        auto61D5C1E9_val = UnitGetType(lp_hero);
+        if (auto61D5C1E9_val == "UtherExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "AllianceSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "MuradinExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "AllianceSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "AntonidasExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HumanSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "KaelthasExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "BloodElfSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "SamuroExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HordeSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "DrekTharExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "OrcSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "CairneExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "HordeSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "VoljinExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "TrollSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "ArthasExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "ScourgeSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "MalGanisExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "LegionSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "KelThuzadExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "UndeadSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "AnubarakExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "UndeadSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "SylvanasExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "ForsakenSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "MannorothExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "LegionSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "TyrandeExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "SentinelSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "CenariusExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "DruidSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "IllidanExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "NagaSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else if (auto61D5C1E9_val == "MaievExtended") {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, "LegionSpawn", 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+        }
+        else {
+        }
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, UnitGetType(lp_hero), 0, lp_player, PointWithOffset(libDDE92A83_gv_playerOrigin[lp_player], 0.0, -2.5));
+    }
+    else {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, UnitGetType(lp_hero), 0, lp_player, libDDE92A83_gv_playerOrigin[lp_player]);
+    }
+    UnitControlGroupAddUnit(lp_player, 1, UnitLastCreated());
+    if ((lib329EF1B6_gv_birthEffects == true)) {
+        UnitCreateEffectUnit(UnitLastCreated(), "HeroBirthEffect", UnitLastCreated());
+    }
+
+    libA91AB5FF_gf_StarlightStatsUpdate(UnitLastCreated());
+    UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergy, libNtve_gf_ArithmeticRealClamp((50.0 + (UnitGetPropertyFixed(UnitLastCreated(), c_unitPropEnergyRegen, c_unitPropCurrent) * GameGetMissionTime())), 50.0, UnitGetPropertyFixed(UnitLastCreated(), c_unitPropEnergyMax, c_unitPropCurrent)));
+    UnitClearSelection(lp_player);
+    UnitSelect(UnitLastCreated(), lp_player, true);
+    CameraPan(lp_player, PointWithOffset(UnitGetPosition(UnitLastCreated()), 0.0, -1.63), lib329EF1B6_gv_panDuration, -1, 10.0, false);
+    if ((lib329EF1B6_gv_heroIcons == true)) {
+        if ((lib329EF1B6_gv_levelBar == true)) {
+            libE17D8DC7_gf_StarlightHeroIcon(lp_player, UnitLastCreated(), 0, c_hotkeyHeroSelect0, 5, 65, true);
+        }
+        else {
+            libE17D8DC7_gf_StarlightHeroIcon(lp_player, UnitLastCreated(), 0, c_hotkeyHeroSelect0, 5, 5, true);
+        }
+    }
+
+    lib452C8A48_gf_StarlightLeaderboardIcon(lv_icon, UnitTypeGetName(UnitGetType(lp_hero)), lp_player);
+    if ((PlayerType(lp_player) != c_playerTypeUser)) {
+        lib7AED044D_gf_War3AI(lib7AED044D_gv_player, true);
+    }
+
+    if ((lib329EF1B6_gv_canRepick[lp_player] == true) && (lib329EF1B6_gv_repickTip[lp_player] == false) && (lib329EF1B6_gv_repick == true) && (GameGetMissionTime() < 300.0)) {
+        lib329EF1B6_gv_repickTip[lp_player] = true;
+        UIDisplayMessage(PlayerGroupSingle(lp_player), c_messageAreaChat, StringExternal("Param/Value/lib_329EF1B6_1670A550"));
+        SoundPlayForPlayer(SoundLink("UI_War3Hint", -1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    }
+
+}
+
+void lib329EF1B6_gf_SetNeutralHeroes (int lp_player) {
+    // Automatic Variable Declarations
+    unitgroup auto312E81FB_g;
+    int auto312E81FB_u;
+    unit auto312E81FB_var;
+    const int auto6A73E3C6_n = 6;
+    int auto6A73E3C6_i;
+
+    // Implementation
+    auto312E81FB_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto312E81FB_u = UnitGroupCount(auto312E81FB_g, c_unitCountAll);
+    for (;; auto312E81FB_u -= 1) {
+        auto312E81FB_var = UnitGroupUnitFromEnd(auto312E81FB_g, auto312E81FB_u);
+        if (auto312E81FB_var == null) { break; }
+        UnitSetPropertyFixed(auto312E81FB_var, c_unitPropEnergyPercent, 100.0);
+        UnitBehaviorAdd(auto312E81FB_var, "HideLearnMenu", auto312E81FB_var, 1);
+        UnitBehaviorAdd(auto312E81FB_var, "HeroSpawner", auto312E81FB_var, 1);
+        UnitAbilityShow(auto312E81FB_var, "MoveWar3", false);
+        UnitAbilityShow(auto312E81FB_var, "StopWar3", false);
+        UnitAbilityShow(auto312E81FB_var, "attackProtossBuilding", false);
+        UnitSetPropertyFixed(auto312E81FB_var, c_unitPropLevel, 10.0);
+        UnitIssueOrder(auto312E81FB_var, Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto312E81FB_var), "ReviveType", 0) + "Learn")), 0)), c_orderQueueReplace);
+        UnitIssueOrder(auto312E81FB_var, Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto312E81FB_var), "ReviveType", 0) + "Learn")), 1)), c_orderQueueReplace);
+        UnitIssueOrder(auto312E81FB_var, Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto312E81FB_var), "ReviveType", 0) + "Learn")), 2)), c_orderQueueReplace);
+        UnitIssueOrder(auto312E81FB_var, Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto312E81FB_var), "ReviveType", 0) + "Learn")), 3)), c_orderQueueReplace);
+        UnitSetPropertyFixed(auto312E81FB_var, c_unitPropLevel, 1.0);
+        UnitSetState(auto312E81FB_var, c_unitStateStatusBar, false);
+        UnitXPGainEnable(auto312E81FB_var, null, false);
+        for (auto6A73E3C6_i = 1; auto6A73E3C6_i <= auto6A73E3C6_n; auto6A73E3C6_i += 1) {
+            UnitInventoryCreate(auto312E81FB_var, "InventoryBreaker");
+        }
+        if ((GameGetMissionTime() >= 1)) {
+            ActorSend(libNtve_gf_MainActorofUnit(auto312E81FB_var), "SetOpacity 0.000000 0.000000 SelectionOpacity");
+            ActorSend(libNtve_gf_MainActorofUnit(auto312E81FB_var), "ClearOpacity 0.250000 SelectionOpacity");
+        }
+
+    }
+}
+
+void lib329EF1B6_gf_ResetHero (string lp_unitType, int lp_player) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoB2110850_ae = 19;
+    const int autoB2110850_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_i = 0;
+    for ( ; ( (autoB2110850_ai >= 0 && lv_i <= autoB2110850_ae) || (autoB2110850_ai < 0 && lv_i >= autoB2110850_ae) ) ; lv_i += autoB2110850_ai ) {
+        TechTreeAbilityAllow(lp_player, AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, lp_unitType, "ReviveType", lp_player) + "Learn")), lv_i), true);
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, (CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, lp_unitType, "ReviveType", 0) + "Learn"), "InfoArray[" + IntToString(lv_i) + "].Abil", lp_player)), 0);
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Select Hero
+//--------------------------------------------------------------------------------------------------
+bool lib329EF1B6_gt_SelectHero_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(lib329EF1B6_gv_playerUnselected, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib329EF1B6_gf_CreateHero(EventUnit(), EventPlayer());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib329EF1B6_gt_SelectHero_Init () {
+    lib329EF1B6_gt_SelectHero = TriggerCreate("lib329EF1B6_gt_SelectHero_Func");
+    TriggerEnable(lib329EF1B6_gt_SelectHero, false);
+    TriggerAddEventUnitAbility(lib329EF1B6_gt_SelectHero, null, AbilityCommand("SelectHero", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Random Hero
+//--------------------------------------------------------------------------------------------------
+bool lib329EF1B6_gt_RandomHero_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_u = UnitGroupRandomUnit(UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(lib329EF1B6_gv_playerUnselected, EventPlayer()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib329EF1B6_gv_canRepick[EventPlayer()] = false;
+    lib329EF1B6_gf_CreateHero(lv_u, EventPlayer());
+    UnitInventoryCreate(UnitLastCreated(), "TalismanofExperience");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib329EF1B6_gt_RandomHero_Init () {
+    lib329EF1B6_gt_RandomHero = TriggerCreate("lib329EF1B6_gt_RandomHero_Func");
+    TriggerEnable(lib329EF1B6_gt_RandomHero, false);
+    TriggerAddEventUnitAbility(lib329EF1B6_gt_RandomHero, null, AbilityCommand("RandomHero", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Computer Players
+//--------------------------------------------------------------------------------------------------
+bool lib329EF1B6_gt_ComputerPlayers_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    playergroup autoD8678863_g;
+    int autoD8678863_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoD8678863_g = lib329EF1B6_gv_playerUnselected;
+    autoD8678863_var = -1;
+    while (true) {
+        autoD8678863_var = PlayerGroupNextPlayer(autoD8678863_g, autoD8678863_var);
+        if (autoD8678863_var < 0) { break; }
+        if ((PlayerType(autoD8678863_var) != c_playerTypeUser) && (PlayerType(autoD8678863_var) != c_playerTypeNeutral) && (PlayerType(autoD8678863_var) != c_playerTypeHostile)) {
+            lv_u = UnitGroupRandomUnit(UnitGroup(null, 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterUncommandable), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+            lib329EF1B6_gf_CreateHero(lv_u, autoD8678863_var);
+            Wait(RandomFixed(0.25, 1.0), c_timeGame);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib329EF1B6_gt_ComputerPlayers_Init () {
+    lib329EF1B6_gt_ComputerPlayers = TriggerCreate("lib329EF1B6_gt_ComputerPlayers_Func");
+    TriggerEnable(lib329EF1B6_gt_ComputerPlayers, false);
+    TriggerAddEventTimePeriodic(lib329EF1B6_gt_ComputerPlayers, 30.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Repick
+//--------------------------------------------------------------------------------------------------
+bool lib329EF1B6_gt_Repick_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unit lv_a;
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    bool autoFAE7D315_val;
+    unitgroup auto80CF45EE_g;
+    int auto80CF45EE_u;
+    unit auto80CF45EE_var;
+    unitgroup auto4D349AB1_g;
+    int auto4D349AB1_u;
+    unitgroup auto52F43C64_g;
+    int auto52F43C64_u;
+    unit auto52F43C64_var;
+    unitgroup autoF2B094F4_g;
+    int autoF2B094F4_u;
+    unit autoF2B094F4_var;
+    unitgroup autoAB074255_g;
+    int autoAB074255_u;
+    unit autoAB074255_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerGroupHasPlayer(lib329EF1B6_gv_playerUnselected, EventPlayer()) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoFAE7D315_val = lib329EF1B6_gv_canRepick[EventPlayer()];
+    if (autoFAE7D315_val == true) {
+        if ((GameGetMissionTime() >= 300.0) && (GameIsTestMap(false) == false)) {
+            UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaChat, StringExternal("Param/Value/lib_329EF1B6_0E8AF041"));
+            SoundPlay(SoundLink("UI_GenericError", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+        }
+        else {
+            auto80CF45EE_g = UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+            auto80CF45EE_u = UnitGroupCount(auto80CF45EE_g, c_unitCountAll);
+            for (;; auto80CF45EE_u -= 1) {
+                auto80CF45EE_var = UnitGroupUnitFromEnd(auto80CF45EE_g, auto80CF45EE_u);
+                if (auto80CF45EE_var == null) { break; }
+                lib329EF1B6_gf_ResetHero(UnitGetType(auto80CF45EE_var), EventPlayer());
+                auto4D349AB1_g = UnitInventoryGroup(auto80CF45EE_var);
+                auto4D349AB1_u = UnitGroupCount(auto4D349AB1_g, c_unitCountAll);
+                for (;; auto4D349AB1_u -= 1) {
+                    lv_a = UnitGroupUnitFromEnd(auto4D349AB1_g, auto4D349AB1_u);
+                    if (lv_a == null) { break; }
+                    UnitInventoryRemove(lv_a);
+                }
+            }
+            auto52F43C64_g = UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterSummoned - 32))), 0);
+            auto52F43C64_u = UnitGroupCount(auto52F43C64_g, c_unitCountAll);
+            for (;; auto52F43C64_u -= 1) {
+                auto52F43C64_var = UnitGroupUnitFromEnd(auto52F43C64_g, auto52F43C64_u);
+                if (auto52F43C64_var == null) { break; }
+                lv_u = UnitGroupRandomUnit(UnitGroup(UnitGetType(auto52F43C64_var), 0, RegionEntireMap(), UnitFilter((1 << c_targetFilterUncommandable), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0), c_unitCountAlive);
+                libNtve_gf_MakeUnitUncommandable(lv_u, false);
+                UnitBehaviorRemove(lv_u, "HeroSelectHide", 1);
+            }
+            autoF2B094F4_g = UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter(0, (1 << (c_targetFilterSummoned - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+            autoF2B094F4_u = UnitGroupCount(autoF2B094F4_g, c_unitCountAll);
+            for (;; autoF2B094F4_u -= 1) {
+                autoF2B094F4_var = UnitGroupUnitFromEnd(autoF2B094F4_g, autoF2B094F4_u);
+                if (autoF2B094F4_var == null) { break; }
+                UnitKill(autoF2B094F4_var);
+            }
+            PlayerSetAlliance(0, c_allianceIdVision, EventPlayer(), true);
+            PlayerSetAlliance(0, c_allianceIdControl, EventPlayer(), true);
+            PlayerGroupAdd(lib329EF1B6_gv_playerUnselected, EventPlayer());
+            libE17D8DC7_gf_StarlightHeroIcon(EventPlayer(), UnitLastCreated(), 0, c_hotkeyIdleWorker, 5, 5, false);
+            lib452C8A48_gf_StarlightLeaderboardIcon("Assets\\Textures\\black.dds", null, EventPlayer());
+            CameraPan(EventPlayer(), PointWithOffset(lib329EF1B6_gv_selectCamera, 0.0, -1.63), 0.0, -1, 10.0, false);
+            CameraLockInput(EventPlayer(), true);
+            autoAB074255_g = UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterSummoned - 32))), 0);
+            autoAB074255_u = UnitGroupCount(autoAB074255_g, c_unitCountAll);
+            for (;; autoAB074255_u -= 1) {
+                autoAB074255_var = UnitGroupUnitFromEnd(autoAB074255_g, autoAB074255_u);
+                if (autoAB074255_var == null) { break; }
+                UnitRemove(autoAB074255_var);
+            }
+        }
+    }
+    else if (autoFAE7D315_val == false) {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaChat, StringExternal("Param/Value/lib_329EF1B6_20CC58DC"));
+        SoundPlay(SoundLink("UI_GenericError", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib329EF1B6_gt_Repick_Init () {
+    lib329EF1B6_gt_Repick = TriggerCreate("lib329EF1B6_gt_Repick_Func");
+    TriggerEnable(lib329EF1B6_gt_Repick, false);
+    TriggerAddEventChatMessage(lib329EF1B6_gt_Repick, c_playerAny, "-repick", true);
+}
+
+void lib329EF1B6_InitTriggers () {
+    lib329EF1B6_gt_SelectHero_Init();
+    lib329EF1B6_gt_RandomHero_Init();
+    lib329EF1B6_gt_ComputerPlayers_Init();
+    lib329EF1B6_gt_Repick_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib329EF1B6_InitLib_completed = false;
+
+void lib329EF1B6_InitLib () {
+    if (lib329EF1B6_InitLib_completed) {
+        return;
+    }
+
+    lib329EF1B6_InitLib_completed = true;
+
+    lib329EF1B6_InitLibraries();
+    lib329EF1B6_InitVariables();
+    lib329EF1B6_InitTriggers();
+}
+
+include "Lib7AED044D"
+include "LibE17D8DC7"
+include "LibA91AB5FF"
+

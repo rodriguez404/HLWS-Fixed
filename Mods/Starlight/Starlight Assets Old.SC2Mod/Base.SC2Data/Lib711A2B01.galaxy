@@ -1,0 +1,549 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+
+include "Lib711A2B01_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Score Bar
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib711A2B01_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+}
+
+// Variable Initialization
+bool lib711A2B01_InitVariables_completed = false;
+
+void lib711A2B01_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (lib711A2B01_InitVariables_completed) {
+        return;
+    }
+
+    lib711A2B01_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib711A2B01_gv_scoreBarDialog[init_i] = c_invalidDialogId;
+    }
+    lib711A2B01_gv_scoreButton = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        for (init_j = 0; init_j <= 1; init_j += 1) {
+            lib711A2B01_gv_scoreText[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        for (init_j = 0; init_j <= 1; init_j += 1) {
+            lib711A2B01_gv_scoreFill[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        for (init_j = 0; init_j <= 1; init_j += 1) {
+            lib711A2B01_gv_scoreVignette[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        for (init_j = 0; init_j <= 1; init_j += 1) {
+            lib711A2B01_gv_scoreBorder[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    lib711A2B01_gv_scoreSelfColor = Color(18.82, 88.24, 37.65);
+    lib711A2B01_gv_scoreEnemyColor = Color(87.84, 18.82, 25.10);
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib711A2B01_gv_scorePlayerGroup[init_i] = PlayerGroupEmpty();
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib711A2B01_gv_scoreUnitGroup[init_i] = UnitGroupEmpty();
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib711A2B01_gv_scoreCurrent[init_i] = 50;
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib711A2B01_gv_scoreMax[init_i] = 100;
+    }
+    lib711A2B01_gv_scoreValue = "HeroesSlain";
+    lib711A2B01_gv_scoreTeamAToggle = true;
+    lib711A2B01_gv_scoreTeamBToggle = true;
+}
+
+// Functions
+void lib711A2B01_gf_StarlightScoreBarStartUnit (playergroup lp_teamA, unit lp_teamAObjective, playergroup lp_teamB, unit lp_teamBObjective, text lp_tooltip, text lp_scoreSuffix) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib711A2B01_gt_ScoreUpdate, true);
+    lib711A2B01_gv_scoreType = 1;
+    lib711A2B01_gv_scoreSuffix = lp_scoreSuffix;
+    lib711A2B01_gv_scorePlayerGroup[0] = lp_teamA;
+    lib711A2B01_gv_scorePlayerGroup[1] = lp_teamB;
+    lib711A2B01_gv_scoreObjective[0] = lp_teamAObjective;
+    lib711A2B01_gv_scoreObjective[1] = lp_teamBObjective;
+    lib711A2B01_gv_scoreCurrent[0] = libNtve_gf_ArithmeticIntClamp(FixedToInt(((UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[0], c_unitPropLife, c_unitPropCurrent) / UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[0], c_unitPropLifeMax, c_unitPropCurrent)) * 100.0)), 1, 100);
+    lib711A2B01_gv_scoreCurrent[1] = libNtve_gf_ArithmeticIntClamp(FixedToInt(((UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[1], c_unitPropLife, c_unitPropCurrent) / UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[1], c_unitPropLifeMax, c_unitPropCurrent)) * 100.0)), 1, 100);
+    if ((lib711A2B01_gv_scoreCreated == false)) {
+        lib711A2B01_gv_scoreCreated = true;
+        lib711A2B01_gf_CreateScoreBar(lp_tooltip);
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarStartLives (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, int lp_livesStart) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib711A2B01_gt_ScoreUpdate, true);
+    lib711A2B01_gv_scoreType = 0;
+    lib711A2B01_gv_scoreSuffix = lp_scoreSuffix;
+    lib711A2B01_gv_scorePlayerGroup[0] = lp_teamA;
+    lib711A2B01_gv_scorePlayerGroup[1] = lp_teamB;
+    lib711A2B01_gv_scoreCurrent[0] = lp_livesStart;
+    lib711A2B01_gv_scoreCurrent[1] = lp_livesStart;
+    lib711A2B01_gv_scoreMax[0] = lp_livesStart;
+    lib711A2B01_gv_scoreMax[1] = lp_livesStart;
+    if ((lib711A2B01_gv_scoreCreated == false)) {
+        lib711A2B01_gv_scoreCreated = true;
+        lib711A2B01_gf_CreateScoreBar(lp_tooltip);
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarStartScore (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, int lp_scoreMax, string lp_scoreValue, int lp_teamAScorePlayer, int lp_teamBScorePlayer) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib711A2B01_gt_ScoreUpdate, true);
+    lib711A2B01_gv_scoreType = 2;
+    lib711A2B01_gv_scoreSuffix = lp_scoreSuffix;
+    lib711A2B01_gv_scorePlayerGroup[0] = lp_teamA;
+    lib711A2B01_gv_scorePlayerGroup[1] = lp_teamB;
+    lib711A2B01_gv_scoreCurrent[0] = 0;
+    lib711A2B01_gv_scoreCurrent[1] = 0;
+    lib711A2B01_gv_scoreMax[0] = lp_scoreMax;
+    lib711A2B01_gv_scoreMax[1] = lp_scoreMax;
+    lib711A2B01_gv_scoreValue = lp_scoreValue;
+    lib711A2B01_gv_scorePlayer[0] = lp_teamAScorePlayer;
+    lib711A2B01_gv_scorePlayer[1] = lp_teamBScorePlayer;
+    if ((lib711A2B01_gv_scoreCreated == false)) {
+        lib711A2B01_gv_scoreCreated = true;
+        lib711A2B01_gf_CreateScoreBar(lp_tooltip);
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarStartUnitGroup (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, text lp_unitGroupAEmptyText, text lp_unitGroupBEmptyText2, unitgroup lp_teamAUnitGroup, unitgroup lp_teamBUnitGroup) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib711A2B01_gt_ScoreUpdate, true);
+    lib711A2B01_gv_scoreType = 3;
+    lib711A2B01_gv_scoreSuffix = lp_scoreSuffix;
+    lib711A2B01_gv_emptyText[0] = lp_unitGroupAEmptyText;
+    lib711A2B01_gv_emptyText[1] = lp_unitGroupBEmptyText2;
+    lib711A2B01_gv_scorePlayerGroup[0] = lp_teamA;
+    lib711A2B01_gv_scorePlayerGroup[1] = lp_teamB;
+    lib711A2B01_gv_scoreCurrent[0] = UnitGroupCount(lp_teamAUnitGroup, c_unitCountAlive);
+    lib711A2B01_gv_scoreCurrent[1] = UnitGroupCount(lp_teamBUnitGroup, c_unitCountAlive);
+    lib711A2B01_gv_scoreMax[0] = UnitGroupCount(lp_teamAUnitGroup, c_unitCountAlive);
+    lib711A2B01_gv_scoreMax[1] = UnitGroupCount(lp_teamBUnitGroup, c_unitCountAlive);
+    lib711A2B01_gv_scoreUnitGroup[0] = lp_teamAUnitGroup;
+    lib711A2B01_gv_scoreUnitGroup[1] = lp_teamBUnitGroup;
+    if ((lib711A2B01_gv_scoreCreated == false)) {
+        lib711A2B01_gv_scoreCreated = true;
+        lib711A2B01_gf_CreateScoreBar(lp_tooltip);
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarUpdate () {
+    // Variable Declarations
+    int lv_t;
+
+    // Automatic Variable Declarations
+    int autoA4681FBB_val;
+    const int auto06F7354C_ae = 1;
+    const int auto06F7354C_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((lib711A2B01_gv_scoreCreated == true)) {
+        lib711A2B01_gf_HideEmptyTeamScore();
+        autoA4681FBB_val = lib711A2B01_gv_scoreType;
+        if (autoA4681FBB_val == 0) {
+            lib711A2B01_gf_UpdateScoreDialogs();
+            if ((lib711A2B01_gv_scoreCurrent[1] <= 0)) {
+                lib711A2B01_gf_ToggleTeamBScore(true);
+            }
+
+            if ((lib711A2B01_gv_scoreCurrent[0] <= 0)) {
+                lib711A2B01_gf_ToggleTeamAScore(false);
+            }
+
+        }
+        else if (autoA4681FBB_val == 1) {
+            lv_t = 0;
+            for ( ; ( (auto06F7354C_ai >= 0 && lv_t <= auto06F7354C_ae) || (auto06F7354C_ai < 0 && lv_t >= auto06F7354C_ae) ) ; lv_t += auto06F7354C_ai ) {
+                lib711A2B01_gv_scoreCurrent[lv_t] = libNtve_gf_ArithmeticIntClamp(((FixedToInt(UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[lv_t], c_unitPropLife, c_unitPropCurrent)) * 100) / FixedToInt(UnitGetPropertyFixed(lib711A2B01_gv_scoreObjective[lv_t], c_unitPropLifeMax, c_unitPropCurrent))), 1, 100);
+            }
+            lib711A2B01_gf_UpdateScoreDialogs();
+            if ((UnitIsAlive(lib711A2B01_gv_scoreObjective[1]) == false)) {
+                lib711A2B01_gf_ToggleTeamBScore(true);
+            }
+
+            if ((UnitIsAlive(lib711A2B01_gv_scoreObjective[0]) == false)) {
+                lib711A2B01_gf_ToggleTeamAScore(false);
+            }
+
+        }
+        else if (autoA4681FBB_val == 2) {
+            lib711A2B01_gv_scoreCurrent[0] = libNtve_gf_ArithmeticIntClamp(PlayerScoreValueGetAsInt(lib711A2B01_gv_scorePlayer[0], lib711A2B01_gv_scoreValue), 0, lib711A2B01_gv_scoreMax[0]);
+            lib711A2B01_gv_scoreCurrent[1] = libNtve_gf_ArithmeticIntClamp(PlayerScoreValueGetAsInt(lib711A2B01_gv_scorePlayer[1], lib711A2B01_gv_scoreValue), 0, lib711A2B01_gv_scoreMax[1]);
+            lib711A2B01_gf_UpdateScoreDialogs();
+        }
+        else if (autoA4681FBB_val == 3) {
+            if ((UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[0], c_unitCountAlive) > lib711A2B01_gv_scoreMax[0])) {
+                lib711A2B01_gv_scoreMax[0] = UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[0], c_unitCountAlive);
+            }
+
+            if ((UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[1], c_unitCountAlive) > lib711A2B01_gv_scoreMax[1])) {
+                lib711A2B01_gv_scoreMax[1] = UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[1], c_unitCountAlive);
+            }
+
+            lib711A2B01_gv_scoreCurrent[0] = libNtve_gf_ArithmeticIntClamp(UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[0], c_unitCountAlive), 0, lib711A2B01_gv_scoreMax[0]);
+            lib711A2B01_gv_scoreCurrent[1] = libNtve_gf_ArithmeticIntClamp(UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[1], c_unitCountAlive), 0, lib711A2B01_gv_scoreMax[1]);
+            lib711A2B01_gf_UpdateScoreDialogs();
+            if ((UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[0], c_unitCountAlive) == 0)) {
+                lib711A2B01_gf_ToggleTeamAScore(false);
+                lib711A2B01_gf_ForceTeamAScore(lib711A2B01_gv_emptyText[0]);
+            }
+            else {
+                if ((lib711A2B01_gv_scoreTeamAToggle == false)) {
+                    lib711A2B01_gf_ToggleTeamAScore(true);
+                }
+
+            }
+            if ((UnitGroupCount(lib711A2B01_gv_scoreUnitGroup[1], c_unitCountAlive) == 0)) {
+                lib711A2B01_gf_ToggleTeamBScore(false);
+                lib711A2B01_gf_ForceTeamBScore(lib711A2B01_gv_emptyText[1]);
+            }
+            else {
+                if ((lib711A2B01_gv_scoreTeamBToggle == false)) {
+                    lib711A2B01_gf_ToggleTeamBScore(true);
+                }
+
+            }
+        }
+        else {
+        }
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarModify (int lp_teamALives, int lp_teamBLives) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib711A2B01_gv_scoreCreated == true)) {
+        lib711A2B01_gv_scoreCurrent[0] = lp_teamALives;
+        lib711A2B01_gv_scoreCurrent[1] = lp_teamBLives;
+        lib711A2B01_gf_StarlightScoreBarUpdate();
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarFade (bool lp_fade, fixed lp_fadeTime) {
+    // Automatic Variable Declarations
+    bool autoF414091C_val;
+
+    // Implementation
+    if ((lib711A2B01_gv_scoreCreated == true)) {
+        autoF414091C_val = lp_fade;
+        if (autoF414091C_val == true) {
+            libNtve_gf_SetDialogItemAcceptMouse(lib711A2B01_gv_scoreButton, true, PlayerGroupAll());
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][1], PlayerGroupAll(), lp_fadeTime, 0.0);
+        }
+        else if (autoF414091C_val == false) {
+            libNtve_gf_SetDialogItemAcceptMouse(lib711A2B01_gv_scoreButton, false, PlayerGroupAll());
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[0][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreBorder[1][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[0][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib711A2B01_gv_scoreVignette[1][1], PlayerGroupAll(), lp_fadeTime, 100.0);
+        }
+        else {
+        }
+    }
+
+}
+
+void lib711A2B01_gf_StarlightScoreBarToggleNumber (bool lp_toggle) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlSetVisible(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), lp_toggle);
+    DialogControlSetVisible(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), lp_toggle);
+    DialogControlSetVisible(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), lp_toggle);
+    DialogControlSetVisible(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), lp_toggle);
+}
+
+void lib711A2B01_gf_CreateScoreBar (text lp_tooltip) {
+    // Variable Declarations
+    int lv_t;
+    const fixed lv_fadeTime = 1.0;
+    const int lv_gap = 10;
+
+    // Automatic Variable Declarations
+    const int autoF47C84B5_ae = 1;
+    const int autoF47C84B5_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_t = 0;
+    for ( ; ( (autoF47C84B5_ai >= 0 && lv_t <= autoF47C84B5_ae) || (autoF47C84B5_ai < 0 && lv_t >= autoF47C84B5_ae) ) ; lv_t += autoF47C84B5_ai ) {
+        DialogDestroy(lib711A2B01_gv_scoreBarDialog[lv_t]);
+        DialogCreate(((lib711A2B01_gv_scoreBarWidth * 2) + (lv_gap * 2)), (lib711A2B01_gv_scoreBarHeight + (lv_gap * 2)), c_anchorTop, 0, (2 - lv_gap), true);
+        lib711A2B01_gv_scoreBarDialog[lv_t] = DialogLastCreated();
+        DialogSetVisible(DialogLastCreated(), lib711A2B01_gv_scorePlayerGroup[lv_t], true);
+        DialogSetImageVisible(DialogLastCreated(), false);
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), (lib711A2B01_gv_scoreBarWidth * 2), lib711A2B01_gv_scoreBarHeight, c_anchorCenter, 0, 0, lp_tooltip, StringExternal("Param/Value/lib_711A2B01_E585ED71"), "");
+        lib711A2B01_gv_scoreButton = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lib711A2B01_gv_scoreBarWidth - 12), lib711A2B01_gv_scoreBarHeight, c_anchorRight, (lib711A2B01_gv_scoreBarWidth + lv_gap + 6), 0, StringToText(""), "Assets\\Textures\\ui_mission_leaderboard_progressbar_fill.dds", c_triggerImageTypeBorder, false, lib711A2B01_gv_scoreSelfColor, c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreFill[0][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lib711A2B01_gv_scoreBarWidth - 12), lib711A2B01_gv_scoreBarHeight, c_anchorLeft, (lib711A2B01_gv_scoreBarWidth + lv_gap + 6), 0, StringToText(""), "Assets\\Textures\\ui_mission_leaderboard_progressbar_fill.dds", c_triggerImageTypeBorder, false, lib711A2B01_gv_scoreEnemyColor, c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreFill[1][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lib711A2B01_gv_scoreBarWidth, lib711A2B01_gv_scoreBarHeight, c_anchorLeft, lv_gap, 0, StringToText(""), "Assets\\Textures\\ui_scorebarleft.dds", c_triggerImageTypeNormal, false, lib711A2B01_gv_scoreSelfColor, c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreBorder[0][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lib711A2B01_gv_scoreBarWidth, lib711A2B01_gv_scoreBarHeight, c_anchorRight, lv_gap, 0, StringToText(""), "Assets\\Textures\\ui_scorebarright.dds", c_triggerImageTypeNormal, false, lib711A2B01_gv_scoreEnemyColor, c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreBorder[1][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lib711A2B01_gv_scoreBarWidth + (lv_gap * 2)), (lib711A2B01_gv_scoreBarHeight + (lv_gap * 2)), c_anchorLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_scorebarleft_vignette.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreVignette[0][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 400, PlayerGroupAll());
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lib711A2B01_gv_scoreBarWidth + (lv_gap * 2)), (lib711A2B01_gv_scoreBarHeight + (lv_gap * 2)), c_anchorRight, 0, 0, StringToText(""), "Assets\\Textures\\ui_scorebarright_vignette.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lib711A2B01_gv_scoreVignette[1][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 400, PlayerGroupAll());
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), lib711A2B01_gv_scoreBarWidth, lib711A2B01_gv_scoreBarHeight, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_711A2B01_7734E799") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[lv_t]), lib711A2B01_gv_scoreSelfColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreSelfColor)), ColorWithAlpha(0,0,0,0), false, 2.0);
+        lib711A2B01_gv_scoreText[0][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib711A2B01_gv_scoreBorder[0][lv_t], c_anchorCenter, 0, 1);
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), lib711A2B01_gv_scoreBarWidth, lib711A2B01_gv_scoreBarHeight, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_711A2B01_0E0F3C47") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[lv_t]), lib711A2B01_gv_scoreEnemyColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreEnemyColor)), ColorWithAlpha(0,0,0,0), false, 2.0);
+        lib711A2B01_gv_scoreText[1][lv_t] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib711A2B01_gv_scoreBorder[1][lv_t], c_anchorCenter, 0, 1);
+    }
+}
+
+void lib711A2B01_gf_UpdateScoreDialogs () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib711A2B01_gv_scoreMax[0] > 0)) {
+        DialogControlSetSize(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), libNtve_gf_ArithmeticIntClamp(FixedToInt((IntToFixed((lib711A2B01_gv_scoreBarWidth - 12)) * (IntToFixed(lib711A2B01_gv_scoreCurrent[0]) / IntToFixed(lib711A2B01_gv_scoreMax[0])))), 0, (lib711A2B01_gv_scoreBarWidth - 12)), lib711A2B01_gv_scoreBarHeight);
+        DialogControlSetSize(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), libNtve_gf_ArithmeticIntClamp(FixedToInt((IntToFixed((lib711A2B01_gv_scoreBarWidth - 12)) * (IntToFixed(lib711A2B01_gv_scoreCurrent[0]) / IntToFixed(lib711A2B01_gv_scoreMax[0])))), 0, (lib711A2B01_gv_scoreBarWidth - 12)), lib711A2B01_gv_scoreBarHeight);
+    }
+
+    if ((lib711A2B01_gv_scoreMax[1] > 0)) {
+        DialogControlSetSize(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), libNtve_gf_ArithmeticIntClamp(FixedToInt((IntToFixed((lib711A2B01_gv_scoreBarWidth - 12)) * (IntToFixed(lib711A2B01_gv_scoreCurrent[1]) / IntToFixed(lib711A2B01_gv_scoreMax[1])))), 0, (lib711A2B01_gv_scoreBarWidth - 12)), lib711A2B01_gv_scoreBarHeight);
+        DialogControlSetSize(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), libNtve_gf_ArithmeticIntClamp(FixedToInt((IntToFixed((lib711A2B01_gv_scoreBarWidth - 12)) * (IntToFixed(lib711A2B01_gv_scoreCurrent[1]) / IntToFixed(lib711A2B01_gv_scoreMax[1])))), 0, (lib711A2B01_gv_scoreBarWidth - 12)), lib711A2B01_gv_scoreBarHeight);
+    }
+
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][0], (StringExternal("Param/Value/lib_711A2B01_85813C21") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[0]), lib711A2B01_gv_scoreSelfColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreSelfColor)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][1], (StringExternal("Param/Value/lib_711A2B01_40DC9CE7") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[0]), lib711A2B01_gv_scoreEnemyColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreEnemyColor)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][0], (StringExternal("Param/Value/lib_711A2B01_0BF4D6A1") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[1]), lib711A2B01_gv_scoreEnemyColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreEnemyColor)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][1], (StringExternal("Param/Value/lib_711A2B01_6FF1B2A1") + TextWithColor(FormatNumber(lib711A2B01_gv_scoreCurrent[1]), lib711A2B01_gv_scoreSelfColor) + TextWithColor(lib711A2B01_gv_scoreSuffix, lib711A2B01_gv_scoreSelfColor)), PlayerGroupAll());
+}
+
+void lib711A2B01_gf_HideEmptyTeamScore () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerGroupCount(lib711A2B01_gv_scorePlayerGroup[0]) == 0)) {
+        DialogControlSetVisible(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), false);
+        DialogControlSetVisible(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), false);
+    }
+
+    if ((PlayerGroupCount(lib711A2B01_gv_scorePlayerGroup[1]) == 0)) {
+        DialogControlSetVisible(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), false);
+        DialogControlSetVisible(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), false);
+    }
+
+}
+
+void lib711A2B01_gf_ToggleTeamAScore (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto77708F22_val;
+
+    // Implementation
+    auto77708F22_val = lp_toggle;
+    if (auto77708F22_val == true) {
+        lib711A2B01_gv_scoreTeamAToggle = true;
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[0][0], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), true);
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[1][1], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), true);
+    }
+    else if (auto77708F22_val == false) {
+        lib711A2B01_gv_scoreTeamAToggle = false;
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[0][0], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[0][0], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[0][0], PlayerGroupAll(), false);
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[1][1], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[1][1], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[1][1], PlayerGroupAll(), false);
+        libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][0], (StringExternal("Param/Value/lib_711A2B01_B2AFD29A") + IntToText(0) + lib711A2B01_gv_scoreSuffix), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][1], (StringExternal("Param/Value/lib_711A2B01_C53B55F3") + IntToText(0) + lib711A2B01_gv_scoreSuffix), PlayerGroupAll());
+    }
+    else {
+    }
+}
+
+void lib711A2B01_gf_ToggleTeamBScore (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool autoC234C5BC_val;
+
+    // Implementation
+    autoC234C5BC_val = lp_toggle;
+    if (autoC234C5BC_val == true) {
+        lib711A2B01_gv_scoreTeamBToggle = true;
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[1][0], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), true);
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[0][1], PlayerGroupAll(), true);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), true);
+    }
+    else if (autoC234C5BC_val == false) {
+        lib711A2B01_gv_scoreTeamBToggle = false;
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[1][0], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[1][0], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[1][0], PlayerGroupAll(), false);
+        DialogControlSetVisible(lib711A2B01_gv_scoreFill[0][1], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreBorder[0][1], PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib711A2B01_gv_scoreText[0][1], PlayerGroupAll(), false);
+        libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][0], (StringExternal("Param/Value/lib_711A2B01_F66A5875") + IntToText(0) + lib711A2B01_gv_scoreSuffix), PlayerGroupAll());
+        libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][1], (StringExternal("Param/Value/lib_711A2B01_768FC389") + IntToText(0) + lib711A2B01_gv_scoreSuffix), PlayerGroupAll());
+    }
+    else {
+    }
+}
+
+void lib711A2B01_gf_ForceTeamAScore (text lp_text) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][0], (StringExternal("Param/Value/lib_711A2B01_795AA6A7") + lp_text), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][1], (StringExternal("Param/Value/lib_711A2B01_56FFC120") + lp_text), PlayerGroupAll());
+}
+
+void lib711A2B01_gf_ForceTeamBScore (text lp_text) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[1][0], (StringExternal("Param/Value/lib_711A2B01_5AC57720") + lp_text), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib711A2B01_gv_scoreText[0][1], (StringExternal("Param/Value/lib_711A2B01_F4E58DBC") + lp_text), PlayerGroupAll());
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Score Update
+//--------------------------------------------------------------------------------------------------
+bool lib711A2B01_gt_ScoreUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib711A2B01_gf_StarlightScoreBarUpdate();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib711A2B01_gt_ScoreUpdate_Init () {
+    lib711A2B01_gt_ScoreUpdate = TriggerCreate("lib711A2B01_gt_ScoreUpdate_Func");
+    TriggerEnable(lib711A2B01_gt_ScoreUpdate, false);
+    TriggerAddEventTimePeriodic(lib711A2B01_gt_ScoreUpdate, 1.0, c_timeGame);
+}
+
+void lib711A2B01_InitTriggers () {
+    lib711A2B01_gt_ScoreUpdate_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib711A2B01_InitLib_completed = false;
+
+void lib711A2B01_InitLib () {
+    if (lib711A2B01_InitLib_completed) {
+        return;
+    }
+
+    lib711A2B01_InitLib_completed = true;
+
+    lib711A2B01_InitLibraries();
+    lib711A2B01_InitVariables();
+    lib711A2B01_InitTriggers();
+}
+
+include "LibDDE92A83"
+

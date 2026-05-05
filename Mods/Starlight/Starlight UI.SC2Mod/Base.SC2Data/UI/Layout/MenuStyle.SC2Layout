@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="MenuBar" name="GameUI/UIContainer/FullscreenUpperContainer/MenuBar" file="GameUI">
+        <Frame type="Button" name="HelpButton">
+            <Anchor side="Top" relative="$parent" pos="Max" offset="2000"/>
+        </Frame>
+
+        <Frame type="Button" name="SocialButton">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="119"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="12"/>
+            <RenderPriority val="600"/>
+
+            <Frame type="Label" name="CountLabel">
+                <RenderPriority val="610"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Button" name="ChatButton">
+            <Anchor side="Left" relative="$parent" pos="Min" offset="80"/>
+            <Anchor side="Top" relative="$parent" pos="Min" offset="25"/>
+        </Frame>
+
+        <Frame type="Button" name="MenuButton">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="25"/>
+        </Frame>
+
+        <Frame type="Image" name="MenuBarBackgroundImage">
+            <Alpha val="0"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="MissionTimePanel" name="GameUI/UIContainer/FullscreenUpperContainer/MenuBar/MenuButton" file="GameUI">
+        <Frame type="Label" name="MenuLabel">
+            <Style val="MenuLabelGrey"/>
+        </Frame>
+    </Frame>
+</Desc>

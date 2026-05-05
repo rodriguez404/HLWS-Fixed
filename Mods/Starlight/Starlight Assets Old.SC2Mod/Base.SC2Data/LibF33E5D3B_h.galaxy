@@ -1,0 +1,20 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Cinematics
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+unitgroup libF33E5D3B_gv_cinematicUnits;
+
+// Function Declarations
+void libF33E5D3B_gf_CinematicDesertStrikeStart (point lp_center, int lp_duration);
+void libF33E5D3B_gf_CinematicStagingAreaCreateSpawner (int lp_player, string lp_effect, point lp_point, fixed lp_delayMin, fixed lp_delayMax);
+void libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit (int lp_player, string lp_unitType, point lp_point, fixed lp_angle, fixed lp_yRandomness);
+void libF33E5D3B_gf_CinematicCameraRotate (int lp_player, fixed lp_rotationStart, fixed lp_rotationRate, fixed lp_rotationAcceleration, int lp_duration);
+void libF33E5D3B_gf_CinematicCameraAngleofAttack (int lp_player, fixed lp_angleofAttackStart, fixed lp_angleofAttackRate, fixed lp_angleofAttackAcceleration, fixed lp_angleofAttackMinimum, int lp_duration);
+void libF33E5D3B_gf_CinematicCameraDistance (int lp_player, fixed lp_distanceStart, fixed lp_distanceRate, fixed lp_distanceAcceleration, fixed lp_distanceMinimum, int lp_duration);
+void libF33E5D3B_gf_CinematicCameraPan (int lp_player, fixed lp_angle, point lp_distanceStart, fixed lp_distanceRate, fixed lp_distanceAcceleration, int lp_duration);
+
+// Library Initialization
+void libF33E5D3B_InitVariables ();
+

@@ -1,0 +1,1878 @@
+include "TriggerLibs/NativeLib"
+include "Lib7A9A9B22_h"
+include "Lib12DC2527_h"
+include "Lib452C8A48_h"
+include "LibFD391A9C_h"
+include "Lib39886FE6_h"
+include "LibBBFED31C_h"
+
+include "LibDDE92A83_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Basics
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libDDE92A83_InitLibraries () {
+    libNtve_InitVariables();
+    lib7A9A9B22_InitVariables();
+    lib12DC2527_InitVariables();
+    lib452C8A48_InitVariables();
+    libFD391A9C_InitVariables();
+    lib39886FE6_InitVariables();
+    libBBFED31C_InitVariables();
+}
+
+// Variable Initialization
+bool libDDE92A83_InitVariables_completed = false;
+
+void libDDE92A83_InitVariables () {
+    int init_i;
+
+    if (libDDE92A83_InitVariables_completed) {
+        return;
+    }
+
+    libDDE92A83_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        libDDE92A83_gv_playerOrigin[init_i] = RegionGetCenter(RegionPlayableMap());
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        libDDE92A83_gv_playerIcon[init_i] = "Assets\\Textures\\black.dds";
+    }
+    libDDE92A83_gv_heroes = UnitGroupEmpty();
+    libDDE92A83_gv_preparationAttackSoundGroup = PlayerGroupEmpty();
+    libDDE92A83_gv_preparationDefendSoundGroup = PlayerGroupEmpty();
+    libDDE92A83_gv_preparationDialog = c_invalidDialogId;
+    libDDE92A83_gv_preparationTimer = c_invalidDialogControlId;
+    libDDE92A83_gv_preparationText = c_invalidDialogControlId;
+    libDDE92A83_gv_loadingScreenImageDialog = c_invalidDialogId;
+    libDDE92A83_gv_loadingScreenImage = c_invalidDialogControlId;
+    libDDE92A83_gv_loadingScreenBackgroundDialog = c_invalidDialogId;
+    libDDE92A83_gv_loadingScreenBackground = c_invalidDialogControlId;
+    libDDE92A83_gv_fullscreenBorderDialog = c_invalidDialogId;
+    libDDE92A83_gv_fullscreenBorderGlow = c_invalidDialogControlId;
+    libDDE92A83_gv_fullscreenBorderModel = c_invalidDialogControlId;
+    libDDE92A83_gv_fullscreenBorderGroup = PlayerGroupEmpty();
+    libDDE92A83_gv_starlightBorderTextDialog = c_invalidDialogId;
+    libDDE92A83_gv_starlightBorderTextMain = c_invalidDialogControlId;
+    libDDE92A83_gv_starlightBorderTextMap = c_invalidDialogControlId;
+    libDDE92A83_gv_endGameTextWinners = PlayerGroupEmpty();
+    libDDE92A83_gv_animationSize = 400;
+    libDDE92A83_gv_animationPlayerGroup = PlayerGroupEmpty();
+    libDDE92A83_gv_animationDialog = c_invalidDialogId;
+    libDDE92A83_gv_animationDialogItem = c_invalidDialogControlId;
+    libDDE92A83_gv_mutatorDuration = 120.0;
+    libDDE92A83_gv_mutatorTimer = TimerCreate();
+    libDDE92A83_gv_mutatorDelay = TimerCreate();
+    for (init_i = 0; init_i <= 9; init_i += 1) {
+        libDDE92A83_gv_mutatorIcon[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 9; init_i += 1) {
+        libDDE92A83_gv_mutatorBorder[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 9; init_i += 1) {
+        libDDE92A83_gv_mutatorLabel[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 9; init_i += 1) {
+        libDDE92A83_gv_mutatorDialog[init_i] = c_invalidDialogId;
+    }
+    libDDE92A83_gv_mutatorOffset = 250;
+    libDDE92A83_gv_starlightMapBankString = "";
+    libDDE92A83_gv_starlightMapPlayers = PlayerGroupEmpty();
+    libDDE92A83_gv_starlightMapWinners = PlayerGroupEmpty();
+    libDDE92A83_gv_starlightMapLosers = PlayerGroupEmpty();
+    libDDE92A83_gv_starlightMapLevelBar = true;
+    libDDE92A83_gv_waveTimers = UnitGroupEmpty();
+    libDDE92A83_gv_originalPlayers = PlayerGroupEmpty();
+}
+
+// Functions
+void libDDE92A83_gf_StarlightPreparationTime (text lp_text, fixed lp_duration, playergroup lp_attackSoundGroup, playergroup lp_defendSoundGroup, int lp_offsetX, int lp_offsetY) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_attackSoundGroup != PlayerGroupEmpty())) {
+        libDDE92A83_gv_preparationAttackSoundGroup = lp_attackSoundGroup;
+    }
+
+    if ((lp_defendSoundGroup != PlayerGroupEmpty())) {
+        libDDE92A83_gv_preparationDefendSoundGroup = lp_defendSoundGroup;
+    }
+
+    libDDE92A83_gv_preparationTime = FixedToInt(lp_duration);
+    DialogCreate(2150, 1000, c_anchorCenter, lp_offsetX, lp_offsetY, true);
+    libDDE92A83_gv_preparationDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    SoundPlayForPlayer(SoundLink("Athena_PrepareToAttack", -1), c_maxPlayers, libDDE92A83_gv_preparationAttackSoundGroup, 100.0, 0.0);
+    SoundPlayForPlayer(SoundLink("Athena_PrepareYourDefenses", -1), c_maxPlayers, libDDE92A83_gv_preparationDefendSoundGroup, 100.0, 0.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 1600, 100, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_DDE92A83_8D8B8FAC") + lp_text), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libDDE92A83_gv_preparationText = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.5, 0.0);
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 600, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 100, c_anchorCenter, 0, 50, (StringExternal("Param/Value/lib_DDE92A83_A1B59A65") + IntToText(libDDE92A83_gv_preparationTime)), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libDDE92A83_gv_preparationTimer = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.5, 0.0);
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 600, PlayerGroupAll());
+    TriggerEnable(libDDE92A83_gt_PreparationTimeCountdown, true);
+}
+
+void libDDE92A83_gf_StarlightPreparationTimeSetText (playergroup lp_playerGroup, text lp_text) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libDDE92A83_gv_preparationText, (StringExternal("Param/Value/lib_DDE92A83_469D0997") + lp_text), lp_playerGroup);
+}
+
+void libDDE92A83_gf_StarlightPreparationTimeAnimation (playergroup lp_playerGroup, string lp_model, fixed lp_duration, int lp_size, int lp_repeat) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gf_StarlightAnimationScaled(lp_playerGroup, libDDE92A83_gv_preparationDialog, libDDE92A83_gv_preparationText, lp_duration, 590, lp_size, lp_model, 1);
+}
+
+void libDDE92A83_gf_StarlightPreparationTimeFade (bool lp_fade, playergroup lp_playerGroup) {
+    // Variable Declarations
+    const fixed lv_fadeTime = 0.5;
+
+    // Automatic Variable Declarations
+    bool auto56D376DF_val;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libDDE92A83_gv_preparationTime > 0)) {
+        auto56D376DF_val = lp_fade;
+        if (auto56D376DF_val == true) {
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationText, lp_playerGroup, 0.0, 100.0);
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationText, lp_playerGroup, lv_fadeTime, 0.0);
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationTimer, lp_playerGroup, 0.0, 100.0);
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationTimer, lp_playerGroup, lv_fadeTime, 0.0);
+        }
+        else if (auto56D376DF_val == false) {
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationText, lp_playerGroup, lv_fadeTime, 100.0);
+            DialogControlFadeTransparency(libDDE92A83_gv_preparationTimer, lp_playerGroup, lv_fadeTime, 100.0);
+        }
+        else {
+        }
+    }
+
+}
+
+void libDDE92A83_gf_StarlightPreparationTimeEnd () {
+    // Variable Declarations
+    const fixed lv_fadeTime = 0.5;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    DialogControlFadeTransparency(libDDE92A83_gv_preparationText, PlayerGroupAll(), lv_fadeTime, 100.0);
+    DialogControlFadeTransparency(libDDE92A83_gv_preparationTimer, PlayerGroupAll(), lv_fadeTime, 100.0);
+    TriggerStop(libDDE92A83_gt_PreparationTimeCountdown);
+    TriggerEnable(libDDE92A83_gt_PreparationTimeCountdown, false);
+    TriggerExecute(libDDE92A83_gt_PreparationTimeEnd, true, false);
+}
+
+void libDDE92A83_gf_StarlightLoadingScreen (string lp_loadingScreen, fixed lp_delayRealTime) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_loadingScreenDelay = lp_delayRealTime;
+    CinematicFade(false, 0.0, c_fadeStyleNormal, Color(0.00, 0.00, 0.00), 0.0, false);
+    DialogCreate(2150, 1200, c_anchorCenter, 0, 0, true);
+    libDDE92A83_gv_loadingScreenBackgroundDialog = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 99);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\white.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libDDE92A83_gv_loadingScreenBackground = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), Color(0,0,0), PlayerGroupAll());
+    DialogCreate(2115, 1200, c_anchorCenter, 0, 0, true);
+    libDDE92A83_gv_loadingScreenImageDialog = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 100);
+    DialogSetFullscreen(DialogLastCreated(), true);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), lp_loadingScreen, c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libDDE92A83_gv_loadingScreenImage = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 40.0);
+    TriggerExecute(libDDE92A83_gt_LoadingScreenFade, true, false);
+}
+
+void libDDE92A83_gf_StarlightFullscreenBorderStart () {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_fullscreenBorderCreated = true;
+    DialogCreate(2150, 1200, c_anchorCenter, 0, 0, true);
+    libDDE92A83_gv_fullscreenBorderDialog = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 400);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_heroselect_border.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libDDE92A83_gv_fullscreenBorderGlow = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlCreate(DialogLastCreated(), c_triggerControlTypePortrait);
+    libDDE92A83_gv_fullscreenBorderModel = DialogControlLastCreated();
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()));
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 375, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(libDDE92A83_gv_fullscreenBorderModel, "StarlightBorder", PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlSetSize(libDDE92A83_gv_fullscreenBorderModel, PlayerGroupAll(), 100, 100);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+}
+
+void libDDE92A83_gf_StarlightFullscreenBorder (bool lp_birth, bool lp_fade, playergroup lp_playerGroup) {
+    // Variable Declarations
+    const fixed lv_fadeTime = 1.0;
+
+    // Automatic Variable Declarations
+    bool auto729CC4C8_val;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libDDE92A83_gv_fullscreenBorderCreated == false)) {
+        libDDE92A83_gf_StarlightFullscreenBorderStart();
+    }
+
+    auto729CC4C8_val = lp_fade;
+    if (auto729CC4C8_val == true) {
+        DialogControlSetSize(libDDE92A83_gv_fullscreenBorderModel, PlayerGroupAll(), DialogGetWidth(libDDE92A83_gv_fullscreenBorderDialog), DialogGetHeight(libDDE92A83_gv_fullscreenBorderDialog));
+        libDDE92A83_gv_fullscreenBorderGroup = lp_playerGroup;
+        libDDE92A83_gv_fullscreenBorderBirth = lp_birth;
+        TriggerExecute(libDDE92A83_gt_FullscreenBorderFadeDelay, true, false);
+    }
+    else if (auto729CC4C8_val == false) {
+        DialogControlSetSize(libDDE92A83_gv_fullscreenBorderModel, PlayerGroupAll(), DialogGetWidth(libDDE92A83_gv_fullscreenBorderDialog), DialogGetHeight(libDDE92A83_gv_fullscreenBorderDialog));
+        DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderModel, lp_playerGroup, lv_fadeTime, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderGlow, lp_playerGroup, lv_fadeTime, 100.0);
+    }
+    else {
+    }
+    TriggerExecute(libDDE92A83_gt_FullscreenBorderSizeCheck, true, false);
+}
+
+void libDDE92A83_gf_StarlightBorderTextCreate () {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_starlightBorderTextCreated = true;
+    DialogCreate(1000, 400, c_anchorTopLeft, 0, 0, true);
+    libDDE92A83_gv_starlightBorderTextDialog = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 400);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), 200, c_anchorTopLeft, 62, 50, StringToText(""), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libDDE92A83_gv_starlightBorderTextMain = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogSetRenderPriority(DialogLastCreated(), 450);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), 200, c_anchorTopLeft, 50, 125, (StringExternal("Param/Value/lib_DDE92A83_DE02799D") + StringExternal("DocInfo/Name")), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libDDE92A83_gv_starlightBorderTextMap = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogSetRenderPriority(DialogLastCreated(), 450);
+}
+
+void libDDE92A83_gf_StarlightBorderText (bool lp_fade, text lp_text, playergroup lp_playerGroup) {
+    // Variable Declarations
+    const fixed lv_fadeTime = 1.0;
+
+    // Automatic Variable Declarations
+    bool autoE30703F6_val;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((libDDE92A83_gv_starlightBorderTextCreated == false)) {
+        libDDE92A83_gf_StarlightBorderTextCreate();
+    }
+
+    autoE30703F6_val = lp_fade;
+    if (autoE30703F6_val == true) {
+        libNtve_gf_SetDialogItemText(libDDE92A83_gv_starlightBorderTextMain, (StringExternal("Param/Value/lib_DDE92A83_35EEDBA7") + lp_text), lp_playerGroup);
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMain, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMain, lp_playerGroup, lv_fadeTime, 0.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMap, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMap, lp_playerGroup, lv_fadeTime, 0.0);
+    }
+    else if (autoE30703F6_val == false) {
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMain, lp_playerGroup, lv_fadeTime, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_starlightBorderTextMap, lp_playerGroup, lv_fadeTime, 100.0);
+    }
+    else {
+    }
+}
+
+void libDDE92A83_gf_EndGameUnitPause () {
+    // Automatic Variable Declarations
+    // Implementation
+    GameSetMissionTimePaused(true);
+    TriggerExecute(libDDE92A83_gt_EndGameSlowUnits, true, false);
+}
+
+void libDDE92A83_gf_StarlightEndGameText (playergroup lp_winners) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_endGameTextWinners = lp_winners;
+    TriggerExecute(libDDE92A83_gt_EndGameTextDialog, true, false);
+}
+
+void libDDE92A83_gf_EndGamePan (unit lp_victoryunit) {
+    // Automatic Variable Declarations
+    playergroup autoA8B6355E_g;
+    int autoA8B6355E_var;
+
+    // Implementation
+    if ((lp_victoryunit != null)) {
+        autoA8B6355E_g = PlayerGroupAll();
+        autoA8B6355E_var = -1;
+        while (true) {
+            autoA8B6355E_var = PlayerGroupNextPlayer(autoA8B6355E_g, autoA8B6355E_var);
+            if (autoA8B6355E_var < 0) { break; }
+            VisRevealArea(autoA8B6355E_var, RegionCircle(UnitGetPosition(lp_victoryunit), 8.0), 0.0, false);
+            CameraPan(autoA8B6355E_var, PointWithOffset(UnitGetPosition(lp_victoryunit), 0.0, -1.63), 1.0, -1, 10.0, false);
+        }
+    }
+
+}
+
+void libDDE92A83_gf_StarlightAnimation (playergroup lp_playerGroup, int lp_dialog, int lp_dialogItem, fixed lp_duration, int lp_renderPriority, string lp_model, int lp_repeat) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_animationDuration = lp_duration;
+    libDDE92A83_gv_animationRenderPriority = lp_renderPriority;
+    libDDE92A83_gv_animationPlayerGroup = lp_playerGroup;
+    libDDE92A83_gv_animationDialog = lp_dialog;
+    libDDE92A83_gv_animationDialogItem = lp_dialogItem;
+    libDDE92A83_gv_animationModel = lp_model;
+    libDDE92A83_gv_animationRepeat = libNtve_gf_ArithmeticIntClamp((lp_repeat - 1), 0, 9);
+    TriggerExecute(libDDE92A83_gt_AnimationStart, true, false);
+}
+
+void libDDE92A83_gf_StarlightAnimationScaled (playergroup lp_playerGroup, int lp_dialog, int lp_dialogItem, fixed lp_duration, int lp_renderPriority, int lp_size, string lp_model, int lp_repeat) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_animationDuration = lp_duration;
+    libDDE92A83_gv_animationRenderPriority = lp_renderPriority;
+    libDDE92A83_gv_animationPlayerGroup = lp_playerGroup;
+    libDDE92A83_gv_animationDialog = lp_dialog;
+    libDDE92A83_gv_animationDialogItem = lp_dialogItem;
+    libDDE92A83_gv_animationModel = lp_model;
+    libDDE92A83_gv_animationRepeat = libNtve_gf_ArithmeticIntClamp((lp_repeat - 1), 0, 9);
+    libDDE92A83_gv_animationSize = lp_size;
+    TriggerExecute(libDDE92A83_gt_AnimationStart, true, false);
+}
+
+void libDDE92A83_gf_Animation (playergroup lp_playerGroup, int lp_dialog, int lp_dialogItem, fixed lp_duration, int lp_renderPriority, string lp_model, int lp_repeat) {
+    int init_i;
+
+    // Variable Declarations
+    int[16] lv_dialogItem;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int autoE2DC826B_ae;
+    const int autoE2DC826B_ai = 1;
+    int auto6E182152_ae;
+    const int auto6E182152_ai = 1;
+    int autoE2003388_ae;
+    const int autoE2003388_ai = 1;
+    const int autoACB58A0E_ae = 4;
+    const int autoACB58A0E_ai = 1;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lv_dialogItem[init_i] = c_invalidDialogControlId;
+    }
+
+    // Implementation
+    autoE2DC826B_ae = lp_repeat;
+    lv_i = 0;
+    for ( ; ( (autoE2DC826B_ai >= 0 && lv_i <= autoE2DC826B_ae) || (autoE2DC826B_ai < 0 && lv_i >= autoE2DC826B_ae) ) ; lv_i += autoE2DC826B_ai ) {
+        DialogControlCreate(lp_dialog, c_triggerControlTypePortrait);
+        lv_dialogItem[lv_i] = DialogControlLastCreated();
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlSetVisible(DialogControlLastCreated(), lp_playerGroup, true);
+        DialogControlSetPositionRelative(DialogControlLastCreated(), lp_playerGroup, c_anchorCenter, lp_dialogItem, c_anchorCenter, 0, 0);
+        libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, lp_playerGroup);
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), lp_renderPriority, lp_playerGroup);
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), libDDE92A83_gv_animationSize, libDDE92A83_gv_animationSize);
+        libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), lp_model, lp_playerGroup);
+        libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", lp_playerGroup);
+        libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, lp_playerGroup);
+        libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, lp_playerGroup);
+        libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, lp_playerGroup);
+        libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, lp_playerGroup);
+    }
+    Wait(0.5, c_timeGame);
+    auto6E182152_ae = lp_repeat;
+    lv_i = 0;
+    for ( ; ( (auto6E182152_ai >= 0 && lv_i <= auto6E182152_ae) || (auto6E182152_ai < 0 && lv_i >= auto6E182152_ae) ) ; lv_i += auto6E182152_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_dialogItem[lv_i], "Stand", lp_playerGroup);
+    }
+    Wait(lp_duration, c_timeGame);
+    autoE2003388_ae = lp_repeat;
+    lv_i = 0;
+    for ( ; ( (autoE2003388_ai >= 0 && lv_i <= autoE2003388_ae) || (autoE2003388_ai < 0 && lv_i >= autoE2003388_ae) ) ; lv_i += autoE2003388_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_dialogItem[lv_i], "Death", lp_playerGroup);
+        DialogControlFadeTransparency(lv_dialogItem[lv_i], lp_playerGroup, 1.0, 100.0);
+    }
+    Wait(2.0, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (autoACB58A0E_ai >= 0 && lv_i <= autoACB58A0E_ae) || (autoACB58A0E_ai < 0 && lv_i >= autoACB58A0E_ae) ) ; lv_i += autoACB58A0E_ai ) {
+        DialogControlDestroy(lv_dialogItem[lv_i]);
+    }
+}
+
+void libDDE92A83_gf_StarlightMutatorCreate (string lp_button, fixed lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogCreate(700, 300, c_anchorBottomRight, 0, libDDE92A83_gv_mutatorOffset, true);
+    libDDE92A83_gv_mutatorDialog[libDDE92A83_gv_mutatorCurrent] = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 64, 64, c_anchorRight, 15, 0, StringToText(""), (CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", 0)), c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libDDE92A83_gv_mutatorIcon[libDDE92A83_gv_mutatorCurrent] = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 71, 73, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_DDE92A83_3B13D6BF") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0)) + StringExternal("Param/Value/lib_DDE92A83_E0134E9D") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", 0))), "Assets\\Textures\\ui_starlight_mutatorframe.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libDDE92A83_gv_mutatorBorder[libDDE92A83_gv_mutatorCurrent] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, libDDE92A83_gv_mutatorIcon[libDDE92A83_gv_mutatorCurrent], c_anchorCenter, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 50, c_anchorTopLeft, 50, 50, (StringExternal("Param/Value/lib_DDE92A83_2AFBC098") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0))), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libDDE92A83_gv_mutatorLabel[libDDE92A83_gv_mutatorCurrent] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorRight, libDDE92A83_gv_mutatorIcon[libDDE92A83_gv_mutatorCurrent], c_anchorLeft, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libDDE92A83_gv_mutatorOffset += 90;
+    libDDE92A83_gv_mutatorCurrent += 1;
+    TimerStart(libDDE92A83_gv_mutatorDelay, lp_delay, false, c_timeGame);
+}
+
+void libDDE92A83_gf_MutatorEnd () {
+    // Variable Declarations
+    int lv_i;
+    fixed lv_fadeTime;
+
+    // Automatic Variable Declarations
+    int auto7E9C4766_ae;
+    const int auto7E9C4766_ai = 1;
+    int autoED7183EB_ae;
+    const int autoED7183EB_ai = 1;
+
+    // Variable Initialization
+    lv_fadeTime = 1.5;
+
+    // Implementation
+    auto7E9C4766_ae = (libDDE92A83_gv_mutatorCurrent - 1);
+    lv_i = 0;
+    for ( ; ( (auto7E9C4766_ai >= 0 && lv_i <= auto7E9C4766_ae) || (auto7E9C4766_ai < 0 && lv_i >= auto7E9C4766_ae) ) ; lv_i += auto7E9C4766_ai ) {
+        DialogControlFadeTransparency(libDDE92A83_gv_mutatorBorder[lv_i], PlayerGroupAll(), lv_fadeTime, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_mutatorIcon[lv_i], PlayerGroupAll(), lv_fadeTime, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_mutatorLabel[lv_i], PlayerGroupAll(), lv_fadeTime, 100.0);
+    }
+    Wait((lv_fadeTime + 1.0), c_timeGame);
+    autoED7183EB_ae = (libDDE92A83_gv_mutatorCurrent - 1);
+    lv_i = 0;
+    for ( ; ( (autoED7183EB_ai >= 0 && lv_i <= autoED7183EB_ae) || (autoED7183EB_ai < 0 && lv_i >= autoED7183EB_ae) ) ; lv_i += autoED7183EB_ai ) {
+        DialogDestroy(libDDE92A83_gv_mutatorDialog[lv_i]);
+    }
+}
+
+void libDDE92A83_gf_MutatorBirth (int lp_mutator) {
+    // Variable Declarations
+    fixed lv_fadeTime;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_fadeTime = 1.0;
+
+    // Implementation
+    DialogControlFadeTransparency(libDDE92A83_gv_mutatorBorder[lp_mutator], PlayerGroupAll(), lv_fadeTime, 0.0);
+    DialogControlFadeTransparency(libDDE92A83_gv_mutatorIcon[lp_mutator], PlayerGroupAll(), lv_fadeTime, 0.0);
+    DialogControlFadeTransparency(libDDE92A83_gv_mutatorLabel[lp_mutator], PlayerGroupAll(), (lv_fadeTime + 1.0), 0.0);
+    libNtve_gf_SetDialogItemAcceptMouse(libDDE92A83_gv_mutatorBorder[lp_mutator], true, PlayerGroupAll());
+    Wait(0.0, c_timeGame);
+    libDDE92A83_gf_StarlightAnimation(PlayerGroupActive(), libDDE92A83_gv_mutatorDialog[lp_mutator], libDDE92A83_gv_mutatorIcon[lp_mutator], 0.0, 600, "LevelUpAnimation", 1);
+    Wait(0.0, c_timeGame);
+    libDDE92A83_gf_StarlightAnimation(PlayerGroupActive(), libDDE92A83_gv_mutatorDialog[lp_mutator], libDDE92A83_gv_mutatorIcon[lp_mutator], 2.5, 500, "LevelUpAnimation", 3);
+    Wait(0.0, c_timeGame);
+    SoundPlayForPlayer(SoundLink("UI_Mutator_Apply", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    TimerStart(libDDE92A83_gv_mutatorTimer, libDDE92A83_gv_mutatorDuration, false, c_timeReal);
+}
+
+void libDDE92A83_gf_StarlightMapStart (playergroup lp_players, text lp_mode, bool lp_levelBar, string lp_bankSection, string lp_score1, string lp_score2, string lp_score3, string lp_score4) {
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_starlightMapScore[0] = lp_score1;
+    libDDE92A83_gv_starlightMapScore[1] = lp_score2;
+    libDDE92A83_gv_starlightMapScore[2] = lp_score3;
+    libDDE92A83_gv_starlightMapScore[3] = lp_score4;
+    libDDE92A83_gv_starlightMapIntroText = lp_mode;
+    libDDE92A83_gv_starlightMapBankString = lp_bankSection;
+    libDDE92A83_gv_starlightMapPlayers = lp_players;
+    libDDE92A83_gv_starlightMapLevelBar = lp_levelBar;
+    TriggerExecute(libDDE92A83_gt_StarlightMapIntro, true, false);
+}
+
+void libDDE92A83_gf_StarlightMapEnd (unit lp_victoryUnit, playergroup lp_winners) {
+    // Automatic Variable Declarations
+    playergroup auto74B4A296_g;
+    int auto74B4A296_var;
+
+    // Implementation
+    libDDE92A83_gv_starlightMapVictoryUnit = lp_victoryUnit;
+    auto74B4A296_g = libDDE92A83_gv_starlightMapPlayers;
+    auto74B4A296_var = -1;
+    while (true) {
+        auto74B4A296_var = PlayerGroupNextPlayer(auto74B4A296_g, auto74B4A296_var);
+        if (auto74B4A296_var < 0) { break; }
+        if ((PlayerGroupHasPlayer(lp_winners, auto74B4A296_var) == true)) {
+            PlayerGroupAdd(libDDE92A83_gv_starlightMapWinners, auto74B4A296_var);
+        }
+        else {
+            PlayerGroupAdd(libDDE92A83_gv_starlightMapLosers, auto74B4A296_var);
+        }
+    }
+    TriggerExecute(libDDE92A83_gt_StarlightMapOutro, true, false);
+}
+
+playergroup libDDE92A83_gf_OriginalPlayers () {
+    // Automatic Variable Declarations
+    // Implementation
+    return libDDE92A83_gv_originalPlayers;
+}
+
+int libDDE92A83_gf_FindHighestScore (playergroup lp_playerGroup, string lp_scoreValue) {
+    // Variable Declarations
+    playergroup lv_remainingGroup;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_remainingGroup = PlayerGroupEmpty();
+
+    // Implementation
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_playerGroup, lv_remainingGroup);
+    PlayerGroupRemove(lv_remainingGroup, 0);
+    PlayerGroupRemove(lv_remainingGroup, 15);
+    while ((PlayerGroupCount(lv_remainingGroup) > 1)) {
+        if ((PlayerScoreValueGetAsInt(PlayerGroupPlayer(lv_remainingGroup, 1), lp_scoreValue) > PlayerScoreValueGetAsInt(PlayerGroupPlayer(lv_remainingGroup, 2), lp_scoreValue))) {
+            PlayerGroupRemove(lv_remainingGroup, PlayerGroupPlayer(lv_remainingGroup, 2));
+        }
+        else {
+            PlayerGroupRemove(lv_remainingGroup, PlayerGroupPlayer(lv_remainingGroup, 1));
+        }
+    }
+    return PlayerGroupPlayer(lv_remainingGroup, 1);
+}
+
+unitgroup libDDE92A83_gf_PlayerWorkers (int lp_player) {
+    // Variable Declarations
+    unitgroup lv_workerGroup;
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    unitgroup auto028D8271_g;
+    int auto028D8271_u;
+
+    // Variable Initialization
+    lv_workerGroup = UnitGroupEmpty();
+
+    // Implementation
+    auto028D8271_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter(0, (1 << (c_targetFilterInvulnerable - 32)), (1 << c_targetFilterStructure), 0), 0);
+    auto028D8271_u = UnitGroupCount(auto028D8271_g, c_unitCountAll);
+    for (;; auto028D8271_u -= 1) {
+        lv_unit = UnitGroupUnitFromEnd(auto028D8271_g, auto028D8271_u);
+        if (lv_unit == null) { break; }
+        if ((UnitHasBehavior2(lv_unit, "WorkerSwappable") == true)) {
+            UnitGroupAdd(lv_workerGroup, lv_unit);
+        }
+
+    }
+    return lv_workerGroup;
+}
+
+void libDDE92A83_gf_PlayerAttributesUpdate (int lp_player) {
+    // Variable Declarations
+    const int lv_maxValue = 500000;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    unitgroup auto47142545_g;
+    int auto47142545_u;
+    unit auto47142545_var;
+
+    // Variable Initialization
+
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogEffect, "PlayerAttributeUnitSpawnersTotal", "Amount", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(TechTreeBehaviorCount(lp_player, "UnitSpawner", c_techCountCompleteOnly), 0, lv_maxValue)));
+    auto47142545_g = UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreaSpawners(), lp_player, 0);
+    auto47142545_u = UnitGroupCount(auto47142545_g, c_unitCountAll);
+    for (;; auto47142545_u -= 1) {
+        auto47142545_var = UnitGroupUnitFromEnd(auto47142545_g, auto47142545_u);
+        if (auto47142545_var == null) { break; }
+        lv_x += CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(auto47142545_var), "CostResource[" + IntToString(0) + "]", lp_player);
+    }
+    CatalogFieldValueSet(c_gameCatalogEffect, "PlayerAttributeUnitSpawnersValue", "Amount", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(lv_x, 0, lv_maxValue)));
+}
+
+void libDDE92A83_gf_RemoveAllUnitsOfUnitType (string lp_unitType) {
+    // Automatic Variable Declarations
+    unitgroup auto971E33E2_g;
+    int auto971E33E2_u;
+    unit auto971E33E2_var;
+
+    // Implementation
+    auto971E33E2_g = UnitGroup(lp_unitType, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0);
+    auto971E33E2_u = UnitGroupCount(auto971E33E2_g, c_unitCountAll);
+    for (;; auto971E33E2_u -= 1) {
+        auto971E33E2_var = UnitGroupUnitFromEnd(auto971E33E2_g, auto971E33E2_u);
+        if (auto971E33E2_var == null) { break; }
+        UnitRemove(auto971E33E2_var);
+    }
+}
+
+void libDDE92A83_gf_DefensiveAreaCreate (playergroup lp_playerGroup, point lp_point) {
+    // Automatic Variable Declarations
+    playergroup autoF1331BCC_g;
+    int autoF1331BCC_var;
+
+    // Implementation
+    autoF1331BCC_g = lp_playerGroup;
+    autoF1331BCC_var = -1;
+    while (true) {
+        autoF1331BCC_var = PlayerGroupNextPlayer(autoF1331BCC_g, autoF1331BCC_var);
+        if (autoF1331BCC_var < 0) { break; }
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "DefensiveArea", c_unitCreateIgnorePlacement, autoF1331BCC_var, lp_point);
+    }
+}
+
+void libDDE92A83_gf_SetWorkerScale (int lp_player, fixed lp_scale) {
+    // Automatic Variable Declarations
+    unitgroup auto64061929_g;
+    int auto64061929_u;
+    unit auto64061929_var;
+
+    // Implementation
+    auto64061929_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter(0, (1 << (c_targetFilterInvulnerable - 32)), (1 << c_targetFilterStructure), 0), 0);
+    auto64061929_u = UnitGroupCount(auto64061929_g, c_unitCountAll);
+    for (;; auto64061929_u -= 1) {
+        auto64061929_var = UnitGroupUnitFromEnd(auto64061929_g, auto64061929_u);
+        if (auto64061929_var == null) { break; }
+        if ((UnitHasBehavior2(auto64061929_var, "WorkerSwappable") == true)) {
+            UnitSetScale(auto64061929_var, (lp_scale * 100.0), (lp_scale * 100.0), (lp_scale * 100.0));
+        }
+
+    }
+}
+
+void libDDE92A83_gf_AbilityUsageLimitRange (bool lp_toggle, playergroup lp_playerGroup) {
+    // Automatic Variable Declarations
+    bool autoFA9F57B0_val;
+    playergroup autoE22651A3_g;
+    int autoE22651A3_var;
+    playergroup autoCEE0BFAD_g;
+    int autoCEE0BFAD_var;
+
+    // Implementation
+    autoFA9F57B0_val = lp_toggle;
+    if (autoFA9F57B0_val == true) {
+        autoE22651A3_g = lp_playerGroup;
+        autoE22651A3_var = -1;
+        while (true) {
+            autoE22651A3_var = PlayerGroupNextPlayer(autoE22651A3_g, autoE22651A3_var);
+            if (autoE22651A3_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoE22651A3_var, "AbilityUsageRangeLimit", 1);
+        }
+    }
+    else if (autoFA9F57B0_val == false) {
+        autoCEE0BFAD_g = lp_playerGroup;
+        autoCEE0BFAD_var = -1;
+        while (true) {
+            autoCEE0BFAD_var = PlayerGroupNextPlayer(autoCEE0BFAD_g, autoCEE0BFAD_var);
+            if (autoCEE0BFAD_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoCEE0BFAD_var, "AbilityUsageRangeLimit", 0);
+        }
+    }
+    else {
+    }
+}
+
+void libDDE92A83_gf_ScreenShakeMinor (point lp_point) {
+    // Automatic Variable Declarations
+    playergroup auto33312339_g;
+    int auto33312339_var;
+
+    // Implementation
+    auto33312339_g = PlayerGroupActive();
+    auto33312339_var = -1;
+    while (true) {
+        auto33312339_var = PlayerGroupNextPlayer(auto33312339_g, auto33312339_var);
+        if (auto33312339_var < 0) { break; }
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(auto33312339_var)) == true)) {
+            CameraShakeStart(auto33312339_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.35, 2.0, 100.0, 0.35);
+        }
+
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(auto33312339_var)) == false) && (RegionContainsPoint(RegionCircle(lp_point, 16.0), CameraGetTarget(auto33312339_var)) == true)) {
+            CameraShakeStart(auto33312339_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.15, 2.0, 100.0, 0.25);
+        }
+
+    }
+}
+
+void libDDE92A83_gf_ScreenShakeModerate (point lp_point) {
+    // Automatic Variable Declarations
+    playergroup autoB6C48399_g;
+    int autoB6C48399_var;
+
+    // Implementation
+    autoB6C48399_g = PlayerGroupActive();
+    autoB6C48399_var = -1;
+    while (true) {
+        autoB6C48399_var = PlayerGroupNextPlayer(autoB6C48399_g, autoB6C48399_var);
+        if (autoB6C48399_var < 0) { break; }
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(autoB6C48399_var)) == true)) {
+            CameraShakeStart(autoB6C48399_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.4, 2.0, 100.0, 0.6);
+        }
+
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(autoB6C48399_var)) == false) && (RegionContainsPoint(RegionCircle(lp_point, 16.0), CameraGetTarget(autoB6C48399_var)) == true)) {
+            CameraShakeStart(autoB6C48399_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.25, 2.0, 100.0, 0.35);
+        }
+
+    }
+}
+
+void libDDE92A83_gf_ScreenShakeMajor (point lp_point) {
+    // Automatic Variable Declarations
+    playergroup auto34474DE6_g;
+    int auto34474DE6_var;
+
+    // Implementation
+    auto34474DE6_g = PlayerGroupActive();
+    auto34474DE6_var = -1;
+    while (true) {
+        auto34474DE6_var = PlayerGroupNextPlayer(auto34474DE6_g, auto34474DE6_var);
+        if (auto34474DE6_var < 0) { break; }
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(auto34474DE6_var)) == true)) {
+            CameraShakeStart(auto34474DE6_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.6, 2.0, 100.0, 0.75);
+        }
+
+        if ((RegionContainsPoint(RegionCircle(lp_point, 8.0), CameraGetTarget(auto34474DE6_var)) == false) && (RegionContainsPoint(RegionCircle(lp_point, 16.0), CameraGetTarget(auto34474DE6_var)) == true)) {
+            CameraShakeStart(auto34474DE6_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.35, 2.0, 100.0, 0.4);
+        }
+
+    }
+}
+
+void libDDE92A83_gf_ScreenShakeGlobal () {
+    // Automatic Variable Declarations
+    playergroup auto988221EC_g;
+    int auto988221EC_var;
+
+    // Implementation
+    auto988221EC_g = PlayerGroupActive();
+    auto988221EC_var = -1;
+    while (true) {
+        auto988221EC_var = PlayerGroupNextPlayer(auto988221EC_g, auto988221EC_var);
+        if (auto988221EC_var < 0) { break; }
+        CameraShakeStart(auto988221EC_var, c_cameraPositionTarget, c_cameraDirectionZ, 0.6, 2.0, 100.0, 0.75);
+    }
+}
+
+void libDDE92A83_gf_CreateWaveTimers () {
+    // Automatic Variable Declarations
+    playergroup auto313EB3B4_g;
+    int auto313EB3B4_var;
+
+    // Implementation
+    auto313EB3B4_g = PlayerGroupActive();
+    auto313EB3B4_var = -1;
+    while (true) {
+        auto313EB3B4_var = PlayerGroupNextPlayer(auto313EB3B4_g, auto313EB3B4_var);
+        if (auto313EB3B4_var < 0) { break; }
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WaveTimer", c_unitCreateIgnorePlacement, auto313EB3B4_var, Point(1.0, 1.0));
+        UnitGroupAdd(libDDE92A83_gv_waveTimers, UnitLastCreated());
+    }
+}
+
+void libDDE92A83_gf_PauseUnpauseWaveTimers (bool lp_pause) {
+    // Automatic Variable Declarations
+    unitgroup auto13C1894F_g;
+    int auto13C1894F_u;
+    unit auto13C1894F_var;
+
+    // Implementation
+    auto13C1894F_g = libDDE92A83_gv_waveTimers;
+    auto13C1894F_u = UnitGroupCount(auto13C1894F_g, c_unitCountAll);
+    for (;; auto13C1894F_u -= 1) {
+        auto13C1894F_var = UnitGroupUnitFromEnd(auto13C1894F_g, auto13C1894F_u);
+        if (auto13C1894F_var == null) { break; }
+        libNtve_gf_PauseUnit(auto13C1894F_var, lp_pause);
+    }
+}
+
+void libDDE92A83_gf_FadeSounds (bool lp_fade, bool lp_fadeMusic, playergroup lp_playerGroup, fixed lp_fadedVolume, fixed lp_fadeDuration) {
+    // Automatic Variable Declarations
+    bool auto429CC4B4_val;
+    bool autoB835A524_val;
+
+    // Implementation
+    auto429CC4B4_val = lp_fade;
+    if (auto429CC4B4_val == true) {
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryCombat, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryAmbient, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpell, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpellOneshotImpact, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpellOneshotLaunch, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryDoodad, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryFlames, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryDeath, lp_fadedVolume, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryVoice, lp_fadedVolume, lp_fadeDuration);
+    }
+    else if (auto429CC4B4_val == false) {
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryCombat, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryAmbient, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpell, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpellOneshotImpact, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategorySpellOneshotLaunch, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryDoodad, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryFlames, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryDeath, 100.0, lp_fadeDuration);
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryVoice, 100.0, lp_fadeDuration);
+    }
+    else {
+    }
+    autoB835A524_val = lp_fadeMusic;
+    if (autoB835A524_val == true) {
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryMusic, lp_fadedVolume, lp_fadeDuration);
+    }
+    else if (autoB835A524_val == false) {
+        SoundChannelSetVolume(lp_playerGroup, c_soundCategoryMusic, 100.0, lp_fadeDuration);
+    }
+    else {
+    }
+}
+
+void libDDE92A83_gf_SetOriginPoints (playergroup lp_playerGroup, point lp_point1, point lp_point2, point lp_point3, point lp_point4, point lp_point5, point lp_point6, point lp_point7, point lp_point8, point lp_point9, point lp_point10, point lp_point11, point lp_point12, point lp_point13, point lp_point14) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerGroupCount(lp_playerGroup) >= 1) && (lp_point1 != null)) {
+        libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 1)] = lp_point1;
+        if ((PlayerGroupCount(lp_playerGroup) >= 2) && (lp_point2 != null)) {
+            libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 2)] = lp_point2;
+            if ((PlayerGroupCount(lp_playerGroup) >= 3) && (lp_point3 != null)) {
+                libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 3)] = lp_point3;
+                if ((PlayerGroupCount(lp_playerGroup) >= 4) && (lp_point4 != null)) {
+                    libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 4)] = lp_point4;
+                    if ((PlayerGroupCount(lp_playerGroup) >= 5) && (lp_point5 != null)) {
+                        libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 5)] = lp_point5;
+                        if ((PlayerGroupCount(lp_playerGroup) >= 6) && (lp_point6 != null)) {
+                            libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 6)] = lp_point6;
+                            if ((PlayerGroupCount(lp_playerGroup) >= 7) && (lp_point7 != null)) {
+                                libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 7)] = lp_point7;
+                                if ((PlayerGroupCount(lp_playerGroup) >= 8) && (lp_point8 != null)) {
+                                    libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 8)] = lp_point8;
+                                    if ((PlayerGroupCount(lp_playerGroup) >= 9) && (lp_point9 != null)) {
+                                        libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 9)] = lp_point9;
+                                        if ((PlayerGroupCount(lp_playerGroup) >= 10) && (lp_point10 != null)) {
+                                            libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 10)] = lp_point10;
+                                            if ((PlayerGroupCount(lp_playerGroup) >= 11) && (lp_point11 != null)) {
+                                                libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 11)] = lp_point11;
+                                                if ((PlayerGroupCount(lp_playerGroup) >= 12) && (lp_point12 != null)) {
+                                                    libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 12)] = lp_point12;
+                                                    if ((PlayerGroupCount(lp_playerGroup) >= 13) && (lp_point13 != null)) {
+                                                        libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 13)] = lp_point13;
+                                                        if ((PlayerGroupCount(lp_playerGroup) >= 14) && (lp_point14 != null)) {
+                                                            libDDE92A83_gv_playerOrigin[PlayerGroupPlayer(lp_playerGroup, 14)] = lp_point14;
+                                                        }
+
+                                                    }
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+void libDDE92A83_gf_RebuildPermanentStructures (int lp_player) {
+    // Automatic Variable Declarations
+    unitgroup autoE93903D9_g;
+    int autoE93903D9_u;
+    unit autoE93903D9_var;
+
+    // Implementation
+    autoE93903D9_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), (1 << (c_targetFilterDead - 32)), 0, 0), 0);
+    autoE93903D9_u = UnitGroupCount(autoE93903D9_g, c_unitCountAll);
+    for (;; autoE93903D9_u -= 1) {
+        autoE93903D9_var = UnitGroupUnitFromEnd(autoE93903D9_g, autoE93903D9_u);
+        if (autoE93903D9_var == null) { break; }
+        if ((UnitHasBehavior2(autoE93903D9_var, "PermanentStructure") == true)) {
+            libNtve_gf_SendActorMessageToUnit(autoE93903D9_var, "Destroy Immediate");
+            UnitRevive(autoE93903D9_var);
+            UnitSetPropertyFixed(autoE93903D9_var, c_unitPropLife, UnitTypeGetProperty(UnitGetType(autoE93903D9_var), c_unitPropLife));
+            UnitSetPropertyFixed(autoE93903D9_var, c_unitPropShields, UnitTypeGetProperty(UnitGetType(autoE93903D9_var), c_unitPropShields));
+            UnitSetPropertyFixed(autoE93903D9_var, c_unitPropEnergy, UnitTypeGetProperty(UnitGetType(autoE93903D9_var), c_unitPropEnergy));
+        }
+
+    }
+}
+
+void libDDE92A83_gf_RemovePermanentStructures (int lp_player) {
+    // Automatic Variable Declarations
+    unitgroup auto99B398E2_g;
+    int auto99B398E2_u;
+    unit auto99B398E2_var;
+    unitgroup auto02218992_g;
+    int auto02218992_u;
+    unit auto02218992_var;
+
+    // Implementation
+    auto99B398E2_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), (1 << (c_targetFilterDead - 32)), 0, 0), 0);
+    auto99B398E2_u = UnitGroupCount(auto99B398E2_g, c_unitCountAll);
+    for (;; auto99B398E2_u -= 1) {
+        auto99B398E2_var = UnitGroupUnitFromEnd(auto99B398E2_g, auto99B398E2_u);
+        if (auto99B398E2_var == null) { break; }
+        if ((UnitHasBehavior2(auto99B398E2_var, "PermanentStructure") == true)) {
+            UnitBehaviorRemove(auto99B398E2_var, "PermanentStructure", 1);
+            UnitRemove(auto99B398E2_var);
+        }
+
+    }
+    auto02218992_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterStructure), 0, 0, 0), 0);
+    auto02218992_u = UnitGroupCount(auto02218992_g, c_unitCountAll);
+    for (;; auto02218992_u -= 1) {
+        auto02218992_var = UnitGroupUnitFromEnd(auto02218992_g, auto02218992_u);
+        if (auto02218992_var == null) { break; }
+        if ((UnitHasBehavior2(auto02218992_var, "PermanentStructure") == true)) {
+            UnitBehaviorRemove(auto02218992_var, "PermanentStructure", 1);
+            UnitBehaviorAdd(auto02218992_var, "UnitSuicideCrystal", auto02218992_var, 1);
+        }
+
+    }
+}
+
+void libDDE92A83_gf_AddMidControlScore (playergroup lp_playerGroup, fixed lp_time) {
+    // Automatic Variable Declarations
+    playergroup auto861C0B64_g;
+    int auto861C0B64_var;
+
+    // Implementation
+    auto861C0B64_g = lp_playerGroup;
+    auto861C0B64_var = -1;
+    while (true) {
+        auto861C0B64_var = PlayerGroupNextPlayer(auto861C0B64_g, auto861C0B64_var);
+        if (auto861C0B64_var < 0) { break; }
+        PlayerScoreValueSetFromFixed(auto861C0B64_var, "SecondsOwnedMid", (PlayerScoreValueGetAsFixed(auto861C0B64_var, "SecondsOwnedMid") + lp_time));
+    }
+}
+
+void libDDE92A83_gf_ToggleUpgradesSC2Multi (playergroup lp_players, int lp_level) {
+    // Automatic Variable Declarations
+    playergroup auto492FF311_g;
+    int auto492FF311_var;
+
+    // Implementation
+    auto492FF311_g = lp_players;
+    auto492FF311_var = -1;
+    while (true) {
+        auto492FF311_var = PlayerGroupNextPlayer(auto492FF311_g, auto492FF311_var);
+        if (auto492FF311_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "Charge", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "BlinkTech", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "ObserverGraviticBooster", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "PhoenixRangeUpgrade", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "PsiStormTech", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "ExtendedThermalLance", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "CarrierLaunchSpeedUpgrade", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "AdeptPiercingAttack", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "DarkTemplarBlinkUpgrade", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "ShieldWall", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "PunisherGrenades", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "HighCapacityBarrels", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "MedivacCaduceusReactor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "DrillClaws", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "DurableMaterials", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "RavenCorvidReactor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "TerranBuildingArmor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "HiSecAutoTracking", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "BattlecruiserBehemothReactor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "Stimpack", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "GhostMoebiusReactor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "BansheeCloak", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "BattlecruiserEnableSpecializations", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "CycloneRapidFireLaunchers", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "RavenEnhancedMunitions", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "BansheeSpeed", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "LiberatorAGRangeUpgrade", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "NeosteelFrame", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "zerglingmovementspeed", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "zerglingattackspeed", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "CentrificalHooks", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "GlialReconstitution", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "TunnelingClaws", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "EvolveMuscularAugments", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "InfestorEnergyUpgrade", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "NeuralParasite", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "overlordspeed", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "LocustLifetimeIncrease", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "ChitinousPlating", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "EvolveGroovedSpines", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto492FF311_var, "DiggingClaws", lp_level);
+    }
+}
+
+void libDDE92A83_gf_ToggleUpgradesSC2Coop (playergroup lp_players, int lp_level) {
+    // Automatic Variable Declarations
+    playergroup auto704F18AC_g;
+    int auto704F18AC_var;
+
+    // Implementation
+    auto704F18AC_g = lp_players;
+    auto704F18AC_var = -1;
+    while (true) {
+        auto704F18AC_var = PlayerGroupNextPlayer(auto704F18AC_g, auto704F18AC_var);
+        if (auto704F18AC_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "AlarakImposingPresence", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "AlarakTelekinesis", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "HavocBloodshardResonance", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "HavocCloakingModule", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "VanguardFusionMortars", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "VanguardMatterDispersion", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "WrathwalkerAerialTracking", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "WrathwalkerPowerCycling", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "AscendantMindBlast", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "AscendantChaoticAttunement", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "SupplicantBloodShields", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "SupplicantSoulAugmentation", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "SlayerPhasingArmor", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "GlialReconstitution", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "overlordspeed", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "VikingPhobosWeaponsSystem", lp_level);
+        libNtve_gf_SetUpgradeLevelForPlayer(auto704F18AC_var, "VikingRipwaveMissiles", lp_level);
+    }
+}
+
+void libDDE92A83_gf_ModifyMetaExperience (int lp_player, int lp_xP) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libDDE92A83_gv_sandboxMode == false)) {
+        if ((lp_xP < 250000)) {
+            PlayerScoreValueSetFromInt(lp_player, "BankDesertStrikeMasteryExperience", (PlayerScoreValueGetAsInt(lp_player, "BankDesertStrikeMasteryExperience") + FixedToInt((IntToFixed(lp_xP) * (1.0 + (IntToFixed(TechTreeUpgradeCount(lp_player, "MasteryXPMultiplier", c_techCountCompleteOnly)) * 0.01))))));
+        }
+        else {
+            PlayerScoreValueSetFromInt(lp_player, "BankDesertStrikeMasteryExperience", (PlayerScoreValueGetAsInt(lp_player, "BankDesertStrikeMasteryExperience") + lp_xP));
+        }
+        lib39886FE6_gf_MasteryBarSetXP(PlayerScoreValueGetAsInt(lp_player, "BankDesertStrikeMasteryExperience"), lp_player);
+    }
+
+}
+
+void libDDE92A83_gf_TestBuilders () {
+    // Variable Declarations
+    point lv_point;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_point = libDDE92A83_gv_playerOrigin[1];
+
+    // Implementation
+    if ((GameIsTestMap(false) == true)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerProtoss", 0, 1, PointWithOffset(lv_point, -3.0, 0.0));
+        UnitBehaviorAdd(UnitLastCreated(), "WorkerProbe", UnitLastCreated(), 1);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerArtanis", 0, 1, PointWithOffset(lv_point, -3.0, 3.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerVorazun", 0, 1, PointWithOffset(lv_point, -3.0, 6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerKarax", 0, 1, PointWithOffset(lv_point, -3.0, 9.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerAlarak", 0, 1, PointWithOffset(lv_point, -3.0, 12.0));
+        UnitBehaviorAdd(UnitLastCreated(), "WorkerTaldarimProbe", UnitLastCreated(), 1);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerTerran", 0, 1, PointWithOffset(lv_point, 0.0, 0.0));
+        UnitBehaviorAdd(UnitLastCreated(), "WorkerSCV", UnitLastCreated(), 1);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerRaynor", 0, 1, PointWithOffset(lv_point, 0.0, 3.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerSwann", 0, 1, PointWithOffset(lv_point, 0.0, 6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerNova", 0, 1, PointWithOffset(lv_point, 0.0, 9.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerZerg", 0, 1, PointWithOffset(lv_point, 3.0, 0.0));
+        UnitBehaviorAdd(UnitLastCreated(), "WorkerDrone", UnitLastCreated(), 1);
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerKerrigan", 0, 1, PointWithOffset(lv_point, 3.0, 3.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerZagara", 0, 1, PointWithOffset(lv_point, 3.0, 6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerAbathur", 0, 1, PointWithOffset(lv_point, 3.0, 9.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "WorkerStukov", 0, 1, PointWithOffset(lv_point, 3.0, 12.0));
+    }
+
+}
+
+trigger auto_libDDE92A83_gf_SkinStore_Trigger = null;
+unit auto_libDDE92A83_gf_SkinStore_lp_unit;
+
+void libDDE92A83_gf_SkinStore (unit lp_unit) {
+    auto_libDDE92A83_gf_SkinStore_lp_unit = lp_unit;
+
+    if (auto_libDDE92A83_gf_SkinStore_Trigger == null) {
+        auto_libDDE92A83_gf_SkinStore_Trigger = TriggerCreate("auto_libDDE92A83_gf_SkinStore_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libDDE92A83_gf_SkinStore_Trigger, false, false);
+}
+
+bool auto_libDDE92A83_gf_SkinStore_TriggerFunc (bool testConds, bool runActions) {
+    unit lp_unit = auto_libDDE92A83_gf_SkinStore_lp_unit;
+
+    // Automatic Variable Declarations
+    // Implementation
+    libDDE92A83_gv_skin = null;
+    if (((UnitHasBehavior2(lp_unit, "SkinBiomass") == true) || (UnitHasBehavior2(lp_unit, "SkinBiomassPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinBiomassPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinCybros") == true) || (UnitHasBehavior2(lp_unit, "SkinCybrosPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinCybrosPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinHighlight") == true) || (UnitHasBehavior2(lp_unit, "SkinHighlightPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinHighlightPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinHologram") == true) || (UnitHasBehavior2(lp_unit, "SkinHologramPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinHologramPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinJade") == true) || (UnitHasBehavior2(lp_unit, "SkinJadePrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinJadePrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinMineral") == true) || (UnitHasBehavior2(lp_unit, "SkinMineralPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinMineralPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinPsionic") == true) || (UnitHasBehavior2(lp_unit, "SkinPsionicPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinPsionicPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinRedstone") == true) || (UnitHasBehavior2(lp_unit, "SkinRedstonePrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinRedstonePrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinSepia") == true) || (UnitHasBehavior2(lp_unit, "SkinSepiaPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinSepiaPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinShadow") == true) || (UnitHasBehavior2(lp_unit, "SkinShadowPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinShadowPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinSnow") == true) || (UnitHasBehavior2(lp_unit, "SkinSnowPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinSnowPrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinSolarite") == true) || (UnitHasBehavior2(lp_unit, "SkinSolaritePrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinSolaritePrecursor";
+    }
+
+    if (((UnitHasBehavior2(lp_unit, "SkinVoid") == true) || (UnitHasBehavior2(lp_unit, "SkinVoidPrecursor") == true))) {
+        libDDE92A83_gv_skin = "SkinVoidPrecursor";
+    }
+
+    return true;
+}
+
+void libDDE92A83_gf_SkinRestore (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libDDE92A83_gv_skin != null)) {
+        UnitBehaviorAdd(lp_unit, libDDE92A83_gv_skin, lp_unit, 1);
+    }
+
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Preparation Time Countdown
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_PreparationTimeCountdown_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libDDE92A83_gv_preparationTime > 0)) {
+        libDDE92A83_gv_preparationTime -= 1;
+    }
+
+    libNtve_gf_SetDialogItemText(libDDE92A83_gv_preparationTimer, (StringExternal("Param/Value/lib_DDE92A83_6306CDB8") + IntToText(libDDE92A83_gv_preparationTime)), PlayerGroupAll());
+    if ((libDDE92A83_gv_preparationTime == 32) && ((PlayerGroupCount(libDDE92A83_gv_preparationDefendSoundGroup) > 0) || (PlayerGroupCount(libDDE92A83_gv_preparationAttackSoundGroup) > 0))) {
+        TriggerSendEvent("AnnouncerSoundStart");
+        libDDE92A83_gf_FadeSounds(true, true, PlayerGroupAll(), 33.0, 0.5);
+        Wait(0.5, c_timeGame);
+        SoundPlayForPlayer(SoundLink("Athena_AttackCommences30", -1), c_maxPlayers, libDDE92A83_gv_preparationAttackSoundGroup, 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("Athena_AttackersIncoming30", -1), c_maxPlayers, libDDE92A83_gv_preparationDefendSoundGroup, 100.0, 0.0);
+        Wait(3.0, c_timeReal);
+        libDDE92A83_gf_FadeSounds(false, true, PlayerGroupAll(), 33.0, 0.5);
+        TriggerSendEvent("AnnouncerSoundStop");
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 12) && ((PlayerGroupCount(libDDE92A83_gv_preparationDefendSoundGroup) > 0) || (PlayerGroupCount(libDDE92A83_gv_preparationAttackSoundGroup) > 0))) {
+        TriggerSendEvent("AnnouncerSoundStart");
+        libDDE92A83_gf_FadeSounds(true, true, PlayerGroupAll(), 33.0, 0.5);
+        Wait(0.5, c_timeGame);
+        SoundPlayForPlayer(SoundLink("Athena_AttackCommences10", -1), c_maxPlayers, libDDE92A83_gv_preparationAttackSoundGroup, 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("Athena_AttackersIncoming10", -1), c_maxPlayers, libDDE92A83_gv_preparationDefendSoundGroup, 100.0, 0.0);
+        Wait(3.0, c_timeReal);
+        libDDE92A83_gf_FadeSounds(false, true, PlayerGroupAll(), 33.0, 0.5);
+        TriggerSendEvent("AnnouncerSoundStop");
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 5)) {
+        TriggerSendEvent("AnnouncerSoundStart");
+        libDDE92A83_gf_FadeSounds(true, true, PlayerGroupAll(), 33.0, 0.5);
+        SoundPlayForPlayer(SoundLink("AC_UI_Countdown_5MxNone", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("Athena_5", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 4)) {
+        SoundPlayForPlayer(SoundLink("Athena_4", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 3)) {
+        SoundPlayForPlayer(SoundLink("Athena_3", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 2)) {
+        SoundPlayForPlayer(SoundLink("Athena_2", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 1)) {
+        SoundPlayForPlayer(SoundLink("Athena_1", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((libDDE92A83_gv_preparationTime == 0)) {
+        TriggerEnable(libDDE92A83_gt_PreparationTimeCountdown, false);
+        DialogControlFadeTransparency(libDDE92A83_gv_preparationTimer, PlayerGroupAll(), 0.5, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_preparationText, PlayerGroupAll(), 0.5, 100.0);
+        SoundPlayForPlayer(SoundLink("Athena_AttackersIncoming", -1), c_maxPlayers, libDDE92A83_gv_preparationAttackSoundGroup, 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("Athena_AttackersIncoming", -1), c_maxPlayers, libDDE92A83_gv_preparationDefendSoundGroup, 100.0, 0.0);
+        TriggerSendEvent("StarlightPreparationTimeComplete");
+        Wait(2.5, c_timeReal);
+        libDDE92A83_gf_FadeSounds(false, true, PlayerGroupAll(), 33.0, 0.5);
+        SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryMusic, "ProtossMissionMusic", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+        TriggerSendEvent("AnnouncerSoundStop");
+        Wait(1.0, c_timeReal);
+        DialogDestroy(libDDE92A83_gv_preparationDialog);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_PreparationTimeCountdown_Init () {
+    libDDE92A83_gt_PreparationTimeCountdown = TriggerCreate("libDDE92A83_gt_PreparationTimeCountdown_Func");
+    TriggerEnable(libDDE92A83_gt_PreparationTimeCountdown, false);
+    TriggerAddEventTimePeriodic(libDDE92A83_gt_PreparationTimeCountdown, 1.0, c_timeReal);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Preparation Time End
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_PreparationTimeEnd_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(1.0, c_timeGame);
+    DialogDestroy(libDDE92A83_gv_preparationDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_PreparationTimeEnd_Init () {
+    libDDE92A83_gt_PreparationTimeEnd = TriggerCreate("libDDE92A83_gt_PreparationTimeEnd_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Loading Screen Fade
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_LoadingScreenFade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const fixed lv_fadeTime = 0.5;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0, c_timeGame);
+    CinematicFade(false, 0.0, c_fadeStyleNormal, Color(0.00, 0.00, 0.00), 0.0, false);
+    Wait(libDDE92A83_gv_loadingScreenDelay, c_timeReal);
+    CinematicFade(false, 0.0, c_fadeStyleNormal, Color(0.00, 0.00, 0.00), 0.0, false);
+    DialogControlFadeTransparency(libDDE92A83_gv_loadingScreenBackground, PlayerGroupAll(), lv_fadeTime, 100.0);
+    CinematicFade(true, lv_fadeTime, c_fadeStyleNormal, Color(0.00, 0.00, 0.00), 0.0, false);
+    Wait(lv_fadeTime, c_timeGame);
+    DialogControlFadeTransparency(libDDE92A83_gv_loadingScreenImage, PlayerGroupAll(), lv_fadeTime, 100.0);
+    Wait(1.0, c_timeGame);
+    DialogDestroy(libDDE92A83_gv_loadingScreenImageDialog);
+    DialogDestroy(libDDE92A83_gv_loadingScreenBackgroundDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_LoadingScreenFade_Init () {
+    libDDE92A83_gt_LoadingScreenFade = TriggerCreate("libDDE92A83_gt_LoadingScreenFade_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Fullscreen Border Size Check
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_FullscreenBorderSizeCheck_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.0, c_timeGame);
+    DialogControlSetSize(libDDE92A83_gv_fullscreenBorderModel, PlayerGroupAll(), DialogGetWidth(libDDE92A83_gv_fullscreenBorderDialog), DialogGetHeight(libDDE92A83_gv_fullscreenBorderDialog));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_FullscreenBorderSizeCheck_Init () {
+    libDDE92A83_gt_FullscreenBorderSizeCheck = TriggerCreate("libDDE92A83_gt_FullscreenBorderSizeCheck_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Fullscreen Border Fade Delay
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_FullscreenBorderFadeDelay_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const fixed lv_fadeTime = 1.0;
+    playergroup lv_borderGroup;
+    bool lv_borderBirth;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_borderGroup = libDDE92A83_gv_fullscreenBorderGroup;
+    lv_borderBirth = libDDE92A83_gv_fullscreenBorderBirth;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((GameGetMissionTime() < 1.0)) {
+        Wait(0.0, c_timeGame);
+    }
+
+    DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderGlow, lv_borderGroup, 0.0, 100.0);
+    DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderGlow, lv_borderGroup, lv_fadeTime, 0.0);
+    if ((lv_borderBirth == true)) {
+        DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderModel, lv_borderGroup, 0.0, 0.0);
+        libNtve_gf_SetDialogItemAnimation(libDDE92A83_gv_fullscreenBorderModel, "Birth", lv_borderGroup);
+        SoundPlayForPlayer(SoundLink("Starlight_Border_Birth", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    else {
+        DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderModel, lv_borderGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libDDE92A83_gv_fullscreenBorderModel, lv_borderGroup, lv_fadeTime, 0.0);
+        SoundPlayForPlayer(SoundLink("UI_FullscreenBorder_FadeIn", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_FullscreenBorderFadeDelay_Init () {
+    libDDE92A83_gt_FullscreenBorderFadeDelay = TriggerCreate("libDDE92A83_gt_FullscreenBorderFadeDelay_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: End Game Slow Units
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_EndGameSlowUnits_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    fixed lv_delay;
+    fixed lv_timescale;
+
+    // Automatic Variable Declarations
+    unitgroup auto4A15CF6D_g;
+    int auto4A15CF6D_u;
+    unit auto4A15CF6D_var;
+    unitgroup autoA2A08370_g;
+    int autoA2A08370_u;
+    unit autoA2A08370_var;
+    const int auto71AA87BB_ae = 20;
+    const int auto71AA87BB_ai = 1;
+    unitgroup autoF1F97381_g;
+    int autoF1F97381_u;
+    unit autoF1F97381_var;
+    unitgroup autoEF5BE4AA_g;
+    int autoEF5BE4AA_u;
+    unit autoEF5BE4AA_var;
+
+    // Variable Initialization
+    lv_delay = 0.25;
+    lv_timescale = 1.0;
+
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_endGameUnitPauseRun == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gv_endGameUnitPauseRun = true;
+    auto4A15CF6D_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0);
+    auto4A15CF6D_u = UnitGroupCount(auto4A15CF6D_g, c_unitCountAll);
+    for (;; auto4A15CF6D_u -= 1) {
+        auto4A15CF6D_var = UnitGroupUnitFromEnd(auto4A15CF6D_g, auto4A15CF6D_u);
+        if (auto4A15CF6D_var == null) { break; }
+        libNtve_gf_MakeUnitUncommandable(auto4A15CF6D_var, true);
+    }
+    autoA2A08370_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoA2A08370_u = UnitGroupCount(autoA2A08370_g, c_unitCountAll);
+    for (;; autoA2A08370_u -= 1) {
+        autoA2A08370_var = UnitGroupUnitFromEnd(autoA2A08370_g, autoA2A08370_u);
+        if (autoA2A08370_var == null) { break; }
+        libNtve_gf_MakeUnitUncommandable(autoA2A08370_var, true);
+    }
+    lv_i = 1;
+    for ( ; ( (auto71AA87BB_ai >= 0 && lv_i <= auto71AA87BB_ae) || (auto71AA87BB_ai < 0 && lv_i >= auto71AA87BB_ae) ) ; lv_i += auto71AA87BB_ai ) {
+        Wait(lv_delay, c_timeGame);
+        lv_timescale -= 0.025;
+        GameSetGlobalTimeScale(libNtve_gf_ArithmeticRealClamp(lv_timescale, 0.5, 1.0));
+    }
+    autoF1F97381_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0);
+    autoF1F97381_u = UnitGroupCount(autoF1F97381_g, c_unitCountAll);
+    for (;; autoF1F97381_u -= 1) {
+        autoF1F97381_var = UnitGroupUnitFromEnd(autoF1F97381_g, autoF1F97381_u);
+        if (autoF1F97381_var == null) { break; }
+        libNtve_gf_PauseUnit(autoF1F97381_var, true);
+        libNtve_gf_SendActorMessageToUnit(autoF1F97381_var, "AnimSetPausedAll");
+    }
+    autoEF5BE4AA_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoEF5BE4AA_u = UnitGroupCount(autoEF5BE4AA_g, c_unitCountAll);
+    for (;; autoEF5BE4AA_u -= 1) {
+        autoEF5BE4AA_var = UnitGroupUnitFromEnd(autoEF5BE4AA_g, autoEF5BE4AA_u);
+        if (autoEF5BE4AA_var == null) { break; }
+        libNtve_gf_PauseUnit(autoEF5BE4AA_var, true);
+        libNtve_gf_SendActorMessageToUnit(autoEF5BE4AA_var, "AnimSetPausedAll");
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_EndGameSlowUnits_Init () {
+    libDDE92A83_gt_EndGameSlowUnits = TriggerCreate("libDDE92A83_gt_EndGameSlowUnits_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: End Game Text Dialog
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_EndGameTextDialog_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_dialog;
+    int lv_victoryText;
+    int lv_victoryGlow;
+    int lv_defeatText;
+    int lv_defeatGlow;
+    playergroup lv_defeatGroup;
+
+    // Automatic Variable Declarations
+    playergroup auto26C66271_g;
+    int auto26C66271_var;
+
+    // Variable Initialization
+    lv_dialog = c_invalidDialogId;
+    lv_victoryText = c_invalidDialogControlId;
+    lv_victoryGlow = c_invalidDialogControlId;
+    lv_defeatText = c_invalidDialogControlId;
+    lv_defeatGlow = c_invalidDialogControlId;
+    lv_defeatGroup = PlayerGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogCreate(2150, 1200, c_anchorCenter, 0, -200, true);
+    lv_dialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogControlCreate(lv_dialog, c_triggerControlTypePortrait);
+    lv_victoryGlow = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlSetVisible(DialogControlLastCreated(), libDDE92A83_gv_endGameTextWinners, true);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()));
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "StarlightGlowYellow", PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.25, 0.0);
+    DialogControlCreate(lv_dialog, c_triggerControlTypePortrait);
+    lv_defeatGlow = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), libDDE92A83_gv_endGameTextWinners, false);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()));
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "StarlightGlowRed", PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.25, 0.0);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryAmbient, true);
+    SoundPlayForPlayer(SoundLink("UI_ArmyUpgrades_UpgradeSelect", 0), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    Wait(1.0, c_timeGame);
+    libNtve_gf_CreateDialogItemLabel(lv_dialog, 1600, 200, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_DDE92A83_E6C18444") + StringExternal("UI/Text/Victory")), ColorWithAlpha(0,0,0,0), false, 2.0);
+    lv_victoryText = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlSetVisible(DialogControlLastCreated(), libDDE92A83_gv_endGameTextWinners, true);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.125, 0.0);
+    SoundPlayForPlayer(SoundLink("Athena_Victory", -1), c_maxPlayers, libDDE92A83_gv_endGameTextWinners, 100.0, 0.0);
+    libNtve_gf_CreateDialogItemLabel(lv_dialog, 1600, 200, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_DDE92A83_6F291EAC") + StringExternal("UI/Text/Defeat")), ColorWithAlpha(0,0,0,0), false, 2.0);
+    lv_defeatText = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), libDDE92A83_gv_endGameTextWinners, false);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.125, 0.0);
+    auto26C66271_g = PlayerGroupAll();
+    auto26C66271_var = -1;
+    while (true) {
+        auto26C66271_var = PlayerGroupNextPlayer(auto26C66271_g, auto26C66271_var);
+        if (auto26C66271_var < 0) { break; }
+        if ((PlayerGroupHasPlayer(libDDE92A83_gv_endGameTextWinners, auto26C66271_var) == false)) {
+            PlayerGroupAdd(lv_defeatGroup, auto26C66271_var);
+        }
+
+    }
+    SoundPlayForPlayer(SoundLink("Athena_Defeat", -1), c_maxPlayers, lv_defeatGroup, 100.0, 0.0);
+    Wait(3.5, c_timeReal);
+    DialogControlFadeTransparency(lv_victoryText, PlayerGroupAll(), 0.5, 100.0);
+    DialogControlFadeTransparency(lv_victoryGlow, PlayerGroupAll(), 1.0, 100.0);
+    DialogControlFadeTransparency(lv_defeatText, PlayerGroupAll(), 0.5, 100.0);
+    DialogControlFadeTransparency(lv_defeatGlow, PlayerGroupAll(), 1.0, 100.0);
+    Wait(2.0, c_timeReal);
+    DialogDestroy(lv_dialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_EndGameTextDialog_Init () {
+    libDDE92A83_gt_EndGameTextDialog = TriggerCreate("libDDE92A83_gt_EndGameTextDialog_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Animation Start
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_AnimationStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_Animation(libDDE92A83_gv_animationPlayerGroup, libDDE92A83_gv_animationDialog, libDDE92A83_gv_animationDialogItem, libDDE92A83_gv_animationDuration, libDDE92A83_gv_animationRenderPriority, libDDE92A83_gv_animationModel, libDDE92A83_gv_animationRepeat);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_AnimationStart_Init () {
+    libDDE92A83_gt_AnimationStart = TriggerCreate("libDDE92A83_gt_AnimationStart_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mutator Run
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_MutatorRun_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto5C944C8B_ae;
+    const int auto5C944C8B_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto5C944C8B_ae = (libDDE92A83_gv_mutatorCurrent - 1);
+    lv_i = 0;
+    for ( ; ( (auto5C944C8B_ai >= 0 && lv_i <= auto5C944C8B_ae) || (auto5C944C8B_ai < 0 && lv_i >= auto5C944C8B_ae) ) ; lv_i += auto5C944C8B_ai ) {
+        libDDE92A83_gf_MutatorBirth(lv_i);
+        Wait(0.5, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_MutatorRun_Init () {
+    libDDE92A83_gt_MutatorRun = TriggerCreate("libDDE92A83_gt_MutatorRun_Func");
+    TriggerAddEventTimer(libDDE92A83_gt_MutatorRun, libDDE92A83_gv_mutatorDelay);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mutator Fade
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_MutatorFade_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_MutatorEnd();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_MutatorFade_Init () {
+    libDDE92A83_gt_MutatorFade = TriggerCreate("libDDE92A83_gt_MutatorFade_Func");
+    TriggerAddEventTimer(libDDE92A83_gt_MutatorFade, libDDE92A83_gv_mutatorTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Map Intro
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_StarlightMapIntro_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoA8FCE13E_g;
+    int autoA8FCE13E_var;
+    playergroup auto47AD4EDB_g;
+    int auto47AD4EDB_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_StarlightFullscreenBorder(false, true, libDDE92A83_gv_starlightMapPlayers);
+    libDDE92A83_gf_StarlightLoadingScreen("Assets\\Textures\\loading-castanar.dds", 1.5);
+    autoA8FCE13E_g = libDDE92A83_gv_starlightMapPlayers;
+    autoA8FCE13E_var = -1;
+    while (true) {
+        autoA8FCE13E_var = PlayerGroupNextPlayer(autoA8FCE13E_g, autoA8FCE13E_var);
+        if (autoA8FCE13E_var < 0) { break; }
+        CameraLockInput(autoA8FCE13E_var, true);
+    }
+    Wait(1.0, c_timeReal);
+    libDDE92A83_gf_StarlightBorderText(true, libDDE92A83_gv_starlightMapIntroText, libDDE92A83_gv_starlightMapPlayers);
+    Wait(1.0, c_timeReal);
+    auto47AD4EDB_g = libDDE92A83_gv_starlightMapPlayers;
+    auto47AD4EDB_var = -1;
+    while (true) {
+        auto47AD4EDB_var = PlayerGroupNextPlayer(auto47AD4EDB_g, auto47AD4EDB_var);
+        if (auto47AD4EDB_var < 0) { break; }
+        CameraLockInput(auto47AD4EDB_var, false);
+    }
+    Wait(2.0, c_timeReal);
+    libDDE92A83_gf_StarlightFullscreenBorder(false, false, libDDE92A83_gv_starlightMapPlayers);
+    Wait(2.0, c_timeReal);
+    libDDE92A83_gf_StarlightBorderText(false, null, libDDE92A83_gv_starlightMapPlayers);
+    lib452C8A48_gf_StarlightLeaderboardStart(libDDE92A83_gv_starlightMapPlayers, libDDE92A83_gv_starlightMapLevelBar, true, 36, 260, libDDE92A83_gv_starlightMapScore[0], false, true, libDDE92A83_gv_starlightMapBankString, libDDE92A83_gv_starlightMapScore[0], libDDE92A83_gv_starlightMapScore[1], libDDE92A83_gv_starlightMapScore[2], libDDE92A83_gv_starlightMapScore[3]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_StarlightMapIntro_Init () {
+    libDDE92A83_gt_StarlightMapIntro = TriggerCreate("libDDE92A83_gt_StarlightMapIntro_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Map Outro
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_StarlightMapOutro_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto9B19A743_g;
+    int auto9B19A743_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_StarlightFullscreenBorder(true, true, libDDE92A83_gv_starlightMapPlayers);
+    libDDE92A83_gf_EndGamePan(libDDE92A83_gv_starlightMapVictoryUnit);
+    libDDE92A83_gf_EndGameUnitPause();
+    Wait(8.0, c_timeGame);
+    lib452C8A48_gf_StarlightLeaderboardEndGameNoWait(null, libDDE92A83_gv_starlightMapWinners);
+    libNtve_gf_HideGameUI(false, libDDE92A83_gv_starlightMapPlayers);
+    UISetSelectionTypeEnabled(libDDE92A83_gv_starlightMapPlayers, c_localSelectionTypeUnknown, false);
+    auto9B19A743_g = libDDE92A83_gv_starlightMapPlayers;
+    auto9B19A743_var = -1;
+    while (true) {
+        auto9B19A743_var = PlayerGroupNextPlayer(auto9B19A743_g, auto9B19A743_var);
+        if (auto9B19A743_var < 0) { break; }
+        UnitClearSelection(auto9B19A743_var);
+        CameraLockInput(auto9B19A743_var, true);
+        CameraSetValue(auto9B19A743_var, c_cameraValueDepthOfField, 1.0, 10.0, 0.0, 10.0);
+        CameraSetValue(auto9B19A743_var, c_cameraValueDistance, 50.0, 10.0, 0.0, 10.0);
+    }
+    Wait(1.0, c_timeGame);
+    libDDE92A83_gf_StarlightEndGameText(libDDE92A83_gv_starlightMapWinners);
+    Wait(6.0, c_timeGame);
+    libDDE92A83_gf_StarlightBorderText(true, StringExternal("Param/Value/lib_DDE92A83_B08A769B"), libDDE92A83_gv_starlightMapWinners);
+    libDDE92A83_gf_StarlightBorderText(true, StringExternal("Param/Value/lib_DDE92A83_757336B5"), libDDE92A83_gv_starlightMapLosers);
+    Wait(1.0, c_timeGame);
+    lib12DC2527_gf_CommendationsStart(libDDE92A83_gv_starlightMapScore[0], libDDE92A83_gv_starlightMapScore[1], libDDE92A83_gv_starlightMapScore[2], libDDE92A83_gv_starlightMapScore[3]);
+    Wait(20.0, c_timeGame);
+    libDDE92A83_gf_StarlightBorderText(false, null, libDDE92A83_gv_starlightMapPlayers);
+    Wait(2.0, c_timeGame);
+    libFD391A9C_gf_StarlightScoreboard(libDDE92A83_gv_starlightMapPlayers, libDDE92A83_gv_starlightMapScore[0], libDDE92A83_gv_starlightMapScore[1], libDDE92A83_gv_starlightMapScore[2], libDDE92A83_gv_starlightMapScore[3], null, null, null, null, null, 0, 0);
+    libFD391A9C_gf_StarlightScoreboardAddTab(StringExternal("Param/Value/lib_DDE92A83_978B040D"), "DamageDealt", "DamageTaken", null, null, null, null, null, null, null);
+    Wait(2.0, c_timeGame);
+    libBBFED31C_gf_EndGameDonationDialog(true, libDDE92A83_gv_starlightMapWinners);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_StarlightMapOutro_Init () {
+    libDDE92A83_gt_StarlightMapOutro = TriggerCreate("libDDE92A83_gt_StarlightMapOutro_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Basics
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_gt_StarlightBasics_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto6C7FBBE9_g;
+    int auto6C7FBBE9_var;
+    string auto4BF9914D_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    GameSetSpeedValue(c_gameSpeedFaster);
+    GameSetSpeedLocked(true);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(PlayerGroupActive(), libDDE92A83_gv_originalPlayers);
+    libNtve_gf_CreateActorAtPoint("SceneActorHaloSettings", Point(1.0, 1.0));
+    UISetResourceTradeCountdownTime(0);
+    UISetResourceTradingAllowed(c_resourceTypeMinerals, false);
+    UISetResourceTradingAllowed(c_resourceTypeVespene, false);
+    UISetResourceTradingAllowed(c_resourceTypeCustom, false);
+    HelpPanelEnableTechGlossaryButton(PlayerGroupAll(), true);
+    HelpPanelShowTechTreeRace(PlayerGroupAll(), "Prot", false);
+    HelpPanelShowTechTreeRace(PlayerGroupAll(), "Terr", false);
+    HelpPanelShowTechTreeRace(PlayerGroupAll(), "Zerg", false);
+    UISetGameMenuItemVisible(PlayerGroupAll(), c_gameMenuDialogLoadButton, false);
+    UISetGameMenuItemVisible(PlayerGroupAll(), c_gameMenuDialogSaveButton, false);
+    auto6C7FBBE9_g = PlayerGroupAll();
+    auto6C7FBBE9_var = -1;
+    while (true) {
+        auto6C7FBBE9_var = PlayerGroupNextPlayer(auto6C7FBBE9_g, auto6C7FBBE9_var);
+        if (auto6C7FBBE9_var < 0) { break; }
+        TechTreeUnitHelpDefault(auto6C7FBBE9_var, false);
+        CatalogFieldValueSet(c_gameCatalogBehavior, "WaveTimer", "Period", auto6C7FBBE9_var, FixedToString(GameGetSpeed(), c_fixedPrecisionAny));
+        PlayerOptionOverride(auto6C7FBBE9_var, "simplecommandcard", "0");
+        PlayerOptionOverride(auto6C7FBBE9_var, "selectuncontrolable", "1");
+        PlayerOptionOverride(auto6C7FBBE9_var, "buildgridhint", "1");
+        PlayerOptionOverride(auto6C7FBBE9_var, "showalerts", "1");
+        TechTreeAbilityAllow(auto6C7FBBE9_var, AbilityCommand("GhostHoldFire", 0), false);
+        TechTreeAbilityAllow(auto6C7FBBE9_var, AbilityCommand("TacNukeStrike", 0), false);
+        TechTreeAbilityAllow(auto6C7FBBE9_var, AbilityCommand("TacNukeStrike", 1), false);
+        TechTreeAbilityAllow(auto6C7FBBE9_var, AbilityCommand("GhostWeaponsFree", 0), false);
+        auto4BF9914D_val = PlayerRace(auto6C7FBBE9_var);
+        if (auto4BF9914D_val == "Prot") {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "StagingAreaDecalShow", 1);
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "AttributePlayerValueRaceProtoss", 1);
+        }
+        else if (auto4BF9914D_val == "Terr") {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "StagingAreaDecalShow", 1);
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "AttributePlayerValueRaceTerran", 1);
+        }
+        else if (auto4BF9914D_val == "Zerg") {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "StagingAreaDecalShow", 1);
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6C7FBBE9_var, "AttributePlayerValueRaceZerg", 1);
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libDDE92A83_gt_StarlightBasics_Init () {
+    libDDE92A83_gt_StarlightBasics = TriggerCreate("libDDE92A83_gt_StarlightBasics_Func");
+    TriggerAddEventMapInit(libDDE92A83_gt_StarlightBasics);
+}
+
+void libDDE92A83_InitTriggers () {
+    libDDE92A83_gt_PreparationTimeCountdown_Init();
+    libDDE92A83_gt_PreparationTimeEnd_Init();
+    libDDE92A83_gt_LoadingScreenFade_Init();
+    libDDE92A83_gt_FullscreenBorderSizeCheck_Init();
+    libDDE92A83_gt_FullscreenBorderFadeDelay_Init();
+    libDDE92A83_gt_EndGameSlowUnits_Init();
+    libDDE92A83_gt_EndGameTextDialog_Init();
+    libDDE92A83_gt_AnimationStart_Init();
+    libDDE92A83_gt_MutatorRun_Init();
+    libDDE92A83_gt_MutatorFade_Init();
+    libDDE92A83_gt_StarlightMapIntro_Init();
+    libDDE92A83_gt_StarlightMapOutro_Init();
+    libDDE92A83_gt_StarlightBasics_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libDDE92A83_InitLib_completed = false;
+
+void libDDE92A83_InitLib () {
+    if (libDDE92A83_InitLib_completed) {
+        return;
+    }
+
+    libDDE92A83_InitLib_completed = true;
+
+    libDDE92A83_InitLibraries();
+    libDDE92A83_InitVariables();
+    libDDE92A83_InitTriggers();
+}
+
+include "Lib7A9A9B22"
+include "Lib12DC2527"
+include "Lib452C8A48"
+include "LibFD391A9C"
+include "Lib39886FE6"
+include "LibBBFED31C"
+

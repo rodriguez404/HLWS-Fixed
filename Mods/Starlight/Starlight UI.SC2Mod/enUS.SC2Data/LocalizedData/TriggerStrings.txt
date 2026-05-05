@@ -1,0 +1,2 @@
+﻿Library/Name/721EB437=Ban List
+Trigger/Name/lib_721EB437_508532A0=Ban List

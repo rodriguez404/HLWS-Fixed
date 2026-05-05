@@ -1,0 +1,31 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Set Environment
+//--------------------------------------------------------------------------------------------------
+// Function Declarations
+void libAED0EA78_gf_EnvironmentCharLand (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentWarp (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentAvernus (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentBraxisAlpha (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentCastanar (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentChar (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentSkygierrPlatform (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentKorhalPlatform (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentKorhalOrbit (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentPortZion (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentShadowCorpsPlatform (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentTheVoid (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentUlnarOuter (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentWorldShip (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentShakuras (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentSlayn (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentBelShir (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentElsecaro (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentMarSara (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentZerusSwamp (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentXelNagaCavern (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentKaldir (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentStarship (fixed lp_blendTime);
+void libAED0EA78_gf_EnvironmentCybros (fixed lp_blendTime);
+

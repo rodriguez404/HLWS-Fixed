@@ -1,0 +1,2028 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CItemEffectInstant default="1" id="DefaultItemUpgradeable">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="##id##"/>
+        <Effect value="UpgradeItemEffect"/>
+        <EffectCost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+            </Charge>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClawsofAttack8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="ClawsofAttack9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="ClawsofAttack9"/>
+        <EquipBehaviorArray value="EyeforanEyeSource"/>
+    </CItem>
+    <CItem id="Ankh">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="Ankh"/>
+    </CItem>
+    <CItemEffectInstant id="EmberstoneStaff0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EmberstoneStaff8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="EmberstoneStaff9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="EmberstoneStaff9"/>
+        <EquipBehaviorArray value="BlastWaveSource"/>
+    </CItem>
+    <CItemEffectInstant id="MantleofIntelligence0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MantleofIntelligence8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="MantleofIntelligence9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="MantleofIntelligence9"/>
+        <EquipBehaviorArray value="OverflowSource"/>
+    </CItem>
+    <CItemEffectInstant id="SobiMask0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SobiMask8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="SobiMask9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="SobiMask9"/>
+        <EquipBehaviorArray value="OverflowSource"/>
+    </CItem>
+    <CItemEffectInstant id="HoodofCunning0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="HoodofCunning8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="HoodofCunning9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="HoodofCunning9"/>
+        <EquipBehaviorArray value="ConcentrationSource"/>
+    </CItem>
+    <CItemEffectInstant id="OgreGauntlets0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="OgreGauntlets8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="OgreGauntlets9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="OgreGauntlets9"/>
+        <EquipBehaviorArray value="SurgeofPowerSource"/>
+    </CItem>
+    <CItemEffectInstant id="ElvenBoots0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ElvenBoots8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="ElvenBoots9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="ElvenBoots9"/>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItem>
+    <CItemEffectInstant id="MedallionofCourage0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="MedallionofCourage8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="MedallionofCourage9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="MedallionofCourage9"/>
+        <EquipBehaviorArray value="DazzleSource"/>
+    </CItem>
+    <CItemEffectInstant id="PeriaptofVitality0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="PeriaptofVitality8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="PeriaptofVitality9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="PeriaptofVitality9"/>
+    </CItem>
+    <CItemEffectInstant id="BeltofGiantStrength0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="150"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="200"/>
+            <Charge HideCount="0"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="300"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="2"/>
+                <CountUse value="2"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength3" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="450"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="3"/>
+                <CountUse value="3"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength4" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="600"/>
+            <Charge>
+                <CountMax value="4"/>
+                <CountStart value="4"/>
+                <CountUse value="4"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength5" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="800"/>
+            <Charge>
+                <CountMax value="5"/>
+                <CountStart value="5"/>
+                <CountUse value="5"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength6" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1000"/>
+            <Charge>
+                <CountMax value="6"/>
+                <CountStart value="6"/>
+                <CountUse value="6"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength7" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1200"/>
+            <Charge>
+                <CountMax value="7"/>
+                <CountStart value="7"/>
+                <CountUse value="7"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="BeltofGiantStrength8" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="1500"/>
+            <Charge>
+                <CountMax value="8"/>
+                <CountStart value="8"/>
+                <CountUse value="8"/>
+                <HideCount value="0"/>
+            </Charge>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="BeltofGiantStrength9">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="UpgradeableGreen"/>
+        <EquipBehaviorArray value="BeltofGiantStrength9"/>
+        <EquipBehaviorArray value="RisingPowerSource"/>
+    </CItem>
+    <CItemAbil id="Ebonchill">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="Ebonchill"/>
+        <Abil value="IceAge"/>
+    </CItemAbil>
+    <CItemEffectInstant id="Grimoire0" parent="DefaultItemUpgradeable">
+        <EquipBehaviorArray value="FingerofDeathSource"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="16000"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectTarget id="PeonSummon" parent="CONTAINER">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Permanent"/>
+        <Effect value="PeonSummonSwitch"/>
+        <EffectCost>
+            <Charge Link="Item/SummonPeasants"/>
+            <Cooldown Link="Item/SummonPeasants" TimeUse="60"/>
+        </EffectCost>
+        <Range value="500"/>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectTarget>
+    <CItemEffectTarget id="PeasantSummon" parent="CONTAINER">
+        <Class value="Permanent"/>
+        <Effect value="PeasantSummonSwitch"/>
+        <EffectCost>
+            <Charge Link="Item/SummonPeasants"/>
+            <Cooldown Link="Item/SummonPeasants" TimeUse="60"/>
+        </EffectCost>
+        <Range value="500"/>
+        <Flags index="CanDrop" value="0"/>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectTarget>
+    <CItem id="HealingWaters">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="HealingFountainSource"/>
+    </CItem>
+    <CItem id="EnergizingSprings">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="ManaFountainSource"/>
+    </CItem>
+    <CItem id="FortifiedDefenses">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="FortifiedDefenses"/>
+    </CItem>
+    <CItem id="HeartseekerScope">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="HeartseekerScope"/>
+    </CItem>
+    <CItemAbil id="Glyph">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="FortificationAuraSource"/>
+    </CItemAbil>
+    <CItem id="CauterizingBand">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="CauterizingBand"/>
+        <EquipBehaviorArray value="Cauterize"/>
+    </CItem>
+    <CItemEffectInstant id="Stave0" parent="DefaultItemUpgradeable">
+        <EquipBehaviorArray value="SoulReaperSource"/>
+        <EquipBehaviorArray value="SoulReaperReady"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="11500"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Tome0" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="BlastWaveSource"/>
+    </CItemEffectInstant>
+    <CItemAbil id="VexStone">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="VexStone"/>
+        <Abil value="TauntMountainGiant"/>
+    </CItemAbil>
+    <CItemEffectTarget id="WispSummon" parent="CONTAINER">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Permanent"/>
+        <Effect value="WispSummonSwitch"/>
+        <EffectCost>
+            <Charge Link="Item/SummonPeasants"/>
+            <Cooldown Link="Item/SummonPeasants" TimeUse="60"/>
+        </EffectCost>
+        <Range value="500"/>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectTarget>
+    <CItem id="SiegebreakerAura">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="SiegebreakerAuraSource"/>
+    </CItem>
+    <CItemAbil id="WingedBoots">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="WingedBoots"/>
+        <Abil value="BlinkDagger"/>
+    </CItemAbil>
+    <CItemEffectInstant id="HealthStone">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <EquipBehaviorArray value="HealthStone"/>
+        <Effect value="HealthStoneSetUse"/>
+        <EffectCost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+            </Charge>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="RingWhite3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="RingWhite3"/>
+        <EquipBehaviorArray value="DiamondSkin"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="RingWhite2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="DazzleSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RingWhite1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="CrystallineEdge"/>
+    </CItemEffectInstant>
+    <CItem id="TalismanofExperience">
+        <EquipBehaviorArray value="TalismanofExperience"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItemEffectInstant id="MajorHealingPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="MajorHealingPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RuneFragment">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="RuneFragmentSetUse"/>
+        <EffectCost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+            </Charge>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemAbil id="SunstridersLongbow">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="SunstridersLongbow"/>
+        <Abil value="BlinkDagger"/>
+        <Flags index="DropOnDeath" value="1"/>
+    </CItemAbil>
+    <CItemEffectInstant id="EyeofSargeras">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="EyeofSargeras"/>
+        <Effect value="EyeofSargerasSetUse"/>
+        <EffectCost>
+            <Cooldown TimeStart="300" TimeUse="300"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemAbil id="FelCrystal">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Abil value="FelGeyserItem"/>
+    </CItemAbil>
+    <CItemEffectInstant id="CrownofLordaeron">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="CrownofLordaeron"/>
+        <Effect value="CrownofLordaeronSetUse"/>
+        <EffectCost>
+            <Cooldown TimeUse="120"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="Jinrohk">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="Jinrohk"/>
+        <EquipBehaviorArray value="EnrageSource"/>
+    </CItem>
+    <CItemAbil id="LunarShard">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Requirements value="HasMoonbeam"/>
+        <Abil value="LunarStrikeItem"/>
+    </CItemAbil>
+    <CItemEffectInstant id="ScytheofElune">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="ScytheofElune"/>
+        <Effect value="ScytheofEluneSetUse"/>
+        <EffectCost>
+            <Cooldown TimeUse="120"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemAbil id="Felomelorn">
+        <Flags index="DropOnDeath" value="1"/>
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="Felomelorn"/>
+        <Abil value="FireboltItem"/>
+    </CItemAbil>
+    <CItemEffectInstant id="ScrollofMana">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ScrollofManaSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ScrollofProtection">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ScrollofProtectionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ScrollofReplenishment">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ScrollofReplenishmentSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ScrollofSpeed">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ScrollofSpeedSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ScrolloftheBeast">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ScrolloftheBeastSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemAbil id="ScrollofHealing">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="ConsumableLoot"/>
+    </CItemAbil>
+    <CItem id="WarsongBattleDrums">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="WarsongBattleDrums"/>
+        <EquipBehaviorArray value="CommandAura1Source"/>
+    </CItem>
+    <CItem id="ScourgeBoneChimes">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="ScourgeBoneChimes"/>
+        <EquipBehaviorArray value="VampiricAura1Source"/>
+    </CItem>
+    <CItem id="RobeoftheMagi">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="RobeoftheMagi"/>
+    </CItem>
+    <CItem id="MedallionofCourage">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="MedallionofCourage"/>
+    </CItem>
+    <CItem id="LionHornofStormwind">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="LionHornofStormwind"/>
+        <EquipBehaviorArray value="DevotionAura1Source"/>
+    </CItem>
+    <CItem id="LegionDoomHorn">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="LegionDoomHorn"/>
+        <EquipBehaviorArray value="UnholyAura1Source"/>
+    </CItem>
+    <CItem id="KhadgarsPipeofInsight">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="KhadgarsPipeofInsight"/>
+        <EquipBehaviorArray value="BrillianceAura1Source"/>
+    </CItem>
+    <CItem id="HoodofCunning">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="HoodofCunning"/>
+    </CItem>
+    <CItem id="HelmofValor">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="HelmofValor"/>
+    </CItem>
+    <CItem id="CloakofFlames">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="CloakofFlames"/>
+        <EquipBehaviorArray value="PermanentImmolationSource"/>
+    </CItem>
+    <CItem id="BootsofQuelthalas">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="BootsofQuelthalas"/>
+    </CItem>
+    <CItem id="BeltofGiantStrength">
+        <Class value="PermanentLoot"/>
+        <EquipBehaviorArray value="BeltofGiantStrength"/>
+    </CItem>
+    <CItem id="Scourgestone">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="Scourgestone"/>
+    </CItem>
+    <CItemEffectInstant id="IceShard">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="IceShardSetUse"/>
+        <EffectCost>
+            <Charge CountMax="1" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ManaStone">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <EquipBehaviorArray value="ManaStone"/>
+        <Effect value="ManaStoneSetUse"/>
+        <EffectCost>
+            <Charge>
+                <CountMax value="1"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <HideCount value="1"/>
+            </Charge>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="MantleofIntelligence">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="MantleofIntelligence"/>
+    </CItem>
+    <CItem id="AlleriasFlute">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="AlleriasFlute"/>
+        <EquipBehaviorArray value="TrueshotAura1Source"/>
+    </CItem>
+    <CItem id="AncientJanggo">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="AncientJanggo"/>
+        <EquipBehaviorArray value="EnduranceAura1Source"/>
+    </CItem>
+    <CItem id="Sunstone">
+        <EquipBehaviorArray value="Sunstone"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="CircletofNobility">
+        <EquipBehaviorArray value="CircletofNobility"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItemEffectInstant id="CrystalShards">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="CrystalShardsSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="LiferootExtract">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="ConsumableLoot"/>
+        <Effect value="LiferootExtractSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="GauntletsofOgreStrength">
+        <EquipBehaviorArray value="GauntletsofOgreStrength"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItemEffectInstant id="ElixirofGiantGrowth">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="ConsumableLoot"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Effect value="ElixirofGiantGrowthSetUse"/>
+        <Requirements value="NoElixirofGiantGrowth"/>
+    </CItemEffectInstant>
+    <CItem id="PowerCoreItem">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="PowerCoreItem"/>
+    </CItem>
+    <CItemAbil id="ShopDummy">
+        <Class value="Permanent"/>
+        <Abil value="CarrierHangar"/>
+    </CItemAbil>
+    <CItemEffectInstant id="RingGreen1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SwiftResolveSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RingBlue2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="RisingPowerSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="RingBlue3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="RingBlue3"/>
+        <EquipBehaviorArray value="PowerOverwhelmingSource"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="RingPurple1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="WeaknessSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RingGreen2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="IntimidationSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RingPurple2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="CorpseExplosionSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="RingGreen3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="RingGreen3"/>
+        <EquipBehaviorArray value="BashNeutral"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="RingRed1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="EnrageSource"/>
+    </CItemEffectInstant>
+    <CItem id="RingPurple3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="RingPurple3"/>
+        <EquipBehaviorArray value="BlightAuraSource"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="RingRed2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SecondWindSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="RingBlue1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="TorrentSource"/>
+    </CItemEffectInstant>
+    <CItem id="RingRed3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="RingRed3"/>
+        <EquipBehaviorArray value="RelentlessSource"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItem id="FieryWarAxe">
+        <Class value="Permanent"/>
+        <EquipBehaviorArray value="FieryWarAxe"/>
+    </CItem>
+    <CItemAbil id="WandofIllusion">
+        <Class value="ConsumableLoot"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+    </CItemAbil>
+    <CItemAbil id="CrystalBall">
+        <EquipBehaviorArray value="CrystalBall"/>
+        <Class value="Permanent"/>
+    </CItemAbil>
+    <CItem id="EmberstoneStaff">
+        <EquipBehaviorArray value="EmberstoneStaff"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItemAbil id="StaffofTeleportation">
+        <EquipBehaviorArray value="StaffofTeleportation"/>
+        <Class value="Permanent"/>
+    </CItemAbil>
+    <CItem id="BootsofSpeed">
+        <EquipBehaviorArray value="BootsofSpeed"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="SobiMask">
+        <EquipBehaviorArray value="SobiMask"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="RunedBracers">
+        <EquipBehaviorArray value="RunedBracers"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="RingofProtection">
+        <EquipBehaviorArray value="RingofProtection"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="PendantofMana">
+        <EquipBehaviorArray value="PendantofMana"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="GemofHealth">
+        <EquipBehaviorArray value="GemofHealth"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="RingofRegeneration">
+        <EquipBehaviorArray value="RingofRegeneration"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="GlovesofHaste">
+        <EquipBehaviorArray value="GlovesofHaste"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItem id="ClawsofAttack">
+        <EquipBehaviorArray value="ClawsofAttack"/>
+        <Class value="Permanent"/>
+    </CItem>
+    <CItemEffectInstant id="VampiricPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="VampiricPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Requirements value="NoVampiricPotion"/>
+    </CItemEffectInstant>
+    <CItemAbil id="BlinkDagger">
+        <EquipBehaviorArray value="BlinkDagger"/>
+        <Class value="Permanent"/>
+    </CItemAbil>
+    <CItemEffectInstant id="Buckler1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="11000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="ShieldSpike"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EnergyTonic">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="EnergyTonicSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="GreaterEnergyTonic">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="GreaterEnergyTonicSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="DrumsofBattle">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Effect value="DrumsofBattleSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Requirements value="NoDrumsofBattle"/>
+        <Class value="ConsumableLoot"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="SwiftnessPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="SwiftnessPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Requirements value="NoSwiftnessPotion"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="InvisibilityPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Class value="ConsumableLoot"/>
+        <Effect value="InvisibilityPotionSetUse"/>
+        <Requirements value="NoInvisibility"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="ClarityPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="ClarityPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="AntiMagicPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="AntiMagicPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+        <Requirements value="NoAntiMagicPotion"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Tome1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="64000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SurgeofPowerSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Stave1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="56000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SoulReaperSource"/>
+        <EquipBehaviorArray value="SoulReaperReady"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Leather2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="56000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="CelerityAuraSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Leather3">
+        <EquipBehaviorArray value="Leather3"/>
+        <EquipBehaviorArray value="TreacherousAuraSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="HealingPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="HealingPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Grimoire1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="70000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="FingerofDeathSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Buckler2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="66000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="ShieldBash"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Buckler3">
+        <EquipBehaviorArray value="Buckler3"/>
+        <EquipBehaviorArray value="BurningAuraSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="OilofImmolation">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="ConsumableLoot"/>
+        <Requirements value="NoOilofImmolation"/>
+        <Effect value="OilofImmolationSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="3" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="GreaterHealingPotion">
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="GreaterHealingPotionSetUse"/>
+        <EffectCost>
+            <Charge CountMax="20" CountStart="1" CountUse="1"/>
+            <Cooldown Location="Unit" TimeUse="1"/>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Leather1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="11000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="GraceAuraSource"/>
+    </CItemEffectInstant>
+    <CItem id="Stave2">
+        <EquipBehaviorArray value="Stave2"/>
+        <EquipBehaviorArray value="SoulReaperSource"/>
+        <EquipBehaviorArray value="SoulReaperReady"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItem id="Tome2">
+        <EquipBehaviorArray value="Tome2"/>
+        <EquipBehaviorArray value="ErosionSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Trident1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="13500"/>
+        </EffectCost>
+        <EquipBehaviorArray value="OverflowSource"/>
+    </CItemEffectInstant>
+    <CItem id="Grimoire2">
+        <EquipBehaviorArray value="Grimoire2"/>
+        <EquipBehaviorArray value="EchoofMedivhSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Spear1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="EnvenomSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Cloth1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="10000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="HasteAuraSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Arrow2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="70000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="MarkedforDeathSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Arrow3">
+        <EquipBehaviorArray value="Arrow3"/>
+        <EquipBehaviorArray value="ConcentrationSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Cloth2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="50000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="ClarityAuraSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Cloth3">
+        <EquipBehaviorArray value="Cloth3"/>
+        <EquipBehaviorArray value="AlacrityAuraSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Plating1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="10000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="ShieldBlock"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Sword2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="50000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="InquisitionSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Sword3">
+        <EquipBehaviorArray value="Sword3"/>
+        <EquipBehaviorArray value="EyeforanEyeSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Arrow1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="14000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="SlowingPoisonSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Plating2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="50000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="CleansingAura"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Plating3">
+        <EquipBehaviorArray value="Plating3"/>
+        <EquipBehaviorArray value="VitalityAuraSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Spear2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="PiercingStrikes"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Spear3">
+        <EquipBehaviorArray value="Spear3"/>
+        <EquipBehaviorArray value="ViciousStrikesSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Trident2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="64000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="IcyVeinsSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Trident3">
+        <EquipBehaviorArray value="Trident3"/>
+        <EquipBehaviorArray value="SiphonEssenceSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Barrier2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="68000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="OppressionAuraSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Barrier3">
+        <EquipBehaviorArray value="Barrier3"/>
+        <EquipBehaviorArray value="MaliceAuraSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemEffectInstant id="Axe1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="14000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="BloodFurySource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Barrier1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="14000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="Contamination"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Sword1" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="17500"/>
+        </EffectCost>
+        <EquipBehaviorArray value="JudgementSource"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Axe2" parent="DefaultItemUpgradeable">
+        <EffectCost>
+            <Resource index="Terrazine" value="70000"/>
+        </EffectCost>
+        <EquipBehaviorArray value="BloodlustProcSource"/>
+        <Class value="UpgradeableBlue"/>
+    </CItemEffectInstant>
+    <CItem id="Axe3">
+        <EquipBehaviorArray value="Axe3"/>
+        <EquipBehaviorArray value="MeatCleaverSource"/>
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+    </CItem>
+    <CItemAbil id="RodofNecromancy">
+        <Class value="ConsumableLoot"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+    </CItemAbil>
+    <CItemAbil id="WandofManaStealing">
+        <Class value="ConsumableLoot"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+    </CItemAbil>
+    <CItemAbil id="WandofLightningShield">
+        <Class value="ConsumableLoot"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+    </CItemAbil>
+    <CItemEffectTarget id="AcolyteSummon" parent="CONTAINER">
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Permanent"/>
+        <Effect value="AcolyteSummonSwitch"/>
+        <EffectCost>
+            <Charge Link="Item/SummonPeasants"/>
+            <Cooldown Link="Item/SummonPeasants" TimeUse="60"/>
+        </EffectCost>
+        <Range value="500"/>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectTarget>
+    <CItemEffectInstant id="Staff0" parent="DefaultItemUpgradeable">
+        <EquipBehaviorArray value="SummonedFrostArmor"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="12000"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="OrbofFire">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <EquipBehaviorArray value="OrbofFire"/>
+    </CItem>
+    <CItem id="Staff2">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+        <EquipBehaviorArray value="Staff2"/>
+        <EquipBehaviorArray value="SummonedEnchant"/>
+    </CItem>
+    <CItemEffectInstant id="Staff1" parent="DefaultItemUpgradeable">
+        <Class value="UpgradeableBlue"/>
+        <EquipBehaviorArray value="SummonedInnerFire"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="60000"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="EssenceofSapphiron">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="SapphironSetPrepare"/>
+        <EffectCost>
+            <Cooldown>
+                <Link value="Item/Boss"/>
+                <Location value="Global"/>
+                <TimeStart value="300"/>
+                <TimeUse value="300"/>
+            </Cooldown>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="VoidFragment1">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="VoidFragment1"/>
+    </CItem>
+    <CItemEffectInstant id="PatchwerksSinew">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="PatchwerksSinewSetUse"/>
+        <EffectCost>
+            <Cooldown>
+                <Link value="Item/Boss"/>
+                <Location value="Global"/>
+                <TimeStart value="300"/>
+                <TimeUse value="300"/>
+            </Cooldown>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItem id="VoidFragment2">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="VoidFragment2"/>
+    </CItem>
+    <CItem id="VoidFragment3">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="VoidFragment3"/>
+    </CItem>
+    <CItem id="VoidFragment4">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <EquipBehaviorArray value="VoidFragment4"/>
+    </CItem>
+    <CItemEffectInstant id="VoidStone">
+        <Flags index="DropOnDeath" value="1"/>
+        <Flags index="KillWhenDepleted" value="1"/>
+        <Class value="Consumable"/>
+        <Effect value="VoidStoneSetUse"/>
+        <EffectCost>
+            <Cooldown>
+                <Link value="Item/Boss"/>
+                <Location value="Global"/>
+                <TimeStart value="420"/>
+                <TimeUse value="420"/>
+            </Cooldown>
+        </EffectCost>
+        <EffectFlags index="Transient" value="1"/>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Claw1" parent="DefaultItemUpgradeable">
+        <EquipBehaviorArray value="BloodFurySource"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="14000"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItemEffectInstant id="Claw2" parent="DefaultItemUpgradeable">
+        <Class value="UpgradeableBlue"/>
+        <EquipBehaviorArray value="BloodlustProcSource"/>
+        <EffectCost>
+            <Resource index="Terrazine" value="70000"/>
+        </EffectCost>
+    </CItemEffectInstant>
+    <CItem id="Claw3">
+        <Flags index="EnabledWhileDead" value="1"/>
+        <Class value="PermanentEpic"/>
+        <EquipBehaviorArray value="Claw3"/>
+        <EquipBehaviorArray value="EnchantSource"/>
+    </CItem>
+    <CItemAbil id="InventoryBreaker">
+        <Face value="WispSummon"/>
+        <Flags index="CanDrop" value="0"/>
+        <Class value="Permanent"/>
+        <Container value="WispSummon2"/>
+        <Abil value="CarrierHangar"/>
+    </CItemAbil>
+</Catalog>

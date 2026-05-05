@@ -1,0 +1,796 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83"
+include "Lib93689751"
+include "LibA91AB5FF_h"
+
+include "Lib0E85F508_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Glyphs
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib0E85F508_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib93689751_InitVariables();
+    libA91AB5FF_InitVariables();
+}
+
+// Variable Initialization
+bool lib0E85F508_InitVariables_completed = false;
+
+void lib0E85F508_InitVariables () {
+    if (lib0E85F508_InitVariables_completed) {
+        return;
+    }
+
+    lib0E85F508_InitVariables_completed = true;
+
+    lib0E85F508_gv_glyphFooter = (StringExternal("Param/Value/lib_0E85F508_8F6A4DC4") + StringExternal("Param/Value/lib_0E85F508_B275447E") + IntToText(180) + StringExternal("Param/Value/lib_0E85F508_7DD2F080"));
+}
+
+// Functions
+void lib0E85F508_gf_ApplyGlyphPassive (int lp_player, string lp_button, string lp_behavior) {
+    // Variable Declarations
+    const string lv_button = "GlyphButton";
+
+    // Automatic Variable Declarations
+    unitgroup autoAFD8DA09_g;
+    int autoAFD8DA09_u;
+    unit autoAFD8DA09_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphAlly", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphArea", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphEnemy", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphInstant", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphPassive", 1);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0));
+    if ((lp_behavior != null)) {
+        autoAFD8DA09_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+        autoAFD8DA09_u = UnitGroupCount(autoAFD8DA09_g, c_unitCountAll);
+        for (;; autoAFD8DA09_u -= 1) {
+            autoAFD8DA09_var = UnitGroupUnitFromEnd(autoAFD8DA09_g, autoAFD8DA09_u);
+            if (autoAFD8DA09_var == null) { break; }
+            UnitBehaviorRemoveCategory(autoAFD8DA09_var, c_unitBehaviorFlagUser2);
+            UnitBehaviorAdd(autoAFD8DA09_var, ((lp_button)), autoAFD8DA09_var, 1);
+            libA91AB5FF_gf_StarlightStatsUpdate(autoAFD8DA09_var);
+        }
+    }
+
+}
+
+void lib0E85F508_gf_ApplyGlyphArea (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount, fixed lp_radius) {
+    // Variable Declarations
+    const string lv_button = "GlyphButton";
+    const string lv_ability = "GlyphArea";
+    const string lv_abilityStructure = "GlyphAreaStructure";
+
+    // Automatic Variable Declarations
+    unitgroup autoEFF32CBC_g;
+    int autoEFF32CBC_u;
+    unit autoEFF32CBC_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphAlly", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphArea", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphEnemy", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphInstant", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphPassive", 0);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Name", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Range[" + IntToString(0) + "]", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "AutoCastRange", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Range[" + IntToString(0) + "]", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "AutoCastRange", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogEffect, "GlyphAreaSearch", "AreaArray[" + IntToString(0) + "].Radius", lp_player, FixedToString(lp_radius, c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, lv_ability, "EffectArray[" + IntToString(0) + "]", lp_player, ((lp_ability) + "SetCast"));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    if ((lp_chargeCount > 1)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(1));
+    }
+    if ((lp_behavior != null)) {
+        autoEFF32CBC_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+        autoEFF32CBC_u = UnitGroupCount(autoEFF32CBC_g, c_unitCountAll);
+        for (;; autoEFF32CBC_u -= 1) {
+            autoEFF32CBC_var = UnitGroupUnitFromEnd(autoEFF32CBC_g, autoEFF32CBC_u);
+            if (autoEFF32CBC_var == null) { break; }
+            UnitBehaviorRemoveCategory(autoEFF32CBC_var, c_unitBehaviorFlagUser2);
+            UnitBehaviorAdd(autoEFF32CBC_var, ((lp_button)), autoEFF32CBC_var, 1);
+            libA91AB5FF_gf_StarlightStatsUpdate(autoEFF32CBC_var);
+        }
+    }
+
+}
+
+void lib0E85F508_gf_ApplyGlyphEnemy (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount) {
+    // Variable Declarations
+    const string lv_button = "GlyphButton";
+    const string lv_ability = "GlyphEnemy";
+    const string lv_abilityStructure = "GlyphEnemyStructure";
+
+    // Automatic Variable Declarations
+    unitgroup auto42A3BA98_g;
+    int auto42A3BA98_u;
+    unit auto42A3BA98_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphAlly", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphArea", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphEnemy", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphInstant", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphPassive", 0);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Name", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Range[" + IntToString(0) + "]", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "AutoCastRange", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Range[" + IntToString(0) + "]", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "AutoCastRange", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogEffect, lv_ability, "EffectArray[" + IntToString(0) + "]", lp_player, ((lp_ability) + "SetCast"));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    if ((lp_chargeCount > 1)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(1));
+    }
+    if ((lp_behavior != null)) {
+        auto42A3BA98_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+        auto42A3BA98_u = UnitGroupCount(auto42A3BA98_g, c_unitCountAll);
+        for (;; auto42A3BA98_u -= 1) {
+            auto42A3BA98_var = UnitGroupUnitFromEnd(auto42A3BA98_g, auto42A3BA98_u);
+            if (auto42A3BA98_var == null) { break; }
+            UnitBehaviorRemoveCategory(auto42A3BA98_var, c_unitBehaviorFlagUser2);
+            UnitBehaviorAdd(auto42A3BA98_var, ((lp_button)), auto42A3BA98_var, 1);
+            libA91AB5FF_gf_StarlightStatsUpdate(auto42A3BA98_var);
+        }
+    }
+
+}
+
+void lib0E85F508_gf_ApplyGlyphAlly (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount) {
+    // Variable Declarations
+    const string lv_button = "GlyphButton";
+    const string lv_ability = "GlyphAlly";
+    const string lv_abilityStructure = "GlyphAllyStructure";
+
+    // Automatic Variable Declarations
+    unitgroup auto5B57A6CA_g;
+    int auto5B57A6CA_u;
+    unit auto5B57A6CA_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphAlly", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphArea", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphEnemy", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphInstant", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphPassive", 0);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Name", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Range[" + IntToString(0) + "]", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "AutoCastRange", lp_player, CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Range[" + IntToString(0) + "]", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "AutoCastRange", lp_player, IntToString(libNtve_gf_ArithmeticIntClamp(CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", 0), 32, 500)));
+    CatalogFieldValueSet(c_gameCatalogEffect, lv_ability, "EffectArray[" + IntToString(0) + "]", lp_player, ((lp_ability) + "SetCast"));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_abilityStructure, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    if ((lp_chargeCount > 1)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(1));
+    }
+    if ((lp_behavior != null)) {
+        auto5B57A6CA_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+        auto5B57A6CA_u = UnitGroupCount(auto5B57A6CA_g, c_unitCountAll);
+        for (;; auto5B57A6CA_u -= 1) {
+            auto5B57A6CA_var = UnitGroupUnitFromEnd(auto5B57A6CA_g, auto5B57A6CA_u);
+            if (auto5B57A6CA_var == null) { break; }
+            UnitBehaviorRemoveCategory(auto5B57A6CA_var, c_unitBehaviorFlagUser2);
+            UnitBehaviorAdd(auto5B57A6CA_var, ((lp_button)), auto5B57A6CA_var, 1);
+            libA91AB5FF_gf_StarlightStatsUpdate(auto5B57A6CA_var);
+        }
+    }
+
+}
+
+void lib0E85F508_gf_ApplyGlyphInstant (int lp_player, string lp_button, string lp_behavior, string lp_ability, int lp_cooldown, int lp_chargeCount) {
+    // Variable Declarations
+    const string lv_button = "GlyphButton";
+    const string lv_ability = "GlyphInstant";
+
+    // Automatic Variable Declarations
+    unitgroup auto6C2DC680_g;
+    int auto6C2DC680_u;
+    unit auto6C2DC680_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphAlly", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphArea", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphEnemy", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphInstant", 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlyphPassive", 0);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_ability, "Name", 0));
+    CatalogFieldValueSet(c_gameCatalogEffect, lv_ability, "EffectArray[" + IntToString(0) + "]", lp_player, ((lp_ability) + "SetCast"));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", lp_player, IntToString(lp_cooldown));
+    CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.CountMax", lp_player, IntToString(lp_chargeCount));
+    if ((lp_chargeCount > 1)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogAbil, lv_ability, "Cost[" + IntToString(0) + "].Charge.HideCount", lp_player, IntToString(1));
+    }
+    if ((lp_behavior != null)) {
+        auto6C2DC680_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)) | (1 << (c_targetFilterSummoned - 32))), 0);
+        auto6C2DC680_u = UnitGroupCount(auto6C2DC680_g, c_unitCountAll);
+        for (;; auto6C2DC680_u -= 1) {
+            auto6C2DC680_var = UnitGroupUnitFromEnd(auto6C2DC680_g, auto6C2DC680_u);
+            if (auto6C2DC680_var == null) { break; }
+            UnitBehaviorRemoveCategory(auto6C2DC680_var, c_unitBehaviorFlagUser2);
+            UnitBehaviorAdd(auto6C2DC680_var, ((lp_button)), auto6C2DC680_var, 1);
+            libA91AB5FF_gf_StarlightStatsUpdate(auto6C2DC680_var);
+        }
+    }
+
+}
+
+void lib0E85F508_gf_GlyphSet0 (int lp_player) {
+    // Automatic Variable Declarations
+    int auto3D6A24C6_val;
+
+    // Implementation
+    auto3D6A24C6_val = TechTreeUpgradeCount(lp_player, "StarlightRewardCurrent", c_techCountCompleteOnly);
+    if (auto3D6A24C6_val == 0) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "AegisGlyph", "AegisGlyph");
+    }
+    else if (auto3D6A24C6_val == 1) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "HolyGlyph", "HolyGlyph");
+    }
+    else if (auto3D6A24C6_val == 2) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "RetributionGlyph", "RetributionGlyph");
+    }
+    else if (auto3D6A24C6_val == 3) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "ArmsGlyph", "ArmsGlyph");
+    }
+    else if (auto3D6A24C6_val == 4) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "FuryGlyph", "FuryGlyph");
+    }
+    else if (auto3D6A24C6_val == 5) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "ProtectionGlyph", "ProtectionGlyph", "TauntMountainGiant", 5, 1);
+    }
+    else if (auto3D6A24C6_val == 6) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "FireGlyph", "FireGlyph", "Spellsteal", 15, 2);
+    }
+    else if (auto3D6A24C6_val == 7) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "FrostGlyph", "FrostGlyph", "MassSlow", 30, 1, 2.0);
+    }
+    else if (auto3D6A24C6_val == 8) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "ArcaneGlyph", "ArcaneGlyph", "Invisibility", 30, 1);
+    }
+    else if (auto3D6A24C6_val == 9) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "AssassinationGlyph", "AssassinationGlyph", "Paralysis", 15, 1);
+    }
+    else if (auto3D6A24C6_val == 10) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "CombatGlyph", "CombatGlyph");
+    }
+    else if (auto3D6A24C6_val == 11) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "SubtletyGlyph", "SubtletyGlyph");
+    }
+    else if (auto3D6A24C6_val == 12) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "AfflictionGlyph", "AfflictionGlyph", "Cripple", 30, 1);
+    }
+    else if (auto3D6A24C6_val == 13) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "DemonGlyph", "DemonGlyph");
+    }
+    else if (auto3D6A24C6_val == 14) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "DestructionGlyph", "DestructionGlyph", "Firebolt", 20, 1);
+    }
+    else if (auto3D6A24C6_val == 15) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "MarksmanshipGlyph", "MarksmanshipGlyph", "CobraShotNeutral", 75, 2, 2.0);
+    }
+    else if (auto3D6A24C6_val == 16) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "BestialGlyph", "BestialGlyph");
+    }
+    else if (auto3D6A24C6_val == 17) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "SurvivalGlyph", "SurvivalGlyph", "StasisTrap", 20, 3, 2.5);
+    }
+    else if (auto3D6A24C6_val == 18) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "DisciplineGlyph", "DisciplineGlyph", "Safeguard", 20, 1);
+    }
+    else if (auto3D6A24C6_val == 19) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "LifeGlyph", "LifeGlyph");
+    }
+    else if (auto3D6A24C6_val == 20) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "ShadowGlyph", "ShadowGlyph");
+    }
+    else if (auto3D6A24C6_val == 21) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "ElementalGlyph", "ElementalGlyph", "Purge", 10, 2);
+    }
+    else if (auto3D6A24C6_val == 22) {
+        lib0E85F508_gf_ApplyGlyphPassive(lp_player, "EnhancementGlyph", "EnhancementGlyph");
+    }
+    else if (auto3D6A24C6_val == 23) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "RestorationGlyph", "RestorationGlyph", "DispelMagic", 20, 2, 2.0);
+    }
+    else if (auto3D6A24C6_val == 24) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "FeralGlyph", "FeralGlyph", "PhaseShiftWar3", 12, 1);
+    }
+    else if (auto3D6A24C6_val == 25) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "BalanceGlyph", "BalanceGlyph", "Cyclone", 35, 1);
+    }
+    else if (auto3D6A24C6_val == 26) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "NatureGlyph", "NatureGlyph", "FaerieFire", 5, 1);
+    }
+    else if (auto3D6A24C6_val == 27) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "RimeGlyph", "RimeGlyph", "Cloud", 20, 1, 3.0);
+    }
+    else if (auto3D6A24C6_val == 28) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "BloodGlyph", "BloodGlyph", "Grip", 10, 1);
+    }
+    else if (auto3D6A24C6_val == 29) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "UnholyGlyph", "UnholyGlyph", "DeathSiphon", 60, 2);
+    }
+    else {
+    }
+}
+
+void lib0E85F508_gf_GlyphSet1 (int lp_player) {
+    // Automatic Variable Declarations
+    int autoD45C8690_val;
+
+    // Implementation
+    autoD45C8690_val = TechTreeUpgradeCount(lp_player, "StarlightRewardCurrent", c_techCountCompleteOnly);
+    if (autoD45C8690_val == 0) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "EnsnareWar3", null, "EnsnareWar3", 10, 1);
+    }
+    else if (autoD45C8690_val == 1) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "TauntMountainGiant", null, "TauntMountainGiant", 10, 1);
+    }
+    else if (autoD45C8690_val == 2) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Grip", null, "Grip", 30, 1);
+    }
+    else if (autoD45C8690_val == 3) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "AbolishMagic", null, "AbolishMagic", 5, 1);
+    }
+    else if (autoD45C8690_val == 4) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Purge", null, "Purge", 10, 1);
+    }
+    else if (autoD45C8690_val == 5) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "DispelMagic", null, "DispelMagic", 20, 1, 2.0);
+    }
+    else if (autoD45C8690_val == 6) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "Cloud", null, "Cloud", 20, 1, 3.0);
+    }
+    else if (autoD45C8690_val == 7) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "Dislocate", null, "Dislocate", 15, 1);
+    }
+    else if (autoD45C8690_val == 8) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "Safeguard", null, "Safeguard", 45, 1);
+    }
+    else if (autoD45C8690_val == 9) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "AntiMagicShell", null, "AntiMagicShell", 15, 1);
+    }
+    else if (autoD45C8690_val == 10) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Curse", null, "Curse", 10, 1);
+    }
+    else if (autoD45C8690_val == 11) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Cripple", null, "Cripple", 25, 1);
+    }
+    else if (autoD45C8690_val == 12) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "FaerieFire", null, "FaerieFire", 10, 1);
+    }
+    else if (autoD45C8690_val == 13) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Cyclone", null, "Cyclone", 25, 1);
+    }
+    else if (autoD45C8690_val == 14) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "Rejuvenation", null, "Rejuvenation", 25, 1);
+    }
+    else if (autoD45C8690_val == 15) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Slow", null, "Slow", 12, 1);
+    }
+    else if (autoD45C8690_val == 16) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "Invisibility", null, "Invisibility", 25, 1);
+    }
+    else if (autoD45C8690_val == 17) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "Riptide", null, "Riptide", 30, 1);
+    }
+    else if (autoD45C8690_val == 18) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "Bloodlust", null, "Bloodlust", 45, 1);
+    }
+    else if (autoD45C8690_val == 19) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "SentryWard", null, "SentryWard", 60, 1, 1.0);
+    }
+    else if (autoD45C8690_val == 20) {
+        lib0E85F508_gf_ApplyGlyphArea(lp_player, "StasisTrap", null, "StasisTrap", 15, 1, 2.5);
+    }
+    else if (autoD45C8690_val == 21) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Weakness", null, "Weakness", 8, 1);
+    }
+    else if (autoD45C8690_val == 22) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "SpiritTouch", null, "SpiritTouch", 15, 1);
+    }
+    else if (autoD45C8690_val == 23) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "DeathSiphon", null, "DeathSiphon", 60, 1);
+    }
+    else if (autoD45C8690_val == 24) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Spellsteal", null, "Spellsteal", 15, 1);
+    }
+    else if (autoD45C8690_val == 25) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Paralysis", null, "Paralysis", 15, 1);
+    }
+    else if (autoD45C8690_val == 26) {
+        lib0E85F508_gf_ApplyGlyphAlly(lp_player, "InnerFire", null, "InnerFire", 15, 1);
+    }
+    else if (autoD45C8690_val == 27) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "Firebolt", null, "Firebolt", 20, 1);
+    }
+    else if (autoD45C8690_val == 28) {
+        lib0E85F508_gf_ApplyGlyphEnemy(lp_player, "FreezeMagic", null, "FreezeMagic", 10, 1);
+    }
+    else if (autoD45C8690_val == 29) {
+        lib0E85F508_gf_ApplyGlyphInstant(lp_player, "Flurry", null, "Flurry", 45, 1);
+    }
+    else {
+    }
+}
+
+void lib0E85F508_gf_AssignGlyphs (int lp_player) {
+    // Automatic Variable Declarations
+    int auto43E5C197_val;
+
+    // Implementation
+    auto43E5C197_val = lib0E85F508_gv_glyphSet;
+    if (auto43E5C197_val == 0) {
+        lib0E85F508_gf_GlyphSet0(lp_player);
+    }
+    else if (auto43E5C197_val == 1) {
+        lib0E85F508_gf_GlyphSet1(lp_player);
+    }
+    else {
+    }
+}
+
+void lib0E85F508_gf_StarlightGlyphsStartDefault (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection) {
+    // Automatic Variable Declarations
+    playergroup auto8AAECE8B_g;
+    int auto8AAECE8B_var;
+
+    // Implementation
+    lib0E85F508_gv_glyphSet = 0;
+    auto8AAECE8B_g = PlayerGroupActive();
+    auto8AAECE8B_var = -1;
+    while (true) {
+        auto8AAECE8B_var = PlayerGroupNextPlayer(auto8AAECE8B_g, auto8AAECE8B_var);
+        if (auto8AAECE8B_var < 0) { break; }
+        lib93689751_gf_StarlightRewardsAdd("AegisGlyph", null, "StarlightRewardLevel2", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAdd("HolyGlyph", null, "StarlightRewardLevel2", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAdd("RetributionGlyph", null, "StarlightRewardLevel4", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAdd("ArmsGlyph", null, "StarlightRewardLevel6", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAdd("FuryGlyph", null, "StarlightRewardLevel8", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ProtectionGlyph", "TauntMountainGiant", null, "StarlightRewardLevel10", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FireGlyph", "Spellsteal", null, "StarlightRewardLevel12", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FrostGlyph", "MassSlow", null, "StarlightRewardLevel14", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ArcaneGlyph", "Invisibility", null, "StarlightRewardLevel16", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("AssassinationGlyph", "Paralysis", null, "StarlightRewardLevel18", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("CombatGlyph", "PiercingStrikesGlyph", null, "StarlightRewardLevel20", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("SubtletyGlyph", "CrystallineEdgeGlyph", null, "StarlightRewardLevel22", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("AfflictionGlyph", "Cripple", null, "StarlightRewardLevel24", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DemonGlyph", "Slow", null, "StarlightRewardLevel26", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DestructionGlyph", "Firebolt", null, "StarlightRewardLevel28", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("MarksmanshipGlyph", "CobraShotNeutral", null, "StarlightRewardLevel30", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BestialGlyph", "SpiritBondGlyph", null, "StarlightRewardLevel32", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("SurvivalGlyph", "StasisTrap", null, "StarlightRewardLevel34", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DisciplineGlyph", "Safeguard", null, "StarlightRewardLevel36", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("LifeGlyph", "Slow", null, "StarlightRewardLevel38", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ShadowGlyph", "VoidResidueGlyph", null, "StarlightRewardLevel40", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ElementalGlyph", "Purge", null, "StarlightRewardLevel42", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("EnhancementGlyph", "Slow", null, "StarlightRewardLevel44", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("RestorationGlyph", "DispelMagic", null, "StarlightRewardLevel46", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FeralGlyph", "PhaseShiftWar3", null, "StarlightRewardLevel48", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BalanceGlyph", "Cyclone", null, "StarlightRewardLevel50", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("NatureGlyph", "FaerieFire", null, "StarlightRewardLevel52", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("RimeGlyph", "Cloud", null, "StarlightRewardLevel54", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BloodGlyph", "Grip", null, "StarlightRewardLevel56", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("UnholyGlyph", "DeathSiphon", null, "StarlightRewardLevel58", auto8AAECE8B_var);
+        lib93689751_gf_StarlightRewards(lp_buttonX, lp_buttonY, lp_buttonAnchor, lp_hotkey, auto8AAECE8B_var, lp_bankSection, (StringExternal("Param/Value/lib_0E85F508_C584D11D") + lib0E85F508_gv_glyphFooter));
+    }
+    TriggerEnable(lib0E85F508_gt_GlyphController, true);
+    TriggerEnable(lib0E85F508_gt_GlyphChange, true);
+    TriggerEnable(lib0E85F508_gt_GlyphSelectEnd, true);
+}
+
+void lib0E85F508_gf_StarlightGlyphsStartDefaultKills (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection) {
+    // Automatic Variable Declarations
+    playergroup autoF9CE9645_g;
+    int autoF9CE9645_var;
+
+    // Implementation
+    lib0E85F508_gv_glyphSet = 0;
+    autoF9CE9645_g = PlayerGroupActive();
+    autoF9CE9645_var = -1;
+    while (true) {
+        autoF9CE9645_var = PlayerGroupNextPlayer(autoF9CE9645_g, autoF9CE9645_var);
+        if (autoF9CE9645_var < 0) { break; }
+        lib93689751_gf_StarlightRewardsAdd("AegisGlyph", null, "StarlightRewardKills05k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAdd("HolyGlyph", null, "StarlightRewardKills05k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAdd("RetributionGlyph", null, "StarlightRewardKills1k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAdd("ArmsGlyph", null, "StarlightRewardKills2k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAdd("FuryGlyph", null, "StarlightRewardKills3k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ProtectionGlyph", "TauntMountainGiant", null, "StarlightRewardKills4k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FireGlyph", "Spellsteal", null, "StarlightRewardKills5k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FrostGlyph", "MassSlow", null, "StarlightRewardKills6k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ArcaneGlyph", "Invisibility", null, "StarlightRewardKills8k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("AssassinationGlyph", "Paralysis", null, "StarlightRewardKills10k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("CombatGlyph", "PiercingStrikesGlyph", null, "StarlightRewardKills14k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("SubtletyGlyph", "CrystallineEdgeGlyph", null, "StarlightRewardKills18k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("AfflictionGlyph", "Cripple", null, "StarlightRewardKills22k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DemonGlyph", "Slow", null, "StarlightRewardKills27k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DestructionGlyph", "Firebolt", null, "StarlightRewardKills32k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("MarksmanshipGlyph", "CobraShotNeutral", null, "StarlightRewardKills38k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BestialGlyph", "SpiritBondGlyph", null, "StarlightRewardKills44k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("SurvivalGlyph", "StasisTrap", null, "StarlightRewardKills50k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("DisciplineGlyph", "Safeguard", null, "StarlightRewardKills60k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("LifeGlyph", "Slow", null, "StarlightRewardKills70k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ShadowGlyph", "VoidResidueGlyph", null, "StarlightRewardKills80k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("ElementalGlyph", "Purge", null, "StarlightRewardKills100k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("EnhancementGlyph", "Slow", null, "StarlightRewardKills125k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("RestorationGlyph", "DispelMagic", null, "StarlightRewardKills150k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("FeralGlyph", "PhaseShiftWar3", null, "StarlightRewardKills175k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BalanceGlyph", "Cyclone", null, "StarlightRewardKills200k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("NatureGlyph", "FaerieFire", null, "StarlightRewardKills225k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("RimeGlyph", "Cloud", null, "StarlightRewardKills250k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("BloodGlyph", "Grip", null, "StarlightRewardKills300k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewardsAddTwinButton("UnholyGlyph", "DeathSiphon", null, "StarlightRewardKills350k", autoF9CE9645_var);
+        lib93689751_gf_StarlightRewards(lp_buttonX, lp_buttonY, lp_buttonAnchor, lp_hotkey, autoF9CE9645_var, lp_bankSection, (StringExternal("Param/Value/lib_0E85F508_0D3FED2D") + lib0E85F508_gv_glyphFooter));
+    }
+    TriggerEnable(lib0E85F508_gt_GlyphController, true);
+    TriggerEnable(lib0E85F508_gt_GlyphChange, true);
+    TriggerEnable(lib0E85F508_gt_GlyphSelectEnd, true);
+}
+
+void lib0E85F508_gf_StarlightGlyphsStartAbilities (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection) {
+    // Automatic Variable Declarations
+    playergroup autoC34626BC_g;
+    int autoC34626BC_var;
+
+    // Implementation
+    lib0E85F508_gv_glyphSet = 1;
+    autoC34626BC_g = PlayerGroupActive();
+    autoC34626BC_var = -1;
+    while (true) {
+        autoC34626BC_var = PlayerGroupNextPlayer(autoC34626BC_g, autoC34626BC_var);
+        if (autoC34626BC_var < 0) { break; }
+        lib93689751_gf_StarlightRewardsAdd("EnsnareWar3", null, "StarlightRewardLevel2", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("TauntMountainGiant", null, "StarlightRewardLevel2", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Grip", null, "StarlightRewardLevel4", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("AbolishMagic", null, "StarlightRewardLevel6", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Purge", null, "StarlightRewardLevel8", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("DispelMagic", null, "StarlightRewardLevel10", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Cloud", null, "StarlightRewardLevel12", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Dislocate", null, "StarlightRewardLevel14", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Safeguard", null, "StarlightRewardLevel16", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("AntiMagicShell", null, "StarlightRewardLevel18", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Curse", null, "StarlightRewardLevel20", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Cripple", null, "StarlightRewardLevel22", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("FaerieFire", null, "StarlightRewardLevel24", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Cyclone", null, "StarlightRewardLevel26", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Cripple", null, "StarlightRewardLevel28", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Slow", null, "StarlightRewardLevel30", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Invisibility", null, "StarlightRewardLevel32", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Riptide", null, "StarlightRewardLevel34", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Bloodlust", null, "StarlightRewardLevel36", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("SentryWard", null, "StarlightRewardLevel38", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("StasisTrap", null, "StarlightRewardLevel40", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Weakness", null, "StarlightRewardLevel42", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("SpiritTouch", null, "StarlightRewardLevel44", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("DeathSiphon", null, "StarlightRewardLevel46", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Spellsteal", null, "StarlightRewardLevel48", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Paralysis", null, "StarlightRewardLevel50", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("InnerFire", null, "StarlightRewardLevel52", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Firebolt", null, "StarlightRewardLevel54", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("FreezeMagic", null, "StarlightRewardLevel56", autoC34626BC_var);
+        lib93689751_gf_StarlightRewardsAdd("Flurry", null, "StarlightRewardLevel58", autoC34626BC_var);
+        lib93689751_gf_StarlightRewards(lp_buttonX, lp_buttonY, lp_buttonAnchor, lp_hotkey, autoC34626BC_var, lp_bankSection, (StringExternal("Param/Value/lib_0E85F508_D4B8710D") + lib0E85F508_gv_glyphFooter));
+    }
+    TriggerEnable(lib0E85F508_gt_GlyphController, true);
+    TriggerEnable(lib0E85F508_gt_GlyphChange, true);
+    TriggerEnable(lib0E85F508_gt_GlyphSelectEnd, true);
+}
+
+void lib0E85F508_gf_StarlightGlyphsStartAbilitiesKills (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, string lp_bankSection) {
+    // Automatic Variable Declarations
+    playergroup auto1510A37D_g;
+    int auto1510A37D_var;
+
+    // Implementation
+    lib0E85F508_gv_glyphSet = 1;
+    auto1510A37D_g = PlayerGroupActive();
+    auto1510A37D_var = -1;
+    while (true) {
+        auto1510A37D_var = PlayerGroupNextPlayer(auto1510A37D_g, auto1510A37D_var);
+        if (auto1510A37D_var < 0) { break; }
+        lib93689751_gf_StarlightRewardsAdd("EnsnareWar3", null, "StarlightRewardKills05k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("TauntMountainGiant", null, "StarlightRewardKills05k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Grip", null, "StarlightRewardKills1k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("AbolishMagic", null, "StarlightRewardKills2k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Purge", null, "StarlightRewardKills4k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("DispelMagic", null, "StarlightRewardKills6k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Cloud", null, "StarlightRewardKills10k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Dislocate", null, "StarlightRewardKills14k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Safeguard", null, "StarlightRewardKills18k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("AntiMagicShell", null, "StarlightRewardKills22k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Curse", null, "StarlightRewardKills27k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Cripple", null, "StarlightRewardKills32k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("FaerieFire", null, "StarlightRewardKills38k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Cyclone", null, "StarlightRewardKills44k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Cripple", null, "StarlightRewardKills50k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Slow", null, "StarlightRewardKills60k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Invisibility", null, "StarlightRewardKills70k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Riptide", null, "StarlightRewardKills80k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Bloodlust", null, "StarlightRewardKills100k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("SentryWard", null, "StarlightRewardKills125k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("StasisTrap", null, "StarlightRewardKills150k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Weakness", null, "StarlightRewardKills175k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("SpiritTouch", null, "StarlightRewardKills200k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("DeathSiphon", null, "StarlightRewardKills225k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Spellsteal", null, "StarlightRewardKills250k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Paralysis", null, "StarlightRewardKills300k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("InnerFire", null, "StarlightRewardKills350k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Firebolt", null, "StarlightRewardKills400k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("FreezeMagic", null, "StarlightRewardKills450k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewardsAdd("Flurry", null, "StarlightRewardKills500k", auto1510A37D_var);
+        lib93689751_gf_StarlightRewards(lp_buttonX, lp_buttonY, lp_buttonAnchor, lp_hotkey, auto1510A37D_var, lp_bankSection, (StringExternal("Param/Value/lib_0E85F508_2F9922F0") + lib0E85F508_gv_glyphFooter));
+    }
+    TriggerEnable(lib0E85F508_gt_GlyphController, true);
+    TriggerEnable(lib0E85F508_gt_GlyphChange, true);
+    TriggerEnable(lib0E85F508_gt_GlyphSelectEnd, true);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Glyph Select End
+//--------------------------------------------------------------------------------------------------
+bool lib0E85F508_gt_GlyphSelectEnd_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto561E598D_g;
+    int auto561E598D_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_sandboxMode == false))) {
+            return false;
+        }
+
+        if (!((GameIsTestMap(false) == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto561E598D_g = PlayerGroupActive();
+    auto561E598D_var = -1;
+    while (true) {
+        auto561E598D_var = PlayerGroupNextPlayer(auto561E598D_g, auto561E598D_var);
+        if (auto561E598D_var < 0) { break; }
+        lib93689751_gf_StarlightRewardsToggle(auto561E598D_var, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib0E85F508_gt_GlyphSelectEnd_Init () {
+    lib0E85F508_gt_GlyphSelectEnd = TriggerCreate("lib0E85F508_gt_GlyphSelectEnd_Func");
+    TriggerEnable(lib0E85F508_gt_GlyphSelectEnd, false);
+    TriggerAddEventTimeElapsed(lib0E85F508_gt_GlyphSelectEnd, 180.0, c_timeReal);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Glyph Controller
+//--------------------------------------------------------------------------------------------------
+bool lib0E85F508_gt_GlyphController_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource)) != 0))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib0E85F508_gf_AssignGlyphs(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib0E85F508_gt_GlyphController_Init () {
+    lib0E85F508_gt_GlyphController = TriggerCreate("lib0E85F508_gt_GlyphController_Func");
+    TriggerEnable(lib0E85F508_gt_GlyphController, false);
+    TriggerAddEventPlayerEffectUsed(lib0E85F508_gt_GlyphController, c_playerAny, "GlyphControllerDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Glyph Change
+//--------------------------------------------------------------------------------------------------
+bool lib0E85F508_gt_GlyphChange_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib0E85F508_gf_AssignGlyphs(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib0E85F508_gt_GlyphChange_Init () {
+    lib0E85F508_gt_GlyphChange = TriggerCreate("lib0E85F508_gt_GlyphChange_Func");
+    TriggerEnable(lib0E85F508_gt_GlyphChange, false);
+    TriggerAddEventPlayerEffectUsed(lib0E85F508_gt_GlyphChange, c_playerAny, "StarlightRewardsChanged");
+}
+
+void lib0E85F508_InitTriggers () {
+    lib0E85F508_gt_GlyphSelectEnd_Init();
+    lib0E85F508_gt_GlyphController_Init();
+    lib0E85F508_gt_GlyphChange_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib0E85F508_InitLib_completed = false;
+
+void lib0E85F508_InitLib () {
+    if (lib0E85F508_InitLib_completed) {
+        return;
+    }
+
+    lib0E85F508_InitLib_completed = true;
+
+    lib0E85F508_InitLibraries();
+    lib0E85F508_InitVariables();
+    lib0E85F508_InitTriggers();
+}
+
+include "LibA91AB5FF"
+

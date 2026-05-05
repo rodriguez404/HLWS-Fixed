@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="UnitStatusFrame" name="HeroStatus">
+        <Height val="300"/>
+        <Width val="70"/>
+
+        <Frame type="Frame" name="AttachPointFrame">
+            <Anchor relative="$parent"/>
+        </Frame>
+
+        <Frame type="UnitStatusEnergyBar" name="EnergyBar">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="15"/>
+            <Anchor side="Left" relative="$parent/AttachPointFrame" pos="Min" offset="-35"/>
+            <Height val="15"/>
+            <Width val="100"/>
+            <Texture val="@UI/HealthBar"/>
+            <OwnerColor val="150,75,220" index="0"/>
+            <ReductionColor val="96,96,96" index="0"/>
+            <ReductionShown val="true" index="0"/>
+            <IncreaseDuration val="0" index="0"/>
+            <DecreaseDuration val="3000" index="0"/>
+            <BarInsetRect top="2" left="2" bottom="2" right="2"/>
+            <BackgroundInsetRect top="1" left="1" bottom="1" right="1"/>
+            <BackgroundShown val="true"/>
+            <BackgroundColor val="0,0,0"/>
+        </Frame>
+
+        <Frame type="UnitStatusHealthBar" name="HealthBar">
+            <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+            <Anchor side="Left" relative="$parent/AttachPointFrame" pos="Min" offset="-35"/>
+            <Height val="15"/>
+            <Width val="100"/>
+            <Texture val="@UI/HealthBar"/>
+            <BarInsetRect top="2" left="2" bottom="2" right="2"/>
+            <BackgroundInsetRect top="1" left="1" bottom="1" right="1"/>
+            <BackgroundShown val="true"/>
+            <BackgroundColor val="0,0,0"/>
+            <OwnerColor val="20,200,0" index="0"/>
+            <ReductionColor val="255,0,0" index="0"/>
+            <ReductionShown val="true" index="0"/>
+            <IncreaseDuration val="0" index="0"/>
+            <DecreaseDuration val="3000" index="0"/>
+        </Frame>
+    </Frame>
+</Desc>

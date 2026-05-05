@@ -1,0 +1,2284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="AbolishMagic">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitDryadPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAbolishMagicQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="Alchemy2">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeAlchemy1QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlchemy2QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="Alchemy3">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeAlchemy2QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlchemy3QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AutobuildWorkerCount">
+        <NodeArray index="Use" Link="LTCountUnitAlias_WorkerCompleteOnlyCountUpgradeAutobuildWorkerCountCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LearnExtendedLevel2">
+        <NodeArray index="Use" Link="AndGTE1511750939CountBehaviorHeroLevelBonusCompleteOnlyAtUnit1GTE570952191CountBehaviorHeroLevelBonusCompleteOnlyAtUnit1"/>
+    </CRequirement>
+    <CRequirement id="LearnExtendedLevel3">
+        <NodeArray index="Use" Link="AndGTE3034648449CountBehaviorHeroLevelBonusCompleteOnlyAtUnit2GTE570952191CountBehaviorHeroLevelBonusCompleteOnlyAtUnit2"/>
+    </CRequirement>
+    <CRequirement id="LifeLeech">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilLifeLeechCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilLifeLeechCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Desecrate">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilDesecrateCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilDesecrateCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Camouflage">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeQuicknessQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCamouflageQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChainLightningRidetheLightning">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeChainLightningRidetheLightningCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ChainLightningRollingThunder">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeChainLightningRollingThunderCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ChainLightningRelentlessStorm">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeChainLightningRelentlessStormCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Earned2000Gold">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarned2000GoldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Earned3000Gold">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarned3000GoldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Earned4000Gold">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarned4000GoldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Earned5000Gold">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarned5000GoldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GlobalUnitPassive">
+        <NodeArray index="Use" Link="CountUpgradeGlobalUnitPassiveCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlobalUnitPassiveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasBlightedGroundBonus">
+        <NodeArray index="Use" Link="CountUpgradeBlightedGroundBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasDesecrateSource">
+        <NodeArray index="Use" Link="CountBehaviorDesecrateSourceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MeleeHeroArmor">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModMeleeHeroArmorCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModMeleeHeroArmorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ResistanceAuraAllies">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilResistanceAuraAlliesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilResistanceAuraAlliesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ToxicAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilToxicAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilToxicAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="EternalVigilanceUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEternalVigilanceCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ArcaneQuiverSpellbow">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitSpellbowPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeArcaneQuiverQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="Contagion">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeDiseaseCloudQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeContagionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EternalVigilance">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeStoneFormQueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEternalVigilanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CamouflageUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCamouflageCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Earned1000Gold">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeEarned1000GoldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasWorkerWander">
+        <NodeArray index="Use" Link="CountUpgradeWorkerWanderCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasAutoreviveBirthUndead">
+        <NodeArray index="Use" Link="CountUpgradeAutoreviveBirthUndeadCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasThrallSpawn">
+        <NodeArray index="Use" Link="CountUnitThrallSpawnCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasJainaSpawn">
+        <NodeArray index="Use" Link="CountUnitJainaSpawnCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasFuryofFrostmourne">
+        <NodeArray index="Use" Link="CountBehaviorFuryofFrostmourneCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FuryofFrostmourneUse">
+        <NodeArray index="Use" Link="CountBehaviorFuryofFrostmourneAttributeCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorFuryofFrostmourneCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasWorkerWanderPriority">
+        <NodeArray index="Use" Link="CountBehaviorWorkerWanderPriorityCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ImpossibleRequirement">
+        <NodeArray index="Use" Link="CountUpgradeImpossibleRequirementCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MutationArea">
+        <NodeArray index="Use" Link="CountUpgradeMutationAreaCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUpgradeMutationAreaCompleteOnlyNotCountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoFireGolem">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotCountUnitFireGolemCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoFuryofFrostmourne">
+        <NodeArray index="Use" Link="NotCountBehaviorFuryofFrostmourneCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasManaShieldPassive">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorManaShieldPassiveCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorManaShieldPassiveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasTier2StructureAnywhere">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoStartingGoldApplied">
+        <NodeArray index="Use" Link="NotCountUpgradeStartingGoldAppliedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnaros">
+        <NodeArray index="Use" Link="NotCountUnitRagnarosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneDoomfire">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneDoomfireCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneFireGolem">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneFireGolemCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneFireWall">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneFireWallCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneFirebomb">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneFirebombCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneLavaSpawn">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneLavaSpawnCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneMeteor">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneMeteorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneSunOrb">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneSunOrbCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRuneVolcano">
+        <NodeArray index="Use" Link="NotCountUpgradeRagnarosRuneVolcanoCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRagnarosRunes">
+        <NodeArray index="Use" Link="NotCountUnitAlias_RagnarosRuneCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoSoulReaperCooldown">
+        <NodeArray index="Use" Link="NotCountBehaviorSoulReaperCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RagnarosRuneMorphLimit">
+        <NodeArray index="Use" Link="LTCountUnitAlias_RagnarosRuneActiveCompleteOnly5"/>
+    </CRequirement>
+    <CRequirement id="Reanimation">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitNecromancerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeReanimationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BrillianceAuraCoop">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBrillianceAuraLeaderCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBrillianceAuraLeaderCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasAutorevive">
+        <NodeArray index="Use" Link="CountBehaviorAutoreviveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Tier2ItemRequirement"/>
+    <CRequirement id="Tier3ItemRequirement"/>
+    <CRequirement id="TrueshotAuraCoop">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilTrueshotAuraLeaderCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilTrueshotAuraLeaderCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UnholyAuraCoop">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilUnholyAuraLeaderCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilUnholyAuraLeaderCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BuildHookHuman">
+        <NodeArray index="Use" Link="CountUpgradeBuildHookRaceHumanCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BuildHookOrc">
+        <NodeArray index="Use" Link="CountUpgradeBuildHookRaceOrcCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BuildHookUndead">
+        <NodeArray index="Use" Link="CountUpgradeBuildHookRaceUndeadCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BuildHookNightElf">
+        <NodeArray index="Use" Link="CountUpgradeBuildHookRaceNightElfCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoHero">
+        <NodeArray index="Use" Link="NotCountUnitAlias_HeroCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ManaBarrier">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitBattlemagePeakCountBehaviorTier2StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeManaBarrierQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LeylineSensitivityUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLeylineSensitivityCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeJainaCommanderCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LeylineSensitivity">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitEnchantressPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLeylineSensitivityQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MightoftheTirisgarde">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMightoftheTirisgardeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BearFormUseNoResearch">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorBearFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ManaConduit">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBattlemagePeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeManaConduitQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ManaConduitUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeManaConduitCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="CripplingAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCripplingAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCripplingAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BloodshardShieldsReady">
+        <NodeArray index="Show" Link="AndCountBehaviorBloodshardShieldsCompleteOnlyAtUnitNotCountBehaviorBloodshardShieldsCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CrowFormUseNoResearch">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorCrowFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="MutationPassive">
+        <NodeArray index="Use" Link="CountUpgradeMutationPassiveCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUpgradeMutationPassiveCompleteOnlyNotCountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoBuildHookRace">
+        <NodeArray index="Use" Link="NotCountUpgradeAlias_BuildHookRaceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoSpawnController">
+        <NodeArray index="Use" Link="NotCountUnitSpawnControllerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoGateDestroyed">
+        <NodeArray index="Use" Link="Not176521390CountBehaviorGateDestroyedCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasGateDestroyed">
+        <NodeArray index="Show" Link="CountBehaviorGateDestroyedCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasSpawnController">
+        <NodeArray index="Use" Link="CountUnitSpawnControllerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PyrocannonLT3">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="LTCountUnitPyrocannonCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="GlyphEnemy">
+        <NodeArray index="Use" Link="CountUpgradeGlyphEnemyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlyphEnemyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GlyphArea">
+        <NodeArray index="Use" Link="CountUpgradeGlyphAreaCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlyphAreaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GlyphAlly">
+        <NodeArray index="Use" Link="CountUpgradeGlyphAllyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlyphAllyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GlyphPassive">
+        <NodeArray index="Use" Link="CountUpgradeGlyphPassiveCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlyphPassiveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GlyphInstant">
+        <NodeArray index="Use" Link="CountUpgradeGlyphInstantCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGlyphInstantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasHero">
+        <NodeArray index="Use" Link="CountUnitAlias_HeroCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasNodeSystem">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeSystemCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasShadowmeldDelay">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorShadowmeldDelayCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorShadowmeldDelayCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ShadeTrainLimit">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="LT263461205CountBehaviorPeriodicSpawningSource2CompleteOnly6"/>
+    </CRequirement>
+    <CRequirement id="ShadeSpawnLimit">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="LT263461205CountUnitShadeWar3QueuedOrBetter6"/>
+    </CRequirement>
+    <CRequirement id="Quickness">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeQuicknessQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="QuicknessUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeQuicknessCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="GreaterInvisibility">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Or4178618436CountUnitSorceressPeakCountUnitSorceressBloodElfPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGreaterInvisibilityQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GreaterInvisibilityUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeGreaterInvisibilityCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="StoneFormUseNoResearch">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorStoneFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Alchemy1">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlchemy1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WispForm">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitNightbladePeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWispFormQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WispFormUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWispFormCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AbsorbManaDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbsorbManaDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NatureResistance">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588Or3745592040CountUnitTreantPeakCountUnitDruidoftheClawPeakCountUnitMountainGiantPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNatureResistanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DeadlyCharge">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilDeadlyChargeCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilDeadlyChargeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ChaplainAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitChaplainPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChaplainAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="Absorption">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilAbsorptionCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilAbsorptionCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ForceofWill">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilForceofWillCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilForceofWillCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasLegendaryArmor">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLegendaryArmorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasLegendaryWeaponry">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLegendaryWeaponryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasPreparationTime">
+        <NodeArray index="Use" Link="CountUpgradeLockControlStartCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MeleeHero">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="Not3611640096CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RemorselessWinter">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilRemorselessWinterCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilRemorselessWinterCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="LegendaryArmor">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedArmor6CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLegendaryArmorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor2">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor3">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor3CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor4">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor4CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor5">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor5CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor6">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor6CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoLegendaryArmor">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeLegendaryArmorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoLegendaryWeaponry">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeLegendaryWeaponryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoRandomAI">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeComputerPlayerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasTier3Structure">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus4">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedArmor3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor4QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus5">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedArmor4CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor5QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus6">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeImprovedArmor5CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor6QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HasTier2Structure">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage1">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage1CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoImprovedArmor1">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeImprovedArmor1CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage2">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage3">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage3CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage4">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage4CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage5">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage5CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoWeaponDamage6">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWeaponDamage6CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RegenerationAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilRegenerationAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilRegenerationAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SgtHammerSiegeMode">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndCountAbilSgtHammerSiegeCompleteOnlyAtUnitNotCountBehaviorSgtHammerSiegeModeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SgtHammerTankMode">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndCountAbilSgtHammerSiegeCompleteOnlyAtUnitCountBehaviorSgtHammerSiegeModeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasGE3ControlPoints">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="GTE3CountUnitAlias_ControlPointCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WarlockAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitWarlockPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWarlockAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WarlockMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWarlockMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HydromancerAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHydromancerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHydromancerAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChaplainMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChaplainMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SirenAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitSirenPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSirenAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HydromancerMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHydromancerMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FelweaverAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitFelweaverPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFelweaverAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SirenMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSirenMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MoonPriestessAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitMoonPriestessPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMoonPriestessAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EnchantressAdeptTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitEnchantressPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnchantressAdeptTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MoonPriestessMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMoonPriestessMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChaplainAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeChaplainAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EnchantressMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnchantressMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FelweaverMasterTraining">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFelweaverMasterTrainingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WarlockAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWarlockAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="WarlockMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWarlockMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HydromancerAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHydromancerAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ChaplainMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeChaplainMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SirenAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSirenAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HydromancerMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHydromancerMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FelweaverAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFelweaverAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SirenMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSirenMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="MoonPriestessAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeMoonPriestessAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EnchantressAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnchantressAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="MoonPriestessMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeMoonPriestessMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BlessedMoonGlaiveUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBlessedMoonGlaiveCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeBlessedMoonGlaiveCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EnchantressMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnchantressMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ClawAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeClawAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FelweaverMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFelweaverMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HasNodeRaceNaga">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeRaceNagaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasNodeRaceNightElf">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeRaceNightElfCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasNodeRaceHuman">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeRaceHumanCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasNodeRaceUndead">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeRaceUndeadCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasNodeRaceOrc">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="CountUpgradeNodeRaceOrcCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ResistanceAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilResistanceAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilResistanceAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ElementalAttendant">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="Not1464592259CountUnitElementalAttendantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PriestAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePriestAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="PriestMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePriestMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Sharpshooter">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSharpshooterCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSharpshooterCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasPermanentInvisibilityActive">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorPermanentInvisibilityCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorPermanentInvisibilityCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HolyAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilHolyAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilHolyAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FeralSpiritLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1075385332CountUpgradeFeralSpiritCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="OrbofAnnihilationDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbsorbManaDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DevourMagicDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDevourMagicDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CallBearLevel3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1021317817CountUpgradeCallBearCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="HawkInvisibilityShow">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE4179958379CountUpgradeCallHawkCompleteOnly2"/>
+        <NodeArray index="Show" Link="LTCountUpgradeCallHawkCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="HawkInvisibilityReady">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorHawkInvisibilityCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CallHawkLevel3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUpgradeCallHawkCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="CallQuilbeastLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1571223178CountUpgradeCallQuilbeastCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="CallBearLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE2451552786CountUpgradeCallBearCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="SoulChargeUse">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GT2177357032CountBehaviorSoulChargeAttributePointCompleteOnlyAtUnit25"/>
+        <NodeArray index="Show" Link="CountAbilSoulChargeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasStormEarthandFireActive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorStormEarthandFireActiveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoCallBear">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotCountUnitCallBearCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoCallHawk">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotCountUnitCallHawkCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ObsidianDestroyerPeriodicSpawning">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDestroyerFormCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUnitAlias_HeroCompleteOnlyCountUpgradePeriodicSpawningCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Incinerate">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilIncinerateCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilIncinerateCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="DrunkenBrawler">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilDrunkenBrawlerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilDrunkenBrawlerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ManaFlareDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeManaFlareDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TauntDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTauntDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FaerieFireDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFaerieFireDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CycloneDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCycloneDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RejuvenationDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeRejuvenationDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BearFormDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBearFormDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RoarDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeRoarDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpiritTouchDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiritTouchDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PossessionDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePossessionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CurseDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCurseDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AntiMagicShellDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAntiMagicShellDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EssenceofBlightDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEssenceofBlightDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RaiseDeadDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeRaiseDeadDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StoneFormDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiritTouchDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AbolishMagicDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbolishMagicDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WarClubDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWarClubDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UnholyFrenzyDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeUnholyFrenzyDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CrippleDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCrippleDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PhaseShiftDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePhaseShiftDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage4">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeWeaponDamage3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage4QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage5">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeWeaponDamage4CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage5QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage6">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeWeaponDamage5CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage6QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LegendaryWeaponry">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeWeaponDamage6CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLegendaryWeaponryQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WebDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWebDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UnstableConcoctionDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeUnstableConcoctionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BansheeMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBansheeMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AerialShacklesDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAerialShacklesDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BerserkDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBerserkDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AncestralSpiritDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAncestralSpiritDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpiritLinkDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiritLinkDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DisenchantDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDisenchantDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StasisTrapDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeStasisTrapDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnsnareWar3Disable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnsnareWar3DisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DispelMagicDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDispelMagicDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DefendDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDefendDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BloodlustDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBloodlustDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PurgeDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePurgeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InnerFireDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeInnerFireDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CloudDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCloudDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LightningShieldDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeLightningShieldDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SlowDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSlowDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PolymorphDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePolymorphDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpellstealDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpellstealDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasAllowMoveWar3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="OrCountBehaviorAllowMoveWar3CompleteOnlyAtUnitNotCountUpgradeLockControlCompleteOnly"/>
+        <NodeArray index="Show" Link="OrCountBehaviorAllowMoveWar3CompleteOnlyAtUnitNotCountUpgradeLockControlCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasLockControl">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLockControlCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeLockControlCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasElunesGrace">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorElunesGraceCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorElunesGraceCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoLockControl">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndNotCountUpgradeLockControlCompleteOnlyNotCountBehaviorAllowMoveWar3CompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeLockControlCompleteOnlyNotCountBehaviorAllowMoveWar3CompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus2">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor2QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus3">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor3QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NoPocketFactory">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotCountUnitPocketFactoryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ControlMagicDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeControlMagicDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HealingWardDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHealingWardDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TemporarilyDisabled">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSJHyperionRepairNotNeededQueuedOnly2264918258"/>
+    </CRequirement>
+    <CRequirement id="Tier2StructureUpgrade">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotOrCountBehaviorTier2StructureCompleteOnlyAtUnitCountUnitTier2UpgradeDummyQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Tier3StructureUpgrade">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="OrCountBehaviorTier2StructureCompleteOnlyAtUnitCountUnitTier2UpgradeDummyQueuedOrBetterAtUnit"/>
+        <NodeArray index="Show" Link="NotOrCountBehaviorTier3StructureCompleteOnlyAtUnitCountUnitTier3UpgradeDummyQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CannibalizeDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCannibalizeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasRandomAI">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeComputerPlayerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage1">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ClawMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeClawMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="NecromancerMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeNecromancerMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ShamanMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeShamanMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SorceressMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSorceressMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SpawnUpgradeMenu">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountUnitAlias_UnitPeak2556659486"/>
+    </CRequirement>
+    <CRequirement id="SpiritwalkerMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiritwalkerMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="TalonMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTalonMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="VorpalBladesUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeVorpalBladesCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HardenedSkinUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHardenedSkinCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveBreathUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCorrosiveBreathCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BansheeAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBansheeAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BarrageUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBarrageCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BerserkUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBerserkCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="CannibalizeUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCannibalizeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BurningOilUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurningOilCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ResistantSkinUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeResistantSkinCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SentinelUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSentinelCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UltravisionUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeUltravisionCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="TalonAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTalonAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="DestroyerFormUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDestroyerFormCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradePeriodicSpawningCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DiseaseCloudUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDiseaseCloudCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ExhumeCorpsesUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeExhumeCorpsesCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EnsnareWar3Use">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnsnareWar3CompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="CloudUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCloudCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FreezingBreathUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFreezingBreathCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="NecromancerAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeNecromancerAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LiquidFireUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeLiquidFireCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EnvenomedWeaponsUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnvenomedWeaponsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="LifeBonus1">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedArmor1QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage2">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage2QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WeaponDamage3">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWeaponDamage3QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BurrowCryptFiendDisable">
+        <EditorCategories value="TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowCryptFiendDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WebUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWebCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="WarDrumsShow">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWarDrumsCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeWarDrumsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FlakCannonsUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFlakCannonsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ControlMagicUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeControlMagicCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="DefendUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDefendCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="CrowFormCancelUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorCrowFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="PillageUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePillageCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="GyrocopterBombsUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeGyrocopterBombsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FlareUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFlareCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="FragmentationShardsUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFragmentationShardsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="PulverizeUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePulverizeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ShamanAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeShamanAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SpiritwalkerAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiritwalkerAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="StormHammersUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeStormHammersCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SorceressAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSorceressAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="StoneFormCancelUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorStoneFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="StoneFormUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeStoneFormCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountBehaviorStoneFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UnburrowCryptFiendUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorBurrowCryptFiendCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CrowFormUse">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTalonAdeptTrainingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorCrowFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BurrowCryptFiendUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowCryptFiendCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountBehaviorBurrowCryptFiendCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasWarClub">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountBehaviorWarClubCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorWarClubCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AbolishMagicUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbolishMagicCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="NoWarDrums">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="NotCountUpgradeWarDrumsCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWarDrumsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ResistantSkin">
+        <NodeArray index="Use" Link="CountUnitMountainGiantPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeResistantSkinQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Marksmanship">
+        <NodeArray index="Use" Link="AndOr3448001376CountUnitArcherPeakCountUnitHippogryphRiderPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMarksmanshipQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="HardenedSkin">
+        <NodeArray index="Use" Link="CountUnitMountainGiantPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHardenedSkinQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="HippogryphTaming">
+        <NodeArray index="Use" Link="CountUnitHippogryphPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHippogryphTamingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ImprovedBows">
+        <NodeArray index="Use" Link="Or3448001376CountUnitArcherPeakCountUnitHippogryphRiderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImprovedBowsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="MarkoftheClaw">
+        <NodeArray index="Use" Link="CountUnitDruidoftheClawPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMarkoftheClawQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="MarkoftheTalon">
+        <NodeArray index="Use" Link="CountUnitDruidoftheTalonPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMarkoftheTalonQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Sentinel">
+        <NodeArray index="Use" Link="AndCountUnitHuntressPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSentinelQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="VorpalBlades">
+        <NodeArray index="Use" Link="AndCountUnitGlaiveThrowerPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVorpalBladesQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Ultravision">
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUltravisionQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="TalonMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTalonMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ClawAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitDruidoftheClawPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeClawAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="TalonAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitDruidoftheTalonPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTalonAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveBreath">
+        <NodeArray index="Use" Link="CountUnitChimeraPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCorrosiveBreathQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SkeletalLongevity">
+        <NodeArray index="Use" Link="CountUnitNecromancerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSkeletalLongevityQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="NecromancerMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNecromancerMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="NecromancerAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitNecromancerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNecromancerAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Berserk">
+        <NodeArray index="Use" Link="AndCountUnitHeadhunterPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBerserkQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="GhoulFrenzy">
+        <NodeArray index="Use" Link="AndCountUnitGhoulPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGhoulFrenzyQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="FreezingBreath">
+        <NodeArray index="Use" Link="CountUnitFrostWyrmPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFreezingBreathQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ExhumeCorpses">
+        <NodeArray index="Use" Link="AndCountUnitMeatWagonPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeExhumeCorpsesQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="DestroyerForm">
+        <NodeArray index="Use" Link="AndCountUnitObsidianStatuePeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDestroyerFormQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="BurrowCryptFiend">
+        <NodeArray index="Use" Link="AndCountUnitCryptFiendPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBurrowCryptFiendQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="BurningOil">
+        <NodeArray index="Use" Link="AndCountUnitDemolisherPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBurningOilQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Cannibalize">
+        <NodeArray index="Use" Link="Or343139989CountUnitGhoulPeakCountUnitAbominationPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCannibalizeQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="DiseaseCloud">
+        <NodeArray index="Use" Link="AndOr3472681722CountUnitAbominationPeakCountUnitMeatWagonPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDiseaseCloudQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="EnvenomedWeapons">
+        <NodeArray index="Use" Link="AndCountUnitWindRiderPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnvenomedWeaponsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="EnsnareWar3">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRaiderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnsnareWar3QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CarrionBeetles">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="And2645047468CountAbilCarrionBeetlesCompleteOnlyAtUnitLTCountUnitCarrionBeetlesCompleteOnlyAtUnit5"/>
+        <NodeArray index="Show" Link="CountAbilCarrionBeetlesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CelestialWrath">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCelestialWrathCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCelestialWrathCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AnimalWarTraining">
+        <NodeArray index="Use" Link="Or1991721846CountUnitKnightPeakCountUnitDragonhawkPeakCountUnitGryphonRiderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAnimalWarTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Barrage">
+        <NodeArray index="Use" Link="CountUnitSiegeEnginePeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBarrageQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Cloud">
+        <NodeArray index="Use" Link="CountUnitDragonhawkPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCloudQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ControlMagic">
+        <NodeArray index="Use" Link="AndCountUnitSpellbreakerPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeControlMagicQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Defend">
+        <NodeArray index="Use" Link="CountUnitFootmanPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDefendQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="LiquidFire">
+        <NodeArray index="Use" Link="AndCountUnitBatriderPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLiquidFireQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="FlakCannons">
+        <NodeArray index="Use" Link="AndCountUnitGyrocopterPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFlakCannonsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="EnslaveActive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="AndCountBehaviorEnslaveActiveCompleteOnlyAtUnitNotCountBehaviorEnslaveCompleteOnlyNotCountBehaviorEnslaveReviveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BarrageReady">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndCountUpgradeBarrageCompleteOnlyTechTreeCheatNotCountBehaviorBarrageCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FeralSpiritLT2">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="LTCountUnitFeralSpiritCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="ExhumeCorpsesReady">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndCountUpgradeExhumeCorpsesCompleteOnlyTechTreeCheatNotCountBehaviorExhumeCorpsesCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Flare">
+        <NodeArray index="Use" Link="AndCountUnitMortarTeamPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFlareQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="GyrocopterBombs">
+        <NodeArray index="Use" Link="AndCountUnitGyrocopterPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGyrocopterBombsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="FragmentationShards">
+        <NodeArray index="Use" Link="AndCountUnitMortarTeamPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFragmentationShardsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SkeletalMastery">
+        <NodeArray index="Use" Link="AndCountUnitNecromancerPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSkeletalMasteryQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="StoneForm">
+        <NodeArray index="Use" Link="CountUnitGargoylePeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStoneFormQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ClawMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeClawMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="BlessedMoonGlaive">
+        <NodeArray index="Use" Link="AndCountUnitHuntressPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBlessedMoonGlaiveQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="WitchDoctorAdeptTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWitchDoctorAdeptTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="Web">
+        <NodeArray index="Use" Link="AndCountUnitCryptFiendPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWebQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="WitchDoctorAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitWitchDoctorPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWitchDoctorAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="WarDrums">
+        <NodeArray index="Use" Link="AndCountUnitKodoBeastPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWarDrumsQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="TrollRegeneration">
+        <NodeArray index="Use" Link="AndOr3415406292CountUnitHeadhunterPeakCountUnitWitchDoctorPeakCountUnitBatriderPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTrollRegenerationQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SpiritwalkerAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitSpiritwalkerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSpiritwalkerAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ShamanMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeShamanMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Pillage">
+        <NodeArray index="Use" Link="Or2015518514CountUnitGruntPeakCountUnitRaiderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradePillageQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="LongRifles">
+        <NodeArray index="Use" Link="AndCountUnitRiflemanPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLongRiflesQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="Pulverize">
+        <NodeArray index="Use" Link="CountUnitTaurenPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradePulverizeQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="PriestAdeptTraining">
+        <NodeArray index="Use" Link="Or231734011CountUnitPriestPeakCountUnitPriestBloodElfPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradePriestAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ShamanAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitShamanPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeShamanAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SpiritwalkerMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSpiritwalkerMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SorceressAdeptTraining">
+        <NodeArray index="Use" Link="Or4178618436CountUnitSorceressPeakCountUnitSorceressBloodElfPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSorceressAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="PriestMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradePriestMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="SorceressMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSorceressMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="StormHammers">
+        <NodeArray index="Use" Link="CountUnitGryphonRiderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStormHammersQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="StasisTrapReady">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorStasisTrapBirthCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BerserkerStrength">
+        <NodeArray index="Use" Link="AndCountUnitGruntPeakCountBehaviorTier2StructureCompleteOnlyAtUnit1122740883"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBerserkerStrengthQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="ThornsAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilThornsAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilThornsAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasShadowmeldActive">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorShadowmeldCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorShadowmeldCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoFeralSpirits">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotCountUnitFeralSpiritCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BearFormUse">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeClawMasterTrainingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorBearFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BearFormCancelUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorBearFormCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasMoonbeam">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountUnitMoonbeamCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoInvisibility">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorInvisibilityCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoAntiMagicPotion">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorAntiMagicPotionCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoDrumsofBattle">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorDrumsofBattleCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoElixirofGiantGrowth">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorElixirofGiantGrowthCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoSwiftnessPotion">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorSwiftnessPotionCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoPhoenixHeroic">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="NotOrCountUnitPhoenixHeroicCompleteOnlyCountUnitPhoenixEggCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoVampiricPotion">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorVampiricPotionCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoOilofImmolation">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="Not4253530082CountBehaviorOilofImmolationCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SearingStrikesAugment">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSearingStrikesAugmentCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSearingStrikesAugmentCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="VoidReflexes">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilVoidReflexesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilVoidReflexesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SoulCharge">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSoulChargeCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSoulChargeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SplittingStrikes">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilMultistrikeBonusCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilMultistrikeBonusCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AttributeBonus">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilAttributeBonusCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilAttributeBonusCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AncientKnowledge">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilAncientKnowledgeCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilAncientKnowledgeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="GuardianWisps">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilGuardianWispsQueuedOrBetterAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilGuardianWispsQueuedOrBetterAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoPhoenixFireCooldown">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorPhoenixFireCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SoulHarvest">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSoulHarvestCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSoulHarvestCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="EnergyConduit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilEnergyConduitCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilEnergyConduitCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ElementalAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilElementalAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilElementalAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RetributionAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilRetributionAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilRetributionAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasNoHero">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountUnitAlias_HeroPeak"/>
+    </CRequirement>
+    <CRequirement id="HasLocustSwarm">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorLocustSwarmCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BlackStrike">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBlackArrowCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBlackArrowCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SpikedCarapace">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSpikedCarapaceCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSpikedCarapaceCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CriticalStrike">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCriticalStrikeCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCriticalStrikeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CleavingStrikes">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCleavingStrikesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCleavingStrikesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="RuneTrapLimit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUnitRuneTrapCompleteOnly5"/>
+    </CRequirement>
+    <CRequirement id="SearingStrikes">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSearingStrikesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSearingStrikesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="PyrocannonLimit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUnitPyrocannonCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="FrostStrikes">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilFrostStrikesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilFrostStrikesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NoItemNotPawnable">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorItemNotPawnableCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BlackStrikeReady">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="AndCountAbilBlackStrikeCompleteOnlyAtUnitNotCountBehaviorBlackStrikeCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="EngineeringUpgradeActive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="OrCountBehaviorUpgradeBuffCompleteOnlyCountBehaviorUpgradeBuffPrecursorCompleteOnlyCountBehaviorUpgradeHeroicCompleteOnlyCountBehaviorUpgradeHeroicPrecursorCompleteOnly"/>
+        <NodeArray index="Show" Link="OrCountBehaviorUpgradeBuffCompleteOnlyCountBehaviorUpgradeBuffPrecursorCompleteOnlyCountBehaviorUpgradeHeroicCompleteOnlyCountBehaviorUpgradeHeroicPrecursorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FrenzyAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilFrenzyAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilFrenzyAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FeralSpiritLevel3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE3518251552CountUpgradeFeralSpiritCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="FeralSpiritProwlShow">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1851505499CountUpgradeFeralSpiritCompleteOnly2"/>
+        <NodeArray index="Show" Link="LTCountUpgradeFeralSpiritCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="FeralSpiritProwlReady">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorFeralSpiritProwlCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="InventoryIsFull">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorInventoryIsFullCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorInventoryIsFullCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SymbiosisActive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="OrCountBehaviorSymbiosisBuffCompleteOnlyCountBehaviorSymbiosisBuffPrecursorCompleteOnlyCountBehaviorSymbiosisHeroicCompleteOnlyCountBehaviorSymbiosisHeroicPrecursorCompleteOnly"/>
+        <NodeArray index="Show" Link="OrCountBehaviorSymbiosisBuffCompleteOnlyCountBehaviorSymbiosisBuffPrecursorCompleteOnlyCountBehaviorSymbiosisHeroicCompleteOnlyCountBehaviorSymbiosisHeroicPrecursorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Revive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="AndNotCountBehaviorReincarnationDelayCompleteOnlyAtUnitNotCountUpgradePeriodicRevivalCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UnholyAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilUnholyAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilUnholyAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CommandAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCommandAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCommandAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BrillianceAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBrillianceAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBrillianceAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="EnduranceAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilEnduranceAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilEnduranceAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrueshotAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilTrueshotAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilTrueshotAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Bash">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBashCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBashCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="DevotionAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilDevotionAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilDevotionAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Evasion">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilEvasionCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilEvasionCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="WitchDoctorMasterTrainingUse">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWitchDoctorMasterTrainingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="VampiricAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilVampiricAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilVampiricAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Reincarnation">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilReincarnationCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilReincarnationCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HideLearnMenu">
+        <EditorCategories value="Race:Neutral"/>
+    </CRequirement>
+    <CRequirement id="ReincarnationReady">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="AndCountBehaviorReincarnationCompleteOnlyAtUnitNotCountBehaviorReincarnationCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BansheeAdeptTraining">
+        <NodeArray index="Use" Link="CountUnitBansheeUndeadPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBansheeAdeptTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="WitchDoctorMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWitchDoctorMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="BansheeMasterTraining">
+        <NodeArray index="Use" Link="CountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBansheeMasterTrainingQueuedOrBetter"/>
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="AnySpecialization">
+        <NodeArray index="Use" Link="CountUpgradeAlias_SpecializationCompleteOnly1730759910"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlias_SpecializationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DevotionAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilDevotionAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilDevotionAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CarrionBeetlesPassiveReady">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Show" Link="AndCountAbilCarrionBeetlesPassiveCompleteOnlyAtUnitNotCountBehaviorCarrionBeetlesPassiveCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CarrionBeetlesPassive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilCarrionBeetlesPassiveCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilCarrionBeetlesPassiveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CleaveLegionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeCleaveLegionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasMutatorEarlyRoaring">
+        <NodeArray index="Use" Link="CountUpgradeMutatorEarlyRoaringCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasMutatorWarpTen">
+        <NodeArray index="Use" Link="CountUpgradeMutatorCalltoArmsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasMutatorFrenzy">
+        <NodeArray index="Use" Link="CountUpgradeMutatorFrenzyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasMutatorAvenger">
+        <NodeArray index="Use" Link="CountUpgradeMutatorAvengerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ResistanceAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilResistanceAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilResistanceAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UnholyAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilUnholyAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilUnholyAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ThornsAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilThornsAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilThornsAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="EngineeringUpgradePassive">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilEngineeringUpgradePassiveCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilEngineeringUpgradePassiveCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="CleaveLegion">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="Or1022470443CountUnitFelguardPeakCountUnitFelLordPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCleaveLegionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CarrionBeetlesPassiveLimit">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="LTCountUnitCarrionBeetlesPassiveCompleteOnly5"/>
+    </CRequirement>
+    <CRequirement id="IronforgeFortitudeActive">
+        <NodeArray index="Use" Link="CountBehaviorIronforgeFortitudeCompleteOnlyAtUnit644776683"/>
+    </CRequirement>
+    <CRequirement id="NoEmpoweredLegionAura">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="NotCountUpgradeEmpoweredLegionAuraCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEmpoweredLegionAuraCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="RevealUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeRevealCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PhoenixFlames">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitRangerPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradePhoenixFlamesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ManaTapUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeManaTapCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ManaTap">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBloodwarderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeManaTapQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BruteForce">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBruteForceCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBruteForceCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Avenger">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilAvengerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilAvengerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ArcaneQuiver">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRangerPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeArcaneQuiverQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="Reveal">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitFarstriderPeak"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRevealQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BrillianceAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilBrillianceAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilBrillianceAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="StormArrows">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilStormArrowsCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilStormArrowsCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ServitorLT6">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="LTCountUnitServitorCompleteOnly6"/>
+    </CRequirement>
+    <CRequirement id="TrueshotAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilTrueshotAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilTrueshotAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainFootman">
+        <NodeArray index="Use" Link="LT3702416715CountUnitTrainFootmanQueuedOrBetter3"/>
+        <NodeArray index="Show" Link="CountAbilTrainFootmanCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainMortarTeam">
+        <NodeArray index="Use" Link="LT3872491591CountUnitTrainMortarTeamQueuedOrBetter2"/>
+        <NodeArray index="Show" Link="CountAbilTrainMortarTeamCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainSpellbreaker">
+        <NodeArray index="Use" Link="LT3872491591CountUnitTrainSpellbreakerQueuedOrBetter2"/>
+        <NodeArray index="Show" Link="CountAbilTrainSpellbreakerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainSorceress">
+        <NodeArray index="Use" Link="LT3702416715CountUnitTrainSorceressQueuedOrBetter3"/>
+        <NodeArray index="Show" Link="CountAbilTrainSorceressCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainRifleman">
+        <NodeArray index="Use" Link="LT3872491591CountUnitTrainRiflemanQueuedOrBetter2"/>
+        <NodeArray index="Show" Link="CountAbilTrainRiflemanCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainPriestLevel4">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE4216250395CountUpgradeTrainPriestCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="TrainPriest">
+        <NodeArray index="Use" Link="LT3702416715CountUnitTrainPriestQueuedOrBetter3"/>
+        <NodeArray index="Show" Link="CountAbilTrainPriestCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainKnight">
+        <NodeArray index="Use" Link="LT3872491591CountUnitTrainKnightQueuedOrBetter1"/>
+        <NodeArray index="Show" Link="CountAbilTrainKnightCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="TrainSorceressLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1305912808CountUpgradeTrainSorceressCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="TrainPriestLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE2517462552CountUpgradeTrainPriestCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="TrainSorceressLevel4">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE2654250914CountUpgradeTrainSorceressCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="TrainSpellbreakerLevel3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE204796765CountUpgradeTrainSpellbreakerCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="HeroLevel5">
+        <NodeArray index="Use" Link="GTE1571918956CountBehaviorHeroLevelBonusCompleteOnly5"/>
+    </CRequirement>
+    <CRequirement id="NoBoss">
+        <NodeArray index="Use" Link="Not850473091CountBehaviorBossCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ServitudeAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilServitudeAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilServitudeAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ReconstructionBeam">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilReconstructionBeamCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilReconstructionBeamCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ReconstructionBeamLimit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="LTCountBehaviorReconstructionBeamCompleteOnlySum3CountUpgradeReconstructionBeamCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InterestRates">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilInterestRatesCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilInterestRatesCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ServitorLimit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTECountUnitServitorCompleteOnly6"/>
+    </CRequirement>
+    <CRequirement id="SoulLeech">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilSoulLeechCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilSoulLeechCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SpecializationUpgrade">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountBehaviorTier2StructureCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlias_SpecializationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AllianceHolyUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeAllianceHolyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAllianceHolyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AllianceProtectionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeAllianceProtectionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAllianceProtectionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AllianceRetributionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeAllianceRetributionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAllianceRetributionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BloodElfFireUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeBloodElfFireCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeBloodElfFireCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BloodElfFrostUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeBloodElfFrostCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeBloodElfFrostCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FieryAura">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilFieryAuraCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilFieryAuraCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ForsakenHolyUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeForsakenHolyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeForsakenHolyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ForsakenDisciplineUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeForsakenDisciplineCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeForsakenDisciplineCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DruidRestorationUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeDruidRestorationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeDruidRestorationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HordeArmsUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeHordeArmsCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeHordeArmsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DruidBalanceUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeDruidBalanceCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeDruidBalanceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BloodElfArcaneUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeBloodElfArcaneCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeBloodElfArcaneCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ForsakenShadowUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeForsakenShadowCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeForsakenShadowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DruidFeralUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeDruidFeralCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeDruidFeralCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HordeFuryUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeHordeFuryCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeHordeFuryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HordeProtectionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeHordeProtectionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeHordeProtectionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LegionDemonologyUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLegionDemonologyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeLegionDemonologyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LegionDestructionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLegionDestructionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeLegionDestructionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LegionAfflictionUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeLegionAfflictionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeLegionAfflictionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NagaEnhancementUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeNagaEnhancementCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNagaEnhancementCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NagaElementalUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeNagaElementalCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNagaElementalCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NagaRestorationUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeNagaRestorationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNagaRestorationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ScourgeUnholyUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeScourgeUnholyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeScourgeUnholyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ScourgeFrostUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeScourgeFrostCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeScourgeFrostCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ScourgeBloodUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeScourgeBloodCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeScourgeBloodCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SentinelAssassinationUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeSentinelAssassinationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeSentinelAssassinationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SentinelCombatUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeSentinelCombatCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeSentinelCombatCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SentinelSubtletyUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeSentinelSubtletyCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeSentinelSubtletyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrainFootmanLevel3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE3127700874CountUpgradeTrainFootmanCompleteOnly2"/>
+    </CRequirement>
+    <CRequirement id="TrollMarksmanshipUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTrollMarksmanshipCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeTrollMarksmanshipCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrollBeastMasteryUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTrollBeastMasteryCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeTrollBeastMasteryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrollSurvivalUse">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTrollSurvivalCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeTrollSurvivalCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="OblivionShardLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE3912058930CountUpgradeOblivionShardCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="HasEmpoweredLegionAura">
+        <EditorCategories value="Race:War3,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEmpoweredLegionAuraCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeEmpoweredLegionAuraCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="EmpoweredLegionAura">
+        <EditorCategories value="Race:War3,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitFelLordPeakCountBehaviorTier3StructureCompleteOnlyAtUnit1161497588"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEmpoweredLegionAuraQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FireGolemLevel4">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE2217688834CountUpgradeFireGolemCompleteOnly3"/>
+    </CRequirement>
+    <CRequirement id="FireGolemLevel2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="GTE1453707823CountUpgradeFireGolemCompleteOnly1"/>
+    </CRequirement>
+    <CRequirement id="EnduranceAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilEnduranceAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilEnduranceAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="VampiricAuraGlobal">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilVampiricAuraGlobalCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilVampiricAuraGlobalCompleteOnlyAtUnit"/>
+    </CRequirement>
+</Catalog>

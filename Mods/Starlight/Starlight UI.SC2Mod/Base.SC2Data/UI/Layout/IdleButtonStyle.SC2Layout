@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="IdleButton" name="GameUI/UIContainer/ConsoleUIContainer/IdleButton" file="GameUI">
+        <Anchor side="Right" relative="$parent/MinimapPanel" pos="Max" offset="-50"/>
+        <Anchor side="Left" relative="$parent/MinimapPanel" pos="Max" offset="-652"/>
+        <Anchor side="Bottom" relative="$parent/MinimapPanel" pos="Min" offset="17"/>
+    </Frame>
+
+    <Frame type="Image" name="GameUI/UIContainer/ConsoleUIContainer/IdleButton/BackgroundImage" file="GameUI">
+        <Alpha val="0"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/IdleButton/CountLabel" file="GameUI">
+        <Anchor side="Right" relative="$parent" pos="Max" offset="2000"/>
+    </Frame>
+
+    <Frame type="CommandHotkeyFrame" name="GameUI/UIContainer/ConsoleUIContainer/IdleButton/HotkeyFrame" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-16"/>
+    </Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer/IdleButton/HitTestFrame" file="GameUI">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="24"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-8"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+    </Frame>
+</Desc>

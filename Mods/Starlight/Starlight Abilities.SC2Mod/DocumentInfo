@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <Flags>
+        <Value>PreloadNoTrigger</Value>
+    </Flags>
+    <Dependencies>
+        <Value>bnet:Nova Covert Ops (Art Mod)/0.0/999,file:Mods/NovaStoryAssets.SC2Mod</Value>
+        <Value>bnet:Starlight Assets Legacy Open1/0.0/457953,file:Mods\Starlight\Starlight Assets Legacy Open.SC2Mod</Value>
+    </Dependencies>
+    <Preload>
+        <Value>AssetFile;Assets\Effects\Zerg\ZurvanTentacleImpact\ZurvanTentacleImpact.m3</Value>
+        <Value>AssetFile;Assets\Effects\Protoss\RecallImpactIn\RecallImpactIn.m3</Value>
+        <Value>AssetFile;Assets\Effects\Protoss\HallucinateDeath\HallucinateDeath.m3</Value>
+        <Value>AssetFile;Assets\Sounds\Protoss\Mothership\Mothership_WormholeTransitEnd0.wav</Value>
+        <Value>AssetFile;Assets\Splats\Splat_ZerglingBurrowed\Splat_ZerglingBurrowed_02.m3</Value>
+    </Preload>
+</DocInfo>

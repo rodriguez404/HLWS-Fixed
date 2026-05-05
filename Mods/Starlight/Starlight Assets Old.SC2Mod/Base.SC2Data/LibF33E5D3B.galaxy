@@ -1,0 +1,487 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+include "Lib7A9A9B22_h"
+include "LibCA960273_h"
+include "LibF095282B_h"
+include "Lib948F000A_h"
+include "Lib2A8CE4F7_h"
+include "Lib22D496B3_h"
+include "Lib038F51B7_h"
+include "Lib39886FE6_h"
+include "Lib7550A90B_h"
+
+include "LibF33E5D3B_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Cinematics
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libF33E5D3B_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib7A9A9B22_InitVariables();
+    libCA960273_InitVariables();
+    libF095282B_InitVariables();
+    lib948F000A_InitVariables();
+    lib2A8CE4F7_InitVariables();
+    lib22D496B3_InitVariables();
+    lib038F51B7_InitVariables();
+    lib39886FE6_InitVariables();
+    lib7550A90B_InitVariables();
+}
+
+// Variable Initialization
+bool libF33E5D3B_InitVariables_completed = false;
+
+void libF33E5D3B_InitVariables () {
+    if (libF33E5D3B_InitVariables_completed) {
+        return;
+    }
+
+    libF33E5D3B_InitVariables_completed = true;
+
+    libF33E5D3B_gv_cinematicUnits = UnitGroupEmpty();
+}
+
+// Functions
+void libF33E5D3B_gf_CinematicDesertStrikeStart (point lp_center, int lp_duration) {
+    // Variable Declarations
+    int lv_i;
+    playergroup lv_team0Group;
+    playergroup lv_team1Group;
+
+    // Automatic Variable Declarations
+    const int autoF1CE9825_ae = 6;
+    const int autoF1CE9825_ai = 1;
+    unitgroup auto49313E6C_g;
+    int auto49313E6C_u;
+    unit auto49313E6C_var;
+    unitgroup auto9D5BB5AE_g;
+    int auto9D5BB5AE_u;
+    unit auto9D5BB5AE_var;
+    unitgroup autoAAC4E6A8_g;
+    int autoAAC4E6A8_u;
+    unit autoAAC4E6A8_var;
+    unitgroup autoBA810A93_g;
+    int autoBA810A93_u;
+    unit autoBA810A93_var;
+
+    // Variable Initialization
+    lv_team0Group = PlayerGroupEmpty();
+    lv_team1Group = PlayerGroupEmpty();
+
+    // Implementation
+    lib7550A90B_gf_TugofWarReset();
+    lv_i = 1;
+    for ( ; ( (autoF1CE9825_ai >= 0 && lv_i <= autoF1CE9825_ae) || (autoF1CE9825_ai < 0 && lv_i >= autoF1CE9825_ae) ) ; lv_i += autoF1CE9825_ai ) {
+        PlayerGroupAdd(lv_team0Group, lv_i);
+        PlayerGroupAdd(lv_team1Group, (lv_i + 3));
+    }
+    libDDE92A83_gf_ToggleUpgradesSC2Multi(PlayerGroupAll(), 0);
+    libDDE92A83_gf_ToggleUpgradesSC2Coop(PlayerGroupAll(), 0);
+    lib7550A90B_gf_TugofWarStartDefault(GameAttributePlayersForTeam(1), null, GameAttributePlayersForTeam(2), null, lp_center);
+    lib7550A90B_gf_TugofWarPause(true, true, true);
+    libDDE92A83_gf_RemoveAllUnitsOfUnitType("MiddleLineGlow");
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryVoice, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryAlert, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategoryUI, true);
+    libNtve_gf_HideGameUI(false, PlayerGroupAll());
+    UISetCursorVisible(PlayerGroupAll(), false);
+    UIClearMessages(PlayerGroupAll(), c_messageAreaAll);
+    UISetSelectionTypeEnabled(PlayerGroupAll(), c_localSelectionTypeUnknown, false);
+    CatalogFieldValueSet(c_gameCatalogEffect, "PlaceCompleteAlert", "Chance", 1, IntToString(0));
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    PlayerOptionOverride(1, "displayflyerhelper", "None");
+    CameraLockInput(1, true);
+    CameraSetValue(1, c_cameraValueHeightOffset, 1.0, 0.0, -1, 0.0);
+    CameraSetValue(1, c_cameraValueFarClip, 40000.0, 0.0, -1, 0.0);
+    lib038F51B7_gf_AbilityControlFade(false, 0.0);
+    lib948F000A_gf_WorkerSelectFade(false, 0.0);
+    lib39886FE6_gf_MasteryBarFade(false, 0.0);
+    lib2A8CE4F7_gf_StatsMenuFade(false, 0.0);
+    libCA960273_gf_StagingAreaCustomizationFade(false, 0.0);
+    libF095282B_gf_ObjectiveIconFade(1, false, 0.0);
+    libF095282B_gf_ObjectiveIconFade(0, false, 0.0);
+    lib22D496B3_gf_PartyFrameFade(false, 0.0);
+    VisRevealArea(1, RegionEntireMap(), 0.0, false);
+    auto49313E6C_g = libDDE92A83_gf_PlayerWorkers(1);
+    auto49313E6C_u = UnitGroupCount(auto49313E6C_g, c_unitCountAll);
+    for (;; auto49313E6C_u -= 1) {
+        auto49313E6C_var = UnitGroupUnitFromEnd(auto49313E6C_g, auto49313E6C_u);
+        if (auto49313E6C_var == null) { break; }
+        UnitRemove(auto49313E6C_var);
+    }
+    auto9D5BB5AE_g = lib7A9A9B22_gf_StagingAreaSpawners();
+    auto9D5BB5AE_u = UnitGroupCount(auto9D5BB5AE_g, c_unitCountAll);
+    for (;; auto9D5BB5AE_u -= 1) {
+        auto9D5BB5AE_var = UnitGroupUnitFromEnd(auto9D5BB5AE_g, auto9D5BB5AE_u);
+        if (auto9D5BB5AE_var == null) { break; }
+        UnitRemove(auto9D5BB5AE_var);
+    }
+    autoAAC4E6A8_g = lib7A9A9B22_gf_StagingAreaSpawns();
+    autoAAC4E6A8_u = UnitGroupCount(autoAAC4E6A8_g, c_unitCountAll);
+    for (;; autoAAC4E6A8_u -= 1) {
+        autoAAC4E6A8_var = UnitGroupUnitFromEnd(autoAAC4E6A8_g, autoAAC4E6A8_u);
+        if (autoAAC4E6A8_var == null) { break; }
+        UnitRemove(autoAAC4E6A8_var);
+    }
+    autoBA810A93_g = libF33E5D3B_gv_cinematicUnits;
+    autoBA810A93_u = UnitGroupCount(autoBA810A93_g, c_unitCountAll);
+    for (;; autoBA810A93_u -= 1) {
+        autoBA810A93_var = UnitGroupUnitFromEnd(autoBA810A93_g, autoBA810A93_u);
+        if (autoBA810A93_var == null) { break; }
+        UnitRemove(autoBA810A93_var);
+    }
+}
+
+trigger auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_player;
+string auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_effect;
+point auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_point;
+fixed auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMin;
+fixed auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMax;
+
+void libF33E5D3B_gf_CinematicStagingAreaCreateSpawner (int lp_player, string lp_effect, point lp_point, fixed lp_delayMin, fixed lp_delayMax) {
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_effect = lp_effect;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_point = lp_point;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMin = lp_delayMin;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMax = lp_delayMax;
+
+    if (auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_player;
+    string lp_effect = auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_effect;
+    point lp_point = auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_point;
+    fixed lp_delayMin = auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMin;
+    fixed lp_delayMax = auto_libF33E5D3B_gf_CinematicStagingAreaCreateSpawner_lp_delayMax;
+
+    // Variable Declarations
+    int lv_x;
+    int lv_i;
+    fixed lv_facing;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_facing = 225.0;
+
+    // Implementation
+    Wait(RandomFixed(lp_delayMin, lp_delayMax), c_timeGame);
+    PlayerCreateEffectPoint(lp_player, lp_effect, lp_point);
+    return true;
+}
+
+trigger auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_player;
+string auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_unitType;
+point auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_point;
+fixed auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_angle;
+fixed auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_yRandomness;
+
+void libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit (int lp_player, string lp_unitType, point lp_point, fixed lp_angle, fixed lp_yRandomness) {
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_unitType = lp_unitType;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_point = lp_point;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_angle = lp_angle;
+    auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_yRandomness = lp_yRandomness;
+
+    if (auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_player;
+    string lp_unitType = auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_unitType;
+    point lp_point = auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_point;
+    fixed lp_angle = auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_angle;
+    fixed lp_yRandomness = auto_libF33E5D3B_gf_CinematicStagingAreaCreateWaveUnit_lp_yRandomness;
+
+    // Variable Declarations
+    int lv_x;
+    int lv_i;
+    fixed lv_facing;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_facing = 225.0;
+
+    // Implementation
+    UnitCreate(1, lp_unitType, 0, lp_player, PointWithOffsetPolar(lp_point, RandomFixed((0.0 - lp_yRandomness), lp_yRandomness), lp_angle), lp_angle);
+    UnitIssueOrder(UnitLastCreated(), OrderTargetingPoint(AbilityCommand("AttackWarpPrism", 0), PointWithOffsetPolar(lp_point, 32.0, lp_angle)), c_orderQueueReplace);
+    UnitBehaviorAdd(UnitLastCreated(), "SpeedLimit", UnitLastCreated(), 1);
+    UnitGroupAdd(libF33E5D3B_gv_cinematicUnits, UnitLastCreated());
+    return true;
+}
+
+trigger auto_libF33E5D3B_gf_CinematicCameraRotate_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicCameraRotate_lp_player;
+fixed auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationStart;
+fixed auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationRate;
+fixed auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationAcceleration;
+int auto_libF33E5D3B_gf_CinematicCameraRotate_lp_duration;
+
+void libF33E5D3B_gf_CinematicCameraRotate (int lp_player, fixed lp_rotationStart, fixed lp_rotationRate, fixed lp_rotationAcceleration, int lp_duration) {
+    auto_libF33E5D3B_gf_CinematicCameraRotate_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationStart = lp_rotationStart;
+    auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationRate = lp_rotationRate;
+    auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationAcceleration = lp_rotationAcceleration;
+    auto_libF33E5D3B_gf_CinematicCameraRotate_lp_duration = lp_duration;
+
+    if (auto_libF33E5D3B_gf_CinematicCameraRotate_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicCameraRotate_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicCameraRotate_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicCameraRotate_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicCameraRotate_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicCameraRotate_lp_player;
+    fixed lp_rotationStart = auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationStart;
+    fixed lp_rotationRate = auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationRate;
+    fixed lp_rotationAcceleration = auto_libF33E5D3B_gf_CinematicCameraRotate_lp_rotationAcceleration;
+    int lp_duration = auto_libF33E5D3B_gf_CinematicCameraRotate_lp_duration;
+
+    // Variable Declarations
+    fixed lv_rotation;
+    fixed lv_rotationRate;
+    fixed lv_duration;
+    const int lv_period = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_rotation = lp_rotationStart;
+    lv_rotationRate = lp_rotationRate;
+    lv_duration = lp_duration;
+
+    // Implementation
+    CameraSetValue(lp_player, c_cameraValueYaw, lv_rotation, 0.0, -1, 0.0);
+    while ((lv_duration >= lv_period)) {
+        lv_duration -= lv_period;
+        lv_rotation += lv_rotationRate;
+        lv_rotationRate += lp_rotationAcceleration;
+        CameraSetValue(lp_player, c_cameraValueYaw, lv_rotation, (lv_period + 0.25), -1, 0.0);
+        Wait(lv_period, c_timeGame);
+    }
+    lv_duration -= lv_period;
+    lv_rotation += lv_rotationRate;
+    lv_rotationRate += lp_rotationAcceleration;
+    CameraSetValue(lp_player, c_cameraValueYaw, lv_rotation, (lv_period + 0.25), -1, 0.0);
+    return true;
+}
+
+trigger auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_player;
+fixed auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackStart;
+fixed auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackRate;
+fixed auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackAcceleration;
+fixed auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackMinimum;
+int auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_duration;
+
+void libF33E5D3B_gf_CinematicCameraAngleofAttack (int lp_player, fixed lp_angleofAttackStart, fixed lp_angleofAttackRate, fixed lp_angleofAttackAcceleration, fixed lp_angleofAttackMinimum, int lp_duration) {
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackStart = lp_angleofAttackStart;
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackRate = lp_angleofAttackRate;
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackAcceleration = lp_angleofAttackAcceleration;
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackMinimum = lp_angleofAttackMinimum;
+    auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_duration = lp_duration;
+
+    if (auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_player;
+    fixed lp_angleofAttackStart = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackStart;
+    fixed lp_angleofAttackRate = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackRate;
+    fixed lp_angleofAttackAcceleration = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackAcceleration;
+    fixed lp_angleofAttackMinimum = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_angleofAttackMinimum;
+    int lp_duration = auto_libF33E5D3B_gf_CinematicCameraAngleofAttack_lp_duration;
+
+    // Variable Declarations
+    fixed lv_angleofAttack;
+    fixed lv_angleofAttackRate;
+    fixed lv_duration;
+    const int lv_period = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_angleofAttack = lp_angleofAttackStart;
+    lv_angleofAttackRate = lp_angleofAttackRate;
+    lv_duration = lp_duration;
+
+    // Implementation
+    CameraSetValue(lp_player, c_cameraValuePitch, lv_angleofAttack, 0.0, -1, 0.0);
+    while ((lv_duration >= lv_period)) {
+        lv_duration -= lv_period;
+        lv_angleofAttack += lv_angleofAttackRate;
+        lv_angleofAttackRate += lp_angleofAttackAcceleration;
+        lv_angleofAttack = libNtve_gf_ArithmeticRealClamp(lv_angleofAttack, lp_angleofAttackMinimum, 90.0);
+        CameraSetValue(lp_player, c_cameraValuePitch, lv_angleofAttack, (lv_period + 0.25), -1, 0.0);
+        Wait(lv_period, c_timeGame);
+    }
+    lv_duration -= lv_period;
+    lv_angleofAttack += lv_angleofAttackRate;
+    lv_angleofAttackRate += lp_angleofAttackAcceleration;
+    lv_angleofAttack = libNtve_gf_ArithmeticRealClamp(lv_angleofAttack, lp_angleofAttackMinimum, 90.0);
+    CameraSetValue(lp_player, c_cameraValuePitch, lv_angleofAttack, (lv_period + 0.25), -1, 0.0);
+    return true;
+}
+
+trigger auto_libF33E5D3B_gf_CinematicCameraDistance_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicCameraDistance_lp_player;
+fixed auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceStart;
+fixed auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceRate;
+fixed auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceAcceleration;
+fixed auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceMinimum;
+int auto_libF33E5D3B_gf_CinematicCameraDistance_lp_duration;
+
+void libF33E5D3B_gf_CinematicCameraDistance (int lp_player, fixed lp_distanceStart, fixed lp_distanceRate, fixed lp_distanceAcceleration, fixed lp_distanceMinimum, int lp_duration) {
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceStart = lp_distanceStart;
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceRate = lp_distanceRate;
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceAcceleration = lp_distanceAcceleration;
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceMinimum = lp_distanceMinimum;
+    auto_libF33E5D3B_gf_CinematicCameraDistance_lp_duration = lp_duration;
+
+    if (auto_libF33E5D3B_gf_CinematicCameraDistance_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicCameraDistance_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicCameraDistance_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicCameraDistance_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicCameraDistance_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_player;
+    fixed lp_distanceStart = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceStart;
+    fixed lp_distanceRate = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceRate;
+    fixed lp_distanceAcceleration = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceAcceleration;
+    fixed lp_distanceMinimum = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_distanceMinimum;
+    int lp_duration = auto_libF33E5D3B_gf_CinematicCameraDistance_lp_duration;
+
+    // Variable Declarations
+    fixed lv_distance;
+    fixed lv_distanceRate;
+    fixed lv_duration;
+    const int lv_period = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_distance = lp_distanceStart;
+    lv_distanceRate = lp_distanceRate;
+    lv_duration = lp_duration;
+
+    // Implementation
+    CameraSetValue(lp_player, c_cameraValueDistance, lv_distance, 0.0, -1, 0.0);
+    while ((lv_duration >= lv_period)) {
+        lv_duration -= lv_period;
+        lv_distance += lv_distanceRate;
+        lv_distanceRate += lp_distanceAcceleration;
+        lv_distance = libNtve_gf_ArithmeticRealClamp(lv_distance, lp_distanceMinimum, 90.0);
+        CameraSetValue(lp_player, c_cameraValueDistance, lv_distance, (lv_period + 0.25), -1, 0.0);
+        Wait(lv_period, c_timeGame);
+    }
+    lv_duration -= lv_period;
+    lv_distance += lv_distanceRate;
+    lv_distanceRate += lp_distanceAcceleration;
+    lv_distance = libNtve_gf_ArithmeticRealClamp(lv_distance, lp_distanceMinimum, 90.0);
+    CameraSetValue(lp_player, c_cameraValueDistance, lv_distance, (lv_period + 0.25), -1, 0.0);
+    return true;
+}
+
+trigger auto_libF33E5D3B_gf_CinematicCameraPan_Trigger = null;
+int auto_libF33E5D3B_gf_CinematicCameraPan_lp_player;
+fixed auto_libF33E5D3B_gf_CinematicCameraPan_lp_angle;
+point auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceStart;
+fixed auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceRate;
+fixed auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceAcceleration;
+int auto_libF33E5D3B_gf_CinematicCameraPan_lp_duration;
+
+void libF33E5D3B_gf_CinematicCameraPan (int lp_player, fixed lp_angle, point lp_distanceStart, fixed lp_distanceRate, fixed lp_distanceAcceleration, int lp_duration) {
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_player = lp_player;
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_angle = lp_angle;
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceStart = lp_distanceStart;
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceRate = lp_distanceRate;
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceAcceleration = lp_distanceAcceleration;
+    auto_libF33E5D3B_gf_CinematicCameraPan_lp_duration = lp_duration;
+
+    if (auto_libF33E5D3B_gf_CinematicCameraPan_Trigger == null) {
+        auto_libF33E5D3B_gf_CinematicCameraPan_Trigger = TriggerCreate("auto_libF33E5D3B_gf_CinematicCameraPan_TriggerFunc");
+    }
+
+    TriggerExecute(auto_libF33E5D3B_gf_CinematicCameraPan_Trigger, false, false);
+}
+
+bool auto_libF33E5D3B_gf_CinematicCameraPan_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_libF33E5D3B_gf_CinematicCameraPan_lp_player;
+    fixed lp_angle = auto_libF33E5D3B_gf_CinematicCameraPan_lp_angle;
+    point lp_distanceStart = auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceStart;
+    fixed lp_distanceRate = auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceRate;
+    fixed lp_distanceAcceleration = auto_libF33E5D3B_gf_CinematicCameraPan_lp_distanceAcceleration;
+    int lp_duration = auto_libF33E5D3B_gf_CinematicCameraPan_lp_duration;
+
+    // Variable Declarations
+    fixed lv_distance;
+    fixed lv_distanceRate;
+    fixed lv_duration;
+    const int lv_period = 1;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_distanceRate = lp_distanceRate;
+    lv_duration = lp_duration;
+
+    // Implementation
+    CameraPan(lp_player, lp_distanceStart, 0.0, -1, 10.0, false);
+    while ((lv_duration > lv_period)) {
+        lv_duration -= lv_period;
+        lv_distance += lv_distanceRate;
+        lv_distanceRate += lp_distanceAcceleration;
+        CameraPan(lp_player, PointWithOffsetPolar(lp_distanceStart, lv_distance, lp_angle), (lv_period + 1.0), -1, 0.0, false);
+        Wait(lv_period, c_timeGame);
+    }
+    lv_duration -= lv_period;
+    lv_distance += lv_distanceRate;
+    lv_distanceRate += lp_distanceAcceleration;
+    CameraPan(lp_player, PointWithOffsetPolar(lp_distanceStart, lv_distance, lp_angle), (lv_period + 1.0), -1, 0.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libF33E5D3B_InitLib_completed = false;
+
+void libF33E5D3B_InitLib () {
+    if (libF33E5D3B_InitLib_completed) {
+        return;
+    }
+
+    libF33E5D3B_InitLib_completed = true;
+
+    libF33E5D3B_InitLibraries();
+    libF33E5D3B_InitVariables();
+}
+
+include "LibDDE92A83"
+include "Lib7A9A9B22"
+include "LibCA960273"
+include "LibF095282B"
+include "Lib948F000A"
+include "Lib2A8CE4F7"
+include "Lib22D496B3"
+include "Lib038F51B7"
+include "Lib39886FE6"
+include "Lib7550A90B"
+

@@ -1,0 +1,29 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Alert
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+playergroup lib8D68C7BC_gv_playerGroup;
+text lib8D68C7BC_gv_titleText;
+text lib8D68C7BC_gv_subtitleText;
+color lib8D68C7BC_gv_textColor;
+string lib8D68C7BC_gv_icon;
+string lib8D68C7BC_gv_model;
+soundlink lib8D68C7BC_gv_sound;
+fixed lib8D68C7BC_gv_duration;
+int lib8D68C7BC_gv_timeType;
+int lib8D68C7BC_gv_dialogItem;
+
+// Function Declarations
+void lib8D68C7BC_gf_AlertCreate (playergroup lp_playerGroup, text lp_titleText, text lp_subtitleText, color lp_textColor, string lp_icon, string lp_model, soundlink lp_sound, fixed lp_duration, int lp_timeType);
+void lib8D68C7BC_gf_StarlightAlert (playergroup lp_playerGroup, text lp_titleText, text lp_subtitleText, color lp_textColor, string lp_icon, string lp_model, soundlink lp_sound, fixed lp_duration, int lp_timeType);
+
+// Trigger Declarations
+trigger lib8D68C7BC_gt_TextIntro;
+trigger lib8D68C7BC_gt_TextOutro;
+trigger lib8D68C7BC_gt_Alert;
+
+// Library Initialization
+void lib8D68C7BC_InitVariables ();
+

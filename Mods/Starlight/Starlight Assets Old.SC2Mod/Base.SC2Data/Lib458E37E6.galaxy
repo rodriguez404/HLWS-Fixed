@@ -1,0 +1,400 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+include "Lib7A9A9B22_h"
+include "LibF095282B_h"
+include "Lib22D496B3_h"
+include "Lib7550A90B_h"
+
+include "Lib458E37E6_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Tug of War Objectives
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib458E37E6_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib7A9A9B22_InitVariables();
+    libF095282B_InitVariables();
+    lib22D496B3_InitVariables();
+    lib7550A90B_InitVariables();
+}
+
+// Variable Initialization
+bool lib458E37E6_InitVariables_completed = false;
+
+void lib458E37E6_InitVariables () {
+    if (lib458E37E6_InitVariables_completed) {
+        return;
+    }
+
+    lib458E37E6_InitVariables_completed = true;
+
+    lib458E37E6_gv_midControlTimer = TimerCreate();
+}
+
+// Functions
+void lib458E37E6_gf_TugofWarObjectivesBasic (point lp_team0Base, point lp_team0Turret, point lp_team0DefensiveArea, region lp_team0TotalArea, point lp_team1Base, point lp_team1Turret, point lp_team1DefensiveArea, region lp_team1TotalArea, bool lp_brands) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePlanetaryFortress", c_unitCreateIgnorePlacement, 13, lp_team0Base);
+    lib458E37E6_gv_teamBase[0] = UnitLastCreated();
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveNexus", c_unitCreateIgnorePlacement, 14, lp_team1Base);
+    lib458E37E6_gv_teamBase[1] = UnitLastCreated();
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveBunker", c_unitCreateIgnorePlacement, 13, lp_team0Turret);
+    lib458E37E6_gv_teamTurret[0] = UnitLastCreated();
+    libF095282B_gf_ObjectiveIconCreate(UnitLastCreated(), PlayerGroupAll(), 0, c_anchorTopRight, 0, 150, 0, false, false);
+    if ((lp_brands == true)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoPrimarySmall", 0, 0, PointWithOffset(lp_team0Turret, -6.0, 0.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoSecondarySmall", 0, 0, PointWithOffset(lp_team0Turret, 0.0, -6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoPrimaryLarge", 0, 0, PointWithOffset(PointWithOffset(lp_team0Base, -7.0, -7.0), -3.0, 3.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoSecondaryLarge", 0, 0, PointWithOffset(PointWithOffset(lp_team0Base, -7.0, -7.0), 3.0, -3.0));
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePhotonCannon", c_unitCreateIgnorePlacement, 14, lp_team1Turret);
+    lib458E37E6_gv_teamTurret[1] = UnitLastCreated();
+    libF095282B_gf_ObjectiveIconCreate(UnitLastCreated(), PlayerGroupAll(), 1, c_anchorTopRight, 0, 250, 0, false, false);
+    if ((lp_brands == true)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoPrimarySmall", 0, 0, PointWithOffset(lp_team1Turret, 0.0, 6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoSecondarySmall", 0, 0, PointWithOffset(lp_team1Turret, 6.0, 0.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoPrimaryLarge", 0, 0, PointWithOffset(PointWithOffset(lp_team1Base, 7.0, 7.0), -3.0, 3.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaLogoSecondaryLarge", 0, 0, PointWithOffset(PointWithOffset(lp_team1Base, 7.0, 7.0), 3.0, -3.0));
+    }
+
+    if ((TechTreeUpgradeCount(0, "GameplayModExpansion", c_techCountQueuedOrBetter) >= 1)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveSupplyDepot", c_unitCreateIgnorePlacement, 13, PointWithOffset(lp_team0Base, 0.0, -8.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveSupplyDepot", c_unitCreateIgnorePlacement, 13, PointWithOffset(lp_team0Base, -6.0, 2.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveSupplyDepot", c_unitCreateIgnorePlacement, 13, PointWithOffset(lp_team0Turret, 0.0, 6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveSupplyDepot", c_unitCreateIgnorePlacement, 13, PointWithOffset(lp_team0Turret, 4.5, -1.5));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectiveMjolnirBattery", c_unitCreateIgnorePlacement, 13, PointWithOffset(lp_team0Base, -7.0, -7.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePylon", c_unitCreateIgnorePlacement, 14, PointWithOffset(lp_team1Base, 0.0, 8.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePylon", c_unitCreateIgnorePlacement, 14, PointWithOffset(lp_team1Base, 6.0, -2.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePylon", c_unitCreateIgnorePlacement, 14, PointWithOffset(lp_team1Turret, 0.0, -6.0));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePylon", c_unitCreateIgnorePlacement, 14, PointWithOffset(lp_team1Turret, -4.5, 1.5));
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "ObjectivePhaseArray", c_unitCreateIgnorePlacement, 14, PointWithOffset(lp_team1Base, 7.0, 7.0));
+    }
+
+    lib458E37E6_gv_teamArea[0] = lp_team0TotalArea;
+    lib458E37E6_gv_teamArea[1] = lp_team1TotalArea;
+    libDDE92A83_gf_DefensiveAreaCreate(lib7A9A9B22_gf_StagingAreaTeam(0), lp_team0DefensiveArea);
+    libDDE92A83_gf_DefensiveAreaCreate(lib7A9A9B22_gf_StagingAreaTeam(1), lp_team1DefensiveArea);
+    libNtve_gf_StopTimer(lib458E37E6_gv_midControlTimer);
+    TimerStart(lib458E37E6_gv_midControlTimer, 100000.0, false, c_timeReal);
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath, true);
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath, true);
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate, true);
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesAnkh, true);
+}
+
+void lib458E37E6_gf_TugofWarObjectivesMidControl () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitGroupCount(UnitGroupFilterRegion(lib7A9A9B22_gf_StagingAreaTeamSpawns(0), lib458E37E6_gv_teamArea[1], 0), c_unitCountAlive) > 0) && (UnitGroupCount(UnitGroupFilterRegion(lib7A9A9B22_gf_StagingAreaTeamSpawns(1), lib458E37E6_gv_teamArea[0], 0), c_unitCountAlive) == 0)) {
+        lib458E37E6_gf_TugofWarObjectivesSetMid(0);
+    }
+    else {
+        if ((UnitGroupCount(UnitGroupFilterRegion(lib7A9A9B22_gf_StagingAreaTeamSpawns(1), lib458E37E6_gv_teamArea[0], 0), c_unitCountAlive) > 0) && (UnitGroupCount(UnitGroupFilterRegion(lib7A9A9B22_gf_StagingAreaTeamSpawns(0), lib458E37E6_gv_teamArea[1], 0), c_unitCountAlive) == 0)) {
+            lib458E37E6_gf_TugofWarObjectivesSetMid(1);
+        }
+
+    }
+}
+
+void lib458E37E6_gf_TugofWarObjectivesSetMid (int lp_team) {
+    // Automatic Variable Declarations
+    int auto3973E86D_val;
+    unitgroup auto300442D4_g;
+    int auto300442D4_u;
+    unit auto300442D4_var;
+    unitgroup auto85347B89_g;
+    int auto85347B89_u;
+    unit auto85347B89_var;
+
+    // Implementation
+    libDDE92A83_gf_AddMidControlScore(lib7A9A9B22_gf_StagingAreaTeam(lp_team), TimerGetElapsed(lib458E37E6_gv_midControlTimer));
+    libNtve_gf_StopTimer(lib458E37E6_gv_midControlTimer);
+    TimerStart(lib458E37E6_gv_midControlTimer, 100000.0, false, c_timeReal);
+    if ((TechTreeUpgradeCount(0, "GameplayModAccord", c_techCountCompleteOnly) == 0)) {
+        auto3973E86D_val = lp_team;
+        if (auto3973E86D_val == 0) {
+            libF095282B_gf_ObjectiveIconStatus(0, "Assets\\Textures\\behavior_goldminerals.dds", 32, 32);
+            libF095282B_gf_ObjectiveIconStatus(1, null, 32, 32);
+            lib7A9A9B22_gf_MineralIncomeBonusToggle(lib7A9A9B22_gf_StagingAreaTeam(0), true);
+            lib7A9A9B22_gf_MineralIncomeBonusToggle(lib7A9A9B22_gf_StagingAreaTeam(1), false);
+            auto300442D4_g = UnitGroup("MiddleLineGlow", c_playerAny, null, UnitFilter(0, 0, 0, 0), 0);
+            auto300442D4_u = UnitGroupCount(auto300442D4_g, c_unitCountAll);
+            for (;; auto300442D4_u -= 1) {
+                auto300442D4_var = UnitGroupUnitFromEnd(auto300442D4_g, auto300442D4_u);
+                if (auto300442D4_var == null) { break; }
+                UnitSetOwner(auto300442D4_var, 13, true);
+            }
+        }
+        else if (auto3973E86D_val == 1) {
+            libF095282B_gf_ObjectiveIconStatus(0, null, 32, 32);
+            libF095282B_gf_ObjectiveIconStatus(1, "Assets\\Textures\\behavior_goldminerals.dds", 32, 32);
+            lib7A9A9B22_gf_MineralIncomeBonusToggle(lib7A9A9B22_gf_StagingAreaTeam(1), true);
+            lib7A9A9B22_gf_MineralIncomeBonusToggle(lib7A9A9B22_gf_StagingAreaTeam(0), false);
+            auto85347B89_g = UnitGroup("MiddleLineGlow", c_playerAny, null, UnitFilter(0, 0, 0, 0), 0);
+            auto85347B89_u = UnitGroupCount(auto85347B89_g, c_unitCountAll);
+            for (;; auto85347B89_u -= 1) {
+                auto85347B89_var = UnitGroupUnitFromEnd(auto85347B89_g, auto85347B89_u);
+                if (auto85347B89_var == null) { break; }
+                UnitSetOwner(auto85347B89_var, 14, true);
+            }
+        }
+        else {
+        }
+    }
+
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tug of War Objectives - Basic Turret Death
+//--------------------------------------------------------------------------------------------------
+bool lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto0E36FF70_g;
+    int auto0E36FF70_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((GameIsMissionTimePaused() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource))) && (((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) >= 1) && (UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) <= 14)) != true)) {
+        auto0E36FF70_g = PlayerGroupAlliance(c_playerGroupEnemy, UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource)));
+        auto0E36FF70_var = -1;
+        while (true) {
+            auto0E36FF70_var = PlayerGroupNextPlayer(auto0E36FF70_g, auto0E36FF70_var);
+            if (auto0E36FF70_var < 0) { break; }
+            libDDE92A83_gf_ModifyMetaExperience(auto0E36FF70_var, FixedToInt(UnitTypeGetProperty(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitPropKillXP)));
+        }
+    }
+
+    if ((EventPlayerEffectUsedUnit(c_effectUnitSource) == lib458E37E6_gv_teamTurret[0])) {
+        if ((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource))) && (((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) >= 1) && (UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) <= 14)) != true)) {
+            libF095282B_gf_ObjectiveIconRemove(0);
+            libF095282B_gf_ObjectiveIconCreate(lib458E37E6_gv_teamBase[0], PlayerGroupAll(), 0, c_anchorTopRight, 0, 150, 0, false, false);
+        }
+        else {
+            libF095282B_gf_ObjectiveIconDeath(0);
+            libF095282B_gf_ObjectiveIconCreate(lib458E37E6_gv_teamBase[0], PlayerGroupAll(), 0, c_anchorTopRight, 0, 150, 0, true, false);
+        }
+    }
+    else {
+        if ((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource))) && (((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) >= 1) && (UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) <= 14)) != true)) {
+            libF095282B_gf_ObjectiveIconRemove(1);
+            libF095282B_gf_ObjectiveIconCreate(lib458E37E6_gv_teamBase[1], PlayerGroupAll(), 1, c_anchorTopRight, 0, 250, 0, false, false);
+        }
+        else {
+            libF095282B_gf_ObjectiveIconDeath(1);
+            libF095282B_gf_ObjectiveIconCreate(lib458E37E6_gv_teamBase[1], PlayerGroupAll(), 1, c_anchorTopRight, 0, 250, 0, true, false);
+        }
+    }
+    libF095282B_gf_ObjectiveIconUpdate();
+    if ((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) != UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource))) && (((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) >= 1) && (UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)) <= 14)) != true) && (TechTreeUpgradeCount(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "PremiumReward", c_techCountCompleteOnly) == 1)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "TrophyRiftPremium", c_unitCreateIgnorePlacement, EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)));
+        UIDisplayMessage(PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)), c_messageAreaChat, StringExternal("Param/Value/lib_458E37E6_83DBD3D2"));
+    }
+    else {
+        libNtve_gf_CreatePingFacingAngle(PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)), "PingObjective", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), ColorWithAlpha(0.00, 100.00, 0.00, 0.00), 8.0, 270.0);
+    }
+    lib22D496B3_gf_PartyFrameUpdate("MineralsCurrent");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath_Init () {
+    lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath = TriggerCreate("lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath_Func");
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath, false);
+    TriggerAddEventPlayerEffectUsed(lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath, c_playerAny, "ObjectiveDeathTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tug of War Objectives - Basic Base Death
+//--------------------------------------------------------------------------------------------------
+bool lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventPlayerEffectUsed() == "OverdeathProtossSetActivate")) {
+        lib7550A90B_gf_TugofWarGameOver(EventPlayerEffectUsedUnit(c_effectUnitSource), lib7A9A9B22_gf_StagingAreaTeam(0));
+        libF095282B_gf_ObjectiveIconToggle(1, false);
+        Wait(5.0, c_timeGame);
+        libF095282B_gf_ObjectiveIconDeath(1);
+        libF095282B_gf_ObjectiveIconUpdate();
+        libF095282B_gf_ObjectiveIconFade(0, false, 1.0);
+        libF095282B_gf_ObjectiveIconFade(1, false, 1.0);
+    }
+
+    if ((EventPlayerEffectUsed() == "OverdeathTerranSetActivate")) {
+        lib7550A90B_gf_TugofWarGameOver(EventPlayerEffectUsedUnit(c_effectUnitSource), lib7A9A9B22_gf_StagingAreaTeam(1));
+        libF095282B_gf_ObjectiveIconToggle(0, false);
+        Wait(5.0, c_timeGame);
+        libF095282B_gf_ObjectiveIconDeath(0);
+        libF095282B_gf_ObjectiveIconUpdate();
+        libF095282B_gf_ObjectiveIconFade(0, false, 1.0);
+        libF095282B_gf_ObjectiveIconFade(1, false, 1.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath_Init () {
+    lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath = TriggerCreate("lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath_Func");
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath, false);
+    TriggerAddEventPlayerEffectUsed(lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath, c_playerAny, "OverdeathProtossSetActivate");
+    TriggerAddEventPlayerEffectUsed(lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath, c_playerAny, "OverdeathTerranSetActivate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tug of War Objectives - Periodic Update
+//--------------------------------------------------------------------------------------------------
+bool lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+
+        if (!((GameIsMissionTimePaused() == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7550A90B_gf_TugofWarPeriodicUpdate();
+    lib458E37E6_gf_TugofWarObjectivesMidControl();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate_Init () {
+    lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate = TriggerCreate("lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate_Func");
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate, false);
+    TriggerAddEventTimePeriodic(lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate, 0.5, c_timeReal);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Tug of War Objectives - Ankh
+//--------------------------------------------------------------------------------------------------
+bool lib458E37E6_gt_TugofWarObjectivesAnkh_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto81E3B324_g;
+    int auto81E3B324_var;
+    unitgroup autoA3937D56_g;
+    int autoA3937D56_u;
+    unit autoA3937D56_var;
+    unitgroup autoEA57752D_g;
+    int autoEA57752D_u;
+    unit autoEA57752D_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7550A90B_gf_TugofWarPause(true, true, false);
+    libDDE92A83_gf_ScreenShakeGlobal();
+    auto81E3B324_g = PlayerGroupAll();
+    auto81E3B324_var = -1;
+    while (true) {
+        auto81E3B324_var = PlayerGroupNextPlayer(auto81E3B324_g, auto81E3B324_var);
+        if (auto81E3B324_var < 0) { break; }
+        UIAlertClear(auto81E3B324_var);
+    }
+    autoA3937D56_g = UnitGroupFilter(null, c_playerAny, lib7A9A9B22_gf_StagingAreaSpawns(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoA3937D56_u = UnitGroupCount(autoA3937D56_g, c_unitCountAll);
+    for (;; autoA3937D56_u -= 1) {
+        autoA3937D56_var = UnitGroupUnitFromEnd(autoA3937D56_g, autoA3937D56_u);
+        if (autoA3937D56_var == null) { break; }
+        UnitSetState(autoA3937D56_var, c_unitStateStunned, true);
+        libNtve_gf_MakeUnitInvulnerable(autoA3937D56_var, true);
+    }
+    Wait(6.0, c_timeGame);
+    autoEA57752D_g = lib7A9A9B22_gf_StagingAreaSpawns();
+    autoEA57752D_u = UnitGroupCount(autoEA57752D_g, c_unitCountAll);
+    for (;; autoEA57752D_u -= 1) {
+        autoEA57752D_var = UnitGroupUnitFromEnd(autoEA57752D_g, autoEA57752D_u);
+        if (autoEA57752D_var == null) { break; }
+        libNtve_gf_PauseUnit(autoEA57752D_var, false);
+        UnitSetState(autoEA57752D_var, c_unitStateStunned, true);
+        UnitBehaviorAdd(autoEA57752D_var, "UnitSuicideCrystalPrecursor", autoEA57752D_var, 1);
+    }
+    Wait(3.5, c_timeGame);
+    lib7550A90B_gf_TugofWarPause(false, false, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib458E37E6_gt_TugofWarObjectivesAnkh_Init () {
+    lib458E37E6_gt_TugofWarObjectivesAnkh = TriggerCreate("lib458E37E6_gt_TugofWarObjectivesAnkh_Func");
+    TriggerEnable(lib458E37E6_gt_TugofWarObjectivesAnkh, false);
+    TriggerAddEventPlayerEffectUsed(lib458E37E6_gt_TugofWarObjectivesAnkh, c_playerAny, "GameplayModAnkhSetInvulnerability");
+}
+
+void lib458E37E6_InitTriggers () {
+    lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath_Init();
+    lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath_Init();
+    lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate_Init();
+    lib458E37E6_gt_TugofWarObjectivesAnkh_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib458E37E6_InitLib_completed = false;
+
+void lib458E37E6_InitLib () {
+    if (lib458E37E6_InitLib_completed) {
+        return;
+    }
+
+    lib458E37E6_InitLib_completed = true;
+
+    lib458E37E6_InitLibraries();
+    lib458E37E6_InitVariables();
+    lib458E37E6_InitTriggers();
+}
+
+include "LibDDE92A83"
+include "Lib7A9A9B22"
+include "LibF095282B"
+include "Lib22D496B3"
+include "Lib7550A90B"
+

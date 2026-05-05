@@ -1,0 +1,145 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Abilities
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib7AED044D_gv_player = 15;
+const fixed lib7AED044D_gv_buildHookBountyModifier = 0.2;
+
+// Variable Declarations
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_stampedeFacing;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_soulshatter;
+int[lib7AED044D_gv_player + 1] lib7AED044D_gv_sapphironSummonCount;
+int[lib7AED044D_gv_player + 1] lib7AED044D_gv_ivusSummonCount;
+fixed lib7AED044D_gv_xPforSpawn;
+timer lib7AED044D_gv_preparationTimeTimer;
+playergroup lib7AED044D_gv_preparationTimeGroup;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_bountyModifierUnit;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_bountyHero;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_bountyHeroLevel;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_bountyModifierStructure;
+fixed[lib7AED044D_gv_player + 1] lib7AED044D_gv_bountyModifierCreep;
+fixed lib7AED044D_gv_spawnControllerBountyModifier;
+
+// Function Declarations
+bool lib7AED044D_gf_BehaviorIsPositive (string lp_buff);
+bool lib7AED044D_gf_BehaviorIsNegative (string lp_buff);
+void lib7AED044D_gf_PeriodicSpawning (int lp_player, bool lp_xPForSpawning);
+void lib7AED044D_gf_StarlightPreparationTime (fixed lp_duration, playergroup lp_players);
+void lib7AED044D_gf_StarlightBountySystem (playergroup lp_players, bool lp_toggle, fixed lp_unitValueModifier, fixed lp_structureValueModifier, fixed lp_creepValueModifier, fixed lp_heroValue, fixed lp_heroLevelValue);
+void lib7AED044D_gf_BossText (text lp_text, string lp_unitType);
+void lib7AED044D_gf_KickerXP (int lp_value, unit lp_unit, bool lp_modifyXP);
+void lib7AED044D_gf_KickerDebuff (string lp_debuff, unit lp_unit);
+void lib7AED044D_gf_KickerLife (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay);
+void lib7AED044D_gf_KickerEnergyBurn (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay);
+void lib7AED044D_gf_KickerEnergy (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay);
+void lib7AED044D_gf_KickerDamage (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay);
+void lib7AED044D_gf_KickerGold (int lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyGold);
+void lib7AED044D_gf_CreateKicker (text lp_text, point lp_point, int lp_player, fixed lp_offset, fixed lp_velocity, fixed lp_duration, fixed lp_gravity, fixed lp_angleVariance);
+void lib7AED044D_gf_SpawnControllerAttributes (playergroup lp_enemyPlayerGroup, int lp_bonusPerPlayer, fixed lp_enrageTime, int lp_playerOwner, fixed lp_bountyModifier);
+void lib7AED044D_gf_GameplayModTogglePvPDamage (bool lp_toggle);
+void lib7AED044D_gf_GameplayModMeleeHeroArmor (bool lp_toggle);
+void lib7AED044D_gf_SetGlobalUnitPassive (int lp_player, string lp_button);
+void lib7AED044D_gf_War3AI (int lp_player, bool lp_toggle);
+void lib7AED044D_gf_StarlightAbilitiesDefaultSettings (fixed lp_lifeModifier, fixed lp_energyRegenBase, bool lp_allianceButton, bool lp_armyButton, bool lp_consolePanel, bool lp_customResource, bool lp_idleWorkerButton, bool lp_teamResourceButton, bool lp_supplyFrame, bool lp_neutralHostileBounty, bool lp_war3Music);
+void lib7AED044D_gf_StarlightNodeSystem (bool lp_toggle);
+void lib7AED044D_gf_StarlightNodeRace (int lp_player, string lp_race);
+void lib7AED044D_gf_StarlightLockControl (playergroup lp_playerGroup, bool lp_toggle);
+
+// Trigger Declarations
+trigger lib7AED044D_gt_SapphironSummon;
+trigger lib7AED044D_gt_IvusSummon;
+trigger lib7AED044D_gt_StampedeStart;
+trigger lib7AED044D_gt_Stampede;
+trigger lib7AED044D_gt_Ankh;
+trigger lib7AED044D_gt_AncestralSpirit;
+trigger lib7AED044D_gt_ScreenShakeMinor;
+trigger lib7AED044D_gt_ScreenShakeModerate;
+trigger lib7AED044D_gt_ScreenShakeMajor;
+trigger lib7AED044D_gt_ScreenShakeGlobal;
+trigger lib7AED044D_gt_GateDeath;
+trigger lib7AED044D_gt_GateRebuild;
+trigger lib7AED044D_gt_CriticalStrikeEffect;
+trigger lib7AED044D_gt_EvasionEffect;
+trigger lib7AED044D_gt_EchoofMedivhCast;
+trigger lib7AED044D_gt_EyeofSargeras;
+trigger lib7AED044D_gt_GoldPickup10;
+trigger lib7AED044D_gt_GoldPickup25;
+trigger lib7AED044D_gt_GoldPickup50;
+trigger lib7AED044D_gt_Promote;
+trigger lib7AED044D_gt_PromoteUpgrade;
+trigger lib7AED044D_gt_SoulshatterApplyLife;
+trigger lib7AED044D_gt_SoulshatterSetLife;
+trigger lib7AED044D_gt_StormEarthandFireCancel;
+trigger lib7AED044D_gt_StunOrbUpgrade;
+trigger lib7AED044D_gt_CripplingFieldUpgrade;
+trigger lib7AED044D_gt_ArgusConstructFacing;
+trigger lib7AED044D_gt_ArgusConstructUpgrade;
+trigger lib7AED044D_gt_SolariteConstructUpgrade;
+trigger lib7AED044D_gt_RuneFragment;
+trigger lib7AED044D_gt_ChangeOwnerToCaster;
+trigger lib7AED044D_gt_FullHealSource;
+trigger lib7AED044D_gt_FullHealTarget;
+trigger lib7AED044D_gt_Enslave;
+trigger lib7AED044D_gt_Transmute;
+trigger lib7AED044D_gt_AbsorbMana;
+trigger lib7AED044D_gt_SearingStrikesAugment;
+trigger lib7AED044D_gt_ControlMagic;
+trigger lib7AED044D_gt_ControlMagic3;
+trigger lib7AED044D_gt_ControlMagic2;
+trigger lib7AED044D_gt_CharmDeath;
+trigger lib7AED044D_gt_MirrorImageRemove;
+trigger lib7AED044D_gt_RallyCasterUseCasterRally;
+trigger lib7AED044D_gt_DisableHeroBirthRallyTrigger;
+trigger lib7AED044D_gt_RallySourceUseTargetRally;
+trigger lib7AED044D_gt_TransferonDeath;
+trigger lib7AED044D_gt_GateRebuildStart;
+trigger lib7AED044D_gt_PeriodicSpawning;
+trigger lib7AED044D_gt_PeriodicSpawningChargeCount;
+trigger lib7AED044D_gt_PreparationTimeTimeout;
+trigger lib7AED044D_gt_BountySystemTrigger;
+trigger lib7AED044D_gt_HeroBounty;
+trigger lib7AED044D_gt_NeutralHostileBounty;
+trigger lib7AED044D_gt_RagnarosBirth;
+trigger lib7AED044D_gt_KickerUniqueDamage;
+trigger lib7AED044D_gt_KickerUniqueLife;
+trigger lib7AED044D_gt_KickerUniqueEnergy;
+trigger lib7AED044D_gt_KickerDamageTargetPoint;
+trigger lib7AED044D_gt_KickerDamageCaster;
+trigger lib7AED044D_gt_KickerDamageSource;
+trigger lib7AED044D_gt_KickerEnergyCaster;
+trigger lib7AED044D_gt_KickerLifeCaster;
+trigger lib7AED044D_gt_KickerLifeTargetPoint;
+trigger lib7AED044D_gt_KickerPurchase;
+trigger lib7AED044D_gt_KickerVulnerable;
+trigger lib7AED044D_gt_KickerWeaponDamage;
+trigger lib7AED044D_gt_KickerAlchemy;
+trigger lib7AED044D_gt_KickerFeedback;
+trigger lib7AED044D_gt_KickerManaBurn;
+trigger lib7AED044D_gt_KickerSilence;
+trigger lib7AED044D_gt_BuildHookBounty;
+trigger lib7AED044D_gt_SpawnControllerBounty;
+trigger lib7AED044D_gt_Start;
+trigger lib7AED044D_gt_UpgradeAlchemy;
+trigger lib7AED044D_gt_UpgradeImprovedArmor;
+trigger lib7AED044D_gt_UpgradeWeaponDamage;
+trigger lib7AED044D_gt_TeleporterInteract;
+trigger lib7AED044D_gt_UpgradeItem;
+trigger lib7AED044D_gt_MercPurchaseSet;
+trigger lib7AED044D_gt_RandomizeMercCamps;
+trigger lib7AED044D_gt_PawnItem;
+trigger lib7AED044D_gt_GoldEarned;
+trigger lib7AED044D_gt_BuyItem;
+trigger lib7AED044D_gt_Hearthstone;
+trigger lib7AED044D_gt_VoidFragments;
+trigger lib7AED044D_gt_InterestRates;
+trigger lib7AED044D_gt_DestructionSpecialization;
+trigger lib7AED044D_gt_AfflictionSpecialization;
+trigger lib7AED044D_gt_Learn;
+trigger lib7AED044D_gt_HeroDeathScore;
+trigger lib7AED044D_gt_ConsumablesUsedScore;
+
+// Library Initialization
+void lib7AED044D_InitVariables ();
+

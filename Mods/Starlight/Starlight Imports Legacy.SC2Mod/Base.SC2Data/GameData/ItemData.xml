@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CItem id="BasicUnitItemPassive">
+        <Class value="UnitItem"/>
+        <EquipBehaviorArray value="BasicUnitItemPassive"/>
+    </CItem>
+</Catalog>

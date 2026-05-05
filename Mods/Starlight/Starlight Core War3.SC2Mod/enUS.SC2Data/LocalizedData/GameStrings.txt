@@ -1,0 +1,3 @@
+﻿DocInfo/DescLong=Starlight Core War3
+DocInfo/DescShort=Starlight Core War3
+DocInfo/Name=Starlight Core War31

@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CValidatorUnitCompareVitality id="CasterVitalityGT60">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Type value="Fraction"/>
+        <Value value="0.6"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CasterVitalityLE30">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Type value="Fraction"/>
+        <Value value="0.3"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CasterVitalityLE40">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Type value="Fraction"/>
+        <Value value="0.4"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CasterVitalityLE50">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Type value="Fraction"/>
+        <Value value="0.5"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CasterVitalityGT50">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Type value="Fraction"/>
+        <Value value="0.5"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorLocationEnumArea id="GenericTargetedAoETargetSearch">
+        <AreaArray Radius="2.5"/>
+        <Compare value="GE"/>
+        <Count value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="GenericTargetedAoETargetSearchStress">
+        <AreaArray Radius="2.5"/>
+        <Compare value="GE"/>
+        <Count value="1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="HideItemModels">
+        <Compare value="GE"/>
+        <Value value="1"/>
+        <Behavior value="HideItemModels"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="NotCreepTumorBurrowed">
+        <Value value="CreepTumorBurrowed"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareVital id="CasterEnergyGE5" parent="CasterEnergyLT50">
+        <Compare value="GE"/>
+        <Value value="5"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyGE1" parent="CasterEnergyLT50">
+        <Compare value="GE"/>
+        <Value value="1"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyGE10" parent="CasterEnergyLT50">
+        <Compare value="GE"/>
+        <Value value="10"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyGE25" parent="CasterEnergyLT50">
+        <Compare value="GE"/>
+        <Value value="25"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyGE8" parent="CasterEnergyLT50">
+        <Compare value="GE"/>
+        <Value value="8"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyGE80Percent">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Fraction"/>
+        <Value value="0.8"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyLT25" parent="CasterEnergyLT50">
+        <Value value="25"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyLT5" parent="CasterEnergyLT50">
+        <Value value="5"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterEnergyNotFull">
+        <ResultFailed value="TooMuchEnergy"/>
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Type value="Fraction"/>
+        <Value value="1"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterHasShields">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeDelta300">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="300"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeGT33Percent">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Type value="Fraction"/>
+        <Value value="0.33"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeGT67Percent">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Type value="Fraction"/>
+        <Value value="0.67"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeLT35Percent" parent="CasterLifePercent">
+        <Compare value="LT"/>
+        <Value value="0.35"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeNotFull">
+        <ResultFailed value="TooMuchLife"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitType id="NotRepairDrone">
+        <Value value="RavenRepairDrone"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareVital id="TargetLifeLT75Percent" parent="CasterLifePercent">
+        <WhichUnit Value="Target"/>
+        <Compare value="LT"/>
+        <Value value="0.75"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterShieldsDelta300">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="300"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterShieldsGT1">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Value value="1"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVital id="CasterLifeLT25Percent" parent="CasterLifePercent">
+        <Compare value="LT"/>
+        <Value value="0.25"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareSpeed id="CasterSpeedGT0">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitCompareSpeed id="IsMoving">
+        <Compare value="GT"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitFilters id="KnockbackTargetFilter">
+        <Filters value="-;Structure,Heroic,Dead"/>
+    </CValidatorUnitFilters>
+    <CValidatorCombine id="KnockbackValidator">
+        <Type value="And"/>
+        <CombineArray value="KnockbackTargetFilter"/>
+        <CombineArray value="NoPreventKnockback"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="NoAbilityRecentlyCast">
+        <WhichUnit Value="Source"/>
+        <Behavior value="AbilityRecentlyCast"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="IsBiologicalorMechanical">
+        <CombineArray value="IsBiological"/>
+        <CombineArray value="IsMechanical"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceGE3">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceGE4">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="4"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceGE5">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="5"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareVitality id="TargetVitalityDelta50">
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="50"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitFilters id="IsRealHeroFilter">
+        <Filters value="Heroic;Hallucination"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="IsStructureSource">
+        <WhichUnit Value="Source"/>
+        <Filters value="Structure;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="IsHeroicCaster">
+        <WhichUnit Value="Caster"/>
+        <Filters value="Heroic;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="IsSummonedUnitSource">
+        <WhichUnit Value="Source"/>
+        <Filters value="Summoned;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationCompareRange id="TargetPointLE13">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="13"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE14">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="14"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE15">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="15"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE3">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE125">
+        <Compare value="GE"/>
+        <Value value="125"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CasterVitalityLEStressThreshold">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Type value="Fraction"/>
+        <Value value="0.33"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitFilters id="IsHeroic">
+        <Filters value="Heroic;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareVitality id="CasterVitalityDelta100">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="100"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitFilters id="NotMechanical">
+        <Filters value="-;Mechanical"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE200">
+        <Compare value="GT"/>
+        <Value value="200"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorCombine id="CanLearn">
+        <CombineArray value="CanLearn00"/>
+        <CombineArray value="CanLearn01"/>
+        <CombineArray value="CanLearn02"/>
+        <CombineArray value="CanLearn03"/>
+        <CombineArray value="CanLearn19"/>
+    </CValidatorCombine>
+    <CValidatorUnitOrder id="CanLearn00">
+        <AbilLink value="GenericHeroLearn"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanLearn01">
+        <AbilLink value="GenericHeroLearn"/>
+        <AbilCmdIndex value="1"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanLearn02">
+        <AbilLink value="GenericHeroLearn"/>
+        <AbilCmdIndex value="2"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanLearn03">
+        <AbilLink value="GenericHeroLearn"/>
+        <AbilCmdIndex value="3"/>
+    </CValidatorUnitOrder>
+    <CValidatorUnitOrder id="CanLearn19">
+        <AbilLink value="GenericHeroLearn"/>
+        <AbilCmdIndex value="19"/>
+    </CValidatorUnitOrder>
+    <CValidatorCombine id="CanNotLearn">
+        <CombineArray value="CanLearn00"/>
+        <CombineArray value="CanLearn01"/>
+        <CombineArray value="CanLearn02"/>
+        <CombineArray value="CanLearn03"/>
+        <CombineArray value="CanLearn19"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE10">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="10"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE11">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="11"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE12">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="12"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE4">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="4"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE5">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="5"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE6">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="6"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE7">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="7"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE8">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="8"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceLE9">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="LE"/>
+        <Range value="9"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE10">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="10"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE11">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="11"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE12">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="12"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE3">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="3"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE4">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="4"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE5">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="5"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE6">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="6"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE7">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="7"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE8">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="8"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorLocationCompareRange id="TargetPointLE9">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <Compare value="LE"/>
+        <Range value="9"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorCombine id="CasterNotCrowdControlledorDead">
+        <Type value="And"/>
+        <CombineArray value="CasterNotStunnedBehavior"/>
+        <CombineArray value="CasterNotDead"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="CasterNotStunned">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="SourceNotStunned">
+        <WhichUnit Value="Source"/>
+        <Filters value="-;Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel1">
+        <WhichUnit Value="Source"/>
+        <Value value="2"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel2">
+        <WhichUnit Value="Source"/>
+        <Value value="3"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel3">
+        <WhichUnit Value="Source"/>
+        <Value value="4"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel4">
+        <WhichUnit Value="Source"/>
+        <Value value="5"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel5">
+        <WhichUnit Value="Source"/>
+        <Value value="6"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel6">
+        <WhichUnit Value="Source"/>
+        <Value value="7"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitCompareVeterancyLevel id="IsVeterancyLevel7">
+        <WhichUnit Value="Source"/>
+        <Value value="8"/>
+    </CValidatorUnitCompareVeterancyLevel>
+    <CValidatorUnitFilters id="SourceIsCloaked">
+        <WhichUnit Value="Source"/>
+        <Filters value="Cloaked;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationCompareRange id="TargetUnitDistanceGE2">
+        <ResultFailed value="TargetIsOutOfRange"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GE"/>
+        <Range value="2"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="NoPreventKnockback">
+        <Behavior value="PreventKnockback"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="GenericTargetedAoEAutocast">
+        <CombineArray value="GenericTargetedAoETargetSearch"/>
+        <CombineArray value="GenericTargetedAoEAutocastStress"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GenericTargetedAoEAutocastStress">
+        <Type value="And"/>
+        <CombineArray value="GenericTargetedAoETargetSearchStress"/>
+        <CombineArray value="CasterIsStressed"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="CasterIsStressed">
+        <CombineArray value="CasterEnergyGE80Percent"/>
+        <CombineArray value="CasterLifeLT20Percent"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GenericDebuffTargetFilter">
+        <Type value="And"/>
+        <CombineArray value="NotUnbuffableUnit"/>
+        <CombineArray value="NotStructureTarget"/>
+        <CombineArray value="NotResistant"/>
+    </CValidatorCombine>
+    <CValidatorUnitFilters id="NotResistant">
+        <Filters value="-;Resistant"/>
+    </CValidatorUnitFilters>
+    <CValidatorLocationCompareCliffLevel id="CliffLevelEqualPoint">
+        <OtherLocation Value="OriginUnit"/>
+    </CValidatorLocationCompareCliffLevel>
+    <CValidatorUnitCompareVital id="SourceHasShields">
+        <WhichUnit Value="Source"/>
+        <Compare value="GT"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVitality id="CasterVitalityLE20">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LE"/>
+        <Type value="Fraction"/>
+        <Value value="0.2"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="CurrentVitalityGE200">
+        <Compare value="GE"/>
+        <Value value="200"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE100">
+        <Compare value="GE"/>
+        <Value value="100"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE25">
+        <Compare value="GE"/>
+        <Value value="25"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE250">
+        <Compare value="GE"/>
+        <Value value="250"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitCompareVitality id="TargetVitalityGE50">
+        <Compare value="GE"/>
+        <Value value="50"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitFilters id="TargetNotStunned">
+        <Filters value="-;Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareVital id="CasterHasNoShields">
+        <IgnoreWhileChanneling value="1"/>
+        <ResultFailed value="CantTargetUnitWithShields"/>
+        <Compare value="LE"/>
+        <Vital value="Shields"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareField id="TargetSupplyCostLT1">
+        <Compare value="GT"/>
+        <Field value="Food"/>
+        <Value value="-1"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="TargetSupplyCost2">
+        <Field value="Food"/>
+        <Value value="-2"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="TargetSupplyCost3">
+        <Field value="Food"/>
+        <Value value="-3"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="TargetSupplyCost4">
+        <Field value="Food"/>
+        <Value value="-4"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="TargetSupplyCost6">
+        <Field value="Food"/>
+        <Value value="-6"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitCompareField id="TargetSupplyCost1">
+        <Field value="Food"/>
+        <Value value="-1"/>
+    </CValidatorUnitCompareField>
+    <CValidatorUnitOrderQueue id="CasterIsAttackingWaveUnit">
+        <AbilLink value="AttackWarpPrism"/>
+    </CValidatorUnitOrderQueue>
+    <CValidatorUnitCompareVital id="TargetEnergyGE45" parent="TargetShieldsGE70">
+        <Value value="45"/>
+        <Vital value="Energy"/>
+    </CValidatorUnitCompareVital>
+    <CValidatorUnitCompareVitality id="CasterVitalityLT90">
+        <WhichUnit Value="Caster"/>
+        <Compare value="LT"/>
+        <Value value="90"/>
+    </CValidatorUnitCompareVitality>
+    <CValidatorUnitType id="NotAutoTurret">
+        <Value value="AutoTurret"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitFilters id="NotHeroicTarget">
+        <Filters value="-;Heroic"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitCompareSpeed id="TargetSpeedGT0">
+        <Compare value="GT"/>
+    </CValidatorUnitCompareSpeed>
+    <CValidatorUnitCompareAttackPriority id="ThreatensHighTemplar" parent="ThreatensUnit" unitLink="Hydralisk">
+        <AttackerAlternateType value="HighTemplar"/>
+    </CValidatorUnitCompareAttackPriority>
+    <CValidatorUnitType id="NotRaven">
+        <Value value="Raven"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotOverseer">
+        <Value value="Overseer"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotViper">
+        <Value value="Viper"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotMedivac">
+        <Value value="Medivac"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotWidowMine">
+        <Value value="WidowMine"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitFilters id="IsArmored">
+        <Filters value="Armored;-"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitType id="NotWidowMineBurrowed">
+        <Value value="WidowMineBurrowed"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotObserver">
+        <Value value="Observer"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotBaneling">
+        <Value value="Baneling"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotUltralisk">
+        <Value value="Ultralisk"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotZealot">
+        <Value value="Zealot"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotZergling">
+        <Value value="Zergling"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NotBroodling">
+        <Value value="Broodling"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareVital id="TargetLifeDelta75">
+        <Compare value="GE"/>
+        <Type value="Delta"/>
+        <Value value="75"/>
+    </CValidatorUnitCompareVital>
+</Catalog>

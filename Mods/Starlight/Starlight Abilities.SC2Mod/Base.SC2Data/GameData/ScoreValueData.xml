@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CScoreValueCustom id="ConsumablesUsed"/>
+    <CScoreValueCustom id="KickerVirulentCloud">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerMonsoon">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerHeroicLeap">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerRallyingCry">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerSiphonPower">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerMeteor">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerWiseCouncil">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerDeathMarch">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerDesecrate">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerVoidShift">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerRegrowth">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerSilence">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerHealingSpray">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerClusterRockets">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerBreathofFire">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerDoom">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerAcidBomb">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerIncinerate">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerStampede">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerRainofFire">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerSoulBurn">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerPocketFactory">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerVolcano">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerTornado">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerStarfall">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerImmolation">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerManaBurn">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerManaBurnEnergy">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerTranquility">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerEntanglingRoots">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerShockwave">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerEarthquake">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerBladestorm">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerChainLightning">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerFlamestrike">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerStormBolt">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerDeathandDecay">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerImpale">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerDamage">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueStandard id="GoldGathered">
+        <Value value="TerrazineCollected"/>
+    </CScoreValueStandard>
+    <CScoreValueCustom id="GoldSpentonEquipment"/>
+    <CScoreValueCustom id="GoldSpentonConsumables"/>
+    <CScoreValueCustom id="GoldReceivedfromSelling"/>
+    <CScoreValueCustom id="ItemsPurchased"/>
+    <CScoreValueCustom id="AbilitiesLearned"/>
+    <CScoreValueCustom id="KickerCarrionSwarm">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerEnergy">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerLife">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="KickerFrozenOrb">
+        <Type value="Fixed"/>
+    </CScoreValueCustom>
+    <CScoreValueCustom id="SpellbringerUpgrades"/>
+    <CScoreValueStandard id="StructuresActiveEconomy">
+        <Value value="StructuresActiveEconomy"/>
+    </CScoreValueStandard>
+</Catalog>

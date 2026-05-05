@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CItemClass id="Consumable"/>
+    <CItemClass id="ConsumableLoot"/>
+    <CItemClass id="Permanent"/>
+    <CItemClass id="PermanentEpic"/>
+    <CItemClass id="PermanentGreen"/>
+    <CItemClass id="PermanentBlue"/>
+    <CItemClass id="PermanentLoot"/>
+    <CItemClass id="UpgradeableGreen"/>
+    <CItemClass id="UpgradeableBlue"/>
+</Catalog>

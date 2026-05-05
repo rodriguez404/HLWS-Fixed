@@ -1,0 +1,25 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Tug of War Objectives
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+unit[2] lib458E37E6_gv_teamBase;
+unit[2] lib458E37E6_gv_teamTurret;
+region[2] lib458E37E6_gv_teamArea;
+timer lib458E37E6_gv_midControlTimer;
+
+// Function Declarations
+void lib458E37E6_gf_TugofWarObjectivesBasic (point lp_team0Base, point lp_team0Turret, point lp_team0DefensiveArea, region lp_team0TotalArea, point lp_team1Base, point lp_team1Turret, point lp_team1DefensiveArea, region lp_team1TotalArea, bool lp_brands);
+void lib458E37E6_gf_TugofWarObjectivesMidControl ();
+void lib458E37E6_gf_TugofWarObjectivesSetMid (int lp_team);
+
+// Trigger Declarations
+trigger lib458E37E6_gt_TugofWarObjectivesBasicTurretDeath;
+trigger lib458E37E6_gt_TugofWarObjectivesBasicBaseDeath;
+trigger lib458E37E6_gt_TugofWarObjectivesPeriodicUpdate;
+trigger lib458E37E6_gt_TugofWarObjectivesAnkh;
+
+// Library Initialization
+void lib458E37E6_InitVariables ();
+

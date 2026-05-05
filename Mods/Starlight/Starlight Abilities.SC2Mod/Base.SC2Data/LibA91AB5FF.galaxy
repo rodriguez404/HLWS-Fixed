@@ -1,0 +1,1041 @@
+include "TriggerLibs/NativeLib"
+include "Lib7AED044D_h"
+
+include "LibA91AB5FF_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Stats
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libA91AB5FF_InitLibraries () {
+    libNtve_InitVariables();
+    lib7AED044D_InitVariables();
+}
+
+// Variable Initialization
+bool libA91AB5FF_InitVariables_completed = false;
+
+void libA91AB5FF_InitVariables () {
+    if (libA91AB5FF_InitVariables_completed) {
+        return;
+    }
+
+    libA91AB5FF_InitVariables_completed = true;
+
+    libA91AB5FF_gv_energyRegenBase = 1.0;
+    libA91AB5FF_gv_lifeModifier = 2.0;
+}
+
+// Functions
+void libA91AB5FF_gf_ModifyAbilityCatalog (unit lp_hero, string lp_ability, int lp_scalingFactor, int lp_catalog, string lp_entry, string lp_fieldPath, string lp_fieldPath2) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(lp_catalog, lp_entry, lp_fieldPath, UnitGetOwner(lp_hero), FixedToString(libNtve_gf_ArithmeticRealClamp(((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath, libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath, libA91AB5FF_gv_neutralPlayer) / IntToFixed(lp_scalingFactor)) * TechTreeUpgradeCount(UnitGetOwner(lp_hero), ((lp_ability)), c_techCountCompleteOnly))) * (((100.0 + UnitBehaviorCount(lp_hero, "AbilityPower")) / 100.0) * ((100.0 + UnitBehaviorCount(lp_hero, "DamageModifier")) / 100.0))), 1.0, libA91AB5FF_gv_maxReal), 0));
+    CatalogFieldValueSet(lp_catalog, lp_entry, lp_fieldPath2, UnitGetOwner(lp_hero), FixedToString(libNtve_gf_ArithmeticRealClamp(((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath, libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath, libA91AB5FF_gv_neutralPlayer) / IntToFixed(lp_scalingFactor)) * (TechTreeUpgradeCount(UnitGetOwner(lp_hero), ((lp_ability)), c_techCountCompleteOnly) + 1.0))) * ((1.0 + (UnitBehaviorCount(lp_hero, "AbilityPower") / 100.0)) * (1.0 + (UnitBehaviorCount(lp_hero, "DamageModifier") / 100.0)))), 1.0, libA91AB5FF_gv_maxReal), 0));
+    if ((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath, UnitGetOwner(lp_hero)) == 1)) {
+        CatalogFieldValueSet(lp_catalog, lp_entry, lp_fieldPath, UnitGetOwner(lp_hero), FixedToString(libA91AB5FF_gv_maxReal, 0));
+    }
+
+    if ((CatalogFieldValueGetAsInt(lp_catalog, lp_entry, lp_fieldPath2, UnitGetOwner(lp_hero)) == 1)) {
+        CatalogFieldValueSet(lp_catalog, lp_entry, lp_fieldPath2, UnitGetOwner(lp_hero), FixedToString(libA91AB5FF_gv_maxReal, 0));
+    }
+
+}
+
+void libA91AB5FF_gf_ModifyAbilityParent (unit lp_hero) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoFD5C1180_ae = 15;
+    const int autoFD5C1180_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_i = 0;
+    for ( ; ( (autoFD5C1180_ai >= 0 && lv_i <= autoFD5C1180_ae) || (autoFD5C1180_ai < 0 && lv_i >= autoFD5C1180_ae) ) ; lv_i += autoFD5C1180_ai ) {
+        if ((AbilityCommandGetAbility(StringToAbilCmd(CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_hero), "ReviveType", libA91AB5FF_gv_neutralPlayer) + "Learn"), "InfoArray[" + IntToString(lv_i) + "].Abil", UnitGetOwner(lp_hero)))) != "DummyAbility")) {
+            libA91AB5FF_gf_ModifyAbility(lp_hero, (CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_hero), "ReviveType", libA91AB5FF_gv_neutralPlayer) + "Learn"), "InfoArray[" + IntToString(lv_i) + "].Abil", UnitGetOwner(lp_hero))));
+        }
+        else {
+            if ((AbilityCommandGetAbility(StringToAbilCmd(CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_hero), "ReviveType", libA91AB5FF_gv_neutralPlayer) + "Learn"), "InfoArray[" + IntToString(lv_i) + "].Button.DefaultButtonFace", UnitGetOwner(lp_hero)))) != "DummyAbility")) {
+                libA91AB5FF_gf_ModifyAbility(lp_hero, (CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(lp_hero), "ReviveType", libA91AB5FF_gv_neutralPlayer) + "Learn"), "InfoArray[" + IntToString(lv_i) + "].Button.DefaultButtonFace", UnitGetOwner(lp_hero))));
+            }
+
+        }
+    }
+}
+
+void libA91AB5FF_gf_ModifyAbilityDamage (unit lp_hero, string lp_ability, string lp_effect) {
+    // Automatic Variable Declarations
+    string auto4FEAA38A_val;
+
+    // Implementation
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(3) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogEffect, lp_effect, "Amount", "MaxCount");
+    }
+    else {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 3, c_gameCatalogEffect, lp_effect, "Amount", "MaxCount");
+    }
+    auto4FEAA38A_val = lp_effect;
+    if (auto4FEAA38A_val == "LifeDrainDamage") {
+        CatalogFieldValueSet(c_gameCatalogEffect, lp_effect, "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString(((UnitBehaviorCount(lp_hero, "SpellVamp") / 100.0) + 0.5), 2));
+    }
+    else if (auto4FEAA38A_val == "LifeDrainDamageHeroic") {
+        CatalogFieldValueSet(c_gameCatalogEffect, lp_effect, "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString(((UnitBehaviorCount(lp_hero, "SpellVamp") / 100.0) + 2.0), 2));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogEffect, lp_effect, "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "SpellVamp") / 100.0), 2));
+    }
+}
+
+void libA91AB5FF_gf_ModifyAbilityVitalLife (unit lp_hero, string lp_ability, string lp_effect) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(3) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogEffect, ((lp_ability) + "Modify"), "VitalArray[" + IntToString(0) + "].Change", "ResourceRestoreBonus");
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogEffect, ((lp_ability) + "CH"), "RechargeVitalRate", "DrainResourceCostFactor"+"[" + IntToString(0) + "]");
+    }
+    else {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 3, c_gameCatalogEffect, ((lp_ability) + "Modify"), "VitalArray[" + IntToString(0) + "].Change", "ResourceRestoreBonus");
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 3, c_gameCatalogEffect, ((lp_ability) + "CH"), "RechargeVitalRate", "DrainResourceCostFactor"+"[" + IntToString(0) + "]");
+    }
+
+    // if (CatalogFieldExists(CatalogEntryScope(c_gameCatalogEffect, ((lp_ability) + "CH")), CatalogReferenceGet(("Effect," + ((lp_ability) + "CH") + ",RechargeVitalRate"), c_playerAny))) {
+    //     if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(3) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+    //         libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogEffect, ((lp_ability) + "CH"), "RechargeVitalRate", "DrainResourceCostFactor"+"[" + IntToString(0) + "]");
+    //     }
+    //     else {
+    //         libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 3, c_gameCatalogEffect, ((lp_ability) + "CH"), "RechargeVitalRate", "DrainResourceCostFactor"+"[" + IntToString(0) + "]");
+    //     }
+    // }
+}
+
+void libA91AB5FF_gf_ModifyAbilityVitalShields (unit lp_hero, string lp_ability, string lp_effect) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(3) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogEffect, ((lp_ability) + "Modify"), "VitalArray[" + IntToString(1) + "].Change", "ResourcesHarvestedBonus");
+    }
+    else {
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 3, c_gameCatalogEffect, ((lp_ability) + "Modify"), "VitalArray[" + IntToString(1) + "].Change", "ResourcesHarvestedBonus");
+    }
+}
+
+void libA91AB5FF_gf_ModifyAbilityModifyShieldsBehavior (unit lp_hero, string lp_ability) {
+    // Variable Declarations
+    const string lv_suffix = "ShieldAmount";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly))) + ((Round((FixedToInt((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly)))) * 1.0)) / 100.0) * UnitBehaviorCount(lp_hero, "AbilityPower"))), 0));
+    CatalogFieldValueSet(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "MaxCount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * (TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly) + 1))) + ((Round((FixedToInt((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * (TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly) + 1)))) * 1.0)) / 100.0) * UnitBehaviorCount(lp_hero, "AbilityPower"))), 0));
+    CatalogFieldValueSet(c_gameCatalogBehavior, (lp_ability), "Modification.VitalMaxArray[" + IntToString(1) + "]", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly))) + ((Round((FixedToInt((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) + ((CatalogFieldValueGetAsInt(c_gameCatalogEffect, ((lp_ability) + lv_suffix), "Amount", libA91AB5FF_gv_neutralPlayer) / 3) * TechTreeUpgradeCount(UnitGetOwner(lp_hero), (CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "CmdButtonArray[" + IntToString(0) + "].DefaultButtonFace", libA91AB5FF_gv_neutralPlayer)), c_techCountCompleteOnly)))) * 1.0)) / 100.0) * UnitBehaviorCount(lp_hero, "AbilityPower"))), 0));
+}
+
+void libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower (unit lp_hero, string lp_behavior) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogBehavior, lp_behavior, "Modification.VitalRegenArray[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogBehavior, lp_behavior, "Modification.VitalRegenArray[" + IntToString(0) + "]", 0)) * (IntToFixed((100 + UnitBehaviorCount(lp_hero, "AbilityPower"))) / 100.0)), 1));
+}
+
+void libA91AB5FF_gf_ModifyAbilitySpeedCharge3 (unit lp_hero, string lp_ability) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Range[" + IntToString(0) + "]", libA91AB5FF_gv_neutralPlayer) * (1.0 + (UnitBehaviorCount(lp_hero, "AbilityRange") * 0.01))), c_fixedPrecisionAny));
+}
+
+void libA91AB5FF_gf_ModifyAbilityCost (unit lp_hero, string lp_ability) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", libA91AB5FF_gv_neutralPlayer) > 0)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Charge.TimeUse", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Cooldown.TimeUse", libA91AB5FF_gv_neutralPlayer) > 0)) {
+        CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Cooldown.TimeUse", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Cooldown.TimeUse", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) > 0)) {
+        if ((CatalogFieldValueGetFlagsAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", libA91AB5FF_gv_neutralPlayer) == 0)) {
+            CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+        }
+        else {
+            CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilityCost") * 0.01))), c_fixedPrecisionAny));
+        }
+    }
+
+}
+
+void libA91AB5FF_gf_ModifyAbilitySpeedCharge2 (unit lp_hero, string lp_ability, int lp_index) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "InfoArray[" + IntToString(lp_index) + "].Cooldown.TimeUse", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "InfoArray[" + IntToString(lp_index) + "].Cooldown.TimeUse", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "InfoArray[" + IntToString(lp_index) + "].Vital[" + IntToString(2) + "]", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "InfoArray[" + IntToString(lp_index) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilityCost") * 0.01))), c_fixedPrecisionAny));
+}
+
+void libA91AB5FF_gf_ModifyAbilityAugment (unit lp_hero, string lp_ability) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilityCost") * 0.01))), c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, ((lp_ability) + "Cost"), "VitalArray[" + IntToString(2) + "].Change", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) * -1.0) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilityCost") * 0.01))), c_fixedPrecisionAny));
+    CatalogFieldValueSet(c_gameCatalogEffect, ((lp_ability) + "Refund"), "VitalArray[" + IntToString(2) + "].Change", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, lp_ability, "Cost[" + IntToString(0) + "].Vital[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilityCost") * 0.01))), c_fixedPrecisionAny));
+}
+
+void libA91AB5FF_gf_ModifyHeroVitals (unit lp_hero) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogBehavior, "AbilityPowerMastery", "Modification.AttributeChangeArray[" + IntToString(0) + "].Points", UnitGetOwner(lp_hero), IntToString((UnitBehaviorCount(lp_hero, "AbilityPower") / 2)));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "WeaponDamageMastery", "Modification.AttributeChangeArray[" + IntToString(0) + "].Points", UnitGetOwner(lp_hero), IntToString((UnitBehaviorCount(lp_hero, "WeaponDamage") / 2)));
+    libA91AB5FF_gf_ModifyHeroLife(lp_hero, UnitGetType(lp_hero), 1.0);
+    libA91AB5FF_gf_ModifyHeroLife(lp_hero, "EarthBrewmaster", 2.0);
+    libA91AB5FF_gf_ModifyHeroLife(lp_hero, "FireBrewmaster", 1.5);
+    libA91AB5FF_gf_ModifyHeroLife(lp_hero, "StormBrewmaster", 1.0);
+    libA91AB5FF_gf_ModifyHeroLife(lp_hero, "DarkElite", 1.0);
+    CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "ShieldRegenRate", UnitGetOwner(lp_hero), FixedToString(((((UnitBehaviorCount(lp_hero, "LifeRegen") * libA91AB5FF_gv_lifeRegenPerPoint) + 0.0) + libA91AB5FF_gv_lifeRegenBase) * libA91AB5FF_gv_lifeModifier), 2));
+    if (((CatalogFieldValueGetFlagsAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", libA91AB5FF_gv_neutralPlayer) == 0))) {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", libA91AB5FF_gv_neutralPlayer) + (libA91AB5FF_gv_energyPerPoint * UnitBehaviorCount(lp_hero, "EnergyMax"))) * (1.0 + (UnitBehaviorCount(lp_hero, "EnergyModifier") * 0.01))), 0));
+    }
+    if ((CatalogFieldValueGetFlagsAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", libA91AB5FF_gv_neutralPlayer) == 0)) {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyRegenRate", UnitGetOwner(lp_hero), FixedToString(0.0, 2));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyRegenRate", UnitGetOwner(lp_hero), FixedToString((((UnitBehaviorCount(lp_hero, "EnergyRegen") * libA91AB5FF_gv_energyRegenPerPoint) + libA91AB5FF_gv_energyRegenBase) * (1.0 + (UnitBehaviorCount(lp_hero, "EnergyModifier") * 0.01))), 2));
+    }
+    if ((UnitBehaviorCount(lp_hero, "ShieldsBasedOnLife") > 0)) {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "ShieldsMax", UnitGetOwner(lp_hero), FixedToString(libNtve_gf_ArithmeticRealClamp(((UnitGetPropertyFixed(lp_hero, c_unitPropLifeMax, c_unitPropCurrent) * (UnitBehaviorCount(lp_hero, "ShieldsBasedOnLife") / 100.0)) + 1.0), 1.0, libA91AB5FF_gv_maxReal), 0));
+    }
+
+    if ((UnitBehaviorCount(lp_hero, "ShieldsBasedOnLife") == 0) && (UnitHasBehavior2(lp_hero, "AbilityShield") == false) && (UnitHasBehavior2(lp_hero, "ShieldPrecursor") == false)) {
+        CatalogFieldValueSet(c_gameCatalogUnit, UnitGetType(lp_hero), "ShieldsMax", UnitGetOwner(lp_hero), FixedToString(1.0, 0));
+    }
+
+    CatalogFieldValueSet(c_gameCatalogEffect, "LifeRegen", "Amount", UnitGetOwner(lp_hero), FixedToString((libA91AB5FF_gv_lifeRegenPerPoint * libA91AB5FF_gv_lifeModifier), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsLifeRegen", "Amount", UnitGetOwner(lp_hero), FixedToString((((UnitBehaviorCount(lp_hero, "LifeRegen") * libA91AB5FF_gv_lifeRegenPerPoint) + libA91AB5FF_gv_lifeRegenBase) * libA91AB5FF_gv_lifeModifier), 2));
+    if ((CatalogFieldValueGetFlagsAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "EnergyMax", libA91AB5FF_gv_neutralPlayer) == 0)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsEnergyRegen", "Amount", UnitGetOwner(lp_hero), FixedToString(0.0, 2));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsEnergyRegen", "Amount", UnitGetOwner(lp_hero), FixedToString(((UnitBehaviorCount(lp_hero, "EnergyRegen") * libA91AB5FF_gv_energyRegenPerPoint) + libA91AB5FF_gv_energyRegenBase), 2));
+    }
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsWeaponSpeed", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "WeaponSpeed")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsWeaponCleave", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "WeaponCleave")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsWeaponCritChance", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "WeaponCritChance")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsWeaponCritDamage", "Amount", UnitGetOwner(lp_hero), IntToString((UnitBehaviorCount(lp_hero, "WeaponCritMultiplier") + 2)));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsLifesteal", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "Lifesteal")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsAbilityPower", "Amount", UnitGetOwner(lp_hero), IntToString((UnitBehaviorCount(lp_hero, "AbilityPower") + 100)));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsAbilitySpeed", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "AbilitySpeed")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsAbilityCost", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "AbilityCost")));
+    CatalogFieldValueSet(c_gameCatalogEffect, "HeroStatsSpellVamp", "Amount", UnitGetOwner(lp_hero), IntToString(UnitBehaviorCount(lp_hero, "SpellVamp")));
+}
+
+void libA91AB5FF_gf_ModifyHeroLife (unit lp_hero, string lp_unitType, fixed lp_multiplier) {
+    // Variable Declarations
+    int lv_x;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lv_x = (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "LifeMax") * 25));
+    lv_x += (((FixedToInt((lp_multiplier * 100.0)) * (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "LifeMax") * 25))) / 100) - (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "LifeMax") * 25)));
+    lv_x += (((FixedToInt((UnitBehaviorCount(lp_hero, "LifeModifier") + 100.0)) * (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "LifeMax") * 25))) / 100) - (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "LifeMax") * 25)));
+    lv_x = ((lv_x * FixedToInt((libA91AB5FF_gv_lifeModifier * 100.0))) / 100);
+    if ((lv_x > FixedToInt(libA91AB5FF_gv_maxReal))) {
+        lv_x = FixedToInt(libA91AB5FF_gv_maxReal);
+    }
+
+    CatalogFieldValueSet(c_gameCatalogUnit, lp_unitType, "LifeMax", UnitGetOwner(lp_hero), IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogUnit, lp_unitType, "LifeStart", UnitGetOwner(lp_hero), IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogUnit, lp_unitType, "LifeRegenRate", UnitGetOwner(lp_hero), FixedToString(((((UnitBehaviorCount(lp_hero, "LifeRegen") * libA91AB5FF_gv_lifeRegenPerPoint) + 0.0) + libA91AB5FF_gv_lifeRegenBase) * ((1.0 + (UnitBehaviorCount(lp_hero, "LifeModifier") * 0.01)) * libA91AB5FF_gv_lifeModifier)), 2));
+}
+
+void libA91AB5FF_gf_ModifyHeroWeapon (unit lp_hero, string lp_weapon) {
+    // Automatic Variable Declarations
+    string autoE35E650B_val;
+
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogWeapon, lp_weapon, "Period", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogWeapon, lp_weapon, "Cost.Charge.CountMax", libA91AB5FF_gv_neutralPlayer) / 100.0) / (1.0 + (UnitBehaviorCount(lp_hero, "WeaponSpeed") * 0.01))), 6));
+    CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "MultistrikeSearch"), "AreaArray[" + IntToString(0) + "].MaxCount", UnitGetOwner(lp_hero), FixedToString(UnitBehaviorCount(lp_hero, "Multistrike"), 0));
+    CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "Lifesteal") * 0.01), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "Lifesteal") * 0.01), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "Lifesteal") * 0.01), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "Lifesteal") * 0.01), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "LeechFraction[" + IntToString(0) + "]", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "Lifesteal") * 0.01), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Crit"), "PeriodCount", UnitGetOwner(lp_hero), IntToString((UnitBehaviorCount(lp_hero, "WeaponCritMultiplier") + 2)));
+    autoE35E650B_val = lp_weapon;
+    if (autoE35E650B_val == "AcidSpike") {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.5), 2));
+    }
+    else if (autoE35E650B_val == "ArtanisHero") {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.5), 2));
+    }
+    else if (autoE35E650B_val == "PoweredBlade") {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.5), 2));
+    }
+    else if (autoE35E650B_val == "RaynorHero") {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "DamageDummy"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.33), 2));
+    }
+    else if (autoE35E650B_val == "FelBolt") {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, lp_weapon, 1.5, false);
+    }
+    else if (autoE35E650B_val == "EarthBrewmaster") {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, lp_weapon, 1.0, false);
+    }
+    else if (autoE35E650B_val == "FireBrewmaster") {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, lp_weapon, 1.5, false);
+    }
+    else if (autoE35E650B_val == "StormBrewmaster") {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, lp_weapon, 1.0, false);
+    }
+    else if (autoE35E650B_val == "DarkElite") {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, lp_weapon, 1.0, false);
+    }
+    else if (autoE35E650B_val == "SymbioticSpores") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "SymbiosisBuff", "Period", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogWeapon, lp_weapon, "Cost.Charge.CountMax", libA91AB5FF_gv_neutralPlayer) / 100.0) / (1.0 + (UnitBehaviorCount(lp_hero, "WeaponSpeed") * 0.01))), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "CasterDamage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+    }
+    else {
+        libA91AB5FF_gf_ModifyHeroWeaponDamage(lp_hero, UnitWeaponGet(lp_hero, 1), 1.0, true);
+    }
+    if ((UnitBehaviorCount(lp_hero, "WeaponCritChance") > 0)) {
+        CatalogFieldValueSet(c_gameCatalogWeapon, lp_weapon, "CriticalChance", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCritChance") / 100.0), c_fixedPrecisionAny));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogWeapon, lp_weapon, "CriticalChance", UnitGetOwner(lp_hero), IntToString(0));
+    }
+    if ((UnitBehaviorCount(lp_hero, "WeaponCleave") > 0)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCleave") * 0.01), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(1.5, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCleave") * 0.01), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(1.5, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCleave") * 0.01), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(1.5, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCleave") * 0.01), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(1.5, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString((UnitBehaviorCount(lp_hero, "WeaponCleave") * 0.01), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(1.5, 0));
+    }
+    else {
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString(0.0, c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString(0.0, c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString(0.0, c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString(0.0, c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "AreaArray[" + IntToString(0) + "].Fraction", UnitGetOwner(lp_hero), FixedToString(0.0, c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "AreaArray[" + IntToString(0) + "].Radius", UnitGetOwner(lp_hero), FixedToString(0.0, 0));
+    }
+    if ((CatalogFieldValueGetAsInt(c_gameCatalogWeapon, lp_weapon, "Options[" + IntToString(2) + "]", 0) != 1)) {
+        CatalogFieldValueSet(c_gameCatalogWeapon, lp_weapon, "Range", UnitGetOwner(lp_hero), FixedToString((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogWeapon, lp_weapon, "Range", libA91AB5FF_gv_neutralPlayer)) * (1.0 + (IntToFixed(UnitBehaviorCount(lp_hero, "WeaponRange")) * 0.01))), 1));
+    }
+
+}
+
+void libA91AB5FF_gf_ModifyHeroWeaponDamage (unit lp_hero, string lp_weapon, fixed lp_multiplier, bool lp_modifySecondaryEffects) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + (UnitBehaviorCount(lp_hero, "WeaponDamage") * lp_multiplier)) * (1.0 + (UnitBehaviorCount(lp_hero, "DamageModifier") / 100.0))), 0));
+    if ((lp_modifySecondaryEffects == true)) {
+        CatalogFieldValueSet(c_gameCatalogEffect, "MeatCleaverDamage", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "KerriganAscendedHeroDamageBounce", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 1.0), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage15", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.15), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage35", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.35), 0));
+        CatalogFieldValueSet(c_gameCatalogEffect, "ReturnWeaponDamage50", "Amount", UnitGetOwner(lp_hero), FixedToString(((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (StringSub(CatalogFieldValueGet(c_gameCatalogWeapon, lp_weapon, "Name", libA91AB5FF_gv_neutralPlayer), 13, 99) + "Damage"), "Amount", libA91AB5FF_gv_neutralPlayer) + UnitBehaviorCount(lp_hero, "WeaponDamage")) * 0.5), 0));
+    }
+
+}
+
+void libA91AB5FF_gf_ModifyAbility (unit lp_hero, string lp_ability) {
+    // Automatic Variable Declarations
+    string auto463BBAED_val;
+
+    // Implementation
+    libA91AB5FF_gf_ModifyAbilityCost(lp_hero, lp_ability);
+    auto463BBAED_val = lp_ability;
+    if (auto463BBAED_val == "SearingStrikesAugment") {
+        libA91AB5FF_gf_ModifyAbilityAugment(lp_hero, "SearingStrikesAugmentUse");
+    }
+    else if (auto463BBAED_val == "SplittingStrikes") {
+        libA91AB5FF_gf_ModifyAbilityAugment(lp_hero, "SplittingStrikesAugment");
+    }
+    else if (auto463BBAED_val == "DeadlyCharge") {
+        libA91AB5FF_gf_ModifyAbilityCost(lp_hero, "DeadlyChargeAugment");
+    }
+    else if (auto463BBAED_val == "CarrionBeetles") {
+        libA91AB5FF_gf_ModifyAbilitySpeedCharge2(lp_hero, "CarrionBeetlesMagazine", 0);
+    }
+    else if (auto463BBAED_val == "ServitorLearnOnly") {
+        libA91AB5FF_gf_ModifyAbilitySpeedCharge2(lp_hero, "ServitorMagazine", 0);
+    }
+    else if (auto463BBAED_val == "IceBarrier") {
+        libA91AB5FF_gf_ModifyAbilityModifyShieldsBehavior(lp_hero, lp_ability);
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "IceBarrier", "IceBarrierShieldAmount");
+    }
+    else if (auto463BBAED_val == "BlinkHeroic") {
+        CatalogFieldValueSet(c_gameCatalogEffect, "BlinkHeroicTeleport", "Range", UnitGetOwner(lp_hero), FixedToString(((6.5 + (UnitAbilityGetLevel(lp_hero, lp_ability) * 2.0)) * (1.0 + (UnitBehaviorCount(lp_hero, "AbilityRange") * 0.01))), c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogActor, "BlinkHeroicRange", "Range", UnitGetOwner(lp_hero), FixedToString(((6.0 + (UnitAbilityGetLevel(lp_hero, lp_ability) * 2.0)) * (1.0 + (UnitBehaviorCount(lp_hero, "AbilityRange") * 0.01))), c_fixedPrecisionAny));
+    }
+    else if (auto463BBAED_val == "AstralWind") {
+        libA91AB5FF_gf_ModifyAbilityVitalLife(lp_hero, lp_ability, "AstralWindModifyTiny");
+        libA91AB5FF_gf_ModifyAbilityVitalShields(lp_hero, lp_ability, "AstralWindModifyTiny");
+    }
+    else if (auto463BBAED_val == "RuneTrap") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "RuneTrapCooldown", "Duration", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "RuneTrapCooldown", "Duration", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogAbil, "RuneTrapDetonate", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, "RuneTrapDetonate", "Cost[" + IntToString(0) + "].Cooldown.TimeUse", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+    else if (auto463BBAED_val == "Reincarnation") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "ReincarnationCooldown", "Duration", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "ReincarnationCooldown", "Duration", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+    else if (auto463BBAED_val == "BlackStrike") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "BlackStrikeCooldown", "Duration", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "BlackStrikeCooldown", "Duration", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+    else if (auto463BBAED_val == "CelestialWrath") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "CelestialWrathCooldown", "Duration", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "CelestialWrathCooldown", "Duration", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+        CatalogFieldValueSet(c_gameCatalogBehavior, "CelestialWrathSource", "Period", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogBehavior, "CelestialWrathSource", "Period", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+    }
+    else if (auto463BBAED_val == "LocustNest") {
+        CatalogFieldValueSet(c_gameCatalogAbil, "LocustNestTrain", "InfoArray[" + IntToString(0) + "].Time", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, "LocustNestTrain", "InfoArray[" + IntToString(0) + "].Time", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "LocustNest", "LocustNestSourceLifeMax");
+    }
+    else if (auto463BBAED_val == "Airstrike") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Airstrike", "AirstrikeSpawnDamage");
+    }
+    else if (auto463BBAED_val == "DestructionWave") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "DestructionWave", "DestructionWaveHeroicDamage");
+    }
+    else if (auto463BBAED_val == "ElementalAttendant") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ElementalAttendant", "CrushingWaveDamage");
+    }
+    else if (auto463BBAED_val == "ShieldDome") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ShieldDome", "ShieldDomeShieldsMax");
+    }
+    else if (auto463BBAED_val == "UnholyAura") {
+        libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower(lp_hero, "UnholyAura2");
+        libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower(lp_hero, "UnholyAura3");
+        libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower(lp_hero, "UnholyAura4");
+        libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower(lp_hero, "UnholyAura5");
+        libA91AB5FF_gf_ModifyAbilityCatalog(lp_hero, lp_ability, 1, c_gameCatalogBehavior, "UnholyAura1", "Modification.VitalRegenArray[" + IntToString(0) + "]", "Modification.ResourceHarvestAmountBonus[" + IntToString(0) + "]");
+    }
+    else if (auto463BBAED_val == "Doom") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Doom", "RainofFireNeutralDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Doom", "WarStompNeutralDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Doom", "DoomBoltDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Doom", "LegionStrikeDamage");
+    }
+    else if (auto463BBAED_val == "Incinerate") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage1");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage2");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage3");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage4");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage5");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage6");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage7");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage8");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage9");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Incinerate", "IncinerateDamage10");
+    }
+    else if (auto463BBAED_val == "Inferno") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Inferno", "PermanentImmolationDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Inferno", "InfernoBirthDamage");
+    }
+    else if (auto463BBAED_val == "RainofChaos") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "RainofChaos", "PermanentImmolationDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "RainofChaos", "RainofChaosImpactDamage");
+    }
+    else if (auto463BBAED_val == "Vengeance") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "Vengeance", "VengefulSpiritDamage");
+    }
+    else if (auto463BBAED_val == "PhoenixHeroic") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PhoenixHeroic", "PhoenixEggLifeMax");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PhoenixHeroic", "PhoenixFireDamage");
+    }
+    else if (auto463BBAED_val == "NetherPortal") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "NetherPortal", "NetherPortalADamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "NetherPortal", "NetherPortalBDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "NetherPortal", "NetherPortalALifeMax");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "NetherPortal", "NetherPortalBLifeMax");
+    }
+    else if (auto463BBAED_val == "ArmyoftheDead") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadGeneralDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadMeleeDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadRangedDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadGeneralLifeMax");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadMeleeLifeMax");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "ArmyoftheDead", "ArmyoftheDeadRangedLifeMax");
+    }
+    else if (auto463BBAED_val == "StormEarthandFire") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "StormEarthandFire", "PermanentImmolationDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "StormEarthandFire", "ChainLightningDamage");
+    }
+    else if (auto463BBAED_val == "PocketFactory") {
+        CatalogFieldValueSet(c_gameCatalogAbil, "PocketFactoryTrain", "InfoArray[" + IntToString(0) + "].Time", UnitGetOwner(lp_hero), FixedToString((CatalogFieldValueGetAsInt(c_gameCatalogAbil, "PocketFactoryTrain", "InfoArray[" + IntToString(0) + "].Time", libA91AB5FF_gv_neutralPlayer) / (1.0 + (UnitBehaviorCount(lp_hero, "AbilitySpeed") * 0.01))), c_fixedPrecisionAny));
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PocketFactory", "ClockwerkGoblinDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PocketFactory", "ClockwerkGoblinDeathDamage");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PocketFactory", "ClockwerkGoblinLifeMax");
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "PocketFactory", "PocketFactoryLifeMax");
+    }
+    else if (auto463BBAED_val == "LifeDrain") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "LifeDrain", "LifeDrainDamageHeroic");
+    }
+    else if (auto463BBAED_val == "AcidNova") {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, "AcidNova", "AcidNovaDamageBonus");
+    }
+    else if (auto463BBAED_val == "Transformation") {
+        CatalogFieldValueSet(c_gameCatalogBehavior, "Transformation", "Modification.DamageDealtScaled[" + IntToString(0) + "]", UnitGetOwner(lp_hero), IntToString(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "TransformationDamage", "Amount", UnitGetOwner(lp_hero))));
+        CatalogFieldValueSet(c_gameCatalogBehavior, "Transformation", "Modification.DamageDealtScaled[" + IntToString(1) + "]", UnitGetOwner(lp_hero), IntToString(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "TransformationDamage", "Amount", UnitGetOwner(lp_hero))));
+    }
+    else {
+    }
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Alignment", libA91AB5FF_gv_neutralPlayer) == "Negative")) {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, lp_ability, (((lp_ability) + "Damage")));
+    }
+
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "Alignment", libA91AB5FF_gv_neutralPlayer) == "Positive")) {
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, lp_ability, (((lp_ability) + "Damage")));
+        libA91AB5FF_gf_ModifyAbilityDamage(lp_hero, lp_ability, (((lp_ability) + "LifeMax")));
+        libA91AB5FF_gf_SummonUpdate(lp_hero, lp_ability, UnitGetOwner(lp_hero));
+    }
+
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(0) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilityVitalLife(lp_hero, lp_ability, (((lp_ability) + "Modify")));
+    }
+
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(1) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilityVitalShields(lp_hero, lp_ability, (((lp_ability) + "Modify")));
+    }
+
+    if ((CatalogFieldValueGet(c_gameCatalogAbil, lp_ability, "AbilityCategories[" + IntToString(2) + "]", libA91AB5FF_gv_neutralPlayer) == "1")) {
+        libA91AB5FF_gf_ModifyAbilitySpeedCharge3(lp_hero, lp_ability);
+    }
+
+}
+
+void libA91AB5FF_gf_SummonUpdate (unit lp_hero, string lp_ability, int lp_player) {
+    // Variable Declarations
+    fixed lv_i;
+
+    // Automatic Variable Declarations
+    string auto10E5E4A3_val;
+    unitgroup autoF15987FC_g;
+    int autoF15987FC_u;
+    unit autoF15987FC_var;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((UnitAbilityGetLevel(lp_hero, lp_ability) >= 1) && (lp_player != libA91AB5FF_gv_neutralPlayer)) {
+        auto10E5E4A3_val = lp_ability;
+        if (auto10E5E4A3_val == "NetherPortal") {
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "NetherPortalA");
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "NetherPortalB");
+        }
+        else if (auto10E5E4A3_val == "ArmyoftheDead") {
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "ArmyoftheDeadGeneral");
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "ArmyoftheDeadMelee");
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "ArmyoftheDeadRanged");
+        }
+        else if (auto10E5E4A3_val == "Enslave") {
+            CatalogFieldValueSet(c_gameCatalogBehavior, "Enslave", "Modification.DamageDealtScaled[" + IntToString(0) + "]", lp_player, IntToString((CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveDamage", "Amount", lp_player) - CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogAbil, "EnslaveMagazine", "InfoArray[" + IntToString(0) + "].Unit", lp_player) + "Damage"), "Amount", lp_player))));
+            CatalogFieldValueSet(c_gameCatalogBehavior, "Enslave", "Modification.DamageDealtScaled[" + IntToString(2) + "]", lp_player, IntToString((CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveDamage", "Amount", lp_player) - CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogAbil, "EnslaveMagazine", "InfoArray[" + IntToString(0) + "].Unit", lp_player) + "Damage"), "Amount", lp_player))));
+            autoF15987FC_g = UnitGroup((CatalogFieldValueGet(c_gameCatalogAbil, "EnslaveMagazine", "InfoArray[" + IntToString(0) + "].Unit", lp_player)), lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0);
+            autoF15987FC_u = UnitGroupCount(autoF15987FC_g, c_unitCountAll);
+            for (;; autoF15987FC_u -= 1) {
+                autoF15987FC_var = UnitGroupUnitFromEnd(autoF15987FC_g, autoF15987FC_u);
+                if (autoF15987FC_var == null) { break; }
+                if ((UnitHasBehavior(autoF15987FC_var, "Enslave") == true)) {
+                    lv_i = UnitGetPropertyFixed(autoF15987FC_var, c_unitPropLifePercent, c_unitPropCurrent);
+                    UnitSetPropertyFixed(autoF15987FC_var, c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveLifeMax", "Amount", lp_player), 1.0, libA91AB5FF_gv_maxReal));
+                    if ((UnitGetPropertyFixed(autoF15987FC_var, c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+                        UnitSetPropertyFixed(autoF15987FC_var, c_unitPropLifeMax, libA91AB5FF_gv_maxReal);
+                        UnitSetPropertyFixed(autoF15987FC_var, c_unitPropLife, libA91AB5FF_gv_maxReal);
+                    }
+
+                    UnitSetPropertyFixed(autoF15987FC_var, c_unitPropLifePercent, lv_i);
+                }
+
+            }
+        }
+        else if (auto10E5E4A3_val == "LocustNest") {
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "LocustNestSource");
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, "LocustNest");
+        }
+        else {
+            libA91AB5FF_gf_SummonUpdateSpecific(lp_ability, lp_player, UnitTypeFromString((lp_ability)));
+        }
+    }
+
+}
+
+void libA91AB5FF_gf_SummonUpdateSpecific (string lp_ability, int lp_player, string lp_unitType) {
+    // Variable Declarations
+    fixed lv_i;
+
+    // Automatic Variable Declarations
+    unitgroup auto7610549F_g;
+    int auto7610549F_u;
+    unit auto7610549F_var;
+
+    // Variable Initialization
+
+    // Implementation
+    auto7610549F_g = UnitGroup(lp_unitType, lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    auto7610549F_u = UnitGroupCount(auto7610549F_g, c_unitCountAll);
+    for (;; auto7610549F_u -= 1) {
+        auto7610549F_var = UnitGroupUnitFromEnd(auto7610549F_g, auto7610549F_u);
+        if (auto7610549F_var == null) { break; }
+        lv_i = UnitGetPropertyFixed(auto7610549F_var, c_unitPropLifePercent, c_unitPropCurrent);
+        UnitSetPropertyFixed(auto7610549F_var, c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp(CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, lp_unitType, "ReviveType", libA91AB5FF_gv_neutralPlayer) + "LifeMax"), "Amount", lp_player), 1.0, libA91AB5FF_gv_maxReal));
+        if ((UnitGetPropertyFixed(auto7610549F_var, c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+            UnitSetPropertyFixed(auto7610549F_var, c_unitPropLifeMax, libA91AB5FF_gv_maxReal);
+        }
+
+        UnitSetPropertyFixed(auto7610549F_var, c_unitPropLifePercent, lv_i);
+    }
+}
+
+void libA91AB5FF_gf_StarlightStats (fixed lp_lifeModifier, fixed lp_energyRegenBase) {
+    // Automatic Variable Declarations
+    playergroup auto597342EC_g;
+    int auto597342EC_var;
+    unitgroup auto63A225EF_g;
+    int auto63A225EF_u;
+    unit auto63A225EF_var;
+
+    // Implementation
+    libA91AB5FF_gv_lifeModifier = lp_lifeModifier;
+    libA91AB5FF_gv_energyRegenBase = lp_energyRegenBase;
+    auto597342EC_g = PlayerGroupAll();
+    auto597342EC_var = -1;
+    while (true) {
+        auto597342EC_var = PlayerGroupNextPlayer(auto597342EC_g, auto597342EC_var);
+        if (auto597342EC_var < 0) { break; }
+        CatalogFieldValueSet(c_gameCatalogEffect, "LifeRegen", "Amount", auto597342EC_var, FixedToString((libA91AB5FF_gv_lifeRegenPerPoint * libA91AB5FF_gv_lifeModifier), 2));
+        CatalogFieldValueSet(c_gameCatalogEffect, "LifeMax", "Amount", auto597342EC_var, FixedToString((libA91AB5FF_gv_lifeModifier * 25.0), 0));
+        auto63A225EF_g = UnitGroup(null, c_playerAny, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32))), 0);
+        auto63A225EF_u = UnitGroupCount(auto63A225EF_g, c_unitCountAll);
+        for (;; auto63A225EF_u -= 1) {
+            auto63A225EF_var = UnitGroupUnitFromEnd(auto63A225EF_g, auto63A225EF_u);
+            if (auto63A225EF_var == null) { break; }
+            libA91AB5FF_gf_StarlightStatsUpdate(auto63A225EF_var);
+        }
+    }
+}
+
+void libA91AB5FF_gf_StarlightStatsUpdate (unit lp_hero) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitGetOwner(lp_hero) != libA91AB5FF_gv_neutralPlayer)) {
+        libA91AB5FF_gf_ModifyHeroVitals(lp_hero);
+        libA91AB5FF_gf_ModifyAbilityParent(lp_hero);
+        if ((UnitWeaponCount(lp_hero) > 0)) {
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, UnitWeaponGet(lp_hero, 1));
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "FelBolt");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "SgtHammerStorm");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "SgtHammerStormSiege");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "EarthBrewmaster");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "FireBrewmaster");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "StormBrewmaster");
+            libA91AB5FF_gf_ModifyHeroWeapon(lp_hero, "DarkElite");
+        }
+
+        UnitSetPropertyFixed(lp_hero, c_unitPropKillXP, IntToFixed((CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "KillXP", libA91AB5FF_gv_neutralPlayer) + (UnitLevel(lp_hero) * 2))));
+    }
+    else {
+        UnitSetPropertyFixed(lp_hero, c_unitPropLifeMax, (CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(lp_hero), "LifeMax", libA91AB5FF_gv_neutralPlayer) * libA91AB5FF_gv_lifeModifier));
+        UnitSetPropertyFixed(lp_hero, c_unitPropLifePercent, 100.0);
+    }
+}
+
+void libA91AB5FF_gf_StarlightStatsToggle (bool lp_toggle) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(libA91AB5FF_gt_AbilityShieldDamage, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_AbilityShieldExpire, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_EnslaveLifeFix, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_LearnAbility, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_StatsModifyEffect, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_StatsModifyItemGainLoss, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_SummonLifeFix, lp_toggle);
+    TriggerEnable(libA91AB5FF_gt_SummonShieldFix, lp_toggle);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ability Shield Damage
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_AbilityShieldDamage_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropShieldsMax, libNtve_gf_ArithmeticIntClamp(FixedToInt((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropShields, c_unitPropCurrent) + EventPlayerEffectUsedAmountFixed(c_effectAmountDamaged, false))), FixedToInt(UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropShieldsMax, c_unitPropNormal)), 250000));
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropShieldsPercent, 100.0);
+    UnitBehaviorRemove(EventPlayerEffectUsedUnit(c_effectUnitCaster), "ShieldPrecursor", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_AbilityShieldDamage_Init () {
+    libA91AB5FF_gt_AbilityShieldDamage = TriggerCreate("libA91AB5FF_gt_AbilityShieldDamage_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_AbilityShieldDamage, c_playerAny, "DeathStrikeDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ability Shield Expire
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_AbilityShieldExpire_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropShieldsMax, 0.0);
+    }
+    else {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropShieldsMax, UnitTypeGetProperty(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitPropShieldsMax));
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropShields, 0.0);
+        libA91AB5FF_gf_StarlightStatsUpdate(EventPlayerEffectUsedUnit(c_effectUnitSource));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_AbilityShieldExpire_Init () {
+    libA91AB5FF_gt_AbilityShieldExpire = TriggerCreate("libA91AB5FF_gt_AbilityShieldExpire_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_AbilityShieldExpire, c_playerAny, "AbilityShieldExpireDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Enslave Life Fix
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_EnslaveLifeFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveLifeMax", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)), 1.0, libA91AB5FF_gv_maxReal));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "Enslave", "Modification.DamageDealtScaled[" + IntToString(0) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), IntToString((CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveDamage", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)) - CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "WeaponArray[" + IntToString(0) + "].Link", libA91AB5FF_gv_neutralPlayer) + "Damage"), "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)))));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "Enslave", "Modification.DamageDealtScaled[" + IntToString(1) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), IntToString((CatalogFieldValueGetAsInt(c_gameCatalogEffect, "EnslaveDamage", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)) - CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "WeaponArray[" + IntToString(0) + "].Link", libA91AB5FF_gv_neutralPlayer) + "Damage"), "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)))));
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropBaseMovementSpeed, c_unitPropCurrent) < 2.25)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropMovementSpeed, 2.25);
+    }
+
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libA91AB5FF_gv_maxReal);
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLife, libA91AB5FF_gv_maxReal);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_EnslaveLifeFix_Init () {
+    libA91AB5FF_gt_EnslaveLifeFix = TriggerCreate("libA91AB5FF_gt_EnslaveLifeFix_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_EnslaveLifeFix, c_playerAny, "EnslaveSetSummon");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Learn Ability
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_LearnAbility_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_learnAbility;
+    const int lv_setA1 = 0;
+    const int lv_setA2 = 6;
+    const int lv_setA3 = 12;
+    const int lv_setB1 = 1;
+    const int lv_setB2 = 7;
+    const int lv_setB3 = 13;
+    const int lv_setC1 = 2;
+    const int lv_setC2 = 8;
+    const int lv_setC3 = 14;
+    const int lv_setD1 = 3;
+    const int lv_setD2 = 9;
+    const int lv_setD3 = 15;
+
+    // Automatic Variable Declarations
+    string autoD8077C61_val;
+    string auto4B3E2CC0_val;
+    string auto30DFC9F0_val;
+
+    // Variable Initialization
+    lv_learnAbility = ((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnit()), "ReviveType", UnitGetOwner(EventUnit())) + "Learn"));
+
+    // Conditions
+    if (testConds) {
+        if (!((PlayerType(UnitGetOwner(EventUnit())) != c_playerTypeNeutral))) {
+            return false;
+        }
+
+        if (!((PlayerType(UnitGetOwner(EventUnit())) != c_playerTypeHostile))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventUnit(), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "AbilitiesLearned", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "AbilitiesLearned") + 1));
+    libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(EventUnit()), ((libNtve_gf_TriggeringProgressAbility())), UnitAbilityGetLevel(EventUnit(), libNtve_gf_TriggeringProgressAbility()));
+    libA91AB5FF_gf_StarlightStatsUpdate(EventUnit());
+    UnitBehaviorRemove(EventUnit(), "NoAbilityLearned", 1);
+    if ((TechTreeUpgradeCount(UnitGetOwner(EventUnit()), "ComputerPlayer", c_techCountCompleteOnly) == 1)) {
+        UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand(libNtve_gf_TriggeringProgressAbility(), 0), true), c_orderQueueReplace);
+        autoD8077C61_val = libNtve_gf_TriggeringProgressAbility();
+        if (autoD8077C61_val == "CarrionBeetles") {
+            UnitIssueOrder(EventUnit(), OrderSetAutoCast(AbilityCommand("CarrionBeetlesMagazine", 0), true), c_orderQueueReplace);
+        }
+        else {
+        }
+    }
+
+    auto4B3E2CC0_val = libNtve_gf_TriggeringProgressAbility();
+    if (auto4B3E2CC0_val == "Desecrate") {
+        lib7AED044D_gf_SetGlobalUnitPassive(UnitGetOwner(EventUnit()), "DesecrateUnitButton");
+    }
+    else if (auto4B3E2CC0_val == "Teleport") {
+        UnitBehaviorAdd(EventUnit(), "TeleportPassive", EventUnit(), 1);
+    }
+    else {
+    }
+    if ((UnitHasBehavior2(EventUnit(), "ExtendedLearn") == true)) {
+        auto30DFC9F0_val = libNtve_gf_TriggeringProgressAbility();
+        if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setA1) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA2), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setA2) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setA3) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA2), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setA3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setB1) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB2), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setB2) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setB3) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setB2), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setC1) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC2), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setC2) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setC3) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setC2), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setD1) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD2), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setD2) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD3), false);
+        }
+        else if (auto30DFC9F0_val == (CatalogFieldValueGet(c_gameCatalogAbil, lv_learnAbility, "InfoArray[" + IntToString(lv_setD3) + "].Abil", UnitGetOwner(EventUnitProgressUnit())))) {
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD1), false);
+            TechTreeAbilityAllow(EventPlayer(), AbilityCommand(lv_learnAbility, lv_setD2), false);
+        }
+        else {
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_LearnAbility_Init () {
+    libA91AB5FF_gt_LearnAbility = TriggerCreate("libA91AB5FF_gt_LearnAbility_Func");
+    TriggerAddEventUnitLearnProgress(libA91AB5FF_gt_LearnAbility, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stats Modify Effect
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_StatsModifyEffect_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((PlayerType(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)) != c_playerTypeNeutral))) {
+            return false;
+        }
+
+        if (!((PlayerType(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)) != c_playerTypeHostile))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libA91AB5FF_gf_StarlightStatsUpdate(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_StatsModifyEffect_Init () {
+    libA91AB5FF_gt_StatsModifyEffect = TriggerCreate("libA91AB5FF_gt_StatsModifyEffect_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_StatsModifyEffect, c_playerAny, "UpdateStatsDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stats Modify Item Gain/Loss
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_StatsModifyItemGainLoss_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((PlayerType(UnitGetOwner(EventUnit())) != c_playerTypeNeutral))) {
+            return false;
+        }
+
+        if (!((PlayerType(UnitGetOwner(EventUnit())) != c_playerTypeHostile))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventUnit(), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libA91AB5FF_gf_StarlightStatsUpdate(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_StatsModifyItemGainLoss_Init () {
+    libA91AB5FF_gt_StatsModifyItemGainLoss = TriggerCreate("libA91AB5FF_gt_StatsModifyItemGainLoss_Func");
+    TriggerAddEventUnitInventoryChange(libA91AB5FF_gt_StatsModifyItemGainLoss, null, c_unitInventoryChangeGains, null);
+    TriggerAddEventUnitInventoryChange(libA91AB5FF_gt_StatsModifyItemGainLoss, null, c_unitInventoryChangeLoses, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Summon Life Fix
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_SummonLifeFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp(CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "ReviveType", libA91AB5FF_gv_neutralPlayer) + "LifeMax"), "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)), 1.0, libA91AB5FF_gv_maxReal));
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libA91AB5FF_gv_maxReal);
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLife, libA91AB5FF_gv_maxReal);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_SummonLifeFix_Init () {
+    libA91AB5FF_gt_SummonLifeFix = TriggerCreate("libA91AB5FF_gt_SummonLifeFix_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_SummonLifeFix, c_playerAny, "SummonUpdate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Summon Shield Fix
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_gt_SummonShieldFix_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropShieldsMax, CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "ReviveType", c_playerAny) + "ShieldsMax"), "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)));
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropShieldsMax, c_unitPropCurrent) <= 5.0)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropShieldsMax, 500000.0);
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropShields, 500000.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libA91AB5FF_gt_SummonShieldFix_Init () {
+    libA91AB5FF_gt_SummonShieldFix = TriggerCreate("libA91AB5FF_gt_SummonShieldFix_Func");
+    TriggerAddEventPlayerEffectUsed(libA91AB5FF_gt_SummonShieldFix, c_playerAny, "ShieldDomeSetSummon");
+}
+
+void libA91AB5FF_InitTriggers () {
+    libA91AB5FF_gt_AbilityShieldDamage_Init();
+    libA91AB5FF_gt_AbilityShieldExpire_Init();
+    libA91AB5FF_gt_EnslaveLifeFix_Init();
+    libA91AB5FF_gt_LearnAbility_Init();
+    libA91AB5FF_gt_StatsModifyEffect_Init();
+    libA91AB5FF_gt_StatsModifyItemGainLoss_Init();
+    libA91AB5FF_gt_SummonLifeFix_Init();
+    libA91AB5FF_gt_SummonShieldFix_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libA91AB5FF_InitLib_completed = false;
+
+void libA91AB5FF_InitLib () {
+    if (libA91AB5FF_InitLib_completed) {
+        return;
+    }
+
+    libA91AB5FF_InitLib_completed = true;
+
+    libA91AB5FF_InitLibraries();
+    libA91AB5FF_InitVariables();
+    libA91AB5FF_InitTriggers();
+}
+
+include "Lib7AED044D"
+

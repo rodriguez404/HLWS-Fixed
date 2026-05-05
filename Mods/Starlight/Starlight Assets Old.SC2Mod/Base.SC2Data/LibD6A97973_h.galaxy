@@ -1,0 +1,58 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Mastery Panel
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int libD6A97973_gv_max = 2;
+const int libD6A97973_gv_panelGap = 59;
+
+// Variable Declarations
+int libD6A97973_gv_talentDialog;
+int libD6A97973_gv_talentDialogTitle;
+int libD6A97973_gv_talentDialogDescription;
+int libD6A97973_gv_talentDialogBorder;
+int[libD6A97973_gv_max + 1] libD6A97973_gv_frame;
+int[libD6A97973_gv_max + 1] libD6A97973_gv_frameArt;
+int libD6A97973_gv_frameCount;
+int[libD6A97973_gv_max + 1] libD6A97973_gv_talentCount;
+int libD6A97973_gv_panelHeight;
+int libD6A97973_gv_totalPoints;
+int libD6A97973_gv_acceptButton;
+int libD6A97973_gv_cancelButton;
+int[libD6A97973_gv_max + 1] libD6A97973_gv_unspentPoints;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_talentName;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_talentAmount;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1][2] libD6A97973_gv_talentIncrement;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1][2] libD6A97973_gv_talentDecrement;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_talentModification;
+int[libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_talentDivider;
+int[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_talentEscrow;
+string[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_upgrade;
+text[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_upgradePrefix;
+text[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_upgradeSuffix;
+fixed[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_upgradeChange;
+text[16][libD6A97973_gv_max + 1][libD6A97973_gv_max + 1] libD6A97973_gv_upgradeTooltip;
+int[16] libD6A97973_gv_playerPoints;
+bool libD6A97973_gv_created;
+int[16][10] libD6A97973_gv_masteryPanelSaveLoad;
+string[16] libD6A97973_gv_bankSection;
+
+// Function Declarations
+void libD6A97973_gf_SaveSettings (int lp_player);
+void libD6A97973_gf_LoadSettings (int lp_player);
+void libD6A97973_gf_CreateMainDialog ();
+void libD6A97973_gf_CreateFrame (string lp_art);
+void libD6A97973_gf_CreateTalent (int lp_frame);
+void libD6A97973_gf_UpdatePoints (int lp_player);
+void libD6A97973_gf_UpdateFrame (int lp_player);
+void libD6A97973_gf_MasteryPanelSetPlayerLevel (int lp_player, int lp_level);
+void libD6A97973_gf_MasteryPanelApply (playergroup lp_playerGroup, string lp_userData, string lp_bank);
+void libD6A97973_gf_MasteryPanelToggle (int lp_player);
+
+// Trigger Declarations
+trigger libD6A97973_gt_UseDialog;
+
+// Library Initialization
+void libD6A97973_InitVariables ();
+

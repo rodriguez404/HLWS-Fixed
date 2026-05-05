@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUnit default="1" id="DefaultSettingsUnitItem" parent="ITEM">
+        <FlagArray index="Uncommandable" value="0"/>
+        <FlagArray index="Untooltipable" value="0"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="Buried" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow6" value="1"/>
+        <Sight value="0"/>
+        <AbilArray Link="ItemPickupSmartcast"/>
+        <AbilArray Link="UnitItemReposition"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="HangarQueue5"/>
+        <BehaviorArray Link="ItemAbilitiesEnable"/>
+        <Radius value="0.625"/>
+        <MinimapRadius value="0.5"/>
+        <EditorCategories value="ObjectType:Item,ObjectFamily:Melee"/>
+        <LeaderAlias value=""/>
+    </CUnit>
+    <CUnit id="BasicUnitItemPassive" parent="DefaultSettingsUnitItem"/>
+    <CUnit id="BasicUnitItemPassiveMissile" parent="MISSILE_INVULNERABLE">
+        <Mover value="MissileDefault"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
+</Catalog>

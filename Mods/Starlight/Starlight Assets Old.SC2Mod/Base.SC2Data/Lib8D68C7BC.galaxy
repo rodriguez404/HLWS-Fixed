@@ -1,0 +1,283 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib8D68C7BC_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Alert
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib8D68C7BC_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool lib8D68C7BC_InitVariables_completed = false;
+
+void lib8D68C7BC_InitVariables () {
+    if (lib8D68C7BC_InitVariables_completed) {
+        return;
+    }
+
+    lib8D68C7BC_InitVariables_completed = true;
+
+    lib8D68C7BC_gv_playerGroup = PlayerGroupEmpty();
+    lib8D68C7BC_gv_textColor = Color(0,0,0);
+    lib8D68C7BC_gv_sound = SoundLink("EditorDefaultSound", -1);
+    lib8D68C7BC_gv_timeType = c_timeReal;
+    lib8D68C7BC_gv_dialogItem = c_invalidDialogControlId;
+}
+
+// Functions
+void lib8D68C7BC_gf_AlertCreate (playergroup lp_playerGroup, text lp_titleText, text lp_subtitleText, color lp_textColor, string lp_icon, string lp_model, soundlink lp_sound, fixed lp_duration, int lp_timeType) {
+    int init_i;
+
+    // Variable Declarations
+    const fixed lv_textFade = 0.25;
+    int lv_offset;
+    int[4] lv_dialog;
+    int[4] lv_dialogItemText;
+    int lv_dialogItemPortrait;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_offset = -450;
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lv_dialog[init_i] = c_invalidDialogId;
+    }
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lv_dialogItemText[init_i] = c_invalidDialogControlId;
+    }
+    lv_dialogItemPortrait = c_invalidDialogControlId;
+
+    // Implementation
+    DialogCreate(1400, 1400, c_anchorCenter, 0, lv_offset, true);
+    lv_dialog[0] = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 600);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogControlCreate(DialogLastCreated(), c_triggerControlTypePortrait);
+    lv_dialogItemPortrait = DialogControlLastCreated();
+    DialogSetVisible(DialogLastCreated(), lp_playerGroup, true);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()));
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), lp_model, PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    SoundPlayForPlayer(lp_sound, c_maxPlayers, lp_playerGroup, 100.0, 0.0);
+    DialogCreate(1000, 100, c_anchorCenter, 0, lv_offset, true);
+    lv_dialog[1] = DialogLastCreated();
+    DialogSetRenderPriority(DialogLastCreated(), 610);
+    if (((lp_titleText != null) == true)) {
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), (StringExternal("Param/Value/lib_8D68C7BC_AFA0C0F6") + TextWithColor(lp_titleText, lp_textColor)), "");
+        lv_dialogItemText[0] = DialogControlLastCreated();
+        DialogSetVisible(DialogLastCreated(), lp_playerGroup, true);
+        DialogSetImageVisible(DialogLastCreated(), false);
+        libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_textFade, 0.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[0];
+        TriggerExecute(lib8D68C7BC_gt_TextIntro, true, false);
+    }
+
+    DialogCreate(1000, 100, c_anchorCenter, 0, (lv_offset + 50), true);
+    lv_dialog[3] = DialogLastCreated();
+    if (((lp_subtitleText != null) == true)) {
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), (StringExternal("Param/Value/lib_8D68C7BC_C1BB5EE9") + TextWithColor(lp_subtitleText, lp_textColor)), "");
+        lv_dialogItemText[3] = DialogControlLastCreated();
+        DialogSetVisible(DialogLastCreated(), lp_playerGroup, true);
+        DialogSetRenderPriority(DialogLastCreated(), 610);
+        DialogSetImageVisible(DialogLastCreated(), false);
+        libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_textFade, 0.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[3];
+        TriggerExecute(lib8D68C7BC_gt_TextIntro, true, false);
+    }
+
+    DialogCreate(425, 150, c_anchorCenter, 0, (lv_offset + 110), true);
+    lv_dialog[2] = DialogLastCreated();
+    if ((lp_icon != null)) {
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 76, 76, c_anchorCenter, 0, 0, StringToText(""), lp_icon, c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+        lv_dialogItemText[1] = DialogControlLastCreated();
+        DialogSetVisible(DialogLastCreated(), lp_playerGroup, true);
+        DialogSetRenderPriority(DialogLastCreated(), 610);
+        DialogSetImageVisible(DialogLastCreated(), false);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_textFade, 0.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[1];
+        TriggerExecute(lib8D68C7BC_gt_TextIntro, true, false);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 80, 80, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_leaderpanel_buttonhover_white.dds", c_triggerImageTypeNormal, false, lp_textColor, c_triggerBlendModeNormal);
+        lv_dialogItemText[2] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_textFade, 0.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[2];
+        TriggerExecute(lib8D68C7BC_gt_TextIntro, true, false);
+    }
+
+    Wait(lp_duration, lp_timeType);
+    libNtve_gf_SetDialogItemAnimation(lv_dialogItemPortrait, "Death", PlayerGroupAll());
+    if (((lp_titleText != null) == true)) {
+        DialogControlFadeTransparency(lv_dialogItemText[0], PlayerGroupAll(), lv_textFade, 100.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[0];
+        TriggerExecute(lib8D68C7BC_gt_TextOutro, true, false);
+    }
+
+    Wait((lv_textFade + 0.25), c_timeGame);
+    if ((lp_icon != null)) {
+        DialogControlFadeTransparency(lv_dialogItemText[1], PlayerGroupAll(), lv_textFade, 100.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[1];
+        TriggerExecute(lib8D68C7BC_gt_TextOutro, true, false);
+        DialogControlFadeTransparency(lv_dialogItemText[2], PlayerGroupAll(), lv_textFade, 100.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[2];
+        TriggerExecute(lib8D68C7BC_gt_TextOutro, true, false);
+    }
+
+    if (((lp_subtitleText != null) == true)) {
+        DialogControlFadeTransparency(lv_dialogItemText[3], PlayerGroupAll(), lv_textFade, 100.0);
+        lib8D68C7BC_gv_dialogItem = lv_dialogItemText[3];
+        TriggerExecute(lib8D68C7BC_gt_TextOutro, true, false);
+    }
+
+    Wait(lv_textFade, c_timeGame);
+    DialogControlFadeTransparency(lv_dialogItemPortrait, PlayerGroupAll(), lv_textFade, 100.0);
+    Wait(1.0, c_timeGame);
+    DialogDestroy(lv_dialog[0]);
+    DialogDestroy(lv_dialog[1]);
+    DialogDestroy(lv_dialog[2]);
+    DialogDestroy(lv_dialog[3]);
+}
+
+void lib8D68C7BC_gf_StarlightAlert (playergroup lp_playerGroup, text lp_titleText, text lp_subtitleText, color lp_textColor, string lp_icon, string lp_model, soundlink lp_sound, fixed lp_duration, int lp_timeType) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib8D68C7BC_gv_playerGroup = lp_playerGroup;
+    lib8D68C7BC_gv_titleText = lp_titleText;
+    lib8D68C7BC_gv_subtitleText = lp_subtitleText;
+    lib8D68C7BC_gv_textColor = lp_textColor;
+    lib8D68C7BC_gv_icon = lp_icon;
+    lib8D68C7BC_gv_model = lp_model;
+    lib8D68C7BC_gv_sound = lp_sound;
+    lib8D68C7BC_gv_duration = lp_duration;
+    lib8D68C7BC_gv_timeType = lp_timeType;
+    TriggerExecute(lib8D68C7BC_gt_Alert, true, false);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Text Intro
+//--------------------------------------------------------------------------------------------------
+bool lib8D68C7BC_gt_TextIntro_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_dialog;
+    const int lv_distance = 12;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    const int auto16C9EE13_n = lv_distance;
+    int auto16C9EE13_i;
+
+    // Variable Initialization
+    lv_dialog = lib8D68C7BC_gv_dialogItem;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_x = lv_distance;
+    for (auto16C9EE13_i = 1; auto16C9EE13_i <= auto16C9EE13_n; auto16C9EE13_i += 1) {
+        DialogControlSetPosition(lv_dialog, PlayerGroupAll(), c_anchorCenter, (0 - lv_x), 0);
+        lv_x -= 1;
+        Wait(0.0, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib8D68C7BC_gt_TextIntro_Init () {
+    lib8D68C7BC_gt_TextIntro = TriggerCreate("lib8D68C7BC_gt_TextIntro_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Text Outro
+//--------------------------------------------------------------------------------------------------
+bool lib8D68C7BC_gt_TextOutro_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_dialog;
+    const int lv_distance = 16;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    const int autoD693FCD5_n = lv_distance;
+    int autoD693FCD5_i;
+
+    // Variable Initialization
+    lv_dialog = lib8D68C7BC_gv_dialogItem;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_x = 0;
+    for (autoD693FCD5_i = 1; autoD693FCD5_i <= autoD693FCD5_n; autoD693FCD5_i += 1) {
+        DialogControlSetPosition(lv_dialog, PlayerGroupAll(), c_anchorCenter, lv_x, 0);
+        lv_x += 1;
+        Wait(0.0, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib8D68C7BC_gt_TextOutro_Init () {
+    lib8D68C7BC_gt_TextOutro = TriggerCreate("lib8D68C7BC_gt_TextOutro_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Alert
+//--------------------------------------------------------------------------------------------------
+bool lib8D68C7BC_gt_Alert_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib8D68C7BC_gf_AlertCreate(lib8D68C7BC_gv_playerGroup, lib8D68C7BC_gv_titleText, lib8D68C7BC_gv_subtitleText, lib8D68C7BC_gv_textColor, lib8D68C7BC_gv_icon, lib8D68C7BC_gv_model, lib8D68C7BC_gv_sound, lib8D68C7BC_gv_duration, lib8D68C7BC_gv_timeType);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib8D68C7BC_gt_Alert_Init () {
+    lib8D68C7BC_gt_Alert = TriggerCreate("lib8D68C7BC_gt_Alert_Func");
+}
+
+void lib8D68C7BC_InitTriggers () {
+    lib8D68C7BC_gt_TextIntro_Init();
+    lib8D68C7BC_gt_TextOutro_Init();
+    lib8D68C7BC_gt_Alert_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib8D68C7BC_InitLib_completed = false;
+
+void lib8D68C7BC_InitLib () {
+    if (lib8D68C7BC_InitLib_completed) {
+        return;
+    }
+
+    lib8D68C7BC_InitLib_completed = true;
+
+    lib8D68C7BC_InitLibraries();
+    lib8D68C7BC_InitVariables();
+    lib8D68C7BC_InitTriggers();
+}
+

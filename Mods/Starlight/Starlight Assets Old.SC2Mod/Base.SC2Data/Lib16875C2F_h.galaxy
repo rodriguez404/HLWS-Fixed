@@ -1,0 +1,78 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Gameplay Mods
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib16875C2F_gv_boxSize = 242;
+
+// Variable Declarations
+int lib16875C2F_gv_mainDialog;
+int lib16875C2F_gv_backgroundDialog;
+int[2] lib16875C2F_gv_backgroundDialogItem;
+int lib16875C2F_gv_buttonCount;
+int[21][9] lib16875C2F_gv_button;
+bool[21] lib16875C2F_gv_buttonActivated;
+string[21] lib16875C2F_gv_buttonUpgrade;
+bool[16] lib16875C2F_gv_modeSelected;
+playergroup lib16875C2F_gv_playersUnselected;
+int lib16875C2F_gv_offsetX;
+int lib16875C2F_gv_offsetY;
+int lib16875C2F_gv_offsetBorder;
+int lib16875C2F_gv_uIFrameCurrent;
+int[10] lib16875C2F_gv_uIFrameType;
+
+// Function Declarations
+void lib16875C2F_gf_ModeSelectUIActivate ();
+void lib16875C2F_gf_ModeSelectUIDeactivate ();
+void lib16875C2F_gf_UIToggle (int lp_uIFrame);
+void lib16875C2F_gf_GameplayModExile (bool lp_toggle);
+void lib16875C2F_gf_GameplayModAnkh (bool lp_toggle);
+void lib16875C2F_gf_GameplayModMenu (bool lp_toggle, bool lp_wait);
+void lib16875C2F_gf_GameplayModScan (bool lp_toggle);
+void lib16875C2F_gf_GameplayModSuperscan (bool lp_toggle);
+void lib16875C2F_gf_GameplayModInsight (bool lp_toggle);
+void lib16875C2F_gf_GameplayModShroud (bool lp_toggle);
+void lib16875C2F_gf_GameplayModBrilliance (bool lp_toggle);
+void lib16875C2F_gf_GameplayModDowntime (bool lp_toggle);
+void lib16875C2F_gf_GameplayModStockpile (bool lp_toggle);
+void lib16875C2F_gf_GameplayModAccord (bool lp_toggle);
+void lib16875C2F_gf_GameplayModEvent (bool lp_toggle);
+void lib16875C2F_gf_GameplayModOvertime (bool lp_toggle);
+void lib16875C2F_gf_GameplayModDischarge (bool lp_toggle);
+void lib16875C2F_gf_GameplayModCovenant (bool lp_toggle);
+void lib16875C2F_gf_GameplayModExpansion (bool lp_toggle);
+void lib16875C2F_gf_GameplayModGridlock (bool lp_toggle);
+void lib16875C2F_gf_GameplayModRescue (bool lp_toggle);
+void lib16875C2F_gf_GameplayModBountiful (bool lp_toggle);
+void lib16875C2F_gf_GameplayModVoid (bool lp_toggle);
+void lib16875C2F_gf_GameplayModSap (bool lp_toggle);
+void lib16875C2F_gf_GameplayModBastion (bool lp_toggle);
+void lib16875C2F_gf_GameplayModCommanders (bool lp_toggle);
+void lib16875C2F_gf_GameplayModEquipment (bool lp_toggle);
+void lib16875C2F_gf_ModBundleTutorial ();
+void lib16875C2F_gf_ModBundleDuel ();
+void lib16875C2F_gf_ModBundleLightning ();
+void lib16875C2F_gf_ModBundleEpic ();
+void lib16875C2F_gf_ModBundleCommanders ();
+void lib16875C2F_gf_ModBundleSabotage ();
+void lib16875C2F_gf_ModBundleHeroicCommanders ();
+void lib16875C2F_gf_ModBundleSwitch ();
+void lib16875C2F_gf_ModBundleGear ();
+void lib16875C2F_gf_CreateButton (text lp_tooltip, string lp_image, string lp_upgrade);
+void lib16875C2F_gf_UseButton (int lp_player, int lp_button);
+void lib16875C2F_gf_ModsMenu (bool lp_wait);
+void lib16875C2F_gf_ModsMenuEnd ();
+
+// Trigger Declarations
+trigger lib16875C2F_gt_OptionsSelectUse;
+trigger lib16875C2F_gt_OptionsSelectUseHost;
+trigger lib16875C2F_gt_ModeSelectUse;
+trigger lib16875C2F_gt_OptionsSelectTimer;
+trigger lib16875C2F_gt_OptionsSelectStart;
+trigger lib16875C2F_gt_Wait;
+trigger lib16875C2F_gt_Leaver;
+
+// Library Initialization
+void lib16875C2F_InitVariables ();
+

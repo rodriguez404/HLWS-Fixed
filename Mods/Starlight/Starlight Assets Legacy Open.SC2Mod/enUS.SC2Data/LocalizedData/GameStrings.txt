@@ -1,0 +1,3 @@
+﻿DocInfo/DescLong=Starlight Assets Legacy Open
+DocInfo/DescShort=Starlight Assets Legacy Open
+DocInfo/Name=Starlight Assets Legacy Open1

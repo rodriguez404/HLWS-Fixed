@@ -1,0 +1,37 @@
+include "TriggerLibs/NativeLib"
+include "Lib16875C2F_h"
+include "Lib7A9A9B22_h"
+include "Lib7550A90B_h"
+
+include "Lib3C4E5221_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Testing Grounds
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib3C4E5221_InitLibraries () {
+    libNtve_InitVariables();
+    lib16875C2F_InitVariables();
+    lib7A9A9B22_InitVariables();
+    lib7550A90B_InitVariables();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib3C4E5221_InitLib_completed = false;
+
+void lib3C4E5221_InitLib () {
+    if (lib3C4E5221_InitLib_completed) {
+        return;
+    }
+
+    lib3C4E5221_InitLib_completed = true;
+
+    lib3C4E5221_InitLibraries();
+}
+
+include "Lib16875C2F"
+include "Lib7A9A9B22"
+include "Lib7550A90B"
+

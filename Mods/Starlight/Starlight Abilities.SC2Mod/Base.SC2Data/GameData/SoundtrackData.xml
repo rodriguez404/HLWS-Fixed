@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CSoundtrack id="War3MusicHuman" parent="Music">
+        <CueArray>
+            <MasterLayer Sound="War3MusicHuman"/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+        </CueArray>
+    </CSoundtrack>
+    <CSoundtrack id="War3MusicUndead" parent="Music">
+        <CueArray>
+            <MasterLayer Sound="War3MusicUndead"/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+        </CueArray>
+    </CSoundtrack>
+    <CSoundtrack id="War3MusicOrc" parent="Music">
+        <CueArray>
+            <MasterLayer Sound="War3MusicOrc"/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+        </CueArray>
+    </CSoundtrack>
+    <CSoundtrack id="War3MusicNightElf" parent="Music">
+        <CueArray>
+            <MasterLayer Sound="War3MusicNightElf"/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+        </CueArray>
+    </CSoundtrack>
+    <CSoundtrack id="War3MusicAll" parent="Music">
+        <CueArray>
+            <MasterLayer Sound="War3MusicAll"/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+            <SlaveLayers/>
+        </CueArray>
+    </CSoundtrack>
+</Catalog>

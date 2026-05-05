@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTargetSortDistance id="TSDistanceFromTarget">
+        <Descending value="1"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+    </CTargetSortDistance>
+    <CTargetSortVital id="TSEnergyLargestFirst">
+        <Descending value="1"/>
+        <Vital value="Energy"/>
+    </CTargetSortVital>
+    <CTargetSortBehaviorCount id="TSInfection">
+        <WhichUnit Value="Target"/>
+        <Behavior value="Infection"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSWorkerWanderPriority">
+        <WhichUnit Value="Target"/>
+        <Descending value="1"/>
+        <Behavior value="WorkerWanderPriority"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSPromote">
+        <WhichUnit Value="Target"/>
+        <Behavior value="Infection"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSHolyLightHeal">
+        <WhichUnit Value="Target"/>
+        <Behavior value="HolyLightHeal"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSDeathCoilHeal">
+        <WhichUnit Value="Target"/>
+        <Behavior value="DeathCoilHeal"/>
+    </CTargetSortBehaviorCount>
+    <CTargetSortBehaviorCount id="TSBloodlust">
+        <WhichUnit Value="Target"/>
+        <Behavior value="Bloodlust"/>
+    </CTargetSortBehaviorCount>
+</Catalog>

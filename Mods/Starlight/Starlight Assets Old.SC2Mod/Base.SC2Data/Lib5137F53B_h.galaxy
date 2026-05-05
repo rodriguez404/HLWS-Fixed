@@ -1,0 +1,52 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Set Weather
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+actor[512] lib5137F53B_gv_weather;
+int lib5137F53B_gv_weatherIncrease;
+
+// Function Declarations
+void lib5137F53B_gf_CreateWeatherEffect (string lp_actor, fixed lp_spacing, region lp_region, bool lp_removeExistingWeather, fixed lp_variance);
+void lib5137F53B_gf_WeatherRemoveAll ();
+void lib5137F53B_gf_WeatherRemoveAllImmediate ();
+void lib5137F53B_gf_WeatherRainLight (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherRainMedium (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherRainHeavy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherRainZerus (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherSnow (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherSnowLight (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherSnowWind (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherSnowBlizzard (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherGasGiantMist (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherGasGiantWind (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherSunrays (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherWarpWind (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogUlnar (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogZerus (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogAiur (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShakuras (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShakurasThickWindy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShakurasThickWindyFast (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogMarSaraThickWindyFast (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShakurasWindy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShakurasWindyFast (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogKorhalWindy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogWorldShipWindy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogShadowCorpsWindy (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogVoid (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherFogAiurThick (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherCaveLight (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherAshChar (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherAshWind (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherAshShakuras (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherWindBrownMedium (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherWindBrownLight (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherWindMedium (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherWindLight (region lp_region, bool lp_removeExistingWeather);
+void lib5137F53B_gf_WeatherShakurasStorm (region lp_region, bool lp_removeExistingWeather);
+
+// Library Initialization
+void lib5137F53B_InitVariables ();
+

@@ -1,0 +1,20 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Player Handle
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+int lib28FBFBC5_gv_handle;
+int lib28FBFBC5_gv_handleClose;
+int lib28FBFBC5_gv_handleEditBox;
+
+// Function Declarations
+void lib28FBFBC5_gf_HandleCreate ();
+
+// Trigger Declarations
+trigger lib28FBFBC5_gt_HandleOpen;
+trigger lib28FBFBC5_gt_HandleClose;
+
+// Library Initialization
+void lib28FBFBC5_InitVariables ();
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CRequirement id="ImpossibleRequirement">
+        <NodeArray index="Use" Link="CountUpgradeImpossibleUpgradeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeImpossibleUpgradeCompleteOnly"/>
+    </CRequirement>
+</Catalog>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CFootprint id="Footprint5x5Underground">
+        <Layers index="Check" Area="-2,-2,3,3">
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,3,3">
+            <Sets index="0">
+                <Positive index="GroundNoSpawn" value="0"/>
+                <Positive index="Dense" value="1"/>
+            </Sets>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+            <Rows value="xxxxx"/>
+        </Layers>
+        <Shape>
+            <Radius value="3.5356"/>
+            <Offsets value="-2.5,-2.5;2.5,-2.5;-2.5,2.5;2.5,2.5"/>
+            <Borders value="0,2,1;1,0,1;2,3,1;3,1,1"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="FootprintDiagonal1Wall">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="...o"/>
+            <Rows value="..o."/>
+            <Rows value=".o.."/>
+            <Rows value="o..."/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="...o"/>
+            <Rows value="..o."/>
+            <Rows value=".o.."/>
+            <Rows value="o..."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.8286"/>
+            <Offsets value="-2,-2;-1,-2;-2,-1;-1,-1;0,-1;-1,0;0,0;1,0;0,1;1,1;2,1;1,2;2,2"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0;3,5,0;4,3,0;5,6,0;6,4,0;6,8,0;7,6,0;8,9,0;9,7,0;9,11,0;10,9,0;11,12,0;12,10,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="Footprint4x1Wall">
+        <Layers index="Check" Area="-2,0,2,1">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="oooo"/>
+        </Layers>
+        <Layers index="Place" Area="-2,0,2,1">
+            <Sets Character="."/>
+            <Rows value="...."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.0617"/>
+            <Offsets value="-2,-0.5;2,-0.5;-2,0.5;2,0.5"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="Footprint1x4Wall">
+        <Layers index="Check" Area="0,-2,1,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+        </Layers>
+        <Layers index="Place" Area="0,-2,1,2">
+            <Sets Character="."/>
+            <Rows value="."/>
+            <Rows value="."/>
+            <Rows value="."/>
+            <Rows value="."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.0617"/>
+            <Offsets value="-0.5,-2;0.5,-2;-0.5,2;0.5,2"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="FootprintDiagonal2Wall">
+        <Layers index="Check" Area="-2,-2,2,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o..."/>
+            <Rows value=".o.."/>
+            <Rows value="..o."/>
+            <Rows value="...o"/>
+        </Layers>
+        <Layers index="Place" Area="-2,-2,2,2">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o..."/>
+            <Rows value=".o.."/>
+            <Rows value="..o."/>
+            <Rows value="...o"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.8286"/>
+            <Offsets value="1,-2;2,-2;0,-1;1,-1;2,-1;-1,0;0,0;1,0;-2,1;-1,1;0,1;-2,2;-1,2"/>
+            <Borders value="0,3,0;1,0,0;2,6,0;3,2,0;3,4,0;4,1,0;5,9,0;6,5,0;6,7,0;7,3,0;8,11,0;9,8,0;9,10,0;10,6,0;11,12,0;12,9,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="HorizontalGateClosed">
+        <Layers index="Check" Area="-2,0,3,1">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="ooooo"/>
+        </Layers>
+        <Layers index="Place" Area="-2,0,3,1">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="ooooo"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.5495"/>
+            <Offsets value="-2.5,-0.5;2.5,-0.5;-2.5,0.5;2.5,0.5"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="SEGateClosed">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..o"/>
+            <Rows value=".o."/>
+            <Rows value="o.."/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..o"/>
+            <Rows value=".o."/>
+            <Rows value="o.."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.1213"/>
+            <Offsets value="-1.5,-1.5;-0.5,-1.5;-1.5,-0.5;-0.5,-0.5;0.5,-0.5;-0.5,0.5;0.5,0.5;1.5,0.5;0.5,1.5;1.5,1.5"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0;3,5,0;4,3,0;5,6,0;6,4,0;6,8,0;7,6,0;8,9,0;9,7,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="SWGateOpen">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Rows value="o.."/>
+            <Rows value=".o."/>
+            <Rows value="..o"/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Rows value="o.."/>
+            <Rows value=".o."/>
+            <Rows value="..o"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.1213"/>
+            <Offsets value="0.5,-1.5;1.5,-1.5;-0.5,-0.5;0.5,-0.5;1.5,-0.5;-1.5,0.5;-0.5,0.5;0.5,0.5;-1.5,1.5;-0.5,1.5"/>
+            <Borders value="0,3,1;1,0,1;2,6,1;3,2,1;3,4,1;4,1,1;5,8,1;6,5,1;6,7,1;7,3,1;8,9,1;9,6,1"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="SWGateClosed">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o.."/>
+            <Rows value=".o."/>
+            <Rows value="..o"/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o.."/>
+            <Rows value=".o."/>
+            <Rows value="..o"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.1213"/>
+            <Offsets value="0.5,-1.5;1.5,-1.5;-0.5,-0.5;0.5,-0.5;1.5,-0.5;-1.5,0.5;-0.5,0.5;0.5,0.5;-1.5,1.5;-0.5,1.5"/>
+            <Borders value="0,3,0;1,0,0;2,6,0;3,2,0;3,4,0;4,1,0;5,8,0;6,5,0;6,7,0;7,3,0;8,9,0;9,6,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="SEGateOpen">
+        <Layers index="Check" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..o"/>
+            <Rows value=".o."/>
+            <Rows value="o.."/>
+        </Layers>
+        <Layers index="Place" Area="-1,-1,2,2">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="..o"/>
+            <Rows value=".o."/>
+            <Rows value="o.."/>
+        </Layers>
+        <Shape>
+            <Radius value="2.1213"/>
+            <Offsets value="-1.5,-1.5;-0.5,-1.5;-1.5,-0.5;-0.5,-0.5;0.5,-0.5;-0.5,0.5;0.5,0.5;1.5,0.5;0.5,1.5;1.5,1.5"/>
+            <Borders value="0,2,1;1,0,1;2,3,1;3,1,1;3,5,1;4,3,1;5,6,1;6,4,1;6,8,1;7,6,1;8,9,1;9,7,1"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="VerticalGateClosed">
+        <Layers index="Check" Area="0,-2,1,3">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+        </Layers>
+        <Layers index="Place" Area="0,-2,1,3">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.5495"/>
+            <Offsets value="-0.5,-2.5;0.5,-2.5;-0.5,2.5;0.5,2.5"/>
+            <Borders value="0,2,0;1,0,0;2,3,0;3,1,0"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="HorizontalGateOpen">
+        <Layers index="Check" Area="-2,0,3,1">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="ooooo"/>
+        </Layers>
+        <Layers index="Place" Area="-2,0,3,1">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="ooooo"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.5495"/>
+            <Offsets value="-2.5,-0.5;2.5,-0.5;-2.5,0.5;2.5,0.5"/>
+            <Borders value="0,2,1;1,0,1;2,3,1;3,1,1"/>
+        </Shape>
+    </CFootprint>
+    <CFootprint id="RuneTrapFootprint">
+        <Layers index="Check" Area="0,0,1,1">
+            <Sets index="0">
+                <Negative index="Creep" value="0"/>
+            </Sets>
+            <Rows value="x"/>
+        </Layers>
+        <Layers index="Place" Area="0,0,1,1">
+            <Rows value="x"/>
+        </Layers>
+    </CFootprint>
+    <CFootprint id="VerticalGateOpen">
+        <Layers index="Check" Area="0,-2,1,3">
+            <Sets Character="o">
+                <Negative index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+        </Layers>
+        <Layers index="Place" Area="0,-2,1,3">
+            <Sets Character="o">
+                <Positive index="NoBuild" value="1"/>
+            </Sets>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+            <Rows value="o"/>
+        </Layers>
+        <Shape>
+            <Radius value="2.5495"/>
+            <Offsets value="-0.5,-2.5;0.5,-2.5;-0.5,2.5;0.5,2.5"/>
+            <Borders value="0,2,1;1,0,1;2,3,1;3,1,1"/>
+        </Shape>
+    </CFootprint>
+</Catalog>

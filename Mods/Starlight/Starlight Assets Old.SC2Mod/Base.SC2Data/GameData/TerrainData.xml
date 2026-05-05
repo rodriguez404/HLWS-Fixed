@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTerrain id="StarlightBeach">
+        <EditorCategories value="Climate:Jungle"/>
+        <Lighting value="Starlight"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="StarlightGrass"/>
+        <BlendTextures value="StarlightGrassDark"/>
+        <BlendTextures value="StarlightSandCracked"/>
+        <BlendTextures value="StarlightSand"/>
+        <CliffSets value="StarlightForestNaturalCliffs"/>
+        <CliffSets value="StarlightForestRuinsCliffs"/>
+        <CliffSets value="StarlightProtossCliffs"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+    </CTerrain>
+    <CTerrain id="StarlightProtoss">
+        <EditorCategories value="Climate:Urban"/>
+        <Lighting value="Starlight"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="StarlightGrass"/>
+        <BlendTextures value="StarlightPanelsLight"/>
+        <BlendTextures value="StarlightHexGridBlue"/>
+        <BlendTextures value="StarlightHexGridBlack"/>
+        <CliffSets value="StarlightForestNaturalCliffs"/>
+        <CliffSets value="StarlightForestRuinsCliffs"/>
+        <CliffSets value="StarlightProtossCliffs"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+    </CTerrain>
+</Catalog>

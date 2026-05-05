@@ -1,0 +1,130 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Staging Area
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib7A9A9B22_gv_customValueOrderCurrent = 11;
+const int lib7A9A9B22_gv_customValueOrderMax = 12;
+const int lib7A9A9B22_gv_customValueUnitSpawnOffsetX = 13;
+const int lib7A9A9B22_gv_customValueUnitSpawnOffsetY = 14;
+const int lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX = 15;
+const int lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY = 16;
+const int lib7A9A9B22_gv_customValueUnitSpawnAreaWaypointCount = 17;
+const int lib7A9A9B22_gv_customValueUnitSpawnAreaUnitFacing = 20;
+const int lib7A9A9B22_gv_customValueWaypointSpawnX = 21;
+const int lib7A9A9B22_gv_customValueWaypointSpawnY = 22;
+const int lib7A9A9B22_gv_customValueWaypoint1X = 23;
+const int lib7A9A9B22_gv_customValueWaypoint1Y = 24;
+const int lib7A9A9B22_gv_customValueWaypoint2X = 25;
+const int lib7A9A9B22_gv_customValueWaypoint2Y = 26;
+const int lib7A9A9B22_gv_customValueWaypoint3X = 27;
+const int lib7A9A9B22_gv_customValueWaypoint3Y = 28;
+const int lib7A9A9B22_gv_customValueWaypoint4X = 29;
+const int lib7A9A9B22_gv_customValueWaypoint4Y = 30;
+const int lib7A9A9B22_gv_customValueWaypoint5X = 31;
+const int lib7A9A9B22_gv_customValueWaypoint5Y = 32;
+const int lib7A9A9B22_gv_customValueWaypoint6X = 33;
+const int lib7A9A9B22_gv_customValueWaypoint6Y = 34;
+const int lib7A9A9B22_gv_customValueWaypoint7X = 35;
+const int lib7A9A9B22_gv_customValueWaypoint7Y = 36;
+const int lib7A9A9B22_gv_customValueWaypoint8X = 37;
+const int lib7A9A9B22_gv_customValueWaypoint8Y = 38;
+const int lib7A9A9B22_gv_customValueWaypoint9X = 39;
+const int lib7A9A9B22_gv_customValueWaypoint9Y = 40;
+const int lib7A9A9B22_gv_userDataPhaseUnits = 1;
+const int lib7A9A9B22_gv_userDataPercentOfWaveBase = 3;
+const int lib7A9A9B22_gv_userDataPercentOfWaveRandom = 4;
+const int lib7A9A9B22_gv_userDataValuePercentModifier = 5;
+const int lib7A9A9B22_gv_userDataMin = 6;
+const int lib7A9A9B22_gv_userDataMax = 7;
+const int lib7A9A9B22_gv_waypointMax = 8;
+
+// Variable Declarations
+playergroup[4] lib7A9A9B22_gv_stagingAreaTeamInternal;
+unitgroup lib7A9A9B22_gv_waypointGroup;
+int lib7A9A9B22_gv__1x1MaxCountPerRow;
+int lib7A9A9B22_gv__2x2MaxCountPerRow;
+fixed lib7A9A9B22_gv_attackWaveRow;
+unitgroup lib7A9A9B22_gv_attackWaveGroup;
+unitgroup lib7A9A9B22_gv_attackWaveReady;
+unitgroup lib7A9A9B22_gv_stagingAreaReady;
+unitgroup lib7A9A9B22_gv_stagingArea;
+unitgroup lib7A9A9B22_gv_stagingAreaTeamColor;
+unitgroup lib7A9A9B22_gv_stagingAreaGrid;
+unitgroup lib7A9A9B22_gv_stagingAreaSpawns;
+unitgroup lib7A9A9B22_gv_stagingAreaSpawners;
+unitgroup lib7A9A9B22_gv_stagingAreaPeripherals;
+unitgroup[4] lib7A9A9B22_gv_stagingAreaTeamSpawns;
+unitgroup lib7A9A9B22_gv_preparationArea;
+int[16] lib7A9A9B22_gv_playerNPC;
+unitgroup lib7A9A9B22_gv_equipmentShop;
+unitgroup lib7A9A9B22_gv_refineries;
+fixed lib7A9A9B22_gv_mineralIncomeBonus;
+fixed lib7A9A9B22_gv_mineralIncomeIncrement;
+fixed lib7A9A9B22_gv_mineralIncomeBase;
+
+// Function Declarations
+void lib7A9A9B22_gf_MineralIncomeCreate (int lp_player);
+void lib7A9A9B22_gf_MineralIncomeUpdate (int lp_player);
+void lib7A9A9B22_gf_MineralIncomeSetBase (fixed lp_base);
+void lib7A9A9B22_gf_MineralIncomeSetIncrement (fixed lp_increment);
+void lib7A9A9B22_gf_MineralIncomeSetBonus (fixed lp_bonus);
+void lib7A9A9B22_gf_MineralIncomePause (bool lp_pause);
+void lib7A9A9B22_gf_MineralIncomeBonusToggle (playergroup lp_players, bool lp_toggle);
+unitgroup lib7A9A9B22_gf_StagingAreas ();
+unitgroup lib7A9A9B22_gf_StagingAreaSpawns ();
+unitgroup lib7A9A9B22_gf_StagingAreaSpawners ();
+playergroup lib7A9A9B22_gf_StagingAreaTeam (int lp_team);
+unitgroup lib7A9A9B22_gf_StagingAreaTeamSpawns (int lp_team);
+unit lib7A9A9B22_gf_StagingAreaEquipmentShop (int lp_player);
+unitgroup lib7A9A9B22_gf_StagingAreaRefineries (int lp_player);
+void lib7A9A9B22_gf_SetPlacementFacing (int lp_player, fixed lp_facing);
+void lib7A9A9B22_gf_AttackWavePrepare (int lp_player, fixed lp_facing, string lp_birthEffect, string lp_userData, int lp_userDataIndex, int lp_value, int lp_attackWave1x1MaxCountPerRow, int lp_attackWave2x2MaxCountPerRow, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_AttackWaveSend (string lp_sendEffect);
+void lib7A9A9B22_gf_AttackWavePreload (string lp_userData, int lp_userDataIndex);
+void lib7A9A9B22_gf_AttackWaveCreateParent (int lp_player, fixed lp_facing, string lp_birthEffect, string lp_userData, int lp_userDataIndex, int lp_value, point lp_originPoint);
+void lib7A9A9B22_gf_AttackWaveCreateSwitch (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint);
+void lib7A9A9B22_gf_AttackWaveCreate1x1 (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint);
+void lib7A9A9B22_gf_AttackWaveCreate2x2 (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint);
+void lib7A9A9B22_gf_WaypointApply (unit lp_unit, fixed lp_offsetX, fixed lp_offsetY, int lp_waypointCount, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_WaypointRefreshOrder (unit lp_unit);
+void lib7A9A9B22_gf_WaypointOrderControl (bool lp_toggle);
+void lib7A9A9B22_gf_StagingAreaCreateSpawns (unitgroup lp_unitSpawners, int lp_spawnOwner, string lp_birth, fixed lp_rotationChange, point lp_centerofBuildArea, int lp_waypointMax, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_StagingAreaSend (string lp_timedLife);
+void lib7A9A9B22_gf_StagingAreaPrepareManualWaypoints (unit lp_stagingArea, int lp_spawnOwner, string lp_birth, fixed lp_rotationChange, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_StagingAreaPrepare (unitgroup lp_stagingAreas, string lp_timedLife, string lp_birth);
+void lib7A9A9B22_gf_StagingAreaCreate (int lp_player, fixed lp_placementFacing, point lp_createAreaAtPoint, bool lp_createMineralFields);
+void lib7A9A9B22_gf_StagingAreaSetWaypoints (unit lp_unit, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_StagingAreaCreateMineralFields (int lp_player, fixed lp_rotation, point lp_point, bool lp_createMineralIncomeUnit);
+void lib7A9A9B22_gf_StagingAreaTeamSet (playergroup lp_team0, int lp_team0NPC, point lp_team0Origin1, point lp_team0Origin2, point lp_team0Origin3, point lp_team0Origin4, point lp_team0Origin5, point lp_team0Origin6, playergroup lp_team1, int lp_team1NPC, point lp_team1Origin1, point lp_team1Origin2, point lp_team1Origin3, point lp_team1Origin4, point lp_team1Origin5, point lp_team1Origin6, playergroup lp_team2, int lp_team2NPC, point lp_team2Origin1, point lp_team2Origin2, point lp_team2Origin3, point lp_team2Origin4, point lp_team2Origin5, point lp_team2Origin6, playergroup lp_team3, int lp_team3NPC, point lp_team3Origin1, point lp_team3Origin2, point lp_team3Origin3, point lp_team3Origin4, point lp_team3Origin5, point lp_team3Origin6);
+void lib7A9A9B22_gf_StagingAreaTeamCreate (string lp_stagingAreaType, int lp_team, fixed lp_facing, bool lp_createMineralFields, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9);
+void lib7A9A9B22_gf_StagingAreaRemovePlayer (int lp_player);
+void lib7A9A9B22_gf_StagingAreaRecallWorkers (playergroup lp_players);
+void lib7A9A9B22_gf_StagingAreaSetTerrain (int lp_player, string lp_terrain);
+void lib7A9A9B22_gf_StagingAreaCreateTestUnits (int lp_player, string lp_unitType);
+void lib7A9A9B22_gf_StagingAreaFlairPreview (point lp_point, string lp_flair);
+void lib7A9A9B22_gf_PreparationAreaCreate (point lp_point, string lp_spawnTimer, int lp_index);
+void lib7A9A9B22_gf_PreparationAreaPrepare (int lp_player, int lp_index);
+void lib7A9A9B22_gf_CopyAbilityAutocastSettings (unit lp_source, unit lp_target);
+void lib7A9A9B22_gf_CopyAutocastMode (abilcmd lp_ability, unit lp_source, unit lp_target);
+void lib7A9A9B22_gf_CopyAutocastModeSeparateAbilities (abilcmd lp_sourceAbility, abilcmd lp_targetAbility, unit lp_source, unit lp_target);
+
+// Trigger Declarations
+trigger lib7A9A9B22_gt_UnitStun;
+trigger lib7A9A9B22_gt_UnitIdle;
+trigger lib7A9A9B22_gt_UnitMorph;
+trigger lib7A9A9B22_gt_UnitSummon;
+trigger lib7A9A9B22_gt_NeuralParasiteOn;
+trigger lib7A9A9B22_gt_NeuralParasiteOff;
+trigger lib7A9A9B22_gt_EquipmentShopBirth;
+trigger lib7A9A9B22_gt_MineralIncomeUpdate;
+trigger lib7A9A9B22_gt_WaveUnitDeath;
+trigger lib7A9A9B22_gt_UnitSpawnerBirth;
+trigger lib7A9A9B22_gt_UnitSpawnerSell;
+trigger lib7A9A9B22_gt_UnitSpawnerReposition;
+trigger lib7A9A9B22_gt_UnitSpawnerBuildSwitch;
+
+// Library Initialization
+void lib7A9A9B22_InitVariables ();
+

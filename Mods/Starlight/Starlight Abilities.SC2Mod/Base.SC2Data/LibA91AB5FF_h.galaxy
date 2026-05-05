@@ -1,0 +1,53 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Stats
+//--------------------------------------------------------------------------------------------------
+// Constants
+const fixed libA91AB5FF_gv_energyRegenPerPoint = 0.05;
+const fixed libA91AB5FF_gv_energyPerPoint = 15.0;
+const fixed libA91AB5FF_gv_lifeRegenPerPoint = 0.25;
+const fixed libA91AB5FF_gv_lifeRegenBase = 0.5;
+const int libA91AB5FF_gv_neutralPlayer = 0;
+const fixed libA91AB5FF_gv_maxReal = 500000.0;
+
+// Variable Declarations
+fixed libA91AB5FF_gv_energyRegenBase;
+fixed libA91AB5FF_gv_lifeModifier;
+
+// Function Declarations
+void libA91AB5FF_gf_ModifyAbilityCatalog (unit lp_hero, string lp_ability, int lp_scalingFactor, int lp_catalog, string lp_entry, string lp_fieldPath, string lp_fieldPath2);
+void libA91AB5FF_gf_ModifyAbilityParent (unit lp_hero);
+void libA91AB5FF_gf_ModifyAbilityDamage (unit lp_hero, string lp_ability, string lp_effect);
+void libA91AB5FF_gf_ModifyAbilityVitalLife (unit lp_hero, string lp_ability, string lp_effect);
+void libA91AB5FF_gf_ModifyAbilityVitalShields (unit lp_hero, string lp_ability, string lp_effect);
+void libA91AB5FF_gf_ModifyAbilityModifyShieldsBehavior (unit lp_hero, string lp_ability);
+void libA91AB5FF_gf_ScaleVitalRegenArray0WithAbilityPower (unit lp_hero, string lp_behavior);
+void libA91AB5FF_gf_ModifyAbilitySpeedCharge3 (unit lp_hero, string lp_ability);
+void libA91AB5FF_gf_ModifyAbilityCost (unit lp_hero, string lp_ability);
+void libA91AB5FF_gf_ModifyAbilitySpeedCharge2 (unit lp_hero, string lp_ability, int lp_index);
+void libA91AB5FF_gf_ModifyAbilityAugment (unit lp_hero, string lp_ability);
+void libA91AB5FF_gf_ModifyHeroVitals (unit lp_hero);
+void libA91AB5FF_gf_ModifyHeroLife (unit lp_hero, string lp_unitType, fixed lp_multiplier);
+void libA91AB5FF_gf_ModifyHeroWeapon (unit lp_hero, string lp_weapon);
+void libA91AB5FF_gf_ModifyHeroWeaponDamage (unit lp_hero, string lp_weapon, fixed lp_multiplier, bool lp_modifySecondaryEffects);
+void libA91AB5FF_gf_ModifyAbility (unit lp_hero, string lp_ability);
+void libA91AB5FF_gf_SummonUpdate (unit lp_hero, string lp_ability, int lp_player);
+void libA91AB5FF_gf_SummonUpdateSpecific (string lp_ability, int lp_player, string lp_unitType);
+void libA91AB5FF_gf_StarlightStats (fixed lp_lifeModifier, fixed lp_energyRegenBase);
+void libA91AB5FF_gf_StarlightStatsUpdate (unit lp_hero);
+void libA91AB5FF_gf_StarlightStatsToggle (bool lp_toggle);
+
+// Trigger Declarations
+trigger libA91AB5FF_gt_AbilityShieldDamage;
+trigger libA91AB5FF_gt_AbilityShieldExpire;
+trigger libA91AB5FF_gt_EnslaveLifeFix;
+trigger libA91AB5FF_gt_LearnAbility;
+trigger libA91AB5FF_gt_StatsModifyEffect;
+trigger libA91AB5FF_gt_StatsModifyItemGainLoss;
+trigger libA91AB5FF_gt_SummonLifeFix;
+trigger libA91AB5FF_gt_SummonShieldFix;
+
+// Library Initialization
+void libA91AB5FF_InitVariables ();
+

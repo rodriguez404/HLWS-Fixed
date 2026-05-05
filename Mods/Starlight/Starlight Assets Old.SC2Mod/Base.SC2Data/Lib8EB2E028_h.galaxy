@@ -1,0 +1,13 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Kickers
+//--------------------------------------------------------------------------------------------------
+// Function Declarations
+void lib8EB2E028_gf_KickerDamage (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay);
+void lib8EB2E028_gf_KickerMinerals (int lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyMinerals);
+void lib8EB2E028_gf_KickerVespene (int lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyVespene);
+void lib8EB2E028_gf_KickerLife (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore);
+void lib8EB2E028_gf_KickerShields (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore);
+void lib8EB2E028_gf_CreateKicker (text lp_text, point lp_point, int lp_player, fixed lp_offset, fixed lp_velocity, fixed lp_duration, fixed lp_gravity, fixed lp_angleVariance);
+

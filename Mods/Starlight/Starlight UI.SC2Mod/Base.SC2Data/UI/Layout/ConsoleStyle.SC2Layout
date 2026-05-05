@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="Model" name="GameUI/UIContainer/ConsolePanel" file="GameUI">
+        <Frame type="Model" name="CommandPanelModelCustom">
+            <Anchor relative="$parent"/>
+            <Model val="@ui_ConsoleModelCommandPanel">
+                <Position val="1.000000,-1.000000,0.000000"/>
+                <Scale val="1.000000,1.000000,1.000000"/>
+            </Model>
+            <Camera position="0.000000,-5.000000,0.000000" target="0.000000,0.000000,0.000000" fov="90.000000" minz="1.000000" maxz="1000.000000"/>
+            <Projection val="Orthographic"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Model" name="GameUI/UIContainer/ConsolePanel/MinimapModel" file="GameUI">
+        <Frame type="Model" name="MinimapModelCustom">
+            <Anchor relative="$parent"/>
+            <Model val="@ui_ConsoleModelMinimapPanel">
+                <Position val="-1.000000,-1.000000,0.000000"/>
+                <Scale val="1.000000,1.000000,1.000000"/>
+            </Model>
+            <Camera position="0.000000,-5.000000,0.000000" target="0.000000,0.000000,0.000000" fov="90.000000" minz="1.000000" maxz="1000.000000"/>
+            <Projection val="Orthographic"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Model" name="GameUI/UIContainer/ConsolePanel/InfopanelModel" file="GameUI">
+        <Frame type="Model" name="InfopanelModelCustom">
+            <Anchor relative="$parent"/>
+            <Model val="@ui_ConsoleModelInfopanel">
+                <Position val="0.000000,-1.000000,0.000000"/>
+                <Scale val="1.000000,1.000000,1.000000"/>
+            </Model>
+            <Camera position="0.000000,-5.000000,0.000000" target="0.000000,0.000000,0.000000" fov="90.000000" minz="1.000000" maxz="1000.000000"/>
+            <Projection val="Orthographic"/>
+        </Frame>
+    </Frame>
+</Desc>

@@ -1,0 +1,51 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight XP
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+int libBD29A430_gv_levelCap;
+int[16] libBD29A430_gv_level;
+int[16] libBD29A430_gv_xP;
+int libBD29A430_gv_xPCap;
+int[1000] libBD29A430_gv_xPRequirement;
+int libBD29A430_gv_levelBarDialog;
+int libBD29A430_gv_levelBarFill;
+int libBD29A430_gv_levelBarGold;
+int libBD29A430_gv_levelBarFrame;
+int libBD29A430_gv_levelBarXP;
+int libBD29A430_gv_levelBarCurrent;
+int libBD29A430_gv_levelBarNext;
+int libBD29A430_gv_levelupFrame;
+int libBD29A430_gv_levelupText;
+int libBD29A430_gv_remainingText;
+sound[16] libBD29A430_gv_levelSound;
+int libBD29A430_gv_levelupPlayer;
+int libBD29A430_gv_addXPAmount;
+int libBD29A430_gv_addXPPlayer;
+bool[16] libBD29A430_gv_levelBarVisible;
+bool libBD29A430_gv_created;
+bool libBD29A430_gv_xPSet;
+bool libBD29A430_gv_xPApplied;
+
+// Function Declarations
+void libBD29A430_gf_StarlightXPStart ();
+void libBD29A430_gf_StarlightXPShowHide (playergroup lp_playerGroup, bool lp_onOff, string lp_xPScoreValue);
+void libBD29A430_gf_StarlightXPGrantExperience (int lp_player, int lp_experienceEarned);
+void libBD29A430_gf_StarlightXPOverrideXPCurveLinear ();
+void libBD29A430_gf_CreateDialogs ();
+void libBD29A430_gf_ModifyXP (int lp_amount, int lp_player, bool lp_useAnimation);
+void libBD29A430_gf_LevelAnimation (int lp_player);
+void libBD29A430_gf_SetXPRequirements ();
+void libBD29A430_gf_SetXPEarned (int lp_player, int lp_experienceEarned);
+void libBD29A430_gf_SetXPText (int lp_player);
+void libBD29A430_gf_SetXPLevel (int lp_player);
+void libBD29A430_gf_LevelUpAnimation (int lp_player);
+
+// Trigger Declarations
+trigger libBD29A430_gt_AddXP;
+trigger libBD29A430_gt_LevelUpAnimationStart;
+
+// Library Initialization
+void libBD29A430_InitVariables ();
+

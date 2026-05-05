@@ -1,0 +1,36 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Commendations
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib12DC2527_gv_dia = 20;
+
+// Variable Declarations
+sound lib12DC2527_gv_currentSound;
+int lib12DC2527_gv_commentationCurrent;
+int lib12DC2527_gv_commentationAmount;
+int lib12DC2527_gv_commendationFade;
+int[4] lib12DC2527_gv_commendationOwner;
+int[4] lib12DC2527_gv_commendationDialog;
+int[16] lib12DC2527_gv_commendationCount;
+bool[16] lib12DC2527_gv_commendationUsed;
+int[4] lib12DC2527_gv_commendationCardButton;
+string[16] lib12DC2527_gv_playerBorder;
+int[16][lib12DC2527_gv_dia + 1] lib12DC2527_gv_commendationDialogItem;
+string[20] lib12DC2527_gv_commentationScorePool;
+int lib12DC2527_gv_offsetY;
+
+// Function Declarations
+void lib12DC2527_gf_CreateCard (int lp_player, int lp_offset, int lp_scoreValue, text lp_scoreDescription, text lp_scoreComparison);
+void lib12DC2527_gf_CommendationsStart (string lp_scoreValue0, string lp_scoreValue1, string lp_scoreValue2, string lp_scoreValue3);
+void lib12DC2527_gf_StarlightCommendations (string lp_scoreValue0, string lp_scoreValue1, string lp_scoreValue2, string lp_scoreValue3, string lp_scoreValue4, string lp_scoreValue5, string lp_scoreValue6, string lp_scoreValue7, string lp_scoreValue8, string lp_scoreValue9, string lp_scoreValue10, string lp_scoreValue11, string lp_scoreValue12, string lp_scoreValue13, string lp_scoreValue14, string lp_scoreValue15, string lp_scoreValue16, string lp_scoreValue17, string lp_scoreValue18, string lp_scoreValue19);
+
+// Trigger Declarations
+trigger lib12DC2527_gt_GiveCommendation;
+trigger lib12DC2527_gt_FadeDelay;
+trigger lib12DC2527_gt_FadeCommendation;
+
+// Library Initialization
+void lib12DC2527_InitVariables ();
+

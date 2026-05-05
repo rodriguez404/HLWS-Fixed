@@ -1,0 +1,41 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Ability Control
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib038F51B7_gv_race = 13;
+const int lib038F51B7_gv_buttons = 20;
+
+// Variable Declarations
+bool lib038F51B7_gv_created;
+int[lib038F51B7_gv_race + 1] lib038F51B7_gv_controlRaceButtonLimit;
+string[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlDisable;
+int[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlButtonImage;
+text[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlButtonTooltip;
+int[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlButton;
+string[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlImage;
+int[lib038F51B7_gv_buttons + 1][lib038F51B7_gv_race + 1] lib038F51B7_gv_controlBackground;
+int[3] lib038F51B7_gv_controlCenter;
+int[lib038F51B7_gv_race + 1] lib038F51B7_gv_controlDialog;
+int[lib038F51B7_gv_race + 1] lib038F51B7_gv_controlSetupInteger;
+int[16] lib038F51B7_gv_controlPlayerRace;
+fixed lib038F51B7_gv_controlTransparency;
+
+// Function Declarations
+void lib038F51B7_gf_AbilityControlAddAbility (int lp_race, string lp_unit, string lp_button, string lp_upgrade);
+void lib038F51B7_gf_AbilityControlCreateButton ();
+void lib038F51B7_gf_AbilityControlCreateMenu (int lp_race);
+void lib038F51B7_gf_AbilityControlOpen (bool lp_toggle, playergroup lp_players);
+void lib038F51B7_gf_AbilityControlFade (bool lp_fade, fixed lp_fadeTime);
+void lib038F51B7_gf_AbilityControlSetRace (int lp_player, int lp_race);
+void lib038F51B7_gf_AbilityControlEnableDisable (bool lp_toggle, playergroup lp_players);
+void lib038F51B7_gf_AbilityControlStartDefault ();
+
+// Trigger Declarations
+trigger lib038F51B7_gt_AbilityControlOpen;
+trigger lib038F51B7_gt_AbilityControlSelect;
+
+// Library Initialization
+void lib038F51B7_InitVariables ();
+

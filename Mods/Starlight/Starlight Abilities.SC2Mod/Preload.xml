@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Asset path="assets\splats\splat_zerglingburrowed\splat_zerglingburrowed_02.m3" Type="Model"/>
+<Asset path="assets\effects\zerg\zurvantentacleimpact\zurvantentacleimpact.m3" Type="Model"/>
+<Asset path="assets\sounds\protoss\mothership\mothership_wormholetransitend0.wav" Type="Sound"/>
+<Asset path="assets\effects\protoss\hallucinatedeath\hallucinatedeath.m3" Type="Model"/>
+<Asset path="assets\effects\protoss\recallimpactin\recallimpactin.m3" Type="Model"/>
+<Actor id="SYSTEM_ActorConfig"/>
+</Preload>

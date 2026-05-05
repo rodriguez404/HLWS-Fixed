@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <ModType>
+        <Value>Interface</Value>
+    </ModType>
+    <Dependencies>
+        <Value>bnet:AK2RL5HJ1/0.0/457954,file:Mods\Starlight\Starlight Abilities.SC2Mod</Value>
+        <Value>bnet:Starlight UI1/0.0/457950,file:Mods\Starlight\Starlight UI.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

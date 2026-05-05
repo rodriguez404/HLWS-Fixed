@@ -1,0 +1,188 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib8EB2E028_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Kickers
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib8EB2E028_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Functions
+void lib8EB2E028_gf_KickerDamage (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay) {
+    // Variable Declarations
+    text lv_style;
+
+    // Automatic Variable Declarations
+    bool auto625AF6C8_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto625AF6C8_val = lp_warCraftStyle;
+    if (auto625AF6C8_val == true) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_131A7D6C");
+    }
+    else if (auto625AF6C8_val == false) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_C0075B2D");
+    }
+    else {
+    }
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) >= 1.0)) {
+        if ((lp_delay == true)) {
+            Wait(0.0, c_timeGame);
+        }
+
+        lib8EB2E028_gf_CreateKicker((lv_style + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib8EB2E028_gf_KickerMinerals (int lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyMinerals) {
+    // Variable Declarations
+    text lv_style;
+
+    // Automatic Variable Declarations
+    bool auto93EABF3D_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto93EABF3D_val = lp_warCraftStyle;
+    if (auto93EABF3D_val == true) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_4EAA1663");
+    }
+    else if (auto93EABF3D_val == false) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_D9CEBA8F");
+    }
+    else {
+    }
+    if ((lp_value > 0)) {
+        lib8EB2E028_gf_CreateKicker((lv_style + StringExternal("Param/Value/lib_8EB2E028_7B18AAF5") + IntToText(lp_value)), lp_point, lp_player, lp_offset, 1.25, 1.75, 0.25, 10.0);
+        if ((lp_modifyMinerals == true)) {
+            PlayerModifyPropertyInt(lp_player, c_playerPropMinerals, c_playerPropOperAdd, lp_value);
+            PlayerModifyPropertyInt(lp_player, c_playerPropMineralsCollected, c_playerPropOperAdd, lp_value);
+        }
+
+    }
+
+}
+
+void lib8EB2E028_gf_KickerVespene (int lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyVespene) {
+    // Variable Declarations
+    text lv_style;
+
+    // Automatic Variable Declarations
+    bool autoC35E5007_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoC35E5007_val = lp_warCraftStyle;
+    if (autoC35E5007_val == true) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_D5F98447");
+    }
+    else if (autoC35E5007_val == false) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_A6F8247B");
+    }
+    else {
+    }
+    if ((lp_value > 0)) {
+        lib8EB2E028_gf_CreateKicker((lv_style + StringExternal("Param/Value/lib_8EB2E028_E6EA072D") + IntToText(lp_value)), lp_point, lp_player, lp_offset, 2.0, 1.75, 1.25, 10.0);
+        if ((lp_modifyVespene == true)) {
+            PlayerModifyPropertyInt(lp_player, c_playerPropVespene, c_playerPropOperAdd, lp_value);
+            PlayerModifyPropertyInt(lp_player, c_playerPropVespeneCollected, c_playerPropOperAdd, lp_value);
+        }
+
+    }
+
+}
+
+void lib8EB2E028_gf_KickerLife (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore) {
+    // Variable Declarations
+    text lv_style;
+
+    // Automatic Variable Declarations
+    bool auto58BCC513_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto58BCC513_val = lp_warCraftStyle;
+    if (auto58BCC513_val == true) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_354290D0");
+    }
+    else if (auto58BCC513_val == false) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_C7BE4412");
+    }
+    else {
+    }
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) >= 1.0)) {
+        lib8EB2E028_gf_CreateKicker((lv_style + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib8EB2E028_gf_KickerShields (string lp_value, bool lp_warCraftStyle, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore) {
+    // Variable Declarations
+    text lv_style;
+
+    // Automatic Variable Declarations
+    bool auto149FA44B_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto149FA44B_val = lp_warCraftStyle;
+    if (auto149FA44B_val == true) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_C9DA9A70");
+    }
+    else if (auto149FA44B_val == false) {
+        lv_style = StringExternal("Param/Value/lib_8EB2E028_A6257EF0");
+    }
+    else {
+    }
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) >= 1.0)) {
+        lib8EB2E028_gf_CreateKicker((lv_style + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib8EB2E028_gf_CreateKicker (text lp_text, point lp_point, int lp_player, fixed lp_offset, fixed lp_velocity, fixed lp_duration, fixed lp_gravity, fixed lp_angleVariance) {
+    // Automatic Variable Declarations
+    // Implementation
+    TextTagCreate(lp_text, 32, lp_point, lp_offset, true, false, PlayerGroupSingle(lp_player));
+    TextTagSetVelocity(TextTagLastCreated(), lp_velocity, RandomFixed((90.0 - lp_angleVariance), (90.0 + lp_angleVariance)));
+    TextTagSetGravity(TextTagLastCreated(), (0.0 - lp_gravity));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, lp_duration);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib8EB2E028_InitLib_completed = false;
+
+void lib8EB2E028_InitLib () {
+    if (lib8EB2E028_InitLib_completed) {
+        return;
+    }
+
+    lib8EB2E028_InitLib_completed = true;
+
+    lib8EB2E028_InitLibraries();
+}
+

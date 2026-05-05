@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CModel default="1" id="HeroNovaParent" parent="Unit">
+        <Model value="Assets\Units\Terran\NovaEx3\NovaEx3.m3"/>
+        <RequiredAnims value="Assets\Units\Terran\NovaEx3_RequiredAnims\NovaEx3_RequiredAnims.m3a"/>
+        <RequiredAnims value="Assets\Units\Terran\NovaEx3_DLC2Anims\NovaEx3_DLC2Anims.m3a"/>
+        <EditorCategories value="Race:Neutral"/>
+        <Events>
+            <Anim value="Spell,D,End"/>
+            <Name value="WalkingCheck"/>
+            <Type value="Custom"/>
+            <Time value="0.250000"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,00"/>
+            <Name value="Nova_HellfireShotgun_HandPump"/>
+            <Type value="Sound"/>
+            <Time value="0.644000"/>
+            <Payload value="Nova_HellfireShotgun_HandPump"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.070000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,01"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.147000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,01"/>
+            <Name value="Nova_HellfireShotgun_AutoPump"/>
+            <Type value="Sound"/>
+            <Time value="1.019000"/>
+            <Payload value="Nova_HellfireShotgun_AutoPump"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,B,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.147000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,B,00"/>
+            <Name value="Nova_HellfireShotgun_AutoPump"/>
+            <Type value="Sound"/>
+            <Time value="1.019000"/>
+            <Payload value="Nova_HellfireShotgun_AutoPump"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,B,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.147000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,B,00"/>
+            <Name value="Nova_HellfireShotgun_KneePump"/>
+            <Type value="Sound"/>
+            <Time value="0.878000"/>
+            <Payload value="Nova_HellfireShotgun_KneePump"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.073000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C"/>
+            <Type value="Sound"/>
+            <Time value="0.167000"/>
+            <Payload value="NovaPsiBlade_Foley_C"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C_a"/>
+            <Type value="Sound"/>
+            <Time value="4.098000"/>
+            <Payload value="NovaPsiBlade_Launch_C_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C_a"/>
+            <Type value="Sound"/>
+            <Time value="4.098000"/>
+            <Payload value="NovaPsiBlade_Foley_C_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C01"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.073000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C2"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C2"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01a"/>
+            <Type value="Sound"/>
+            <Time value="4.092000"/>
+            <Payload value="NovaPsiBlade_Launch_C01a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C01a"/>
+            <Type value="Sound"/>
+            <Time value="4.092000"/>
+            <Payload value="NovaPsiBlade_Foley_C01a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Launch_C02"/>
+            <Type value="Sound"/>
+            <Payload value="NovaPsiBlade_Launch_C02"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.073000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Foley_C02"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C02"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Launch_C02a"/>
+            <Type value="Sound"/>
+            <Time value="4.109000"/>
+            <Payload value="NovaPsiBlade_Launch_C02a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,02"/>
+            <Name value="NovaPsiBlade_Foley_C02a"/>
+            <Type value="Sound"/>
+            <Time value="4.109000"/>
+            <Payload value="NovaPsiBlade_Foley_C02a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Launch_C03"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C03"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.066000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Foley_C03"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C03"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Launch_C03a"/>
+            <Type value="Sound"/>
+            <Time value="4.078000"/>
+            <Payload value="NovaPsiBlade_Launch_C03a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,03"/>
+            <Name value="NovaPsiBlade_Foley_C03a"/>
+            <Type value="Sound"/>
+            <Time value="4.078000"/>
+            <Payload value="NovaPsiBlade_Foley_C03a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Launch_C04"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C04"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.428000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Foley_C04"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C04"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Launch_C04a"/>
+            <Type value="Sound"/>
+            <Time value="4.030000"/>
+            <Payload value="NovaPsiBlade_Launch_C04a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,04"/>
+            <Name value="NovaPsiBlade_Foley_C04a"/>
+            <Type value="Sound"/>
+            <Time value="4.030000"/>
+            <Payload value="NovaPsiBlade_Foley_C04a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Launch_C05"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C05"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.498000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.428000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.051000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Foley_C05"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C05"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Launch_C05a"/>
+            <Type value="Sound"/>
+            <Time value="4.034000"/>
+            <Payload value="NovaPsiBlade_Launch_C05a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,05"/>
+            <Name value="NovaPsiBlade_Foley_C05a"/>
+            <Type value="Sound"/>
+            <Time value="4.034000"/>
+            <Payload value="NovaPsiBlade_Foley_C05a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Launch_C06"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C06"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.859000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.530000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.739000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.403000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Foley_C06"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C06"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Launch_C06a"/>
+            <Type value="Sound"/>
+            <Time value="4.393000"/>
+            <Payload value="NovaPsiBlade_Launch_C06a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,06"/>
+            <Name value="NovaPsiBlade_Foley_C06a"/>
+            <Type value="Sound"/>
+            <Time value="4.393000"/>
+            <Payload value="NovaPsiBlade_Foley_C06a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C_Superior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Superior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.122000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.653000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.084000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.517000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C_Superior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C_Superior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C_Superior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.129000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Superior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C_Superior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.129000"/>
+            <Payload value="NovaPsiBlade_Foley_C_Superior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01_Superior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C01_Superior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.162000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.653000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C_BladeTwirl"/>
+            <Type value="Sound"/>
+            <Time value="0.272000"/>
+            <Payload value="NovaPsiBlade_Launch_C_BladeTwirl"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.523000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.124000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C01_Superior"/>
+            <Type value="Sound"/>
+            <Time value="0.259000"/>
+            <Payload value="NovaPsiBlade_Foley_C01_Superior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01_Superior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.129000"/>
+            <Payload value="NovaPsiBlade_Launch_C01_Superior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C01_Superior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.129000"/>
+            <Payload value="NovaPsiBlade_Foley_C01_Superior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C_Inferior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Inferior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.165000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.573000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.148000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="4.324000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C_Inferior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C_Inferior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C_Inferior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.121000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Inferior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C_Inferior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.380000"/>
+            <Payload value="NovaPsiBlade_Foley_C_Inferior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01_Inferior"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C01_Inferior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.165000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.573000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.148000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C01_Inferior"/>
+            <Type value="Sound"/>
+            <Time value="0.552000"/>
+            <Payload value="NovaPsiBlade_Foley_C01_Inferior"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Launch_C01_Inferior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.078000"/>
+            <Payload value="NovaPsiBlade_Launch_C01_Inferior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,C,01"/>
+            <Name value="NovaPsiBlade_Foley_C01_Inferior_a"/>
+            <Type value="Sound"/>
+            <Time value="4.078000"/>
+            <Payload value="NovaPsiBlade_Foley_C01_Inferior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,C,00"/>
+            <Name value="NovaPsiBlade_Launch_C02"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C02"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,D,00"/>
+            <Name value="NovaPsiBlade_Launch_C"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_C03a"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Launch_C03a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.123000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="0.492000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_C_BladeTwirl"/>
+            <Type value="Sound"/>
+            <Time value="0.694000"/>
+            <Payload value="NovaPsiBlade_Launch_C_BladeTwirl"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Impact"/>
+            <Type value="Sound"/>
+            <Time value="4.990000"/>
+            <Payload value="NovaPsiBlade_Impact"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.020000"/>
+            <Payload value="NovaPsiBlade_Launch_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Impact_Dx_Exert"/>
+            <Type value="Sound"/>
+            <Time value="0.431000"/>
+            <Payload value="NovaPsiBlade_Impact_Dx_Exert"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_C06"/>
+            <Type value="Sound"/>
+            <Time value="4.394000"/>
+            <Payload value="NovaPsiBlade_Launch_C06"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_C_Inferior_a"/>
+            <Type value="Sound"/>
+            <Time value="0.044000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Inferior_a"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,C,07"/>
+            <Name value="NovaPsiBlade_Launch_C_Superior"/>
+            <Type value="Sound"/>
+            <Time value="4.883000"/>
+            <Payload value="NovaPsiBlade_Launch_C_Superior"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C03"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="NovaPsiBlade_Foley_C03"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,C,00"/>
+            <Name value="NovaPsiBlade_Foley_C2"/>
+            <Type value="Sound"/>
+            <Time value="2.607000"/>
+            <Payload value="NovaPsiBlade_Foley_C2"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,A,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.000000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,A,01"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="2.936000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Superior,A,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="2.936000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,Inferior,A,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="2.936000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,02"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="0.745000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,02"/>
+            <Name value="Nova_HellfireShotgun_KneePump"/>
+            <Type value="Sound"/>
+            <Time value="1.258000"/>
+            <Payload value="Nova_HellfireShotgun_KneePump"/>
+        </Events>
+        <Events>
+            <Anim value="Attack,B,02"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="3.139000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Spell,G,00"/>
+            <Name value="Nova_HellfireShotgun_Foley"/>
+            <Type value="Sound"/>
+            <Time value="1.570000"/>
+            <Payload value="Nova_HellfireShotgun_Foley"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup"/>
+            <Name value="DeathWarpOutBase"/>
+            <Type value="Custom"/>
+            <Time value="1.660000"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,A"/>
+            <Name value="DeathWarpOutBaseA"/>
+            <Type value="Custom"/>
+            <Time value="1.660000"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,B"/>
+            <Name value="DeathWarpOutBaseB"/>
+            <Type value="Custom"/>
+            <Time value="1.660000"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,C"/>
+            <Name value="DeathWarpOutBaseC"/>
+            <Type value="Custom"/>
+            <Time value="1.660000"/>
+        </Events>
+        <Events>
+            <Anim value="Death,Pickup,M"/>
+            <Name value="DeathWarpOutBaseM"/>
+            <Type value="Custom"/>
+            <Time value="1.660000"/>
+        </Events>
+        <Flags index="AutoUnload" value="1"/>
+        <Lighting value="NovaStarlightBase"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid04"/>
+        <Radius value="0.375000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid04"/>
+        <UnitGlossaryCamera value="Star2CameraMid04"/>
+    </CModel>
+    <CModel id="PlaceBeamProtoss" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Sentry_HealingBeam\Sentry_HealingBeam.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="PlaceBeamProtossPulse" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Envision\Envision.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="PlaceBeamTerran" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\MedivacBeam\MedivacBeam.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="PlaceBeamTerranPulse" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Zeratul_VoidArmor\Zeratul_VoidArmor.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+    </CModel>
+    <CModel id="PlaceBeamZerg" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\Infested_Diamondback_Slime\Infested_Diamondback_Slime.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="PlaceBeamZergPulse" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Zerg\Infested_Diamondback_Slime_Impact\Infested_Diamondback_Slime_Impact.m3"/>
+        <AnimSpeed value="2.000000"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="UnitItemTeleportIn" parent="OneShotSpellFX" Race="Neutral">
+        <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpIn\DarkTemplarAiurWarpIn.m3"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="UnitItemTeleportOut" parent="OneShotSpellFX" Race="Neutral">
+        <Model value="Assets\Effects\Protoss\DarkTemplarAiurWarpOut\DarkTemplarAiurWarpOut.m3"/>
+        <ScaleMax value="0.700000,0.700000,0.700000"/>
+        <ScaleMin value="0.700000,0.700000,0.700000"/>
+    </CModel>
+    <CModel id="BasicUnitItemPassive" parent="Unit">
+        <Model value="Assets\Doodads\PickUp_Nova_JetPack\PickUp_Nova_JetPack.m3"/>
+        <Radius value="0.375000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+    </CModel>
+    <CModel id="ItemSelectionPlate">
+        <Model value="Assets\Doodads\Shapes\ShapeCylinder\ShapeCylinder.m3"/>
+    </CModel>
+    <CModel id="TechItemBirth" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Terran\Nova_Holographic_Decoy_Death\Nova_Holographic_Decoy_Death.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="TechItemImpact" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Terran\Nova_Holographic_Decoy_Birth\Nova_Holographic_Decoy_Birth.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="GlazeDehakaPrimalRegeneration">
+        <Model value="Assets\Effects\Glaze\Glaze_Dehaka_PrimalRegeneration\Glaze_Dehaka_PrimalRegeneration.m3"/>
+    </CModel>
+    <CModel id="GlazePylonPowerOff">
+        <Model value="Assets\Effects\Glaze\PylonPowerOff_Glaze\PylonPowerOff_Glaze.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeSnowTangentSpace300Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Snow_Unit_TangentSpace\Glaze_Snow_Unit_TangentSpace.m3"/>
+        <AnimSpeed value="3.000000"/>
+    </CModel>
+    <CModel id="GlazeDehakaLevelUp">
+        <Model value="Assets\Effects\Glaze\Glaze_Dehaka_LevelUp\Glaze_Dehaka_LevelUp.m3"/>
+    </CModel>
+    <CModel id="GlazeFenixChampion50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Fenix_AI_Champion\Glaze_Fenix_AI_Champion.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeStasisWard50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_StasisWard\Glaze_StasisWard.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeAlarakSacrifice50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Alarak_COOP_Sacrifice\Glaze_Alarak_COOP_Sacrifice.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeAnimaShower50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_AmonShards_Orange_AnimaShower\Glaze_AmonShards_Orange_AnimaShower.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeFenixStun15Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Fenix_Scout_StunMissile\Glaze_Fenix_Scout_StunMissile.m3"/>
+        <AnimSpeed value="0.150000"/>
+    </CModel>
+    <CModel id="GlazeHolographicDecoy">
+        <Model value="Assets\Effects\Glaze\Glaze_Nova_Holographic_Decoy\Glaze_Nova_Holographic_Decoy.m3"/>
+    </CModel>
+    <CModel id="GlazeIceTangentSpace300Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Ice_TangentSpace\Glaze_Ice_TangentSpace.m3"/>
+        <AnimSpeed value="3.000000"/>
+    </CModel>
+    <CModel id="GlazeImmobilizationWave25Speed">
+        <Model value="Assets\Effects\Glaze\Kerrigan_Glaze_ImmobilizationWave\Kerrigan_Glaze_ImmobilizationWave.m3"/>
+        <AnimSpeed value="0.250000"/>
+    </CModel>
+    <CModel id="GlazeNovaDamage">
+        <Model value="Assets\Effects\Glaze\Glaze_Nova_Buff_Damage\Glaze_Nova_Buff_Damage.m3"/>
+    </CModel>
+    <CModel id="GlazePhaseArmor">
+        <Model value="Assets\Effects\Glaze\Glaze_PhaseArmor\Glaze_PhaseArmor.m3"/>
+    </CModel>
+    <CModel id="GlazePylonPowerOn">
+        <Model value="Assets\Effects\Glaze\PylonPowerOn_Glaze\PylonPowerOn_Glaze.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeShieldBattery">
+        <Model value="Assets\Effects\Glaze\Glaze_ShieldBattery_StructureBarrier\Glaze_ShieldBattery_StructureBarrier.m3"/>
+    </CModel>
+    <CModel id="GlazeSymbioteCarapace">
+        <Model value="Assets\Effects\Glaze\Glaze_Symbiote_Carapace\Glaze_Symbiote_Carapace.m3"/>
+    </CModel>
+    <CModel id="GlazeVoidStasis50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_VoidStasis\Glaze_VoidStasis.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeVoidZone50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_VoidShard_VoidZone\Glaze_VoidShard_VoidZone.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeVoidZone200Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_VoidShard_VoidZone\Glaze_VoidShard_VoidZone.m3"/>
+        <AnimSpeed value="2.000000"/>
+    </CModel>
+    <CModel id="GlazeParasiticBomb25Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_ParasiticBomb\Glaze_ParasiticBomb.m3"/>
+        <AnimSpeed value="0.250000"/>
+    </CModel>
+    <CModel id="GlazeReconstructionBeam50Speed">
+        <Model value="Assets\Effects\Glaze\SOA_Reconstruction_Beam_Glaze\SOA_Reconstruction_Beam_Glaze.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeAlarakEmpower50Speed">
+        <Model value="Assets\Effects\Glaze\Glaze_Alarak_COOP_Empower\Glaze_Alarak_COOP_Empower.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeTemporalField50Speed">
+        <Model value="Assets\Effects\Glaze\SOA_TemporalField_Glaze\SOA_TemporalField_Glaze.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="GlazeRegenerativeBiosteel">
+        <Model value="Assets\Effects\Glaze\Glaze_RegenerativeBioSteel\Glaze_RegenerativeBioSteel.m3"/>
+        <AnimSpeed value="0.500000"/>
+    </CModel>
+    <CModel id="StunModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Neutral\Stun_Void\Stun_Void.m3"/>
+        <AnimSpeed value="1.250000"/>
+    </CModel>
+</Catalog>

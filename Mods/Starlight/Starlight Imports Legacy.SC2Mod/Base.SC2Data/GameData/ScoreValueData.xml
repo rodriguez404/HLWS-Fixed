@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CScoreValueCombine id="DamageDealt">
+        <ValueTable value="ShieldsDamageDealtTotal"/>
+        <ValueTable value="LifeDamageDealtTotal"/>
+    </CScoreValueCombine>
+    <CScoreValueCustom id="DamageDealtbyAbilities"/>
+    <CScoreValueCustom id="DamageDealtbyHeroes"/>
+    <CScoreValueCustom id="DamageDealtbyStructures"/>
+    <CScoreValueCustom id="DamageDealtbySummons"/>
+    <CScoreValueCustom id="DamageDealtbyWeapons"/>
+    <CScoreValueCustom id="DamageDealttoStructures"/>
+    <CScoreValueStandard id="CustomResourcesSpent">
+        <Value value="CustomSpent"/>
+    </CScoreValueStandard>
+    <CScoreValueCombine id="DamageTaken">
+        <ValueTable value="ShieldsDamageTakenTotal"/>
+        <ValueTable value="LifeDamageTakenTotal"/>
+    </CScoreValueCombine>
+    <CScoreValueCombine id="HealingDone">
+        <ValueTable value="LifeHealedTotal"/>
+        <ValueTable value="ShieldsHealedTotal"/>
+    </CScoreValueCombine>
+    <CScoreValueConstant id="ScoreInteger5">
+        <Value value="5"/>
+    </CScoreValueConstant>
+    <CScoreValueStandard id="TerrazineSpent">
+        <Value value="TerrazineSpent"/>
+    </CScoreValueStandard>
+    <CScoreValueCustom id="HeroDeaths"/>
+    <CScoreValueCustom id="HeroesSlain"/>
+    <CScoreValueCustom id="None"/>
+    <CScoreValueCombine id="PointValueofUnitsandStructuresKilled">
+        <ValueTable value="UnitsKilledValue"/>
+        <ValueTable value="StructuresKilledValue"/>
+    </CScoreValueCombine>
+</Catalog>

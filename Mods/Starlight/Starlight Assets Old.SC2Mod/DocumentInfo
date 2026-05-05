@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <Flags>
+        <Value>PreloadNoTrigger</Value>
+    </Flags>
+    <Dependencies>
+        <Value>bnet:Starlight Imports Legacy1/0.0/326961,file:Mods\Starlight\Starlight Imports Legacy.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

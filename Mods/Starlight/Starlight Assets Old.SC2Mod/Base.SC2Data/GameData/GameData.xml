@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CGame id="Dflt">
+        <TriggerLibs Id="DDE92A83"/>
+        <TriggerLibs Id="BBFED31C"/>
+        <TriggerLibs Id="BD29A430"/>
+        <TriggerLibs Id="93689751"/>
+        <TriggerLibs Id="12DC2527"/>
+        <TriggerLibs Id="452C8A48"/>
+        <TriggerLibs Id="FD391A9C"/>
+        <TriggerLibs Id="7A9A9B22"/>
+        <TriggerLibs Id="1DE23868"/>
+        <TriggerLibs Id="29554E00"/>
+        <TriggerLibs Id="038F51B7"/>
+        <TriggerLibs Id="E1C8E1CC"/>
+        <TriggerLibs Id="16875C2F"/>
+        <TriggerLibs Id="CA960273"/>
+        <TriggerLibs Id="8D68C7BC"/>
+        <TriggerLibs Id="948F000A"/>
+        <TriggerLibs Id="28FBFBC5"/>
+        <TriggerLibs Id="39886FE6"/>
+        <TriggerLibs Id="D6A97973"/>
+        <TriggerLibs Id="DBB0BE4A"/>
+        <TriggerLibs Id="7550A90B"/>
+        <TriggerLibs Id="22D496B3"/>
+        <TriggerLibs Id="2A8CE4F7"/>
+        <TriggerLibs Id="458E37E6"/>
+        <TriggerLibs Id="3C4E5221"/>
+        <TriggerLibs Id="F095282B"/>
+        <PlayersRequiredForLargeFormat value="16"/>
+        <TeamColors index="9" MinPlayerCount="0"/>
+        <TeamColors index="10" MinPlayerCount="0"/>
+        <TeamColors index="11" MinPlayerCount="0"/>
+        <TeamColors index="12" MinPlayerCount="0"/>
+        <TeamColors index="13" MinPlayerCount="0"/>
+        <TeamColors index="14" MinPlayerCount="0"/>
+        <TeamColors index="15" MinPlayerCount="0"/>
+        <CallForHelpPeriod value="7"/>
+    </CGame>
+</Catalog>

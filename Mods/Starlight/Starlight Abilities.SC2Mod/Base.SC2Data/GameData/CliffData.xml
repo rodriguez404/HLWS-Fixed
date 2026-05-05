@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CCliff id="AzerothRuinsCliffs">
+        <CliffMesh value="CliffMade1Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\AiurTempleCliff1_Material\AiurTempleCliff1_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_clifftemple.dds"/>
+    </CCliff>
+    <CCliff id="AzerothNaturalCliffs">
+        <CliffMesh value="CliffNatural0Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\BelShirEx1Cliff0_Material\BelShirEx1Cliff0_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_cliffnatural.dds"/>
+    </CCliff>
+    <CCliff id="LordaeronWinterCliffs">
+        <CliffMesh value="CliffNatural0Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\IceWorldCliff1_Material\IceWorldCliff1_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_cliffnatural.dds"/>
+    </CCliff>
+    <CCliff id="LordaeronOrganicCliffs">
+        <CliffMesh value="CliffNatural0Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\BelShirEx1Cliff0_Material\BelShirEx1Cliff0_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_cliffnatural.dds"/>
+    </CCliff>
+    <CCliff id="LordaeronManmadeCliffs">
+        <CliffMesh value="CliffMade1Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\AiurEx1Cliff1_Material\AiurEx1Cliff1_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_clifftemple.dds"/>
+    </CCliff>
+    <CCliff id="AzerothIceCliffs">
+        <CliffMesh value="CliffNatural0Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\IceWorldCliff1_Material\IceWorldCliff1_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_cliffnatural.dds"/>
+    </CCliff>
+    <CCliff id="AzerothDarkCliffs">
+        <CliffMesh value="CliffMade1Ex1"/>
+        <CliffMaterial value="Assets\Cliffs\ZhakulDasEx1Cliff1_Material\ZhakulDasEx1Cliff1_Material.m3"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-terraineditor_clifftemple.dds"/>
+    </CCliff>
+</Catalog>

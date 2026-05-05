@@ -1,0 +1,673 @@
+include "TriggerLibs/NativeLib"
+
+include "LibAED0EA78_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Set Environment
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libAED0EA78_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Functions
+void libAED0EA78_gf_EnvironmentCharLand (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoC3974132_g;
+    int autoC3974132_var;
+
+    // Implementation
+    autoC3974132_g = PlayerGroupAll();
+    autoC3974132_var = -1;
+    while (true) {
+        autoC3974132_var = PlayerGroupNextPlayer(autoC3974132_g, autoC3974132_var);
+        if (autoC3974132_var < 0) { break; }
+        CameraSetValue(autoC3974132_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_CharDunes", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("CharEx2", lp_blendTime);
+    WaterSetState("DynamicWater|Char", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(100.00, 21.18, 21.18), lp_blendTime);
+    FogSetDensityOverTime(0.16, lp_blendTime);
+    FogSetFallOffOverTime(0.35, lp_blendTime);
+    FogSetStartHeightOverTime(-1.5, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentWarp (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto023A7700_g;
+    int auto023A7700_var;
+
+    // Implementation
+    auto023A7700_g = PlayerGroupAll();
+    auto023A7700_var = -1;
+    while (true) {
+        auto023A7700_var = PlayerGroupNextPlayer(auto023A7700_g, auto023A7700_var);
+        if (auto023A7700_var < 0) { break; }
+        CameraSetValue(auto023A7700_var, c_cameraValueFarClip, 100.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Castanar", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetLighting("Space01Light", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(47.45, 83.92, 95.69), lp_blendTime);
+    FogSetDensityOverTime(0.2, lp_blendTime);
+    FogSetFallOffOverTime(0.25, lp_blendTime);
+    FogSetStartHeightOverTime(0.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentAvernus (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoBA2EB802_g;
+    int autoBA2EB802_var;
+
+    // Implementation
+    autoBA2EB802_g = PlayerGroupAll();
+    autoBA2EB802_var = -1;
+    while (true) {
+        autoBA2EB802_var = PlayerGroupNextPlayer(autoBA2EB802_g, autoBA2EB802_var);
+        if (autoBA2EB802_var < 0) { break; }
+        CameraSetValue(autoBA2EB802_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Avernus", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "AvernusSkybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "AvernusSkyParallax", 100.0);
+    GameSetLighting("Avernus", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentBraxisAlpha (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoF961CE10_g;
+    int autoF961CE10_var;
+
+    // Implementation
+    autoF961CE10_g = PlayerGroupAll();
+    autoF961CE10_var = -1;
+    while (true) {
+        autoF961CE10_var = PlayerGroupNextPlayer(autoF961CE10_g, autoF961CE10_var);
+        if (autoF961CE10_var < 0) { break; }
+        CameraSetValue(autoF961CE10_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BraxisAlpha", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BraxisAlphaSkyBox", 20.0);
+    GameSetBackground(c_backgroundTerrain, "BraxisAlphaSkyParallax", 20.0);
+    GameSetLighting("BraxisAlpha", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(20.00, 17.65, 15.69), lp_blendTime);
+    FogSetDensityOverTime(0.05, lp_blendTime);
+    FogSetFallOffOverTime(0.15, lp_blendTime);
+    FogSetStartHeightOverTime(-5.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentCastanar (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto257A205F_g;
+    int auto257A205F_var;
+
+    // Implementation
+    auto257A205F_g = PlayerGroupAll();
+    auto257A205F_var = -1;
+    while (true) {
+        auto257A205F_var = PlayerGroupNextPlayer(auto257A205F_g, auto257A205F_var);
+        if (auto257A205F_var < 0) { break; }
+        CameraSetValue(auto257A205F_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Castanar", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "CastanarSkybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Castanar", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentChar (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto315F17C5_g;
+    int auto315F17C5_var;
+
+    // Implementation
+    auto315F17C5_g = PlayerGroupAll();
+    auto315F17C5_var = -1;
+    while (true) {
+        auto315F17C5_var = PlayerGroupNextPlayer(auto315F17C5_g, auto315F17C5_var);
+        if (auto315F17C5_var < 0) { break; }
+        CameraSetValue(auto315F17C5_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Char", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "CharSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "CharSkyParallax", 100.0);
+    GameSetLighting("Char", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(100.00, 21.18, 21.18), lp_blendTime);
+    FogSetDensityOverTime(0.16, lp_blendTime);
+    FogSetFallOffOverTime(0.35, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentSkygierrPlatform (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto34C98A5B_g;
+    int auto34C98A5B_var;
+
+    // Implementation
+    auto34C98A5B_g = PlayerGroupAll();
+    auto34C98A5B_var = -1;
+    while (true) {
+        auto34C98A5B_var = PlayerGroupNextPlayer(auto34C98A5B_g, auto34C98A5B_var);
+        if (auto34C98A5B_var < 0) { break; }
+        CameraSetValue(auto34C98A5B_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BraxisAlpha", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "HybridGasGiantSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("HybridLabOuter", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(50.20, 37.65, 12.55), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentKorhalPlatform (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoB11E806C_g;
+    int autoB11E806C_var;
+
+    // Implementation
+    autoB11E806C_g = PlayerGroupAll();
+    autoB11E806C_var = -1;
+    while (true) {
+        autoB11E806C_var = PlayerGroupNextPlayer(autoB11E806C_g, autoB11E806C_var);
+        if (autoB11E806C_var < 0) { break; }
+        CameraSetValue(autoB11E806C_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_KorhalPlatform", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "KorhalPlatformSkybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "KorhalPlatformSkyParallax", 100.0);
+    GameSetLighting("KorhalPlatform", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(21.57, 27.06, 34.90), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.22, lp_blendTime);
+    FogSetStartHeightOverTime(-2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentKorhalOrbit (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto42917982_g;
+    int auto42917982_var;
+
+    // Implementation
+    auto42917982_g = PlayerGroupAll();
+    auto42917982_var = -1;
+    while (true) {
+        auto42917982_var = PlayerGroupNextPlayer(auto42917982_g, auto42917982_var);
+        if (auto42917982_var < 0) { break; }
+        CameraSetValue(auto42917982_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_KorhalPlatform", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "KorhalSkyboxHorizon", 25.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("KorhalPlatform", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(21.96, 35.29, 46.27), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.22, lp_blendTime);
+    FogSetStartHeightOverTime(-2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentPortZion (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoC7CFECDD_g;
+    int autoC7CFECDD_var;
+
+    // Implementation
+    autoC7CFECDD_g = PlayerGroupAll();
+    autoC7CFECDD_var = -1;
+    while (true) {
+        autoC7CFECDD_var = PlayerGroupNextPlayer(autoC7CFECDD_g, autoC7CFECDD_var);
+        if (autoC7CFECDD_var < 0) { break; }
+        CameraSetValue(autoC7CFECDD_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_PortZion", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "SkyBoxPortZionSpace", 100.0);
+    GameSetBackground(c_backgroundTerrain, "SkyBoxPortZionSpaceParallax", 100.0);
+    GameSetLighting("PortZion", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(1.18, 25.49, 44.71), lp_blendTime);
+    FogSetDensityOverTime(0.05, lp_blendTime);
+    FogSetFallOffOverTime(0.15, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentShadowCorpsPlatform (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoE88B5781_g;
+    int autoE88B5781_var;
+
+    // Implementation
+    autoE88B5781_g = PlayerGroupAll();
+    autoE88B5781_var = -1;
+    while (true) {
+        autoE88B5781_var = PlayerGroupNextPlayer(autoE88B5781_g, autoE88B5781_var);
+        if (autoE88B5781_var < 0) { break; }
+        CameraSetValue(autoE88B5781_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BraxisAlpha", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "ShadowSkybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "ShadowSkyboxParallax", 100.0);
+    GameSetLighting("ShadowCorpsPlatform", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentTheVoid (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto9405EFCE_g;
+    int auto9405EFCE_var;
+
+    // Implementation
+    auto9405EFCE_g = PlayerGroupAll();
+    auto9405EFCE_var = -1;
+    while (true) {
+        auto9405EFCE_var = PlayerGroupNextPlayer(auto9405EFCE_g, auto9405EFCE_var);
+        if (auto9405EFCE_var < 0) { break; }
+        CameraSetValue(auto9405EFCE_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BraxisAlpha", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "Void_Skybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "Void_Skybox_Parallax", 100.0);
+    GameSetLighting("TheVoid", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentUlnarOuter (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto52AB293B_g;
+    int auto52AB293B_var;
+
+    // Implementation
+    auto52AB293B_g = PlayerGroupAll();
+    auto52AB293B_var = -1;
+    while (true) {
+        auto52AB293B_var = PlayerGroupNextPlayer(auto52AB293B_g, auto52AB293B_var);
+        if (auto52AB293B_var < 0) { break; }
+        CameraSetValue(auto52AB293B_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Ulaan", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "Ulnar_Skybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "Ulnar_Skybox_Parallax", 100.0);
+    GameSetLighting("UlnarOuter", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentWorldShip (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto8662FB2B_g;
+    int auto8662FB2B_var;
+
+    // Implementation
+    auto8662FB2B_g = PlayerGroupAll();
+    auto8662FB2B_var = -1;
+    while (true) {
+        auto8662FB2B_var = PlayerGroupNextPlayer(auto8662FB2B_g, auto8662FB2B_var);
+        if (auto8662FB2B_var < 0) { break; }
+        CameraSetValue(auto8662FB2B_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BraxisAlpha", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "UlnarSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, "UlnarSkyParallax", 100.0);
+    GameSetLighting("Ulnar", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, true);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentShakuras (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto2396D41C_g;
+    int auto2396D41C_var;
+
+    // Implementation
+    auto2396D41C_g = PlayerGroupAll();
+    auto2396D41C_var = -1;
+    while (true) {
+        auto2396D41C_var = PlayerGroupNextPlayer(auto2396D41C_g, auto2396D41C_var);
+        if (auto2396D41C_var < 0) { break; }
+        CameraSetValue(auto2396D41C_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Shakuras", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("ShakurasCity", lp_blendTime);
+    WaterSetState("DynamicWater|Shakuras", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.3, lp_blendTime);
+    FogSetFallOffOverTime(0.3, lp_blendTime);
+    FogSetStartHeightOverTime(-1.5, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentSlayn (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup autoEE12199F_g;
+    int autoEE12199F_var;
+
+    // Implementation
+    autoEE12199F_g = PlayerGroupAll();
+    autoEE12199F_var = -1;
+    while (true) {
+        autoEE12199F_var = PlayerGroupNextPlayer(autoEE12199F_g, autoEE12199F_var);
+        if (autoEE12199F_var < 0) { break; }
+        CameraSetValue(autoEE12199F_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Shakuras", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Slayn", lp_blendTime);
+    WaterSetState("DynamicWater|ZhakulDas", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentBelShir (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto628B3899_g;
+    int auto628B3899_var;
+
+    // Implementation
+    auto628B3899_g = PlayerGroupAll();
+    auto628B3899_var = -1;
+    while (true) {
+        auto628B3899_var = PlayerGroupNextPlayer(auto628B3899_g, auto628B3899_var);
+        if (auto628B3899_var < 0) { break; }
+        CameraSetValue(auto628B3899_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_BelShir", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("BelShirEx2", lp_blendTime);
+    WaterSetState("DynamicWater|BelShir", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 39.22), lp_blendTime);
+    FogSetDensityOverTime(0.09, lp_blendTime);
+    FogSetFallOffOverTime(0.32, lp_blendTime);
+    FogSetStartHeightOverTime(-5.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentElsecaro (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto22999C95_g;
+    int auto22999C95_var;
+
+    // Implementation
+    auto22999C95_g = PlayerGroupAll();
+    auto22999C95_var = -1;
+    while (true) {
+        auto22999C95_var = PlayerGroupNextPlayer(auto22999C95_g, auto22999C95_var);
+        if (auto22999C95_var < 0) { break; }
+        CameraSetValue(auto22999C95_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Haven", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Elsecaro", lp_blendTime);
+    WaterSetState("DynamicWater|Elsecaro", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(16.86, 20.39, 30.20), lp_blendTime);
+    FogSetDensityOverTime(0.05, lp_blendTime);
+    FogSetFallOffOverTime(0.1, lp_blendTime);
+    FogSetStartHeightOverTime(-2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentMarSara (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto7289E01B_g;
+    int auto7289E01B_var;
+
+    // Implementation
+    auto7289E01B_g = PlayerGroupAll();
+    auto7289E01B_var = -1;
+    while (true) {
+        auto7289E01B_var = PlayerGroupNextPlayer(auto7289E01B_g, auto7289E01B_var);
+        if (auto7289E01B_var < 0) { break; }
+        CameraSetValue(auto7289E01B_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_ZerusSwamp", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "MarSaraSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting((CatalogFieldValueGet(c_gameCatalogTerrain, "MarSaraEx2", "Lighting", 0)), lp_blendTime);
+    WaterSetState("DynamicWater|MarSara", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(43.92, 34.90, 30.59), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentZerusSwamp (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto54D21172_g;
+    int auto54D21172_var;
+
+    // Implementation
+    auto54D21172_g = PlayerGroupAll();
+    auto54D21172_var = -1;
+    while (true) {
+        auto54D21172_var = PlayerGroupNextPlayer(auto54D21172_g, auto54D21172_var);
+        if (auto54D21172_var < 0) { break; }
+        CameraSetValue(auto54D21172_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_ZerusSwamp", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "ZerusSkybox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Zerus", lp_blendTime);
+    WaterSetState("DynamicWater|Zerus", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(47.45, 83.92, 95.69), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentXelNagaCavern (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto936EBF39_g;
+    int auto936EBF39_var;
+
+    // Implementation
+    auto936EBF39_g = PlayerGroupAll();
+    auto936EBF39_var = -1;
+    while (true) {
+        auto936EBF39_var = PlayerGroupNextPlayer(auto936EBF39_g, auto936EBF39_var);
+        if (auto936EBF39_var < 0) { break; }
+        CameraSetValue(auto936EBF39_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Ulaan", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, null, 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("XelNaga_Caverns", lp_blendTime);
+    WaterSetState("DynamicWater|CaveWorld", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(17.65, 26.67, 33.73), lp_blendTime);
+    FogSetDensityOverTime(0.06, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-0.9, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentKaldir (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto8A2058EC_g;
+    int auto8A2058EC_var;
+
+    // Implementation
+    auto8A2058EC_g = PlayerGroupAll();
+    auto8A2058EC_var = -1;
+    while (true) {
+        auto8A2058EC_var = PlayerGroupNextPlayer(auto8A2058EC_g, auto8A2058EC_var);
+        if (auto8A2058EC_var < 0) { break; }
+        CameraSetValue(auto8A2058EC_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_IceWorld", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "BelShirSkyBox", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("IceWorld", lp_blendTime);
+    WaterSetState("DynamicWater|Kaldir", 0.0, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, true);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(47.45, 83.92, 95.69), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-2.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentStarship (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto57A0BD43_g;
+    int auto57A0BD43_var;
+
+    // Implementation
+    auto57A0BD43_g = PlayerGroupAll();
+    auto57A0BD43_var = -1;
+    while (true) {
+        auto57A0BD43_var = PlayerGroupNextPlayer(auto57A0BD43_g, auto57A0BD43_var);
+        if (auto57A0BD43_var < 0) { break; }
+        CameraSetValue(auto57A0BD43_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Starship", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "StarshipSkyBoxMP", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Starship", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(47.45, 83.92, 95.69), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-20.0, lp_blendTime);
+}
+
+void libAED0EA78_gf_EnvironmentCybros (fixed lp_blendTime) {
+    // Automatic Variable Declarations
+    playergroup auto7C485943_g;
+    int auto7C485943_var;
+
+    // Implementation
+    auto7C485943_g = PlayerGroupAll();
+    auto7C485943_var = -1;
+    while (true) {
+        auto7C485943_var = PlayerGroupNextPlayer(auto7C485943_g, auto7C485943_var);
+        if (auto7C485943_var < 0) { break; }
+        CameraSetValue(auto7C485943_var, c_cameraValueFarClip, 40000.0, lp_blendTime, -1, 10.0);
+    }
+    SoundtrackPlay(PlayerGroupAll(), c_soundtrackCategoryAmbience, "Ambience_Starship", c_soundtrackCueAny, c_soundtrackIndexAny, true);
+    GameSetBackground(c_backgroundFixed, "StarshipSkyBoxMP", 100.0);
+    GameSetBackground(c_backgroundTerrain, null, 100.0);
+    GameSetLighting("Starship", lp_blendTime);
+    WaterSetState("DynamicWater|[Default]", lp_blendTime, c_wtcLinear);
+    EnvironmentShow(c_environmentWater, false);
+    SoundChannelMute(PlayerGroupAll(), c_soundCategorySEmitters, false);
+    FogSetEnabled(true);
+    FogSetColorOverTime(Color(47.45, 83.92, 95.69), lp_blendTime);
+    FogSetDensityOverTime(0.1, lp_blendTime);
+    FogSetFallOffOverTime(0.2, lp_blendTime);
+    FogSetStartHeightOverTime(-20.0, lp_blendTime);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libAED0EA78_InitLib_completed = false;
+
+void libAED0EA78_InitLib () {
+    if (libAED0EA78_InitLib_completed) {
+        return;
+    }
+
+    libAED0EA78_InitLib_completed = true;
+
+    libAED0EA78_InitLibraries();
+}
+

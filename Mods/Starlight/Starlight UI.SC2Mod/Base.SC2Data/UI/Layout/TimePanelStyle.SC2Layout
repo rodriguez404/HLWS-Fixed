@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="MissionTimePanel" name="GameUI/UIContainer/ConsoleUIContainer/MissionTimePanel" file="GameUI">
+        <Anchor side="Right" relative="$parent/MinimapPanel" pos="Max" offset="-50"/>
+        <Anchor side="Left" relative="$parent/MinimapPanel" pos="Max" offset="-210"/>
+        <Anchor side="Bottom" relative="$parent/MinimapPanel" pos="Min" offset="10"/>
+
+        <Frame type="Label" name="TimeLabel">
+            <Style val="TimePanelHeaderLabelGrey"/>
+        </Frame>
+    </Frame>
+</Desc>

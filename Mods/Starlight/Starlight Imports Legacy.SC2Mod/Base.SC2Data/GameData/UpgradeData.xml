@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUpgrade default="1" id="HiddenUpgrade">
+        <ScoreCount value="TotalMissionScore"/>
+        <ScoreValue value="TotalMissionScore"/>
+        <EditorCategories value="UpgradeType:Hidden"/>
+        <LeaderAlias value=""/>
+    </CUpgrade>
+    <CUpgrade id="ImpossibleUpgrade"/>
+</Catalog>

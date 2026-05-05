@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DocInfo>
+    <ModType>
+        <Value>Interface</Value>
+    </ModType>
+    <Dependencies>
+        <Value>bnet:Starlight Assets Old1/0.0/326960,file:Mods\Starlight\Starlight Assets Old.SC2Mod</Value>
+    </Dependencies>
+</DocInfo>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTerrain default="1" id="Azeroth">
+        <EditorCategories value="Climate:Jungle"/>
+        <Lighting value="Lordaeron"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <CliffSets value="AzerothDarkCliffs"/>
+        <CliffSets value="AzerothIceCliffs"/>
+        <CliffSets value="AzerothNaturalCliffs"/>
+        <CliffSets value="AzerothRuinsCliffs"/>
+    </CTerrain>
+    <CTerrain id="AzerothBarrens" parent="Azeroth">
+        <BlendTextures value="AzerothSandCracked"/>
+        <BlendTextures value="AzerothDirt"/>
+        <BlendTextures value="AzerothRock"/>
+        <BlendTextures value="AzerothDirtCracked"/>
+        <BlendTextures value="AzerothGrassLight"/>
+        <BlendTextures value="AzerothSand"/>
+        <BlendTextures value="AzerothPebbles"/>
+        <BlendTextures value="AzerothPath"/>
+    </CTerrain>
+    <CTerrain id="AzerothLordaeron" parent="Azeroth">
+        <BlendTextures value="AzerothSandCracked"/>
+        <BlendTextures value="AzerothDirt"/>
+        <BlendTextures value="AzerothRock"/>
+        <BlendTextures value="AzerothGrass"/>
+        <BlendTextures value="AzerothGrassDark"/>
+        <BlendTextures value="AzerothSand"/>
+        <BlendTextures value="AzerothPebbles"/>
+        <BlendTextures value="AzerothPath"/>
+    </CTerrain>
+    <CTerrain id="AzerothNorthrend" parent="Azeroth">
+        <BlendTextures value="AzerothSandCracked"/>
+        <BlendTextures value="AzerothDirt"/>
+        <BlendTextures value="AzerothRock"/>
+        <BlendTextures value="AzerothSnow"/>
+        <BlendTextures value="AzerothGrassLight"/>
+        <BlendTextures value="AzerothIceCracked"/>
+        <BlendTextures value="AzerothPebblesIcy"/>
+        <BlendTextures value="AzerothPathDark"/>
+    </CTerrain>
+    <CTerrain id="Lordaeron">
+        <EditorCategories value="Climate:Jungle"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="LordaeronSand"/>
+        <BlendTextures value="LordaeronGrass"/>
+        <BlendTextures value="LordaeronSandCracked"/>
+        <BlendTextures value="LordaeronGrassDark"/>
+        <BlendTextures value="LordaeronDirt"/>
+        <BlendTextures value="LordaeronPebbles"/>
+        <BlendTextures value="LordaeronPath"/>
+        <BlendTextures value="LordaeronRock"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <CliffSets value="LordaeronOrganicCliffs"/>
+        <CliffSets value="LordaeronManmadeCliffs"/>
+        <CliffSets value="LordaeronWinterCliffs"/>
+    </CTerrain>
+    <CTerrain id="LordaeronDarkPath" parent="Lordaeron">
+        <Name value="Terrain/Name/LordaeronDarkPath"/>
+        <BlendTextures index="6" value="LordaeronPathDark"/>
+    </CTerrain>
+    <CTerrain id="LordaeronDarkDirt" parent="Lordaeron">
+        <Name value="Terrain/Name/LordaeronDarkDirt"/>
+        <BlendTextures index="4" value="LordaeronDirtDark"/>
+    </CTerrain>
+    <CTerrain id="LordaeronWinter" parent="Lordaeron">
+        <Name value="Terrain/Name/LordaeronWinter"/>
+        <BlendTextures index="0" value="LordaeronSnow"/>
+        <BlendTextures index="2" value="LordaeronIcyPebbles"/>
+        <BlendTextures index="6" value="LordaeronPathDark"/>
+    </CTerrain>
+    <CTerrain id="LordaeronDarkMix" parent="Lordaeron">
+        <Name value="Terrain/Name/LordaeronDarkMix"/>
+        <BlendTextures index="4" value="LordaeronDirtDark"/>
+        <BlendTextures index="6" value="LordaeronPathDark"/>
+    </CTerrain>
+    <CTerrain id="LordaeronRuins" parent="Lordaeron">
+        <Name value="Terrain/Name/LordaeronRuins"/>
+        <BlendTextures index="6" value="LordaeronRuins"/>
+    </CTerrain>
+    <CTerrain id="Starlight">
+        <EditorCategories value="Climate:Jungle"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="LordaeronGrass"/>
+        <BlendTextures value="Starship2"/>
+        <BlendTextures value="Starship7"/>
+        <BlendTextures value="DominionLab2"/>
+        <BlendTextures value="DominionLab3"/>
+        <BlendTextures value="Starship8"/>
+        <BlendTextures value="Starship4"/>
+        <BlendTextures value="Starship3"/>
+        <CliffSets value="StarshipCliff0"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <HideLowestLevel value="1"/>
+    </CTerrain>
+    <CTerrain id="StarlightCity">
+        <EditorCategories value="Climate:Jungle"/>
+        <Lighting value="StarlightTemple"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <Ambience value="Ambience_Aiur"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="Cybros8"/>
+        <BlendTextures value="Starship2"/>
+        <BlendTextures value="Starship8"/>
+        <BlendTextures value="Starship7"/>
+        <BlendTextures value="Starship4"/>
+        <BlendTextures value="Cybros4"/>
+        <CliffSets value="ProtossBaseManmadeCliffs"/>
+        <CliffSets value="AiurTempleCliff1"/>
+        <CliffSets value="TheVoidCliff1"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <HeightMapEnabled value="1"/>
+    </CTerrain>
+    <CTerrain id="Northrend">
+        <EditorCategories value="Climate:Jungle"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_IceWorld"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="NorthrendIceLight"/>
+        <BlendTextures value="IceWorld2"/>
+        <BlendTextures value="LordaeronIcyPebbles"/>
+        <BlendTextures value="NorthrendIceDark"/>
+        <BlendTextures value="LordaeronPathDark"/>
+        <BlendTextures value="NorthrendIceBlue"/>
+        <BlendTextures value="NorthrendGrass"/>
+        <BlendTextures value="LordaeronDirtDark"/>
+        <CliffSets value="IceWorldCliff0"/>
+        <CliffSets value="IceWorldCliff1"/>
+        <CliffSets value="ZhakulDasEx1Cliff1"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,121,214,244"/>
+        <FogDensity value="0.100000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-2.000000"/>
+    </CTerrain>
+    <CTerrain id="Ruins">
+        <EditorCategories value="Climate:Jungle"/>
+        <Lighting value="Lordaeron"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_BelShir"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="LordaeronSand"/>
+        <BlendTextures value="LordaeronGrass"/>
+        <BlendTextures value="RuinsBricksLarge"/>
+        <BlendTextures value="LordaeronGrassDark"/>
+        <BlendTextures value="LordaeronDirt"/>
+        <BlendTextures value="LordaeronMud"/>
+        <BlendTextures value="RuinsBricksSmall"/>
+        <BlendTextures value="AiurSmallBricks"/>
+        <CliffSets value="BelShirEx1Cliff0"/>
+        <CliffSets value="BelShirEx1Cliff1"/>
+        <CliffSets value="AiurEx1Cliff1"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+    </CTerrain>
+    <CTerrain id="StarlightTemple">
+        <EditorCategories value="Climate:Jungle"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <Ambience value="Ambience_Aiur"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="Aiur4City3"/>
+        <BlendTextures value="Aiur4City7"/>
+        <BlendTextures value="Aiur4Temple2"/>
+        <BlendTextures value="Aiur4Temple3"/>
+        <BlendTextures value="Void8"/>
+        <BlendTextures value="AiurTemple2"/>
+        <BlendTextures value="EndionAiurProtoss1"/>
+        <BlendTextures value="Endion6"/>
+        <CliffSets value="ProtossBaseManmadeCliffs"/>
+        <CliffSets value="AiurTempleCliff1"/>
+        <CliffSets value="TheVoidCliff1"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <HeightMapEnabled value="1"/>
+    </CTerrain>
+</Catalog>

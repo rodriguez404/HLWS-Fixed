@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTurret id="AncientProtectorTurret" parent="FreeRotate">
+        <Idle value="Reset"/>
+        <YawStart value="-22.5"/>
+        <YawRate value="225"/>
+        <YawIdleRate value="22.5"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="50"/>
+            <ChanceArray index="Idle" value="50"/>
+            <ChanceArray index="Turn" value="0"/>
+        </Fidget>
+    </CTurret>
+    <CTurret id="AncientTurret" parent="FreeRotate">
+        <Idle value="Reset"/>
+        <YawStart value="-22.5"/>
+        <YawRate value="225"/>
+        <YawIdleRate value="22.5"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="50"/>
+            <ChanceArray index="Idle" value="50"/>
+            <ChanceArray index="Turn" value="0"/>
+        </Fidget>
+    </CTurret>
+    <CTurret id="DrakkenLaser" parent="FreeRotate">
+        <Idle value="ResetIfMoving"/>
+        <YawRate value="119.8828"/>
+    </CTurret>
+    <CTurret id="SgtHammerTurret" parent="FreeRotate">
+        <Idle value="FollowMovement"/>
+        <YawIdleRate value="45"/>
+    </CTurret>
+    <CTurret id="TidalGuardianTurret" parent="FreeRotate">
+        <YawStart value="-22.5"/>
+        <YawRate value="225"/>
+        <YawIdleRate value="22.5"/>
+    </CTurret>
+    <CTurret id="FirestormArtilleryTurret" parent="FreeRotate">
+        <YawRate value="45"/>
+        <YawIdleRate value="-5.625"/>
+    </CTurret>
+    <CTurret id="NydusDragonTurret" parent="FreeRotate">
+        <YawRate value="225"/>
+    </CTurret>
+    <CTurret id="CannonTowerTurret" parent="FreeRotate">
+        <Idle value="Reset"/>
+        <YawStart value="45"/>
+        <YawRate value="225"/>
+        <YawIdleRate value="22.5"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="50"/>
+            <ChanceArray index="Idle" value="50"/>
+            <ChanceArray index="Turn" value="0"/>
+        </Fidget>
+    </CTurret>
+</Catalog>

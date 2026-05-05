@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Include path="UI/Layout/CommandCardTooltip.SC2Layout"/>
+    <Include path="UI/Layout/HeroIconStatusBar.SC2Layout"/>
+    <Include path="UI/Layout/ResourcePanelExtension.SC2Layout"/>
+    <Include path="UI/Layout/TooltipResourceExtension.SC2Layout"/>
+    <Include path="UI/Layout/WorldTooltipFix.SC2Layout"/>
+</Desc>

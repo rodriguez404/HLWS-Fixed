@@ -1,0 +1,767 @@
+include "TriggerLibs/NativeLib"
+include "Lib452C8A48"
+
+include "LibE17D8DC7_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Hero Icons
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libE17D8DC7_InitLibraries () {
+    libNtve_InitVariables();
+    lib452C8A48_InitVariables();
+}
+
+// Variable Initialization
+bool libE17D8DC7_InitVariables_completed = false;
+
+void libE17D8DC7_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (libE17D8DC7_InitVariables_completed) {
+        return;
+    }
+
+    libE17D8DC7_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroBorder[init_i][init_j] = c_invalidDialogId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroButton[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroIcon[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroVignette[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroReviveImage[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroReviveLabel[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroLife[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroLearnIcon[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= libE17D8DC7_gv_heroLimit; init_j += 1) {
+            libE17D8DC7_gv_heroLifeBorder[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= libE17D8DC7_gv_heroLimit; init_i += 1) {
+        libE17D8DC7_gv_heroIconGroup[init_i] = PlayerGroupEmpty();
+    }
+}
+
+// Functions
+void libE17D8DC7_gf_StarlightHeroIcon (int lp_player, unit lp_hero, int lp_slot, int lp_hotkey, int lp_offsetX, int lp_offsetY, bool lp_state) {
+    // Variable Declarations
+    text lv_hotkey;
+    int lv_x;
+    fixed lv_fade;
+
+    // Automatic Variable Declarations
+    bool autoAFFCB0EB_val;
+    int auto52268BEA_val;
+
+    // Variable Initialization
+    lv_x = c_invalidDialogControlId;
+    lv_fade = 0.5;
+
+    // Implementation
+    autoAFFCB0EB_val = lp_state;
+    if (autoAFFCB0EB_val == true) {
+        auto52268BEA_val = lp_hotkey;
+        if (auto52268BEA_val == c_hotkeyWarpIn) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_1FE7F923");
+        }
+        else if (auto52268BEA_val == c_hotkeyIdleWorker) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_8DD9144E");
+        }
+        else if (auto52268BEA_val == c_hotkeyArmySelect) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_8CB714EA");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect0) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_4060D2B0");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect1) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_DDEB0B28");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect2) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_F830471B");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect3) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_B302E239");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect4) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_9E5BC2C0");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect5) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_74401837");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect6) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_D9EC4243");
+        }
+        else if (auto52268BEA_val == c_hotkeyHeroSelect7) {
+            lv_hotkey = StringExternal("Param/Value/lib_E17D8DC7_AD11C259");
+        }
+        else {
+        }
+        PlayerGroupAdd(libE17D8DC7_gv_heroIconGroup[lp_slot], lp_player);
+        libE17D8DC7_gv_heroUnit[lp_player][lp_slot] = lp_hero;
+        DialogDestroy(libE17D8DC7_gv_heroBorder[lp_player][lp_slot]);
+        DialogCreate(200, 200, c_anchorTopLeft, (lp_offsetX - 12), ((lp_offsetY - 12) + (lp_slot * 100)), true);
+        libE17D8DC7_gv_heroBorder[lp_player][lp_slot] = DialogLastCreated();
+        DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(lp_player), true);
+        DialogSetImageVisible(DialogLastCreated(), false);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 64, 64, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\black.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lv_x = DialogControlLastCreated();
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 100, 100, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_abilitycontrol_blur.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        libE17D8DC7_gv_heroVignette[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 118, 26, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_heroiconstatusbar_vignette.dds", c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+        libE17D8DC7_gv_heroLifeBorder[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(lv_x, PlayerGroupAll(), c_anchorCenter, libE17D8DC7_gv_heroButton[lp_player][lp_slot], c_anchorCenter, 0, 0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 76, 76, c_anchorTopLeft, 12, 12, StringToText(""), (CatalogFieldValueGet(c_gameCatalogActor, UnitGetType(lp_hero), "UnitIcon", 0)), c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        libE17D8DC7_gv_heroIcon[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 64, 64, c_anchorBottom, 0, 0, StringToText(""), "Assets\\Textures\\war3_white.dds", c_triggerImageTypeNormal, false, Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0)), c_triggerBlendModeNormal);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 50.0);
+        libE17D8DC7_gv_heroReviveImage[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(libE17D8DC7_gv_heroReviveImage[lp_player][lp_slot], PlayerGroupAll(), c_anchorBottom, libE17D8DC7_gv_heroIcon[lp_player][lp_slot], c_anchorBottom, 0, -6);
+        DialogControlSetPositionRelative(libE17D8DC7_gv_heroVignette[lp_player][lp_slot], PlayerGroupAll(), c_anchorCenter, libE17D8DC7_gv_heroIcon[lp_player][lp_slot], c_anchorCenter, 0, 0);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 76, 76, c_anchorCenter, 0, 0, StringToText(""), StringExternal("Param/Value/lib_E17D8DC7_FC481905"), "");
+        libE17D8DC7_gv_heroReviveLabel[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+        DialogControlSetPositionRelative(libE17D8DC7_gv_heroReviveLabel[lp_player][lp_slot], PlayerGroupAll(), c_anchorCenter, libE17D8DC7_gv_heroIcon[lp_player][lp_slot], c_anchorCenter, 0, 0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 76, 76, c_anchorTopLeft, 0, 0, TextWithColor((StringExternal("Param/Value/lib_E17D8DC7_119D64FD") + UnitTypeGetName(UnitGetType(lp_hero)) + lv_hotkey), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))), StringToText(""), "");
+        libE17D8DC7_gv_heroButton[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, libE17D8DC7_gv_heroIcon[lp_player][lp_slot], c_anchorCenter, 0, 0);
+        libNtve_gf_SetDialogItemHotkey(DialogControlLastCreated(), lp_hotkey, PlayerGroupSingle(lp_player));
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_heroicon_button_normalpressed.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_heroicon_button_normaloverpressedover.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+        libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0)), PlayerGroupAll());
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        DialogControlCreate(DialogLastCreated(), c_triggerControlTypeUnitStatus);
+        libNtve_gf_SetDialogItemUnit(DialogControlLastCreated(), lp_hero, PlayerGroupAll());
+        libE17D8DC7_gv_heroLife[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 100, 8);
+        libNtve_gf_SetDialogItemUnit(DialogControlLastCreated(), lp_hero, PlayerGroupAll());
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTopLeft, libE17D8DC7_gv_heroReviveImage[lp_player][lp_slot], c_anchorBottomLeft, -2, 6);
+        DialogControlSetPositionRelative(libE17D8DC7_gv_heroLifeBorder[lp_player][lp_slot], PlayerGroupAll(), c_anchorCenter, libE17D8DC7_gv_heroLife[lp_player][lp_slot], c_anchorCenter, 0, 0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 32, 32, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\btn-menu-learn-heroicon.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        libE17D8DC7_gv_heroLearnIcon[lp_player][lp_slot] = DialogControlLastCreated();
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottomRight, libE17D8DC7_gv_heroIcon[lp_player][lp_slot], c_anchorBottomRight, -4, -4);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fade, 0.0);
+        if ((UnitHasBehavior(lp_hero, "CanLearn") == true)) {
+            DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[lp_player][lp_slot], PlayerGroupSingle(lp_player), true);
+        }
+
+    }
+    else if (autoAFFCB0EB_val == false) {
+        libE17D8DC7_gv_heroUnit[lp_player][lp_slot] = null;
+        DialogDestroy(libE17D8DC7_gv_heroBorder[lp_player][lp_slot]);
+    }
+    else {
+    }
+}
+
+void libE17D8DC7_gf_StarlightHeroIconSetAll (int lp_offsetX, int lp_offsetY) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    playergroup auto90878703_g;
+    int auto90878703_var;
+    unitgroup auto6EFD4D59_g;
+    int auto6EFD4D59_u;
+    unit auto6EFD4D59_var;
+    int autoDF27BD11_val;
+
+    // Variable Initialization
+
+    // Implementation
+    auto90878703_g = PlayerGroupAll();
+    auto90878703_var = -1;
+    while (true) {
+        auto90878703_var = PlayerGroupNextPlayer(auto90878703_g, auto90878703_var);
+        if (auto90878703_var < 0) { break; }
+        lv_i = 0;
+        auto6EFD4D59_g = UnitGroup(null, auto90878703_var, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto6EFD4D59_u = UnitGroupCount(auto6EFD4D59_g, c_unitCountAll);
+        for (;; auto6EFD4D59_u -= 1) {
+            auto6EFD4D59_var = UnitGroupUnitFromEnd(auto6EFD4D59_g, auto6EFD4D59_u);
+            if (auto6EFD4D59_var == null) { break; }
+            autoDF27BD11_val = lv_i;
+            if (autoDF27BD11_val == 0) {
+                libE17D8DC7_gf_StarlightHeroIcon(auto90878703_var, auto6EFD4D59_var, lv_i, c_hotkeyHeroSelect0, lp_offsetX, lp_offsetY, true);
+            }
+            else if (autoDF27BD11_val == 1) {
+                libE17D8DC7_gf_StarlightHeroIcon(auto90878703_var, auto6EFD4D59_var, lv_i, c_hotkeyHeroSelect1, lp_offsetX, lp_offsetY, true);
+            }
+            else if (autoDF27BD11_val == 2) {
+                libE17D8DC7_gf_StarlightHeroIcon(auto90878703_var, auto6EFD4D59_var, lv_i, c_hotkeyHeroSelect2, lp_offsetX, lp_offsetY, true);
+            }
+            else {
+            }
+            lv_i += 1;
+        }
+    }
+}
+
+void libE17D8DC7_gf_StarlightHeroIconToggle (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto42BEFD4E_val;
+
+    // Implementation
+    TriggerEnable(libE17D8DC7_gt_HeroBorderSelect, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroDeath, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroIconSetEffect, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroIconsFade, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroLearnOff, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroLearnOn, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroReviveFinish, lp_toggle);
+    TriggerEnable(libE17D8DC7_gt_HeroReviveStart, lp_toggle);
+    auto42BEFD4E_val = lp_toggle;
+    if (auto42BEFD4E_val == false) {
+        TriggerStop(libE17D8DC7_gt_HeroReviveStart);
+    }
+    else {
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Icon Set (Effect)
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroIconSetEffect_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libE17D8DC7_gf_StarlightHeroIcon(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), EventPlayerEffectUsedUnit(c_effectUnitTarget), libE17D8DC7_gv_heroSlotCurrent[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)], c_hotkeyHeroSelect0, 5, 65, true);
+    libE17D8DC7_gv_heroSlotCurrent[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)] += 1;
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroIconSetEffect_Init () {
+    libE17D8DC7_gt_HeroIconSetEffect = TriggerCreate("libE17D8DC7_gt_HeroIconSetEffect_Func");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroIconSetEffect, c_playerAny, "HeroIconSetTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Border Select
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroBorderSelect_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto4CDFE06C_val;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!(((EventDialogControl() == libE17D8DC7_gv_heroButton[EventPlayer()][0]) || (EventDialogControl() == libE17D8DC7_gv_heroButton[EventPlayer()][1]) || (EventDialogControl() == libE17D8DC7_gv_heroButton[EventPlayer()][2]) || (EventDialogControl() == libE17D8DC7_gv_heroButton[EventPlayer()][3]) || (EventDialogControl() == libE17D8DC7_gv_heroButton[EventPlayer()][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto4CDFE06C_val = EventDialogControl();
+    if (auto4CDFE06C_val == libE17D8DC7_gv_heroButton[EventPlayer()][1]) {
+        lv_i = 1;
+    }
+    else if (auto4CDFE06C_val == libE17D8DC7_gv_heroButton[EventPlayer()][2]) {
+        lv_i = 2;
+    }
+    else if (auto4CDFE06C_val == libE17D8DC7_gv_heroButton[EventPlayer()][3]) {
+        lv_i = 3;
+    }
+    else if (auto4CDFE06C_val == libE17D8DC7_gv_heroButton[EventPlayer()][4]) {
+        lv_i = 4;
+    }
+    else {
+    }
+    if ((UnitIsSelected(libE17D8DC7_gv_heroUnit[EventPlayer()][lv_i], EventPlayer()) == false)) {
+        UnitClearSelection(EventPlayer());
+        UnitSelect(libE17D8DC7_gv_heroUnit[EventPlayer()][lv_i], EventPlayer(), true);
+    }
+    else {
+        CameraPan(EventPlayer(), PointWithOffset(UnitGetPosition(libE17D8DC7_gv_heroUnit[EventPlayer()][lv_i]), 0.0, -1.63), 0.0, -1, 10.0, false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroBorderSelect_Init () {
+    libE17D8DC7_gt_HeroBorderSelect = TriggerCreate("libE17D8DC7_gt_HeroBorderSelect_Func");
+    TriggerAddEventDialogControl(libE17D8DC7_gt_HeroBorderSelect, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(libE17D8DC7_gt_HeroBorderSelect, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeHotkeyPressed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Death
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroDeath_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    int lv_p;
+    int lv_x;
+    fixed lv_t;
+    timer lv_timer;
+    string lv_icon;
+    point lv_point;
+    int lv_player;
+    unit lv_unit;
+
+    // Automatic Variable Declarations
+    playergroup autoF8EF2032_g;
+    int autoF8EF2032_var;
+    unit auto828B764C_val;
+
+    // Variable Initialization
+    lv_p = EventPlayerEffectUsedUnitOwner(c_effectPlayerSource);
+    lv_t = ((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogAbil, "ReviveHero", "PrepTime[" + IntToString(0) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource))) + 2.75) / 64.0);
+    lv_timer = TimerCreate();
+    lv_icon = (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny));
+    lv_point = EventPlayerEffectUsedPoint(c_effectLocationSourcePoint);
+    lv_player = EventPlayerEffectUsedUnitOwner(c_effectPlayerSource);
+    lv_unit = EventPlayerEffectUsedUnit(c_effectUnitSource);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitSource)) == true))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true))) {
+            return false;
+        }
+
+        if (!(((EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("HeroAlert", lv_player, (StringExternal("Param/Value/lib_E17D8DC7_DB8C2D73") + TextWithColor(UnitTypeGetName(UnitGetType(lv_unit)), Color(0.00, 72.55, 0.00)) + StringExternal("Param/Value/lib_E17D8DC7_CD3312C0")), lv_icon, lv_point);
+    SoundPlay(SoundLink("Alert_HumanHeroDeath", -1), PlayerGroupSingle(lv_player), 100.0, 0.0);
+    autoF8EF2032_g = PlayerGroupAlliance(c_playerGroupAlly, lv_player);
+    autoF8EF2032_var = -1;
+    while (true) {
+        autoF8EF2032_var = PlayerGroupNextPlayer(autoF8EF2032_g, autoF8EF2032_var);
+        if (autoF8EF2032_var < 0) { break; }
+        UIAlertUnit("HeroAlert", autoF8EF2032_var, (StringExternal("Param/Value/lib_E17D8DC7_0B28283B") + TextWithColor(UnitTypeGetName(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource))), Color(100.00, 100.00, 0.00)) + StringExternal("Param/Value/lib_E17D8DC7_84B43003")), lv_icon, EventPlayerEffectUsedUnit(c_effectUnitSource));
+    }
+    SoundPlay(SoundLink("Alert_HumanHeroDeathAlly", -1), PlayerGroupAlliance(c_playerGroupAlly, lv_player), 100.0, 0.0);
+    auto828B764C_val = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    if (auto828B764C_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) {
+        lv_i = 1;
+    }
+    else if (auto828B764C_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) {
+        lv_i = 2;
+    }
+    else {
+    }
+    DialogControlSetEnabled(libE17D8DC7_gv_heroButton[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    DialogControlSetEnabled(libE17D8DC7_gv_heroIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    DialogControlSetVisible(libE17D8DC7_gv_heroLife[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    DialogControlSetVisible(libE17D8DC7_gv_heroLifeBorder[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroDeath_Init () {
+    libE17D8DC7_gt_HeroDeath = TriggerCreate("libE17D8DC7_gt_HeroDeath_Func");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroDeath, c_playerAny, "HeroDeathAlert");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Revive Start
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroReviveStart_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    timer lv_timer;
+    int lv_i;
+    int lv_p;
+    int lv_x;
+    fixed lv_t;
+
+    // Automatic Variable Declarations
+    unit auto57EA0A07_val;
+    const int auto01D53985_ae = 64;
+    const int auto01D53985_ai = 1;
+
+    // Variable Initialization
+    lv_timer = TimerCreate();
+    lv_p = UnitGetOwner(EventUnit());
+    lv_t = ((IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogAbil, "ReviveHero", "PrepTime[" + IntToString(0) + "]", UnitGetOwner(EventUnit()))) + 0.0) / 64.0);
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventUnit()) == true))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventUnit(), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true))) {
+            return false;
+        }
+
+        if (!(((EventUnit() == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][0]) || (EventUnit() == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][1]) || (EventUnit() == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][2]) || (EventUnit() == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][3]) || (EventUnit() == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto57EA0A07_val = EventUnit();
+    if (auto57EA0A07_val == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][1]) {
+        lv_i = 1;
+    }
+    else if (auto57EA0A07_val == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][2]) {
+        lv_i = 2;
+    }
+    else if (auto57EA0A07_val == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][3]) {
+        lv_i = 3;
+    }
+    else if (auto57EA0A07_val == libE17D8DC7_gv_heroUnit[UnitGetOwner(EventUnit())][4]) {
+        lv_i = 4;
+    }
+    else {
+    }
+    DialogControlSetVisible(libE17D8DC7_gv_heroReviveImage[UnitGetOwner(EventUnit())][lv_i], PlayerGroupAll(), true);
+    DialogControlSetVisible(libE17D8DC7_gv_heroReviveLabel[UnitGetOwner(EventUnit())][lv_i], PlayerGroupAll(), true);
+    TimerStart(lv_timer, IntToFixed(CatalogFieldValueGetAsInt(c_gameCatalogAbil, "ReviveHero", "PrepTime[" + IntToString(0) + "]", lv_p)), false, c_timeGame);
+    lv_x = 1;
+    for ( ; ( (auto01D53985_ai >= 0 && lv_x <= auto01D53985_ae) || (auto01D53985_ai < 0 && lv_x >= auto01D53985_ae) ) ; lv_x += auto01D53985_ai ) {
+        if ((UnitIsValid(libE17D8DC7_gv_heroUnit[lv_p][lv_i]) == true) && (UnitIsAlive(libE17D8DC7_gv_heroUnit[lv_p][lv_i]) == false) && (TechTreeAbilityIsAllowed(lv_p, AbilityCommand("ReviveHero", 0)) == true)) {
+            DialogControlSetSize(libE17D8DC7_gv_heroReviveImage[lv_p][lv_i], PlayerGroupAll(), 64, lv_x);
+            libNtve_gf_SetDialogItemText(libE17D8DC7_gv_heroReviveLabel[lv_p][lv_i], (StringExternal("Param/Value/lib_E17D8DC7_F86DF08B") + FixedToText(TimerGetRemaining(lv_timer), 0)), PlayerGroupAll());
+            Wait(lv_t, c_timeGame);
+        }
+        else {
+            DialogControlSetVisible(libE17D8DC7_gv_heroReviveImage[lv_p][lv_i], PlayerGroupAll(), false);
+            DialogControlSetVisible(libE17D8DC7_gv_heroReviveLabel[lv_p][lv_i], PlayerGroupAll(), false);
+            DialogControlSetEnabled(libE17D8DC7_gv_heroButton[lv_p][lv_i], PlayerGroupAll(), true);
+            DialogControlSetEnabled(libE17D8DC7_gv_heroIcon[lv_p][lv_i], PlayerGroupAll(), true);
+            DialogControlSetVisible(libE17D8DC7_gv_heroLife[lv_p][lv_i], PlayerGroupAll(), true);
+            DialogControlSetVisible(libE17D8DC7_gv_heroLifeBorder[lv_p][lv_i], PlayerGroupAll(), true);
+            break;
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroReviveStart_Init () {
+    libE17D8DC7_gt_HeroReviveStart = TriggerCreate("libE17D8DC7_gt_HeroReviveStart_Func");
+    TriggerAddEventUnitAbility(libE17D8DC7_gt_HeroReviveStart, null, AbilityCommand("ReviveHero", 0), c_abilEffectStagePrep, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Icons Fade
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroIconsFade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoEF4538D3_ae = libE17D8DC7_gv_heroLimit;
+    const int autoEF4538D3_ai = 1;
+    playergroup autoD8632A18_g;
+    int autoD8632A18_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 0;
+    for ( ; ( (autoEF4538D3_ai >= 0 && lv_i <= autoEF4538D3_ae) || (autoEF4538D3_ai < 0 && lv_i >= autoEF4538D3_ae) ) ; lv_i += autoEF4538D3_ai ) {
+        autoD8632A18_g = libE17D8DC7_gv_heroIconGroup[lv_i];
+        autoD8632A18_var = -1;
+        while (true) {
+            autoD8632A18_var = PlayerGroupNextPlayer(autoD8632A18_g, autoD8632A18_var);
+            if (autoD8632A18_var < 0) { break; }
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroIcon[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroLearnIcon[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroButton[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroLife[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlSetVisible(libE17D8DC7_gv_heroLife[autoD8632A18_var][lv_i], PlayerGroupAll(), false);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroLifeBorder[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroReviveImage[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroReviveLabel[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+            DialogControlFadeTransparency(libE17D8DC7_gv_heroVignette[autoD8632A18_var][lv_i], PlayerGroupAll(), 1.5, 100.0);
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroIconsFade_Init () {
+    libE17D8DC7_gt_HeroIconsFade = TriggerCreate("libE17D8DC7_gt_HeroIconsFade_Func");
+    TriggerAddEventGeneric(libE17D8DC7_gt_HeroIconsFade, "FadeGameplayDialogs");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Revive Finish
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroReviveFinish_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    string lv_icon;
+
+    // Automatic Variable Declarations
+    unit auto0215F9EB_val;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitSource)) == true))) {
+            return false;
+        }
+
+        if (!((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true))) {
+            return false;
+        }
+
+        if (!(((EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_icon = (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny));
+    if ((EventPlayerEffectUsed() == "HeroReviveAlert")) {
+        UIAlertPoint("HeroAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), (StringExternal("Param/Value/lib_E17D8DC7_76116BF3") + TextWithColor(UnitTypeGetName(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource))), Color(0.00, 72.55, 0.00)) + StringExternal("Param/Value/lib_E17D8DC7_846F9CD8")), lv_icon, EventPlayerEffectUsedPoint(c_effectLocationSourcePoint));
+    }
+
+    auto0215F9EB_val = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    if (auto0215F9EB_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) {
+        lv_i = 1;
+    }
+    else if (auto0215F9EB_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) {
+        lv_i = 2;
+    }
+    else if (auto0215F9EB_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) {
+        lv_i = 3;
+    }
+    else if (auto0215F9EB_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4]) {
+        lv_i = 4;
+    }
+    else {
+    }
+    DialogControlSetVisible(libE17D8DC7_gv_heroReviveImage[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    DialogControlSetVisible(libE17D8DC7_gv_heroReviveLabel[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), false);
+    DialogControlSetEnabled(libE17D8DC7_gv_heroButton[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), true);
+    DialogControlSetEnabled(libE17D8DC7_gv_heroIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), true);
+    DialogControlSetVisible(libE17D8DC7_gv_heroLife[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), true);
+    DialogControlSetVisible(libE17D8DC7_gv_heroLifeBorder[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][lv_i], PlayerGroupAll(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroReviveFinish_Init () {
+    libE17D8DC7_gt_HeroReviveFinish = TriggerCreate("libE17D8DC7_gt_HeroReviveFinish_Func");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroReviveFinish, c_playerAny, "HeroReviveAlert");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroReviveFinish, c_playerAny, "HeroReviveNoAlert");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Learn On
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroLearnOn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unit auto14B17499_val;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitSource)) == true))) {
+            return false;
+        }
+
+        if (!((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource)) != 0))) {
+            return false;
+        }
+
+        if (!(((EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto14B17499_val = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    if (auto14B17499_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), true);
+    }
+    else if (auto14B17499_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), true);
+    }
+    else if (auto14B17499_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), true);
+    }
+    else if (auto14B17499_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), true);
+    }
+    else if (auto14B17499_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), true);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroLearnOn_Init () {
+    libE17D8DC7_gt_HeroLearnOn = TriggerCreate("libE17D8DC7_gt_HeroLearnOn_Func");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroLearnOn, c_playerAny, "CanLearnOn");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Learn Off
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_gt_HeroLearnOff_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unit autoF012BFFF_val;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitSource)) == true))) {
+            return false;
+        }
+
+        if (!((UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource)) != 0))) {
+            return false;
+        }
+
+        if (!(((EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) || (EventPlayerEffectUsedUnit(c_effectUnitSource) == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoF012BFFF_val = EventPlayerEffectUsedUnit(c_effectUnitSource);
+    if (autoF012BFFF_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][0], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), false);
+    }
+    else if (autoF012BFFF_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][1], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), false);
+    }
+    else if (autoF012BFFF_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), false);
+    }
+    else if (autoF012BFFF_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][3]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), false);
+    }
+    else if (autoF012BFFF_val == libE17D8DC7_gv_heroUnit[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][4]) {
+        DialogControlSetVisible(libE17D8DC7_gv_heroLearnIcon[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)][2], PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), false);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libE17D8DC7_gt_HeroLearnOff_Init () {
+    libE17D8DC7_gt_HeroLearnOff = TriggerCreate("libE17D8DC7_gt_HeroLearnOff_Func");
+    TriggerAddEventPlayerEffectUsed(libE17D8DC7_gt_HeroLearnOff, c_playerAny, "CanLearnOff");
+}
+
+void libE17D8DC7_InitTriggers () {
+    libE17D8DC7_gt_HeroIconSetEffect_Init();
+    libE17D8DC7_gt_HeroBorderSelect_Init();
+    libE17D8DC7_gt_HeroDeath_Init();
+    libE17D8DC7_gt_HeroReviveStart_Init();
+    libE17D8DC7_gt_HeroIconsFade_Init();
+    libE17D8DC7_gt_HeroReviveFinish_Init();
+    libE17D8DC7_gt_HeroLearnOn_Init();
+    libE17D8DC7_gt_HeroLearnOff_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libE17D8DC7_InitLib_completed = false;
+
+void libE17D8DC7_InitLib () {
+    if (libE17D8DC7_InitLib_completed) {
+        return;
+    }
+
+    libE17D8DC7_InitLib_completed = true;
+
+    libE17D8DC7_InitLibraries();
+    libE17D8DC7_InitVariables();
+    libE17D8DC7_InitTriggers();
+}
+

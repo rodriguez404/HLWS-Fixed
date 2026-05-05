@@ -1,0 +1,10 @@
+﻿DocInfo/DescLong=Starlight UI
+DocInfo/DescShort=Any
+DocInfo/Name=Starlight UI1
+UI/ResourceSupplyToolTip_Prot=Food
+UI/ResourceSupplyToolTip_Terr=Food
+UI/ResourceSupplyToolTip_Zerg=Food
+e_unitAttributeArmored=Heavy
+e_unitAttributeBonusAgainstArmored=Heavy
+e_unitAttributeBonusAgainstHeroic=Hero
+e_unitAttributeHeroic=Hero

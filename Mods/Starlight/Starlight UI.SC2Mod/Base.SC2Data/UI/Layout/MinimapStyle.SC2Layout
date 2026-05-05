@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="ColorMinimapButtonIcon_Prot" val="255,255,255"/>
+    <Constant name="ColorMinimapButtonIcon_Terr" val="255,255,255"/>
+    <Constant name="ColorMinimapButtonIcon_Zerg" val="255,255,255"/>
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer/MinimapPanel" file="GameUI">
+
+        <Frame type="Image" name="MinimapBackgroundImage">
+            <Anchor relative="$parent/Minimap" offset="6"/>
+            <Texture val="@ui_observer_custom_map_container"/>
+            <TextureType val="NineSlice"/>
+            <Tiled val="true"/>
+            <RenderPriority val="999"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer" file="GameUI">
+
+        <Frame type="MinimapPanel" name="MinimapPanel">
+
+            <Frame type="Minimap" name="Minimap">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="10"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="10"/>
+                <Width val="300"/>
+                <Height val="300"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="MinimapPanel" name="GameUI/UIContainer/ConsoleUIContainer/MinimapPanel/PingButton" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-100"/>
+        <Anchor side="Left" relative="$parent" pos="Max" offset="-110"/>
+    </Frame>
+
+    <Frame type="MinimapPanel" name="GameUI/UIContainer/ConsoleUIContainer/MinimapPanel/TerrainButton" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-55"/>
+        <Anchor side="Left" relative="$parent" pos="Max" offset="-110"/>
+    </Frame>
+
+    <Frame type="MinimapPanel" name="GameUI/UIContainer/ConsoleUIContainer/MinimapPanel/ColorButton" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+        <Anchor side="Left" relative="$parent" pos="Max" offset="-110"/>
+    </Frame>
+</Desc>

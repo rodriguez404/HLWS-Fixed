@@ -1,0 +1,123 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib28FBFBC5_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Player Handle
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib28FBFBC5_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool lib28FBFBC5_InitVariables_completed = false;
+
+void lib28FBFBC5_InitVariables () {
+    if (lib28FBFBC5_InitVariables_completed) {
+        return;
+    }
+
+    lib28FBFBC5_InitVariables_completed = true;
+
+    lib28FBFBC5_gv_handle = c_invalidDialogId;
+    lib28FBFBC5_gv_handleClose = c_invalidDialogControlId;
+    lib28FBFBC5_gv_handleEditBox = c_invalidDialogControlId;
+}
+
+// Functions
+void lib28FBFBC5_gf_HandleCreate () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib28FBFBC5_gv_handle == c_invalidDialogId)) {
+        DialogCreate(550, 200, c_anchorCenter, 0, 0, true);
+        lib28FBFBC5_gv_handle = DialogLastCreated();
+        DialogSetImageVisible(DialogLastCreated(), false);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorTop, 0, 0, StringToText(""), "Assets\\Textures\\ui_battlenet_glue_frame_small_base.dds", c_triggerImageTypeHorizontalBorder, true, Color(100,100,100), c_triggerBlendModeNormal);
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 450, DialogGetHeight(DialogLastCreated()), c_anchorTopLeft, 55, 25, (StringExternal("Param/Value/lib_28FBFBC5_F4FE7E53") + StringExternal("UI/ScreenLoginAccountName")), ColorWithAlpha(0,0,0,0), false, 2.0);
+        DialogControlCreate(DialogLastCreated(), c_triggerControlTypeEditBox);
+        lib28FBFBC5_gv_handleEditBox = DialogControlLastCreated();
+        DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, -15);
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 450, 60);
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 450, 25, c_anchorBottomLeft, 55, 50, StringExternal("UI/BattleMapContextMenu/CopyLink"), ColorWithAlpha(0,0,0,0), false, 2.0);
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 23, 23, c_anchorTopRight, 26, 7, StringToText(""), StringToText(""), "");
+        lib28FBFBC5_gv_handleClose = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_challenge_closebutton_normalandpressed.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_challenge_closebutton_normaloverpressedover.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+    }
+
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Handle Open
+//--------------------------------------------------------------------------------------------------
+bool lib28FBFBC5_gt_HandleOpen_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib28FBFBC5_gf_HandleCreate();
+    DialogSetVisible(lib28FBFBC5_gv_handle, PlayerGroupSingle(EventPlayer()), true);
+    libNtve_gf_SetDialogItemEditorValue(lib28FBFBC5_gv_handleEditBox, PlayerHandle(EventPlayer()), PlayerGroupSingle(EventPlayer()));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib28FBFBC5_gt_HandleOpen_Init () {
+    lib28FBFBC5_gt_HandleOpen = TriggerCreate("lib28FBFBC5_gt_HandleOpen_Func");
+    TriggerAddEventChatMessage(lib28FBFBC5_gt_HandleOpen, c_playerAny, "-ID", true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Handle Close
+//--------------------------------------------------------------------------------------------------
+bool lib28FBFBC5_gt_HandleClose_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib28FBFBC5_gv_handleClose))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogSetVisible(lib28FBFBC5_gv_handle, PlayerGroupSingle(EventPlayer()), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib28FBFBC5_gt_HandleClose_Init () {
+    lib28FBFBC5_gt_HandleClose = TriggerCreate("lib28FBFBC5_gt_HandleClose_Func");
+    TriggerAddEventDialogControl(lib28FBFBC5_gt_HandleClose, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib28FBFBC5_InitTriggers () {
+    lib28FBFBC5_gt_HandleOpen_Init();
+    lib28FBFBC5_gt_HandleClose_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib28FBFBC5_InitLib_completed = false;
+
+void lib28FBFBC5_InitLib () {
+    if (lib28FBFBC5_InitLib_completed) {
+        return;
+    }
+
+    lib28FBFBC5_InitLib_completed = true;
+
+    lib28FBFBC5_InitLibraries();
+    lib28FBFBC5_InitVariables();
+    lib28FBFBC5_InitTriggers();
+}
+

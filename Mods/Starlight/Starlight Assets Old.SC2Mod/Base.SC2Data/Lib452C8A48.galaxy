@@ -1,0 +1,1355 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+include "LibBD29A430_h"
+include "LibDBB0BE4A_h"
+include "LibBBFED31C_h"
+
+include "Lib452C8A48_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Leaderboard
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib452C8A48_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    libBD29A430_InitVariables();
+    libDBB0BE4A_InitVariables();
+    libBBFED31C_InitVariables();
+}
+
+// Variable Initialization
+bool lib452C8A48_InitVariables_completed = false;
+
+void lib452C8A48_InitVariables () {
+    int init_i;
+
+    if (lib452C8A48_InitVariables_completed) {
+        return;
+    }
+
+    lib452C8A48_InitVariables_completed = true;
+
+    lib452C8A48_gv_leaderboard = c_invalidDialogId;
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lib452C8A48_gv_bankScore[init_i] = "UnitsKilledCount";
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardScore[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardShowLifetime[init_i] = true;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardFrame[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardIconDialog[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardName[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardIcon[init_i] = "Assets\\Textures\\black.dds";
+    }
+    lib452C8A48_gv_leaderboardPlayers = PlayerGroupEmpty();
+    lib452C8A48_gv_leaderboardShow = true;
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_leaderboardShowScore[init_i] = true;
+    }
+    lib452C8A48_gv_endGameWinnerGroup = PlayerGroupEmpty();
+    lib452C8A48_gv_levelBarDialog = c_invalidDialogId;
+    lib452C8A48_gv_levelBarFill = c_invalidDialogControlId;
+    lib452C8A48_gv_levelBarFrame = c_invalidDialogControlId;
+    lib452C8A48_gv_levelBarText = c_invalidDialogControlId;
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib452C8A48_gv_level[init_i] = 1;
+    }
+    lib452C8A48_gv_section = "Default";
+    lib452C8A48_gv_bankEnabled = true;
+}
+
+// Functions
+void lib452C8A48_gf_StarlightLeaderboardStart (playergroup lp_players, bool lp_levelBar, bool lp_show, int lp_barHeight, int lp_barWidth, string lp_leaderboardScore, bool lp_showLifetimeDuringGame, bool lp_bankEnabled, string lp_bankSection, string lp_bankScore0, string lp_bankScore1, string lp_bankScore2, string lp_bankScore3) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    playergroup auto44F6F639_g;
+    int auto44F6F639_var;
+    int autoA1FC6314_ae;
+    const int autoA1FC6314_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    PlayerGroupClear(lib452C8A48_gv_leaderboardPlayers);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_players, lib452C8A48_gv_leaderboardPlayers);
+    if ((lib452C8A48_gv_firstRun == false)) {
+        lib452C8A48_gv_firstRun = true;
+        lib452C8A48_gv_leaderboardEnabled = true;
+        lib452C8A48_gv_barWidth = lp_barWidth;
+        lib452C8A48_gv_barOffset = lp_barHeight;
+        lib452C8A48_gv_levelBarEnabled = lp_levelBar;
+        lib452C8A48_gv_leaderboardScoreValue = lp_leaderboardScore;
+        lib452C8A48_gv_bankEnabled = lp_bankEnabled;
+        if ((lp_bankSection != null)) {
+            lib452C8A48_gv_section = lp_bankSection;
+        }
+        else {
+            lib452C8A48_gv_bankEnabled = false;
+        }
+        lib452C8A48_gv_statLabel[0] = StringExternal("Param/Value/lib_452C8A48_B89175B2");
+        lib452C8A48_gv_statLabel[1] = StringExternal("Param/Value/lib_452C8A48_625D8F8D");
+        lib452C8A48_gv_statLabel[2] = StringExternal("Param/Value/lib_452C8A48_199E917D");
+        lib452C8A48_gv_statLabel[3] = StringExternal(CatalogFieldValueGet(c_gameCatalogScoreValue, lp_bankScore0, "PublishName", 0));
+        lib452C8A48_gv_statLabel[4] = StringExternal(CatalogFieldValueGet(c_gameCatalogScoreValue, lp_bankScore1, "PublishName", 0));
+        lib452C8A48_gv_statLabel[5] = StringExternal(CatalogFieldValueGet(c_gameCatalogScoreValue, lp_bankScore2, "PublishName", 0));
+        lib452C8A48_gv_statLabel[6] = StringExternal(CatalogFieldValueGet(c_gameCatalogScoreValue, lp_bankScore3, "PublishName", 0));
+        lib452C8A48_gv_statLabel[7] = StringExternal("Param/Value/lib_452C8A48_411DA2F3");
+        lib452C8A48_gv_statLabel[8] = StringExternal("Param/Value/lib_452C8A48_931E9E07");
+        lib452C8A48_gv_statLabel[9] = StringExternal("Param/Value/lib_452C8A48_5C998EC3");
+        lib452C8A48_gv_bankScore[0] = lp_bankScore0;
+        lib452C8A48_gv_bankScore[1] = lp_bankScore1;
+        lib452C8A48_gv_bankScore[2] = lp_bankScore2;
+        lib452C8A48_gv_bankScore[3] = lp_bankScore3;
+        TriggerExecute(lib452C8A48_gt_CreateLevelBar, true, false);
+        TriggerEnable(lib452C8A48_gt_StatsMatches, true);
+        TriggerEnable(lib452C8A48_gt_StatsPeriodic, true);
+    }
+
+    DialogDestroy(lib452C8A48_gv_leaderboard);
+    DialogCreate(lib452C8A48_gv_barWidth, 600, c_anchorTopRight, 5, 30, true);
+    lib452C8A48_gv_leaderboard = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), lp_show);
+    lib452C8A48_gv_leaderboardShow = lp_show;
+    DialogSetImageVisible(DialogLastCreated(), false);
+    auto44F6F639_g = lp_players;
+    auto44F6F639_var = -1;
+    while (true) {
+        auto44F6F639_var = PlayerGroupNextPlayer(auto44F6F639_g, auto44F6F639_var);
+        if (auto44F6F639_var < 0) { break; }
+        lib452C8A48_gv_leaderboardShowLifetime[auto44F6F639_var] = lp_showLifetimeDuringGame;
+    }
+    autoA1FC6314_ae = PlayerGroupCount(lib452C8A48_gv_leaderboardPlayers);
+    lv_i = 1;
+    for ( ; ( (autoA1FC6314_ai >= 0 && lv_i <= autoA1FC6314_ae) || (autoA1FC6314_ai < 0 && lv_i >= autoA1FC6314_ae) ) ; lv_i += autoA1FC6314_ai ) {
+        lib452C8A48_gf_LeaderboardAddPlayer(PlayerGroupPlayer(lib452C8A48_gv_leaderboardPlayers, lv_i), lv_i);
+    }
+}
+
+void lib452C8A48_gf_StarlightLeaderboardRebuild (playergroup lp_players) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int autoD158E8E7_ae;
+    const int autoD158E8E7_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    PlayerGroupClear(lib452C8A48_gv_leaderboardPlayers);
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_players, lib452C8A48_gv_leaderboardPlayers);
+    DialogDestroy(lib452C8A48_gv_leaderboard);
+    DialogCreate(lib452C8A48_gv_barWidth, 450, c_anchorTopRight, 5, 30, true);
+    lib452C8A48_gv_leaderboard = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), lib452C8A48_gv_leaderboardShow);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    autoD158E8E7_ae = PlayerGroupCount(lib452C8A48_gv_leaderboardPlayers);
+    lv_i = 1;
+    for ( ; ( (autoD158E8E7_ai >= 0 && lv_i <= autoD158E8E7_ae) || (autoD158E8E7_ai < 0 && lv_i >= autoD158E8E7_ae) ) ; lv_i += autoD158E8E7_ai ) {
+        lib452C8A48_gf_LeaderboardAddPlayer(PlayerGroupPlayer(lib452C8A48_gv_leaderboardPlayers, lv_i), lv_i);
+    }
+}
+
+void lib452C8A48_gf_StarlightLeaderboardIcon (string lp_image, text lp_text, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib452C8A48_gv_leaderboardIcon[lp_player] = lp_image;
+    libDDE92A83_gv_playerIcon[lp_player] = lp_image;
+    if ((lib452C8A48_gv_leaderboardEnabled == true)) {
+        libNtve_gf_SetDialogItemImage(lib452C8A48_gv_leaderboardIconDialog[lp_player], lp_image, PlayerGroupAll());
+    }
+
+    if (((lp_text != null) == true)) {
+        lib452C8A48_gv_leaderboardFaction[lp_player] = (TextWithColor(StringExternal("Param/Value/lib_452C8A48_BB2382A1"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + TextWithColor(lp_text, Color(100.00, 100.00, 100.00)) + TextWithColor(StringExternal("Param/Value/lib_452C8A48_D88CD683"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))));
+    }
+    else {
+        lib452C8A48_gv_leaderboardFaction[lp_player] = null;
+    }
+}
+
+void lib452C8A48_gf_StarlightLeaderboardShowHide (bool lp_show, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogSetVisible(lib452C8A48_gv_leaderboard, PlayerGroupSingle(lp_player), lp_show);
+    lib452C8A48_gv_leaderboardShow = lp_show;
+}
+
+void lib452C8A48_gf_StarlightLeaderboardShowHideScore (bool lp_show, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib452C8A48_gv_leaderboardShowScore[lp_player] = lp_show;
+    if ((lib452C8A48_gv_leaderboardScoreValue != null)) {
+        DialogControlSetVisible(lib452C8A48_gv_leaderboardScore[lp_player], PlayerGroupAll(), lp_show);
+    }
+
+}
+
+void lib452C8A48_gf_StarlightLeaderboardShowHideLevelBar (bool lp_show, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib452C8A48_gv_levelBarEnabled == true)) {
+        DialogSetVisible(lib452C8A48_gv_levelBarDialog, PlayerGroupSingle(lp_player), lp_show);
+    }
+
+}
+
+void lib452C8A48_gf_StarlightLeaderboardUpdate () {
+    // Automatic Variable Declarations
+    playergroup auto464AC587_g;
+    int auto464AC587_var;
+
+    // Implementation
+    if ((lib452C8A48_gv_leaderboardEnabled == true)) {
+        auto464AC587_g = lib452C8A48_gv_leaderboardPlayers;
+        auto464AC587_var = -1;
+        while (true) {
+            auto464AC587_var = PlayerGroupNextPlayer(auto464AC587_g, auto464AC587_var);
+            if (auto464AC587_var < 0) { break; }
+            lib452C8A48_gf_LeaderboardUpdate(auto464AC587_var);
+        }
+        lib452C8A48_gf_LeaderboardSort();
+    }
+
+}
+
+void lib452C8A48_gf_StarlightLeaderboardUpdatePlayer (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib452C8A48_gf_LeaderboardUpdate(lp_player);
+}
+
+void lib452C8A48_gf_LeaderboardUpdate (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemColor(lib452C8A48_gv_leaderboardFrame[lp_player], libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), PlayerGroupAll());
+    libNtve_gf_SetDialogItemText(lib452C8A48_gv_leaderboardName[lp_player], (StringExternal("Param/Value/lib_452C8A48_E8C0CCB7") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0)))), PlayerGroupAll());
+    if ((lib452C8A48_gv_leaderboardScoreValue != null)) {
+        lib452C8A48_gv_playerScore[lp_player] = PlayerScoreValueGetAsInt(lp_player, lib452C8A48_gv_leaderboardScoreValue);
+        libNtve_gf_SetDialogItemText(lib452C8A48_gv_leaderboardScore[lp_player], (StringExternal("Param/Value/lib_452C8A48_4E744363") + TextWithColor(IntToText(lib452C8A48_gv_playerScore[lp_player]), Color(100.00, 100.00, 100.00))), PlayerGroupAll());
+    }
+
+}
+
+void lib452C8A48_gf_LeaderboardSort () {
+    // Variable Declarations
+    int lv_a;
+    int lv_b;
+    int lv_i;
+    bool lv_repeat;
+
+    // Automatic Variable Declarations
+    int autoBE305552_ae;
+    const int autoBE305552_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((lib452C8A48_gv_leaderboardScoreValue != null)) {
+        autoBE305552_ae = (PlayerGroupCount(lib452C8A48_gv_leaderboardPlayers) - 1);
+        lv_i = 1;
+        for ( ; ( (autoBE305552_ai >= 0 && lv_i <= autoBE305552_ae) || (autoBE305552_ai < 0 && lv_i >= autoBE305552_ae) ) ; lv_i += autoBE305552_ai ) {
+            if ((MaxI(lib452C8A48_gv_playerScore[lib452C8A48_gv_slotOccupier[lv_i]], lib452C8A48_gv_playerScore[lib452C8A48_gv_slotOccupier[(lv_i + 1)]]) == lib452C8A48_gv_playerScore[lib452C8A48_gv_slotOccupier[(lv_i + 1)]]) && (lib452C8A48_gv_playerScore[lib452C8A48_gv_slotOccupier[lv_i]] != lib452C8A48_gv_playerScore[lib452C8A48_gv_slotOccupier[(lv_i + 1)]])) {
+                lv_a = lib452C8A48_gv_slotOccupier[lv_i];
+                lv_b = lib452C8A48_gv_slotOccupier[(lv_i + 1)];
+                lib452C8A48_gv_slotOccupier[lv_i] = lv_b;
+                lib452C8A48_gv_slotOccupier[(lv_i + 1)] = lv_a;
+                lv_repeat = true;
+                DialogControlSetPosition(lib452C8A48_gv_leaderboardFrame[lib452C8A48_gv_slotOccupier[lv_i]], PlayerGroupAll(), c_anchorTopLeft, 0, (lib452C8A48_gv_barOffset * lv_i));
+                DialogControlSetPosition(lib452C8A48_gv_leaderboardFrame[lib452C8A48_gv_slotOccupier[(lv_i + 1)]], PlayerGroupAll(), c_anchorTopLeft, 0, (lib452C8A48_gv_barOffset * (lv_i + 1)));
+            }
+
+        }
+        if ((lv_repeat == true)) {
+            lib452C8A48_gf_LeaderboardSort();
+        }
+
+    }
+
+}
+
+void lib452C8A48_gf_LeaderboardAddPlayer (int lp_player, int lp_slot) {
+    // Variable Declarations
+    const int lv_textYOffset = 4;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    lib452C8A48_gv_slotOccupier[lp_slot] = lp_player;
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lib452C8A48_gv_barWidth, lib452C8A48_gv_barOffset, c_anchorTopLeft, 0, (lp_slot * lib452C8A48_gv_barOffset), StringToText(""), StringToText(""), "");
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_leaderboard_frame_normalpressed.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_leaderboard_frame_normaloverpressedover.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImageType2(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), PlayerGroupAll());
+    lib452C8A48_gv_leaderboardFrame[lp_player] = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lib452C8A48_gv_barOffset - 4), (lib452C8A48_gv_barOffset - 4), c_anchorTopLeft, 0, 0, StringToText(""), lib452C8A48_gv_leaderboardIcon[lp_player], c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, lib452C8A48_gv_leaderboardFrame[lp_player], c_anchorLeft, 2, 0);
+    lib452C8A48_gv_leaderboardIconDialog[lp_player] = DialogControlLastCreated();
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 210, lib452C8A48_gv_barOffset, c_anchorTopLeft, 0, 0, (StringExternal("Param/Value/lib_452C8A48_677F6D6A") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0)))), ColorWithAlpha(0,0,0,0), false, 2.0);
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, lib452C8A48_gv_leaderboardFrame[lp_player], c_anchorLeft, lib452C8A48_gv_barOffset, lv_textYOffset);
+    lib452C8A48_gv_leaderboardName[lp_player] = DialogControlLastCreated();
+    if ((lib452C8A48_gv_leaderboardScoreValue != null)) {
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 150, lib452C8A48_gv_barOffset, c_anchorLeft, 0, 0, (StringExternal("Param/Value/lib_452C8A48_8729D06A") + TextWithColor(IntToText(PlayerScoreValueGetAsInt(lp_player, lib452C8A48_gv_leaderboardScoreValue)), Color(100.00, 100.00, 100.00))), ColorWithAlpha(0,0,0,0), false, 2.0);
+        if ((lib452C8A48_gv_leaderboardShowScore[lp_player] == false)) {
+            DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        }
+
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, lib452C8A48_gv_leaderboardFrame[lp_player], c_anchorLeft, 200, lv_textYOffset);
+        lib452C8A48_gv_leaderboardScore[lp_player] = DialogControlLastCreated();
+    }
+
+}
+
+void lib452C8A48_gf_LeaderboardSetTooltip (int lp_player) {
+    // Variable Declarations
+    int lv_i;
+    text lv_gameStats;
+    text[10] lv_gameStatsEntry;
+    text lv_lifetimeStats;
+    text lv_lifetimeStatsHidden;
+    text[10] lv_lifetimeStatsEntry;
+
+    // Automatic Variable Declarations
+    const int autoFE7E0D5A_ae = 9;
+    const int autoFE7E0D5A_ai = 1;
+    const int autoE85DF256_ae = 3;
+    const int autoE85DF256_ai = 1;
+
+    // Variable Initialization
+    lv_lifetimeStatsHidden = StringExternal("Param/Value/lib_452C8A48_EDDA1F88");
+
+    // Implementation
+    if ((lib452C8A48_gv_leaderboardEnabled == true)) {
+        lv_i = 0;
+        for ( ; ( (autoFE7E0D5A_ai >= 0 && lv_i <= autoFE7E0D5A_ae) || (autoFE7E0D5A_ai < 0 && lv_i >= autoFE7E0D5A_ae) ) ; lv_i += autoFE7E0D5A_ai ) {
+            if (((lib452C8A48_gv_statLabel[lv_i] != null) == true)) {
+                if ((lv_i != 1)) {
+                    lv_lifetimeStatsEntry[lv_i] = (StringExternal("Param/Value/lib_452C8A48_8086CD7B") + lib452C8A48_gv_statLabel[lv_i] + StringExternal("Param/Value/lib_452C8A48_41AF06BD") + IntToText(lib452C8A48_gv_playerStats[lp_player][lv_i]) + StringExternal("Param/Value/lib_452C8A48_DB75E179"));
+                }
+                else {
+                    lv_lifetimeStatsEntry[lv_i] = (lib452C8A48_gv_statLabel[lv_i] + StringExternal("Param/Value/lib_452C8A48_03A6D9C3") + IntToText(lib452C8A48_gv_playerStats[lp_player][lv_i]) + StringExternal("Param/Value/lib_452C8A48_C9C43557"));
+                }
+            }
+
+        }
+        if ((lib452C8A48_gv_gameOverLeaderboard == false)) {
+            if ((lib452C8A48_gv_playerStats[lp_player][1] > 1)) {
+                lv_lifetimeStatsEntry[1] = (lib452C8A48_gv_statLabel[2] + StringExternal("Param/Value/lib_452C8A48_59CEBFAD") + IntToText(lib452C8A48_gv_playerStats[lp_player][2]) + StringExternal("Param/Value/lib_452C8A48_6BF89A1E") + StringExternal("Param/Value/lib_452C8A48_C4310F7D") + IntToText(FixedToInt(((IntToFixed(lib452C8A48_gv_playerStats[lp_player][2]) / (lib452C8A48_gv_playerStats[lp_player][1] - 1)) * 100.0))) + StringExternal("Param/Value/lib_452C8A48_828385CD"));
+            }
+            else {
+                lv_lifetimeStatsEntry[1] = (lib452C8A48_gv_statLabel[2] + StringExternal("Param/Value/lib_452C8A48_5FC1A47D") + IntToText(lib452C8A48_gv_playerStats[lp_player][2]) + StringExternal("Param/Value/lib_452C8A48_B8C2C331"));
+            }
+            lv_lifetimeStatsEntry[2] = (lib452C8A48_gv_statLabel[1] + StringExternal("Param/Value/lib_452C8A48_A23B52A0") + IntToText((lib452C8A48_gv_playerStats[lp_player][1] - 1)) + StringExternal("Param/Value/lib_452C8A48_CD8148DF"));
+        }
+        else {
+            if ((lib452C8A48_gv_playerStats[lp_player][1] >= 1)) {
+                lv_lifetimeStatsEntry[1] = (lib452C8A48_gv_statLabel[2] + StringExternal("Param/Value/lib_452C8A48_407561B3") + IntToText(lib452C8A48_gv_playerStats[lp_player][2]) + StringExternal("Param/Value/lib_452C8A48_4600043A") + StringExternal("Param/Value/lib_452C8A48_A9928BE6") + IntToText(FixedToInt(((IntToFixed(lib452C8A48_gv_playerStats[lp_player][2]) / lib452C8A48_gv_playerStats[lp_player][1]) * 100.0))) + StringExternal("Param/Value/lib_452C8A48_EDAFD6CA"));
+            }
+            else {
+                lv_lifetimeStatsEntry[1] = (lib452C8A48_gv_statLabel[2] + StringExternal("Param/Value/lib_452C8A48_EC48FC68") + IntToText(lib452C8A48_gv_playerStats[lp_player][2]) + StringExternal("Param/Value/lib_452C8A48_42D3DD83"));
+            }
+            lv_lifetimeStatsEntry[2] = (lib452C8A48_gv_statLabel[1] + StringExternal("Param/Value/lib_452C8A48_86495565") + IntToText(lib452C8A48_gv_playerStats[lp_player][1]) + StringExternal("Param/Value/lib_452C8A48_C6083BC7"));
+        }
+        lv_i = 0;
+        for ( ; ( (autoE85DF256_ai >= 0 && lv_i <= autoE85DF256_ae) || (autoE85DF256_ai < 0 && lv_i >= autoE85DF256_ae) ) ; lv_i += autoE85DF256_ai ) {
+            lv_gameStatsEntry[lv_i] = (lib452C8A48_gv_statLabel[(lv_i + 3)] + StringExternal("Param/Value/lib_452C8A48_781A6EA3") + IntToText(PlayerScoreValueGetAsInt(lp_player, lib452C8A48_gv_bankScore[lv_i])) + StringExternal("Param/Value/lib_452C8A48_8388F6B1"));
+        }
+        if ((lib452C8A48_gv_playerStats[lp_player][7] >= 10)) {
+            lv_lifetimeStatsEntry[7] = (lib452C8A48_gv_statLabel[7] + StringExternal("Param/Value/lib_452C8A48_096FC745") + TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), lib452C8A48_gv_playerStats[lp_player][7]) + StringExternal("Param/Value/lib_452C8A48_290ED2F5"));
+        }
+        else {
+            lv_lifetimeStatsEntry[7] = (lib452C8A48_gv_statLabel[7] + StringExternal("Param/Value/lib_452C8A48_0D6DC8AD") + StringExternal("Param/Value/lib_452C8A48_6C46D6B5") + StringExternal("Param/Value/lib_452C8A48_5A804304"));
+        }
+        if ((lib452C8A48_gv_playerStats[lp_player][8] >= 10)) {
+            lv_lifetimeStatsEntry[8] = (StringExternal("Param/Value/lib_452C8A48_8F924804") + lib452C8A48_gv_statLabel[8] + StringExternal("Param/Value/lib_452C8A48_AB05ABA8") + TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), lib452C8A48_gv_playerStats[lp_player][8]) + StringExternal("Param/Value/lib_452C8A48_5E0C2D77"));
+        }
+        else {
+            lv_lifetimeStatsEntry[8] = null;
+        }
+        if ((lib452C8A48_gv_playerStats[lp_player][9] >= 10)) {
+            lv_lifetimeStatsEntry[9] = (StringExternal("Param/Value/lib_452C8A48_ADB42F7F") + lib452C8A48_gv_statLabel[9] + StringExternal("Param/Value/lib_452C8A48_EBCA8373") + TextTimeFormat(StringToText("<mintotal/>:<sec2/>"), lib452C8A48_gv_playerStats[lp_player][9]) + StringExternal("Param/Value/lib_452C8A48_D909B937"));
+        }
+        else {
+            lv_lifetimeStatsEntry[9] = null;
+        }
+        lv_gameStats = (lv_gameStatsEntry[0] + lv_gameStatsEntry[1] + lv_gameStatsEntry[2] + lv_gameStatsEntry[3]);
+        lv_lifetimeStats = (lv_lifetimeStatsEntry[1] + lv_lifetimeStatsEntry[2] + StringExternal("Param/Value/lib_452C8A48_62026C0C") + lv_lifetimeStatsEntry[3] + lv_lifetimeStatsEntry[4] + lv_lifetimeStatsEntry[5] + lv_lifetimeStatsEntry[6] + StringExternal("Param/Value/lib_452C8A48_145C419D") + lv_lifetimeStatsEntry[7] + lv_lifetimeStatsEntry[8] + lv_lifetimeStatsEntry[9]);
+        if ((PlayerType(lp_player) == c_playerTypeUser)) {
+            if ((lib452C8A48_gv_levelBarEnabled == true)) {
+                libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_levelBarText, (StringExternal("Param/Value/lib_452C8A48_88B5B71B") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lib452C8A48_gv_leaderboardFaction[lp_player] + TextWithColor(StringExternal("Param/Value/lib_452C8A48_BF154D38"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + StringExternal("Param/Value/lib_452C8A48_625FFA43") + IntToText(lib452C8A48_gv_xP[lp_player]) + StringExternal("Param/Value/lib_452C8A48_5F0E8253") + IntToText(lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]]) + StringExternal("Param/Value/lib_452C8A48_76857B03") + TextWithColor(StringExternal("Param/Value/lib_452C8A48_DBE3B15E"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_gameStats + TextWithColor(StringExternal("Param/Value/lib_452C8A48_FDFF8C37"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_lifetimeStats), PlayerGroupSingle(lp_player));
+            }
+
+            if (((lib452C8A48_gv_leaderboardShowLifetime[lp_player] == true) || (lib452C8A48_gv_gameOverLeaderboard == true))) {
+                libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_leaderboardFrame[lp_player], (StringExternal("Param/Value/lib_452C8A48_A2AFDA76") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lib452C8A48_gv_leaderboardFaction[lp_player] + TextWithColor(StringExternal("Param/Value/lib_452C8A48_5F56D28E"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_gameStats + TextWithColor(StringExternal("Param/Value/lib_452C8A48_2FF4FE00"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_lifetimeStats), PlayerGroupAll());
+            }
+            else {
+                libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_leaderboardFrame[lp_player], (StringExternal("Param/Value/lib_452C8A48_3A06A7DB") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lib452C8A48_gv_leaderboardFaction[lp_player] + TextWithColor(StringExternal("Param/Value/lib_452C8A48_584B607E"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_gameStats + TextWithColor(StringExternal("Param/Value/lib_452C8A48_94EA01D8"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_lifetimeStatsHidden), PlayerGroupAll());
+                libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_leaderboardFrame[lp_player], (StringExternal("Param/Value/lib_452C8A48_1A829E2C") + TextWithColor(PlayerName(lp_player), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lib452C8A48_gv_leaderboardFaction[lp_player] + TextWithColor(StringExternal("Param/Value/lib_452C8A48_BF6958CF"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_gameStats + TextWithColor(StringExternal("Param/Value/lib_452C8A48_427CC67A"), Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * lib452C8A48_gv_lighterColorModifier), lib452C8A48_gv_lighterColorMin, 100.0))) + lv_lifetimeStats), PlayerGroupSingle(lp_player));
+            }
+        }
+        else {
+            libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_leaderboardFrame[lp_player], (StringExternal("Param/Value/lib_452C8A48_B0D2DA5B") + TextWithColor(PlayerName(lp_player), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false))) + lib452C8A48_gv_leaderboardFaction[lp_player] + TextWithColor(StringExternal("Param/Value/lib_452C8A48_095F09B3"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false))) + lv_gameStats + TextWithColor(StringExternal("Param/Value/lib_452C8A48_FA3974D5"), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)))), PlayerGroupAll());
+        }
+    }
+
+}
+
+void lib452C8A48_gf_StarlightLeaderboardEndGame (unit lp_victoryUnit, fixed lp_cameraWait, bool lp_showDonationDialog, fixed lp_endGameWait, playergroup lp_winners) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib452C8A48_gv_gameOverLeaderboard == false)) {
+        TriggerEnable(lib452C8A48_gt_StatsPeriodic, false);
+        TriggerSendEvent("FadeGameplayDialogs");
+        lib452C8A48_gv_gameOverLeaderboard = true;
+        libDDE92A83_gv_gameOver = true;
+        lib452C8A48_gv_endGameShowDonations = lp_showDonationDialog;
+        lib452C8A48_gv_cameraWait = lp_cameraWait;
+        lib452C8A48_gv_endGameWait = (lib452C8A48_gv_cameraWait + lib452C8A48_gv_endGameWait);
+        libNtve_gf_AddPlayerGroupToPlayerGroup(lp_winners, lib452C8A48_gv_endGameWinnerGroup);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeAllianceButton, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeTeamResourceButton, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeAlertPanel, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeControlGroupPanel, false);
+        lib452C8A48_gf_UpdateStats();
+        libDDE92A83_gf_FadeSounds(true, false, PlayerGroupAll(), 33.0, 1.0);
+        lib452C8A48_gf_LevelBarDisable();
+        lib452C8A48_gf_LeaderboardAddVictory(lp_winners);
+        lib452C8A48_gf_LeaderboardAddFastestWin(lp_winners);
+        lib452C8A48_gf_LeaderboardSaveBank();
+        libDDE92A83_gf_EndGameUnitPause();
+        libDDE92A83_gf_EndGamePan(lp_victoryUnit);
+        TriggerExecute(lib452C8A48_gt_CameraWait, true, false);
+        TriggerExecute(lib452C8A48_gt_EndGameWait, true, false);
+        Wait((lp_cameraWait + lp_endGameWait), c_timeGame);
+    }
+
+}
+
+void lib452C8A48_gf_StarlightLeaderboardEndGameNoWait (unit lp_victoryUnit, playergroup lp_winners) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib452C8A48_gv_gameOverLeaderboard == false)) {
+        TriggerEnable(lib452C8A48_gt_StatsPeriodic, false);
+        TriggerSendEvent("FadeGameplayDialogs");
+        lib452C8A48_gv_gameOverLeaderboard = true;
+        libDDE92A83_gv_gameOver = true;
+        libNtve_gf_AddPlayerGroupToPlayerGroup(lp_winners, lib452C8A48_gv_endGameWinnerGroup);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeAllianceButton, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeTeamResourceButton, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeAlertPanel, false);
+        UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeControlGroupPanel, false);
+        lib452C8A48_gf_UpdateStats();
+        libDDE92A83_gf_FadeSounds(true, false, PlayerGroupAll(), 33.0, 1.0);
+        lib452C8A48_gf_LevelBarDisable();
+        lib452C8A48_gf_LeaderboardAddVictory(lp_winners);
+        lib452C8A48_gf_LeaderboardAddFastestWin(lp_winners);
+        lib452C8A48_gf_LeaderboardSaveBank();
+        libDDE92A83_gf_EndGameUnitPause();
+        libDDE92A83_gf_EndGamePan(lp_victoryUnit);
+    }
+
+}
+
+void lib452C8A48_gf_LeaderboardAddVictory (playergroup lp_playerGroup) {
+    // Automatic Variable Declarations
+    playergroup auto1CA04966_g;
+    int auto1CA04966_var;
+
+    // Implementation
+    auto1CA04966_g = lp_playerGroup;
+    auto1CA04966_var = -1;
+    while (true) {
+        auto1CA04966_var = PlayerGroupNextPlayer(auto1CA04966_g, auto1CA04966_var);
+        if (auto1CA04966_var < 0) { break; }
+        lib452C8A48_gv_playerStats[auto1CA04966_var][2] += 1;
+    }
+}
+
+void lib452C8A48_gf_LeaderboardAddFastestWin (playergroup lp_playerGroup) {
+    // Variable Declarations
+    fixed lv_timeModifier;
+
+    // Automatic Variable Declarations
+    playergroup autoE0C64D41_g;
+    int autoE0C64D41_var;
+    int auto327B11C0_val;
+
+    // Variable Initialization
+    lv_timeModifier = 1.0;
+
+    // Implementation
+    autoE0C64D41_g = lp_playerGroup;
+    autoE0C64D41_var = -1;
+    while (true) {
+        autoE0C64D41_var = PlayerGroupNextPlayer(autoE0C64D41_g, autoE0C64D41_var);
+        if (autoE0C64D41_var < 0) { break; }
+        auto327B11C0_val = GameGetSpeedValue();
+        if (auto327B11C0_val == c_gameSpeedSlower) {
+            lv_timeModifier = 1.66;
+        }
+        else if (auto327B11C0_val == c_gameSpeedSlow) {
+            lv_timeModifier = 1.25;
+        }
+        else if (auto327B11C0_val == c_gameSpeedNormal) {
+            lv_timeModifier = 1.0;
+        }
+        else if (auto327B11C0_val == c_gameSpeedFast) {
+            lv_timeModifier = 0.8275;
+        }
+        else if (auto327B11C0_val == c_gameSpeedFaster) {
+            lv_timeModifier = 0.725;
+        }
+        else {
+        }
+        if ((lib452C8A48_gv_bankEnabled == true) && ((FixedToInt(GameGetMissionTime()) < lib452C8A48_gv_playerStats[autoE0C64D41_var][7]) || (lib452C8A48_gv_playerStats[autoE0C64D41_var][7] < 10))) {
+            lib452C8A48_gv_playerStats[autoE0C64D41_var][7] = FixedToInt((GameGetMissionTime() * lv_timeModifier));
+        }
+
+        if ((lib452C8A48_gv_bankEnabled == true) && ((PlayerDifficulty(1) >= 4) == true) && ((FixedToInt(GameGetMissionTime()) < lib452C8A48_gv_playerStats[autoE0C64D41_var][8]) || (lib452C8A48_gv_playerStats[autoE0C64D41_var][8] < 10))) {
+            lib452C8A48_gv_playerStats[autoE0C64D41_var][8] = FixedToInt((GameGetMissionTime() * lv_timeModifier));
+        }
+
+        if ((lib452C8A48_gv_bankEnabled == true) && ((PlayerDifficulty(1) >= 5) == true) && ((FixedToInt(GameGetMissionTime()) < lib452C8A48_gv_playerStats[autoE0C64D41_var][9]) || (lib452C8A48_gv_playerStats[autoE0C64D41_var][9] < 10))) {
+            lib452C8A48_gv_playerStats[autoE0C64D41_var][9] = FixedToInt((GameGetMissionTime() * lv_timeModifier));
+        }
+
+        lib452C8A48_gf_LeaderboardSetTooltip(autoE0C64D41_var);
+    }
+}
+
+void lib452C8A48_gf_LeaderboardSaveBank () {
+    // Automatic Variable Declarations
+    playergroup auto71AEEC46_g;
+    int auto71AEEC46_var;
+
+    // Implementation
+    auto71AEEC46_g = lib452C8A48_gv_leaderboardPlayers;
+    auto71AEEC46_var = -1;
+    while (true) {
+        auto71AEEC46_var = PlayerGroupNextPlayer(auto71AEEC46_g, auto71AEEC46_var);
+        if (auto71AEEC46_var < 0) { break; }
+        if ((lib452C8A48_gv_bankEnabled == true)) {
+            libDBB0BE4A_gf_StarlightSave(auto71AEEC46_var, lib452C8A48_gv_section, lib452C8A48_gv_playerStats[auto71AEEC46_var][0], lib452C8A48_gv_playerStats[auto71AEEC46_var][1], lib452C8A48_gv_playerStats[auto71AEEC46_var][2], lib452C8A48_gv_playerStats[auto71AEEC46_var][3], lib452C8A48_gv_playerStats[auto71AEEC46_var][4], lib452C8A48_gv_playerStats[auto71AEEC46_var][5], lib452C8A48_gv_playerStats[auto71AEEC46_var][6], lib452C8A48_gv_playerStats[auto71AEEC46_var][7], lib452C8A48_gv_playerStats[auto71AEEC46_var][8], lib452C8A48_gv_playerStats[auto71AEEC46_var][9]);
+        }
+
+    }
+}
+
+void lib452C8A48_gf_LevelBarDisable () {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib452C8A48_gv_levelBarEnabled == true)) {
+        DialogControlSetEnabled(lib452C8A48_gv_levelBarText, PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib452C8A48_gv_levelBarFrame, PlayerGroupAll(), false);
+        DialogControlSetEnabled(lib452C8A48_gv_levelBarFill, PlayerGroupAll(), false);
+    }
+
+}
+
+void lib452C8A48_gf_UpdateXP (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib452C8A48_gv_xP[lp_player] >= lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]]) && (lib452C8A48_gv_level[lp_player] < lib452C8A48_gv_levelCap)) {
+        lib452C8A48_gv_xP[lp_player] -= lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]];
+        lib452C8A48_gv_level[lp_player] += 1;
+        lib452C8A48_gf_UpdateXP(lp_player);
+        if ((GameGetMissionTime() > 1.0)) {
+            lib452C8A48_gf_LevelUp(lp_player);
+        }
+
+    }
+
+    if ((lib452C8A48_gv_level[lp_player] < lib452C8A48_gv_levelCap)) {
+        DialogControlSetSize(lib452C8A48_gv_levelBarFill, PlayerGroupSingle(lp_player), FixedToInt(((IntToFixed(lib452C8A48_gv_xP[lp_player]) / IntToFixed(lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]])) * (lib452C8A48_gv_x - 12))), lib452C8A48_gv_y);
+    }
+    else {
+        DialogControlSetSize(lib452C8A48_gv_levelBarFill, PlayerGroupSingle(lp_player), 348, lib452C8A48_gv_y);
+    }
+    if ((((IntToFixed(lib452C8A48_gv_xP[lp_player]) / IntToFixed(lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]])) * (IntToFixed(lib452C8A48_gv_x) - 12.0)) <= 1.0)) {
+        DialogControlSetVisible(lib452C8A48_gv_levelBarFill, PlayerGroupSingle(lp_player), false);
+    }
+    else {
+        DialogControlSetVisible(lib452C8A48_gv_levelBarFill, PlayerGroupSingle(lp_player), true);
+    }
+    libNtve_gf_SetDialogItemText(lib452C8A48_gv_levelBarText, (StringExternal("Param/Value/lib_452C8A48_B1098244") + IntToText(lib452C8A48_gv_level[lp_player])), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemTooltip(lib452C8A48_gv_levelBarText, (StringExternal("Param/Value/lib_452C8A48_8AF9CD23") + IntToText(lib452C8A48_gv_xP[lp_player]) + StringExternal("Param/Value/lib_452C8A48_BF0ED93D") + IntToText(lib452C8A48_gv_xPRequirement[lib452C8A48_gv_level[lp_player]])), PlayerGroupSingle(lp_player));
+    PlayerScoreValueSetFromInt(lp_player, "StarlightExperienceLevel", libBD29A430_gv_level[lp_player]);
+    lib452C8A48_gf_LeaderboardSetTooltip(lp_player);
+}
+
+void lib452C8A48_gf_LevelUp (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    SoundPlay(SoundLink("UI_KerriganUpgrades_LevelsEarned_Points", -1), PlayerGroupSingle(lp_player), 100.0, 0.0);
+    lib452C8A48_gv_levelupPlayer = lp_player;
+    TriggerExecute(lib452C8A48_gt_LevelupAnimation, true, false);
+}
+
+void lib452C8A48_gf_UpdateStats () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    playergroup auto8925DDD1_g;
+    int auto8925DDD1_var;
+    const int auto226CFB86_ae = 6;
+    const int auto226CFB86_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    auto8925DDD1_g = lib452C8A48_gv_leaderboardPlayers;
+    auto8925DDD1_var = -1;
+    while (true) {
+        auto8925DDD1_var = PlayerGroupNextPlayer(auto8925DDD1_g, auto8925DDD1_var);
+        if (auto8925DDD1_var < 0) { break; }
+        if ((lib452C8A48_gv_levelBarEnabled == true)) {
+            lib452C8A48_gv_playerStats[auto8925DDD1_var][0] += (PlayerScoreValueGetAsInt(auto8925DDD1_var, "StarlightExperience") - lib452C8A48_gv_xPAdjusted[auto8925DDD1_var]);
+            lib452C8A48_gv_xP[auto8925DDD1_var] += (PlayerScoreValueGetAsInt(auto8925DDD1_var, "StarlightExperience") - lib452C8A48_gv_xPAdjusted[auto8925DDD1_var]);
+            lib452C8A48_gv_xPAdjusted[auto8925DDD1_var] = PlayerScoreValueGetAsInt(auto8925DDD1_var, "StarlightExperience");
+            lib452C8A48_gv_playerStats[auto8925DDD1_var][0] = libNtve_gf_ArithmeticIntClamp(lib452C8A48_gv_playerStats[auto8925DDD1_var][0], 0, lib452C8A48_gv_xPCap);
+            lib452C8A48_gf_UpdateXP(auto8925DDD1_var);
+        }
+
+        lv_i = 3;
+        for ( ; ( (auto226CFB86_ai >= 0 && lv_i <= auto226CFB86_ae) || (auto226CFB86_ai < 0 && lv_i >= auto226CFB86_ae) ) ; lv_i += auto226CFB86_ai ) {
+            lib452C8A48_gv_playerStats[auto8925DDD1_var][lv_i] += (PlayerScoreValueGetAsInt(auto8925DDD1_var, lib452C8A48_gv_bankScore[(lv_i - 3)]) - lib452C8A48_gv_statAdjusted[auto8925DDD1_var][lv_i]);
+            lib452C8A48_gv_statAdjusted[auto8925DDD1_var][lv_i] = PlayerScoreValueGetAsInt(auto8925DDD1_var, lib452C8A48_gv_bankScore[(lv_i - 3)]);
+        }
+        lib452C8A48_gf_LeaderboardSetTooltip(auto8925DDD1_var);
+    }
+    lib452C8A48_gf_StarlightLeaderboardUpdate();
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Camera Wait
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_CameraWait_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(lib452C8A48_gv_cameraWait, c_timeGame);
+    libDDE92A83_gf_StarlightFullscreenBorder(true, true, PlayerGroupAll());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_CameraWait_Init () {
+    lib452C8A48_gt_CameraWait = TriggerCreate("lib452C8A48_gt_CameraWait_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: End Game Wait
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_EndGameWait_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(lib452C8A48_gv_endGameWait, c_timeGame);
+    libBBFED31C_gf_EndGameDonationDialog(lib452C8A48_gv_endGameShowDonations, lib452C8A48_gv_endGameWinnerGroup);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_EndGameWait_Init () {
+    lib452C8A48_gt_EndGameWait = TriggerCreate("lib452C8A48_gt_EndGameWait_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Create Level Bar
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_CreateLevelBar_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoC58E2A18_ae = lib452C8A48_gv_levelCap;
+    const int autoC58E2A18_ai = 1;
+    playergroup auto8DA1BA04_g;
+    int auto8DA1BA04_var;
+    playergroup autoE599B05D_g;
+    int autoE599B05D_var;
+    playergroup autoAC51ACAB_g;
+    int autoAC51ACAB_var;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib452C8A48_gv_levelBarEnabled == true))) {
+            return false;
+        }
+
+        if (!((lib452C8A48_gv_bankEnabled == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 1;
+    for ( ; ( (autoC58E2A18_ai >= 0 && lv_i <= autoC58E2A18_ae) || (autoC58E2A18_ai < 0 && lv_i >= autoC58E2A18_ae) ) ; lv_i += autoC58E2A18_ai ) {
+        lib452C8A48_gv_xPRequirement[lv_i] = (100 + (lib452C8A48_gv_xPRequirement[(lv_i - 1)] + (lv_i * 100)));
+        lib452C8A48_gv_xPCap += lib452C8A48_gv_xPRequirement[lv_i];
+    }
+    auto8DA1BA04_g = PlayerGroupAll();
+    auto8DA1BA04_var = -1;
+    while (true) {
+        auto8DA1BA04_var = PlayerGroupNextPlayer(auto8DA1BA04_g, auto8DA1BA04_var);
+        if (auto8DA1BA04_var < 0) { break; }
+        PlayerScoreValueSetFromInt(auto8DA1BA04_var, "StarlightExperienceCap", lib452C8A48_gv_xPCap);
+    }
+    DialogCreate(lib452C8A48_gv_x, lib452C8A48_gv_y, c_anchorTopLeft, 5, 5, true);
+    lib452C8A48_gv_levelBarDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_leaderboard_frame.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib452C8A48_gv_levelBarFrame = DialogControlLastCreated();
+    autoE599B05D_g = PlayerGroupActive();
+    autoE599B05D_var = -1;
+    while (true) {
+        autoE599B05D_var = PlayerGroupNextPlayer(autoE599B05D_g, autoE599B05D_var);
+        if (autoE599B05D_var < 0) { break; }
+        libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(autoE599B05D_var, false)), PlayerGroupAll());
+    }
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 163, DialogGetHeight(DialogLastCreated()), c_anchorLeft, 6, 0, StringToText(""), "Assets\\Textures\\ui_leaderboard_fill.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    autoAC51ACAB_g = PlayerGroupActive();
+    autoAC51ACAB_var = -1;
+    while (true) {
+        autoAC51ACAB_var = PlayerGroupNextPlayer(autoAC51ACAB_g, autoAC51ACAB_var);
+        if (autoAC51ACAB_var < 0) { break; }
+        libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(autoAC51ACAB_var, false)), PlayerGroupAll());
+    }
+    lib452C8A48_gv_levelBarFill = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lib452C8A48_gv_x, lib452C8A48_gv_y, c_anchorLeft, 0, -3, StringToText(""), StringExternal("Param/Value/lib_452C8A48_F50B3295"), "");
+    lib452C8A48_gv_levelBarText = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_CreateLevelBar_Init () {
+    lib452C8A48_gt_CreateLevelBar = TriggerCreate("lib452C8A48_gt_CreateLevelBar_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Levelup Animation
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_LevelupAnimation_Func (bool testConds, bool runActions) {
+    int init_i;
+
+    // Variable Declarations
+    int lv_attachDialog;
+    int lv_player;
+    text lv_tooltipText;
+    int lv_tooltipDialog;
+    int[2] lv_tooltipDialogItem;
+    int lv_glowDialog;
+    int[5] lv_glowDialogItem;
+    int lv_i;
+    int lv_race;
+
+    // Automatic Variable Declarations
+    playergroup auto326C500F_g;
+    int auto326C500F_var;
+    string autoBFBA7368_val;
+    int auto65E8304B_val;
+    const int autoAA010C5E_ae = 4;
+    const int autoAA010C5E_ai = 1;
+    const int auto4CA0C7D0_ae = 4;
+    const int auto4CA0C7D0_ai = 1;
+    const int autoAFB79BA1_ae = 4;
+    const int autoAFB79BA1_ai = 1;
+
+    // Variable Initialization
+    lv_attachDialog = lib452C8A48_gv_levelBarDialog;
+    lv_player = lib452C8A48_gv_levelupPlayer;
+    lv_tooltipText = StringExternal("Param/Value/lib_452C8A48_AA68B588");
+    lv_tooltipDialog = c_invalidDialogId;
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lv_tooltipDialogItem[init_i] = c_invalidDialogControlId;
+    }
+    lv_glowDialog = c_invalidDialogId;
+    for (init_i = 0; init_i <= 4; init_i += 1) {
+        lv_glowDialogItem[init_i] = c_invalidDialogControlId;
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogCreate(360, 60, c_anchorTopLeft, 10, 70, true);
+    DialogSetPositionRelative(DialogLastCreated(), c_anchorTopLeft, lv_attachDialog, c_anchorTopRight, 5, 0);
+    lv_tooltipDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(lv_player), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_tooltip_frame_protoss.dds", c_triggerImageTypeBorder, true, Color(100,100,100), c_triggerBlendModeNormal);
+    lv_tooltipDialogItem[0] = DialogControlLastCreated();
+    auto326C500F_g = PlayerGroupActive();
+    auto326C500F_var = -1;
+    while (true) {
+        auto326C500F_var = PlayerGroupNextPlayer(auto326C500F_g, auto326C500F_var);
+        if (auto326C500F_var < 0) { break; }
+        autoBFBA7368_val = PlayerRace(lv_player);
+        if (autoBFBA7368_val == "Terr") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_tooltip_frame_terran.dds", PlayerGroupAll());
+            lv_race = 1;
+        }
+        else if (autoBFBA7368_val == "Zerg") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_tooltip_frame_zerg.dds", PlayerGroupAll());
+            lv_race = 2;
+        }
+        else {
+        }
+    }
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.5, 0.0);
+    auto65E8304B_val = lv_race;
+    if (auto65E8304B_val == 0) {
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_452C8A48_20BAF194") + lv_tooltipText + StringExternal("Param/Value/lib_452C8A48_E479C8C3") + IntToText(lib452C8A48_gv_level[lv_player]) + StringExternal("Param/Value/lib_452C8A48_1EC4C3A8")), ColorWithAlpha(0,0,0,0), true, 0.5);
+    }
+    else if (auto65E8304B_val == 1) {
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_452C8A48_A1F635B2") + lv_tooltipText + StringExternal("Param/Value/lib_452C8A48_7268F6FE") + IntToText(lib452C8A48_gv_level[lv_player]) + StringExternal("Param/Value/lib_452C8A48_1BDCDF79")), ColorWithAlpha(0,0,0,0), true, 0.5);
+    }
+    else if (auto65E8304B_val == 2) {
+        libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_452C8A48_202C0627") + lv_tooltipText + StringExternal("Param/Value/lib_452C8A48_C9E39BF6") + IntToText(lib452C8A48_gv_level[lv_player]) + StringExternal("Param/Value/lib_452C8A48_3364B6BD")), ColorWithAlpha(0,0,0,0), true, 0.5);
+    }
+    else {
+    }
+    lv_tooltipDialogItem[1] = DialogControlLastCreated();
+    DialogCreate(400, 400, c_anchorTopLeft, 0, 0, true);
+    lv_glowDialog = DialogLastCreated();
+    DialogSetPositionRelative(DialogLastCreated(), c_anchorCenter, lv_attachDialog, c_anchorCenter, 0, 0);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupSingle(lv_player), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    lv_i = 0;
+    for ( ; ( (autoAA010C5E_ai >= 0 && lv_i <= autoAA010C5E_ae) || (autoAA010C5E_ai < 0 && lv_i >= autoAA010C5E_ae) ) ; lv_i += autoAA010C5E_ai ) {
+        DialogControlCreate(DialogLastCreated(), c_triggerControlTypePortrait);
+        lv_glowDialogItem[lv_i] = DialogControlLastCreated();
+        DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+        libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 400, 400);
+        libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "LevelUpAnimation", PlayerGroupAll());
+        libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+        libNtve_gf_SetDialogItemCamera(DialogControlLastCreated(), "Star2CameraMid03", PlayerGroupAll());
+        libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    }
+    Wait(1.0, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (auto4CA0C7D0_ai >= 0 && lv_i <= auto4CA0C7D0_ae) || (auto4CA0C7D0_ai < 0 && lv_i >= auto4CA0C7D0_ae) ) ; lv_i += auto4CA0C7D0_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_glowDialogItem[lv_i], "Stand", PlayerGroupAll());
+    }
+    Wait(2.5, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (autoAFB79BA1_ai >= 0 && lv_i <= autoAFB79BA1_ae) || (autoAFB79BA1_ai < 0 && lv_i >= autoAFB79BA1_ae) ) ; lv_i += autoAFB79BA1_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_glowDialogItem[lv_i], "Death", PlayerGroupAll());
+    }
+    Wait(2.0, c_timeGame);
+    DialogDestroy(lv_glowDialog);
+    Wait(5.0, c_timeGame);
+    DialogControlFadeTransparency(lv_tooltipDialogItem[0], PlayerGroupAll(), 0.5, 100.0);
+    DialogControlFadeTransparency(lv_tooltipDialogItem[1], PlayerGroupAll(), 0.5, 100.0);
+    Wait(0.5, c_timeGame);
+    DialogDestroy(lv_tooltipDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_LevelupAnimation_Init () {
+    lib452C8A48_gt_LevelupAnimation = TriggerCreate("lib452C8A48_gt_LevelupAnimation_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stats Matches
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_StatsMatches_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    playergroup auto09D26F64_g;
+    int auto09D26F64_var;
+    const int auto9F8F20B1_ae = 9;
+    const int auto9F8F20B1_ai = 1;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib452C8A48_gv_gameOverLeaderboard == false))) {
+            return false;
+        }
+
+        if (!((lib452C8A48_gv_bankEnabled == true))) {
+            return false;
+        }
+
+        if (!((lib452C8A48_gv_bankLoaded == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDBB0BE4A_gf_StarlightBankStart();
+    auto09D26F64_g = lib452C8A48_gv_leaderboardPlayers;
+    auto09D26F64_var = -1;
+    while (true) {
+        auto09D26F64_var = PlayerGroupNextPlayer(auto09D26F64_g, auto09D26F64_var);
+        if (auto09D26F64_var < 0) { break; }
+        if ((PlayerType(auto09D26F64_var) == c_playerTypeUser)) {
+            libDBB0BE4A_gf_StarlightLoad(auto09D26F64_var, lib452C8A48_gv_section);
+            lv_i = 0;
+            for ( ; ( (auto9F8F20B1_ai >= 0 && lv_i <= auto9F8F20B1_ae) || (auto9F8F20B1_ai < 0 && lv_i >= auto9F8F20B1_ae) ) ; lv_i += auto9F8F20B1_ai ) {
+                lib452C8A48_gv_playerStats[auto09D26F64_var][lv_i] = libDBB0BE4A_gv_starlightLoadOutput[lv_i];
+            }
+        }
+
+        lib452C8A48_gv_playerStats[auto09D26F64_var][1] += 1;
+        if ((PlayerType(auto09D26F64_var) == c_playerTypeUser)) {
+            lib452C8A48_gv_xP[auto09D26F64_var] = lib452C8A48_gv_playerStats[auto09D26F64_var][0];
+            libDBB0BE4A_gf_StarlightSave(auto09D26F64_var, lib452C8A48_gv_section, libDBB0BE4A_gv_starlightLoadOutput[0], lib452C8A48_gv_playerStats[auto09D26F64_var][1], libDBB0BE4A_gv_starlightLoadOutput[2], libDBB0BE4A_gv_starlightLoadOutput[3], libDBB0BE4A_gv_starlightLoadOutput[4], libDBB0BE4A_gv_starlightLoadOutput[5], libDBB0BE4A_gv_starlightLoadOutput[6], libDBB0BE4A_gv_starlightLoadOutput[7], libDBB0BE4A_gv_starlightLoadOutput[8], libDBB0BE4A_gv_starlightLoadOutput[9]);
+        }
+
+        lib452C8A48_gf_LeaderboardSetTooltip(auto09D26F64_var);
+        if ((lib452C8A48_gv_levelBarEnabled == true)) {
+            lib452C8A48_gf_UpdateXP(auto09D26F64_var);
+        }
+
+    }
+    lib452C8A48_gv_bankLoaded = true;
+    TriggerEnable(TriggerGetCurrent(), false);
+    TriggerExecute(lib452C8A48_gt_Rewards, true, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_StatsMatches_Init () {
+    lib452C8A48_gt_StatsMatches = TriggerCreate("lib452C8A48_gt_StatsMatches_Func");
+    TriggerEnable(lib452C8A48_gt_StatsMatches, false);
+    TriggerAddEventTimePeriodic(lib452C8A48_gt_StatsMatches, 0.125, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Rewards
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_Rewards_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoABE959EC_g;
+    int autoABE959EC_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoABE959EC_g = lib452C8A48_gv_leaderboardPlayers;
+    autoABE959EC_var = -1;
+    while (true) {
+        autoABE959EC_var = PlayerGroupNextPlayer(autoABE959EC_g, autoABE959EC_var);
+        if (autoABE959EC_var < 0) { break; }
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 2))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel2", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 4))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel4", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 5))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel5", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 6))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel6", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 8))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel8", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 10))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel10", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 12))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel12", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 14))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel14", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 15))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel15", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 16))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel16", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 18))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel18", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 20))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel20", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 22))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel22", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 24))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel24", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 25))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel25", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 26))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel26", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 28))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel28", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 30))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel30", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 32))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel32", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 34))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel34", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 35))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel35", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 36))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel36", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 38))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel38", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 40))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel40", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 42))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel42", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 44))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel44", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 45))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel45", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 46))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel46", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 48))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel48", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 50))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel50", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 52))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel52", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 54))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel54", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 55))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel55", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 56))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel56", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 58))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel58", 1);
+        // }
+
+        // if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_level[autoABE959EC_var] >= 60))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardLevel60", 1);
+        // }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 500))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills05k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 1000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills1k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 2000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills2k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 3000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills3k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 4000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills4k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 5000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills5k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 6000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills6k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 8000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills8k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 10000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills10k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 14000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills14k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 15000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills15k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 18000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills18k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 22000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills22k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 25000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills25k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 27000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills27k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 32000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills32k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 38000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills38k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 40000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills40k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 44000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills44k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 50000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills50k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 60000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills60k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 70000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills70k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 75000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills75k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 80000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills80k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 100000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills100k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 125000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills125k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 150000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills150k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 175000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills175k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 200000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills200k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 225000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills225k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 250000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills250k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 300000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills300k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 350000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills350k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 400000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills400k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 450000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills450k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 500000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills500k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 600000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills600k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 750000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills750k", 1);
+        }
+
+        if (((GameIsTestMap(false) == true) || (lib452C8A48_gv_playerStats[autoABE959EC_var][3] >= 1000000))) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoABE959EC_var, "StarlightRewardKills1000k", 1);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_Rewards_Init () {
+    lib452C8A48_gt_Rewards = TriggerCreate("lib452C8A48_gt_Rewards_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stats Periodic
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_gt_StatsPeriodic_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((lib452C8A48_gv_gameOverLeaderboard == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib452C8A48_gf_UpdateStats();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib452C8A48_gt_StatsPeriodic_Init () {
+    lib452C8A48_gt_StatsPeriodic = TriggerCreate("lib452C8A48_gt_StatsPeriodic_Func");
+    TriggerAddEventTimePeriodic(lib452C8A48_gt_StatsPeriodic, 2.0, c_timeGame);
+}
+
+void lib452C8A48_InitTriggers () {
+    lib452C8A48_gt_CameraWait_Init();
+    lib452C8A48_gt_EndGameWait_Init();
+    lib452C8A48_gt_CreateLevelBar_Init();
+    lib452C8A48_gt_LevelupAnimation_Init();
+    lib452C8A48_gt_StatsMatches_Init();
+    lib452C8A48_gt_Rewards_Init();
+    lib452C8A48_gt_StatsPeriodic_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib452C8A48_InitLib_completed = false;
+
+void lib452C8A48_InitLib () {
+    if (lib452C8A48_InitLib_completed) {
+        return;
+    }
+
+    lib452C8A48_InitLib_completed = true;
+
+    lib452C8A48_InitLibraries();
+    lib452C8A48_InitVariables();
+    lib452C8A48_InitTriggers();
+}
+
+include "LibDDE92A83"
+include "LibBD29A430"
+include "LibDBB0BE4A"
+include "LibBBFED31C"
+

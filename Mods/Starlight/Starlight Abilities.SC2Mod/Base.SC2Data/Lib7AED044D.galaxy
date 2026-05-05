@@ -1,0 +1,3480 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83"
+include "Lib8D68C7BC"
+include "LibA91AB5FF_h"
+
+include "Lib7AED044D_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Abilities
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib7AED044D_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib8D68C7BC_InitVariables();
+    libA91AB5FF_InitVariables();
+}
+
+// Variable Initialization
+bool lib7AED044D_InitVariables_completed = false;
+
+void lib7AED044D_InitVariables () {
+    int init_i;
+
+    if (lib7AED044D_InitVariables_completed) {
+        return;
+    }
+
+    lib7AED044D_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_sapphironSummonCount[init_i] = -1;
+    }
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_ivusSummonCount[init_i] = -1;
+    }
+    lib7AED044D_gv_preparationTimeTimer = TimerCreate();
+    lib7AED044D_gv_preparationTimeGroup = PlayerGroupEmpty();
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_bountyModifierUnit[init_i] = 0.1;
+    }
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_bountyHero[init_i] = 15.0;
+    }
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_bountyHeroLevel[init_i] = 5.0;
+    }
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_bountyModifierStructure[init_i] = 0.1;
+    }
+    for (init_i = 0; init_i <= lib7AED044D_gv_player; init_i += 1) {
+        lib7AED044D_gv_bountyModifierCreep[init_i] = 0.15;
+    }
+    lib7AED044D_gv_spawnControllerBountyModifier = 0.08;
+}
+
+// Functions
+bool lib7AED044D_gf_BehaviorIsPositive (string lp_buff) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((CatalogFieldValueGet(c_gameCatalogBehavior, lp_buff, "Alignment", c_playerAny) == "Positive")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool lib7AED044D_gf_BehaviorIsNegative (string lp_buff) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((CatalogFieldValueGet(c_gameCatalogBehavior, lp_buff, "Alignment", c_playerAny) == "Negative")) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+void lib7AED044D_gf_PeriodicSpawning (int lp_player, bool lp_xPForSpawning) {
+    // Automatic Variable Declarations
+    bool auto8E03B455_val;
+
+    // Implementation
+    auto8E03B455_val = lp_xPForSpawning;
+    if (auto8E03B455_val == true) {
+        lib7AED044D_gv_xPforSpawn = 0.5;
+    }
+    else if (auto8E03B455_val == false) {
+        lib7AED044D_gv_xPforSpawn = 0.0;
+    }
+    else {
+    }
+}
+
+void lib7AED044D_gf_StarlightPreparationTime (fixed lp_duration, playergroup lp_players) {
+    // Automatic Variable Declarations
+    playergroup autoDF02F3A3_g;
+    int autoDF02F3A3_var;
+    unitgroup autoA917D5BD_g;
+    int autoA917D5BD_u;
+    unit autoA917D5BD_var;
+
+    // Implementation
+    autoDF02F3A3_g = lp_players;
+    autoDF02F3A3_var = -1;
+    while (true) {
+        autoDF02F3A3_var = PlayerGroupNextPlayer(autoDF02F3A3_g, autoDF02F3A3_var);
+        if (autoDF02F3A3_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(autoDF02F3A3_var, "PreparationTime", 1);
+        autoA917D5BD_g = UnitGroup(null, autoDF02F3A3_var, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        autoA917D5BD_u = UnitGroupCount(autoA917D5BD_g, c_unitCountAll);
+        for (;; autoA917D5BD_u -= 1) {
+            autoA917D5BD_var = UnitGroupUnitFromEnd(autoA917D5BD_g, autoA917D5BD_u);
+            if (autoA917D5BD_var == null) { break; }
+            UnitBehaviorAdd(autoA917D5BD_var, "PreparationTime", autoA917D5BD_var, 1);
+            UnitBehaviorSetDuration(autoA917D5BD_var, "PreparationTime", lp_duration);
+        }
+    }
+    TimerStart(lib7AED044D_gv_preparationTimeTimer, lp_duration, false, c_timeGame);
+    lib7AED044D_gv_preparationTimeGroup = lp_players;
+}
+
+void lib7AED044D_gf_StarlightBountySystem (playergroup lp_players, bool lp_toggle, fixed lp_unitValueModifier, fixed lp_structureValueModifier, fixed lp_creepValueModifier, fixed lp_heroValue, fixed lp_heroLevelValue) {
+    // Automatic Variable Declarations
+    playergroup auto6EF1E193_g;
+    int auto6EF1E193_var;
+    bool autoB219C8A8_val;
+
+    // Implementation
+    auto6EF1E193_g = lp_players;
+    auto6EF1E193_var = -1;
+    while (true) {
+        auto6EF1E193_var = PlayerGroupNextPlayer(auto6EF1E193_g, auto6EF1E193_var);
+        if (auto6EF1E193_var < 0) { break; }
+        lib7AED044D_gv_bountyModifierUnit[auto6EF1E193_var] = lp_unitValueModifier;
+        lib7AED044D_gv_bountyModifierStructure[auto6EF1E193_var] = lp_structureValueModifier;
+        lib7AED044D_gv_bountyModifierCreep[auto6EF1E193_var] = lp_creepValueModifier;
+        lib7AED044D_gv_bountyHero[auto6EF1E193_var] = lp_heroValue;
+        lib7AED044D_gv_bountyHeroLevel[auto6EF1E193_var] = lp_heroLevelValue;
+        autoB219C8A8_val = lp_toggle;
+        if (autoB219C8A8_val == true) {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6EF1E193_var, "BountyEnabled", 1);
+            TriggerEnable(lib7AED044D_gt_BountySystemTrigger, true);
+            TriggerEnable(lib7AED044D_gt_HeroBounty, true);
+        }
+        else if (autoB219C8A8_val == false) {
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6EF1E193_var, "BountyEnabled", 0);
+        }
+        else {
+        }
+    }
+}
+
+void lib7AED044D_gf_BossText (text lp_text, string lp_unitType) {
+    // Automatic Variable Declarations
+    // Implementation
+    UIDisplayMessage(PlayerGroupAll(), c_messageAreaChat, (TextWithColor((UnitTypeGetName(lp_unitType) + StringExternal("Param/Value/lib_7AED044D_DAC5A7DD")), Color(100.00, 84.31, 0.00)) + lp_text));
+}
+
+void lib7AED044D_gf_KickerXP (int lp_value, unit lp_unit, bool lp_modifyXP) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_value > 0)) {
+        if ((UnitIsAlive(lp_unit) == true)) {
+            lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_8D27D737") + StringExternal("Param/Value/lib_7AED044D_797ED2D9") + IntToText(lp_value) + StringExternal("Param/Value/lib_7AED044D_2BC99055")), UnitGetPosition(lp_unit), UnitGetOwner(lp_unit), 1.0, 3.0, 2.0, 2.0, 10.0);
+        }
+
+        if ((lp_modifyXP == true)) {
+            UnitSetPropertyFixed(lp_unit, c_unitPropXP, (UnitGetPropertyFixed(lp_unit, c_unitPropXP, c_unitPropCurrent) + lp_value));
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_KickerDebuff (string lp_debuff, unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_62DFA2BA") + StringExternal(CatalogFieldValueGet(c_gameCatalogBehavior, lp_debuff, "Name", 0))), UnitGetPosition(lp_unit), UnitGetOwner(lp_unit), 1.0, 3.0, 2.0, 2.0, 10.0);
+}
+
+void lib7AED044D_gf_KickerLife (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) > 0.0)) {
+        if ((lp_delay == true)) {
+            Wait(0.0, c_timeGame);
+        }
+
+        lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_3829EDF5") + StringExternal("Param/Value/lib_7AED044D_1B4E1CC3") + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_KickerEnergyBurn (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) < 0.0)) {
+        if ((lp_delay == true)) {
+            Wait(0.0, c_timeGame);
+        }
+
+        lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_E8EBFA41") + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_KickerEnergy (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) > 0.0)) {
+        if ((lp_delay == true)) {
+            Wait(0.0, c_timeGame);
+        }
+
+        lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_B66A9FAC") + StringExternal("Param/Value/lib_7AED044D_42AF217B") + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_KickerDamage (string lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_resetScore, bool lp_delay) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((PlayerScoreValueGetAsFixed(lp_player, lp_value) >= 1.0)) {
+        if ((lp_delay == true)) {
+            Wait(0.0, c_timeGame);
+        }
+
+        lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_16F0B3B6") + IntToText(FixedToInt(PlayerScoreValueGetAsFixed(lp_player, lp_value)))), lp_point, lp_player, lp_offset, 3.0, 2.0, 2.0, 10.0);
+        if ((lp_resetScore == true)) {
+            PlayerScoreValueSetFromFixed(lp_player, lp_value, 0.0);
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_KickerGold (int lp_value, point lp_point, int lp_player, fixed lp_offset, bool lp_modifyGold) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_value > 0)) {
+        lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_ADF93218") + StringExternal("Param/Value/lib_7AED044D_04260A1C") + IntToText(lp_value)), lp_point, lp_player, lp_offset, 1.25, 3.0, 0.25, 0.0);
+        if ((lp_modifyGold == true)) {
+            PlayerModifyPropertyInt(lp_player, c_playerPropTerrazine, c_playerPropOperAdd, lp_value);
+            PlayerModifyPropertyInt(lp_player, c_playerPropTerrazineCollected, c_playerPropOperAdd, lp_value);
+        }
+
+    }
+
+}
+
+void lib7AED044D_gf_CreateKicker (text lp_text, point lp_point, int lp_player, fixed lp_offset, fixed lp_velocity, fixed lp_duration, fixed lp_gravity, fixed lp_angleVariance) {
+    // Automatic Variable Declarations
+    // Implementation
+    TextTagCreate(lp_text, 32, lp_point, lp_offset, true, false, PlayerGroupSingle(lp_player));
+    TextTagSetVelocity(TextTagLastCreated(), lp_velocity, RandomFixed((90.0 - lp_angleVariance), (90.0 + lp_angleVariance)));
+    TextTagSetGravity(TextTagLastCreated(), (0.0 - lp_gravity));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, lp_duration);
+}
+
+void lib7AED044D_gf_SpawnControllerAttributes (playergroup lp_enemyPlayerGroup, int lp_bonusPerPlayer, fixed lp_enrageTime, int lp_playerOwner, fixed lp_bountyModifier) {
+    // Variable Declarations
+    int lv_x;
+
+    // Automatic Variable Declarations
+    playergroup auto2485F451_g;
+    int auto2485F451_var;
+
+    // Variable Initialization
+
+    // Implementation
+    auto2485F451_g = lp_enemyPlayerGroup;
+    auto2485F451_var = -1;
+    while (true) {
+        auto2485F451_var = PlayerGroupNextPlayer(auto2485F451_g, auto2485F451_var);
+        if (auto2485F451_var < 0) { break; }
+        lv_x += lp_bonusPerPlayer;
+    }
+    CatalogFieldValueSet(c_gameCatalogEffect, "SpawnControllerIncomeModify", "Resources[" + IntToString(2) + "]", lp_playerOwner, IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogEffect, "SpawnControllerIncomeModify", "ResourcesCollected", lp_playerOwner, IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogEffect, "SpawnControllerIncomeEnrageModify", "Resources[" + IntToString(2) + "]", lp_playerOwner, IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogEffect, "SpawnControllerIncomeEnrageModify", "ResourcesCollected", lp_playerOwner, IntToString(lv_x));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "SpawnControllerTimerEnrage", "Duration", lp_playerOwner, FixedToString(lp_enrageTime, c_fixedPrecisionAny));
+    if ((lp_bountyModifier > 0.0)) {
+        TriggerEnable(lib7AED044D_gt_SpawnControllerBounty, true);
+        lib7AED044D_gv_spawnControllerBountyModifier = lp_bountyModifier;
+    }
+    else {
+        TriggerEnable(lib7AED044D_gt_SpawnControllerBounty, false);
+    }
+}
+
+void lib7AED044D_gf_GameplayModTogglePvPDamage (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto0EA46B51_val;
+    playergroup auto115D5312_g;
+    int auto115D5312_var;
+    playergroup auto55AF1C76_g;
+    int auto55AF1C76_var;
+
+    // Implementation
+    auto0EA46B51_val = lp_toggle;
+    if (auto0EA46B51_val == true) {
+        auto115D5312_g = PlayerGroupAll();
+        auto115D5312_var = -1;
+        while (true) {
+            auto115D5312_var = PlayerGroupNextPlayer(auto115D5312_g, auto115D5312_var);
+            if (auto115D5312_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto115D5312_var, "GameplayModTogglePvPDamage", 0);
+        }
+    }
+    else if (auto0EA46B51_val == false) {
+        auto55AF1C76_g = PlayerGroupAll();
+        auto55AF1C76_var = -1;
+        while (true) {
+            auto55AF1C76_var = PlayerGroupNextPlayer(auto55AF1C76_g, auto55AF1C76_var);
+            if (auto55AF1C76_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto55AF1C76_var, "GameplayModTogglePvPDamage", 1);
+        }
+    }
+    else {
+    }
+}
+
+void lib7AED044D_gf_GameplayModMeleeHeroArmor (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool autoFCAB7451_val;
+    playergroup auto3FA5F9B6_g;
+    int auto3FA5F9B6_var;
+    playergroup autoF104750F_g;
+    int autoF104750F_var;
+
+    // Implementation
+    autoFCAB7451_val = lp_toggle;
+    if (autoFCAB7451_val == true) {
+        auto3FA5F9B6_g = PlayerGroupAll();
+        auto3FA5F9B6_var = -1;
+        while (true) {
+            auto3FA5F9B6_var = PlayerGroupNextPlayer(auto3FA5F9B6_g, auto3FA5F9B6_var);
+            if (auto3FA5F9B6_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto3FA5F9B6_var, "GameplayModMeleeHeroArmor", 1);
+        }
+    }
+    else if (autoFCAB7451_val == false) {
+        autoF104750F_g = PlayerGroupAll();
+        autoF104750F_var = -1;
+        while (true) {
+            autoF104750F_var = PlayerGroupNextPlayer(autoF104750F_g, autoF104750F_var);
+            if (autoF104750F_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoF104750F_var, "GameplayModMeleeHeroArmor", 0);
+        }
+    }
+    else {
+    }
+}
+
+void lib7AED044D_gf_SetGlobalUnitPassive (int lp_player, string lp_button) {
+    // Variable Declarations
+    const string lv_button = "GlobalUnitPassive";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "GlobalUnitPassive", 1);
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Icon", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Tooltip", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", 0));
+    CatalogFieldValueSet(c_gameCatalogButton, lv_button, "Name", lp_player, CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", 0));
+}
+
+void lib7AED044D_gf_War3AI (int lp_player, bool lp_toggle) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    bool auto6F302A91_val;
+    playergroup autoF69A6B9D_g;
+    unitgroup auto50D35725_g;
+    int auto50D35725_u;
+    unit auto50D35725_var;
+    unitgroup auto9F6918C9_g;
+    int auto9F6918C9_u;
+    unit auto9F6918C9_var;
+
+    // Variable Initialization
+
+    // Implementation
+    auto6F302A91_val = lp_toggle;
+    if (auto6F302A91_val == true) {
+        if ((TechTreeUpgradeCount(lp_player, "ComputerPlayer", c_techCountCompleteOnly) == 0)) {
+            autoF69A6B9D_g = PlayerGroupAlliance(c_playerGroupAlly, lp_player);
+            lv_i = -1;
+            while (true) {
+                lv_i = PlayerGroupNextPlayer(autoF69A6B9D_g, lv_i);
+                if (lv_i < 0) { break; }
+                if ((PlayerType(lv_i) != c_playerTypeNeutral) && (PlayerType(lv_i) != c_playerTypeHostile)) {
+                    PlayerSetAlliance(lp_player, c_allianceIdControl, lv_i, false);
+                    PlayerSetAlliance(lp_player, c_allianceIdSpend, lv_i, false);
+                    PlayerSetAlliance(lp_player, c_allianceIdTrade, lv_i, false);
+                    PlayerSetAlliance(lp_player, c_allianceIdSeekHelp, lv_i, false);
+                    PlayerSetAlliance(lp_player, c_allianceIdGiveHelp, lv_i, false);
+                    PlayerSetAlliance(lv_i, c_allianceIdControl, lp_player, false);
+                    PlayerSetAlliance(lv_i, c_allianceIdSpend, lp_player, false);
+                    PlayerSetAlliance(lv_i, c_allianceIdTrade, lp_player, false);
+                    PlayerSetAlliance(lv_i, c_allianceIdSeekHelp, lp_player, false);
+                    PlayerSetAlliance(lv_i, c_allianceIdGiveHelp, lp_player, false);
+                }
+
+            }
+            PlayerModifyPropertyInt(lp_player, c_playerPropTerrazine, c_playerPropOperAdd, 10000);
+            libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "ComputerPlayer", 1);
+        }
+
+        auto50D35725_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0);
+        auto50D35725_u = UnitGroupCount(auto50D35725_g, c_unitCountAll);
+        for (;; auto50D35725_u -= 1) {
+            auto50D35725_var = UnitGroupUnitFromEnd(auto50D35725_g, auto50D35725_u);
+            if (auto50D35725_var == null) { break; }
+            UnitCreateEffectUnit(auto50D35725_var, "SpawnAttackWar3RandomAI", auto50D35725_var);
+        }
+        auto9F6918C9_g = UnitGroup(null, lp_player, RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0);
+        auto9F6918C9_u = UnitGroupCount(auto9F6918C9_g, c_unitCountAll);
+        for (;; auto9F6918C9_u -= 1) {
+            auto9F6918C9_var = UnitGroupUnitFromEnd(auto9F6918C9_g, auto9F6918C9_u);
+            if (auto9F6918C9_var == null) { break; }
+            UnitCreateEffectUnit(auto9F6918C9_var, "SpawnAttackWar3RandomAI", auto9F6918C9_var);
+            UnitIssueOrder(auto9F6918C9_var, OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto9F6918C9_var), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(0) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+            UnitIssueOrder(auto9F6918C9_var, OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto9F6918C9_var), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(1) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+            UnitIssueOrder(auto9F6918C9_var, OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto9F6918C9_var), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(2) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+            UnitIssueOrder(auto9F6918C9_var, OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(auto9F6918C9_var), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(3) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+            UnitIssueOrder(auto9F6918C9_var, OrderSetAutoCast(AbilityCommand("CarrionBeetlesMagazine", 0), true), c_orderQueueReplace);
+        }
+    }
+    else if (auto6F302A91_val == false) {
+        PlayerModifyPropertyInt(lp_player, c_playerPropTerrazine, c_playerPropOperSubtract, 10000);
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "ComputerPlayer", 0);
+    }
+    else {
+    }
+}
+
+void lib7AED044D_gf_StarlightAbilitiesDefaultSettings (fixed lp_lifeModifier, fixed lp_energyRegenBase, bool lp_allianceButton, bool lp_armyButton, bool lp_consolePanel, bool lp_customResource, bool lp_idleWorkerButton, bool lp_teamResourceButton, bool lp_supplyFrame, bool lp_neutralHostileBounty, bool lp_war3Music) {
+    // Automatic Variable Declarations
+    playergroup autoB1DCD7A9_g;
+    int autoB1DCD7A9_var;
+    unitgroup autoE5A6FF5C_g;
+    int autoE5A6FF5C_u;
+    unit autoE5A6FF5C_var;
+    playergroup autoF2D759CD_g;
+    int autoF2D759CD_var;
+
+    // Implementation
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeSupply, lp_supplyFrame);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeConsolePanel, lp_consolePanel);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeArmyButton, lp_armyButton);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeIdleWorkerButton, lp_idleWorkerButton);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeAllianceButton, lp_allianceButton);
+    UISetFrameVisible(PlayerGroupAll(), c_syncFrameTypeTeamResourceButton, lp_teamResourceButton);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeTerrazine, true);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeMinerals, false);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeVespene, false);
+    UISetResourceVisible(PlayerGroupAll(), c_resourceTypeCustom, lp_customResource);
+    libA91AB5FF_gf_StarlightStats(lp_lifeModifier, lp_energyRegenBase);
+    if ((lp_war3Music == true)) {
+        SoundtrackDefault(PlayerGroupAll(), c_soundtrackCategoryMusic, "War3MusicAll", c_soundtrackCueAny, c_soundtrackIndexAny);
+    }
+
+    if ((lp_neutralHostileBounty == true)) {
+        autoB1DCD7A9_g = PlayerGroupAll();
+        autoB1DCD7A9_var = -1;
+        while (true) {
+            autoB1DCD7A9_var = PlayerGroupNextPlayer(autoB1DCD7A9_g, autoB1DCD7A9_var);
+            if (autoB1DCD7A9_var < 0) { break; }
+            if ((PlayerType(autoB1DCD7A9_var) == c_playerTypeHostile)) {
+                autoE5A6FF5C_g = UnitGroup(null, autoB1DCD7A9_var, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+                autoE5A6FF5C_u = UnitGroupCount(autoE5A6FF5C_g, c_unitCountAll);
+                for (;; autoE5A6FF5C_u -= 1) {
+                    autoE5A6FF5C_var = UnitGroupUnitFromEnd(autoE5A6FF5C_g, autoE5A6FF5C_u);
+                    if (autoE5A6FF5C_var == null) { break; }
+                    UnitBehaviorAdd(autoE5A6FF5C_var, "NeutralHostileCreep", autoE5A6FF5C_var, 1);
+                }
+            }
+
+        }
+    }
+
+    autoF2D759CD_g = PlayerGroupAll();
+    autoF2D759CD_var = -1;
+    while (true) {
+        autoF2D759CD_var = PlayerGroupNextPlayer(autoF2D759CD_g, autoF2D759CD_var);
+        if (autoF2D759CD_var < 0) { break; }
+        if ((lp_consolePanel == false)) {
+            PlayerOptionOverride(autoF2D759CD_var, "controlgroupmode", "1");
+        }
+
+        PlayerSetRace(autoF2D759CD_var, "Prot");
+    }
+}
+
+void lib7AED044D_gf_StarlightNodeSystem (bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool autoDC1E5563_val;
+    playergroup auto9BB82F28_g;
+    int auto9BB82F28_var;
+    playergroup autoFED7343B_g;
+    int autoFED7343B_var;
+
+    // Implementation
+    autoDC1E5563_val = lp_toggle;
+    if (autoDC1E5563_val == true) {
+        auto9BB82F28_g = PlayerGroupAll();
+        auto9BB82F28_var = -1;
+        while (true) {
+            auto9BB82F28_var = PlayerGroupNextPlayer(auto9BB82F28_g, auto9BB82F28_var);
+            if (auto9BB82F28_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto9BB82F28_var, "NodeSystem", 1);
+        }
+    }
+    else if (autoDC1E5563_val == false) {
+        autoFED7343B_g = PlayerGroupAll();
+        autoFED7343B_var = -1;
+        while (true) {
+            autoFED7343B_var = PlayerGroupNextPlayer(autoFED7343B_g, autoFED7343B_var);
+            if (autoFED7343B_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoFED7343B_var, "NodeSystem", 0);
+        }
+    }
+    else {
+    }
+}
+
+void lib7AED044D_gf_StarlightNodeRace (int lp_player, string lp_race) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "NodeRaceHuman", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "NodeRaceNaga", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "NodeRaceNightElf", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "NodeRaceOrc", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "NodeRaceUndead", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lp_race, 1);
+}
+
+void lib7AED044D_gf_StarlightLockControl (playergroup lp_playerGroup, bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto719E43ED_val;
+    playergroup autoF3869937_g;
+    int autoF3869937_var;
+    playergroup auto2376178C_g;
+    int auto2376178C_var;
+
+    // Implementation
+    auto719E43ED_val = lp_toggle;
+    if (auto719E43ED_val == true) {
+        autoF3869937_g = lp_playerGroup;
+        autoF3869937_var = -1;
+        while (true) {
+            autoF3869937_var = PlayerGroupNextPlayer(autoF3869937_g, autoF3869937_var);
+            if (autoF3869937_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(autoF3869937_var, "LockControl", 1);
+        }
+    }
+    else if (auto719E43ED_val == false) {
+        auto2376178C_g = lp_playerGroup;
+        auto2376178C_var = -1;
+        while (true) {
+            auto2376178C_var = PlayerGroupNextPlayer(auto2376178C_g, auto2376178C_var);
+            if (auto2376178C_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto2376178C_var, "LockControl", 0);
+        }
+    }
+    else {
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Sapphiron Summon
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SapphironSummon_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gv_sapphironSummonCount[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)] += 1;
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SapphironUpgrade", lib7AED044D_gv_sapphironSummonCount[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)]);
+    lib8D68C7BC_gf_StarlightAlert(PlayerGroupAll(), TextWithColor(UnitGetName(EventPlayerEffectUsedUnit(c_effectUnitTarget)), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false))), (StringExternal("Param/Value/lib_7AED044D_F40BD326") + TextWithColor(UnitGetName(EventPlayerEffectUsedUnit(c_effectUnitCaster)), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false)))), Color(100,100,100), (CatalogFieldValueGet(c_gameCatalogActor, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "UnitIcon", 0)), "StarlightGlowRed", SoundLink("UI_QuestDiscovered", -1), 5.0, c_timeReal);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SapphironSummon_Init () {
+    lib7AED044D_gt_SapphironSummon = TriggerCreate("lib7AED044D_gt_SapphironSummon_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SapphironSummon, c_playerAny, "SapphironSetSummon");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ivus Summon
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_IvusSummon_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gv_ivusSummonCount[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)] += 1;
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "IvusUpgrade", lib7AED044D_gv_ivusSummonCount[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)]);
+    lib8D68C7BC_gf_StarlightAlert(PlayerGroupAll(), TextWithColor(UnitGetName(EventPlayerEffectUsedUnit(c_effectUnitTarget)), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false))), (StringExternal("Param/Value/lib_7AED044D_6E1FCAC1") + TextWithColor(UnitGetName(EventPlayerEffectUsedUnit(c_effectUnitCaster)), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false)))), Color(100,100,100), (CatalogFieldValueGet(c_gameCatalogActor, EventPlayerEffectUsedUnitType(c_effectUnitTarget), "UnitIcon", 0)), "StarlightGlowRed", SoundLink("UI_QuestDiscovered", -1), 5.0, c_timeReal);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_IvusSummon_Init () {
+    lib7AED044D_gt_IvusSummon = TriggerCreate("lib7AED044D_gt_IvusSummon_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_IvusSummon, c_playerAny, "SummonIvusSetSummon");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stampede Start
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_StampedeStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gv_stampedeFacing[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)] = UnitGetFacing(EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_StampedeStart_Init () {
+    lib7AED044D_gt_StampedeStart = TriggerCreate("lib7AED044D_gt_StampedeStart_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_StampedeStart, c_playerAny, "StampedeSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stampede
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Stampede_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreate(1, "Stampede", c_unitCreateIgnorePlacement, EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), lib7AED044D_gv_stampedeFacing[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Stampede_Init () {
+    lib7AED044D_gt_Stampede = TriggerCreate("lib7AED044D_gt_Stampede_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Stampede, c_playerAny, "StampedeSetCreate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ankh
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Ankh_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitRemove(UnitGroupRandomUnit(UnitGroupFilter("Ankh", c_playerAny, UnitInventoryGroup(EventPlayerEffectUsedUnit(c_effectUnitCaster)), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Ankh_Init () {
+    lib7AED044D_gt_Ankh = TriggerCreate("lib7AED044D_gt_Ankh_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Ankh, c_playerAny, "AnkhSetUse");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ancestral Spirit
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_AncestralSpirit_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    unitgroup lv_ug;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_ug = UnitGroupEmpty();
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "AncestralSpiritSetImpact", UnitGroupClosestToPoint(libNtve_gf_UnitsInRegionWithAllianceToPlayerMatchingCondition("Tauren", "Spiritwalker", "", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), c_unitAllianceAlly, RegionCircle(UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), 8.0), UnitFilter(0, (1 << (c_targetFilterDead - 32)), (1 << c_targetFilterMissile), (1 << (c_targetFilterHidden - 32))), 0), EventPlayerEffectUsedPoint(c_effectLocationCasterPoint)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_AncestralSpirit_Init () {
+    lib7AED044D_gt_AncestralSpirit = TriggerCreate("lib7AED044D_gt_AncestralSpirit_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_AncestralSpirit, c_playerAny, "AncestralSpiritSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Screen Shake Minor
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ScreenShakeMinor_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_ScreenShakeMinor(EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ScreenShakeMinor_Init () {
+    lib7AED044D_gt_ScreenShakeMinor = TriggerCreate("lib7AED044D_gt_ScreenShakeMinor_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "TearRealitySetCast");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "VoidlordSetCast");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "InfernoSearch");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "NydusDragonSetCast");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "RainofChaosSearch");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "DisplacementBeamSetCast");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "VoidShiftTeleport");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMinor, c_playerAny, "ScreenShakeMinor");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Screen Shake Moderate
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ScreenShakeModerate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_ScreenShakeModerate(EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ScreenShakeModerate_Init () {
+    lib7AED044D_gt_ScreenShakeModerate = TriggerCreate("lib7AED044D_gt_ScreenShakeModerate_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeModerate, c_playerAny, "ScreenShakeModerate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Screen Shake Major
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ScreenShakeMajor_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_ScreenShakeMajor(EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ScreenShakeMajor_Init () {
+    lib7AED044D_gt_ScreenShakeMajor = TriggerCreate("lib7AED044D_gt_ScreenShakeMajor_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeMajor, c_playerAny, "ScreenShakeMajor");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Screen Shake Global
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ScreenShakeGlobal_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_ScreenShakeGlobal();
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ScreenShakeGlobal_Init () {
+    lib7AED044D_gt_ScreenShakeGlobal = TriggerCreate("lib7AED044D_gt_ScreenShakeGlobal_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ScreenShakeGlobal, c_playerAny, "ScreenShakeGlobal");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gate Death
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GateDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_MakeUnitInvulnerable(EventPlayerEffectUsedUnit(c_effectUnitSource), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GateDeath_Init () {
+    lib7AED044D_gt_GateDeath = TriggerCreate("lib7AED044D_gt_GateDeath_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_GateDeath, c_playerAny, "GateDeathSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gate Rebuild
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GateRebuild_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_MakeUnitInvulnerable(EventPlayerEffectUsedUnit(c_effectUnitSource), false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GateRebuild_Init () {
+    lib7AED044D_gt_GateRebuild = TriggerCreate("lib7AED044D_gt_GateRebuild_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_GateRebuild, c_playerAny, "RebuildGateSetComplete");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Critical Strike Effect
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_CriticalStrikeEffect_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitTarget), 0, UnitFilter(0, 0, (1 << c_targetFilterStructure), (1 << (c_targetFilterResistant - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate((StringExternal("Param/Value/lib_7AED044D_B2DB34F3") + IntToText((CatalogFieldValueGetAsInt(c_gameCatalogEffect, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "WeaponArray[" + IntToString(0) + "].Link", 0) + "Damage"), "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)) * (UnitBehaviorCount(EventPlayerEffectUsedUnit(c_effectUnitSource), "WeaponCritMultiplier") + 2)))), 32, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), 1.0, true, false, PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)));
+    TextTagSetVelocity(TextTagLastCreated(), 2.0, 90.0);
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 1.5);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_CriticalStrikeEffect_Init () {
+    lib7AED044D_gt_CriticalStrikeEffect = TriggerCreate("lib7AED044D_gt_CriticalStrikeEffect_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_CriticalStrikeEffect, c_playerAny, "CritDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Evasion Effect
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_EvasionEffect_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitTarget)) == true))) {
+            return false;
+        }
+
+        if (!((UnitIsValid(EventPlayerEffectUsedUnit(c_effectUnitSource)) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate((StringExternal("Param/Value/lib_7AED044D_43FD80E4") + StringExternal("Param/Value/lib_7AED044D_C241794B")), 30, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitTarget)), 1.0, true, false, PlayerGroupAll());
+    TextTagSetVelocity(TextTagLastCreated(), 0.5, 90.0);
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 1.5);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_EvasionEffect_Init () {
+    lib7AED044D_gt_EvasionEffect = TriggerCreate("lib7AED044D_gt_EvasionEffect_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_EvasionEffect, c_playerAny, "EvasionEffect");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Echo of Medivh Cast
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_EchoofMedivhCast_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLevel, 10.0);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", 0) + "Learn")), 0)), c_orderQueueReplace);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", 0) + "Learn")), 1)), c_orderQueueReplace);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), Order(AbilityCommand(((CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", 0) + "Learn")), 2)), c_orderQueueReplace);
+    UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitSource), "SpawnAttackStarlightAbilities", EventPlayerEffectUsedUnit(c_effectUnitSource));
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(0) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(1) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderSetAutoCast(AbilityCommand((CatalogFieldValueGet(c_gameCatalogAbil, (CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "ReviveType", c_playerAny) + "Learn"), "InfoArray[" + IntToString(2) + "].Abil", 0)), 0), true), c_orderQueueReplace);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderSetAutoCast(AbilityCommand("CarrionBeetlesMagazine", 0), true), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_EchoofMedivhCast_Init () {
+    lib7AED044D_gt_EchoofMedivhCast = TriggerCreate("lib7AED044D_gt_EchoofMedivhCast_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_EchoofMedivhCast, c_playerAny, "EchoofMedivhCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Eye of Sargeras
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_EyeofSargeras_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLevel, (UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLevel, c_unitPropCurrent) + 1.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_EyeofSargeras_Init () {
+    lib7AED044D_gt_EyeofSargeras = TriggerCreate("lib7AED044D_gt_EyeofSargeras_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_EyeofSargeras, c_playerAny, "EyeofSargerasSetUse");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gold Pickup 10
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GoldPickup10_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerGold(10, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GoldPickup10_Init () {
+    lib7AED044D_gt_GoldPickup10 = TriggerCreate("lib7AED044D_gt_GoldPickup10_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_GoldPickup10, c_playerAny, "PickupGold10Set");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gold Pickup 25
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GoldPickup25_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerGold(25, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GoldPickup25_Init () {
+    lib7AED044D_gt_GoldPickup25 = TriggerCreate("lib7AED044D_gt_GoldPickup25_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_GoldPickup25, c_playerAny, "PickupGold25Set");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gold Pickup 50
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GoldPickup50_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerGold(50, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GoldPickup50_Init () {
+    lib7AED044D_gt_GoldPickup50 = TriggerCreate("lib7AED044D_gt_GoldPickup50_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_GoldPickup50, c_playerAny, "PickupGold50Set");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Promote
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Promote_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior2(EventPlayerEffectUsedUnit(c_effectUnitTarget), "Promote") == false)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent) * (1.5 + (IntToFixed(TechTreeUpgradeCount(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "Promote", c_techCountCompleteOnly)) * 0.05))), 1.0, 520000.0));
+        if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+            UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, 520000.0);
+            UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLife, 520000.0);
+        }
+
+    }
+    else {
+        UnitBehaviorAdd(EventPlayerEffectUsedUnit(c_effectUnitTarget), "Promote", EventPlayerEffectUsedUnit(c_effectUnitTarget), 1);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Promote_Init () {
+    lib7AED044D_gt_Promote = TriggerCreate("lib7AED044D_gt_Promote_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Promote, c_playerAny, "PromoteHighLife");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Promote Upgrade
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_PromoteUpgrade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const string lv_ability = "Promote";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityGetLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability) < UnitAbilityMaxLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("SpellbringerPromoteAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), (StringExternal("Param/Value/lib_7AED044D_9DA58244") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Name", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))) + StringExternal("Param/Value/lib_7AED044D_9AA9E498")), (CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Icon", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    SoundPlay(SoundLink("UI_QuestUpdate", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), 100.0, 0.0);
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades") + 1));
+    TechTreeUpgradeAddLevel(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), ((lv_ability)), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_PromoteUpgrade_Init () {
+    lib7AED044D_gt_PromoteUpgrade = TriggerCreate("lib7AED044D_gt_PromoteUpgrade_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_PromoteUpgrade, c_playerAny, "PromoteUpgrade");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Soulshatter Apply Life
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SoulshatterApplyLife_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, libNtve_gf_ArithmeticRealClamp((lib7AED044D_gv_soulshatter[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)] * 1.5), 1.0, 520000.0));
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent) <= 5.0)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, 520000.0);
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLife, 520000.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SoulshatterApplyLife_Init () {
+    lib7AED044D_gt_SoulshatterApplyLife = TriggerCreate("lib7AED044D_gt_SoulshatterApplyLife_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SoulshatterApplyLife, c_playerAny, "SoulshatterSetCreate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Soulshatter Set Life
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SoulshatterSetLife_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gv_soulshatter[EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)] = UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifeMax, c_unitPropCurrent);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SoulshatterSetLife_Init () {
+    lib7AED044D_gt_SoulshatterSetLife = TriggerCreate("lib7AED044D_gt_SoulshatterSetLife_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SoulshatterSetLife, c_playerAny, "SoulshatterSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Storm, Earth and Fire Cancel
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_StormEarthandFireCancel_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorSetDurationRemaining(EventPlayerEffectUsedUnit(c_effectUnitSource), "StormEarthandFireActive", 0.0625);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_StormEarthandFireCancel_Init () {
+    lib7AED044D_gt_StormEarthandFireCancel = TriggerCreate("lib7AED044D_gt_StormEarthandFireCancel_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_StormEarthandFireCancel, c_playerAny, "StormEarthandFireCancel");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stun Orb Upgrade
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_StunOrbUpgrade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const string lv_ability = "StunOrb";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityGetLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability) < UnitAbilityMaxLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("SpellbringerStunOrbAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), (StringExternal("Param/Value/lib_7AED044D_D54A7C42") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Name", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))) + StringExternal("Param/Value/lib_7AED044D_27B103BE")), (CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Icon", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    SoundPlay(SoundLink("UI_QuestUpdate", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), 100.0, 0.0);
+    UnitAbilityChangeLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability, 1);
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades") + 1));
+    TechTreeUpgradeAddLevel(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), ((lv_ability)), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_StunOrbUpgrade_Init () {
+    lib7AED044D_gt_StunOrbUpgrade = TriggerCreate("lib7AED044D_gt_StunOrbUpgrade_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_StunOrbUpgrade, c_playerAny, "StunOrbUpgrade");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Crippling Field Upgrade
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_CripplingFieldUpgrade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const string lv_ability = "CripplingField";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityGetLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability) < UnitAbilityMaxLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("SpellbringerCripplingFieldAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), (StringExternal("Param/Value/lib_7AED044D_4B84A256") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Name", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))) + StringExternal("Param/Value/lib_7AED044D_E1D8AE43")), (CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Icon", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    SoundPlay(SoundLink("UI_QuestUpdate", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), 100.0, 0.0);
+    UnitAbilityChangeLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability, 1);
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades") + 1));
+    TechTreeUpgradeAddLevel(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), ((lv_ability)), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_CripplingFieldUpgrade_Init () {
+    lib7AED044D_gt_CripplingFieldUpgrade = TriggerCreate("lib7AED044D_gt_CripplingFieldUpgrade_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_CripplingFieldUpgrade, c_playerAny, "CripplingFieldUpgrade");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Argus Construct Facing
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ArgusConstructFacing_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetFacing(EventPlayerEffectUsedUnit(c_effectUnitTarget), 270.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ArgusConstructFacing_Init () {
+    lib7AED044D_gt_ArgusConstructFacing = TriggerCreate("lib7AED044D_gt_ArgusConstructFacing_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ArgusConstructFacing, c_playerAny, "ArgusConstructSetSummon");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Argus Construct Upgrade
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ArgusConstructUpgrade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const string lv_ability = "ArgusConstruct";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityGetLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability) < UnitAbilityMaxLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("SpellbringerArgusConstructAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), (StringExternal("Param/Value/lib_7AED044D_BD60F0E0") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Name", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))) + StringExternal("Param/Value/lib_7AED044D_907310B9")), (CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Icon", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    SoundPlay(SoundLink("UI_QuestUpdate", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), 100.0, 0.0);
+    UnitAbilityChangeLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability, 1);
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades") + 1));
+    TechTreeUpgradeAddLevel(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), ((lv_ability)), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ArgusConstructUpgrade_Init () {
+    lib7AED044D_gt_ArgusConstructUpgrade = TriggerCreate("lib7AED044D_gt_ArgusConstructUpgrade_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ArgusConstructUpgrade, c_playerAny, "ArgusConstructUpgrade");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Solarite Construct Upgrade
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SolariteConstructUpgrade_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    const string lv_ability = "SolariteConstruct";
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitAbilityGetLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability) < UnitAbilityMaxLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability)))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UIAlertPoint("SpellbringerSolariteConstructAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), (StringExternal("Param/Value/lib_7AED044D_337FFB4C") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Name", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))) + StringExternal("Param/Value/lib_7AED044D_EEC181D6")), (CatalogFieldValueGet(c_gameCatalogButton, lv_ability, "Icon", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster))), EventPlayerEffectUsedPoint(c_effectLocationTargetPoint));
+    SoundPlay(SoundLink("UI_QuestUpdate", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), 100.0, 0.0);
+    UnitAbilityChangeLevel(EventPlayerEffectUsedUnit(c_effectUnitCaster), lv_ability, 1);
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), "SpellbringerUpgrades") + 1));
+    TechTreeUpgradeAddLevel(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), ((lv_ability)), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SolariteConstructUpgrade_Init () {
+    lib7AED044D_gt_SolariteConstructUpgrade = TriggerCreate("lib7AED044D_gt_SolariteConstructUpgrade_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SolariteConstructUpgrade, c_playerAny, "SolariteConstructSetCast");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SolariteConstructUpgrade, c_playerAny, "SolariteConstructUpgrade");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Rune Fragment
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_RuneFragment_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLevel, (UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLevel, c_unitPropCurrent) + 1.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_RuneFragment_Init () {
+    lib7AED044D_gt_RuneFragment = TriggerCreate("lib7AED044D_gt_RuneFragment_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_RuneFragment, c_playerAny, "RuneFragmentSetUse");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Change Owner To Caster
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ChangeOwnerToCaster_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventPlayerEffectUsedUnit(c_effectUnitTarget), "AsleepSource", 1);
+    UnitSetTeamColorIndex(EventPlayerEffectUsedUnit(c_effectUnitTarget), PlayerGetColorIndex(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false));
+    UnitSetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitTarget), 0, 0.0);
+    UnitSetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ChangeOwnerToCaster_Init () {
+    lib7AED044D_gt_ChangeOwnerToCaster = TriggerCreate("lib7AED044D_gt_ChangeOwnerToCaster_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ChangeOwnerToCaster, c_playerAny, "ChangeOwnerToCaster");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Full Heal Source
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_FullHealSource_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropEnergyPercent, 100.0);
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropShieldsPercent, 100.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_FullHealSource_Init () {
+    lib7AED044D_gt_FullHealSource = TriggerCreate("lib7AED044D_gt_FullHealSource_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_FullHealSource, c_playerAny, "FullHealSource");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Full Heal Target
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_FullHealTarget_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropLifePercent, 100.0);
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergyPercent, 100.0);
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropShieldsPercent, 100.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_FullHealTarget_Init () {
+    lib7AED044D_gt_FullHealTarget = TriggerCreate("lib7AED044D_gt_FullHealTarget_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_FullHealTarget, c_playerAny, "FullHealTarget");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Enslave
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Enslave_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    CatalogFieldValueSet(c_gameCatalogAbil, "EnslaveMagazine", "InfoArray[" + IntToString(0) + "].Unit", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitTarget)), "ReviveType", 0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Enslave_Init () {
+    lib7AED044D_gt_Enslave = TriggerCreate("lib7AED044D_gt_Enslave_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Enslave, c_playerAny, "EnslaveSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Transmute
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Transmute_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_x;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_x = CatalogFieldValueGetAsInt(c_gameCatalogEffect, "TransmuteDamage", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerGold(lv_x, EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Transmute_Init () {
+    lib7AED044D_gt_Transmute = TriggerCreate("lib7AED044D_gt_Transmute_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Transmute, c_playerAny, "TransmuteSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Absorb Mana
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_AbsorbMana_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_x;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_x = libNtve_gf_ArithmeticRealClamp(UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergy, c_unitPropCurrent), 0.0, (UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergyMax, c_unitPropCurrent) - UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergy, c_unitPropCurrent)));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergy, (UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergy, c_unitPropCurrent) + lv_x));
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergy, (UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergy, c_unitPropCurrent) - lv_x));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_AbsorbMana_Init () {
+    lib7AED044D_gt_AbsorbMana = TriggerCreate("lib7AED044D_gt_AbsorbMana_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_AbsorbMana, c_playerAny, "AbsorbManaSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Searing Strikes Augment
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SearingStrikesAugment_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "SearingStrikesAugment", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SearingStrikesAugment_Init () {
+    lib7AED044D_gt_SearingStrikesAugment = TriggerCreate("lib7AED044D_gt_SearingStrikesAugment_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(lib7AED044D_gt_SearingStrikesAugment, null, AbilityCommand("SearingStrikesAugmentUse", 0), c_unitAbilAutoCastChangeOff, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Control Magic
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ControlMagic_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), 0, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitHasBehavior(EventUnit(), "AbilityResistance") == true)) {
+        UnitBehaviorSetDuration(EventUnit(), "ControlMagic", libNtve_gf_ArithmeticRealClamp(((133.3333 / UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent)) * 60.0), 1.0, 60.0));
+    }
+    else {
+        UnitBehaviorSetDuration(EventUnit(), "ControlMagic", libNtve_gf_ArithmeticRealClamp(((200.0 / UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent)) * 60.0), 1.0, 60.0));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ControlMagic_Init () {
+    lib7AED044D_gt_ControlMagic = TriggerCreate("lib7AED044D_gt_ControlMagic_Func");
+    TriggerAddEventUnitBehaviorChange(lib7AED044D_gt_ControlMagic, null, "ControlMagic", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Simulacrum
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ControlMagic3_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitFilterMatch(EventUnit(), 0, UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)))) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorSetDuration(EventUnit(), "Simulacrum", libNtve_gf_ArithmeticRealClamp(((400.0 / UnitGetPropertyFixed(EventUnit(), c_unitPropLife, c_unitPropCurrent)) * 60.0), 1.0, 60.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ControlMagic3_Init () {
+    lib7AED044D_gt_ControlMagic3 = TriggerCreate("lib7AED044D_gt_ControlMagic3_Func");
+    TriggerAddEventUnitBehaviorChange(lib7AED044D_gt_ControlMagic3, null, "Simulacrum", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spellsteal
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ControlMagic2_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    int autoB3F71FE2_ae;
+    const int autoB3F71FE2_ai = 1;
+    int autoCFE7E86A_ae;
+    const int autoCFE7E86A_ai = 1;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), libNtve_ge_PlayerRelation_Enemy) == true)) {
+        autoCFE7E86A_ae = UnitBehaviorCountAll(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+        lv_i = 1;
+        for ( ; ( (autoCFE7E86A_ai >= 0 && lv_i <= autoCFE7E86A_ae) || (autoCFE7E86A_ai < 0 && lv_i >= autoCFE7E86A_ae) ) ; lv_i += autoCFE7E86A_ai ) {
+            if ((lib7AED044D_gf_BehaviorIsPositive(UnitBehaviorGet(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_i)) == true)) {
+                lv_u = UnitGroupRandomUnit(UnitGroup(null, EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), RegionCircle(UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), 10.0), UnitFilter(0, 0, (1 << c_targetFilterNeutral) | (1 << c_targetFilterEnemy) | (1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterResistant - 32))), 0), c_unitCountAlive);
+                UnitBehaviorTransfer(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_u, UnitBehaviorGet(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_i), 1);
+                UnitCreateEffectUnit(lv_u, "SpellstealBeamDummy", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+                break;
+            }
+
+        }
+    }
+    else {
+        autoB3F71FE2_ae = UnitBehaviorCountAll(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+        lv_i = 1;
+        for ( ; ( (autoB3F71FE2_ai >= 0 && lv_i <= autoB3F71FE2_ae) || (autoB3F71FE2_ai < 0 && lv_i >= autoB3F71FE2_ae) ) ; lv_i += autoB3F71FE2_ai ) {
+            if ((lib7AED044D_gf_BehaviorIsNegative(UnitBehaviorGet(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_i)) == true)) {
+                lv_u = UnitGroupRandomUnit(UnitGroupAlliance(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), c_unitAllianceEnemy, RegionCircle(UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), 10.0), UnitFilter(0, 0, (1 << c_targetFilterStructure) | (1 << c_targetFilterHeroic) | (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32)) | (1 << (c_targetFilterResistant - 32))), 0), c_unitCountAlive);
+                UnitBehaviorTransfer(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_u, UnitBehaviorGet(EventPlayerEffectUsedUnit(c_effectUnitTarget), lv_i), 1);
+                UnitCreateEffectUnit(lv_u, "SpellstealBeamDummy", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+                break;
+            }
+
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ControlMagic2_Init () {
+    lib7AED044D_gt_ControlMagic2 = TriggerCreate("lib7AED044D_gt_ControlMagic2_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ControlMagic2, c_playerAny, "SpellstealSetCast");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Charm Death
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_CharmDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropKillXP, c_unitPropCurrent) > 0.0) && (UnitFilterMatch(EventPlayerEffectUsedUnit(c_effectUnitCaster), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32)))) == true)) {
+        UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropXP, (UnitXPTotal(EventPlayerEffectUsedUnit(c_effectUnitCaster)) + UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropKillXP, c_unitPropCurrent)));
+    }
+
+    if ((UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropBountyTerrazine, c_unitPropCurrent) > 0.0)) {
+        lib7AED044D_gf_KickerGold(FixedToInt(UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitSource), c_unitPropBountyTerrazine, c_unitPropCurrent)), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_CharmDeath_Init () {
+    lib7AED044D_gt_CharmDeath = TriggerCreate("lib7AED044D_gt_CharmDeath_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_CharmDeath, c_playerAny, "AwardBountyToCasterDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mirror Image Remove
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_MirrorImageRemove_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitRemove(EventPlayerEffectUsedUnit(c_effectUnitSource));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_MirrorImageRemove_Init () {
+    lib7AED044D_gt_MirrorImageRemove = TriggerCreate("lib7AED044D_gt_MirrorImageRemove_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_MirrorImageRemove, c_playerAny, "MirrorImageTimedLifeFate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Rally Caster (Use Caster Rally)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_RallyCasterUseCasterRally_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitCaster), Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1) >= 1)) {
+        UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitCaster), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1, 1)), c_orderQueueReplace);
+        if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1) >= 2)) {
+            UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitCaster), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1, 2)), c_orderQueueAddToEnd);
+            if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1) >= 3)) {
+                UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitCaster), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1, 3)), c_orderQueueAddToEnd);
+                if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1) >= 4)) {
+                    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitCaster), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitCaster), 1, 4)), c_orderQueueAddToEnd);
+                }
+
+            }
+
+        }
+
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_RallyCasterUseCasterRally_Init () {
+    lib7AED044D_gt_RallyCasterUseCasterRally = TriggerCreate("lib7AED044D_gt_RallyCasterUseCasterRally_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_RallyCasterUseCasterRally, c_playerAny, "RallyCasterUseCasterRallyTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Disable Hero Birth Rally (Trigger)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_DisableHeroBirthRallyTrigger_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitAbilityEnable(EventPlayerEffectUsedUnit(c_effectUnitCaster), "LeaderBirthRally", false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_DisableHeroBirthRallyTrigger_Init () {
+    lib7AED044D_gt_DisableHeroBirthRallyTrigger = TriggerCreate("lib7AED044D_gt_DisableHeroBirthRallyTrigger_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_DisableHeroBirthRallyTrigger, c_playerAny, "RallyCasterUseCasterRallyTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Rally Source (Use Target Rally)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_RallySourceUseTargetRally_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1) >= 1)) {
+        UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 1)), c_orderQueueReplace);
+        if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1) >= 2)) {
+            UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 2)), c_orderQueueAddToEnd);
+            if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1) >= 3)) {
+                UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 3)), c_orderQueueAddToEnd);
+                if ((UnitRallyPointTargetCount(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1) >= 4)) {
+                    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), OrderTargetingPoint(AbilityCommand("attack", 0), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 4)), c_orderQueueAddToEnd);
+                }
+
+            }
+
+        }
+
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_RallySourceUseTargetRally_Init () {
+    lib7AED044D_gt_RallySourceUseTargetRally = TriggerCreate("lib7AED044D_gt_RallySourceUseTargetRally_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_RallySourceUseTargetRally, c_playerAny, "RallySourceUseTargetRallyTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Transfer on Death
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_TransferonDeath_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_icon;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_icon = (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventPlayerEffectUsed() == "TransferonDeathNeutral")) {
+        UnitSetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource), 0, true);
+    }
+    else {
+        UnitSetOwner(EventPlayerEffectUsedUnit(c_effectUnitSource), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), true);
+    }
+    if ((EventPlayerEffectUsed() == "TransferonDeathAlert")) {
+        UIAlertPoint("HeroAlert", EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), (StringExternal("Param/Value/lib_7AED044D_6A6BEBAB") + TextWithColor(UnitTypeGetName(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource))), Color(0.00, 72.55, 0.00)) + StringExternal("Param/Value/lib_7AED044D_9CD56298")), lv_icon, EventPlayerEffectUsedPoint(c_effectLocationSourceUnit));
+        SoundPlay(SoundLink("UI_ObjectiveComplete", -1), PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)), 100.0, 0.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_TransferonDeath_Init () {
+    lib7AED044D_gt_TransferonDeath = TriggerCreate("lib7AED044D_gt_TransferonDeath_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_TransferonDeath, c_playerAny, "TransferonDeathAlert");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_TransferonDeath, c_playerAny, "TransferonDeathNoAlert");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_TransferonDeath, c_playerAny, "TransferonDeathNeutral");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gate Rebuild Start
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GateRebuildStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetOwner(EventUnit(), EventPlayer(), true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GateRebuildStart_Init () {
+    lib7AED044D_gt_GateRebuildStart = TriggerCreate("lib7AED044D_gt_GateRebuildStart_Func");
+    TriggerAddEventUnitAbility(lib7AED044D_gt_GateRebuildStart, null, AbilityCommand("RebuildGate", 0), c_abilEffectStagePrep, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Periodic Spawning
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_PeriodicSpawning_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    fixed lv_xp;
+
+    // Automatic Variable Declarations
+    const int auto21D0AE39_ae = 0;
+    const int auto21D0AE39_ai = -1;
+    int auto315E3EA3_n;
+    int auto315E3EA3_i;
+    unitgroup auto634C2273_g;
+    int auto634C2273_u;
+    unit auto634C2273_var;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 18;
+    for ( ; ( (auto21D0AE39_ai >= 0 && lv_i <= auto21D0AE39_ae) || (auto21D0AE39_ai < 0 && lv_i >= auto21D0AE39_ae) ) ; lv_i += auto21D0AE39_ai ) {
+        if ((UnitBehaviorCount(EventPlayerEffectUsedUnit(c_effectUnitSource), (("PeriodicSpawningSource" + IntToString(lv_i)))) > 0)) {
+            auto315E3EA3_n = UnitBehaviorCount(EventPlayerEffectUsedUnit(c_effectUnitSource), (("PeriodicSpawningSource" + IntToString(lv_i))));
+            for (auto315E3EA3_i = 1; auto315E3EA3_i <= auto315E3EA3_n; auto315E3EA3_i += 1) {
+                UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitSource), (("PeriodicSpawningOrder" + IntToString(lv_i))), EventPlayerEffectUsedUnit(c_effectUnitSource));
+                lv_xp += UnitTypeGetProperty((CatalogFieldValueGet(c_gameCatalogAbil, CatalogFieldValueGet(c_gameCatalogUnit, EventPlayerEffectUsedUnitType(c_effectUnitSource), "AbilArray[" + IntToString(3) + "].Link", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), "InfoArray[" + IntToString(lv_i) + "].Unit[" + IntToString(0) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource))), c_unitPropKillXP);
+            }
+        }
+
+    }
+    lv_xp *= lib7AED044D_gv_xPforSpawn;
+    if ((lv_xp > 0.0)) {
+        auto634C2273_g = UnitGroup(null, EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), RegionEntireMap(), UnitFilter((1 << c_targetFilterHeroic), 0, 0, (1 << (c_targetFilterHallucination - 32))), 0);
+        auto634C2273_u = UnitGroupCount(auto634C2273_g, c_unitCountAll);
+        for (;; auto634C2273_u -= 1) {
+            auto634C2273_var = UnitGroupUnitFromEnd(auto634C2273_g, auto634C2273_u);
+            if (auto634C2273_var == null) { break; }
+            lib7AED044D_gf_KickerXP(FixedToInt(lv_xp), auto634C2273_var, true);
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_PeriodicSpawning_Init () {
+    lib7AED044D_gt_PeriodicSpawning = TriggerCreate("lib7AED044D_gt_PeriodicSpawning_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_PeriodicSpawning, c_playerAny, "PeriodicSpawning");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Periodic Spawning Charge Count
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_PeriodicSpawningChargeCount_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoCE6BE1C5_ae = 18;
+    const int autoCE6BE1C5_ai = 1;
+
+    // Variable Initialization
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitHasBehavior2(EventPlayerEffectUsedUnit(c_effectUnitTarget), "WorkerWar3") == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_i = 0;
+    for ( ; ( (autoCE6BE1C5_ai >= 0 && lv_i <= autoCE6BE1C5_ae) || (autoCE6BE1C5_ai < 0 && lv_i >= autoCE6BE1C5_ae) ) ; lv_i += autoCE6BE1C5_ai ) {
+        if ((UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitTarget)) == (CatalogFieldValueGet(c_gameCatalogAbil, EffectHistoryGetAbil(UnitEffectHistory(EventPlayerEffectUsedUnit(c_effectUnitSource), 1), 1), "InfoArray[" + IntToString(lv_i) + "].Unit[" + IntToString(0) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource))))) {
+            CatalogFieldValueSet(c_gameCatalogAbil, EffectHistoryGetAbil(UnitEffectHistory(EventPlayerEffectUsedUnit(c_effectUnitSource), 1), 1), "InfoArray[" + IntToString(lv_i) + "].Charge.HideCount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "0");
+            UnitAddChargeUsed(EventPlayerEffectUsedUnit(c_effectUnitSource), ("Abil/War3Train" + IntToString((lv_i + 1))), -1.0);
+            break;
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_PeriodicSpawningChargeCount_Init () {
+    lib7AED044D_gt_PeriodicSpawningChargeCount = TriggerCreate("lib7AED044D_gt_PeriodicSpawningChargeCount_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_PeriodicSpawningChargeCount, c_playerAny, "PeriodicSpawningSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Preparation Time Timeout
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_PreparationTimeTimeout_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto7A21C83B_g;
+    int auto7A21C83B_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7A21C83B_g = lib7AED044D_gv_preparationTimeGroup;
+    auto7A21C83B_var = -1;
+    while (true) {
+        auto7A21C83B_var = PlayerGroupNextPlayer(auto7A21C83B_g, auto7A21C83B_var);
+        if (auto7A21C83B_var < 0) { break; }
+        libNtve_gf_SetUpgradeLevelForPlayer(auto7A21C83B_var, "PreparationTime", 0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_PreparationTimeTimeout_Init () {
+    lib7AED044D_gt_PreparationTimeTimeout = TriggerCreate("lib7AED044D_gt_PreparationTimeTimeout_Func");
+    TriggerAddEventTimer(lib7AED044D_gt_PreparationTimeTimeout, lib7AED044D_gv_preparationTimeTimer);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Bounty System Trigger
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_BountySystemTrigger_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_bounty;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_bounty = (IntToFixed((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostSumMineralsVespene) + UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostTerrazine))) * RandomFixed(0.75, 1.25));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostTerrazine) > 0))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerIsEnemy(EventPlayer(), libNtve_gf_KillingPlayer(), libNtve_ge_PlayerRelation_Enemy) == true))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(EventPlayer(), "BountyEnabled", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitFilterMatch(EventUnit(), 0, UnitFilter((1 << c_targetFilterStructure), 0, 0, 0)) == true)) {
+        lv_bounty *= lib7AED044D_gv_bountyModifierStructure[EventPlayer()];
+    }
+    else {
+        lv_bounty *= lib7AED044D_gv_bountyModifierUnit[EventPlayer()];
+    }
+    if ((lv_bounty > 0)) {
+        lib7AED044D_gf_KickerGold(FixedToInt(lv_bounty), UnitGetPosition(EventUnit()), libNtve_gf_KillingPlayer(), 1.0, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_BountySystemTrigger_Init () {
+    lib7AED044D_gt_BountySystemTrigger = TriggerCreate("lib7AED044D_gt_BountySystemTrigger_Func");
+    TriggerEnable(lib7AED044D_gt_BountySystemTrigger, false);
+    TriggerAddEventUnitDied(lib7AED044D_gt_BountySystemTrigger, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Bounty
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_HeroBounty_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_bounty;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_bounty = FixedToInt(((lib7AED044D_gv_bountyHero[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)] + (lib7AED044D_gv_bountyHeroLevel[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)] * UnitLevel(EventPlayerEffectUsedUnit(c_effectUnitSource)))) * RandomFixed(0.75, 1.25)));
+
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), libNtve_ge_PlayerRelation_Enemy) == true))) {
+            return false;
+        }
+
+        if (!((TechTreeUpgradeCount(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "BountyEnabled", c_techCountCompleteOnly) == 1))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_bounty > 0)) {
+        lib7AED044D_gf_KickerGold(lv_bounty, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_HeroBounty_Init () {
+    lib7AED044D_gt_HeroBounty = TriggerCreate("lib7AED044D_gt_HeroBounty_Func");
+    TriggerEnable(lib7AED044D_gt_HeroBounty, false);
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_HeroBounty, c_playerAny, "HeroDeathAlert");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Neutral Hostile Bounty
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_NeutralHostileBounty_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_bounty;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_bounty = FixedToInt(((IntToFixed((UnitTypeGetCost(EventPlayerEffectUsedUnitType(c_effectUnitSource), c_unitCostSumMineralsVespene) + UnitTypeGetCost(EventPlayerEffectUsedUnitType(c_effectUnitSource), c_unitCostTerrazine))) * lib7AED044D_gv_bountyModifierCreep[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)]) * RandomFixed(0.75, 1.25)));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostTerrazine) > 0))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), libNtve_ge_PlayerRelation_Enemy) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_bounty > 0)) {
+        lib7AED044D_gf_KickerGold(lv_bounty, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_NeutralHostileBounty_Init () {
+    lib7AED044D_gt_NeutralHostileBounty = TriggerCreate("lib7AED044D_gt_NeutralHostileBounty_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_NeutralHostileBounty, c_playerAny, "NeutralHostileCreepDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ragnaros Birth
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_RagnarosBirth_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_BossText(StringExternal("Param/Value/lib_7AED044D_A62092BD"), "Ragnaros");
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_RagnarosBirth_Init () {
+    lib7AED044D_gt_RagnarosBirth = TriggerCreate("lib7AED044D_gt_RagnarosBirth_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_RagnarosBirth, c_playerAny, "RagnarosBirth");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Unique Damage
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerUniqueDamage_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto0892385A_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto0892385A_val = EventPlayerEffectUsed();
+    if (auto0892385A_val == "KickerCarrionSwarm") {
+        lib7AED044D_gf_KickerDamage("KickerCarrionSwarm", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerImpale") {
+        lib7AED044D_gf_KickerDamage("KickerImpale", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerDeathandDecay") {
+        lib7AED044D_gf_KickerDamage("KickerDeathandDecay", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerStormBolt") {
+        lib7AED044D_gf_KickerDamage("KickerStormBolt", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerFlamestrike") {
+        lib7AED044D_gf_KickerDamage("KickerFlamestrike", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerBladestorm") {
+        lib7AED044D_gf_KickerDamage("KickerBladestorm", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerEarthquake") {
+        lib7AED044D_gf_KickerDamage("KickerEarthquake", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerChainLightning") {
+        lib7AED044D_gf_KickerDamage("KickerChainLightning", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerShockwave") {
+        lib7AED044D_gf_KickerDamage("KickerShockwave", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerEntanglingRoots") {
+        lib7AED044D_gf_KickerDamage("KickerEntanglingRoots", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerImmolation") {
+        lib7AED044D_gf_KickerDamage("KickerImmolation", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerManaBurn") {
+        lib7AED044D_gf_KickerDamage("KickerManaBurn", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+        lib7AED044D_gf_KickerEnergyBurn("KickerManaBurnEnergy", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), -1.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerStarfall") {
+        lib7AED044D_gf_KickerDamage("KickerStarfall", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerTornado") {
+        lib7AED044D_gf_KickerDamage("KickerTornado", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerSoulBurn") {
+        lib7AED044D_gf_KickerDamage("KickerSoulBurn", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerVolcano") {
+        lib7AED044D_gf_KickerDamage("KickerVolcano", EventPlayerEffectUsedPoint(c_effectLocationSourcePoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerRainofFire") {
+        lib7AED044D_gf_KickerDamage("KickerRainofFire", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerDoom") {
+        lib7AED044D_gf_KickerDamage("KickerDoom", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerIncinerate") {
+        lib7AED044D_gf_KickerDamage("KickerIncinerate", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerStampede") {
+        lib7AED044D_gf_KickerDamage("KickerStampede", EventPlayerEffectUsedPoint(c_effectLocationSourcePoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerAcidBomb") {
+        lib7AED044D_gf_KickerDamage("KickerAcidBomb", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerClusterRockets") {
+        lib7AED044D_gf_KickerDamage("KickerClusterRockets", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerPocketFactory") {
+        lib7AED044D_gf_KickerDamage("KickerPocketFactory", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerBreathofFire") {
+        lib7AED044D_gf_KickerDamage("KickerBreathofFire", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerSilence") {
+        lib7AED044D_gf_KickerEnergyBurn("KickerSilence", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), -1.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerDeathMarch") {
+        lib7AED044D_gf_KickerDamage("KickerDeathMarch", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerDesecrate") {
+        lib7AED044D_gf_KickerDamage("KickerDesecrate", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), -1.0, true, true);
+    }
+    else if (auto0892385A_val == "KickerVoidShift") {
+        lib7AED044D_gf_KickerDamage("KickerVoidShift", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerFrozenOrb") {
+        lib7AED044D_gf_KickerDamage("KickerFrozenOrb", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerHeroicLeap") {
+        lib7AED044D_gf_KickerDamage("KickerHeroicLeap", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerSiphonPower") {
+        lib7AED044D_gf_KickerDamage("KickerSiphonPower", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerMonsoon") {
+        lib7AED044D_gf_KickerDamage("KickerMonsoon", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerVirulentCloud") {
+        lib7AED044D_gf_KickerDamage("KickerVirulentCloud", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else if (auto0892385A_val == "KickerMeteor") {
+        lib7AED044D_gf_KickerDamage("KickerMeteor", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerUniqueDamage_Init () {
+    lib7AED044D_gt_KickerUniqueDamage = TriggerCreate("lib7AED044D_gt_KickerUniqueDamage_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerCarrionSwarm");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerImpale");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerDeathandDecay");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerStormBolt");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerFlamestrike");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerBladestorm");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerEarthquake");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerChainLightning");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerShockwave");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerEntanglingRoots");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerImmolation");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerManaBurn");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerStarfall");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerTornado");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerSoulBurn");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerVolcano");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerRainofFire");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerDoom");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerIncinerate");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerStampede");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerAcidBomb");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerBreathofFire");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerClusterRockets");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerPocketFactory");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerSilence");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerDesecrate");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerDeathMarch");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerVoidShift");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerFrozenOrb");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerHeroicLeap");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerSiphonPower");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerMonsoon");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerVirulentCloud");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueDamage, c_playerAny, "KickerMeteor");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Unique Life
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerUniqueLife_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto6385E805_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto6385E805_val = EventPlayerEffectUsed();
+    if (auto6385E805_val == "KickerTranquility") {
+        lib7AED044D_gf_KickerLife("KickerTranquility", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    }
+    else if (auto6385E805_val == "KickerHealingSpray") {
+        lib7AED044D_gf_KickerLife("KickerHealingSpray", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    }
+    else if (auto6385E805_val == "KickerRegrowth") {
+        lib7AED044D_gf_KickerLife("KickerRegrowth", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitTarget)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    }
+    else if (auto6385E805_val == "KickerRallyingCry") {
+        lib7AED044D_gf_KickerLife("KickerRallyingCry", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerUniqueLife_Init () {
+    lib7AED044D_gt_KickerUniqueLife = TriggerCreate("lib7AED044D_gt_KickerUniqueLife_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueLife, c_playerAny, "KickerTranquility");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueLife, c_playerAny, "KickerHealingSpray");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueLife, c_playerAny, "KickerRegrowth");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueLife, c_playerAny, "KickerRallyingCry");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Unique Energy
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerUniqueEnergy_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto52428992_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto52428992_val = EventPlayerEffectUsed();
+    if (auto52428992_val == "KickerWiseCouncil") {
+        lib7AED044D_gf_KickerEnergy("KickerWiseCouncil", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerUniqueEnergy_Init () {
+    lib7AED044D_gt_KickerUniqueEnergy = TriggerCreate("lib7AED044D_gt_KickerUniqueEnergy_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerUniqueEnergy, c_playerAny, "KickerWiseCouncil");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Damage (Target Point)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerDamageTargetPoint_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerDamage("KickerDamage", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerDamageTargetPoint_Init () {
+    lib7AED044D_gt_KickerDamageTargetPoint = TriggerCreate("lib7AED044D_gt_KickerDamageTargetPoint_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerDamageTargetPoint, c_playerAny, "KickerDamageTargetPoint");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Damage (Caster)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerDamageCaster_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerDamage("KickerDamage", EventPlayerEffectUsedPoint(c_effectLocationCasterUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerDamageCaster_Init () {
+    lib7AED044D_gt_KickerDamageCaster = TriggerCreate("lib7AED044D_gt_KickerDamageCaster_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerDamageCaster, c_playerAny, "KickerDamageCaster");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Damage (Source)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerDamageSource_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerDamage("KickerDamage", EventPlayerEffectUsedPoint(c_effectLocationSourceUnit), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerDamageSource_Init () {
+    lib7AED044D_gt_KickerDamageSource = TriggerCreate("lib7AED044D_gt_KickerDamageSource_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerDamageSource, c_playerAny, "KickerDamageSource");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Energy (Caster)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerEnergyCaster_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerEnergy("KickerEnergy", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerEnergyCaster_Init () {
+    lib7AED044D_gt_KickerEnergyCaster = TriggerCreate("lib7AED044D_gt_KickerEnergyCaster_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerEnergyCaster, c_playerAny, "KickerEnergyCaster");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Life (Caster)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerLifeCaster_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerLife("KickerLife", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), 1.0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerLifeCaster_Init () {
+    lib7AED044D_gt_KickerLifeCaster = TriggerCreate("lib7AED044D_gt_KickerLifeCaster_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerLifeCaster, c_playerAny, "KickerLifeCaster");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Life (Target Point)
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerLifeTargetPoint_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerLife("KickerLife", EventPlayerEffectUsedPoint(c_effectLocationTargetPoint), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), -1.0, true, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerLifeTargetPoint_Init () {
+    lib7AED044D_gt_KickerLifeTargetPoint = TriggerCreate("lib7AED044D_gt_KickerLifeTargetPoint_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerLifeTargetPoint, c_playerAny, "KickerLifeTargetPoint");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Purchase
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerPurchase_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_C33FB056") + StringExternal("Param/Value/lib_7AED044D_949C863A") + UnitTypeGetName(EventPlayerEffectUsedUnitType(c_effectUnitTarget))), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, 3.0, 2.0, 2.0, 10.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerPurchase_Init () {
+    lib7AED044D_gt_KickerPurchase = TriggerCreate("lib7AED044D_gt_KickerPurchase_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerPurchase, c_playerAny, "PeriodicSpawningPurchaseEffect");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Vulnerable
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerVulnerable_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerDebuff("Vulnerable", EventPlayerEffectUsedUnit(c_effectUnitSource));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerVulnerable_Init () {
+    lib7AED044D_gt_KickerVulnerable = TriggerCreate("lib7AED044D_gt_KickerVulnerable_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerVulnerable, c_playerAny, "KickerVulnerable");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Weapon Damage
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerWeaponDamage_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_CreateKicker((StringExternal("Param/Value/lib_7AED044D_91E36F80") + StringExternal("Param/Value/lib_7AED044D_012CD252")), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitTarget)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), 1.0, 0.5, 8.0, 0.0, 0.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerWeaponDamage_Init () {
+    lib7AED044D_gt_KickerWeaponDamage = TriggerCreate("lib7AED044D_gt_KickerWeaponDamage_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerWeaponDamage, c_playerAny, "KickerWeaponDamage");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Alchemy
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerAlchemy_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7AED044D_gf_KickerGold(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "AlchemyIncomeModify", "Resources[" + IntToString(2) + "]", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), libDDE92A83_gv_playerOrigin[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)], EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), 1.0, false);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerAlchemy_Init () {
+    lib7AED044D_gt_KickerAlchemy = TriggerCreate("lib7AED044D_gt_KickerAlchemy_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerAlchemy, c_playerAny, "AlchemyIncomeModify");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Feedback
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerFeedback_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate((StringExternal("Param/Value/lib_7AED044D_D6FE6CD5") + IntToText(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "FeedbackModifyHeroic", "VitalArray[" + IntToString(2) + "].Change", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)))), 32, EventPlayerEffectUsedPoint(c_effectLocationTargetUnit), 0.0, true, false, PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 2.5);
+    TextTagSetVelocity(TextTagLastCreated(), -1.0, RandomFixed(80.0, 100.0));
+    TextTagSetGravity(TextTagLastCreated(), -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerFeedback_Init () {
+    lib7AED044D_gt_KickerFeedback = TriggerCreate("lib7AED044D_gt_KickerFeedback_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerFeedback, c_playerAny, "KickerFeedbackHeroOnly");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Mana Burn
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerManaBurn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate((StringExternal("Param/Value/lib_7AED044D_82EB7F7C") + IntToText(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "ManaBurnModifyHeroic", "VitalArray[" + IntToString(2) + "].Change", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)))), 32, EventPlayerEffectUsedPoint(c_effectLocationTargetUnit), 0.0, true, false, PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 2.5);
+    TextTagSetVelocity(TextTagLastCreated(), -1.0, RandomFixed(80.0, 100.0));
+    TextTagSetGravity(TextTagLastCreated(), -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerManaBurn_Init () {
+    lib7AED044D_gt_KickerManaBurn = TriggerCreate("lib7AED044D_gt_KickerManaBurn_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerManaBurn, c_playerAny, "KickerManaBurnHeroOnly");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Kicker Silence
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_KickerSilence_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate((StringExternal("Param/Value/lib_7AED044D_A2943887") + IntToText(CatalogFieldValueGetAsInt(c_gameCatalogEffect, "SilenceModifyHeroic", "VitalArray[" + IntToString(2) + "].Change", EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)))), 32, EventPlayerEffectUsedPoint(c_effectLocationTargetUnit), 0.0, true, false, PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 2.5);
+    TextTagSetVelocity(TextTagLastCreated(), -1.0, RandomFixed(80.0, 100.0));
+    TextTagSetGravity(TextTagLastCreated(), -1.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_KickerSilence_Init () {
+    lib7AED044D_gt_KickerSilence = TriggerCreate("lib7AED044D_gt_KickerSilence_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_KickerSilence, c_playerAny, "KickerSilenceHeroOnly");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Build Hook Bounty
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_BuildHookBounty_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_bounty;
+
+    // Automatic Variable Declarations
+    playergroup auto119A7D46_g;
+    int auto119A7D46_var;
+
+    // Variable Initialization
+    lv_bounty = FixedToInt(((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostSumMineralsVespene) + UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostTerrazine)) * lib7AED044D_gv_buildHookBountyModifier));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostTerrazine) > 0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lv_bounty > 0)) {
+        lv_bounty -= ModI(lv_bounty, 5);
+        lv_bounty += 5;
+        auto119A7D46_g = PlayerGroupAlliance(c_playerGroupEnemy, EventPlayerEffectUsedUnitOwner(c_effectPlayerSource));
+        auto119A7D46_var = -1;
+        while (true) {
+            auto119A7D46_var = PlayerGroupNextPlayer(auto119A7D46_g, auto119A7D46_var);
+            if (auto119A7D46_var < 0) { break; }
+            lib7AED044D_gf_KickerGold(lv_bounty, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), auto119A7D46_var, 0.75, true);
+            UIAlertUnit("HeroAlert", auto119A7D46_var, (StringExternal("Param/Value/lib_7AED044D_D85436C3") + UnitTypeGetName(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource))) + StringExternal("Param/Value/lib_7AED044D_5DE26E13") + IntToText(lv_bounty) + StringExternal("Param/Value/lib_7AED044D_8996858A")), (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny)), EventPlayerEffectUsedUnit(c_effectUnitSource));
+        }
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_BuildHookBounty_Init () {
+    lib7AED044D_gt_BuildHookBounty = TriggerCreate("lib7AED044D_gt_BuildHookBounty_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_BuildHookBounty, c_playerAny, "BuildHookBountyTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spawn Controller Bounty
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_SpawnControllerBounty_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    fixed lv_bounty;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_bounty = (IntToFixed((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostSumMineralsVespene) + UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostTerrazine))) * RandomFixed(0.75, 1.25));
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostTerrazine) > 0))) {
+            return false;
+        }
+
+        if (!((libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), libNtve_ge_PlayerRelation_Enemy) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lv_bounty *= lib7AED044D_gv_spawnControllerBountyModifier;
+    if ((lv_bounty == 0)) {
+        lib7AED044D_gf_KickerGold(FixedToInt(lv_bounty), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), (0.75 + UnitGetHeight(EventPlayerEffectUsedUnit(c_effectUnitSource))), true);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_SpawnControllerBounty_Init () {
+    lib7AED044D_gt_SpawnControllerBounty = TriggerCreate("lib7AED044D_gt_SpawnControllerBounty_Func");
+    TriggerEnable(lib7AED044D_gt_SpawnControllerBounty, false);
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_SpawnControllerBounty, c_playerAny, "SpawnControllerBountyTrigger");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Start
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Start_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto1E1FB700_g;
+    int auto1E1FB700_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto1E1FB700_g = PlayerGroupAll();
+    auto1E1FB700_var = -1;
+    while (true) {
+        auto1E1FB700_var = PlayerGroupNextPlayer(auto1E1FB700_g, auto1E1FB700_var);
+        if (auto1E1FB700_var < 0) { break; }
+        TechTreeUnitAllow(auto1E1FB700_var, "Disabled", false);
+        TechTreeAbilityAllow(auto1E1FB700_var, AbilityCommand("NightElfResearchAutocast", 9), false);
+        TechTreeAbilityAllow(auto1E1FB700_var, AbilityCommand("UndeadResearchAutocast", 4), false);
+        TechTreeAbilityAllow(auto1E1FB700_var, AbilityCommand("DestroyerForm", 0), false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Start_Init () {
+    lib7AED044D_gt_Start = TriggerCreate("lib7AED044D_gt_Start_Func");
+    TriggerAddEventMapInit(lib7AED044D_gt_Start);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Alchemy
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_UpgradeAlchemy_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupCount(UnitGroup("AlchemyIncome", EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive) == 0))) {
+            return false;
+        }
+
+        if (!(((libNtve_gf_TriggeringProgressUpgrade() == "Alchemy1") || (libNtve_gf_TriggeringProgressUpgrade() == "Alchemy2") || (libNtve_gf_TriggeringProgressUpgrade() == "Alchemy3")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "AlchemyIncome", c_unitCreateIgnorePlacement, EventPlayer(), Point(0.0, 0.0));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_UpgradeAlchemy_Init () {
+    lib7AED044D_gt_UpgradeAlchemy = TriggerCreate("lib7AED044D_gt_UpgradeAlchemy_Func");
+    TriggerAddEventUnitResearchProgress(lib7AED044D_gt_UpgradeAlchemy, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Improved Armor
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_UpgradeImprovedArmor_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = (TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor1", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor2", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor3", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor4", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor5", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "ImprovedArmor6", c_techCountCompleteOnly));
+
+    // Conditions
+    if (testConds) {
+        if (!(((libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor1") || (libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor2") || (libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor3") || (libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor4") || (libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor5") || (libNtve_gf_TriggeringProgressUpgrade() == "ImprovedArmor6")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "ImprovedArmorExtraB", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "ImprovedArmorExtraC", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "ImprovedArmorStartA", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "ImprovedArmorStartB", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "ImprovedArmorStartC", lv_level);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_UpgradeImprovedArmor_Init () {
+    lib7AED044D_gt_UpgradeImprovedArmor = TriggerCreate("lib7AED044D_gt_UpgradeImprovedArmor_Func");
+    TriggerAddEventUnitResearchProgress(lib7AED044D_gt_UpgradeImprovedArmor, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Weapon Damage
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_UpgradeWeaponDamage_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_level;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_level = (TechTreeUpgradeCount(EventPlayer(), "WeaponDamage", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage1", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage2", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage3", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage4", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage5", c_techCountCompleteOnly) + TechTreeUpgradeCount(EventPlayer(), "WeaponDamage6", c_techCountCompleteOnly));
+
+    // Conditions
+    if (testConds) {
+        if (!(((libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage1") || (libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage2") || (libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage3") || (libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage4") || (libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage5") || (libNtve_gf_TriggeringProgressUpgrade() == "WeaponDamage6")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "WeaponDamageExtraA", lv_level);
+    libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), "WeaponDamageExtraB", lv_level);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_UpgradeWeaponDamage_Init () {
+    lib7AED044D_gt_UpgradeWeaponDamage = TriggerCreate("lib7AED044D_gt_UpgradeWeaponDamage_Func");
+    TriggerAddEventUnitResearchProgress(lib7AED044D_gt_UpgradeWeaponDamage, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Teleporter Interact
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_TeleporterInteract_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster), UnitRallyPointTargetPoint(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, 1), false);
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster)), "PingCampaignTarget", UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster)), ColorWithAlpha(0.00, 100.00, 0.00, 0.00), 4.0, 270.0);
+    UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitCaster), "HearthstoneTarget", EventPlayerEffectUsedUnit(c_effectUnitCaster));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_TeleporterInteract_Init () {
+    lib7AED044D_gt_TeleporterInteract = TriggerCreate("lib7AED044D_gt_TeleporterInteract_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_TeleporterInteract, c_playerAny, "TeleporterInteractActivate");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Upgrade Item
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_UpgradeItem_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!(((CatalogFieldValueGet(c_gameCatalogItem, UnitGetType(EventUnitInventoryItem()), "Class", 0) == "UpgradeableGreen") || (CatalogFieldValueGet(c_gameCatalogItem, UnitGetType(EventUnitInventoryItem()), "Class", 0) == "UpgradeableBlue")))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitInventoryCreate(EventUnit(), ((StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "ReviveType", 0), 1, (StringLength(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "ReviveType", 0)) - 1)) + IntToString((StringToInt(StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "ReviveType", 0), StringLength(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "ReviveType", 0)), StringLength(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "ReviveType", 0)))) + 1)))));
+    UIAlertUnit("HeroAlert", UnitGetOwner(EventUnit()), (StringExternal("Param/Value/lib_7AED044D_9FAC99D7") + UnitTypeGetName(UnitGetType(UnitInventoryLastCreated())) + StringExternal("Param/Value/lib_7AED044D_BEFAA0CB")), (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(UnitInventoryLastCreated()), "Name", 0), 11, 99), "UnitIcon", 0)), EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_UpgradeItem_Init () {
+    lib7AED044D_gt_UpgradeItem = TriggerCreate("lib7AED044D_gt_UpgradeItem_Func");
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_UpgradeItem, null, c_unitInventoryChangeUses, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Merc Purchase Set
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_MercPurchaseSet_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerCreateEffectUnit(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "PeriodicSpawningSwitch", EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_MercPurchaseSet_Init () {
+    lib7AED044D_gt_MercPurchaseSet = TriggerCreate("lib7AED044D_gt_MercPurchaseSet_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_MercPurchaseSet, c_playerAny, "MercenaryPurchaseSet");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Randomize Merc Camps
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_RandomizeMercCamps_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    unitgroup autoB2E74CDE_g;
+    int autoB2E74CDE_u;
+    unit autoB2E74CDE_var;
+    int autoCA937FA8_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoB2E74CDE_g = UnitGroup("MercenaryCampRandom", c_playerAny, RegionEntireMap(), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+    autoB2E74CDE_u = UnitGroupCount(autoB2E74CDE_g, c_unitCountAll);
+    for (;; autoB2E74CDE_u -= 1) {
+        autoB2E74CDE_var = UnitGroupUnitFromEnd(autoB2E74CDE_g, autoB2E74CDE_u);
+        if (autoB2E74CDE_var == null) { break; }
+        lv_i = RandomInt(0, 2);
+        autoCA937FA8_val = lv_i;
+        if (autoCA937FA8_val == 0) {
+            libNtve_gf_ReplaceUnit(autoB2E74CDE_var, "MercenaryCampFelwood", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+        }
+        else if (autoCA937FA8_val == 1) {
+            libNtve_gf_ReplaceUnit(autoB2E74CDE_var, "MercenaryCampNorthrend", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+        }
+        else if (autoCA937FA8_val == 2) {
+            libNtve_gf_ReplaceUnit(autoB2E74CDE_var, "MercenaryCampSunkenRuins", libNtve_ge_ReplaceUnitOptions_OldUnitsRelative);
+        }
+        else {
+        }
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_RandomizeMercCamps_Init () {
+    lib7AED044D_gt_RandomizeMercCamps = TriggerCreate("lib7AED044D_gt_RandomizeMercCamps_Func");
+    TriggerAddEventMapInit(lib7AED044D_gt_RandomizeMercCamps);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Pawn Item
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_PawnItem_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_x;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_x = UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine);
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if (((UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine) > 0) && (UnitHasBehavior(EventUnitInventoryItem(), "ItemNotPawnable") == false))) {
+        if ((UnitHasBehavior2(EventUnitInventoryItem(), "SellItemFull") == false)) {
+            lv_x = FixedToInt((lv_x * 0.5));
+        }
+
+        lib7AED044D_gf_KickerGold(lv_x, UnitGetPosition(EventUnit()), EventPlayer(), 1.0, true);
+        SoundPlay(SoundLink("PawnItem", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+        UnitCreateEffectUnit(EventUnit(), "SellItemDummy", EventUnit());
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "GoldReceivedfromSelling", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "GoldReceivedfromSelling") + lv_x));
+    }
+    else {
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaError, StringExternal("Param/Value/lib_7AED044D_788E318C"));
+        SoundPlay(SoundLink("UI_GenericError", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_PawnItem_Init () {
+    lib7AED044D_gt_PawnItem = TriggerCreate("lib7AED044D_gt_PawnItem_Func");
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_PawnItem, null, c_unitInventoryChangeSells, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Gold Earned
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_GoldEarned_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoA6B65999_g;
+    int autoA6B65999_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    autoA6B65999_g = PlayerGroupAll();
+    autoA6B65999_var = -1;
+    while (true) {
+        autoA6B65999_var = PlayerGroupNextPlayer(autoA6B65999_g, autoA6B65999_var);
+        if (autoA6B65999_var < 0) { break; }
+        if ((PlayerGetPropertyInt(autoA6B65999_var, c_playerPropTerrazineCollected) >= 1000)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(autoA6B65999_var, "Earned1000Gold", 1);
+            if ((PlayerGetPropertyInt(autoA6B65999_var, c_playerPropTerrazineCollected) >= 2000)) {
+                libNtve_gf_SetUpgradeLevelForPlayer(autoA6B65999_var, "Earned2000Gold", 1);
+                if ((PlayerGetPropertyInt(autoA6B65999_var, c_playerPropTerrazineCollected) >= 3000)) {
+                    libNtve_gf_SetUpgradeLevelForPlayer(autoA6B65999_var, "Earned3000Gold", 1);
+                    if ((PlayerGetPropertyInt(autoA6B65999_var, c_playerPropTerrazineCollected) >= 4000)) {
+                        libNtve_gf_SetUpgradeLevelForPlayer(autoA6B65999_var, "Earned4000Gold", 1);
+                        if ((PlayerGetPropertyInt(autoA6B65999_var, c_playerPropTerrazineCollected) >= 5000)) {
+                            libNtve_gf_SetUpgradeLevelForPlayer(autoA6B65999_var, "Earned5000Gold", 1);
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_GoldEarned_Init () {
+    lib7AED044D_gt_GoldEarned = TriggerCreate("lib7AED044D_gt_GoldEarned_Func");
+    TriggerAddEventTimePeriodic(lib7AED044D_gt_GoldEarned, 60.0, c_timeGame);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Buy Item
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_BuyItem_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    string lv_icon;
+
+    // Automatic Variable Declarations
+    string auto67DAB19C_val;
+
+    // Variable Initialization
+    lv_icon = (CatalogFieldValueGet(c_gameCatalogActor, StringSub(CatalogFieldValueGet(c_gameCatalogUnit, UnitGetType(EventUnitInventoryItem()), "Name", c_playerAny), 11, 99), "UnitIcon", c_playerAny));
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "ItemsPurchased", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "ItemsPurchased") + 1));
+    SoundPlay(SoundLink("ReceiveGold", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    UnitSetOwner(EventUnitInventoryItem(), 0, true);
+    auto67DAB19C_val = CatalogFieldValueGet(c_gameCatalogItem, UnitGetType(EventUnitInventoryItem()), "Class", 0);
+    if (auto67DAB19C_val == "Upgradeable") {
+        UIAlertUnit("HeroAlert", UnitGetOwner(EventUnit()), (StringExternal("Param/Value/lib_7AED044D_326265B4") + UnitTypeGetName(UnitGetType(EventUnitInventoryItem())) + StringExternal("Param/Value/lib_7AED044D_01534C0D")), lv_icon, EventUnit());
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "GoldSpentonEquipment", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "GoldSpentonEquipment") + UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine)));
+    }
+    else if (auto67DAB19C_val == "Permanent") {
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "GoldSpentonEquipment", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "GoldSpentonEquipment") + UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine)));
+    }
+    else if (auto67DAB19C_val == "Consumable") {
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "GoldSpentonConsumables", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "GoldSpentonConsumables") + UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine)));
+    }
+    else if (auto67DAB19C_val == "ConsumableCrateLoot") {
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "GoldSpentonConsumables", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "GoldSpentonConsumables") + UnitTypeGetCost(UnitGetType(EventUnitInventoryItem()), c_unitCostTerrazine)));
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_BuyItem_Init () {
+    lib7AED044D_gt_BuyItem = TriggerCreate("lib7AED044D_gt_BuyItem_Func");
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_BuyItem, null, c_unitInventoryChangeBuys, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hearthstone
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Hearthstone_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource), libDDE92A83_gv_playerOrigin[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)], false);
+    UnitIssueOrder(EventPlayerEffectUsedUnit(c_effectUnitSource), Order(AbilityCommand("stop", 0)), c_orderQueueReplace);
+    UnitCreateEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitSource), "HearthstoneTarget", EventPlayerEffectUsedUnit(c_effectUnitSource));
+    libNtve_gf_CreatePingFacingAngle(PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)), "PingCampaignTarget", libDDE92A83_gv_playerOrigin[EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)], ColorWithAlpha(12.55, 100.00, 37.65, 0.00), 4.0, 270.0);
+    PingSetUnit(PingLastCreated(), EventPlayerEffectUsedUnit(c_effectUnitSource));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Hearthstone_Init () {
+    lib7AED044D_gt_Hearthstone = TriggerCreate("lib7AED044D_gt_Hearthstone_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_Hearthstone, c_playerAny, "HearthstoneSource");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Void Fragments
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_VoidFragments_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    bool lv_voidFragment;
+    bool lv_voidStone;
+    string lv_icon;
+
+    // Automatic Variable Declarations
+    string auto7B4D614B_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7B4D614B_val = UnitGetType(EventUnitInventoryItem());
+    if (auto7B4D614B_val == "VoidFragment1") {
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 2)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment2");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment2.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment2") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment3");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment3.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment3") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment3", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment4");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment4.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment4") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment4", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidStone");
+            lv_voidStone = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidstone.dds";
+        }
+
+    }
+    else if (auto7B4D614B_val == "VoidFragment2") {
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment2") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment3");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment3.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment2") == 2)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment4");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment4.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment2") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment3") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment3", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidStone");
+            lv_voidStone = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidstone.dds";
+        }
+
+    }
+    else if (auto7B4D614B_val == "VoidFragment3") {
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment3") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment3", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidFragment4");
+            lv_voidFragment = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidfragment4.dds";
+        }
+
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment2") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment3") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment2", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment3", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidStone");
+            lv_voidStone = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidstone.dds";
+        }
+
+    }
+    else if (auto7B4D614B_val == "VoidFragment4") {
+        if ((UnitBehaviorCount(EventUnit(), "VoidFragment1") == 1) && (UnitBehaviorCount(EventUnit(), "VoidFragment4") == 1)) {
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment1", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryRemove(UnitGroupRandomUnit(UnitGroupFilter("VoidFragment4", c_playerAny, UnitInventoryGroup(EventUnit()), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+            UnitInventoryCreate(EventUnit(), "VoidStone");
+            lv_voidStone = true;
+            lv_icon = "Assets\\Textures\\btn-item-voidstone.dds";
+        }
+
+    }
+    else {
+    }
+    if ((lv_voidFragment == true)) {
+        UIAlertPoint("HeroAlert", UnitGetOwner(EventUnit()), (StringExternal("Param/Value/lib_7AED044D_09FC58AC") + StringExternal("Param/Value/lib_7AED044D_42D7C0AA")), lv_icon, UnitGetPosition(EventUnit()));
+        SoundPlayForPlayer(SoundLink("UI_QuestUpdate", -1), c_maxPlayers, PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    }
+
+    if ((lv_voidStone == true)) {
+        UIAlertPoint("HeroAlert", UnitGetOwner(EventUnit()), (StringExternal("Param/Value/lib_7AED044D_C8D44778") + StringExternal("Param/Value/lib_7AED044D_4FBC3C4C")), lv_icon, UnitGetPosition(EventUnit()));
+        SoundPlayForPlayer(SoundLink("UI_QuestComplete", -1), c_maxPlayers, PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_VoidFragments_Init () {
+    lib7AED044D_gt_VoidFragments = TriggerCreate("lib7AED044D_gt_VoidFragments_Func");
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_VoidFragments, null, c_unitInventoryChangeReceives, null);
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_VoidFragments, null, c_unitInventoryChangeGains, null);
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_VoidFragments, null, c_unitInventoryChangeBuys, null);
+    TriggerAddEventUnitInventoryChange(lib7AED044D_gt_VoidFragments, null, c_unitInventoryChangePicksUp, null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Interest Rates
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_InterestRates_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TextTagCreate(StringExternal("Param/Value/lib_7AED044D_0F8F7C93"), 30, UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitSource)), 1.0, true, false, PlayerGroupSingle(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget)));
+    PlayerModifyPropertyInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), c_playerPropTerrazine, c_playerPropOperAdd, CatalogFieldValueGetAsInt(c_gameCatalogEffect, "InterestRatesDamage", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)));
+    PlayerModifyPropertyInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), c_playerPropTerrazineCollected, c_playerPropOperAdd, CatalogFieldValueGetAsInt(c_gameCatalogEffect, "InterestRatesDamage", "Amount", EventPlayerEffectUsedUnitOwner(c_effectPlayerSource)));
+    TextTagSetTime(TextTagLastCreated(), c_textTagTimeDuration, 2.5);
+    TextTagSetVelocity(TextTagLastCreated(), 1.0, 90.0);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_InterestRates_Init () {
+    lib7AED044D_gt_InterestRates = TriggerCreate("lib7AED044D_gt_InterestRates_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_InterestRates, c_playerAny, "InterestRatesDummy");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Destruction Specialization
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_DestructionSpecialization_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUpgrade() == "LegionDestruction"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(EventPlayer(), "WeaponDamage", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_DestructionSpecialization_Init () {
+    lib7AED044D_gt_DestructionSpecialization = TriggerCreate("lib7AED044D_gt_DestructionSpecialization_Func");
+    TriggerAddEventUnitResearchProgress(lib7AED044D_gt_DestructionSpecialization, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Affliction Specialization
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_AfflictionSpecialization_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libNtve_gf_TriggeringProgressUpgrade() == "LegionAffliction"))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    TechTreeUpgradeAddLevel(EventPlayer(), "ImprovedArmor", 1);
+    TechTreeUpgradeAddLevel(EventPlayer(), "ImprovedArmorStartA", 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_AfflictionSpecialization_Init () {
+    lib7AED044D_gt_AfflictionSpecialization = TriggerCreate("lib7AED044D_gt_AfflictionSpecialization_Func");
+    TriggerAddEventUnitResearchProgress(lib7AED044D_gt_AfflictionSpecialization, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Learn
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_Learn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto4ED1C833_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto4ED1C833_val = libNtve_gf_TriggeringProgressAbility();
+    if (auto4ED1C833_val == "AnimateDead") {
+        UnitBehaviorAdd(EventUnit(), "AnimateDeadTargetSearch", EventUnit(), 1);
+    }
+    else if (auto4ED1C833_val == "Resurrection") {
+        UnitBehaviorAdd(EventUnit(), "ResurrectionTargetSearch", EventUnit(), 1);
+    }
+    else if (auto4ED1C833_val == "DevotionAuraGlobal") {
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ImprovedArmorExtraB", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ImprovedArmorExtraC", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ImprovedArmorStartB", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ImprovedArmorStartC", 1);
+        TechTreeUpgradeAddLevel(UnitGetOwner(EventUnit()), "ImprovedArmor", 1);
+    }
+    else {
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_Learn_Init () {
+    lib7AED044D_gt_Learn = TriggerCreate("lib7AED044D_gt_Learn_Func");
+    TriggerAddEventUnitLearnProgress(lib7AED044D_gt_Learn, null, c_unitProgressStageComplete);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Hero Death Score
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_HeroDeathScore_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "HeroDeaths", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "HeroDeaths") + 1));
+    if ((((EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget) >= 1) && (EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget) <= 14)) == true) && (libNtve_gf_PlayerIsEnemy(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), libNtve_ge_PlayerRelation_Enemy) == true)) {
+        PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "HeroesSlain", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "HeroesSlain") + 1));
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_HeroDeathScore_Init () {
+    lib7AED044D_gt_HeroDeathScore = TriggerCreate("lib7AED044D_gt_HeroDeathScore_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_HeroDeathScore, c_playerAny, "HeroDeathAlert");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Consumables Used Score
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_gt_ConsumablesUsedScore_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "ConsumablesUsed", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerSource), "ConsumablesUsed") + 1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7AED044D_gt_ConsumablesUsedScore_Init () {
+    lib7AED044D_gt_ConsumablesUsedScore = TriggerCreate("lib7AED044D_gt_ConsumablesUsedScore_Func");
+    TriggerAddEventPlayerEffectUsed(lib7AED044D_gt_ConsumablesUsedScore, c_playerAny, "UseConsumableDummy");
+}
+
+void lib7AED044D_InitTriggers () {
+    lib7AED044D_gt_SapphironSummon_Init();
+    lib7AED044D_gt_IvusSummon_Init();
+    lib7AED044D_gt_StampedeStart_Init();
+    lib7AED044D_gt_Stampede_Init();
+    lib7AED044D_gt_Ankh_Init();
+    lib7AED044D_gt_AncestralSpirit_Init();
+    lib7AED044D_gt_ScreenShakeMinor_Init();
+    lib7AED044D_gt_ScreenShakeModerate_Init();
+    lib7AED044D_gt_ScreenShakeMajor_Init();
+    lib7AED044D_gt_ScreenShakeGlobal_Init();
+    lib7AED044D_gt_GateDeath_Init();
+    lib7AED044D_gt_GateRebuild_Init();
+    lib7AED044D_gt_CriticalStrikeEffect_Init();
+    lib7AED044D_gt_EvasionEffect_Init();
+    lib7AED044D_gt_EchoofMedivhCast_Init();
+    lib7AED044D_gt_EyeofSargeras_Init();
+    lib7AED044D_gt_GoldPickup10_Init();
+    lib7AED044D_gt_GoldPickup25_Init();
+    lib7AED044D_gt_GoldPickup50_Init();
+    lib7AED044D_gt_Promote_Init();
+    lib7AED044D_gt_PromoteUpgrade_Init();
+    lib7AED044D_gt_SoulshatterApplyLife_Init();
+    lib7AED044D_gt_SoulshatterSetLife_Init();
+    lib7AED044D_gt_StormEarthandFireCancel_Init();
+    lib7AED044D_gt_StunOrbUpgrade_Init();
+    lib7AED044D_gt_CripplingFieldUpgrade_Init();
+    lib7AED044D_gt_ArgusConstructFacing_Init();
+    lib7AED044D_gt_ArgusConstructUpgrade_Init();
+    lib7AED044D_gt_SolariteConstructUpgrade_Init();
+    lib7AED044D_gt_RuneFragment_Init();
+    lib7AED044D_gt_ChangeOwnerToCaster_Init();
+    lib7AED044D_gt_FullHealSource_Init();
+    lib7AED044D_gt_FullHealTarget_Init();
+    lib7AED044D_gt_Enslave_Init();
+    lib7AED044D_gt_Transmute_Init();
+    lib7AED044D_gt_AbsorbMana_Init();
+    lib7AED044D_gt_SearingStrikesAugment_Init();
+    lib7AED044D_gt_ControlMagic_Init();
+    lib7AED044D_gt_ControlMagic3_Init();
+    lib7AED044D_gt_ControlMagic2_Init();
+    lib7AED044D_gt_CharmDeath_Init();
+    lib7AED044D_gt_MirrorImageRemove_Init();
+    lib7AED044D_gt_RallyCasterUseCasterRally_Init();
+    lib7AED044D_gt_DisableHeroBirthRallyTrigger_Init();
+    lib7AED044D_gt_RallySourceUseTargetRally_Init();
+    lib7AED044D_gt_TransferonDeath_Init();
+    lib7AED044D_gt_GateRebuildStart_Init();
+    lib7AED044D_gt_PeriodicSpawning_Init();
+    lib7AED044D_gt_PeriodicSpawningChargeCount_Init();
+    lib7AED044D_gt_PreparationTimeTimeout_Init();
+    lib7AED044D_gt_BountySystemTrigger_Init();
+    lib7AED044D_gt_HeroBounty_Init();
+    lib7AED044D_gt_NeutralHostileBounty_Init();
+    lib7AED044D_gt_RagnarosBirth_Init();
+    lib7AED044D_gt_KickerUniqueDamage_Init();
+    lib7AED044D_gt_KickerUniqueLife_Init();
+    lib7AED044D_gt_KickerUniqueEnergy_Init();
+    lib7AED044D_gt_KickerDamageTargetPoint_Init();
+    lib7AED044D_gt_KickerDamageCaster_Init();
+    lib7AED044D_gt_KickerDamageSource_Init();
+    lib7AED044D_gt_KickerEnergyCaster_Init();
+    lib7AED044D_gt_KickerLifeCaster_Init();
+    lib7AED044D_gt_KickerLifeTargetPoint_Init();
+    lib7AED044D_gt_KickerPurchase_Init();
+    lib7AED044D_gt_KickerVulnerable_Init();
+    lib7AED044D_gt_KickerWeaponDamage_Init();
+    lib7AED044D_gt_KickerAlchemy_Init();
+    lib7AED044D_gt_KickerFeedback_Init();
+    lib7AED044D_gt_KickerManaBurn_Init();
+    lib7AED044D_gt_KickerSilence_Init();
+    lib7AED044D_gt_BuildHookBounty_Init();
+    lib7AED044D_gt_SpawnControllerBounty_Init();
+    lib7AED044D_gt_Start_Init();
+    lib7AED044D_gt_UpgradeAlchemy_Init();
+    lib7AED044D_gt_UpgradeImprovedArmor_Init();
+    lib7AED044D_gt_UpgradeWeaponDamage_Init();
+    lib7AED044D_gt_TeleporterInteract_Init();
+    lib7AED044D_gt_UpgradeItem_Init();
+    lib7AED044D_gt_MercPurchaseSet_Init();
+    lib7AED044D_gt_RandomizeMercCamps_Init();
+    lib7AED044D_gt_PawnItem_Init();
+    lib7AED044D_gt_GoldEarned_Init();
+    lib7AED044D_gt_BuyItem_Init();
+    lib7AED044D_gt_Hearthstone_Init();
+    lib7AED044D_gt_VoidFragments_Init();
+    lib7AED044D_gt_InterestRates_Init();
+    lib7AED044D_gt_DestructionSpecialization_Init();
+    lib7AED044D_gt_AfflictionSpecialization_Init();
+    lib7AED044D_gt_Learn_Init();
+    lib7AED044D_gt_HeroDeathScore_Init();
+    lib7AED044D_gt_ConsumablesUsedScore_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib7AED044D_InitLib_completed = false;
+
+void lib7AED044D_InitLib () {
+    if (lib7AED044D_InitLib_completed) {
+        return;
+    }
+
+    lib7AED044D_InitLib_completed = true;
+
+    lib7AED044D_InitLibraries();
+    lib7AED044D_InitVariables();
+    lib7AED044D_InitTriggers();
+}
+
+include "LibA91AB5FF"
+

@@ -1,0 +1,65 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib721EB437_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Ban List
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib721EB437_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ban List
+//--------------------------------------------------------------------------------------------------
+bool lib721EB437_gt_BanList_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup auto7456DFF1_g;
+    int auto7456DFF1_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto7456DFF1_g = PlayerGroupActive();
+    auto7456DFF1_var = -1;
+    while (true) {
+        auto7456DFF1_var = PlayerGroupNextPlayer(auto7456DFF1_g, auto7456DFF1_var);
+        if (auto7456DFF1_var < 0) { break; }
+        if (((PlayerHandle(auto7456DFF1_var) == "1-S2-1-7987931") || (PlayerHandle(auto7456DFF1_var) == "1-S2-2-7987931") || (PlayerHandle(auto7456DFF1_var) == "2-S2-1-1376591") || (PlayerHandle(auto7456DFF1_var) == "2-S2-2-1376591") || (PlayerHandle(auto7456DFF1_var) == "3-S2-1-5342217") || (PlayerHandle(auto7456DFF1_var) == "3-S2-2-5342217"))) {
+            GameOver(auto7456DFF1_var, c_gameOverDefeat, false, true);
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib721EB437_gt_BanList_Init () {
+    lib721EB437_gt_BanList = TriggerCreate("lib721EB437_gt_BanList_Func");
+    TriggerAddEventMapInit(lib721EB437_gt_BanList);
+}
+
+void lib721EB437_InitTriggers () {
+    lib721EB437_gt_BanList_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib721EB437_InitLib_completed = false;
+
+void lib721EB437_InitLib () {
+    if (lib721EB437_InitLib_completed) {
+        return;
+    }
+
+    lib721EB437_InitLib_completed = true;
+
+    lib721EB437_InitLibraries();
+    lib721EB437_InitTriggers();
+}
+

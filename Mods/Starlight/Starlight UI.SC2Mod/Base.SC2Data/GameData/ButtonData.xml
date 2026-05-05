@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CButton id="Attack"/>
+    <CButton id="Cancel">
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Move">
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="MoveHoldPosition">
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="MovePatrol">
+        <TintRacially value="0"/>
+    </CButton>
+    <CButton id="Stop">
+        <TintRacially value="0"/>
+    </CButton>
+</Catalog>

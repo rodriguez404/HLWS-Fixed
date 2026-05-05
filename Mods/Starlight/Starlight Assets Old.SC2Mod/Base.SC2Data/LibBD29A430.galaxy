@@ -1,0 +1,557 @@
+include "TriggerLibs/NativeLib"
+include "Lib452C8A48_h"
+
+include "LibBD29A430_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight XP
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void libBD29A430_InitLibraries () {
+    libNtve_InitVariables();
+    lib452C8A48_InitVariables();
+}
+
+// Variable Initialization
+bool libBD29A430_InitVariables_completed = false;
+
+void libBD29A430_InitVariables () {
+    int init_i;
+
+    if (libBD29A430_InitVariables_completed) {
+        return;
+    }
+
+    libBD29A430_InitVariables_completed = true;
+
+    libBD29A430_gv_levelCap = 60;
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        libBD29A430_gv_level[init_i] = 1;
+    }
+    libBD29A430_gv_levelBarDialog = c_invalidDialogId;
+    libBD29A430_gv_levelBarFill = c_invalidDialogControlId;
+    libBD29A430_gv_levelBarGold = c_invalidDialogControlId;
+    libBD29A430_gv_levelBarFrame = c_invalidDialogControlId;
+    libBD29A430_gv_levelBarXP = c_invalidDialogControlId;
+    libBD29A430_gv_levelBarCurrent = c_invalidDialogControlId;
+    libBD29A430_gv_levelBarNext = c_invalidDialogControlId;
+    libBD29A430_gv_levelupFrame = c_invalidDialogControlId;
+    libBD29A430_gv_levelupText = c_invalidDialogControlId;
+    libBD29A430_gv_remainingText = c_invalidDialogControlId;
+}
+
+// Functions
+void libBD29A430_gf_StarlightXPStart () {
+    // Automatic Variable Declarations
+    playergroup auto7A09B5E4_g;
+    int auto7A09B5E4_var;
+
+    // Implementation
+    if ((libBD29A430_gv_xPSet == false)) {
+        libBD29A430_gf_SetXPRequirements();
+    }
+
+    auto7A09B5E4_g = PlayerGroupAll();
+    auto7A09B5E4_var = -1;
+    while (true) {
+        auto7A09B5E4_var = PlayerGroupNextPlayer(auto7A09B5E4_g, auto7A09B5E4_var);
+        if (auto7A09B5E4_var < 0) { break; }
+        PlayerScoreValueSetFromInt(auto7A09B5E4_var, "StarlightExperienceCap", libBD29A430_gv_xPCap);
+        PlayerScoreValueSetFromInt(auto7A09B5E4_var, "StarlightExperienceLevel", libBD29A430_gv_level[auto7A09B5E4_var]);
+    }
+}
+
+void libBD29A430_gf_StarlightXPShowHide (playergroup lp_playerGroup, bool lp_onOff, string lp_xPScoreValue) {
+    // Variable Declarations
+    fixed lv_fade;
+
+    // Automatic Variable Declarations
+    bool auto3FE889F2_val;
+    playergroup autoAA57EF5F_g;
+    int autoAA57EF5F_var;
+    playergroup auto67DBB67D_g;
+    int auto67DBB67D_var;
+    playergroup autoD0AB33ED_g;
+    int autoD0AB33ED_var;
+
+    // Variable Initialization
+    lv_fade = 0.5;
+
+    // Implementation
+    if ((libBD29A430_gv_created == false)) {
+        libBD29A430_gv_created = true;
+        libBD29A430_gf_CreateDialogs();
+    }
+
+    if ((libBD29A430_gv_xPSet == false)) {
+        libBD29A430_gf_SetXPRequirements();
+    }
+
+    auto3FE889F2_val = lp_onOff;
+    if (auto3FE889F2_val == true) {
+        autoAA57EF5F_g = lp_playerGroup;
+        autoAA57EF5F_var = -1;
+        while (true) {
+            autoAA57EF5F_var = PlayerGroupNextPlayer(autoAA57EF5F_g, autoAA57EF5F_var);
+            if (autoAA57EF5F_var < 0) { break; }
+            libBD29A430_gf_SetXPText(autoAA57EF5F_var);
+            libBD29A430_gf_SetXPLevel(autoAA57EF5F_var);
+        }
+        auto67DBB67D_g = lp_playerGroup;
+        auto67DBB67D_var = -1;
+        while (true) {
+            auto67DBB67D_var = PlayerGroupNextPlayer(auto67DBB67D_g, auto67DBB67D_var);
+            if (auto67DBB67D_var < 0) { break; }
+            libBD29A430_gv_levelBarVisible[auto67DBB67D_var] = true;
+            libBD29A430_gf_SetXPEarned(auto67DBB67D_var, PlayerScoreValueGetAsInt(auto67DBB67D_var, lp_xPScoreValue));
+        }
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFrame, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFrame, lp_playerGroup, lv_fade, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFill, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFill, lp_playerGroup, lv_fade, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, lp_playerGroup, lv_fade, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, lp_playerGroup, lv_fade, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, lp_playerGroup, lv_fade, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_remainingText, lp_playerGroup, 0.0, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_remainingText, lp_playerGroup, lv_fade, 0.0);
+    }
+    else if (auto3FE889F2_val == false) {
+        autoD0AB33ED_g = lp_playerGroup;
+        autoD0AB33ED_var = -1;
+        while (true) {
+            autoD0AB33ED_var = PlayerGroupNextPlayer(autoD0AB33ED_g, autoD0AB33ED_var);
+            if (autoD0AB33ED_var < 0) { break; }
+            libBD29A430_gv_levelBarVisible[autoD0AB33ED_var] = false;
+        }
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFrame, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFrame, lp_playerGroup, lv_fade, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFill, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarFill, lp_playerGroup, lv_fade, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, lp_playerGroup, lv_fade, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, lp_playerGroup, lv_fade, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, lp_playerGroup, lv_fade, 100.0);
+        DialogControlFadeTransparency(libBD29A430_gv_remainingText, lp_playerGroup, 0.0, 0.0);
+        DialogControlFadeTransparency(libBD29A430_gv_remainingText, lp_playerGroup, lv_fade, 100.0);
+    }
+    else {
+    }
+}
+
+void libBD29A430_gf_StarlightXPGrantExperience (int lp_player, int lp_experienceEarned) {
+    // Automatic Variable Declarations
+    // Implementation
+    libBD29A430_gv_addXPAmount = lp_experienceEarned;
+    libBD29A430_gv_addXPPlayer = lp_player;
+    TriggerExecute(libBD29A430_gt_AddXP, false, false);
+}
+
+void libBD29A430_gf_StarlightXPOverrideXPCurveLinear () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto1330BF19_ae;
+    const int auto1330BF19_ai = 1;
+    playergroup auto1BB60ABA_g;
+    int auto1BB60ABA_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libBD29A430_gv_xPSet = true;
+    libBD29A430_gv_xPCap = 0;
+    libBD29A430_gv_levelCap = 800;
+    auto1330BF19_ae = libBD29A430_gv_levelCap;
+    lv_i = 1;
+    for ( ; ( (auto1330BF19_ai >= 0 && lv_i <= auto1330BF19_ae) || (auto1330BF19_ai < 0 && lv_i >= auto1330BF19_ae) ) ; lv_i += auto1330BF19_ai ) {
+        libBD29A430_gv_xPRequirement[lv_i] = libNtve_gf_ArithmeticIntClamp((100 + (lv_i * 100)), 100, 1000);
+        libBD29A430_gv_xPCap += libBD29A430_gv_xPRequirement[lv_i];
+    }
+    auto1BB60ABA_g = PlayerGroupAll();
+    auto1BB60ABA_var = -1;
+    while (true) {
+        auto1BB60ABA_var = PlayerGroupNextPlayer(auto1BB60ABA_g, auto1BB60ABA_var);
+        if (auto1BB60ABA_var < 0) { break; }
+        PlayerScoreValueSetFromInt(auto1BB60ABA_var, "StarlightExperienceCap", libBD29A430_gv_xPCap);
+        libBD29A430_gf_ModifyXP(PlayerScoreValueGetAsInt(auto1BB60ABA_var, "StarlightExperienceTotal"), auto1BB60ABA_var, false);
+    }
+}
+
+void libBD29A430_gf_CreateDialogs () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    playergroup autoC30097B4_g;
+    int autoC30097B4_var;
+
+    // Variable Initialization
+
+    // Implementation
+    DialogCreate(2150, 1200, c_anchorBottom, 0, -450, true);
+    libBD29A430_gv_levelBarDialog = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1516, 47, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commander_experiencebar.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libBD29A430_gv_levelBarFrame = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 600, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 750, DialogControlGetHeight(libBD29A430_gv_levelBarFrame, 0), c_anchorLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_commander_experiencebarfill.dds", c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+    libBD29A430_gv_levelBarFill = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 590, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, libBD29A430_gv_levelBarFrame, c_anchorLeft, 8, 0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1516, 47, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commander_experiencebargold.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libBD29A430_gv_levelBarGold = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, libBD29A430_gv_levelBarFrame, c_anchorCenter, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 610, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 1000, 100, c_anchorCenter, 0, 50, (StringExternal("Param/Value/lib_BD29A430_9FDB3983") + IntToText(0) + StringExternal("Param/Value/lib_BD29A430_6DC85EC6") + IntToText(libBD29A430_gv_xPRequirement[0])), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libBD29A430_gv_levelBarXP = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 100, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_BD29A430_51C997A9") + IntToText(1)), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libBD29A430_gv_levelBarCurrent = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorRight, libBD29A430_gv_levelBarFrame, c_anchorLeft, -10, 0);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 300, 100, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_BD29A430_A4651A54") + IntToText(2)), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libBD29A430_gv_levelBarNext = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorLeft, libBD29A430_gv_levelBarFrame, c_anchorRight, 10, 0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 341, 73, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commander_levelupframe.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    libBD29A430_gv_levelupFrame = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 620, PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 1000, 200, c_anchorCenter, 0, 1, IntToText(0), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libBD29A430_gv_levelupText = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 621, PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 1000, 100, c_anchorCenter, 0, -75, IntToText(0), ColorWithAlpha(0,0,0,0), false, 2.0);
+    libBD29A430_gv_remainingText = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 621, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    autoC30097B4_g = PlayerGroupAll();
+    autoC30097B4_var = -1;
+    while (true) {
+        autoC30097B4_var = PlayerGroupNextPlayer(autoC30097B4_g, autoC30097B4_var);
+        if (autoC30097B4_var < 0) { break; }
+        libBD29A430_gf_SetXPEarned(autoC30097B4_var, 0);
+    }
+}
+
+void libBD29A430_gf_ModifyXP (int lp_amount, int lp_player, bool lp_useAnimation) {
+    // Variable Declarations
+    int lv_remaining;
+
+    // Automatic Variable Declarations
+    bool autoD0B64C47_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoD0B64C47_val = lp_useAnimation;
+    if (autoD0B64C47_val == true) {
+        SoundPlayForPlayer(SoundLink("UI_NovaUT_ScreenDown", 1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("AC_UI_XPBarFillLoop", -1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+        libBD29A430_gv_levelSound[lp_player] = SoundLastPlayed();
+        lv_remaining = lp_amount;
+        while ((lv_remaining > 1) && (lp_amount > 300)) {
+            libBD29A430_gv_xP[lp_player] += 2;
+            lv_remaining -= 2;
+            libBD29A430_gf_SetXPEarned(lp_player, lv_remaining);
+            if ((libBD29A430_gv_xP[lp_player] >= libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]]) && (libBD29A430_gv_level[lp_player] < libBD29A430_gv_levelCap)) {
+                libBD29A430_gf_SetXPText(lp_player);
+                libBD29A430_gf_LevelAnimation(lp_player);
+            }
+
+            libBD29A430_gf_SetXPText(lp_player);
+            Wait(0.0, c_timeGame);
+        }
+        while ((lv_remaining > 0)) {
+            libBD29A430_gv_xP[lp_player] += 1;
+            lv_remaining -= 1;
+            libBD29A430_gf_SetXPEarned(lp_player, lv_remaining);
+            if ((libBD29A430_gv_xP[lp_player] >= libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]]) && (libBD29A430_gv_level[lp_player] < libBD29A430_gv_levelCap)) {
+                libBD29A430_gf_SetXPText(lp_player);
+                libBD29A430_gf_LevelAnimation(lp_player);
+            }
+
+            libBD29A430_gf_SetXPText(lp_player);
+            Wait(0.0, c_timeGame);
+        }
+        PlayerScoreValueSetFromInt(lp_player, "StarlightExperienceLevel", libBD29A430_gv_level[lp_player]);
+        SoundStop(libBD29A430_gv_levelSound[lp_player], true);
+        SoundPlayForPlayer(SoundLink("AC_UI_PlayerReady02", -1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+        Wait(0.25, c_timeGame);
+        DialogControlFadeTransparency(libBD29A430_gv_remainingText, PlayerGroupSingle(lp_player), 0.5, 100.0);
+    }
+    else if (autoD0B64C47_val == false) {
+        libBD29A430_gv_xP[lp_player] += lp_amount;
+        while ((libBD29A430_gv_xP[lp_player] >= libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]]) && (libBD29A430_gv_level[lp_player] < libBD29A430_gv_levelCap)) {
+            libBD29A430_gv_xP[lp_player] -= libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]];
+            libBD29A430_gv_level[lp_player] += 1;
+        }
+        PlayerScoreValueSetFromInt(lp_player, "StarlightExperienceLevel", libBD29A430_gv_level[lp_player]);
+        if ((libBD29A430_gv_created == true)) {
+            libBD29A430_gf_SetXPText(lp_player);
+            libBD29A430_gf_SetXPLevel(lp_player);
+        }
+
+    }
+    else {
+    }
+}
+
+void libBD29A430_gf_LevelAnimation (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, PlayerGroupSingle(lp_player), 1.0, 100.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, PlayerGroupSingle(lp_player), 1.0, 100.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, PlayerGroupSingle(lp_player), 1.0, 100.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarGold, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    libNtve_gf_SetDialogItemText(libBD29A430_gv_levelBarXP, (StringExternal("Param/Value/lib_BD29A430_B27D7BB4") + IntToText(libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]]) + StringExternal("Param/Value/lib_BD29A430_3078E17C") + IntToText(libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]])), PlayerGroupSingle(lp_player));
+    SoundPlayForPlayer(SoundLink("UI_NovaUT_ScreenDown", 0), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    SoundStop(libBD29A430_gv_levelSound[lp_player], true);
+    libBD29A430_gv_xP[lp_player] -= libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]];
+    libBD29A430_gv_level[lp_player] += 1;
+    libBD29A430_gv_levelupPlayer = lp_player;
+    PlayerScoreValueSetFromInt(lp_player, "StarlightExperienceLevel", libBD29A430_gv_level[lp_player]);
+    TriggerExecute(libBD29A430_gt_LevelUpAnimationStart, true, false);
+    Wait(5.0, c_timeGame);
+    libBD29A430_gf_SetXPText(lp_player);
+    libBD29A430_gf_SetXPLevel(lp_player);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarGold, PlayerGroupSingle(lp_player), 0.5, 100.0);
+    Wait(0.25, c_timeGame);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarCurrent, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarNext, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelBarXP, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    SoundPlayForPlayer(SoundLink("UI_NovaUT_ScreenDown", 1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    SoundPlayForPlayer(SoundLink("AC_UI_XPBarFillLoop", -1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    libBD29A430_gv_levelSound[lp_player] = SoundLastPlayed();
+}
+
+void libBD29A430_gf_SetXPRequirements () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoC13B7B9D_ae = lib452C8A48_gv_levelCap;
+    const int autoC13B7B9D_ai = 1;
+    playergroup auto4F41ACE2_g;
+    int auto4F41ACE2_var;
+
+    // Variable Initialization
+
+    // Implementation
+    libBD29A430_gv_xPSet = true;
+    libBD29A430_gv_xPCap = 0;
+    lv_i = 1;
+    for ( ; ( (autoC13B7B9D_ai >= 0 && lv_i <= autoC13B7B9D_ae) || (autoC13B7B9D_ai < 0 && lv_i >= autoC13B7B9D_ae) ) ; lv_i += autoC13B7B9D_ai ) {
+        libBD29A430_gv_xPRequirement[lv_i] = (100 + (libBD29A430_gv_xPRequirement[(lv_i - 1)] + (lv_i * 100)));
+        libBD29A430_gv_xPCap += libBD29A430_gv_xPRequirement[lv_i];
+    }
+    auto4F41ACE2_g = PlayerGroupAll();
+    auto4F41ACE2_var = -1;
+    while (true) {
+        auto4F41ACE2_var = PlayerGroupNextPlayer(auto4F41ACE2_g, auto4F41ACE2_var);
+        if (auto4F41ACE2_var < 0) { break; }
+        PlayerScoreValueSetFromInt(auto4F41ACE2_var, "StarlightExperienceCap", libBD29A430_gv_xPCap);
+        libBD29A430_gf_ModifyXP(PlayerScoreValueGetAsInt(auto4F41ACE2_var, "StarlightExperienceTotal"), auto4F41ACE2_var, false);
+    }
+}
+
+void libBD29A430_gf_SetXPEarned (int lp_player, int lp_experienceEarned) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libBD29A430_gv_remainingText, ((StringExternal("Param/Value/lib_BD29A430_A1260A32") + StringExternal("UI/PlayerRewardsPanel/XPEarnedToolTipHeader") + StringExternal("Param/Value/lib_BD29A430_B3A906C8") + IntToText(lp_experienceEarned))), PlayerGroupSingle(lp_player));
+}
+
+void libBD29A430_gf_SetXPText (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]] > 0)) {
+        libNtve_gf_SetDialogItemText(libBD29A430_gv_levelBarXP, (StringExternal("Param/Value/lib_BD29A430_FBE15C98") + IntToText(libBD29A430_gv_xP[lp_player]) + StringExternal("Param/Value/lib_BD29A430_328D4517") + IntToText(libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]])), PlayerGroupSingle(lp_player));
+    }
+
+    if ((libBD29A430_gv_level[lp_player] < libBD29A430_gv_levelCap)) {
+        DialogControlSetSize(libBD29A430_gv_levelBarFill, PlayerGroupSingle(lp_player), libNtve_gf_ArithmeticIntClamp(FixedToInt(((IntToFixed(libBD29A430_gv_xP[lp_player]) / IntToFixed(libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]])) * 1500.0)), 1, 1500), 47);
+    }
+    else {
+        DialogControlSetSize(libBD29A430_gv_levelBarFill, PlayerGroupSingle(lp_player), 1500, 47);
+    }
+    if ((libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]] > 0)) {
+        if ((((IntToFixed(libBD29A430_gv_xP[lp_player]) / IntToFixed(libBD29A430_gv_xPRequirement[libBD29A430_gv_level[lp_player]])) * 1500.0) <= 1.0)) {
+            DialogControlSetVisible(libBD29A430_gv_levelBarFill, PlayerGroupSingle(lp_player), false);
+        }
+        else {
+            DialogControlSetVisible(libBD29A430_gv_levelBarFill, PlayerGroupSingle(lp_player), true);
+        }
+    }
+
+}
+
+void libBD29A430_gf_SetXPLevel (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_SetDialogItemText(libBD29A430_gv_levelBarCurrent, (StringExternal("Param/Value/lib_BD29A430_F4A94516") + IntToText(libBD29A430_gv_level[lp_player])), PlayerGroupSingle(lp_player));
+    libNtve_gf_SetDialogItemText(libBD29A430_gv_levelBarNext, (StringExternal("Param/Value/lib_BD29A430_2246F458") + IntToText(libNtve_gf_ArithmeticIntClamp((libBD29A430_gv_level[lp_player] + 1), 1, libBD29A430_gv_levelCap))), PlayerGroupSingle(lp_player));
+}
+
+void libBD29A430_gf_LevelUpAnimation (int lp_player) {
+    int init_i;
+
+    // Variable Declarations
+    int lv_i;
+    int[6] lv_glowDialogItem;
+
+    // Automatic Variable Declarations
+    const int autoA6B4EC09_ae = 4;
+    const int autoA6B4EC09_ai = 1;
+    const int auto01CFA837_ae = 4;
+    const int auto01CFA837_ai = 1;
+    const int auto9719B1D9_ae = 4;
+    const int auto9719B1D9_ai = 1;
+    const int autoA747691A_ae = 4;
+    const int autoA747691A_ai = 1;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= 5; init_i += 1) {
+        lv_glowDialogItem[init_i] = c_invalidDialogControlId;
+    }
+
+    // Implementation
+    SoundPlayForPlayer(SoundLink("UI_BNet_Achievement", -1), c_maxPlayers, PlayerGroupSingle(lp_player), 100.0, 0.0);
+    lv_i = 0;
+    for ( ; ( (autoA6B4EC09_ai >= 0 && lv_i <= autoA6B4EC09_ae) || (autoA6B4EC09_ai < 0 && lv_i >= autoA6B4EC09_ae) ) ; lv_i += autoA6B4EC09_ai ) {
+        DialogControlCreate(libBD29A430_gv_levelBarDialog, c_triggerControlTypePortrait);
+        lv_glowDialogItem[lv_i] = DialogControlLastCreated();
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+        DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupSingle(lp_player), true);
+        DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+        libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+        DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1200, 1200);
+        libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "LevelUpAnimation", PlayerGroupAll());
+        libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+        libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 615, PlayerGroupAll());
+    }
+    DialogControlCreate(libBD29A430_gv_levelBarDialog, c_triggerControlTypePortrait);
+    lv_glowDialogItem[5] = DialogControlLastCreated();
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupSingle(lp_player), true);
+    DialogControlSetPosition(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, 0, 0);
+    libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 1200, 1200);
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "LevelUpAnimation", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 625, PlayerGroupAll());
+    Wait(0.25, c_timeGame);
+    DialogControlFadeTransparency(lv_glowDialogItem[5], PlayerGroupAll(), 1.0, 0.0);
+    DialogControlSetVisible(libBD29A430_gv_levelupFrame, PlayerGroupSingle(lp_player), true);
+    DialogControlFadeTransparency(libBD29A430_gv_levelupFrame, PlayerGroupSingle(lp_player), 0.0, 100.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelupFrame, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    DialogControlSetVisible(libBD29A430_gv_levelupText, PlayerGroupSingle(lp_player), true);
+    libNtve_gf_SetDialogItemText(libBD29A430_gv_levelupText, (StringExternal("Param/Value/lib_BD29A430_4DBA63D6") + StringExternal("UI/HeroTalentPanel/Level") + StringExternal("Param/Value/lib_BD29A430_5C3B357B") + IntToText(libBD29A430_gv_level[lp_player])), PlayerGroupSingle(lp_player));
+    DialogControlFadeTransparency(libBD29A430_gv_levelupText, PlayerGroupSingle(lp_player), 0.0, 100.0);
+    DialogControlFadeTransparency(libBD29A430_gv_levelupText, PlayerGroupSingle(lp_player), 0.25, 0.0);
+    Wait(0.5, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (auto01CFA837_ai >= 0 && lv_i <= auto01CFA837_ae) || (auto01CFA837_ai < 0 && lv_i >= auto01CFA837_ae) ) ; lv_i += auto01CFA837_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_glowDialogItem[lv_i], "Stand", PlayerGroupAll());
+    }
+    libNtve_gf_SetDialogItemAnimation(lv_glowDialogItem[5], "Death", PlayerGroupAll());
+    Wait(1.0, c_timeGame);
+    DialogControlDestroy(lv_glowDialogItem[5]);
+    Wait(1.25, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (auto9719B1D9_ai >= 0 && lv_i <= auto9719B1D9_ae) || (auto9719B1D9_ai < 0 && lv_i >= auto9719B1D9_ae) ) ; lv_i += auto9719B1D9_ai ) {
+        libNtve_gf_SetDialogItemAnimation(lv_glowDialogItem[lv_i], "Death", PlayerGroupAll());
+    }
+    Wait(0.25, c_timeGame);
+    DialogControlFadeTransparency(libBD29A430_gv_levelupText, PlayerGroupSingle(lp_player), 0.5, 100.0);
+    Wait(0.25, c_timeGame);
+    DialogControlFadeTransparency(libBD29A430_gv_levelupFrame, PlayerGroupSingle(lp_player), 0.5, 100.0);
+    Wait(1.0, c_timeGame);
+    lv_i = 0;
+    for ( ; ( (autoA747691A_ai >= 0 && lv_i <= autoA747691A_ae) || (autoA747691A_ai < 0 && lv_i >= autoA747691A_ae) ) ; lv_i += autoA747691A_ai ) {
+        DialogControlDestroy(lv_glowDialogItem[lv_i]);
+    }
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Add XP
+//--------------------------------------------------------------------------------------------------
+bool libBD29A430_gt_AddXP_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libBD29A430_gf_ModifyXP(libBD29A430_gv_addXPAmount, libBD29A430_gv_addXPPlayer, true);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libBD29A430_gt_AddXP_Init () {
+    libBD29A430_gt_AddXP = TriggerCreate("libBD29A430_gt_AddXP_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Level Up Animation Start
+//--------------------------------------------------------------------------------------------------
+bool libBD29A430_gt_LevelUpAnimationStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((libBD29A430_gv_levelBarVisible[libBD29A430_gv_levelupPlayer] == true)) {
+        libBD29A430_gf_LevelUpAnimation(libBD29A430_gv_levelupPlayer);
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void libBD29A430_gt_LevelUpAnimationStart_Init () {
+    libBD29A430_gt_LevelUpAnimationStart = TriggerCreate("libBD29A430_gt_LevelUpAnimationStart_Func");
+}
+
+void libBD29A430_InitTriggers () {
+    libBD29A430_gt_AddXP_Init();
+    libBD29A430_gt_LevelUpAnimationStart_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool libBD29A430_InitLib_completed = false;
+
+void libBD29A430_InitLib () {
+    if (libBD29A430_InitLib_completed) {
+        return;
+    }
+
+    libBD29A430_InitLib_completed = true;
+
+    libBD29A430_InitLibraries();
+    libBD29A430_InitVariables();
+    libBD29A430_InitTriggers();
+}
+
+include "Lib452C8A48"
+

@@ -1,0 +1,12 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Abilities Order Refresh
+//--------------------------------------------------------------------------------------------------
+// Function Declarations
+void lib01D4EECB_gf_StarlightAbilitiesOrderRefresh (bool lp_state);
+
+// Trigger Declarations
+trigger lib01D4EECB_gt_Stun;
+trigger lib01D4EECB_gt_SpawnSpiders;
+

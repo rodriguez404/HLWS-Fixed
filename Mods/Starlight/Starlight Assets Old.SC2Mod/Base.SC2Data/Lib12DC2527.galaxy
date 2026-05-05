@@ -1,0 +1,696 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+
+include "Lib12DC2527_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Commendations
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib12DC2527_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+}
+
+// Variable Initialization
+bool lib12DC2527_InitVariables_completed = false;
+
+void lib12DC2527_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (lib12DC2527_InitVariables_completed) {
+        return;
+    }
+
+    lib12DC2527_InitVariables_completed = true;
+
+    lib12DC2527_gv_commentationCurrent = -1;
+    lib12DC2527_gv_commentationAmount = -1;
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lib12DC2527_gv_commendationDialog[init_i] = c_invalidDialogId;
+    }
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lib12DC2527_gv_commendationCardButton[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib12DC2527_gv_playerBorder[init_i] = "Assets\\Textures\\ui_multiplayerload_avatarborder_unranked.dds";
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        for (init_j = 0; init_j <= lib12DC2527_gv_dia; init_j += 1) {
+            lib12DC2527_gv_commendationDialogItem[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+}
+
+// Functions
+void lib12DC2527_gf_CreateCard (int lp_player, int lp_offset, int lp_scoreValue, text lp_scoreDescription, text lp_scoreComparison) {
+    // Variable Declarations
+    color lv_color;
+    color lv_colorLighter;
+    fixed lv_fadeTime;
+    int lv_x;
+    int lv_y;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+    lv_color = Color(0,0,0);
+    lv_colorLighter = Color(0,0,0);
+    lv_fadeTime = 1.0;
+    lv_x = 350;
+    lv_y = 500;
+
+    // Implementation
+    lv_color = Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * 1.4), 25.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * 1.4), 25.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * 1.4), 25.0, 100.0));
+    lv_colorLighter = Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentRed) * 1.6), 30.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentGreen) * 1.6), 30.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), c_colorComponentBlue) * 1.6), 30.0, 100.0));
+    lib12DC2527_gv_commentationCurrent += 1;
+    lib12DC2527_gv_commentationAmount += 1;
+    lib12DC2527_gv_commendationOwner[lib12DC2527_gv_commentationCurrent] = lp_player;
+    DialogCreate(1024, 1024, c_anchorCenter, lp_offset, lib12DC2527_gv_offsetY, true);
+    lib12DC2527_gv_commendationDialog[lib12DC2527_gv_commentationCurrent] = DialogLastCreated();
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lv_x + 10), (lv_y + 10), c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commendationbackground.dds", c_triggerImageTypeNormal, false, Color(149*100/255,150*100/255,151*100/255), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][12] = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lv_x, lv_y, c_anchorCenter, 0, 0, StringToText(""), StringToText(""), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][0] = DialogControlLastCreated();
+    lib12DC2527_gv_commendationCardButton[lib12DC2527_gv_commentationCurrent] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeBorder, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_techpurchase_techbutton_selected_normalpressed.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_techpurchase_techbutton_selected_normaloverpressedover.dds", PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), (lv_x - 20), (lv_y - 90), c_anchorCenter, 0, -35, StringToText(""), StringToText(""), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][1] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeBorder, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_techpurchase_techbutton_selected_normalpressed.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_techpurchase_techbutton_selected_normaloverpressedover.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), (lv_x - 50), 256, c_anchorBottom, 0, 95, StringToText(""), "Assets\\Textures\\ui_screens_alliedcommander_fx_hexgrid.dds", c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][2] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottom, lib12DC2527_gv_commendationDialogItem[lp_player][1], c_anchorBottom, 0, -10);
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 324, 164, c_anchorCenter, 0, -15, StringToText(""), "Assets\\Textures\\ui_commendationunderscore.dds", c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][3] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lp_player, false)), PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 150, 150, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commendationiconbackground.dds", c_triggerImageTypeNormal, false, lv_colorLighter, c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][18] = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 100, 100, c_anchorCenter, 0, -130, StringToText(""), libDDE92A83_gv_playerIcon[lp_player], c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][4] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(lib12DC2527_gv_commendationDialogItem[lp_player][18], PlayerGroupAll(), c_anchorCenter, lib12DC2527_gv_commendationDialogItem[lp_player][4], c_anchorCenter, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 130, 134, c_anchorCenter, 0, -130, StringToText(""), lib12DC2527_gv_playerBorder[lp_player], c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][13] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib12DC2527_gv_commendationDialogItem[lp_player][4], c_anchorCenter, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 44, 30, c_anchorCenter, 0, -130, StringToText(""), "Assets\\Textures\\ui_multiplayerload_avatarborder_levelbg.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][19] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottom, lib12DC2527_gv_commendationDialogItem[lp_player][13], c_anchorBottom, 0, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    if ((PlayerScoreValueGetAsInt(lp_player, "StarlightExperienceLevel") >= 1)) {
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    }
+
+    libNtve_gf_CreateDialogItemLabel(DialogLastCreated(), 44, 30, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_12DC2527_B9179839") + IntToText(PlayerScoreValueGetAsInt(lp_player, "StarlightExperienceLevel"))), ColorWithAlpha(0,0,0,0), false, 2.0);
+    lib12DC2527_gv_commendationDialogItem[lp_player][20] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib12DC2527_gv_commendationDialogItem[lp_player][19], c_anchorCenter, 1, 1);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    if ((PlayerScoreValueGetAsInt(lp_player, "StarlightExperienceLevel") >= 1)) {
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    }
+
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, -30, StringToText(""), (StringExternal("Param/Value/lib_12DC2527_F955E275") + TextWithColor(PlayerName(lp_player), lv_colorLighter)), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][5] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 45, StringToText(""), (StringExternal("Param/Value/lib_12DC2527_63456FCA") + FormatNumber(lp_scoreValue)), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][6] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 75, StringToText(""), (StringExternal("Param/Value/lib_12DC2527_DCBA79C8") + TextWithColor(lp_scoreDescription, lv_colorLighter)), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][7] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), DialogGetWidth(DialogLastCreated()), DialogGetHeight(DialogLastCreated()), c_anchorCenter, 0, 105, StringToText(""), (StringExternal("Param/Value/lib_12DC2527_E211CC4F") + TextWithColor(lp_scoreComparison, lv_colorLighter)), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][8] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 360, 176, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commendationmodelborder.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][15] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottom, lib12DC2527_gv_commendationDialogItem[lp_player][0], c_anchorBottom, 0, 40);
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 90, 90, c_anchorBottomRight, 0, 0, StringToText(""), (StringExternal("Param/Value/lib_12DC2527_19B30480") + TextWithColor(IntToText(0), lv_colorLighter)), "");
+    lib12DC2527_gv_commendationDialogItem[lp_player][9] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottomRight, lib12DC2527_gv_commendationDialogItem[lp_player][0], c_anchorBottomRight, 0, 10);
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\black.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 48, 39, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_commendationarrow.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][10] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_colorLighter, PlayerGroupAll());
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTop, lib12DC2527_gv_commendationDialogItem[lp_player][9], c_anchorTop, -4, 0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 96, 96, c_anchorBottom, 0, 0, StringToText(""), "Assets\\Textures\\sc2_ui_glues_alliedcommanders_levelbackground_sml.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][11] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottom, lib12DC2527_gv_commendationDialogItem[lp_player][0], c_anchorBottom, 0, 0);
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    DialogControlCreate(DialogLastCreated(), c_triggerControlTypePortrait);
+    lib12DC2527_gv_commendationDialogItem[lp_player][14] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib12DC2527_gv_commendationDialogItem[lp_player][11], c_anchorCenter, 0, 0);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 600, 600);
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "CommendationIcon00", PlayerGroupAll());
+    libNtve_gf_SetDialogItemLight(DialogControlLastCreated(), "MainMenuDefault", PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), lv_fadeTime, 0.0);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 466, 58, c_anchorBottom, 0, 0, StringToText(""), "Assets\\Textures\\ui_ingame_playervision_frame.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][16] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorBottom, lib12DC2527_gv_commendationDialogItem[lp_player][0], c_anchorTop, 0, 20);
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRotation(DialogControlLastCreated(), 180, PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 466, 58, c_anchorBottom, 0, 0, StringToText(""), "Assets\\Textures\\ui_ingame_playervision_frame.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib12DC2527_gv_commendationDialogItem[lp_player][17] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorTop, lib12DC2527_gv_commendationDialogItem[lp_player][0], c_anchorBottom, 0, -20);
+    libNtve_gf_SetDialogItemColor(DialogControlLastCreated(), lv_color, PlayerGroupAll());
+    DialogControlSetVisible(DialogControlLastCreated(), PlayerGroupAll(), false);
+    SoundPlayForPlayer(SoundLink("UI_PanelSlide", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+}
+
+void lib12DC2527_gf_CommendationsStart (string lp_scoreValue0, string lp_scoreValue1, string lp_scoreValue2, string lp_scoreValue3) {
+    int init_i;
+
+    // Variable Declarations
+    int lv_i;
+    int lv_p;
+    const int lv_offset = 12;
+    const int lv_gap = 400;
+    int lv_initial;
+    string[4] lv_scoreValue;
+    playergroup[4] lv_scoreValueGroup;
+    fixed[4] lv_scoreValueTeam;
+    int[4] lv_scoreValuePlayer;
+    text[4] lv_scoreDescription;
+    text[4] lv_scoreComparison;
+    int[4] lv_x;
+    int lv_cardCount;
+    playergroup lv_playerGroup;
+    playergroup lv_remainingGroup;
+
+    // Automatic Variable Declarations
+    int autoAD3DF773_val;
+    int auto63CBF0CE_val;
+    int auto26EDC4C9_ae;
+    const int auto26EDC4C9_ai = 1;
+    int autoEFF5894A_ae;
+    const int autoEFF5894A_ai = 1;
+    playergroup auto5BF1021A_g;
+    int auto5BF1021A_var;
+    const int autoC1551ACD_n = lv_offset;
+    int autoC1551ACD_i;
+
+    // Variable Initialization
+    lv_initial = -1000;
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lv_scoreValueGroup[init_i] = PlayerGroupEmpty();
+    }
+    lv_playerGroup = PlayerGroupActive();
+    lv_remainingGroup = PlayerGroupEmpty();
+
+    // Implementation
+    lib12DC2527_gv_offsetY = 0;
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lv_playerGroup, lv_remainingGroup);
+    TriggerEnable(lib12DC2527_gt_GiveCommendation, true);
+    if ((lp_scoreValue1 != null)) {
+        lv_cardCount += 1;
+    }
+
+    if ((lp_scoreValue2 != null)) {
+        lv_cardCount += 1;
+    }
+
+    if ((lp_scoreValue3 != null)) {
+        lv_cardCount += 1;
+    }
+
+    while (((lv_cardCount + 1) > PlayerGroupCount(lv_playerGroup))) {
+        lv_cardCount -= 1;
+    }
+    autoAD3DF773_val = lv_cardCount;
+    if (autoAD3DF773_val == 0) {
+        lv_initial = -400;
+    }
+    else if (autoAD3DF773_val == 1) {
+        lv_initial = -600;
+    }
+    else if (autoAD3DF773_val == 2) {
+        lv_initial = -800;
+    }
+    else if (autoAD3DF773_val == 3) {
+        lv_initial = -1000;
+    }
+    else {
+    }
+    auto63CBF0CE_val = lv_cardCount;
+    if (auto63CBF0CE_val == 0) {
+        lv_x[0] = 0;
+    }
+    else if (auto63CBF0CE_val == 1) {
+        lv_x[0] = RandomInt(0, 1);
+        lv_x[1] = lv_x[0];
+        while ((lv_x[1] == lv_x[0])) {
+            lv_x[1] = RandomInt(0, 1);
+        }
+    }
+    else if (auto63CBF0CE_val == 2) {
+        lv_x[0] = RandomInt(0, 2);
+        lv_x[1] = lv_x[0];
+        lv_x[2] = lv_x[0];
+        while ((lv_x[1] == lv_x[0])) {
+            lv_x[1] = RandomInt(0, 2);
+        }
+        while (((lv_x[2] == lv_x[0]) || (lv_x[2] == lv_x[1]))) {
+            lv_x[2] = RandomInt(0, 2);
+        }
+    }
+    else if (auto63CBF0CE_val == 3) {
+        lv_x[0] = RandomInt(0, 3);
+        lv_x[1] = lv_x[0];
+        lv_x[2] = lv_x[0];
+        lv_x[3] = lv_x[0];
+        while ((lv_x[1] == lv_x[0])) {
+            lv_x[1] = RandomInt(0, 3);
+        }
+        while (((lv_x[2] == lv_x[0]) || (lv_x[2] == lv_x[1]))) {
+            lv_x[2] = RandomInt(0, 3);
+        }
+        while (((lv_x[3] == lv_x[0]) || (lv_x[3] == lv_x[1]) || (lv_x[3] == lv_x[2]))) {
+            lv_x[3] = RandomInt(0, 3);
+        }
+    }
+    else {
+    }
+    lv_scoreValue[lv_x[0]] = lp_scoreValue0;
+    lv_scoreValue[lv_x[1]] = lp_scoreValue1;
+    lv_scoreValue[lv_x[2]] = lp_scoreValue2;
+    lv_scoreValue[lv_x[3]] = lp_scoreValue3;
+    auto26EDC4C9_ae = lv_cardCount;
+    lv_i = 0;
+    for ( ; ( (auto26EDC4C9_ai >= 0 && lv_i <= auto26EDC4C9_ae) || (auto26EDC4C9_ai < 0 && lv_i >= auto26EDC4C9_ae) ) ; lv_i += auto26EDC4C9_ai ) {
+        lv_p = libDDE92A83_gf_FindHighestScore(lv_remainingGroup, lv_scoreValue[lv_x[lv_i]]);
+        PlayerGroupRemove(lv_remainingGroup, lv_p);
+        lv_scoreValuePlayer[lv_x[lv_i]] = lv_p;
+    }
+    autoEFF5894A_ae = lv_cardCount;
+    lv_i = 0;
+    for ( ; ( (autoEFF5894A_ai >= 0 && lv_i <= autoEFF5894A_ae) || (autoEFF5894A_ai < 0 && lv_i >= autoEFF5894A_ae) ) ; lv_i += autoEFF5894A_ai ) {
+        if ((lv_scoreValue[lv_i] != null)) {
+            lv_scoreDescription[lv_i] = StringExternal(CatalogFieldValueGet(c_gameCatalogScoreValue, lv_scoreValue[lv_i], "PublishName", 0));
+            auto5BF1021A_g = PlayerGroupAlliance(c_playerGroupAlly, lv_scoreValuePlayer[lv_i]);
+            auto5BF1021A_var = -1;
+            while (true) {
+                auto5BF1021A_var = PlayerGroupNextPlayer(auto5BF1021A_g, auto5BF1021A_var);
+                if (auto5BF1021A_var < 0) { break; }
+                lv_scoreValueTeam[lv_i] += PlayerScoreValueGetAsFixed(auto5BF1021A_var, lv_scoreValue[lv_i]);
+            }
+            lv_scoreValueTeam[lv_i] += PlayerScoreValueGetAsFixed(lv_scoreValuePlayer[lv_i], lv_scoreValue[lv_i]);
+            if ((lv_scoreValueTeam[lv_i] != 0.0)) {
+                lv_scoreComparison[lv_i] = (IntToText(FixedToInt(((PlayerScoreValueGetAsFixed(lv_scoreValuePlayer[lv_i], lv_scoreValue[lv_i]) / lv_scoreValueTeam[lv_i]) * 100.0))) + StringExternal("Param/Value/lib_12DC2527_4834196D"));
+            }
+            else {
+                lv_scoreComparison[lv_i] = StringToText("");
+            }
+            lib12DC2527_gf_CreateCard(lv_scoreValuePlayer[lv_i], ((lv_initial + lv_gap) - lv_offset), PlayerScoreValueGetAsInt(lv_scoreValuePlayer[lv_i], lv_scoreValue[lv_i]), lv_scoreDescription[lv_i], lv_scoreComparison[lv_i]);
+            lv_initial += lv_gap;
+            lib12DC2527_gv_commendationDialog[lv_i] = DialogLastCreated();
+            for (autoC1551ACD_i = 1; autoC1551ACD_i <= autoC1551ACD_n; autoC1551ACD_i += 1) {
+                DialogSetPosition(DialogLastCreated(), c_anchorCenter, (DialogGetOffsetX(DialogLastCreated()) + 1), lib12DC2527_gv_offsetY);
+                Wait(0.0, c_timeGame);
+            }
+        }
+
+    }
+    TriggerExecute(lib12DC2527_gt_FadeDelay, true, false);
+}
+
+void lib12DC2527_gf_StarlightCommendations (string lp_scoreValue0, string lp_scoreValue1, string lp_scoreValue2, string lp_scoreValue3, string lp_scoreValue4, string lp_scoreValue5, string lp_scoreValue6, string lp_scoreValue7, string lp_scoreValue8, string lp_scoreValue9, string lp_scoreValue10, string lp_scoreValue11, string lp_scoreValue12, string lp_scoreValue13, string lp_scoreValue14, string lp_scoreValue15, string lp_scoreValue16, string lp_scoreValue17, string lp_scoreValue18, string lp_scoreValue19) {
+    // Variable Declarations
+    int lv_a;
+    int lv_b;
+    int lv_c;
+    const int lv_maxScoreValues = 19;
+    string[lv_maxScoreValues + 1] lv_commendationPoolA;
+    string[lv_maxScoreValues + 1] lv_commendationPoolB;
+    string[lv_maxScoreValues + 1] lv_commendationPoolC;
+
+    // Automatic Variable Declarations
+    const int autoB62ED8C1_ae = 0;
+    const int autoB62ED8C1_ai = -1;
+    int autoE91180B8_ae;
+    const int autoE91180B8_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    lv_commendationPoolA[0] = lp_scoreValue0;
+    lv_commendationPoolA[1] = lp_scoreValue1;
+    lv_commendationPoolA[2] = lp_scoreValue2;
+    lv_commendationPoolA[3] = lp_scoreValue3;
+    lv_commendationPoolA[4] = lp_scoreValue4;
+    lv_commendationPoolA[5] = lp_scoreValue5;
+    lv_commendationPoolA[6] = lp_scoreValue6;
+    lv_commendationPoolA[7] = lp_scoreValue7;
+    lv_commendationPoolA[8] = lp_scoreValue8;
+    lv_commendationPoolA[9] = lp_scoreValue9;
+    lv_commendationPoolA[10] = lp_scoreValue10;
+    lv_commendationPoolA[11] = lp_scoreValue11;
+    lv_commendationPoolA[12] = lp_scoreValue12;
+    lv_commendationPoolA[13] = lp_scoreValue13;
+    lv_commendationPoolA[14] = lp_scoreValue14;
+    lv_commendationPoolA[15] = lp_scoreValue15;
+    lv_commendationPoolA[16] = lp_scoreValue16;
+    lv_commendationPoolA[17] = lp_scoreValue17;
+    lv_commendationPoolA[18] = lp_scoreValue18;
+    lv_commendationPoolA[19] = lp_scoreValue19;
+    lv_a = lv_maxScoreValues;
+    for ( ; ( (autoB62ED8C1_ai >= 0 && lv_a <= autoB62ED8C1_ae) || (autoB62ED8C1_ai < 0 && lv_a >= autoB62ED8C1_ae) ) ; lv_a += autoB62ED8C1_ai ) {
+        if ((lv_commendationPoolA[lv_a] != null)) {
+            lv_commendationPoolB[lv_b] = lv_commendationPoolA[lv_a];
+            lv_b += 1;
+        }
+
+    }
+    autoE91180B8_ae = (lv_b - 1);
+    lv_a = 0;
+    for ( ; ( (autoE91180B8_ai >= 0 && lv_a <= autoE91180B8_ae) || (autoE91180B8_ai < 0 && lv_a >= autoE91180B8_ae) ) ; lv_a += autoE91180B8_ai ) {
+        if ((PlayerScoreValueGetAsInt(PlayerGroupPlayer(PlayerGroupActive(), 1), lv_commendationPoolB[lv_a]) > 0)) {
+            lv_commendationPoolC[lv_c] = lv_commendationPoolB[lv_a];
+            lv_c += 1;
+        }
+
+    }
+    lib12DC2527_gf_CommendationsStart(lv_commendationPoolC[0], lv_commendationPoolC[1], lv_commendationPoolC[2], lv_commendationPoolC[3]);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Give Commendation
+//--------------------------------------------------------------------------------------------------
+bool lib12DC2527_gt_GiveCommendation_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    color lv_colorLighter;
+    int lv_player;
+    int lv_epicDialog;
+    bool lv_epic;
+    bool lv_legendary;
+
+    // Automatic Variable Declarations
+    int auto456110F1_ae;
+    const int auto456110F1_ai = 1;
+    const int autoC263B80A_ae = 15;
+    const int autoC263B80A_ai = 1;
+    int auto87A8CD3C_val;
+    playergroup autoB62F93F8_g;
+    int autoB62F93F8_var;
+    playergroup auto6421F4C8_g;
+    int auto6421F4C8_var;
+    const int auto95A26F35_n = 8;
+    int auto95A26F35_i;
+
+    // Variable Initialization
+    lv_colorLighter = Color(0,0,0);
+    lv_epicDialog = c_invalidDialogControlId;
+
+    // Conditions
+    if (testConds) {
+        if (!((lib12DC2527_gv_commendationUsed[EventPlayer()] == false))) {
+            return false;
+        }
+
+        if (!(((EventDialogControl() == lib12DC2527_gv_commendationCardButton[0]) || (EventDialogControl() == lib12DC2527_gv_commendationCardButton[1]) || (EventDialogControl() == lib12DC2527_gv_commendationCardButton[2]) || (EventDialogControl() == lib12DC2527_gv_commendationCardButton[3])))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((GameIsTestMap(false) == false)) {
+        lib12DC2527_gv_commendationUsed[EventPlayer()] = true;
+        auto456110F1_ae = lib12DC2527_gv_commentationAmount;
+        lv_player = 0;
+        for ( ; ( (auto456110F1_ai >= 0 && lv_player <= auto456110F1_ae) || (auto456110F1_ai < 0 && lv_player >= auto456110F1_ae) ) ; lv_player += auto456110F1_ai ) {
+            libNtve_gf_SetDialogItemAcceptMouse(lib12DC2527_gv_commendationDialogItem[lib12DC2527_gv_commendationOwner[lv_player]][0], false, PlayerGroupSingle(EventPlayer()));
+        }
+    }
+
+    lv_player = 1;
+    for ( ; ( (autoC263B80A_ai >= 0 && lv_player <= autoC263B80A_ae) || (autoC263B80A_ai < 0 && lv_player >= autoC263B80A_ae) ) ; lv_player += autoC263B80A_ai ) {
+        if ((EventDialogControl() == lib12DC2527_gv_commendationDialogItem[lv_player][0])) {
+            break;
+        }
+
+    }
+    lib12DC2527_gv_commendationCount[lv_player] += 1;
+    if ((lib12DC2527_gv_commendationCount[lv_player] == 3)) {
+        lv_epic = true;
+    }
+
+    if ((lib12DC2527_gv_commendationCount[lv_player] == 5)) {
+        lv_legendary = true;
+    }
+
+    lv_colorLighter = Color(libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false)), c_colorComponentRed) * 1.6), 30.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false)), c_colorComponentGreen) * 1.6), 30.0, 100.0), libNtve_gf_ArithmeticRealClamp((ColorGetComponent(libNtve_gf_ConvertPlayerColorToColor(PlayerGetColorIndex(lv_player, false)), c_colorComponentBlue) * 1.6), 30.0, 100.0));
+    libNtve_gf_SetDialogItemText(lib12DC2527_gv_commendationDialogItem[lv_player][9], (StringExternal("Param/Value/lib_12DC2527_0AB38E07") + TextWithColor(IntToText(lib12DC2527_gv_commendationCount[lv_player]), lv_colorLighter)), PlayerGroupAll());
+    auto87A8CD3C_val = lib12DC2527_gv_commendationCount[lv_player];
+    if (auto87A8CD3C_val == 0) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon00", PlayerGroupAll());
+    }
+    else if (auto87A8CD3C_val == 1) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon01", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_01", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    else if (auto87A8CD3C_val == 2) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon02", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_02", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    else if (auto87A8CD3C_val == 3) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon03", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_03", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("UI_League_Badge_Impact_6Ch_Bell", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        DialogControlSetVisible(lib12DC2527_gv_commendationDialogItem[lv_player][16], PlayerGroupAll(), true);
+        DialogControlFadeTransparency(lib12DC2527_gv_commendationDialogItem[lv_player][16], PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(lib12DC2527_gv_commendationDialogItem[lv_player][16], PlayerGroupAll(), 0.25, 0.0);
+        DialogControlSetVisible(lib12DC2527_gv_commendationDialogItem[lv_player][17], PlayerGroupAll(), true);
+        DialogControlFadeTransparency(lib12DC2527_gv_commendationDialogItem[lv_player][17], PlayerGroupAll(), 0.0, 100.0);
+        DialogControlFadeTransparency(lib12DC2527_gv_commendationDialogItem[lv_player][17], PlayerGroupAll(), 0.25, 0.0);
+        auto6421F4C8_g = PlayerGroupActive();
+        auto6421F4C8_var = -1;
+        while (true) {
+            auto6421F4C8_var = PlayerGroupNextPlayer(auto6421F4C8_g, auto6421F4C8_var);
+            if (auto6421F4C8_var < 0) { break; }
+            SoundStop(lib12DC2527_gv_currentSound, true);
+        }
+    }
+    else if (auto87A8CD3C_val == 4) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon04", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_04", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    else if (auto87A8CD3C_val == 5) {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon05", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_05", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+    else {
+        libNtve_gf_SetDialogItemModel(lib12DC2527_gv_commendationDialogItem[lv_player][14], "CommendationIcon06", PlayerGroupAll());
+        SoundPlayForPlayer(SoundLink("UI_CommendationHit_06", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        SoundPlayForPlayer(SoundLink("UI_LeaguePromotion_GrandMaster_ImpactHuge", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+        autoB62F93F8_g = PlayerGroupActive();
+        autoB62F93F8_var = -1;
+        while (true) {
+            autoB62F93F8_var = PlayerGroupNextPlayer(autoB62F93F8_g, autoB62F93F8_var);
+            if (autoB62F93F8_var < 0) { break; }
+            SoundStop(lib12DC2527_gv_currentSound, true);
+        }
+    }
+    DialogControlCreate(DialogControlGetDialog(EventDialogControl()), c_triggerControlTypePortrait);
+    lv_epicDialog = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib12DC2527_gv_commendationDialogItem[lv_player][11], c_anchorCenter, 0, 0);
+    DialogControlSetSize(DialogControlLastCreated(), PlayerGroupAll(), 800, 800);
+    libNtve_gf_SetDialogItemBorderVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemBackgroundVisible(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemTransitionModel(DialogControlLastCreated(), "Invisible", PlayerGroupAll());
+    libNtve_gf_SetDialogItemAcceptMouse(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemModel(DialogControlLastCreated(), "VictoryGlow", PlayerGroupAll());
+    libNtve_gf_SetDialogItemLight(DialogControlLastCreated(), "MainMenuDefault", PlayerGroupAll());
+    libNtve_gf_SetDialogItemUseTransition(DialogControlLastCreated(), false, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderType(DialogControlLastCreated(), c_triggerRenderTypeLDR, PlayerGroupAll());
+    libNtve_gf_SetDialogItemAnimation(DialogControlLastCreated(), "Birth", PlayerGroupAll());
+    for (auto95A26F35_i = 1; auto95A26F35_i <= auto95A26F35_n; auto95A26F35_i += 1) {
+        DialogControlSetSize(lib12DC2527_gv_commendationDialogItem[lv_player][0], PlayerGroupAll(), (DialogControlGetWidth(lib12DC2527_gv_commendationDialogItem[lv_player][0], 1) + 1), (DialogControlGetHeight(lib12DC2527_gv_commendationDialogItem[lv_player][0], 1) + 1));
+        DialogControlSetSize(lib12DC2527_gv_commendationDialogItem[lv_player][12], PlayerGroupAll(), (DialogControlGetWidth(lib12DC2527_gv_commendationDialogItem[lv_player][12], 1) + 1), (DialogControlGetHeight(lib12DC2527_gv_commendationDialogItem[lv_player][12], 1) + 1));
+        Wait(0.0, c_timeGame);
+    }
+    Wait(0.5, c_timeGame);
+    if ((lv_epic == true)) {
+        SoundPlayForPlayer(SoundLink("Athena_Epic", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    if ((lv_legendary == true)) {
+        SoundPlayForPlayer(SoundLink("Athena_Legendary", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    }
+
+    Wait(0.5, c_timeGame);
+    DialogControlFadeTransparency(lv_epicDialog, PlayerGroupAll(), 1.0, 100.0);
+    Wait(1.5, c_timeGame);
+    DialogControlDestroy(lv_epicDialog);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib12DC2527_gt_GiveCommendation_Init () {
+    lib12DC2527_gt_GiveCommendation = TriggerCreate("lib12DC2527_gt_GiveCommendation_Func");
+    TriggerEnable(lib12DC2527_gt_GiveCommendation, false);
+    TriggerAddEventDialogControl(lib12DC2527_gt_GiveCommendation, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Fade Delay
+//--------------------------------------------------------------------------------------------------
+bool lib12DC2527_gt_FadeDelay_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    int auto23DAFCF7_ae;
+    const int auto23DAFCF7_ai = 1;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(15.0, c_timeReal);
+    auto23DAFCF7_ae = lib12DC2527_gv_commentationCurrent;
+    lib12DC2527_gv_commendationFade = 0;
+    for ( ; ( (auto23DAFCF7_ai >= 0 && lib12DC2527_gv_commendationFade <= auto23DAFCF7_ae) || (auto23DAFCF7_ai < 0 && lib12DC2527_gv_commendationFade >= auto23DAFCF7_ae) ) ; lib12DC2527_gv_commendationFade += auto23DAFCF7_ai ) {
+        TriggerExecute(lib12DC2527_gt_FadeCommendation, true, false);
+        Wait(0.25, c_timeGame);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib12DC2527_gt_FadeDelay_Init () {
+    lib12DC2527_gt_FadeDelay = TriggerCreate("lib12DC2527_gt_FadeDelay_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Fade Commendation
+//--------------------------------------------------------------------------------------------------
+bool lib12DC2527_gt_FadeCommendation_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_i;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    int auto9C6B3DFB_ae;
+    const int auto9C6B3DFB_ai = 1;
+    const int auto92D98B84_ae = lib12DC2527_gv_dia;
+    const int auto92D98B84_ai = 1;
+    const int auto72E74F88_n = 32;
+    int auto72E74F88_i;
+
+    // Variable Initialization
+    lv_i = lib12DC2527_gv_commendationFade;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto9C6B3DFB_ae = lib12DC2527_gv_commentationCurrent;
+    lv_x = 0;
+    for ( ; ( (auto9C6B3DFB_ai >= 0 && lv_x <= auto9C6B3DFB_ae) || (auto9C6B3DFB_ai < 0 && lv_x >= auto9C6B3DFB_ae) ) ; lv_x += auto9C6B3DFB_ai ) {
+        libNtve_gf_SetDialogItemAcceptMouse(lib12DC2527_gv_commendationCardButton[lv_x], false, PlayerGroupAll());
+    }
+    lv_x = 0;
+    for ( ; ( (auto92D98B84_ai >= 0 && lv_x <= auto92D98B84_ae) || (auto92D98B84_ai < 0 && lv_x >= auto92D98B84_ae) ) ; lv_x += auto92D98B84_ai ) {
+        DialogControlFadeTransparency(lib12DC2527_gv_commendationDialogItem[lib12DC2527_gv_commendationOwner[lv_i]][lv_x], PlayerGroupAll(), 0.25, 100.0);
+    }
+    SoundPlayForPlayer(SoundLink("UI_PanelSlide", -1), c_maxPlayers, PlayerGroupAll(), 100.0, 0.0);
+    for (auto72E74F88_i = 1; auto72E74F88_i <= auto72E74F88_n; auto72E74F88_i += 1) {
+        DialogSetPosition(lib12DC2527_gv_commendationDialog[lv_i], c_anchorCenter, DialogGetOffsetX(lib12DC2527_gv_commendationDialog[lv_i]), (DialogGetOffsetY(lib12DC2527_gv_commendationDialog[lv_i]) - 1));
+        Wait(0.0, c_timeGame);
+    }
+    Wait(1.0, c_timeGame);
+    DialogDestroy(lib12DC2527_gv_commendationDialog[lv_i]);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib12DC2527_gt_FadeCommendation_Init () {
+    lib12DC2527_gt_FadeCommendation = TriggerCreate("lib12DC2527_gt_FadeCommendation_Func");
+}
+
+void lib12DC2527_InitTriggers () {
+    lib12DC2527_gt_GiveCommendation_Init();
+    lib12DC2527_gt_FadeDelay_Init();
+    lib12DC2527_gt_FadeCommendation_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib12DC2527_InitLib_completed = false;
+
+void lib12DC2527_InitLib () {
+    if (lib12DC2527_InitLib_completed) {
+        return;
+    }
+
+    lib12DC2527_InitLib_completed = true;
+
+    lib12DC2527_InitLibraries();
+    lib12DC2527_InitVariables();
+    lib12DC2527_InitTriggers();
+}
+
+include "LibDDE92A83"
+

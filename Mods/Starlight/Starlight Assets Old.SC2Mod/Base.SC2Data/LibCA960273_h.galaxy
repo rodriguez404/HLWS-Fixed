@@ -1,0 +1,51 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Staging Area Customization
+//--------------------------------------------------------------------------------------------------
+// Constants
+const string libCA960273_gv_userData = "StagingAreaData";
+const int libCA960273_gv_tab = 3;
+const string libCA960273_gv_bankSection = "IIlIlIlIIIlllllI";
+const int libCA960273_gv_borderSize = 10;
+
+// Variable Declarations
+int libCA960273_gv_raceDialog;
+int[libCA960273_gv_tab + 1][3] libCA960273_gv_raceTab;
+int libCA960273_gv_mainButton;
+int[3] libCA960273_gv_mainButtonImage;
+int[16][10] libCA960273_gv_stagingAreaCustomizationSaveLoad;
+int[libCA960273_gv_tab + 1] libCA960273_gv_tabDialog;
+int[libCA960273_gv_tab + 1] libCA960273_gv_tabBackground;
+int[libCA960273_gv_tab + 1] libCA960273_gv_tabHighlight;
+int[libCA960273_gv_tab + 1] libCA960273_gv_tabTitle;
+int libCA960273_gv_mainButtonDialog;
+int[128] libCA960273_gv_button;
+int[libCA960273_gv_tab + 1] libCA960273_gv_buttonX;
+int[libCA960273_gv_tab + 1] libCA960273_gv_buttonY;
+int[libCA960273_gv_tab + 1] libCA960273_gv_buttonYOffset;
+int[libCA960273_gv_tab + 1] libCA960273_gv_buttonCategory;
+int[libCA960273_gv_tab + 1] libCA960273_gv_buttonPerTab;
+int libCA960273_gv_buttonTotal;
+timer libCA960273_gv_recentlyCreated;
+bool libCA960273_gv_created;
+bool libCA960273_gv_showHide;
+
+// Function Declarations
+void libCA960273_gf_StagingAreaCustomizationCreate ();
+void libCA960273_gf_StagingAreaCustomizationFade (bool lp_fade, fixed lp_fadeTime);
+void libCA960273_gf_ShowHideStagingAreaCustomization (bool lp_showHide);
+void libCA960273_gf_CreateMainButton ();
+void libCA960273_gf_CreateChoiceButton (string lp_upgrade, int lp_tab);
+void libCA960273_gf_CreateTab ();
+void libCA960273_gf_ApplyViaUpgrade (int lp_player, string lp_upgrade);
+void libCA960273_gf_ApplyViaInteger (int lp_player, int lp_integer);
+void libCA960273_gf_SaveSettings (int lp_player);
+void libCA960273_gf_LoadSettings (int lp_player);
+
+// Trigger Declarations
+trigger libCA960273_gt_UseDialogItem;
+
+// Library Initialization
+void libCA960273_InitVariables ();
+

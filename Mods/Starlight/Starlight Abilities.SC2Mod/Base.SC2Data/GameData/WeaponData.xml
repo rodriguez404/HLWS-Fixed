@@ -1,0 +1,3048 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CWeaponLegacy default="1" id="HeroWeapon">
+        <EditorCategories value="Race:Hero (Ranged)"/>
+        <Icon value="Assets\Textures\btn-weapon-hero.dds"/>
+        <DisplayEffect value="##id##Damage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="6"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="1"/>
+        <Cost>
+            <Charge CountMax="150"/>
+        </Cost>
+        <Period value="1.5"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="1"/>
+        <Effect value="##id##SetLaunch"/>
+        <CriticalEffect value="##id##Crit"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="HeroWeaponMelee" parent="HeroWeapon">
+        <EditorCategories value="Race:Hero (Melee)"/>
+        <Options index="Melee" value="1"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.5"/>
+        <MinScanRange value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="HeroWeaponStorm">
+        <EditorCategories value="Race:Hero (Ranged) (Storm)"/>
+        <Icon value="Assets\Textures\btn-weapon-hero.dds"/>
+        <DisplayEffect value="##id##Damage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="6"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="1"/>
+        <Cost>
+            <Charge CountMax="150"/>
+        </Cost>
+        <Period value="1.5"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="1"/>
+        <DamagePoint value="0.1"/>
+        <Effect value="##id##SetLaunch"/>
+        <CriticalEffect value="##id##Crit"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="HeroWeaponStormMelee" parent="HeroWeaponStorm">
+        <EditorCategories value="Race:Hero (Melee) (Storm)"/>
+        <Options index="Melee" value="1"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.5"/>
+        <MinScanRange value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="War3Melee">
+        <EditorCategories value="Race:War3 (Melee Weapon)"/>
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-weapon-normal.dds"/>
+        <DisplayEffect value="##id##Damage"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="6"/>
+        <Range value="0.25"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="1"/>
+        <Period value="1.35"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="##id##Set"/>
+        <AllowedMovement value="Slowing"/>
+        <AcquirePrioritization value="ByAngle"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="War3Ranged">
+        <EditorCategories value="Race:War3 (Ranged Weapon)"/>
+        <Icon value="Assets\Textures\btn-weapon-piercing.dds"/>
+        <DisplayEffect value="##id##Damage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="1"/>
+        <Period value="1.8"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="##id##SetLaunch"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientofLore" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Mercenary" parent="War3Melee"/>
+    <CWeaponLegacy id="Dreadling" parent="War3Melee">
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DreadlordCommander" parent="War3Melee">
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpiritWolf" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+        <CriticalEffect value="FeralSpiritSetCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="7"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlightedGround" parent="War3Melee">
+        <MinScanRange value="15"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DeathMarch">
+        <DisplayEffect value="DeathMarchDamage"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral"/>
+        <MinScanRange value="15"/>
+        <Range value="0"/>
+        <Effect value="DummyEffect"/>
+        <Period value="1.35"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElvenTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="7"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GraniteGolem" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreaterSpiritWolf" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+        <Effect value="SpiritWolfSet2"/>
+        <CriticalEffect value="FeralSpiritSetCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TreeofEternity" parent="War3Melee">
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TreeofLife" parent="War3Melee">
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientofWind" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnubarakStorm" parent="HeroWeaponStormMelee">
+        <Range value="0.75"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.2"/>
+        <PreswingBeforeAttack value="0.4"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientofWar" parent="War3Melee">
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.81"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Battlemage" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GargoyleEternalVigilance" parent="War3Ranged">
+        <TargetFilters value="Ground,Visible;Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="4"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="GargoyleEternalVigilanceSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RockGolem" parent="War3Melee"/>
+    <CWeaponLegacy id="Spellbow" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.28"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SludgeMinion" parent="War3Melee"/>
+    <CWeaponLegacy id="SludgeFlinger" parent="War3Ranged"/>
+    <CWeaponLegacy id="FreezingSkeleton" parent="War3Melee">
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PoisonTreant" parent="War3Melee">
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KoboldGeomancer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.38"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Kobold" parent="War3Melee">
+        <DamagePoint value="0.38"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BanditLord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenHarbinger" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenGuardian" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenSeer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenWatcher" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenDarkslayer" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Brigand" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelWarchief" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.468"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HarpyQueen" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HarpyWindwitch" parent="War3Ranged"/>
+    <CWeaponLegacy id="HarpyScout" parent="War3Ranged"/>
+    <CWeaponLegacy id="BlackDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlackDragonWhelp" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElderJungleStalker" parent="War3Melee"/>
+    <CWeaponLegacy id="EnragedJungleStalker" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HarpyRogue" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HarpyStormhag" parent="War3Ranged">
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenDisciple" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KoboldTunneler" parent="War3Melee">
+        <DamagePoint value="0.38"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KoboldTaskmaster" parent="War3Melee">
+        <DamagePoint value="0.38"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MakuraPooldweller" parent="War3Melee"/>
+    <CWeaponLegacy id="MakuraTidalLord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MakuraDeepseer" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelPeon" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PlagueTreant" parent="War3Melee">
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RazormaneMedicineMan" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RazormaneChieftain" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RazormaneScout" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LightningLizard" parent="War3Ranged">
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.56"/>
+        <Effect value="LightningLizardSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RazormaneBrute" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SludgeMonstrosity" parent="War3Melee"/>
+    <CWeaponLegacy id="DiseaseTower" parent="War3Ranged">
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <Period value="2"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ThunderLizard" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.56"/>
+        <Effect value="ThunderLizardSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RedDragonWhelp" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreenDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BronzeDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <Effect value="BronzeDragonSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BronzeDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <Effect value="BronzeDrakeSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BronzeDragonWhelp" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <Effect value="BronzeDragonWhelpSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreenDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreenDragonWhelp" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RedDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTrollWarlord" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTrollTrapper" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTrollShadowPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTrollBerserker" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTroll" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollPoacher" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArtanisStorm" parent="HeroWeaponStormMelee">
+        <Range value="1"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.05"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BerserkElemental" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="3"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Gnoll" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.51"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollBrute" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.51"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollOverseer" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.51"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollAssassin" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestTrollHighPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Moonkin" parent="War3Melee"/>
+    <CWeaponLegacy id="BlightBolt" parent="HeroWeapon">
+        <Range value="6"/>
+        <DamagePoint value="0.5"/>
+        <CriticalEffect value="CorrosiveBoltCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DrakkenLaser">
+        <Icon value="Assets\Textures\btn-upgrade-swann-laserdrillattack.dds"/>
+        <DisplayEffect value="DrakkenLaserDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSAngle"/>
+        </AcquireTargetSorts>
+        <Range value="500"/>
+        <Period value="0.5"/>
+        <Effect value="DrakkenLaserPersistent"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MissileBattery">
+        <Icon value="Assets\Textures\btn-upgrade-terran-shipweaponslevel0.dds"/>
+        <DisplayEffect value="MissileBatteryDamage"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="6"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="MissileBatteryLM"/>
+        <LegacyOptions index="KeepChanneling" value="1"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BerserkWildkin" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MakuraPrawn" parent="War3Melee"/>
+    <CWeaponLegacy id="MurlocNightcrawler" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocMutant" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocTiderunner" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocHuntsman" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocPlaguebearer" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NovaStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NovazonStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+        <CriticalEffect value="NovaStormCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceFortress" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="0"/>
+        <Arc value="360"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="0"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <AllowedMovement value="None"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DisplacementBeamDummy">
+        <Options index="Hidden" value="1"/>
+        <DisplayEffect value=""/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="11"/>
+        <Range value="0"/>
+        <RangeSlop value="0"/>
+        <Arc value="360"/>
+        <Effect value="WeaponDummy"/>
+        <LegacyOptions index="UseRangeToCenter" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KerriganAscendedHero" parent="HeroWeapon">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Range value="6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GuidedArrow">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-GuidedArrow.dds"/>
+        <TargetFilters value="-;Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="40"/>
+        <Range value="0.1"/>
+        <Arc value="360"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="Suicide"/>
+        <AllowedMovement value="Moving"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+        <LegacyOptions index="NoDeceleration" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RedDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlackDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SgtHammerStormSiege" parent="HeroWeaponStorm">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="175"/>
+        </Cost>
+        <Period value="1.75"/>
+        <DamagePoint value="0.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollWarden" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SylvanasHighElfStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormWyrm" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.56"/>
+        <Effect value="StormWyrmSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TreeofAges" parent="War3Melee">
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TyrandeWardenStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EnragedElemental" parent="War3Ranged">
+        <Range value="3"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="JungleStalker" parent="War3Melee"/>
+    <CWeaponLegacy id="SummonWaterElementals" parent="War3Ranged">
+        <MinScanRange value="11"/>
+        <Range value="3"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Icelord" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.1"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TimberWolf" parent="War3Melee">
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ZeratulStorm" parent="HeroWeaponStormMelee">
+        <Range value="1"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RaiseSkeleton" parent="War3Melee">
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpawnInfestedTerrans">
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <DisplayEffect value="SpawnInfestedTerransDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="4"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.75"/>
+        <Effect value="SpawnInfestedTerransSetLaunch"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ChenStorm" parent="HeroWeaponStormMelee">
+        <Range value="1"/>
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+        <Period value="1.35"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SgtHammerStorm" parent="HeroWeaponStorm">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpiderCrab" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PoisonBolt">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-PoisonBolt.dds"/>
+        <TargetFilters value="-;Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="0.25"/>
+        <Range value="0.5"/>
+        <Arc value="360"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="PoisonBoltSetWeapon"/>
+        <AllowedMovement value="Moving"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IllidanStorm" parent="HeroWeaponStormMelee">
+        <Cost>
+            <Charge CountMax="90"/>
+        </Cost>
+        <Period value="0.9"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="UtherStorm" parent="HeroWeaponStormMelee">
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ThrallStorm" parent="HeroWeaponStormMelee">
+        <Cost>
+            <Charge CountMax="110"/>
+        </Cost>
+        <Period value="1.1"/>
+        <DamagePoint value="0.15"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KaelthasStorm" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.125"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArmyoftheDeadRanged" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArmyoftheDeadMelee" parent="War3Melee">
+        <Period value="2"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArmyoftheDeadGeneral" parent="War3Melee">
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RexxarStorm" parent="HeroWeaponStorm">
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.125"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenProtector" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlightWorm" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="10"/>
+        <Arc value="67.5"/>
+        <Period value="3"/>
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Bandit" parent="War3Melee"/>
+    <CWeaponLegacy id="JainaStorm" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <PreswingBeforeAttack value="0.5"/>
+        <PreswingBetweenAttacks value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MuradinStorm" parent="HeroWeaponStormMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArthasStorm" parent="HeroWeaponStormMelee">
+        <Range value="1"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.15"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PitLordBoss" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="1"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TyrandeStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GazloweStorm" parent="HeroWeaponStormMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelGrunt" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelRaider" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.85"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MalfurionStorm" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.5"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelWarlock" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.75"/>
+        <DamagePoint value="0.43"/>
+        <Backswing value="0.74"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CorruptedTreant" parent="War3Melee">
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AlarakHero" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="100"/>
+        </Cost>
+        <Period value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WretchedRanger" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.28"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WarHawk" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Period value="1"/>
+        <Effect value="WarHawkSet"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Felhound" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Felweaver" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warbringer" parent="War3Ranged">
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="OgreMagi" parent="War3Melee"/>
+    <CWeaponLegacy id="OgreLord" parent="War3Melee"/>
+    <CWeaponLegacy id="OgreWarrior" parent="War3Melee"/>
+    <CWeaponLegacy id="ObsidianZiggurat" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SylvanasStorm" parent="HeroWeaponStorm">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <PreswingBeforeAttack value="0.75"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MakuraSnapper" parent="War3Melee"/>
+    <CWeaponLegacy id="MakuraTidecaller" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocFlesheater" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="OgreMauler" parent="War3Melee"/>
+    <CWeaponLegacy id="Wolf" parent="War3Melee">
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StonemaulChampion" parent="War3Melee"/>
+    <CWeaponLegacy id="Patchwerk" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="1.17"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ShadeWar3">
+        <Options index="Hidden" value="1"/>
+        <DisplayEffect value=""/>
+        <TargetFilters value="Visible;Ally,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <Effect value="WeaponDummy"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpectralCaptain" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Doomlord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EredarCommander" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FleshTitan" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LoaSpeaker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpectralSwordsman" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DeathTower" parent="War3Ranged">
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Timbermaw" parent="War3Ranged">
+        <Period value="1.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IronbarkProtector" parent="War3Ranged">
+        <Range value="9"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.4"/>
+        <AllowedMovement value="None"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelCannon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.8"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ConjuredElemental" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StrongholdTower" parent="War3Ranged">
+        <Range value="10"/>
+        <Arc value="360"/>
+        <Period value="0.6"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TidalGuardian" parent="War3Ranged">
+        <Range value="7"/>
+        <Period value="1.25"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElementalAttendant" parent="War3Ranged">
+        <Period value="1.35"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlightSlime" parent="War3Ranged">
+        <Range value="3"/>
+        <Period value="1.5"/>
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GiantSeaTurtle" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Vengeance" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WateryMinion" parent="War3Melee">
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Succubus" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.34"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RainofChaos" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+        <AllowedMovement value="None"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Hydra" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.28"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Deathstalker" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Felhunter" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Abyssal" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.74"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Revenant" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Treant" parent="War3Melee">
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Quilboar" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MageTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CallHawk" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="1.35"/>
+        <Backswing value="0.5"/>
+        <Effect value="CallHawkSet"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientProtector" parent="War3Ranged">
+        <Range value="7"/>
+        <Period value="2"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.4"/>
+        <AllowedMovement value="None"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Voidlord" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.1"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WatchTower" parent="War3Ranged">
+        <Range value="8"/>
+        <Arc value="360"/>
+        <Period value="0.6"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MokNathalAxe" parent="HeroWeaponMelee">
+        <DamagePoint value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CallQuilbeast" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EarthBrewmaster" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CallBear" parent="War3Melee">
+        <DamagePoint value="0.63"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FireBrewmaster" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LavaSpawn" parent="War3Ranged">
+        <Range value="4"/>
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.77"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArcweaverSpire" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1.25"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArcaneTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="7"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MechanoClaw" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="160"/>
+        </Cost>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ClockwerkGoblin" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CrystalSpire" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CannonTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="8"/>
+        <Period value="2.5"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EyeofNerub" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FortifiedWeaponry" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-ability-neutral-moonfire.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnnihilanGlaive" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NazjatarBow" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.73"/>
+        <Backswing value="0.54"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LavaBolt" parent="HeroWeapon">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Stampede">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-Stampede.dds"/>
+        <TargetFilters value="-;Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="0.75"/>
+        <Range value="1"/>
+        <Arc value="360"/>
+        <Effect value="StampedeSetCollision"/>
+        <AllowedMovement value="Moving"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormBrewmaster" parent="HeroWeapon">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StaffofSerenity" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+        <Period value="1.35"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpiritTower" parent="War3Ranged">
+        <Range value="7"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SentinelTower" parent="War3Ranged">
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <DisplayAttackCount value="3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GuardTower" parent="War3Ranged">
+        <Range value="7"/>
+        <Arc value="360"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianTower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <Period value="1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SunfallSpire" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1.25"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EarthfurySpire" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="9"/>
+        <Arc value="360"/>
+        <Period value="1.25"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Farstrider" parent="War3Ranged">
+        <Period value="1.4"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.58"/>
+        <Range value="8"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelGlaive" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Moonbolt" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="160"/>
+        </Cost>
+        <DamagePoint value="0.5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WarClub" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <Range value="1"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.49"/>
+        <Backswing value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Starsurge">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="ContinuousScan" value="1"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-starsurge.dds"/>
+        <TargetFilters value="-;Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="0.5"/>
+        <Range value="0.75"/>
+        <Arc value="360"/>
+        <Effect value="Suicide"/>
+        <AllowedMovement value="Moving"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreatHalberd" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="160"/>
+        </Cost>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CarriageArm" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="200"/>
+        </Cost>
+        <Period value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warlock" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <DamagePoint value="0.43"/>
+        <Backswing value="0.74"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Rifleman" parent="War3Ranged">
+        <Range value="4"/>
+        <Period value="1.35"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.17"/>
+        <Effect value="RiflemanSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MortarTeam" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="3.5"/>
+        <Backswing value="1.2"/>
+        <DamagePoint value="1"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Gyrocopter" parent="War3Ranged">
+        <TargetFilters value="Air,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="5"/>
+        <Period value="2"/>
+        <Backswing value="0.97"/>
+        <DamagePoint value="0.03"/>
+        <Effect value="GyrocopterSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GyrocopterGround" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="1"/>
+        <Period value="2"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.633"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GryphonRider" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="4"/>
+        <Period value="2.2"/>
+        <Backswing value="0.87"/>
+        <DamagePoint value="0.8"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Priest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="2"/>
+        <Backswing value="0.58"/>
+        <DamagePoint value="0.59"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Sorceress" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <Backswing value="0.78"/>
+        <DamagePoint value="0.75"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SiegeEngine" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <Range value="2"/>
+        <Period value="2.1"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+        <Effect value="SiegeEngineSet"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Spellbreaker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-normal.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="2"/>
+        <Period value="1.9"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Dragonhawk" parent="War3Ranged">
+        <Range value="3"/>
+        <Period value="1.75"/>
+        <Backswing value="0.633"/>
+        <DamagePoint value="0.43"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Ranger" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.28"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Chaplain" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Hydromancer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <Backswing value="0.85"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Headhunter" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="2.31"/>
+        <Backswing value="0.86"/>
+        <DamagePoint value="0.31"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Demolisher" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="4.5"/>
+        <Backswing value="1.9"/>
+        <DamagePoint value="0.1"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Catapult" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="4.5"/>
+        <Backswing value="1.9"/>
+        <DamagePoint value="0.1"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KodoBeast" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.44"/>
+        <Backswing value="0.32"/>
+        <DamagePoint value="0.85"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelKodoBeast" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.44"/>
+        <Backswing value="0.32"/>
+        <DamagePoint value="0.85"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WindRider" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="2"/>
+        <Backswing value="0.54"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Batrider" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="3"/>
+        <Backswing value="0.54"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WitchDoctor" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <Backswing value="0.6"/>
+        <DamagePoint value="0.73"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Shaman" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="2.1"/>
+        <Backswing value="0.74"/>
+        <DamagePoint value="0.43"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Spiritwalker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <Backswing value="0.6"/>
+        <DamagePoint value="0.5"/>
+        <Range value="4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MeatWagon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="4"/>
+        <Backswing value="1.3"/>
+        <DamagePoint value="0.7"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CryptFiend" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="2"/>
+        <Backswing value="0.36"/>
+        <DamagePoint value="0.64"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GargoyleGround" parent="War3Ranged">
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Period value="2.2"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.63"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BansheeUndead" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.5"/>
+        <Backswing value="0.51"/>
+        <DamagePoint value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Necromancer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Backswing value="0.47"/>
+        <DamagePoint value="0.53"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ObsidianStatue" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="2.1"/>
+        <Backswing value="0.47"/>
+        <DamagePoint value="0.53"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ObsidianDestroyer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="1.35"/>
+        <Backswing value="0.337"/>
+        <DamagePoint value="0.633"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FrostWyrm" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="3"/>
+        <Period value="3"/>
+        <Backswing value="0.55"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Sapphiron" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="4"/>
+        <Period value="1.35"/>
+        <Backswing value="0.55"/>
+        <DamagePoint value="0.5"/>
+        <LegacyOptions index="NoDeceleration" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalMage" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Archer" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <Backswing value="0.28"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Huntress" parent="War3Ranged">
+        <Range value="2"/>
+        <Backswing value="0.54"/>
+        <DamagePoint value="0.46"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Icon value="Assets\Textures\btn-weapon-normal.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Dryad" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="2"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GlaiveThrower" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="3.5"/>
+        <Backswing value="1.9"/>
+        <DamagePoint value="0.1"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Ballista" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Period value="3.5"/>
+        <Backswing value="1.9"/>
+        <DamagePoint value="0.1"/>
+        <MinimumRange value="2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HippogryphRider" parent="War3Ranged">
+        <Range value="4"/>
+        <Period value="1.1"/>
+        <Backswing value="0.337"/>
+        <DamagePoint value="0.633"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Chimera" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="5"/>
+        <Period value="2.5"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+        <Effect value="ChimeraSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ChimeraStructure" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Structure,Visible;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="2.5"/>
+        <Backswing value="0.65"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DruidoftheTalon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.6"/>
+        <Backswing value="0.67"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FaerieDragon" parent="War3Ranged">
+        <Range value="3"/>
+        <Period value="1.75"/>
+        <Backswing value="0.8"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MoonPriestess" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Nightblade" parent="War3Ranged">
+        <Period value="1"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Couatl" parent="War3Ranged">
+        <Range value="4"/>
+        <Backswing value="1"/>
+        <DamagePoint value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Siren" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Wavemender" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="2"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.5"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SnapDragon" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="2"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DragonTurtle" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <Range value="4"/>
+        <Period value="1.75"/>
+        <DamagePoint value="0.48"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ApprenticeWizard" parent="War3Ranged"/>
+    <CWeaponLegacy id="RogueWizard" parent="War3Ranged">
+        <Backswing value="0.85"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RenegadeWizard" parent="War3Ranged">
+        <Backswing value="0.85"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkWizard" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Backswing value="0.85"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormreaverApprentice" parent="War3Ranged">
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormreaverHermit" parent="War3Ranged">
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormreaverNecrolyte" parent="War3Ranged"/>
+    <CWeaponLegacy id="StormreaverWarlock" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HighborneGhost" parent="War3Ranged">
+        <Backswing value="0.51"/>
+        <DamagePoint value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HighborneWraith" parent="War3Ranged">
+        <Backswing value="0.51"/>
+        <DamagePoint value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulBloodGill" parent="War3Ranged">
+        <Period value="1.6"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulSnarecaster" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulShadowcaster" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Backswing value="0.7"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherDragonHatchling" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <Backswing value="0.5"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SatyrTrickster" parent="War3Ranged"/>
+    <CWeaponLegacy id="SatyrShadowdancer" parent="War3Ranged"/>
+    <CWeaponLegacy id="VileTormentor" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <Backswing value="0.64"/>
+        <DamagePoint value="0.34"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTroll" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTrollBerserker" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTrollHighPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTrollShadowPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTrollTrapper" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkTrollWarlord" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ReefElemental" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SeaElemental" parent="War3Ranged">
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonWhelp" parent="War3Ranged">
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <Range value="5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDrake" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragon" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FallenPriest" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Deceiver" parent="War3Ranged">
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Heretic" parent="War3Ranged">
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Cultist" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Enchantress" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.55"/>
+        <Backswing value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTroll" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTrollBerserker" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTrollHighPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTrollPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTrollTrapper" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceTrollWarlord" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BarbedArachnathid" parent="War3Ranged">
+        <Period value="1.6"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArachnathidEarthBorer" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrSpearman" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrTrapper" parent="War3Ranged">
+        <Range value="5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrSorcerer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FacelessTerror" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FacelessDeathbringer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PolarFurbolgShaman" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PolarFurbolgElderShaman" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonspawnApprentice" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.83"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonspawnSorcerer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.83"/>
+        <Backswing value="0.5"/>
+        <Period value="1.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MaidenofPain" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <Backswing value="0.64"/>
+        <DamagePoint value="0.34"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LesserVoidwalker" parent="War3Ranged">
+        <Range value="4"/>
+        <Period value="1.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Voidwalker" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreaterVoidwalker" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElderVoidwalker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Range value="5"/>
+        <Period value="1.35"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="InfernalContraption" parent="War3Ranged">
+        <Period value="1.6"/>
+        <Backswing value="0.8"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="InfernalMachine" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.6"/>
+        <Backswing value="0.8"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="InfernalJuggernaut" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.6"/>
+        <Backswing value="0.8"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EredarSorcerer" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Backswing value="0.6"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EredarDiabolist" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Backswing value="0.6"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EredarWarlock" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Backswing value="0.6"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianWebspinner" parent="War3Ranged">
+        <Period value="1.6"/>
+        <Backswing value="0.36"/>
+        <DamagePoint value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianSeer" parent="War3Ranged">
+        <Period value="1.6"/>
+        <Backswing value="0.36"/>
+        <DamagePoint value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianQueen" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.6"/>
+        <Backswing value="0.36"/>
+        <DamagePoint value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpittingSpider" parent="War3Ranged">
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalArcher" parent="War3Ranged">
+        <Range value="5"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BurningArcher" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalMarksman" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AcidSpike" parent="HeroWeapon">
+        <DisplayEffect value="AcidSpikeDamageDummy"/>
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherPortalA">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DisplayEffect value="NetherPortalADamage"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="11"/>
+        <Range value="0.5"/>
+        <Period value="1.35"/>
+        <Effect value="NetherPortalASetWeapon"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LashofPain" parent="HeroWeapon">
+        <Range value="4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LightningBolt" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.312"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LunarRecurve" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestSpirit" parent="HeroWeapon">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="170"/>
+        </Cost>
+        <Period value="1.7"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Rend" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <DamagePoint value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MoonBlade" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <DamagePoint value="0.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Spider" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Peasant" parent="War3Melee">
+        <Period value="2"/>
+        <DamagePoint value="0.433"/>
+        <Backswing value="0.567"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Footman" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Knight" parent="War3Melee">
+        <Period value="1.4"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Militia" parent="War3Melee">
+        <Period value="1.2"/>
+        <DamagePoint value="0.39"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Bloodwarder" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Captain" parent="War3Melee">
+        <Period value="1"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KerriganStorm" parent="HeroWeaponStormMelee">
+        <Range value="1.5"/>
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <PreswingBeforeAttack value="0.4"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Engineer" parent="War3Melee">
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Peon" parent="War3Melee">
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Grunt" parent="War3Melee">
+        <Period value="1.6"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Raider" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <Period value="1.85"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Tauren" parent="War3Melee">
+        <Period value="1.9"/>
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.863"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Acolyte" parent="War3Melee">
+        <Period value="2.5"/>
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Ghoul" parent="War3Melee">
+        <Period value="1.3"/>
+        <DamagePoint value="0.39"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Abomination" parent="War3Melee">
+        <Period value="1.9"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="1.17"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Gargoyle" parent="War3Melee">
+        <Period value="1.4"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="1"/>
+        <TargetFilters value="Air,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalWarrior" parent="War3Melee">
+        <Period value="2"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherPortalB">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DisplayEffect value="NetherPortalBDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="11"/>
+        <Range value="6"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.35"/>
+        <Effect value="NetherPortalBWeaponLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Zombie" parent="War3Melee"/>
+    <CWeaponLegacy id="Hippogryph" parent="War3Melee">
+        <Period value="1.05"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.37"/>
+        <TargetFilters value="Air,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulReaver" parent="War3Melee">
+        <Period value="1.6"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Myrmidon" parent="War3Melee">
+        <Period value="1.9"/>
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RoyalGuard" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.7"/>
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+        <Effect value="RoyalGuardSetWar3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulSlave" parent="War3Melee">
+        <Period value="3"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianSpiderLord" parent="War3Melee"/>
+    <CWeaponLegacy id="NerubianWarrior" parent="War3Melee"/>
+    <CWeaponLegacy id="NerubianSpiderling" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlackSpider" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestSpider" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GiantSpider" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Broodmother" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Felguard" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelguardBloodfiend" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelguardOverlord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelBeast" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelStalker" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelRavager" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Satyr" parent="War3Melee"/>
+    <CWeaponLegacy id="SatyrSoulstealer" parent="War3Melee"/>
+    <CWeaponLegacy id="SatyrHellcaller" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VileTemptress" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="QueenofSuffering" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Doomguard" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.8"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Infernal" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.74"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GiantSkeletalWarrior" parent="War3Melee">
+        <Period value="2"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalOrc" parent="War3Melee">
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalOrcGrunt" parent="War3Melee">
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalOrcChampion" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FireRevenant" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RevenantoftheTides" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FrostRevenant" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RevenantoftheSeas" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LightningRevenant" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IceRevenant" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RevenantoftheDepths" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DeathRevenant" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DeeplordRevenant" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulCliffrunner" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulTidewarrior" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulMarauder" parent="War3Melee">
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DruidoftheClaw" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.53"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DruidoftheClawBear" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.83"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MountainGiant" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.49"/>
+        <Backswing value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PolarBear" parent="War3Melee">
+        <DamagePoint value="0.63"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GiantPolarBear" parent="War3Melee">
+        <DamagePoint value="0.63"/>
+        <Backswing value="0.67"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientWendigo" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElderWendigo" parent="War3Melee"/>
+    <CWeaponLegacy id="Wendigo" parent="War3Melee"/>
+    <CWeaponLegacy id="WendigoShaman" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientSasquatch" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ElderSasquatch" parent="War3Melee"/>
+    <CWeaponLegacy id="Sasquatch" parent="War3Melee"/>
+    <CWeaponLegacy id="SasquatchOracle" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DisplayEffect value="SasquatchShamanDamage"/>
+        <Effect value="SasquatchShamanSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MagnataurWarrior" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.84"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MagnataurReaver" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.84"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MagnataurDestroyer" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.84"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArcaneGolem" parent="War3Melee"/>
+    <CWeaponLegacy id="BattleGolem" parent="War3Melee"/>
+    <CWeaponLegacy id="FleshGolem" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SiegeGolem" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WarGolem" parent="War3Melee"/>
+    <CWeaponLegacy id="UnbrokenDarkhunter" parent="War3Melee"/>
+    <CWeaponLegacy id="UnbrokenRager" parent="War3Melee"/>
+    <CWeaponLegacy id="UnbrokenDarkweaver" parent="War3Melee"/>
+    <CWeaponLegacy id="FacelessTrickster" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CrystalArachnathid" parent="War3Melee">
+        <DamagePoint value="0.47"/>
+        <Backswing value="0.53"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="OverlordArachnathid" parent="War3Melee">
+        <DamagePoint value="0.47"/>
+        <Backswing value="0.53"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WarriorArachnathid" parent="War3Melee">
+        <DamagePoint value="0.47"/>
+        <Backswing value="0.53"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonspawnMeddler" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.83"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonspawnOverseer" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.83"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlueDragonspawnWarrior" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.83"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FrostWolf" parent="War3Melee">
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GiantFrostWolf" parent="War3Melee">
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DireFrostWolf" parent="War3Melee">
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.33"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrFighter" parent="War3Melee">
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrHealer" parent="War3Melee">
+        <Period value="1.8"/>
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrWarrior" parent="War3Melee">
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrChieftain" parent="War3Melee">
+        <DamagePoint value="0.36"/>
+        <Backswing value="0.64"/>
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SeaGiant" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SeaGiantHunter" parent="War3Melee">
+        <Period value="1.5"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SeaGiantBehemoth" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PolarFurbolg" parent="War3Melee"/>
+    <CWeaponLegacy id="PolarFurbolgTracker" parent="War3Melee"/>
+    <CWeaponLegacy id="PolarFurbolgChampion" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PolarFurbolgUrsaWarrior" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Mammoth" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IcetuskMammoth" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DireMammoth" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warglaives" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ThalassianRecurve" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Parasite">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-parasite.dds"/>
+        <DisplayEffect value="ParasiteDamage"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="0.5"/>
+        <Period value="1.35"/>
+        <Effect value="ParasiteWeaponSet"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warblade" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PhoenixStrike" parent="HeroWeapon">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SwannHero" parent="HeroWeapon">
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ShadowBolt" parent="HeroWeapon">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+    </CWeaponLegacy>
+    <CWeaponStrafe id="GuardianWisps">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-guardianwisps.dds"/>
+        <DisplayEffect value="GuardianWispsDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSRandom"/>
+        </AcquireTargetSorts>
+        <MinScanRange value="14"/>
+        <Arc value="360"/>
+        <Period value="3"/>
+        <Effect value="GuardianWispsLM"/>
+        <LoiterRadius value="6"/>
+    </CWeaponStrafe>
+    <CWeaponLegacy id="Rip" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+        <DamagePoint value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PhoenixHeroic" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <MinScanRange value="11"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CarrionBeetles" parent="War3Melee">
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForceofNature" parent="War3Melee">
+        <MinScanRange value="11"/>
+        <DamagePoint value="0.467"/>
+        <Backswing value="0.5"/>
+        <Effect value="ForceofNatureWeaponSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FirestormArtillery">
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-firestormartillery.dds"/>
+        <DisplayEffect value="FirestormArtilleryDamage"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="35"/>
+        <MinimumRange value="5"/>
+        <Period value="10"/>
+        <Effect value="FirestormArtillerySetLaunch"/>
+        <DisplayAttackCount value="4"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlackStrike" parent="War3Melee">
+        <Period value="1.2"/>
+        <DamagePoint value="0.2666"/>
+        <Backswing value="0.5"/>
+        <Effect value="BlackStrikeDamage"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EngineeringUpgradeDummy">
+        <Icon value="Assets\Textures\btn-ability-neutral-engineeringupgrade.dds"/>
+        <DisplayEffect value="EngineeringUpgradeDamage"/>
+        <TargetFilters value="Visible;Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="6"/>
+        <Period value="1"/>
+        <Effect value="EngineeringUpgradeSetLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponStrafe id="LocustSwarm">
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Options index="OnlyFireAtAttackOrderTarget" value="0"/>
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-locustswarm.dds"/>
+        <DisplayEffect value="LocustSwarmDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AcquireTargetSorts>
+            <SortArray value="TSRandom"/>
+        </AcquireTargetSorts>
+        <MinScanRange value="14"/>
+        <Range value="8"/>
+        <Arc value="360"/>
+        <Period value="1.35"/>
+        <Effect value="LocustSwarmLM"/>
+        <LoiterRadius value="8"/>
+    </CWeaponStrafe>
+    <CWeaponLegacy id="RaynorHero" parent="HeroWeapon">
+        <DisplayEffect value="RaynorHeroDamageDummy"/>
+        <Range value="7"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Pyrocannon">
+        <Options index="LinkedCooldown" value="0"/>
+        <Options index="RequireEnabledAttackAbil" value="0"/>
+        <Icon value="Assets\Textures\btn-weapon-piercing.dds"/>
+        <DisplayEffect value="PyrocannonDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="7"/>
+        <Period value="1.35"/>
+        <Effect value="PyrocannonSetLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SerpentWard" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-ability-neutral-serpentward.dds"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="0"/>
+        <Period value="1.35"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="0"/>
+        <Backswing value="0.7"/>
+        <AllowedMovement value="None"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelBolt" parent="HeroWeapon">
+        <Range value="7"/>
+        <DamagePoint value="0.2"/>
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Cost>
+            <Charge CountMax="90"/>
+        </Cost>
+        <Period value="0.9"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DoomBolt" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <TargetFilters value="Air,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+        <AllowedMovement value="None"/>
+        <Period value="1.35"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LegionStrike" parent="War3Melee">
+        <EditorCategories value="Race:Neutral"/>
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+        <Effect value="LegionStrikeWeaponSet"/>
+        <AllowedMovement value="None"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FeralSpirit" parent="War3Melee">
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+        <CriticalEffect value="FeralSpiritSetCrit"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Inferno" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.74"/>
+        <Effect value="InfernoSetWeapon"/>
+        <AllowedMovement value="None"/>
+        <Period value="0.9"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SymbioticSpores" parent="HeroWeapon">
+        <Range value="6"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VengefulSpirit" parent="War3Ranged">
+        <Range value="3"/>
+        <Period value="1"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VorazunHero" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.15"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MountainKingHero" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PoweredBlade" parent="HeroWeaponMelee">
+        <DisplayEffect value="PoweredBladeDamageDummy"/>
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Runeblade" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlessedHammer" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WaterElemental" parent="War3Ranged">
+        <Range value="3"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+        <MinScanRange value="11"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SteadyShot" parent="HeroWeapon">
+        <Range value="7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Frostbolt" parent="HeroWeapon">
+        <Range value="6"/>
+        <DamagePoint value="0.3"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Fireball" parent="HeroWeapon">
+        <Range value="6"/>
+        <DamagePoint value="0.55"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CorrosiveBolt" parent="HeroWeapon">
+        <Range value="6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HailofLead" parent="HeroWeapon">
+        <Period value="0.9"/>
+        <Cost>
+            <Charge CountMax="110"/>
+        </Cost>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NydusDragon">
+        <Icon value="Assets\Textures\btn-ability-neutral-nydusdragon.dds"/>
+        <DisplayEffect value="NydusDragonDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <Arc value="67.5"/>
+        <Period value="1"/>
+        <Effect value="NydusDragonWeaponLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NovaHero" parent="HeroWeapon">
+        <Range value="7"/>
+        <DamagePoint value="0.063"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VoidBlade" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="120"/>
+        </Cost>
+        <Period value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EnergyBolt" parent="HeroWeapon">
+        <Range value="4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Mangle" parent="HeroWeaponMelee">
+        <Cost>
+            <Charge CountMax="110"/>
+        </Cost>
+        <Period value="1.1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArtanisHero" parent="HeroWeaponMelee">
+        <DisplayEffect value="ArtanisHeroDamageDummy"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LocustNest">
+        <Icon value="Assets\Textures\btn-upgrade-zerg-missileattacks-level0.dds"/>
+        <DisplayEffect value="LocustNestDamage"/>
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="11"/>
+        <Range value="3"/>
+        <Period value="1.35"/>
+        <Effect value="LocustNestWeaponLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AcolyteofPain" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CarrionBeetlesPassive" parent="War3Melee"/>
+    <CWeaponLegacy id="Shadowleaf" parent="War3Ranged">
+        <Range value="7"/>
+        <Period value="1.4"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelLord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArcaneElemental" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MudGolem" parent="War3Melee"/>
+    <CWeaponLegacy id="PitLord" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <Period value="1.4"/>
+        <Backswing value="0.7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SiegeConstruct" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ManaElemental" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Range value="4"/>
+        <Period value="1.6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ManaAddict" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.75"/>
+        <DamagePoint value="0.75"/>
+        <Backswing value="0.78"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ManaSeeker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SporeBomb">
+        <Options index="Hidden" value="1"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <MinScanRange value="1.5"/>
+        <Range value="1.5"/>
+        <Arc value="360"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="SporeBombSetDetonate"/>
+        <RandomDelayMin value="0"/>
+        <RandomDelayMax value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="UnstableGhoul" parent="War3Melee">
+        <Period value="1.3"/>
+        <DamagePoint value="0.39"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SludgeBelcher" parent="War3Melee">
+        <Period value="1.9"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="1.17"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FrostGuardian" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BoneServants" parent="War3Melee">
+        <MinScanRange value="12"/>
+        <DamagePoint value="0.167"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HeavyBolt" parent="HeroWeaponStorm">
+        <Range value="16"/>
+        <Arc value="360"/>
+        <Cost>
+            <Charge CountMax="90"/>
+        </Cost>
+        <Period value="1.1"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FireConstruct" parent="War3Melee"/>
+    <CWeaponLegacy id="TrainMortarTeam" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-siege.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <MinimumRange value="2"/>
+        <Period value="3.6"/>
+        <DamagePoint value="1"/>
+        <Backswing value="1.2"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainSpellbreaker" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-normal.dds"/>
+        <TargetFilters value="Ground,Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="2"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainSorceress" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.75"/>
+        <Backswing value="0.78"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainPriest" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainKnight" parent="War3Melee">
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainRifleman" parent="War3Ranged">
+        <Range value="4"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0.17"/>
+        <Backswing value="0.7"/>
+        <Effect value="TrainRiflemanSet"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TrainFootman" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Ivus" parent="War3Melee">
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.81"/>
+        <CriticalEffect value="FeralSpiritSetCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FreezingBolt" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.55"/>
+        <Backswing value="0.4"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="OgreHero" parent="HeroWeaponMelee">
+        <Range value="1.25"/>
+        <Cost>
+            <Charge CountMax="135"/>
+        </Cost>
+        <Period value="1.35"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Servitor" parent="War3Ranged">
+        <Range value="5"/>
+        <Period value="0.5"/>
+        <DamagePoint value="0"/>
+        <Backswing value="0"/>
+        <Effect value="ServitorPersistent"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SorceressHero" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.75"/>
+        <Backswing value="0.78"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KelThuzadGhostHero" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.45"/>
+        <Backswing value="0.47"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpellbreakerHero" parent="HeroWeapon">
+        <Range value="2"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Dreadlord" parent="War3Melee">
+        <DamagePoint value="0.25"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CallBodyguards" parent="War3Melee">
+        <Period value="1.2"/>
+        <DamagePoint value="0.39"/>
+        <Backswing value="0.44"/>
+        <CriticalEffect value="FeralSpiritSetCrit"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Paladin" parent="War3Melee">
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LeoricStorm" parent="HeroWeaponStormMelee">
+        <Range value="1.5"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+        <Period value="1.3"/>
+        <DamagePoint value="0.15"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FireGolem" parent="War3Melee">
+        <Icon value="Assets\Textures\btn-weapon-chaos.dds"/>
+        <DamagePoint value="0.26"/>
+        <Backswing value="0.74"/>
+        <Effect value="FireGolemSetLaunch"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="JainaUltimateStorm" parent="HeroWeaponStorm">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <PreswingBeforeAttack value="0.5"/>
+        <PreswingBetweenAttacks value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Keeper" parent="War3Ranged">
+        <Icon value="Assets\Textures\btn-weapon-magic.dds"/>
+        <Period value="2"/>
+        <DamagePoint value="0.59"/>
+        <Backswing value="0.58"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RexxarFrostStorm" parent="HeroWeaponStorm">
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.125"/>
+        <PreswingBeforeAttack value="0.25"/>
+        <PreswingBetweenAttacks value="0.25"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PeasantHero" parent="HeroWeaponMelee">
+        <DamagePoint value="0.433"/>
+        <Backswing value="0.567"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BansheeHero" parent="HeroWeapon">
+        <Range value="6"/>
+        <Cost>
+            <Charge CountMax="140"/>
+        </Cost>
+        <Period value="1.4"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.51"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VoidTendril" parent="War3Ranged">
+        <Range value="7"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.5"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Wretched" parent="War3Melee">
+        <Period value="1.3"/>
+        <DamagePoint value="0.39"/>
+        <Backswing value="0.44"/>
+    </CWeaponLegacy>
+</Catalog>

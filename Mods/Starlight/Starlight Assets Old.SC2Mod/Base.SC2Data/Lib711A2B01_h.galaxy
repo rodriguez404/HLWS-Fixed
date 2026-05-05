@@ -1,0 +1,55 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Score Bar
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib711A2B01_gv_scoreBarWidth = 212;
+const int lib711A2B01_gv_scoreBarHeight = 38;
+
+// Variable Declarations
+int[2] lib711A2B01_gv_scoreBarDialog;
+int lib711A2B01_gv_scoreButton;
+int[2][2] lib711A2B01_gv_scoreText;
+int[2][2] lib711A2B01_gv_scoreFill;
+int[2][2] lib711A2B01_gv_scoreVignette;
+bool lib711A2B01_gv_scoreCreated;
+int[2][2] lib711A2B01_gv_scoreBorder;
+color lib711A2B01_gv_scoreSelfColor;
+color lib711A2B01_gv_scoreEnemyColor;
+text lib711A2B01_gv_scoreSuffix;
+unit[2] lib711A2B01_gv_scoreObjective;
+playergroup[2] lib711A2B01_gv_scorePlayerGroup;
+unitgroup[2] lib711A2B01_gv_scoreUnitGroup;
+int[2] lib711A2B01_gv_scoreCurrent;
+int[2] lib711A2B01_gv_scoreMax;
+int lib711A2B01_gv_scoreType;
+text[2] lib711A2B01_gv_emptyText;
+string lib711A2B01_gv_scoreValue;
+int[2] lib711A2B01_gv_scorePlayer;
+bool lib711A2B01_gv_scoreTeamAToggle;
+bool lib711A2B01_gv_scoreTeamBToggle;
+
+// Function Declarations
+void lib711A2B01_gf_StarlightScoreBarStartUnit (playergroup lp_teamA, unit lp_teamAObjective, playergroup lp_teamB, unit lp_teamBObjective, text lp_tooltip, text lp_scoreSuffix);
+void lib711A2B01_gf_StarlightScoreBarStartLives (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, int lp_livesStart);
+void lib711A2B01_gf_StarlightScoreBarStartScore (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, int lp_scoreMax, string lp_scoreValue, int lp_teamAScorePlayer, int lp_teamBScorePlayer);
+void lib711A2B01_gf_StarlightScoreBarStartUnitGroup (playergroup lp_teamA, playergroup lp_teamB, text lp_tooltip, text lp_scoreSuffix, text lp_unitGroupAEmptyText, text lp_unitGroupBEmptyText2, unitgroup lp_teamAUnitGroup, unitgroup lp_teamBUnitGroup);
+void lib711A2B01_gf_StarlightScoreBarUpdate ();
+void lib711A2B01_gf_StarlightScoreBarModify (int lp_teamALives, int lp_teamBLives);
+void lib711A2B01_gf_StarlightScoreBarFade (bool lp_fade, fixed lp_fadeTime);
+void lib711A2B01_gf_StarlightScoreBarToggleNumber (bool lp_toggle);
+void lib711A2B01_gf_CreateScoreBar (text lp_tooltip);
+void lib711A2B01_gf_UpdateScoreDialogs ();
+void lib711A2B01_gf_HideEmptyTeamScore ();
+void lib711A2B01_gf_ToggleTeamAScore (bool lp_toggle);
+void lib711A2B01_gf_ToggleTeamBScore (bool lp_toggle);
+void lib711A2B01_gf_ForceTeamAScore (text lp_text);
+void lib711A2B01_gf_ForceTeamBScore (text lp_text);
+
+// Trigger Declarations
+trigger lib711A2B01_gt_ScoreUpdate;
+
+// Library Initialization
+void lib711A2B01_InitVariables ();
+

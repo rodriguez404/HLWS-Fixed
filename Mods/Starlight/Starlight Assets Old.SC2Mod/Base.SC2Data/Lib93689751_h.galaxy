@@ -1,0 +1,49 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Rewards
+//--------------------------------------------------------------------------------------------------
+// Constants
+const int lib93689751_gv_reward = 99;
+const int lib93689751_gv_player = 15;
+
+// Variable Declarations
+int[lib93689751_gv_player + 1] lib93689751_gv_rewardButtonCount;
+string[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardAvailable;
+playergroup lib93689751_gv_rewardPlayerGroup;
+int[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardButtonImage;
+text[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardButtonTitle;
+text[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardButtonTooltip;
+text[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardButtonRequirement;
+int[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardButton;
+string[lib93689751_gv_reward + 1][lib93689751_gv_player + 1] lib93689751_gv_rewardImage;
+int[2] lib93689751_gv_rewardCenter;
+int[lib93689751_gv_player + 1] lib93689751_gv_highlightFrame;
+int lib93689751_gv_rewardDialogButton;
+int[lib93689751_gv_player + 1] lib93689751_gv_rewardDialog;
+bank[lib93689751_gv_player + 1] lib93689751_gv_rewardBank;
+int[lib93689751_gv_player + 1] lib93689751_gv_controlSetupInteger;
+bool lib93689751_gv_firstRun;
+bool[16] lib93689751_gv_canChange;
+string lib93689751_gv_rewardBankSection;
+int[16] lib93689751_gv_currentReward;
+
+// Function Declarations
+void lib93689751_gf_StarlightRewardsCreateButton (int lp_offsetX, int lp_offsetY, int lp_anchor, int lp_size, int lp_hotkey, text lp_tooltipText);
+void lib93689751_gf_StarlightRewardsCreateDialog (int lp_anchor, int lp_player);
+void lib93689751_gf_StarlightRewardsUpdate ();
+void lib93689751_gf_StarlightRewardsAdd (string lp_button, text lp_suffix, string lp_upgradeUnlocked, int lp_player);
+void lib93689751_gf_StarlightRewardsAddTwinButton (string lp_buttonMain, string lp_buttonSecondary, text lp_suffix, string lp_upgradeUnlocked, int lp_player);
+void lib93689751_gf_StarlightRewards (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, int lp_player, string lp_bankSection, text lp_tooltipText);
+void lib93689751_gf_StarlightRewardsToggle (int lp_player, bool lp_toggle);
+void lib93689751_gf_StarlightRewardsShowHide (int lp_player, bool lp_show);
+
+// Trigger Declarations
+trigger lib93689751_gt_StarlightRewardsBankStart;
+trigger lib93689751_gt_StarlightRewardsShow;
+trigger lib93689751_gt_StarlightRewardsFade;
+trigger lib93689751_gt_StarlightRewardsSelect;
+
+// Library Initialization
+void lib93689751_InitVariables ();
+

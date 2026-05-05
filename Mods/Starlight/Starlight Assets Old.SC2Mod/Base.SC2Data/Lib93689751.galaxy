@@ -1,0 +1,474 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib93689751_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Rewards
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib93689751_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Variable Initialization
+bool lib93689751_InitVariables_completed = false;
+
+void lib93689751_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (lib93689751_InitVariables_completed) {
+        return;
+    }
+
+    lib93689751_InitVariables_completed = true;
+
+    lib93689751_gv_rewardPlayerGroup = PlayerGroupEmpty();
+    for (init_i = 0; init_i <= lib93689751_gv_reward; init_i += 1) {
+        for (init_j = 0; init_j <= lib93689751_gv_player; init_j += 1) {
+            lib93689751_gv_rewardButtonImage[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= lib93689751_gv_reward; init_i += 1) {
+        for (init_j = 0; init_j <= lib93689751_gv_player; init_j += 1) {
+            lib93689751_gv_rewardButton[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 1; init_i += 1) {
+        lib93689751_gv_rewardCenter[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= lib93689751_gv_player; init_i += 1) {
+        lib93689751_gv_highlightFrame[init_i] = c_invalidDialogControlId;
+    }
+    lib93689751_gv_rewardDialogButton = c_invalidDialogId;
+    for (init_i = 0; init_i <= lib93689751_gv_player; init_i += 1) {
+        lib93689751_gv_rewardDialog[init_i] = c_invalidDialogId;
+    }
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib93689751_gv_canChange[init_i] = true;
+    }
+    lib93689751_gv_rewardBankSection = "StarlightRewards";
+}
+
+// Functions
+void lib93689751_gf_StarlightRewardsCreateButton (int lp_offsetX, int lp_offsetY, int lp_anchor, int lp_size, int lp_hotkey, text lp_tooltipText) {
+    // Variable Declarations
+    text lv_hotkey;
+
+    // Automatic Variable Declarations
+    int autoB758DFDC_val;
+
+    // Variable Initialization
+
+    // Implementation
+    autoB758DFDC_val = lp_hotkey;
+    if (autoB758DFDC_val == c_hotkeyWarpIn) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_1CAD73D9");
+    }
+    else if (autoB758DFDC_val == c_hotkeyIdleWorker) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_AF21CCB9");
+    }
+    else if (autoB758DFDC_val == c_hotkeyArmySelect) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_9821CC43");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect0) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_6F59910A");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect1) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_1F855D91");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect2) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_D88000F8");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect3) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_F4A27F1C");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect4) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_FB6BC049");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect5) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_32088490");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect6) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_BD478203");
+    }
+    else if (autoB758DFDC_val == c_hotkeyHeroSelect7) {
+        lv_hotkey = StringExternal("Param/Value/lib_93689751_97CA4BD3");
+    }
+    else {
+    }
+    DialogCreate(lp_size, lp_size, lp_anchor, lp_offsetX, lp_offsetY, true);
+    lib93689751_gv_rewardDialogButton = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lp_size, lp_size, c_anchorCenter, 0, 0, (StringExternal("Param/Value/lib_93689751_9690EBD8") + lv_hotkey + StringExternal("Param/Value/lib_93689751_F7D2D4D1") + lp_tooltipText), StringToText(""), "");
+    lib93689751_gv_rewardCenter[0] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_war3normal.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_war3highlight.dds", PlayerGroupAll());
+    libNtve_gf_SetDialogItemHotkey(DialogControlLastCreated(), lp_hotkey, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lp_size, lp_size, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\war3_black.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib93689751_gv_rewardCenter[1] = DialogControlLastCreated();
+}
+
+void lib93689751_gf_StarlightRewardsCreateDialog (int lp_anchor, int lp_player) {
+    // Variable Declarations
+    const int lv_buttonSize = 56;
+    int lv_width;
+    int lv_height;
+    int lv_background;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int autoAA8D089A_ae;
+    const int autoAA8D089A_ai = 1;
+
+    // Variable Initialization
+    lv_width = 3;
+    lv_height = 1;
+    lv_background = c_invalidDialogControlId;
+
+    // Implementation
+    DialogDestroy(lib93689751_gv_rewardDialog[lib93689751_gv_player]);
+    DialogCreate(1000, 400, c_anchorTopLeft, 0, 0, true);
+    DialogSetPositionRelative(DialogLastCreated(), c_anchorBottomLeft, lib93689751_gv_rewardDialogButton, c_anchorTopLeft, -15, 15);
+    lib93689751_gv_rewardDialog[lp_player] = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1000, 400, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_tooltip_frame_protoss.dds", c_triggerImageTypeBorder, true, Color(100,100,100), c_triggerBlendModeNormal);
+    lv_background = DialogControlLastCreated();
+    autoAA8D089A_ae = lib93689751_gv_rewardButtonCount[lp_player];
+    lv_i = 0;
+    for ( ; ( (autoAA8D089A_ai >= 0 && lv_i <= autoAA8D089A_ae) || (autoAA8D089A_ai < 0 && lv_i >= autoAA8D089A_ae) ) ; lv_i += autoAA8D089A_ai ) {
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lv_buttonSize, lv_buttonSize, c_anchorTopLeft, 25, 25, StringToText(""), StringToText(""), "");
+        lib93689751_gv_rewardButton[lv_i][lp_player] = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), Color(50.20, 50.20, 50.20), PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_war3normal.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_war3highlight.dds", PlayerGroupAll());
+        libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lv_buttonSize, lv_buttonSize, c_anchorCenter, 0, 0, StringToText(""), lib93689751_gv_rewardImage[lv_i][lp_player], c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lib93689751_gv_rewardButtonImage[lv_i][lp_player] = DialogControlLastCreated();
+        DialogControlSetEnabled(DialogControlLastCreated(), PlayerGroupAll(), true);
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib93689751_gv_rewardButton[lv_i][lp_player], c_anchorCenter, 0, 0);
+        if ((lv_i != 0)) {
+            DialogControlSetPositionRelative(lib93689751_gv_rewardButton[lv_i][lp_player], PlayerGroupAll(), c_anchorLeft, lib93689751_gv_rewardButton[(lv_i - 1)][lp_player], c_anchorRight, 0, 0);
+        }
+
+        if ((lv_i >= 3) && (ModI(lv_i, 3) == 0)) {
+            DialogControlSetPositionRelative(lib93689751_gv_rewardButton[lv_i][lp_player], PlayerGroupAll(), c_anchorTop, lib93689751_gv_rewardButton[(lv_i - 3)][lp_player], c_anchorBottom, 0, 0);
+            lv_height += 1;
+        }
+
+    }
+    DialogControlSetSize(lv_background, PlayerGroupAll(), ((lv_width * lv_buttonSize) + 30), ((lv_height * lv_buttonSize) + 30));
+    DialogSetSize(DialogLastCreated(), ((lv_width * lv_buttonSize) + 50), ((lv_height * lv_buttonSize) + 50));
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 103, 103, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_research_button_zerg_researched.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib93689751_gv_highlightFrame[lp_player] = DialogControlLastCreated();
+}
+
+void lib93689751_gf_StarlightRewardsUpdate () {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int autoC2FADBE5_ae;
+    const int autoC2FADBE5_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    autoC2FADBE5_ae = lib93689751_gv_rewardButtonCount[EventPlayer()];
+    lv_i = 0;
+    for ( ; ( (autoC2FADBE5_ai >= 0 && lv_i <= autoC2FADBE5_ae) || (autoC2FADBE5_ai < 0 && lv_i >= autoC2FADBE5_ae) ) ; lv_i += autoC2FADBE5_ai ) {
+        if  ((TechTreeUpgradeCount(EventPlayer(), lib93689751_gv_rewardAvailable[lv_i][EventPlayer()], c_techCountCompleteOnly) == 1) || (DateTimeToInt(CurrentDateTimeGet()) < 1735689600)) {
+            DialogControlSetEnabled(lib93689751_gv_rewardButtonImage[lv_i][EventPlayer()], PlayerGroupSingle(EventPlayer()), true);
+            DialogControlSetEnabled(lib93689751_gv_rewardButton[lv_i][EventPlayer()], PlayerGroupSingle(EventPlayer()), true);
+            libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardButton[lv_i][EventPlayer()], false, PlayerGroupSingle(EventPlayer()));
+            if ( (DateTimeToInt(CurrentDateTimeGet()) < 1735689600)) {
+                libNtve_gf_SetDialogItemTooltip(lib93689751_gv_rewardButton[lv_i][EventPlayer()], (StringExternal("Param/Value/lib_93689751_AED9CBC6") + lib93689751_gv_rewardButtonTitle[lv_i][EventPlayer()] + StringExternal("Param/Value/lib_93689751_F00A55E2") + lib93689751_gv_rewardButtonTooltip[lv_i][EventPlayer()] + TextWithColor(StringToText("<n/><n/>" + "All glyphs unlocked until Jan 01, 2025"), Color(0.0, 255.0, 0.0))), PlayerGroupSingle(EventPlayer()));
+            }
+            else {
+                libNtve_gf_SetDialogItemTooltip(lib93689751_gv_rewardButton[lv_i][EventPlayer()], (StringExternal("Param/Value/lib_93689751_AED9CBC6") + lib93689751_gv_rewardButtonTitle[lv_i][EventPlayer()] + StringExternal("Param/Value/lib_93689751_F00A55E2") + lib93689751_gv_rewardButtonTooltip[lv_i][EventPlayer()]), PlayerGroupSingle(EventPlayer()));
+            }
+        }
+        else {
+            DialogControlSetEnabled(lib93689751_gv_rewardButtonImage[lv_i][EventPlayer()], PlayerGroupSingle(EventPlayer()), false);
+            DialogControlSetEnabled(lib93689751_gv_rewardButton[lv_i][EventPlayer()], PlayerGroupSingle(EventPlayer()), false);
+            libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardButton[lv_i][EventPlayer()], true, PlayerGroupSingle(EventPlayer()));
+            libNtve_gf_SetDialogItemTooltip(lib93689751_gv_rewardButton[lv_i][EventPlayer()], (StringExternal("Param/Value/lib_93689751_8E58B440") + lib93689751_gv_rewardButtonTitle[lv_i][EventPlayer()] + StringExternal("Param/Value/lib_93689751_CC821AAF") + StringExternal(CatalogFieldValueGet(c_gameCatalogUpgrade, lib93689751_gv_rewardAvailable[lv_i][EventPlayer()], "Name", c_playerAny)) + StringExternal("Param/Value/lib_93689751_D5048012") + lib93689751_gv_rewardButtonTooltip[lv_i][EventPlayer()]), PlayerGroupSingle(EventPlayer()));
+        }
+    }
+}
+
+void lib93689751_gf_StarlightRewardsAdd (string lp_button, text lp_suffix, string lp_upgradeUnlocked, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    PlayerGroupAdd(lib93689751_gv_rewardPlayerGroup, lp_player);
+    lib93689751_gv_rewardButtonTitle[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = (StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", lp_player)) + StringExternal("Param/Value/lib_93689751_AEFFFC8E") + lp_suffix);
+    lib93689751_gv_rewardButtonTooltip[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Tooltip", lp_player));
+    lib93689751_gv_rewardImage[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = (CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", lp_player));
+    lib93689751_gv_rewardAvailable[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = lp_upgradeUnlocked;
+    lib93689751_gv_rewardButtonCount[lp_player] = lib93689751_gv_controlSetupInteger[lp_player];
+    lib93689751_gv_controlSetupInteger[lp_player] += 1;
+}
+
+void lib93689751_gf_StarlightRewardsAddTwinButton (string lp_buttonMain, string lp_buttonSecondary, text lp_suffix, string lp_upgradeUnlocked, int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    PlayerGroupAdd(lib93689751_gv_rewardPlayerGroup, lp_player);
+    lib93689751_gv_rewardButtonTitle[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = (StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_buttonMain, "Name", lp_player)) + StringExternal("Param/Value/lib_93689751_EC86D392") + lp_suffix);
+    lib93689751_gv_rewardButtonTooltip[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = (StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_buttonMain, "Tooltip", lp_player)) + StringExternal("Param/Value/lib_93689751_979E12B9") + StringExternal("Param/Value/lib_93689751_D467D3B6") + StringToText(CatalogFieldValueGet(c_gameCatalogButton, lp_buttonSecondary, "Icon", lp_player)) + StringExternal("Param/Value/lib_93689751_B6B11918") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_buttonSecondary, "Name", lp_player)) + StringExternal("Param/Value/lib_93689751_0A325323") + StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_buttonSecondary, "Tooltip", lp_player)));
+    lib93689751_gv_rewardImage[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = (CatalogFieldValueGet(c_gameCatalogButton, lp_buttonMain, "Icon", lp_player));
+    lib93689751_gv_rewardAvailable[lib93689751_gv_controlSetupInteger[lp_player]][lp_player] = lp_upgradeUnlocked;
+    lib93689751_gv_rewardButtonCount[lp_player] = lib93689751_gv_controlSetupInteger[lp_player];
+    lib93689751_gv_controlSetupInteger[lp_player] += 1;
+}
+
+void lib93689751_gf_StarlightRewards (int lp_buttonX, int lp_buttonY, int lp_buttonAnchor, int lp_hotkey, int lp_player, string lp_bankSection, text lp_tooltipText) {
+    // Variable Declarations
+    int lv_currentReward;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lib93689751_gv_firstRun == false)) {
+        TriggerEnable(lib93689751_gt_StarlightRewardsSelect, true);
+        TriggerEnable(lib93689751_gt_StarlightRewardsShow, true);
+        TriggerEnable(lib93689751_gt_StarlightRewardsFade, true);
+        TriggerExecute(lib93689751_gt_StarlightRewardsBankStart, true, false);
+        lib93689751_gv_firstRun = true;
+        lib93689751_gf_StarlightRewardsCreateButton(lp_buttonX, lp_buttonY, lp_buttonAnchor, 50, lp_hotkey, lp_tooltipText);
+    }
+
+    lib93689751_gf_StarlightRewardsCreateDialog(c_anchorBottomRight, lp_player);
+    lib93689751_gv_rewardBankSection = lp_bankSection;
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lib93689751_gv_rewardAvailable[0][lp_player], 1);
+    DialogSetVisible(lib93689751_gv_rewardDialogButton, PlayerGroupSingle(lp_player), true);
+}
+
+void lib93689751_gf_StarlightRewardsToggle (int lp_player, bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto4A5D9975_val;
+
+    // Implementation
+    auto4A5D9975_val = lp_toggle;
+    if (auto4A5D9975_val == true) {
+        lib93689751_gv_canChange[lp_player] = true;
+    }
+    else if (auto4A5D9975_val == false) {
+        lib93689751_gv_canChange[lp_player] = false;
+    }
+    else {
+    }
+}
+
+void lib93689751_gf_StarlightRewardsShowHide (int lp_player, bool lp_show) {
+    // Automatic Variable Declarations
+    // Implementation
+    DialogSetVisible(lib93689751_gv_rewardDialogButton, PlayerGroupSingle(lp_player), lp_show);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Rewards Bank Start
+//--------------------------------------------------------------------------------------------------
+bool lib93689751_gt_StarlightRewardsBankStart_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoCFBE109D_g;
+    int autoCFBE109D_var;
+    playergroup auto0E69456B_g;
+    int auto0E69456B_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    Wait(0.25, c_timeGame);
+    autoCFBE109D_g = PlayerGroupActive();
+    autoCFBE109D_var = -1;
+    while (true) {
+        autoCFBE109D_var = PlayerGroupNextPlayer(autoCFBE109D_g, autoCFBE109D_var);
+        if (autoCFBE109D_var < 0) { break; }
+        BankLoad("StarlightRewards", autoCFBE109D_var);
+        lib93689751_gv_rewardBank[autoCFBE109D_var] = BankLastCreated();
+    }
+    auto0E69456B_g = PlayerGroupActive();
+    auto0E69456B_var = -1;
+    while (true) {
+        auto0E69456B_var = PlayerGroupNextPlayer(auto0E69456B_g, auto0E69456B_var);
+        if (auto0E69456B_var < 0) { break; }
+        lib93689751_gv_currentReward[auto0E69456B_var] = BankValueGetAsInt(lib93689751_gv_rewardBank[auto0E69456B_var], lib93689751_gv_rewardBankSection, "StarlightRewards");
+        libNtve_gf_SetUpgradeLevelForPlayer(auto0E69456B_var, "StarlightRewardCurrent", lib93689751_gv_currentReward[auto0E69456B_var]);
+        libNtve_gf_SetDialogItemImage(lib93689751_gv_rewardCenter[1], lib93689751_gv_rewardImage[lib93689751_gv_currentReward[auto0E69456B_var]][auto0E69456B_var], PlayerGroupSingle(auto0E69456B_var));
+        DialogControlSetPositionRelative(lib93689751_gv_highlightFrame[auto0E69456B_var], PlayerGroupSingle(auto0E69456B_var), c_anchorCenter, lib93689751_gv_rewardButton[lib93689751_gv_currentReward[auto0E69456B_var]][auto0E69456B_var], c_anchorCenter, 0, 0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib93689751_gt_StarlightRewardsBankStart_Init () {
+    lib93689751_gt_StarlightRewardsBankStart = TriggerCreate("lib93689751_gt_StarlightRewardsBankStart_Func");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Rewards Show
+//--------------------------------------------------------------------------------------------------
+bool lib93689751_gt_StarlightRewardsShow_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((EventDialogControl() == lib93689751_gv_rewardCenter[0]))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib93689751_gf_StarlightRewardsUpdate();
+    if ((DialogIsVisible(lib93689751_gv_rewardDialog[EventPlayer()], EventPlayer()) == false)) {
+        DialogSetVisible(lib93689751_gv_rewardDialog[EventPlayer()], PlayerGroupSingle(EventPlayer()), true);
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[0], true, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[1], true, PlayerGroupSingle(EventPlayer()));
+    }
+    else {
+        DialogSetVisible(lib93689751_gv_rewardDialog[EventPlayer()], PlayerGroupSingle(EventPlayer()), false);
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[0], false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[1], false, PlayerGroupSingle(EventPlayer()));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib93689751_gt_StarlightRewardsShow_Init () {
+    lib93689751_gt_StarlightRewardsShow = TriggerCreate("lib93689751_gt_StarlightRewardsShow_Func");
+    TriggerEnable(lib93689751_gt_StarlightRewardsShow, false);
+    TriggerAddEventDialogControl(lib93689751_gt_StarlightRewardsShow, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(lib93689751_gt_StarlightRewardsShow, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeHotkeyPressed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Rewards Fade
+//--------------------------------------------------------------------------------------------------
+bool lib93689751_gt_StarlightRewardsFade_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    playergroup autoA467716E_g;
+    int autoA467716E_var;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    DialogControlFadeTransparency(lib93689751_gv_rewardCenter[0], PlayerGroupAll(), 1.5, 100.0);
+    DialogControlFadeTransparency(lib93689751_gv_rewardCenter[1], PlayerGroupAll(), 1.5, 100.0);
+    libNtve_gf_SetDialogItemAcceptMouse(lib93689751_gv_rewardCenter[0], false, PlayerGroupAll());
+    autoA467716E_g = lib93689751_gv_rewardPlayerGroup;
+    autoA467716E_var = -1;
+    while (true) {
+        autoA467716E_var = PlayerGroupNextPlayer(autoA467716E_g, autoA467716E_var);
+        if (autoA467716E_var < 0) { break; }
+        DialogSetVisible(lib93689751_gv_rewardDialog[autoA467716E_var], PlayerGroupSingle(autoA467716E_var), false);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib93689751_gt_StarlightRewardsFade_Init () {
+    lib93689751_gt_StarlightRewardsFade = TriggerCreate("lib93689751_gt_StarlightRewardsFade_Func");
+    TriggerEnable(lib93689751_gt_StarlightRewardsFade, false);
+    TriggerAddEventGeneric(lib93689751_gt_StarlightRewardsFade, "FadeGameplayDialogs");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Starlight Rewards Select
+//--------------------------------------------------------------------------------------------------
+bool lib93689751_gt_StarlightRewardsSelect_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_r;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto35EED276_ae;
+    const int auto35EED276_ai = 1;
+
+    // Variable Initialization
+    lv_r = EventPlayer();
+
+    // Conditions
+    if (testConds) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == lib93689751_gv_rewardDialog[lv_r]))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((lib93689751_gv_canChange[lv_r] == true)) {
+        auto35EED276_ae = lib93689751_gv_rewardButtonCount[lv_r];
+        lv_i = 0;
+        for ( ; ( (auto35EED276_ai >= 0 && lv_i <= auto35EED276_ae) || (auto35EED276_ai < 0 && lv_i >= auto35EED276_ae) ) ; lv_i += auto35EED276_ai ) {
+            if ((EventDialogControl() == lib93689751_gv_rewardButton[lv_i][lv_r])) {
+                BankValueSetFromInt(lib93689751_gv_rewardBank[EventPlayer()], lib93689751_gv_rewardBankSection, "StarlightRewards", lv_i);
+                BankSave(lib93689751_gv_rewardBank[EventPlayer()]);
+                libNtve_gf_SetDialogItemImage(lib93689751_gv_rewardCenter[1], lib93689751_gv_rewardImage[lv_i][lv_r], PlayerGroupSingle(EventPlayer()));
+                libNtve_gf_SetUpgradeLevelForPlayer(lv_r, "StarlightRewardCurrent", lv_i);
+                lib93689751_gv_currentReward[lv_r] = lv_i;
+                DialogControlSetPositionRelative(lib93689751_gv_highlightFrame[lv_r], PlayerGroupSingle(EventPlayer()), c_anchorCenter, lib93689751_gv_rewardButton[lv_i][lv_r], c_anchorCenter, 0, 0);
+                DialogSetVisible(lib93689751_gv_rewardDialog[EventPlayer()], PlayerGroupSingle(EventPlayer()), false);
+                libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[0], false, PlayerGroupSingle(EventPlayer()));
+                libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[1], false, PlayerGroupSingle(EventPlayer()));
+                break;
+            }
+
+        }
+        PlayerCreateEffectPoint(EventPlayer(), "StarlightRewardsChanged", Point(0.0, 0.0));
+        UnitCreateEffectUnit(UnitGroupRandomUnit(UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive), "StarlightRewardsChanged", UnitGroupRandomUnit(UnitGroup(null, EventPlayer(), RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive));
+        TriggerSendEvent("StarlightRewardsChanged");
+    }
+    else {
+        DialogSetVisible(lib93689751_gv_rewardDialog[EventPlayer()], PlayerGroupSingle(EventPlayer()), false);
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[0], false, PlayerGroupSingle(EventPlayer()));
+        libNtve_gf_SetDialogItemDesaturated(lib93689751_gv_rewardCenter[1], false, PlayerGroupSingle(EventPlayer()));
+        UIDisplayMessage(PlayerGroupSingle(EventPlayer()), c_messageAreaError, StringExternal("Param/Value/lib_93689751_EB2EEB09"));
+        SoundPlay(SoundLink("Alert_ErrorGeneric", -1), PlayerGroupSingle(EventPlayer()), 100.0, 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib93689751_gt_StarlightRewardsSelect_Init () {
+    lib93689751_gt_StarlightRewardsSelect = TriggerCreate("lib93689751_gt_StarlightRewardsSelect_Func");
+    TriggerEnable(lib93689751_gt_StarlightRewardsSelect, false);
+    TriggerAddEventDialogControl(lib93689751_gt_StarlightRewardsSelect, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib93689751_InitTriggers () {
+    lib93689751_gt_StarlightRewardsBankStart_Init();
+    lib93689751_gt_StarlightRewardsShow_Init();
+    lib93689751_gt_StarlightRewardsFade_Init();
+    lib93689751_gt_StarlightRewardsSelect_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib93689751_InitLib_completed = false;
+
+void lib93689751_InitLib () {
+    if (lib93689751_InitLib_completed) {
+        return;
+    }
+
+    lib93689751_InitLib_completed = true;
+
+    lib93689751_InitLibraries();
+    lib93689751_InitVariables();
+    lib93689751_InitTriggers();
+}
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CRequirementCountBehavior id="CountBehaviorHeroLevelBonusCompleteOnlyTechTreeCheat">
+        <Count Link="HeroLevelBonus" State="CompleteOnly"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountBehavior id="CountBehaviorHeroLevelBonusCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="HeroLevelBonus" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountBehavior>
+    <CRequirementCountUpgrade id="CountUpgradeImpossibleUpgradeCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ImpossibleUpgrade" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+</Catalog>

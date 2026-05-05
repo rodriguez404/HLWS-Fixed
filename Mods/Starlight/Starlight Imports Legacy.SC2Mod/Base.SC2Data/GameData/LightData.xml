@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CLight id="HeroThrallPortrait" parent="default">
+        <ToDInfoArray index="0">
+            <Id value="Storm_Portrait_Thrall_Base"/>
+            <AmbientColor value="0.388235,0.282353,0.239216"/>
+            <OperatorHDR value="4"/>
+            <Colorize value="1"/>
+            <Param index="HDRExposure" value="1.650000"/>
+            <Param index="HDRBloomThreshold" value="0.900000"/>
+            <Param index="HDREmisMultiplier" value="2.430000"/>
+            <Param index="ColorizationInputHigh" value="0.975000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.000000"/>
+            <Param index="ShadowPenumbraSize" value="0.010000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.600000,0.803922,0.592157"/>
+                <ColorMultiplier value="5.559000"/>
+                <SpecularColor value="0.768628,0.796079,0.874510"/>
+                <SpecColorMultiplier value="2.065000"/>
+                <Direction value="0.636474,-0.578538,-0.510093"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.709804,0.376471,0.376471" ColorMultiplier="1.148000" Direction="0.461344,0.835723,-0.297874"/>
+            <DirectionalLight index="Back" Color="0.325490,0.462745,0.933333" ColorMultiplier="1.245000" Direction="-0.811259,-0.532290,-0.241922"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsOther"/>
+    </CLight>
+    <CLight id="HeroJainaPortrait" parent="default">
+        <ToDInfoArray index="0">
+            <Id value="Storm_Portrait_Jaina_Base"/>
+            <AmbientColor value="0.360784,0.262745,0.262745"/>
+            <OperatorHDR value="4"/>
+            <Colorize value="1"/>
+            <Param index="HDRExposure" value="1.650000"/>
+            <Param index="HDRBloomThreshold" value="0.900000"/>
+            <Param index="HDRWhitePoint" value="1.850000"/>
+            <Param index="TerrainSpecularExp" value="73.000000"/>
+            <Param index="CreepSpecularExp" value="30.000000"/>
+            <Param index="CreepHDRSpecMultiplier" value="3.000000"/>
+            <Param index="ColorizationInputHigh" value="0.975000"/>
+            <Param index="ColorizationBlend" value="0.000000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.682353,0.749020,0.984314"/>
+                <ColorMultiplier value="1.012000"/>
+                <SpecularColor value="0.909804,0.909804,1.000000"/>
+                <SpecColorMultiplier value="1.862000"/>
+                <Direction value="0.627049,0.465179,-0.624834"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.392157,0.000000,0.000000" ColorMultiplier="0.525000" Direction="0.010682,0.913483,-0.406736"/>
+            <DirectionalLight index="Back" Color="0.113725,0.372549,0.835294" ColorMultiplier="1.758000" Direction="-0.520841,-0.852940,-0.034900"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsOther"/>
+    </CLight>
+    <CLight id="HeroSylvanasPortrait" parent="default">
+        <ToDInfoArray index="0">
+            <Id value="Storm_Portrait_Sylvanas_Base"/>
+            <AmbientColor value="0.313726,0.188235,0.188235"/>
+            <OperatorHDR value="4"/>
+            <Colorize value="1"/>
+            <Param index="HDRExposure" value="1.650000"/>
+            <Param index="HDRBloomThreshold" value="0.900000"/>
+            <Param index="ColorizationInputHigh" value="0.975000"/>
+            <Param index="ColorizationHue" value="0.001000"/>
+            <Param index="ColorizationBlend" value="0.000000"/>
+            <Param index="ShadowPenumbraSize" value="0.010000"/>
+            <DirectionalLight index="Key">
+                <Color value="0.552941,0.682353,0.466667"/>
+                <ColorMultiplier value="1.202000"/>
+                <SpecularColor value="0.862745,0.890196,0.894118"/>
+                <SpecColorMultiplier value="1.175000"/>
+                <Direction value="0.050950,0.968957,-0.241922"/>
+            </DirectionalLight>
+            <DirectionalLight index="Fill" Color="0.909804,0.592157,0.000000" ColorMultiplier="0.427000" Direction="0.847163,-0.525059,0.081417"/>
+            <DirectionalLight index="Back" Color="0.000000,0.301961,1.000000" ColorMultiplier="3.236000" Direction="-0.694544,-0.659789,0.286859"/>
+        </ToDInfoArray>
+        <EditorCategories value="LightGroup:PortraitsUnitsOther"/>
+    </CLight>
+</Catalog>

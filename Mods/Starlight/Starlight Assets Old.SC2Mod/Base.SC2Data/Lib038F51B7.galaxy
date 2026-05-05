@@ -1,0 +1,618 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+
+include "Lib038F51B7_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Ability Control
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib038F51B7_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+}
+
+// Variable Initialization
+bool lib038F51B7_InitVariables_completed = false;
+
+void lib038F51B7_InitVariables () {
+    int init_i;
+    int init_j;
+
+    if (lib038F51B7_InitVariables_completed) {
+        return;
+    }
+
+    lib038F51B7_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= lib038F51B7_gv_buttons; init_i += 1) {
+        for (init_j = 0; init_j <= lib038F51B7_gv_race; init_j += 1) {
+            lib038F51B7_gv_controlButtonImage[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= lib038F51B7_gv_buttons; init_i += 1) {
+        for (init_j = 0; init_j <= lib038F51B7_gv_race; init_j += 1) {
+            lib038F51B7_gv_controlButton[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= lib038F51B7_gv_buttons; init_i += 1) {
+        for (init_j = 0; init_j <= lib038F51B7_gv_race; init_j += 1) {
+            lib038F51B7_gv_controlBackground[init_i][init_j] = c_invalidDialogControlId;
+        }
+    }
+    for (init_i = 0; init_i <= 2; init_i += 1) {
+        lib038F51B7_gv_controlCenter[init_i] = c_invalidDialogControlId;
+    }
+    for (init_i = 0; init_i <= lib038F51B7_gv_race; init_i += 1) {
+        lib038F51B7_gv_controlDialog[init_i] = c_invalidDialogId;
+    }
+    lib038F51B7_gv_controlTransparency = 33.3333;
+}
+
+// Functions
+void lib038F51B7_gf_AbilityControlAddAbility (int lp_race, string lp_unit, string lp_button, string lp_upgrade) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib038F51B7_gv_controlButtonTooltip[lib038F51B7_gv_controlSetupInteger[lp_race]][lp_race] = (StringExternal(CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Name", c_playerAny)) + StringExternal("Param/Value/lib_038F51B7_78234340") + UnitTypeGetName(lp_unit) + StringExternal("Param/Value/lib_038F51B7_6BF8E362"));
+    lib038F51B7_gv_controlImage[lib038F51B7_gv_controlSetupInteger[lp_race]][lp_race] = (CatalogFieldValueGet(c_gameCatalogButton, lp_button, "Icon", c_playerAny));
+    lib038F51B7_gv_controlDisable[lib038F51B7_gv_controlSetupInteger[lp_race]][lp_race] = lp_upgrade;
+    lib038F51B7_gv_controlRaceButtonLimit[lp_race] = lib038F51B7_gv_controlSetupInteger[lp_race];
+    lib038F51B7_gv_controlSetupInteger[lp_race] += 1;
+}
+
+void lib038F51B7_gf_AbilityControlCreateButton () {
+    // Automatic Variable Declarations
+    playergroup auto55FC6D63_g;
+    int auto55FC6D63_var;
+    string auto3087A722_val;
+    playergroup auto9CB6DDD8_g;
+    int auto9CB6DDD8_var;
+    string auto7297DD6D_val;
+
+    // Implementation
+    DialogCreate(100, 100, c_anchorBottomLeft, 156, 295, true);
+    DialogSetRenderPriority(DialogLastCreated(), 580);
+    DialogSetImageVisible(DialogLastCreated(), false);
+    DialogSetVisible(DialogLastCreated(), PlayerGroupAll(), true);
+    libNtve_gf_CreateDialogItemButton(DialogLastCreated(), 46, 46, c_anchorCenter, 0, 10, (StringExternal("Param/Value/lib_038F51B7_62109AB3") + StringExternal("Param/Value/lib_038F51B7_B861F77D") + StringExternal("Param/Value/lib_038F51B7_0D250B1A") + StringExternal("UI/Control") + StringExternal("Param/Value/lib_038F51B7_89F508A4") + StringExternal("Param/Value/lib_038F51B7_DB1BE900") + StringExternal("Param/Value/lib_038F51B7_C2AE08B1")), StringToText(""), "");
+    lib038F51B7_gv_controlCenter[0] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 600, PlayerGroupAll());
+    auto55FC6D63_g = PlayerGroupActive();
+    auto55FC6D63_var = -1;
+    while (true) {
+        auto55FC6D63_var = PlayerGroupNextPlayer(auto55FC6D63_g, auto55FC6D63_var);
+        if (auto55FC6D63_var < 0) { break; }
+        auto3087A722_val = PlayerRace(auto55FC6D63_var);
+        if (auto3087A722_val == "Terr") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_terran_normalpressed.dds", PlayerGroupSingle(auto55FC6D63_var));
+            libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_terran_normaloverpressedover.dds", PlayerGroupSingle(auto55FC6D63_var));
+        }
+        else if (auto3087A722_val == "Zerg") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_zerg_normalpressed.dds", PlayerGroupSingle(auto55FC6D63_var));
+            libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_zerg_normaloverpressedover.dds", PlayerGroupSingle(auto55FC6D63_var));
+        }
+        else {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_protoss_normalpressed.dds", PlayerGroupSingle(auto55FC6D63_var));
+            libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_workerbuttonsmall_protoss_normaloverpressedover.dds", PlayerGroupSingle(auto55FC6D63_var));
+        }
+    }
+    libNtve_gf_SetDialogItemHotkey(DialogControlLastCreated(), c_hotkeyHeroSelect0, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 46, 46, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\btn-menu-abilitycontrol_rounded.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib038F51B7_gv_controlCenter[1] = DialogControlLastCreated();
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib038F51B7_gv_controlCenter[0], c_anchorCenter, 0, 0);
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 610, PlayerGroupAll());
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 60, 62, c_anchorCenter, 0, 0, StringToText(""), "Assets\\Textures\\ui_unitbuttons_small_frame_protoss.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+    lib038F51B7_gv_controlCenter[2] = DialogControlLastCreated();
+    libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 590, PlayerGroupAll());
+    DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib038F51B7_gv_controlCenter[0], c_anchorCenter, 0, 2);
+    auto9CB6DDD8_g = PlayerGroupActive();
+    auto9CB6DDD8_var = -1;
+    while (true) {
+        auto9CB6DDD8_var = PlayerGroupNextPlayer(auto9CB6DDD8_g, auto9CB6DDD8_var);
+        if (auto9CB6DDD8_var < 0) { break; }
+        auto7297DD6D_val = PlayerRace(auto9CB6DDD8_var);
+        if (auto7297DD6D_val == "Terr") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_unitbuttons_small_frame_terran.dds", PlayerGroupSingle(auto9CB6DDD8_var));
+        }
+        else if (auto7297DD6D_val == "Zerg") {
+            libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_unitbuttons_small_frame_zerg.dds", PlayerGroupSingle(auto9CB6DDD8_var));
+        }
+        else {
+        }
+    }
+}
+
+void lib038F51B7_gf_AbilityControlCreateMenu (int lp_race) {
+    // Variable Declarations
+    int lv_size;
+    int lv_offset;
+    int lv_i;
+    int lv_width;
+    int lv_height;
+    int lv_background;
+
+    // Automatic Variable Declarations
+    playergroup auto3BAAC354_g;
+    int auto3BAAC354_var;
+    string autoC09576AB_val;
+    int auto9D2E2BFB_ae;
+    const int auto9D2E2BFB_ai = 1;
+    playergroup autoA520EF44_g;
+    int autoA520EF44_var;
+    string auto31746A79_val;
+
+    // Variable Initialization
+    lv_size = 76;
+    lv_offset = 12;
+    lv_width = 3;
+    lv_height = 1;
+    lv_background = c_invalidDialogControlId;
+
+    // Implementation
+    DialogCreate(1000, 400, c_anchorBottomLeft, 9, 376, true);
+    lib038F51B7_gv_controlDialog[lp_race] = DialogLastCreated();
+    DialogSetImageVisible(DialogLastCreated(), false);
+    libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 1000, 400, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_tooltip_frame_protoss.dds", c_triggerImageTypeBorder, true, Color(100,100,100), c_triggerBlendModeNormal);
+    lv_background = DialogControlLastCreated();
+    DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, 100.0);
+    DialogSetRenderPriority(DialogLastCreated(), 600);
+    auto3BAAC354_g = PlayerGroupActive();
+    auto3BAAC354_var = -1;
+    while (true) {
+        auto3BAAC354_var = PlayerGroupNextPlayer(auto3BAAC354_g, auto3BAAC354_var);
+        if (auto3BAAC354_var < 0) { break; }
+        autoC09576AB_val = PlayerRace(auto3BAAC354_var);
+        if (autoC09576AB_val == "Terr") {
+            libNtve_gf_SetDialogItemImage(lv_background, "Assets\\Textures\\ui_tooltip_frame_terran.dds", PlayerGroupSingle(auto3BAAC354_var));
+        }
+        else if (autoC09576AB_val == "Zerg") {
+            libNtve_gf_SetDialogItemImage(lv_background, "Assets\\Textures\\ui_tooltip_frame_zerg.dds", PlayerGroupSingle(auto3BAAC354_var));
+        }
+        else {
+            libNtve_gf_SetDialogItemImage(lv_background, "Assets\\Textures\\ui_tooltip_frame_protoss.dds", PlayerGroupSingle(auto3BAAC354_var));
+        }
+    }
+    auto9D2E2BFB_ae = lib038F51B7_gv_controlRaceButtonLimit[lp_race];
+    lv_i = 0;
+    for ( ; ( (auto9D2E2BFB_ai >= 0 && lv_i <= auto9D2E2BFB_ae) || (auto9D2E2BFB_ai < 0 && lv_i >= auto9D2E2BFB_ae) ) ; lv_i += auto9D2E2BFB_ai ) {
+        libNtve_gf_CreateDialogItemButton(DialogLastCreated(), lv_size, lv_size, c_anchorTopLeft, lv_offset, lv_offset, StringToText(""), StringToText(""), "");
+        lib038F51B7_gv_controlButton[lv_i][lp_race] = DialogControlLastCreated();
+        libNtve_gf_SetDialogItemDesaturationColor(DialogControlLastCreated(), Color(50.20, 50.20, 50.20), PlayerGroupAll());
+        libNtve_gf_SetDialogItemTooltip(DialogControlLastCreated(), (StringExternal("Param/Value/lib_038F51B7_48FBFCF1") + lib038F51B7_gv_controlButtonTooltip[lv_i][lp_race] + StringExternal("Param/Value/lib_038F51B7_92B2B695") + StringExternal("UI/ScoreScreen/PlayerFrame/AI") + StringExternal("Param/Value/lib_038F51B7_8BC071FD") + StringExternal("UI/Active") + StringExternal("Param/Value/lib_038F51B7_B955493F") + StringExternal("Param/Value/lib_038F51B7_F9BCC43B")), PlayerGroupAll());
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 610, PlayerGroupAll());
+        libNtve_gf_SetDialogItemImageType(DialogControlLastCreated(), c_triggerImageTypeNormal, PlayerGroupAll());
+        autoA520EF44_g = PlayerGroupActive();
+        autoA520EF44_var = -1;
+        while (true) {
+            autoA520EF44_var = PlayerGroupNextPlayer(autoA520EF44_g, autoA520EF44_var);
+            if (autoA520EF44_var < 0) { break; }
+            auto31746A79_val = PlayerRace(autoA520EF44_var);
+            if (auto31746A79_val == "Terr") {
+                libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_terran_normalpressed.dds", PlayerGroupSingle(autoA520EF44_var));
+                libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_terran_normaloverpressedover.dds", PlayerGroupSingle(autoA520EF44_var));
+            }
+            else if (auto31746A79_val == "Zerg") {
+                libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_zerg_normalpressed.dds", PlayerGroupSingle(autoA520EF44_var));
+                libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_zerg_normaloverpressedover.dds", PlayerGroupSingle(autoA520EF44_var));
+            }
+            else {
+                libNtve_gf_SetDialogItemImage(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_protoss_normalpressed.dds", PlayerGroupSingle(autoA520EF44_var));
+                libNtve_gf_SetDialogItemImage2(DialogControlLastCreated(), "Assets\\Textures\\ui_abilitycontrol_protoss_normaloverpressedover.dds", PlayerGroupSingle(autoA520EF44_var));
+            }
+        }
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), lv_size, lv_size, c_anchorTopLeft, 0, 0, StringToText(""), lib038F51B7_gv_controlImage[lv_i][lp_race], c_triggerImageTypeNormal, true, Color(100,100,100), c_triggerBlendModeNormal);
+        lib038F51B7_gv_controlButtonImage[lv_i][lp_race] = DialogControlLastCreated();
+        DialogControlSetEnabled(DialogControlLastCreated(), PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 620, PlayerGroupAll());
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib038F51B7_gv_controlButton[lv_i][lp_race], c_anchorCenter, 0, 0);
+        libNtve_gf_CreateDialogItemImage(DialogLastCreated(), 100, 100, c_anchorTopLeft, 0, 0, StringToText(""), "Assets\\Textures\\ui_abilitycontrol_background.dds", c_triggerImageTypeNormal, false, Color(100,100,100), c_triggerBlendModeNormal);
+        lib038F51B7_gv_controlBackground[lv_i][lp_race] = DialogControlLastCreated();
+        DialogControlSetEnabled(DialogControlLastCreated(), PlayerGroupAll(), true);
+        libNtve_gf_SetDialogItemRenderPriority(DialogControlLastCreated(), 590, PlayerGroupAll());
+        DialogControlSetPositionRelative(DialogControlLastCreated(), PlayerGroupAll(), c_anchorCenter, lib038F51B7_gv_controlButton[lv_i][lp_race], c_anchorCenter, 0, 0);
+        DialogControlFadeTransparency(DialogControlLastCreated(), PlayerGroupAll(), 0.0, lib038F51B7_gv_controlTransparency);
+        if ((lv_i != 0)) {
+            DialogControlSetPositionRelative(lib038F51B7_gv_controlButton[lv_i][lp_race], PlayerGroupAll(), c_anchorLeft, lib038F51B7_gv_controlButton[(lv_i - 1)][lp_race], c_anchorRight, 1, 0);
+        }
+
+        if ((lv_i >= 3) && (ModI(lv_i, 3) == 0)) {
+            DialogControlSetPositionRelative(lib038F51B7_gv_controlButton[lv_i][lp_race], PlayerGroupAll(), c_anchorTop, lib038F51B7_gv_controlButton[(lv_i - 3)][lp_race], c_anchorBottom, 0, 1);
+            lv_height += 1;
+        }
+
+    }
+    DialogControlSetSize(lv_background, PlayerGroupAll(), ((lv_width * (lv_size + 1)) + (lv_offset * 2)), ((lv_height * (lv_size + 1)) + (lv_offset * 2)));
+    DialogSetSize(DialogLastCreated(), DialogControlGetWidth(lv_background, 1), DialogControlGetHeight(lv_background, 1));
+}
+
+void lib038F51B7_gf_AbilityControlOpen (bool lp_toggle, playergroup lp_players) {
+    // Automatic Variable Declarations
+    bool autoF208308C_val;
+    playergroup auto53CCE1A8_g;
+    int auto53CCE1A8_var;
+    playergroup auto4A012DF8_g;
+    int auto4A012DF8_var;
+
+    // Implementation
+    autoF208308C_val = lp_toggle;
+    if (autoF208308C_val == true) {
+        libNtve_gf_SetDialogItemDesaturated(lib038F51B7_gv_controlCenter[0], true, lp_players);
+        libNtve_gf_SetDialogItemDesaturated(lib038F51B7_gv_controlCenter[1], true, lp_players);
+        auto53CCE1A8_g = lp_players;
+        auto53CCE1A8_var = -1;
+        while (true) {
+            auto53CCE1A8_var = PlayerGroupNextPlayer(auto53CCE1A8_g, auto53CCE1A8_var);
+            if (auto53CCE1A8_var < 0) { break; }
+            DialogSetVisible(lib038F51B7_gv_controlDialog[lib038F51B7_gv_controlPlayerRace[auto53CCE1A8_var]], lp_players, true);
+        }
+    }
+    else if (autoF208308C_val == false) {
+        libNtve_gf_SetDialogItemDesaturated(lib038F51B7_gv_controlCenter[0], false, lp_players);
+        libNtve_gf_SetDialogItemDesaturated(lib038F51B7_gv_controlCenter[1], false, lp_players);
+        auto4A012DF8_g = lp_players;
+        auto4A012DF8_var = -1;
+        while (true) {
+            auto4A012DF8_var = PlayerGroupNextPlayer(auto4A012DF8_g, auto4A012DF8_var);
+            if (auto4A012DF8_var < 0) { break; }
+            DialogSetVisible(lib038F51B7_gv_controlDialog[lib038F51B7_gv_controlPlayerRace[auto4A012DF8_var]], lp_players, false);
+        }
+    }
+    else {
+    }
+}
+
+void lib038F51B7_gf_AbilityControlFade (bool lp_fade, fixed lp_fadeTime) {
+    // Automatic Variable Declarations
+    bool auto2BB256B0_val;
+
+    // Implementation
+    if ((lib038F51B7_gv_created == true)) {
+        auto2BB256B0_val = lp_fade;
+        if (auto2BB256B0_val == false) {
+            libNtve_gf_SetDialogItemAcceptMouse(lib038F51B7_gv_controlCenter[0], false, PlayerGroupAll());
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[0], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[1], PlayerGroupAll(), lp_fadeTime, 100.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[2], PlayerGroupAll(), lp_fadeTime, 100.0);
+        }
+        else if (auto2BB256B0_val == true) {
+            libNtve_gf_SetDialogItemAcceptMouse(lib038F51B7_gv_controlCenter[0], true, PlayerGroupAll());
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[0], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[0], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[1], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[1], PlayerGroupAll(), lp_fadeTime, 0.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[2], PlayerGroupAll(), 0.0, 100.0);
+            DialogControlFadeTransparency(lib038F51B7_gv_controlCenter[2], PlayerGroupAll(), lp_fadeTime, 0.0);
+        }
+        else {
+        }
+    }
+
+}
+
+void lib038F51B7_gf_AbilityControlSetRace (int lp_player, int lp_race) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib038F51B7_gf_AbilityControlOpen(false, PlayerGroupSingle(lp_player));
+    lib038F51B7_gv_controlPlayerRace[lp_player] = lp_race;
+}
+
+void lib038F51B7_gf_AbilityControlEnableDisable (bool lp_toggle, playergroup lp_players) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lib038F51B7_gv_created == true)) {
+        DialogControlSetEnabled(lib038F51B7_gv_controlCenter[0], lp_players, lp_toggle);
+        DialogControlSetEnabled(lib038F51B7_gv_controlCenter[1], lp_players, lp_toggle);
+        if ((lp_toggle == false)) {
+            lib038F51B7_gf_AbilityControlOpen(false, lp_players);
+        }
+
+    }
+
+}
+
+void lib038F51B7_gf_AbilityControlStartDefault () {
+    // Variable Declarations
+    int lv_race;
+
+    // Automatic Variable Declarations
+    playergroup auto6F50CC29_g;
+    int auto6F50CC29_var;
+    string autoF9B3819A_val;
+    const int auto0F8469D6_ae = lib038F51B7_gv_race;
+    const int auto0F8469D6_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    if ((lib038F51B7_gv_created == false)) {
+        lib038F51B7_gv_created = true;
+        TriggerEnable(lib038F51B7_gt_AbilityControlOpen, true);
+        TriggerEnable(lib038F51B7_gt_AbilityControlSelect, true);
+        lv_race = 0;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Zealot", "Charge", "ChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Stalker", "Blink", "BlinkDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkTemplar", "DarkTemplarBlink", "DarkTemplarBlinkDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Sentry", "GuardianShield", "GuardianShieldDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Sentry", "Hallucination", "HallucinationDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Adept", "AdeptPhaseShift", "PsionicTransferDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Mothership", "TemporalField", "TimeWarpDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Disruptor", "PurificationNovaTargeted", "PurificationNovaDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Oracle", "OracleRevelation", "EnvisionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Oracle", "OracleBuildStasisTrap", "EnvisionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Oracle", "OracleWeaponOn", "PulsarBeamDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HighTemplar", "Feedback", "FeedbackDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HighTemplar", "PsiStorm", "PsiStormDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Phoenix", "GravitonBeam", "GravitonBeamDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VoidRay", "VoidRaySwarmDamageBoost", "PrismaticAlignmentDisable");
+        lv_race = 1;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Marine", "Stim", "StimpackDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Reaper", "KD8Charge", "KD8ChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Ghost", "ChannelSnipe", "SteadyTargetingDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Ghost", "EMP", "EMPDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Ghost", "CloakOnGhost", "CloakGhostDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Medivac", "MedivacSpeedBoost", "EmergencyThrustersDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VikingFighter", "FighterMode", "FighterModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VikingAssault", "AssaultMode", "AssaultModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Banshee", "CloakOnBanshee", "CloakBansheeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Raven", "RavenScramblerMissile", "InterferenceMatrixDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Raven", "AutoTurret", "AutoTurretDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Raven", "RavenShredderMissile", "AntiArmorMissileDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Cyclone", "LockOn", "LockOnDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Liberator", "LiberatorAGMode", "DefenderModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SiegeTankSkinPreview", "SiegeMode", "SiegeModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Battlecruiser", "YamatoGun", "YamatoCannonDisable");
+        lv_race = 2;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Roach", "BurrowDown", "BurrowRoachDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Ravager", "RavagerCorrosiveBile", "CorrosiveBileDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Queen", "Transfusion", "TransfusionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Corruptor", "CausticSpray", "CausticSprayDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Infestor", "InfestedTerrans", "InfestedTerransDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Infestor", "FungalGrowth", "FungalGrowthDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Infestor", "NeuralParasiteUpgrade", "NeuralParasiteDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "FaceEmbrace", "AbductDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "ParasiticBomb", "ParasiticBombDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "BlindingCloud", "BlindingCloudDisable");
+        lv_race = 3;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Marine", "Stim", "StimpackDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VultureStarlight", "SpiderMine", "SpiderMinesDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Banshee", "CloakOnBanshee", "CloakBansheeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VikingFighter", "FighterMode", "FighterModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "VikingAssault", "AssaultMode", "AssaultModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SiegeTankSkinPreview", "SiegeMode", "SiegeModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Battlecruiser", "YamatoGun", "YamatoCannonDisable");
+        lv_race = 4;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeroAlarakWaveUnit", "AlarakDeadlyChargeAugment", "DeadlyChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeroAlarakWaveUnit", "AlarakDestructionWave", "DestructionWaveDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Slayer", "Blink", "BlinkDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "AscendantStarlight", "AscendantStarlightPsionicOrb", "PsionicOrbDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "AscendantStarlight", "AscendantStarlightMindBlast", "SnipeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "AscendantStarlight", "AscendantStarlightSacrifice", "SacrificeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Mothership", "MothershipTaldarimThermalLance", "ThermalLanceDisable");
+        lv_race = 5;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Cyclone", "LockOn", "LockOnDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SiegeTankSkinPreview", "SiegeMode", "SiegeModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Thor", "ThorBarrageCannon", "ThorBarrageCannonDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "WraithStarlight", "WraithCloakOn", "CloakBansheeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "ScienceVessel", "ScienceVesselIrradiate", "IrradiateDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "ScienceVessel", "ScienceVesselDefensiveMatrix", "DefensiveMatrixDisable");
+        lv_race = 6;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Diamondback", "InfestedDiamondbackStarlightSnare", "FungalSnareDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "InfestedSiegeTankStarlight", "InfestedSiegeTankStarlightRoot", "SiegeModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "InfestedBansheeStarlight", "BurrowDown", "BurrowBansheeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "BroodQueenStarlight", "BroodQueenStarlightOcularSymbiote", "OcularSymbioteDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "BroodQueenStarlight", "BroodQueenStarlightSpawnBroodlings", "SpawnBroodlingsDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "BroodQueenStarlight", "BroodQueenStarlightEnsnare", "EnsnareDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "ApocaliskStarlight", "ApocaliskCharge", "BurrowChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "ApocaliskStarlight", "ApocaliskClusterRockets", "ClusterRocketsDisable");
+        lv_race = 7;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HonorGuard", "Charge", "ChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HonorGuard", "HonorGuardWhirlwind", "WhirlwindDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HighTemplar", "Feedback", "FeedbackDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HighTemplar", "PsiStorm", "PsiStormDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Phoenix", "GravitonBeam", "GravitonBeamDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "PurifierTempest", "PurifierTempestDisintegration", "DisintegrateDisable");
+        lv_race = 8;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Zealot", "Charge", "ChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Energizer", "EnergizerChronoBeam", "ChronoBeamDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Energizer", "EnergizerReclamationStarlight", "ReclamationDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Annihilator", "AnnihilatorShadowCannon", "ShadowCannonDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Mirage", "GravitonBeam", "GravitonBeamDisable");
+        lv_race = 9;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Centurion", "CenturionShadowCharge", "ChargeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Centurion", "CenturionDarkcoil", "DarkcoilDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Stalker", "Blink", "BlinkDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkTemplar", "ShadowFury", "ShadowFuryDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkTemplar", "DarkTemplarBlink", "DarkTemplarBlinkDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkTemplar", "BloodHunterVoidStasis", "DarkTemplarVoidStasis");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkArchonStarlight", "DarkArchonStarlightConfusion", "ConfusionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "DarkArchonStarlight", "DarkArchonStarlightMindControl", "MindControlDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Corsair", "DisruptionWebUpgrade", "DisruptionWebDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Oracle", "OracleBuildStasisTrap", "EnvisionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Oracle", "OracleWeaponOn", "PulsarBeamDisable");
+        lv_race = 10;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeroKerriganWaveUnit", "KerriganLeapingStrike", "LeapingStrikeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeroKerriganWaveUnit", "KerriganLeapingEvasion", "LeapingEvasionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeroKerriganWaveUnit", "KerriganPsionicShift", "PsionicShiftDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Queen", "Transfusion", "TransfusionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Hydralisk", "HydraliskFrenzyStarlight", "FrenzyDisable");
+        lv_race = 11;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Nova", "NovaSniperRound", "NovaSnipeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "EliteMarine", "EliteMarineStimpack", "StimpackDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Marauder", "MagrailMunitionsUpgrade", "MagrailMunitionsDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SpecOpsGhost", "SniperBotSnipe", "SnipeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SpecOpsGhost", "SpecOpsGhostEMP", "EMPDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "CovertBanshee", "CovertBansheeRocketBarrage", "RocketBarrageDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "RavenTypeII", "RailgunTurret", "AutoTurretDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "RavenTypeII", "BioMechanicalRepairDrone", "BioMechanicalRepairDroneDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "RavenTypeII", "PredatorMissile", "SeekerMissileDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HeavySiegeTank", "HeavySiegeTankSiege", "SiegeModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "RaidLiberator", "RaidLiberatorSiege", "DefenderModeDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "HoloDecoy", "NovaDashAttack", "DashAttackDisable");
+        lv_race = 12;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Queen", "Transfusion", "TransfusionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "CorruptorZagara", "CorruptionAbility", "CorruptionDisable");
+        lv_race = 13;
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Roach", "BurrowDown", "BurrowRoachDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Ravager", "RavagerCorrosiveBile", "CorrosiveBileDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "SwarmQueenStarlight", "SwarmQueenBioMechanicalTransfusion", "TransfusionDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "FaceEmbrace", "AbductDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "ParasiticBomb", "ParasiticBombDisable");
+        lib038F51B7_gf_AbilityControlAddAbility(lv_race, "Viper", "ViperDisablingCloud", "BlindingCloudDisable");
+        auto6F50CC29_g = PlayerGroupActive();
+        auto6F50CC29_var = -1;
+        while (true) {
+            auto6F50CC29_var = PlayerGroupNextPlayer(auto6F50CC29_g, auto6F50CC29_var);
+            if (auto6F50CC29_var < 0) { break; }
+            autoF9B3819A_val = PlayerRace(auto6F50CC29_var);
+            if (autoF9B3819A_val == "Prot") {
+                lib038F51B7_gv_controlPlayerRace[auto6F50CC29_var] = 0;
+            }
+            else if (autoF9B3819A_val == "Terr") {
+                lib038F51B7_gv_controlPlayerRace[auto6F50CC29_var] = 1;
+            }
+            else if (autoF9B3819A_val == "Zerg") {
+                lib038F51B7_gv_controlPlayerRace[auto6F50CC29_var] = 2;
+            }
+            else {
+            }
+        }
+        lib038F51B7_gf_AbilityControlCreateButton();
+        lv_race = 0;
+        for ( ; ( (auto0F8469D6_ai >= 0 && lv_race <= auto0F8469D6_ae) || (auto0F8469D6_ai < 0 && lv_race >= auto0F8469D6_ae) ) ; lv_race += auto0F8469D6_ai ) {
+            lib038F51B7_gf_AbilityControlCreateMenu(lv_race);
+        }
+    }
+
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ability Control Open
+//--------------------------------------------------------------------------------------------------
+bool lib038F51B7_gt_AbilityControlOpen_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((libDDE92A83_gv_gameOver == false))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((EventDialogControl() == lib038F51B7_gv_controlCenter[0])) {
+        if ((DialogIsVisible(lib038F51B7_gv_controlDialog[lib038F51B7_gv_controlPlayerRace[EventPlayer()]], EventPlayer()) == false)) {
+            lib038F51B7_gf_AbilityControlOpen(true, PlayerGroupSingle(EventPlayer()));
+        }
+        else {
+            lib038F51B7_gf_AbilityControlOpen(false, PlayerGroupSingle(EventPlayer()));
+        }
+    }
+    else {
+        if ((DialogControlGetDialog(EventDialogControl()) != lib038F51B7_gv_controlDialog[lib038F51B7_gv_controlPlayerRace[EventPlayer()]])) {
+            lib038F51B7_gf_AbilityControlOpen(false, PlayerGroupSingle(EventPlayer()));
+        }
+
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib038F51B7_gt_AbilityControlOpen_Init () {
+    lib038F51B7_gt_AbilityControlOpen = TriggerCreate("lib038F51B7_gt_AbilityControlOpen_Func");
+    TriggerEnable(lib038F51B7_gt_AbilityControlOpen, false);
+    TriggerAddEventDialogControl(lib038F51B7_gt_AbilityControlOpen, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+    TriggerAddEventDialogControl(lib038F51B7_gt_AbilityControlOpen, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeHotkeyPressed);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Ability Control Select
+//--------------------------------------------------------------------------------------------------
+bool lib038F51B7_gt_AbilityControlSelect_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_race;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto9AB9C08F_ae;
+    const int auto9AB9C08F_ai = 1;
+
+    // Variable Initialization
+    lv_race = lib038F51B7_gv_controlPlayerRace[EventPlayer()];
+
+    // Conditions
+    if (testConds) {
+        if (!((DialogControlGetDialog(EventDialogControl()) == lib038F51B7_gv_controlDialog[lv_race]))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    auto9AB9C08F_ae = lib038F51B7_gv_controlRaceButtonLimit[lv_race];
+    lv_i = 0;
+    for ( ; ( (auto9AB9C08F_ai >= 0 && lv_i <= auto9AB9C08F_ae) || (auto9AB9C08F_ai < 0 && lv_i >= auto9AB9C08F_ae) ) ; lv_i += auto9AB9C08F_ai ) {
+        if ((EventDialogControl() == lib038F51B7_gv_controlButton[lv_i][lv_race])) {
+            break;
+        }
+
+    }
+    if ((DialogControlIsEnabled(lib038F51B7_gv_controlButtonImage[lv_i][lv_race], EventPlayer()) == true)) {
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), lib038F51B7_gv_controlDisable[lv_i][lv_race], 1);
+        libNtve_gf_SetDialogItemTooltip(lib038F51B7_gv_controlButton[lv_i][lv_race], (StringExternal("Param/Value/lib_038F51B7_28D6571A") + lib038F51B7_gv_controlButtonTooltip[lv_i][lv_race] + StringExternal("Param/Value/lib_038F51B7_D8B873B5") + StringExternal("UI/ScoreScreen/PlayerFrame/AI") + StringExternal("Param/Value/lib_038F51B7_A6D53F68") + StringExternal("UI/Disabled") + StringExternal("Param/Value/lib_038F51B7_F5E76412") + StringExternal("Param/Value/lib_038F51B7_E8602E13")), PlayerGroupSingle(EventPlayer()));
+        DialogControlSetEnabled(lib038F51B7_gv_controlButtonImage[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), false);
+        libNtve_gf_SetDialogItemDesaturated(EventDialogControl(), true, PlayerGroupSingle(EventPlayer()));
+        DialogControlFadeTransparency(lib038F51B7_gv_controlButtonImage[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, lib038F51B7_gv_controlTransparency);
+        DialogControlFadeTransparency(lib038F51B7_gv_controlButton[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, lib038F51B7_gv_controlTransparency);
+        DialogControlFadeTransparency(lib038F51B7_gv_controlBackground[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, lib038F51B7_gv_controlTransparency);
+    }
+    else {
+        libNtve_gf_SetUpgradeLevelForPlayer(EventPlayer(), lib038F51B7_gv_controlDisable[lv_i][lv_race], 0);
+        libNtve_gf_SetDialogItemTooltip(lib038F51B7_gv_controlButton[lv_i][lv_race], (StringExternal("Param/Value/lib_038F51B7_7CCDA1F2") + lib038F51B7_gv_controlButtonTooltip[lv_i][lv_race] + StringExternal("Param/Value/lib_038F51B7_F5CDCA06") + StringExternal("UI/ScoreScreen/PlayerFrame/AI") + StringExternal("Param/Value/lib_038F51B7_EF943C02") + StringExternal("UI/Active") + StringExternal("Param/Value/lib_038F51B7_682EFF9C") + StringExternal("Param/Value/lib_038F51B7_6A42DA6C")), PlayerGroupSingle(EventPlayer()));
+        DialogControlSetEnabled(lib038F51B7_gv_controlButtonImage[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), true);
+        libNtve_gf_SetDialogItemDesaturated(EventDialogControl(), false, PlayerGroupSingle(EventPlayer()));
+        DialogControlFadeTransparency(lib038F51B7_gv_controlButtonImage[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, 0.0);
+        DialogControlFadeTransparency(lib038F51B7_gv_controlButton[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, 0.0);
+        DialogControlFadeTransparency(lib038F51B7_gv_controlBackground[lv_i][lv_race], PlayerGroupSingle(EventPlayer()), 0.0, 0.0);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib038F51B7_gt_AbilityControlSelect_Init () {
+    lib038F51B7_gt_AbilityControlSelect = TriggerCreate("lib038F51B7_gt_AbilityControlSelect_Func");
+    TriggerEnable(lib038F51B7_gt_AbilityControlSelect, false);
+    TriggerAddEventDialogControl(lib038F51B7_gt_AbilityControlSelect, c_playerAny, c_invalidDialogControlId, c_triggerControlEventTypeClick);
+}
+
+void lib038F51B7_InitTriggers () {
+    lib038F51B7_gt_AbilityControlOpen_Init();
+    lib038F51B7_gt_AbilityControlSelect_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib038F51B7_InitLib_completed = false;
+
+void lib038F51B7_InitLib () {
+    if (lib038F51B7_InitLib_completed) {
+        return;
+    }
+
+    lib038F51B7_InitLib_completed = true;
+
+    lib038F51B7_InitLibraries();
+    lib038F51B7_InitVariables();
+    lib038F51B7_InitTriggers();
+}
+
+include "LibDDE92A83"
+

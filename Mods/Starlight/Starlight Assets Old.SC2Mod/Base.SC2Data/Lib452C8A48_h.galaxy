@@ -1,0 +1,90 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Leaderboard
+//--------------------------------------------------------------------------------------------------
+// Constants
+const fixed lib452C8A48_gv_lighterColorModifier = 1.6;
+const fixed lib452C8A48_gv_lighterColorMin = 30.0;
+const int lib452C8A48_gv_levelCap = 60;
+const int lib452C8A48_gv_x = 300;
+const int lib452C8A48_gv_y = 30;
+
+// Variable Declarations
+int lib452C8A48_gv_leaderboard;
+int lib452C8A48_gv_barOffset;
+int lib452C8A48_gv_barWidth;
+string[4] lib452C8A48_gv_bankScore;
+int[16] lib452C8A48_gv_playerScore;
+int[16] lib452C8A48_gv_slotOccupier;
+string lib452C8A48_gv_leaderboardScoreValue;
+int[16] lib452C8A48_gv_leaderboardScore;
+bool[16] lib452C8A48_gv_leaderboardShowLifetime;
+int[16] lib452C8A48_gv_leaderboardFrame;
+int[16] lib452C8A48_gv_leaderboardIconDialog;
+int[16] lib452C8A48_gv_leaderboardName;
+string[16] lib452C8A48_gv_leaderboardIcon;
+text[16] lib452C8A48_gv_leaderboardFaction;
+playergroup lib452C8A48_gv_leaderboardPlayers;
+bool lib452C8A48_gv_leaderboardShow;
+bool[16] lib452C8A48_gv_leaderboardShowScore;
+bool lib452C8A48_gv_leaderboardEnabled;
+playergroup lib452C8A48_gv_endGameWinnerGroup;
+bool lib452C8A48_gv_endGameShowDonations;
+fixed lib452C8A48_gv_endGameWait;
+fixed lib452C8A48_gv_cameraWait;
+int lib452C8A48_gv_levelBarDialog;
+int lib452C8A48_gv_levelBarFill;
+int lib452C8A48_gv_levelBarFrame;
+int lib452C8A48_gv_levelBarText;
+bool lib452C8A48_gv_levelBarEnabled;
+int[lib452C8A48_gv_levelCap + 1] lib452C8A48_gv_xPRequirement;
+int[16] lib452C8A48_gv_level;
+int[16] lib452C8A48_gv_xP;
+int lib452C8A48_gv_levelupPlayer;
+int[16][10] lib452C8A48_gv_playerStats;
+text[10] lib452C8A48_gv_statLabel;
+string lib452C8A48_gv_section;
+bool lib452C8A48_gv_gameOverLeaderboard;
+int[16][10] lib452C8A48_gv_statAdjusted;
+int[16] lib452C8A48_gv_xPAdjusted;
+int lib452C8A48_gv_xPCap;
+bool lib452C8A48_gv_firstRun;
+bool lib452C8A48_gv_bankEnabled;
+bool lib452C8A48_gv_bankLoaded;
+
+// Function Declarations
+void lib452C8A48_gf_StarlightLeaderboardStart (playergroup lp_players, bool lp_levelBar, bool lp_show, int lp_barHeight, int lp_barWidth, string lp_leaderboardScore, bool lp_showLifetimeDuringGame, bool lp_bankEnabled, string lp_bankSection, string lp_bankScore0, string lp_bankScore1, string lp_bankScore2, string lp_bankScore3);
+void lib452C8A48_gf_StarlightLeaderboardRebuild (playergroup lp_players);
+void lib452C8A48_gf_StarlightLeaderboardIcon (string lp_image, text lp_text, int lp_player);
+void lib452C8A48_gf_StarlightLeaderboardShowHide (bool lp_show, int lp_player);
+void lib452C8A48_gf_StarlightLeaderboardShowHideScore (bool lp_show, int lp_player);
+void lib452C8A48_gf_StarlightLeaderboardShowHideLevelBar (bool lp_show, int lp_player);
+void lib452C8A48_gf_StarlightLeaderboardUpdate ();
+void lib452C8A48_gf_StarlightLeaderboardUpdatePlayer (int lp_player);
+void lib452C8A48_gf_LeaderboardUpdate (int lp_player);
+void lib452C8A48_gf_LeaderboardSort ();
+void lib452C8A48_gf_LeaderboardAddPlayer (int lp_player, int lp_slot);
+void lib452C8A48_gf_LeaderboardSetTooltip (int lp_player);
+void lib452C8A48_gf_StarlightLeaderboardEndGame (unit lp_victoryUnit, fixed lp_cameraWait, bool lp_showDonationDialog, fixed lp_endGameWait, playergroup lp_winners);
+void lib452C8A48_gf_StarlightLeaderboardEndGameNoWait (unit lp_victoryUnit, playergroup lp_winners);
+void lib452C8A48_gf_LeaderboardAddVictory (playergroup lp_playerGroup);
+void lib452C8A48_gf_LeaderboardAddFastestWin (playergroup lp_playerGroup);
+void lib452C8A48_gf_LeaderboardSaveBank ();
+void lib452C8A48_gf_LevelBarDisable ();
+void lib452C8A48_gf_UpdateXP (int lp_player);
+void lib452C8A48_gf_LevelUp (int lp_player);
+void lib452C8A48_gf_UpdateStats ();
+
+// Trigger Declarations
+trigger lib452C8A48_gt_CameraWait;
+trigger lib452C8A48_gt_EndGameWait;
+trigger lib452C8A48_gt_CreateLevelBar;
+trigger lib452C8A48_gt_LevelupAnimation;
+trigger lib452C8A48_gt_StatsMatches;
+trigger lib452C8A48_gt_Rewards;
+trigger lib452C8A48_gt_StatsPeriodic;
+
+// Library Initialization
+void lib452C8A48_InitVariables ();
+

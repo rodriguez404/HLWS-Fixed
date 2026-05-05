@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Frame type="ArmyButton" name="GameUI/UIContainer/ConsoleUIContainer/ArmyButton" file="GameUI">
+        <Anchor side="Right" relative="$parent/MinimapPanel" pos="Max" offset="-50"/>
+        <Anchor side="Left" relative="$parent/MinimapPanel" pos="Max" offset="-490"/>
+        <Anchor side="Bottom" relative="$parent/MinimapPanel" pos="Min" offset="17"/>
+    </Frame>
+
+    <Frame type="Image" name="GameUI/UIContainer/ConsoleUIContainer/ArmyButton/BackgroundImage" file="GameUI">
+        <Alpha val="0"/>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/ArmyButton/CountLabel" file="GameUI">
+        <Style val="ArmyButtonBold"/>
+        <Height val="27.000000"/>
+        <Width val="45.000000"/>
+        <Anchor side="Top" relative="$parent" pos="Min" offset="0"/>
+        <Anchor side="Bottom" relative="$parent" pos="Min" offset="90"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+    </Frame>
+
+    <Frame type="CommandHotkeyFrame" name="GameUI/UIContainer/ConsoleUIContainer/ArmyButton/HotkeyFrame" file="GameUI">
+        <Anchor side="Right" relative="$parent" pos="Max" offset="2000"/>
+    </Frame>
+
+    <Frame type="Frame" name="GameUI/UIContainer/ConsoleUIContainer/ArmyButton/HitTestFrame" file="GameUI">
+        <Anchor side="Top" relative="$parent" pos="Min" offset="24"/>
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-8"/>
+        <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+        <Anchor side="Right" relative="$parent" pos="Max" offset="-8"/>
+    </Frame>
+</Desc>

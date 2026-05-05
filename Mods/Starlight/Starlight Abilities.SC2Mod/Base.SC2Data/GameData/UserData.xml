@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUser id="UnknownUserType">
+        <Fields>
+            <Id value="Mutation"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Button"/>
+            <Count value="3"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="1">
+            <GameLink GameLink="MutatorArgusConstruct">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorWarpTen">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorUnderdog">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="2">
+            <GameLink GameLink="MutatorPromote">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorFrenzy">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorAvenger">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="3">
+            <GameLink GameLink="MutatorStunOrb">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="RiseandShine">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorLongRange">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="4">
+            <GameLink GameLink="MutatorArgusConstruct">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorEarlyRoaring">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorUnderdog">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="5">
+            <GameLink GameLink="MutatorPromote">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorWarpTen">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorLongRange">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="6">
+            <GameLink GameLink="MutatorStunOrb">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorAvenger">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="RiseandShine">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="7">
+            <GameLink GameLink="MutatorArgusConstruct">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorUnderdog">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorFrenzy">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="8">
+            <GameLink GameLink="MutatorPromote">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorEarlyRoaring">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorLongRange">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="9">
+            <GameLink GameLink="MutatorStunOrb">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorAvenger">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorWarpTen">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="10">
+            <GameLink GameLink="MutatorArgusConstruct">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorFrenzy">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorUnderdog">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="11">
+            <GameLink GameLink="MutatorPromote">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorWarpTen">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="MutatorEarlyRoaring">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="12">
+            <GameLink GameLink="MutatorStunOrb">
+                <Field Id="Mutation"/>
+            </GameLink>
+            <GameLink GameLink="MutatorLongRange">
+                <Field Id="Mutation" Index="1"/>
+            </GameLink>
+            <GameLink GameLink="RiseandShine">
+                <Field Id="Mutation" Index="2"/>
+            </GameLink>
+        </Instances>
+    </CUser>
+</Catalog>

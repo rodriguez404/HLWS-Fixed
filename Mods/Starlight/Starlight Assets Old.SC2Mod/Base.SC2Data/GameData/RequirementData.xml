@@ -1,0 +1,2383 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CRequirement id="AbathurViperModification">
+        <NodeArray index="Use" Link="CountUpgradeAbathurViperModificationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAbathurViperModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AdaptivePlatingUse">
+        <NodeArray index="Use" Link="CountUpgradeVileRoachAdaptivePlatingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AnionPulseCrystalsUse">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradePhoenixRangeUpgradeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SwannThorModification">
+        <NodeArray index="Use" Link="CountUpgradeSwannThorModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BileLauncherArtilleryDuctsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitBileLauncherCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBileLauncherArtilleryDuctsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BileLauncherArtilleryDuctsUse">
+        <NodeArray index="Use" Link="CountUpgradeBileLauncherArtilleryDuctsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BloatedBileDuctsUse">
+        <NodeArray index="Use" Link="CountUpgradeRavagerBloatedBileDuctsCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAbathurRavagerModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModEvent">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModEventCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModEventCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModOvertime">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModSummitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModSummitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasPremiumModeNotWaveUnit">
+        <NodeArray index="Show" Link="AndCountUpgradePremiumRewardCompleteOnlyNotCountBehaviorWaveUnitCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HydriodicBileUse">
+        <NodeArray index="Use" Link="CountUpgradeVileRoachHydriodicBileCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoAbathurSwarmHostModification">
+        <NodeArray index="Show" Link="NotCountUpgradeAbathurSwarmHostModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="OverdeathDisable">
+        <NodeArray index="Use" Link="CountUpgradeOverdeathDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PotentBileUse">
+        <NodeArray index="Use" Link="CountUpgradeRavagerPotentBileCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAbathurRavagerModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RaynorStimModification">
+        <NodeArray index="Use" Link="CountUpgradeRaynorStimModificationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeRaynorStimModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SplitterlingCentrifugalHooksUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitSplitterlingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCentrificalHooksQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FortificationBarrierUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitShieldBatteryKaraxCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFortificationBarrierQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FortificationBarrierUse">
+        <NodeArray index="Use" Link="CountUpgradeFortificationBarrierCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VorazunOracleModification">
+        <NodeArray index="Use" Link="CountUpgradeVorazunOracleModificationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeVorazunOracleModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoVorazunOracleModification">
+        <NodeArray index="Show" Link="NotCountUpgradeVorazunOracleModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerEvent">
+        <NodeArray index="Show" Link="AndCountUpgradeGameplayModEventCompleteOnlyNotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ZagaraHeroicFortitudeUpgrade">
+        <NodeArray index="Use" Link="CountUnitHeroZagaraWaveUnitCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZagaraHeroicFortitudeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ZagaraHeroicFortitudeUse">
+        <NodeArray index="Use" Link="CountUpgradeZagaraHeroicFortitudeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MuscularAugmentsKerriganUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHydraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMuscularAugmentsKerriganQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="OptimizedOrdnanceUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitAlias_AnyStructureCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeOptimizedOrdnanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EnhancedTargetingUse">
+        <NodeArray index="Use" Link="CountUpgradeEnhancedTargetingCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeKaraxStructureModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnhancedTargetingUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitAlias_AnyStructureCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnhancedTargetingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="OptimizedOrdnanceUse">
+        <NodeArray index="Use" Link="CountUpgradeOptimizedOrdnanceCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeKaraxStructureModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganFuryUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_KerriganCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeKerriganFuryQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="KerriganAbilityEfficiency">
+        <NodeArray index="Use" Link="CountUpgradeKerriganAbilityEfficiencyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BurrowChargeDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowChargeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ClusterRocketsDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeClusterRocketsDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DashAttackDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDashAttackDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModCovenant">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModCovenantCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModCovenantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModExpansion">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModExpansionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LeapingEvasionDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeLeapingEvasionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WhirlwindDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeWhirlwindDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FrenzyDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbductDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModCommanders">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModCommandersCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LaserDrillLevel1Upgrade">
+        <NodeArray index="Use" Link="AndCountUnitSwannDrakkenLaserDrillCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLaserDrillLevel1CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LaserDrillLevel2Upgrade">
+        <NodeArray index="Use" Link="AndCountUpgradeLaserDrillLevel1CompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLaserDrillLevel2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PsionicShiftDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePsionicShiftDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LeapingStrikeDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeLeapingStrikeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ArtanisPhoenixModification">
+        <NodeArray index="Use" Link="CountUpgradeArtanisPhoenixModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MagrailMunitionsDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeMagrailMunitionsDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DeadlyChargeDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDeadlyChargeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ChronoBeamDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeChronoBeamDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DestructionWaveDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDestructionWaveDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaSnipeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSnipeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RocketBarrageDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeRocketBarrageDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BioMechanicalRepairDroneDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBioMechanicalRepairDroneDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SwannDrakkenLaserDrill">
+        <NodeArray index="Show" Link="NotCountUnitSwannDrakkenLaserDrillCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThermalLanceDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeThermalLanceDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ReclamationDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeReclamationDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MindControlDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeMindControlDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DarkcoilDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDarkcoilDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ConfusionDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeConfusionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowCannonDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeShadowCannonDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowFuryDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeShadowFuryDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DisintegrateDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDisintegrateDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoArtanisHighTemplarModification">
+        <NodeArray index="Use" Link="NotCountUpgradeArtanisHighTemplarModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AdvancedRepairSystemsUpgrade">
+        <NodeArray index="Show" Link="NotCountUpgradeAdvancedRepairSystemsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExtendedThermalLanceUse">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeExtendedThermalLanceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ChitinousPlatingUpgradeTorrasque">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitTorrasqueCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChitinousPlatingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FungalSnareDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFungalSnareDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AdrenalGlandsUpgradeSwarmling">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitSwarmlingStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingattackspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CorruptorBroodLordMorphDisable">
+        <NodeArray index="Use" Link="NotCountUpgradeCorruptorBroodLordMorphDisableCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCorruptorBroodLordMorphDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganAbilityEfficiencyUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_KerriganCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeKerriganAbilityEfficiencyCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganHeroicFortitudeUpgrade">
+        <NodeArray index="Show" Link="NotCountUpgradeKerriganHeroicFortitudeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganChainReactionUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_KerriganCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeKerriganChainReactionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganPlace">
+        <NodeArray index="Show" Link="NotCountUnitAlias_KerriganCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoMedicStabilizerMedpacks">
+        <NodeArray index="Show" Link="NotCountUpgradeMedicStabilizerMedpacksCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VoidStasisDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeVoidStasisDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleAndShipWeaponsMissileAttacksLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranVehicleAndShipCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpawnBroodlingsDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpawnBroodlingsDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="IrradiateDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeIrradiateDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BansheeShockwaveMissileBatteryUse">
+        <NodeArray index="Use" Link="CountUpgradeBansheeShockwaveMissileBatteryCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeRaynorBansheeModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DefensiveMatrixDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDefensiveMatrixDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MetabolicBoostUpgradeSwarmling">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitSwarmlingStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingmovementspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NovaCaduceusReactorUse">
+        <NodeArray index="Use" Link="CountUpgradeNovaCaduceusReactorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BurrowBansheeDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowBansheeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="OcularSymbioteDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeOcularSymbioteDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnsnareDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnsnareDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThorBarrageCannonDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeThorBarrageCannonDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CovertBansheeAdvancedCloakingFieldUse">
+        <NodeArray index="Use" Link="CountUpgradeCovertBansheeAdvancedCloakingFieldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EliteMarineSuperStimpackUse">
+        <NodeArray index="Use" Link="CountUpgradeEliteMarineSuperStimpackCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EliteMarineLaserTargetingSystemUse">
+        <NodeArray index="Use" Link="CountUpgradeEliteMarineLaserTargetingSystemCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HeavySiegeTankGraduatingRangeUse">
+        <NodeArray index="Use" Link="CountUpgradeHeavySiegeTankGraduatingRangeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HellbatRangerJumpJetAssaultUse">
+        <NodeArray index="Use" Link="CountUpgradeHellbatRangerJumpJetAssaultCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InfernalPreIgniterUse">
+        <NodeArray index="Use" Link="CountUpgradeHighCapacityBarrelsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MarauderCommandoMagrailMunitionsUse">
+        <NodeArray index="Use" Link="CountUpgradeMarauderCommandoMagrailMunitionsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MarauderCommandoSuppressionShellsUse">
+        <NodeArray index="Use" Link="CountUpgradeMarauderCommandoSuppressionShellsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpecOpsGhostEMPRoundUse">
+        <NodeArray index="Use" Link="CountUpgradeSpecOpsGhostEMPRoundCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpecOpsGhostTripleTapUse">
+        <NodeArray index="Use" Link="CountUpgradeSpecOpsGhostTripleTapCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StrikeGoliathLockdownMissilesUse">
+        <NodeArray index="Use" Link="CountUpgradeStrikeGoliathLockdownMissilesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThorBarrageCannonUse">
+        <NodeArray index="Use" Link="CountUpgradeThor330mmBarrageCannonCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeThorBarrageCannonShowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VanadiumPlatingController">
+        <NodeArray index="Use" Link="CountUpgradeVanadiumPlatingControllerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SacrificeDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSacrificeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PsionicOrbDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePsionicOrbDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MedicStabilizerMedpacksUse">
+        <NodeArray index="Use" Link="CountUpgradeMedicStabilizerMedpacksCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeMedicStabilizerMedpacksCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpiderMinesDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSpiderMinesDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RipwaveMissilesUse">
+        <NodeArray index="Use" Link="CountUpgradeVikingRipwaveMissilesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Scan">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUpgradeGameplayModScanCompleteOnlyNotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BrillianceShow">
+        <NodeArray index="Use" Link="CountUpgradeImpossibleUpgradeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModBrillianceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AFKTimerComplete">
+        <NodeArray index="Use" Link="CountBehaviorAFKTimerUnitCompleteCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AdrenalGlandsUpgradeRaptorling">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitRaptorlingCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingattackspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AnyUnit">
+        <NodeArray index="Use" Link="CountUnitAlias_AnyUnitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherAcidRain">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherAcidRainCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherAshWind">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherAshWindCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherMineralWind">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherMineralWindCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherEnergyWind">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherEnergyWindCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherVoidWind">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherVoidWindCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherLightRain">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherLightRainCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherLightSnow">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherLightSnowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherSunrays">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherSunraysCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherBloodshardWind">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherBloodshardWindCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AvengerGuardianShellReady">
+        <NodeArray index="Show" Link="NotCountBehaviorAvengerGuardianShellCooldownCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AntiArmorMissileDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAntiArmorMissileDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnhancedMunitionsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRavenCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavenEnhancedMunitionsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GameplayModBrilliance">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModBrillianceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModShroud">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModShroudCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModShroudCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DisruptionWebDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDisruptionWebDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerCommanderSelectShow">
+        <NodeArray index="Show" Link="CountUpgradeWorkerCommanderSelectCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerSelectProtoss">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModCovenantCompleteOnly"/>
+        <NodeArray index="Show" Link="AndNotCountUnitWorkerProtossCompleteOnlyCountUpgradeGameplayModCovenantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerSelectTerran">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModCovenantCompleteOnly"/>
+        <NodeArray index="Show" Link="AndNotCountUnitWorkerTerranCompleteOnlyCountUpgradeGameplayModCovenantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerSelectZerg">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModCovenantCompleteOnly"/>
+        <NodeArray index="Show" Link="AndNotCountUnitWorkerZergCompleteOnlyCountUpgradeGameplayModCovenantCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerUnits">
+        <NodeArray index="Show" Link="NotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InterferenceMatrixDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeInterferenceMatrixDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModStockpile">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModStockpileCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModAnkh">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModAnkhCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModDischarge">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModDischargeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModVoid">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModVoidCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModSuperscan">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModSuperscanCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModSuperscanCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AdaptiveTalonsUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitAlias_LurkerCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDiggingClawsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BuildRepairDroneDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBuildRepairDroneDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MuscularAugmentsSpeedUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHydraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEvolveMuscularAugmentsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidFireLaunchersUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitCycloneCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCycloneRapidFireLaunchersQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MoebiusReactorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_GhostCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGhostMoebiusReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinBiomass">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinBiomassCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinCybros">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinCybrosCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinHighlight">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinHighlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinHologram">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinHologramCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinJade">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinJadeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinMineral">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinMineralCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinPsionic">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinPsionicCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinRedstone">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinRedstoneCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinSepia">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinSepiaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinShadow">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinShadowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinSnow">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinSnowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinSolarite">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinSolariteCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RefinerySkinVoid">
+        <NodeArray index="Use" Link="CountUpgradeRefinerySkinVoidCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaWeatherIcySnow">
+        <NodeArray index="Use" Link="CountUpgradeAreaWeatherIcySnowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinHighlight">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinHighlightCompleteOnlyAtUnitCountBehaviorSkinHighlightPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinSnow">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinSnowCompleteOnlyAtUnitCountBehaviorSkinSnowPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinSepia">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinSepiaCompleteOnlyAtUnitCountBehaviorSkinSepiaPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinJade">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinJadeCompleteOnlyAtUnitCountBehaviorSkinJadePrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StagingAreaDecalShow">
+        <NodeArray index="Use" Link="CountUpgradeStagingAreaDecalShowCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeChar">
+        <NodeArray index="Use" Link="CountUpgradeThemeCharCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeBelShir">
+        <NodeArray index="Use" Link="CountUpgradeThemeBelShirCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeShakuras">
+        <NodeArray index="Use" Link="CountUpgradeThemeShakurasCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeKaldir">
+        <NodeArray index="Use" Link="CountUpgradeThemeKaldirCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeMarSara">
+        <NodeArray index="Use" Link="CountUpgradeThemeMarSaraCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeSlayn">
+        <NodeArray index="Use" Link="CountUpgradeThemeSlaynCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeZerus">
+        <NodeArray index="Use" Link="CountUpgradeThemeZerusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaFuryofOne">
+        <NodeArray index="Use" Link="CountUpgradeNovaFuryofOneCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaFuryofOneCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaIonicForceField">
+        <NodeArray index="Use" Link="CountUpgradeNovaIonicForceFieldCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaIonicForceFieldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaPlasmaSurge">
+        <NodeArray index="Use" Link="CountUpgradeNovaPlasmaSurgeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaPlasmaSurgeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RaynorScanModification">
+        <NodeArray index="Use" Link="CountUpgradeRaynorScanModificationCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeRaynorScanModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ThemeElsecaro">
+        <NodeArray index="Use" Link="CountUpgradeThemeElsecaroCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UnitIsBanned">
+        <NodeArray index="Use" Link="CountUpgradeUnitIsBannedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerResearch">
+        <NodeArray index="Use" Link="CountUnitAlias_AnyUnitCompleteOnly2132468540"/>
+        <NodeArray index="Show" Link="AndNotCountUpgradeGameplayModBrillianceCompleteOnlyNotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="WorkerSkins">
+        <NodeArray index="Use" Link="CountUpgradePremiumRewardCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUpgradePremiumRewardCompleteOnlyNotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AnionPulseCrystalsUpgradeMirage">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitMirageCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePhoenixRangeUpgradeQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AscendantMindBlastUse">
+        <NodeArray index="Use" Link="CountUpgradeAscendantMindBlastCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BunkerPermanentHasCargo">
+        <EditorCategories value="Race:Neutral,TechType:Unit"/>
+        <NodeArray index="Use" Link="CountBehaviorAlias_BunkerCargoCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BurrowRoachTunnelingClaws">
+        <EditorCategories value="Race:Zerg"/>
+        <NodeArray index="Use" Link="CountUpgradeTunnelingClawsCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountBehaviorIsSellingCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ChargeUpgradeHonorGuard">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHonorGuardCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChargeUpgradeSentinel">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitSentinelStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExtendedThermalLanceUpgradePurifierColossus">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitPurifierColossusCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeExtendedThermalLanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GameplayModNone">
+        <NodeArray index="Use" Link="NotCountUpgradeAlias_GameplayModCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModScan">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModScanCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModAccord">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModAccordCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModDowntime">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModDowntimeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModExile">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModExileCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModEquipment">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModEquipmentCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModRescue">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModRescueCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeGameplayModRescueCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModGridlock">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModGridlockCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModSap">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModSapCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModBountiful">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModBountifulCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModInsight">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModInsightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GameplayModBastion">
+        <NodeArray index="Use" Link="CountUpgradeGameplayModBastionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AFKTimerWarning">
+        <NodeArray index="Use" Link="CountBehaviorAFKTimerUnitWarningCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaGhostVisorUpgradeUse">
+        <NodeArray index="Use" Link="CountUpgradeNovaGhostVisorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasScienceVesselDefensiveMatrix">
+        <NodeArray index="Use" Link="CountUpgradeScienceVesselDefensiveMatrixCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HavocCloakingModuleUse">
+        <NodeArray index="Use" Link="CountUpgradeHavocCloakingModuleCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HavocBloodshardResonanceUse">
+        <NodeArray index="Use" Link="CountUpgradeHavocBloodshardResonanceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InfernalPreIgniterUpgradeNova">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHellbatRangerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHighCapacityBarrelsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MeleeMissileAttacksLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergGroundCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZergMeleeAttacksLevel1StarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HasMineralIncomeBonusAndNoMineralIncomePause">
+        <NodeArray index="Use" Link="AndNotCountBehaviorMineralIncomePausedCompleteOnlyCountUpgradeMineralIncomeBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MetabolicBoostUpgradeRaptorling">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRaptorlingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingmovementspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NoIncomeBonusAndNoMineralIncomePause">
+        <NodeArray index="Use" Link="AndNotCountBehaviorMineralIncomePausedCompleteOnlyNotCountUpgradeMineralIncomeBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossAirArmorLevel1">
+        <NodeArray index="Use" Link="CountUpgradeProtossAirArmorLevel1StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossAirArmorLevel1StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossAirArmorLevel2">
+        <NodeArray index="Use" Link="CountUpgradeProtossAirArmorLevel2StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossAirArmorLevel2StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossAirWeaponsLevel1">
+        <NodeArray index="Use" Link="CountUpgradeProtossAirWeaponsLevel1CompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossAirWeaponsLevel1CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossAirWeaponsLevel2">
+        <NodeArray index="Use" Link="CountUpgradeProtossAirWeaponsLevel2CompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossAirWeaponsLevel2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossShieldsLevel1">
+        <NodeArray index="Use" Link="CountUpgradeProtossShieldsLevel1StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossShieldsLevel1StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossGroundArmorLevel2">
+        <NodeArray index="Use" Link="CountUpgradeProtossGroundArmorLevel2StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossGroundArmorLevel2StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossGroundWeaponsLevel1">
+        <NodeArray index="Use" Link="CountUpgradeProtossGroundWeaponsLevel1StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossGroundWeaponsLevel1StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossGroundArmorLevel1">
+        <NodeArray index="Use" Link="CountUpgradeProtossGroundArmorLevel1StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossGroundArmorLevel1StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossGroundWeaponsLevel2">
+        <NodeArray index="Use" Link="CountUpgradeProtossGroundWeaponsLevel2StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossGroundWeaponsLevel2StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasProtossShieldsLevel2">
+        <NodeArray index="Use" Link="CountUpgradeProtossShieldsLevel2StarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeProtossShieldsLevel2StarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HaveAdeptPiercingAttack">
+        <NodeArray index="Use" Link="CountUpgradeAdeptPiercingAttackCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="HaveLiberatorRange">
+        <NodeArray index="Use" Link="CountUpgradeLiberatorAGRangeUpgradeCompleteOnlyTechTreeCheat"/>
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+    </CRequirement>
+    <CRequirement id="HaveMedivacSpeedBoostUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeMedivacIncreaseSpeedBoostCompleteOnlyTechTreeCheat"/>
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+    </CRequirement>
+    <CRequirement id="HaveRavenRecalibratedExplosives">
+        <NodeArray index="Use" Link="CountUpgradeRavenRecalibratedExplosivesCompleteOnlyTechTreeCheat"/>
+        <EditorCategories value="Race:Terran,TechType:Unit"/>
+    </CRequirement>
+    <CRequirement id="MineralFieldAvailable">
+        <NodeArray index="Use" Link="CountUnitAlias_MineralFieldAvailableCompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountUnitAlias_MineralFieldCompleteOnlyNotCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoMineralIncomePaused">
+        <NodeArray index="Use" Link="NotCountBehaviorMineralIncomePausedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinShadow">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinShadowCompleteOnlyAtUnitCountBehaviorSkinShadowPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SlayerPhasingArmorUse">
+        <NodeArray index="Use" Link="CountUpgradeSlayerPhasingArmorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SupplicantBloodShieldsUse">
+        <NodeArray index="Use" Link="CountUpgradeSupplicantBloodShieldsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SupplicantSoulAugmentationUse">
+        <NodeArray index="Use" Link="CountUpgradeSupplicantSoulAugmentationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VanguardFusionMortarsUse">
+        <NodeArray index="Use" Link="CountUpgradeVanguardFusionMortarsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VanguardMatterDispersionUse">
+        <NodeArray index="Use" Link="CountUpgradeVanguardFusionMortarsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AscendantPowerOverwhelmingUse">
+        <NodeArray index="Use" Link="CountUpgradeAscendantPowerOverwhelmingCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaPenetratingBlast">
+        <NodeArray index="Use" Link="CountUpgradeNovaPenetratingBlastCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaPenetratingBlastCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoMineralIncomeBonus">
+        <NodeArray index="Use" Link="NotCountUpgradeMineralIncomeBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasMineralIncomeBonus">
+        <NodeArray index="Use" Link="CountUpgradeMineralIncomeBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AbilityUsageRangeLimit">
+        <NodeArray index="Use" Link="CountUpgradeAbilityUsageRangeLimitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AlarakAbsorption">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AlarakDestructionWave">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasPremiumModeUse">
+        <NodeArray index="Use" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MothershipCorePlace">
+        <NodeArray index="Show" Link="NotCountBehaviorMothershipCoreUnitSpawnerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MothershipUpgradeShortcut">
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorMothershipCoreUnitSpawnerCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoDisableDummyWeapons">
+        <NodeArray index="Use" Link="NotCountUpgradeDisableDummyWeaponsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SpiderMineLimit">
+        <NodeArray index="Use" Link="LTCountUnitSpiderMineCompleteOnly50"/>
+    </CRequirement>
+    <CRequirement id="KerriganHeroicFortitudeUse">
+        <NodeArray index="Use" Link="CountUpgradeKerriganHeroicFortitudeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ReaverStarlightArmed">
+        <NodeArray index="Use" Link="CountUnitReaverStarlightDummyCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ComingSoon">
+        <NodeArray index="Use" Link="CountUpgradeComingSoonCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasWaveUnit">
+        <NodeArray index="Use" Link="CountBehaviorWaveUnitCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorWaveUnitCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SkinBiomass">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinBiomassCompleteOnlyAtUnitCountBehaviorSkinBiomassPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinCybros">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinCybrosCompleteOnlyAtUnitCountBehaviorSkinCybrosPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinHologram">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinHologramCompleteOnlyAtUnitCountBehaviorSkinHologramPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinMineral">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinMineralCompleteOnlyAtUnitCountBehaviorSkinMineralPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinPsionic">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinPsionicCompleteOnlyAtUnitCountBehaviorSkinPsionicPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinRedstone">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinRedstoneCompleteOnlyAtUnitCountBehaviorSkinRedstonePrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinRemove">
+        <NodeArray index="Show" Link="CountBehaviorAlias_SkinCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="SkinSolarite">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinSolariteCompleteOnlyAtUnitCountBehaviorSkinSolaritePrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SkinVoid">
+        <NodeArray index="Use" Link="NotOrCountBehaviorSkinVoidCompleteOnlyAtUnitCountBehaviorSkinVoidPrecursorCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrophyProtossGames">
+        <NodeArray index="Use" Link="NotCountUnitTrophyProtossGamesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyProtossVictories">
+        <NodeArray index="Use" Link="NotCountUnitTrophyProtossVictoriesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyTerranVictories">
+        <NodeArray index="Use" Link="NotCountUnitTrophyTerranVictoriesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyTerranGames">
+        <NodeArray index="Use" Link="NotCountUnitTrophyTerranGamesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyTotalLosses">
+        <NodeArray index="Use" Link="NotCountUnitTrophyTotalLossesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyZergVictories">
+        <NodeArray index="Use" Link="NotCountUnitTrophyZergVictoriesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyZergGames">
+        <NodeArray index="Use" Link="NotCountUnitTrophyZergGamesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrophyTotalKills">
+        <NodeArray index="Use" Link="NotCountUnitTrophyTotalKillsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="KerriganChainReaction">
+        <NodeArray index="Use" Link="CountUpgradeKerriganChainReactionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KerriganFury">
+        <NodeArray index="Use" Link="CountUpgradeKerriganFuryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasPremiumMode">
+        <NodeArray index="Use" Link="CountUpgradePremiumRewardCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradePremiumRewardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HideLearnMenu">
+        <NodeArray index="Show" Link="NotCountBehaviorHideLearnMenuCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="HasTier2">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasTier3">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HasTier4">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier4CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoTier2">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeTier2CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoTier3">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeTier3CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NoTier4">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="NotCountUpgradeTier4CompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Tier2Upgrade">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Show" Link="NotOrCountUnitTier2DummyQueuedOrBetterCountUpgradeTier2CompleteOnlyCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Tier3Upgrade">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="OrCountUnitTier2DummyQueuedOrBetterCountUpgradeTier2QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotOrCountUnitTier3DummyQueuedOrBetterCountUpgradeTier3CompleteOnlyCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="Tier4Upgrade">
+        <EditorCategories value="Race:Neutral,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="OrCountUnitTier3DummyQueuedOrBetterCountUpgradeTier3QueuedOrBetter"/>
+        <NodeArray index="Show" Link="NotOrCountUnitTier4DummyQueuedOrBetterCountUpgradeTier4QueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NovaDominate">
+        <NodeArray index="Use" Link="NotCountBehaviorNovaDominateCasterCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaDominateCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaFlashbang">
+        <NodeArray index="Use" Link="CountUpgradeNovaFlashbangCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaFlashbangCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaPulseGrenade">
+        <NodeArray index="Use" Link="CountUpgradeNovaPulseGrenadeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaPulseGrenadeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaStimInfusion">
+        <NodeArray index="Use" Link="CountUpgradeNovaStimInfusionCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaStimInfusionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaPhaseReactorSuit">
+        <NodeArray index="Use" Link="CountUpgradeNovaPhaseReactorSuitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaPhaseReactorSuitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaTurbojetJumpsuit">
+        <NodeArray index="Use" Link="CountUpgradeNovaTurbojetJumpsuitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaTurbojetJumpsuitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaTacticalStealthSuit">
+        <NodeArray index="Use" Link="CountUpgradeNovaTacticalStealthSuitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaTacticalStealthSuitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaGunblade">
+        <NodeArray index="Use" Link="CountUpgradeNovaGunbladeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaGunbladeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaApolloSuit">
+        <NodeArray index="Use" Link="CountUpgradeNovaApolloSuitCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaApolloSuitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaPlasmaGun">
+        <NodeArray index="Use" Link="CountUpgradeNovaPlasmaGunCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaPlasmaGunCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaRifle">
+        <NodeArray index="Use" Link="CountUpgradeNovaRifleCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaRifleCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaShotgun">
+        <NodeArray index="Use" Link="CountUpgradeNovaShotgunCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaShotgunCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NovaSword">
+        <NodeArray index="Use" Link="CountUpgradeNovaSwordCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeNovaSwordCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DarkTemplarBlinkDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDarkTemplarBlinkDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DisruptionBlastDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDisruptionBlastDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ParasiticBombDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeParasiticBombDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CausticSprayDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCausticSprayDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BurrowLurkerDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowLurkerDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KD8ChargeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeKD8ChargeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="LockOnDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeLockOnDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DefenderModeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeDefenderModeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveBileDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCorrosiveBileDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PurificationNovaDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePurificationNovaDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PsionicTransferDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePsionicTransferDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SteadyTargetingDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSteadyTargetingDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BlindingCloudDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBlindingCloudDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseBattlecruiserSpecializations">
+        <NodeArray index="Use" Link="CountUpgradeBattlecruiserEnableSpecializationsCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseBlink">
+        <NodeArray index="Use" Link="CountUpgradeBlinkTechCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseCharge">
+        <NodeArray index="Use" Link="CountUpgradeChargeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseCloakingField">
+        <NodeArray index="Use" Link="CountUpgradeBansheeCloakCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseDarkTemplarBlink">
+        <NodeArray index="Use" Link="CountUpgradeDarkTemplarBlinkUpgradeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseGravitonCatapult">
+        <NodeArray index="Use" Link="CountUpgradeCarrierLaunchSpeedUpgradeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseNeuralParasite">
+        <NodeArray index="Use" Link="CountUpgradeNeuralParasiteCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UsePersonalCloaking">
+        <NodeArray index="Use" Link="CountUpgradePersonalCloakingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UsePsiStorm">
+        <NodeArray index="Use" Link="CountUpgradePsiStormTechCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UsePunisherGrenades">
+        <NodeArray index="Use" Link="CountUpgradePunisherGrenadesCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="UseStimpack">
+        <NodeArray index="Use" Link="CountUpgradeStimpackCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="YamatoCannonDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeYamatoCannonDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TransfusionDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTransfusionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PointDefenseDroneDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePointDefenseDroneDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StimpackDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeStimpackDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="NeuralParasiteDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeNeuralParasiteDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="InfestedTerransDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeInfestedTerransDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FighterModeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFighterModeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FungalGrowthDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFungalGrowthDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CloakGhostDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCloakGhostDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SeekerMissileDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSeekerMissileDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EMPDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEMPDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CorruptionDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCorruptionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SnipeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSnipeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SiegeModeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeSiegeModeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AutoTurretDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAutoTurretDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CloakBansheeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeCloakBansheeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AssaultModeDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAssaultModeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AbductDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeAbductDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EmergencyThrustersDisable">
+        <EditorCategories value="Race:Terran,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEmergencyThrustersDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BlinkDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBlinkDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PrismaticAlignmentDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePrismaticAlignmentDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PsiStormDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePsiStormDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GravitonBeamDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeGravitonBeamDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PulsarBeamDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradePulsarBeamDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GuardianShieldDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeGuardianShieldDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ChargeDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeChargeDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HallucinationDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeHallucinationDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FeedbackDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeFeedbackDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TimeWarpDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTimeWarpDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnvisionDisable">
+        <EditorCategories value="Race:Protoss,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeEnvisionDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BurrowRoachDisable">
+        <EditorCategories value="Race:Zerg,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeBurrowRoachDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundArmorInfantryArmorGroundCarapaceLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranInfantryCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundWeaponsInfantryWeaponsMeleeAttacksLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranInfantryCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirWeaponsShipWeaponsFlyerAttacksLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranShipCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirArmorVehiclePlatingFlyerCarapaceLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranVehicleAndShipCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleWeaponsMissileAttacksLevel1Terran">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranVehicleCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirArmorVehiclePlatingFlyerCarapaceLevel1Protoss">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ProtossAirCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirArmorVehiclePlatingFlyerCarapaceLevel2">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirArmorLevel2StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirArmorVehiclePlatingFlyerCarapaceLevel3">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirArmorLevel3StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirWeaponsShipWeaponsFlyerAttacksLevel1Protoss">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ProtossAirCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirWeaponsShipWeaponsFlyerAttacksLevel2">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirWeaponsLevel2StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirWeaponsShipWeaponsFlyerAttacksLevel3">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirWeaponsLevel3StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundArmorInfantryArmorGroundCarapaceLevel1Protoss">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ProtossGroundCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundArmorInfantryArmorGroundCarapaceLevel2">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundArmorLevel2StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundArmorInfantryArmorGroundCarapaceLevel3">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundArmorLevel3StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundWeaponsInfantryWeaponsMeleeAttacksLevel1Protoss">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ProtossGroundCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundWeaponsInfantryWeaponsMeleeAttacksLevel2">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundWeaponsLevel2StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundWeaponsInfantryWeaponsMeleeAttacksLevel3">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundWeaponsLevel3StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleWeaponsMissileAttacksLevel1Protoss">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ProtossShieldsCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleWeaponsMissileAttacksLevel2">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel2StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleWeaponsMissileAttacksLevel3">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel3StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirWeaponsShipWeaponsFlyerAttacksLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergFlyerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AirArmorVehiclePlatingFlyerCarapaceLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergFlyerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossAirArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundArmorInfantryArmorGroundCarapaceLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergGroundCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundArmorLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="GroundWeaponsInfantryWeaponsMeleeAttacksLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergMeleeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossGroundWeaponsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShieldsVehicleWeaponsMissileAttacksLevel1Zerg">
+        <EditorCategories value="Race:Naga,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_ZergMissileCompleteOnly"/>
+        <NodeArray index="Show" Link="NotOrCountUpgradeProtossShieldsLevel1StarlightQueuedOrBetterCountUpgradeHideWorkerCommandCardCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AllowMoveWaveUnit">
+        <NodeArray index="Use" Link="CountBehaviorAllowMoveWaveUnitCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorAllowMoveWaveUnitCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NotHeroSpawner">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="NotCountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="NotCountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsHeroSpawner">
+        <EditorCategories value="Race:Neutral"/>
+        <NodeArray index="Use" Link="CountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorHeroSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="AnionPulseCrystalsUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitPhoenixCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePhoenixRangeUpgradeQueuedOrBetterTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="BlinkUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitStalkerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBlinkTechQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChargeUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitZealotCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExtendedThermalLanceUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitColossusCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeExtendedThermalLanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GraviticBoostersUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitObserverCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeObserverGraviticBoosterQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GravitonCatapultUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitCarrierCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCarrierLaunchSpeedUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PsionicStormUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_HighTemplarCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePsiStormTechQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ResonatingGlaivesUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitAdeptCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAdeptPiercingAttackQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShadowStrideUpgrade">
+        <EditorCategories value="Race:Protoss,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_DarkTemplarCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDarkTemplarBlinkUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AdvancedBallisticsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitLiberatorCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLiberatorAGRangeUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BehemothReactorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBattlecruiserCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBattlecruiserBehemothReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BuildingArmorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranStructureCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTerranBuildingArmorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CaduceusReactorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitMedivacCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMedivacCaduceusReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CloakingFieldUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBansheeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBansheeCloakQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CombatShieldUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitMarineCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeShieldWallQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ConcussiveShellsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitMarauderCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePunisherGrenadesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CorvidReactorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRavenCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavenCorvidReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DrillingClawsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitWidowMineCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDrillClawsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DurableMaterialsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRavenCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDurableMaterialsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ExplosiveShrapnelShellsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRavenCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavenDamageUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HiSecAutoTrackingUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_TerranStructureCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHiSecAutoTrackingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HyperflightRotorsUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBansheeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBansheeSpeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="InfernalPreIgniterUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_HellionCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHighCapacityBarrelsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MagFieldAcceleratorUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitCycloneCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCycloneLockOnDamageUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MagFieldLaunchersUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitCycloneCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMagFieldLaunchersQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NeosteelFrameUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNeosteelFrameQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PersonalCloakingUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_GhostCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradePersonalCloakingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RecalibratedExplosivesUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitRavenCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavenRecalibratedExplosivesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="StimpackUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_StimpackCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStimpackQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WeaponRefitUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBattlecruiserCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBattlecruiserEnableSpecializationsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GroovedSpinesUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHydraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEvolveGroovedSpinesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChitinousPlatingUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitUltraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeChitinousPlatingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GlialReconstitutionUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_RoachCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGlialReconstitutionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AdrenalGlandsUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitZerglingCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingattackspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MuscularAugmentsSpeedRangeUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitHydraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradehydraliskspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PneumatizedCarapaceUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitOverseerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeoverlordspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PathogenGlandsUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitInfestorCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestorEnergyUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NeuralParasiteUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="AndCountUnitInfestorCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNeuralParasiteQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EnduringLocustsUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_SwarmHostCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLocustLifetimeIncreaseQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TunnelingClawsUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_RoachCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeTunnelingClawsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MetabolicBoostUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitZerglingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradezerglingmovementspeedQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CentrifugalHooksUpgrade">
+        <EditorCategories value="Race:Zerg,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitBanelingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCentrificalHooksQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BunkerPermanentCargo">
+        <NodeArray index="Use" Link="LTSumCountUnitBunkerPermanentCargoDummyQueuedOrBetterAtUnitCountUnitBunkerPermanentTrainDummyQueuedOrBetterAtUnitCountBehaviorBunkerPermanentCapacityCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BunkerPermanentCargoDouble">
+        <NodeArray index="Use" Link="LTSumCountUnitBunkerPermanentCargoDummyQueuedOrBetterAtUnitCountUnitBunkerPermanentTrainDummyQueuedOrBetterAtUnitCountBehaviorBunkerPermanentCapacityMinusOneCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="BunkerPermanentFull">
+        <NodeArray index="Use" Link="GTECountUnitBunkerPermanentCargoDummyCompleteOnlyAtUnitCountBehaviorBunkerPermanentCapacityCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="KaraxReconstructionBeamLimit">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="LTCountBehaviorKaraxReconstructionBeamCompleteOnlySum3CountUpgradeKaraxReconstructionBeamTargetBonusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="330mmBarrageCannonUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_ThorCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeThor330mmBarrageCannonQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AdvancedOpticsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_TerranVehicleAndShipCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVehicleAdvancedOpticsQueuedOrBetter"/>
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="AresClassTargetingSystemUpgrade">
+        <NodeArray index="Use" Link="CountUnitGoliathStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAresClassWeaponsSystemQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DefensiveMatrixUpgrade">
+        <NodeArray index="Use" Link="CountUnitScienceVesselStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeScienceVesselDefensiveMatrixQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DisplacementFieldUpgrade">
+        <NodeArray index="Use" Link="CountUnitWraithStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCloakDistortionFieldQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DisplacementFieldUse">
+        <NodeArray index="Use" Link="CountUpgradeCloakDistortionFieldCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ImprovedNanoRepairUpgrade">
+        <NodeArray index="Use" Link="CountUnitScienceVesselStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeScienceVesselImprovedNanoRepairQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="InfernalPlatingUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_HellionCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHellbatInfernalPlatingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MaelstromRoundsUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_SiegeTankCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMaelstromRoundsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MultiLockWeaponsSystemUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitGoliathStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMultilockTargetingSystemsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PulseAmplifierUpgrade">
+        <NodeArray index="Use" Link="CountUnitWraithStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWraithPulseAmplifierQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PulseAmplifierUse">
+        <NodeArray index="Use" Link="CountUpgradeWraithPulseAmplifierCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="RegenerativeBioSteelUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_TerranVehicleAndShipCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSwannRegenerativeBioSteelQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TargetingOpticsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitCycloneCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCycloneLockOnRangeUpgradeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AdvancedSiegeTechUpgrade">
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+        <NodeArray index="Use" Link="CountUnitAlias_SiegeTankCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSiegeTankAdvancedSiegeTechQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AfterburnersUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_TerranVehicleAndShipCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRaynorAfterburnersQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CerberusMinesUpgrade">
+        <NodeArray index="Use" Link="CountUnitVultureStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVultureCerberusMineQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="IncineratorGauntletsUpgrade">
+        <NodeArray index="Use" Link="CountUnitFirebatStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFirebatIncineratorGauntletsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="IncineratorGauntletsUse">
+        <NodeArray index="Use" Link="CountUpgradeFirebatIncineratorGauntletsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="JuggernautPlatingUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitFirebatStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeFirebatJuggernautPlatingStarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="JuggernautPlatingUse">
+        <NodeArray index="Use" Link="CountUpgradeFirebatJuggernautPlatingStarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PhobosWeaponsSystemUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_VikingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVikingPhobosWeaponsSystemQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ReplenishableMagazineUpgrade">
+        <NodeArray index="Use" Link="CountUnitVultureStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVultureReplenishableMagazineQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RipwaveMissilesUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_VikingCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVikingRipwaveMissilesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShockwaveMissileBatteryUpgrade">
+        <NodeArray index="Use" Link="CountUnitBansheeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBansheeShockwaveMissileBatteryQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="StabilizerMedpacksUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitMedicStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMedicStabilizerMedpacksQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DisintegrationUpgrade">
+        <NodeArray index="Use" Link="CountUnitPurifierTempestCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradePurifierTempestDisintegrationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DisintegrationUse">
+        <NodeArray index="Use" Link="CountUpgradePurifierTempestDisintegrationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DoubleGravitonBeamUpgrade">
+        <NodeArray index="Use" Link="CountUnitPhoenixCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradePhoenixDoubleGravitonBeamQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DoubleGravitonBeamUse">
+        <NodeArray index="Use" Link="CountUpgradePhoenixDoubleGravitonBeamCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeArtanisPhoenixModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ImprovedBarrierUpgrade">
+        <NodeArray index="Use" Link="CountUnitImmortalCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImmortalImprovedBarrierQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ImprovedBarrierUse">
+        <NodeArray index="Use" Link="CountUpgradeImmortalImprovedBarrierCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeArtanisImmortalModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="KhaydarinAmuletUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_HighTemplarCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHighTemplarKhaydarinAmuletQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PlasmaSurgeUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_HighTemplarCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHighTemplarPlasmaSurgeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PlasmaSurgeUse">
+        <NodeArray index="Use" Link="CountUpgradeHighTemplarPlasmaSurgeCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeArtanisHighTemplarModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ScarabHousingUpgrade">
+        <NodeArray index="Use" Link="CountUnitReaverStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeReaverScarabHousingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ScarabHousingUse">
+        <NodeArray index="Use" Link="CountUpgradeReaverScarabHousingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SingularityChargeUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitDragoonStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDragoonSingularityChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SingularityChargeUse">
+        <NodeArray index="Use" Link="CountUpgradeDragoonSingularityChargeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="SolaritePayloadUpgrade">
+        <NodeArray index="Use" Link="CountUnitReaverStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeReaverSolaritePayloadQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SolaritePayloadUse">
+        <NodeArray index="Use" Link="CountUpgradeReaverSolaritePayloadCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="TrillicCompressionMeshUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitDragoonStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDragoonTrillicCompressionMeshQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TrillicCompressionMeshUse">
+        <NodeArray index="Use" Link="CountUpgradeDragoonTrillicCompressionMeshCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="WhirlwindUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitHonorGuardCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZealotWhirlwindQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="WhirlwindUse">
+        <NodeArray index="Use" Link="CountUpgradeZealotWhirlwindCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ArgusCrystalUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitDarkArchonStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDarkArchonArgusCrystalQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ArgusCrystalUse">
+        <NodeArray index="Use" Link="CountUpgradeDarkArchonArgusCrystalCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DarkcoilUpgrade">
+        <NodeArray index="Use" Link="CountUnitCenturionCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCenturionDarkcoilQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DarkcoilUse">
+        <NodeArray index="Use" Link="CountUpgradeCenturionDarkcoilCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="DisruptionWebUpgrade">
+        <NodeArray index="Use" Link="CountUnitCorsairCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCorsairDisruptionWebStarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="DisruptionWebUse">
+        <NodeArray index="Use" Link="CountUpgradeCorsairDisruptionWebStarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="MindControlUpgrade">
+        <NodeArray index="Use" Link="CountUnitDarkArchonStarlightCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDarkArchonMindControlStarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MindControlUse">
+        <NodeArray index="Use" Link="CountUpgradeDarkArchonMindControlStarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PhaseReactorUpgrade">
+        <NodeArray index="Use" Link="CountUnitStalkerCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStalkerPhaseReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PhaseReactorUse">
+        <NodeArray index="Use" Link="CountUpgradeStalkerPhaseReactorCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeVorazunStalkerModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PrismaticRangeUpgrade">
+        <NodeArray index="Use" Link="CountUnitVoidRayVorazunCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVoidRayPrismaticRangeStarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PrismaticRangeUse">
+        <NodeArray index="Use" Link="CountUpgradeVoidRayPrismaticRangeStarlightCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowChargeUpgrade">
+        <NodeArray index="Use" Link="CountUnitCenturionCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCenturionShadowChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShadowChargeUse">
+        <NodeArray index="Use" Link="CountUpgradeCenturionShadowChargeCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ShadowFuryUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_DarkTemplarCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDarkTemplarShadowFuryQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShadowFuryUse">
+        <NodeArray index="Use" Link="CountUpgradeDarkTemplarShadowFuryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StasisCalibrationUpgrade">
+        <NodeArray index="Use" Link="CountUnitOracleCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeOracleStasisCalibrationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="StasisCalibrationUse">
+        <NodeArray index="Use" Link="CountUpgradeOracleStasisCalibrationCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="CountUpgradeVorazunOracleModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StealthDriveUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitCorsairCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCorsairStealthDriveQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="StealthDriveUse">
+        <NodeArray index="Use" Link="CountUpgradeCorsairStealthDriveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VoidStasisUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_DarkTemplarCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDarkTemplarVoidStasisQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="VoidStasisUse">
+        <NodeArray index="Use" Link="CountUpgradeDarkTemplarVoidStasisCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="FireBeamUpgrade">
+        <NodeArray index="Use" Link="CountUnitPurifierColossusCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradePurifierColossusFireBeamQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FireBeamUse">
+        <NodeArray index="Use" Link="CountUpgradePurifierColossusFireBeamCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PhasingArmorUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitMirageCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMiragePhasingArmorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PhasingArmorUse">
+        <NodeArray index="Use" Link="CountUpgradeMiragePhasingArmorCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RapidRechargingUpgrade">
+        <NodeArray index="Use" Link="OrTechTreeCheatCountUnitEnergizerCompleteOnlyCountUnitShieldBatteryKaraxCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnergizerRapidRechargingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidRechargingUse">
+        <NodeArray index="Use" Link="CountUpgradeEnergizerRapidRechargingCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ReclamationUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitEnergizerCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEnergizerReclamationStarlightQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ReclamationUse">
+        <NodeArray index="Use" Link="CountUpgradeEnergizerReclamationStarlightCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="ReconstructionUpgrade">
+        <NodeArray index="Use" Link="CountUnitSentinelStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSentinelReconstructionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ReconstructionUse">
+        <NodeArray index="Use" Link="CountUpgradeSentinelReconstructionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RepairDronesUpgrade">
+        <NodeArray index="Use" Link="CountUnitAiurCarrierCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAiurCarrierRepairDronesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RepairDronesUse">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUpgradeAiurCarrierRepairDronesCompleteOnlyLTCountUnitAiurCarrierRepairDroneCompleteOnlyAtUnit2"/>
+    </CRequirement>
+    <CRequirement id="RepairDronesPassive">
+        <NodeArray index="Use" Link="CountUpgradeAiurCarrierRepairDronesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowCannonUpgrade">
+        <NodeArray index="Use" Link="AndTechTreeCheatCountUnitAnnihilatorCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeImmortalShadowCannonQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShadowCannonUse">
+        <NodeArray index="Use" Link="CountUpgradeImmortalShadowCannonCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="PhasingArmorUpgradeSlayer">
+        <NodeArray index="Use" Link="AndCountUnitSlayerCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSlayerPhasingArmorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BloodShieldsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSupplicantStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSupplicantBloodShieldsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ImposingPresenceUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlarakImposingPresenceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ImposingPresenceUse">
+        <NodeArray index="Use" Link="CountUpgradeAlarakImposingPresenceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AerialTrackingUpgrade">
+        <NodeArray index="Use" Link="CountUnitWrathwalkerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWrathwalkerAerialTrackingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidPowerCyclingUpgrade">
+        <NodeArray index="Use" Link="CountUnitWrathwalkerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeWrathwalkerPowerCyclingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TelekinesisUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAlarakTelekinesisQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BloodshardResonanceUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitHavocStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHavocBloodshardResonanceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PowerOverwhelmingUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAscendantStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAscendantPowerOverwhelmingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ChaoticAttunementUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAscendantStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAscendantChaoticAttunementQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SoulAugmentationUpgrade">
+        <NodeArray index="Use" Link="CountUnitSupplicantStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSupplicantSoulAugmentationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MatterDispersionUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitVanguardCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVanguardMatterDispersionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CloakingModuleUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitHavocStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHavocCloakingModuleQueuedOrBetter"/>
+        <EditorCategories value="Race:Terran,TechType:Upgrade"/>
+    </CRequirement>
+    <CRequirement id="FusionMortarsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitVanguardCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVanguardFusionMortarsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MindBlastUpgrade">
+        <NodeArray index="Use" Link="CountUnitAscendantStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAscendantMindBlastQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AdvancedCloakingFieldUpgrade">
+        <NodeArray index="Use" Link="CountUnitCovertBansheeCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeCovertBansheeAdvancedCloakingFieldQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NovaCaduceusReactorUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_NovaCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNovaCaduceusReactorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AresClassTargetingSystemUpgradeNova">
+        <NodeArray index="Use" Link="CountUnitStrikeGoliathCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStrikeGoliathAresClassTargetingSystemQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AresClassTargetingSystemUseNova">
+        <NodeArray index="Use" Link="CountUpgradeStrikeGoliathAresClassTargetingSystemCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EMPRoundUpgradeNova">
+        <NodeArray index="Use" Link="CountUnitSpecOpsGhostCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSpecOpsGhostEMPRoundQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="NovaGhostVisorUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_NovaCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeNovaGhostVisorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="GraduatingRangeUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitHeavySiegeTankCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHeavySiegeTankGraduatingRangeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="JumpJetAssaultUpgrade">
+        <NodeArray index="Use" Link="CountUnitHellbatRangerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHellbatRangerJumpJetAssaultQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LaserTargetingSystemUpgrade">
+        <NodeArray index="Use" Link="CountUnitEliteMarineCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEliteMarineLaserTargetingSystemQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="LockdownMissilesUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitStrikeGoliathCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeStrikeGoliathLockdownMissilesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="MagrailMunitionsUpgrade">
+        <NodeArray index="Use" Link="CountUnitMarauderCommandoCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMarauderCommandoMagrailMunitionsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SmartServosUpgrade">
+        <NodeArray index="Use" Link="CountUnitRaidLiberatorCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRaidLiberatorSmartServosQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SuppressionShellsUpgrade">
+        <NodeArray index="Use" Link="CountUnitMarauderCommandoCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMarauderCommandoSuppressionShellsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SuperStimpackUpgrade">
+        <NodeArray index="Use" Link="CountUnitEliteMarineCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeEliteMarineSuperStimpackQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TripleTapUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSpecOpsGhostCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSpecOpsGhostTripleTapQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AncillaryCarapaceUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitHydraliskCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHydraliskAncillaryCarapaceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BurrowChargeUpgrade">
+        <NodeArray index="Use" Link="CountUnitTorrasqueCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUltraliskBurrowChargeQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BurrowChargeUse">
+        <NodeArray index="Use" Link="CountUpgradeUltraliskBurrowChargeCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveAcidUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSplitterlingCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSplitterlingCorrosiveAcidQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FrenzyUpgrade">
+        <NodeArray index="Use" Link="CountUnitHydraliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeHydraliskFrenzyKerriganQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="FrenzyUse">
+        <NodeArray index="Use" Link="CountUpgradeHydraliskFrenzyKerriganCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeKerriganHydraliskModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HardenedCarapaceUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitRaptorlingCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZerglingHardenedCarapaceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HardenedCarapaceUpgradeUse">
+        <NodeArray index="Use" Link="CountUpgradeZerglingHardenedCarapaceCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="HardenedCarapaceUpgradeSwarmling">
+        <NodeArray index="Use" Link="AndCountUnitSwarmlingStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZerglingHardenedCarapaceQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PorousCartilageUpgrade">
+        <NodeArray index="Use" Link="CountUnitBroodLordCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBroodLordPorousCartilageQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ProtectiveCoverUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedAbominationCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeAberrationProtectiveCoverQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidRegenerationUpgrade">
+        <NodeArray index="Use" Link="CountUnitBroodMutaliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMutaliskRapidRegenerationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RegenerativeAcidUpgrade">
+        <NodeArray index="Show" Link="NotCountUpgradeBanelingRegenerativeAcidQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RuptureUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSplitterlingCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSplitterlingRuptureQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SeismicSpinesUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_LurkerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeLurkerSeismicSpinesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SeismicSpinesUse">
+        <NodeArray index="Use" Link="CountUpgradeLurkerSeismicSpinesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShreddingClawsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitRaptorlingCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZerglingShreddingClawsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ShreddingClawsUpgradeSwarmling">
+        <NodeArray index="Use" Link="AndCountUnitSwarmlingStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZerglingShreddingClawsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SunderingGlaveUpgrade">
+        <NodeArray index="Use" Link="CountUnitBroodMutaliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMutaliskSunderingGlaveKerriganQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TissueAssimilationUpgrade">
+        <NodeArray index="Use" Link="CountUnitTorrasqueCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeUltraliskTissueAssimilationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="TissueAssimilationUse">
+        <NodeArray index="Use" Link="CountUpgradeUltraliskTissueAssimilationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ViciousGlaveUpgrade">
+        <NodeArray index="Use" Link="CountUnitBroodMutaliskCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeMutaliskViciousGlaveQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="VirulentSporesUpgrade">
+        <NodeArray index="Use" Link="CountUnitScourgeCompleteOnlyTechTreeCheat"/>
+        <NodeArray index="Show" Link="NotCountUpgradeScourgeVirulentSporesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="VirulentSporesUse">
+        <NodeArray index="Use" Link="CountUpgradeScourgeVirulentSporesCompleteOnlyTechTreeCheat"/>
+    </CRequirement>
+    <CRequirement id="AdaptivePlatingUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitVileRoachCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVileRoachAdaptivePlatingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BioMechanicalTransfusionUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSwarmQueenStarlightCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSwarmQueenBioMechanicalTransfusionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BloatedBileDuctsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitRavagerCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavagerBloatedBileDuctsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveSprayUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitDevourerStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeDevourerCorrosiveSprayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CorrosiveSprayUse">
+        <NodeArray index="Use" Link="CountUpgradeDevourerCorrosiveSprayCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PotentBileUpgrade">
+        <NodeArray index="Use" Link="CountUnitRavagerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeRavagerPotentBileQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PressurizedGlandsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitSwarmHostMPCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeSwarmHostPressurizedGlandsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PressurizedGlandsUse">
+        <NodeArray index="Use" Link="CountUpgradeSwarmHostPressurizedGlandsCompleteOnly"/>
+        <NodeArray index="Show" Link="CountUpgradeAbathurSwarmHostModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ProlongedDispersionUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitGuardianStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeGuardianProlongedDispersionQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ProlongedDispersionUse">
+        <NodeArray index="Use" Link="CountUpgradeGuardianProlongedDispersionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="VirulentMicrobesUpgrade">
+        <NodeArray index="Use" Link="CountUnitViperCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeViperVirulentMicrobesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="HydriodicBileUpgrade">
+        <NodeArray index="Use" Link="CountUnitVileRoachCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeVileRoachHydriodicBileQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AnaerobicEnhancementUpgrade">
+        <NodeArray index="Use" Link="CountUnitAlias_InfestedInfantryCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedCivilianAnaerobicEnhancementQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AnaerobicEnhancementUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedCivilianAnaerobicEnhancementCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BroodlingGestationUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitAlias_InfestedInfantryCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedCivilianBroodlingGestationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BroodlingGestationUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedCivilianBroodlingGestationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AggressiveIncubationUpgrade">
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestStructureAggressiveIncubationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidHibernationUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedBansheeStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedBansheeRapidHibernationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RapidHibernationUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedBansheeRapidHibernationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BracedExoskeletonUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitInfestedBansheeStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedBansheeBracedExoskeletonQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="BracedExoskeletonUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedBansheeBracedExoskeletonCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="EnhancedMitochondriaUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitBroodQueenStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeBroodQueenEnhancedMitochondriaQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="EnhancedMitochondriaUse">
+        <NodeArray index="Use" Link="CountUpgradeBroodQueenEnhancedMitochondriaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RegenerativePlatingUpgrade">
+        <NodeArray index="Use" Link="CountUnitBunkerCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedBunkerRegenerativePlatingQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CalcifiedArmorUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitBunkerCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedBunkerCalcifiedArmorQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RetinalAugmentationUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedMarineStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedMarineRetinalAugmentationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="RetinalAugmentationUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedMarineRetinalAugmentationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PlaguedMunitionsUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitInfestedMarineStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedMarinePlaguedMunitionsQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="PlaguedMunitionsUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedMarinePlaguedMunitionsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SaturatedCulturesUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedDiamondbackStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedDiamondbackSaturatedCulturesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="SaturatedCulturesUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedDiamondbackSaturatedCulturesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CausticMucusUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedDiamondbackStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedDiamondbackCausticMucusQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CausticMucusUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedDiamondbackCausticMucusCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AutomatedMitosisUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedSiegeTankStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedSiegeTankAutomatedMitosisQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AutomatedMitosisUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedSiegeTankAutomatedMitosisCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AcidicEnzymesUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitInfestedSiegeTankStarlightCompleteOnlyCountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedSiegeTankAcidicEnzymesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AcidicEnzymesUse">
+        <NodeArray index="Use" Link="CountUpgradeInfestedSiegeTankAcidicEnzymesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ViralContaminationUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedLiberatorStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedLiberatorViralContaminationQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="CloudDispersalUpgrade">
+        <NodeArray index="Use" Link="CountUnitInfestedLiberatorStarlightCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeInfestedLiberatorCloudDispersalQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="AberrationProtectiveCoverUse">
+        <NodeArray index="Use" Link="CountUpgradeAberrationProtectiveCoverCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BroodMutaliskRapidRegenerationUse">
+        <NodeArray index="Use" Link="CountUpgradeMutaliskRapidRegenerationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BroodMutaliskViciousGlaiveUse">
+        <NodeArray index="Use" Link="CountUpgradeMutaliskViciousGlaveCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="BroodMutaliskSunderingGlaveUse">
+        <NodeArray index="Use" Link="CountUpgradeMutaliskSunderingGlaveKerriganCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RaptorlingShreddingClawsUse">
+        <NodeArray index="Use" Link="CountUpgradeZerglingShreddingClawsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SwarmlingShreddingClawsUse">
+        <NodeArray index="Use" Link="CountUpgradeZerglingShreddingClawsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SplitterlingCorrosiveAcidUse">
+        <NodeArray index="Use" Link="CountUpgradeSplitterlingCorrosiveAcidCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SplitterlingRegenerativeAcidUse">
+        <NodeArray index="Use" Link="CountUpgradeBanelingRegenerativeAcidCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SplitterlingRuptureUse">
+        <NodeArray index="Use" Link="CountUpgradeSplitterlingRuptureCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairFractured">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairFracturedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairDOM">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairDOMCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairDefault">
+        <NodeArray index="Use" Link="NotCountUpgradeAlias_AreaFlair_NotDefaultCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairMansion">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairMansionCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairProtoss">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairProtossCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairPurifier">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairPurifierCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairSlayn">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairSlaynCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairVoid">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairVoidCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="AreaFlairXelnaga">
+        <NodeArray index="Use" Link="CountUpgradeAreaFlairXelnagaCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="CorruptorBroodLordMorph">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="AndCountBehaviorUnitSpawnerCompleteOnlyAtUnitNotCountUpgradeCorruptorBroodLordMorphDisableCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ArchonMorph">
+        <NodeArray index="Use" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="AndCountBehaviorUnitSpawnerCompleteOnlyAtUnitNotCountUpgradeArtanisHighTemplarModificationCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="UseSell">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="NotCountBehaviorSellFullCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UseSellFull">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="AndCountBehaviorUnitSpawnerCompleteOnlyAtUnitCountBehaviorSellFullCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="UseSellNone">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeImpossibleUpgradeCompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NotSelling">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorIsSellingCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Reposition">
+        <NodeArray index="Use" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="PlacementFacingNE">
+        <NodeArray index="Use" Link="CountUpgradePlacementFacingNECompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PlacementFacingNW">
+        <NodeArray index="Use" Link="CountUpgradePlacementFacingNWCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PlacementFacingSE">
+        <NodeArray index="Use" Link="CountUpgradePlacementFacingSECompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="PlacementFacingSW">
+        <NodeArray index="Use" Link="NotOrCountUpgradePlacementFacingNECompleteOnlyCountUpgradePlacementFacingNWCompleteOnlyCountUpgradePlacementFacingSECompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="IsUnitSpawner">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NotUnitSpawner">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Show" Link="NotCountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsUnitSpawnerandTier2">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="IsUnitSpawnerandTier3">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountUpgradeTier3CompleteOnly"/>
+        <NodeArray index="Show" Link="CountBehaviorUnitSpawnerCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="ZagaraMedusaBladesUse">
+        <NodeArray index="Use" Link="CountUpgradeZagaraMedusaBladesCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ZagaraMedusaBladesUpgrade">
+        <NodeArray index="Use" Link="AndCountUnitHeroZagaraWaveUnitCompleteOnlyCountUpgradeTier2CompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUpgradeZagaraMedusaBladesQueuedOrBetter"/>
+    </CRequirement>
+    <CRequirement id="ZagaraPlace">
+        <NodeArray index="Use" Link="NotCountUnitHeroZagaraWaveUnitCompleteOnly"/>
+        <NodeArray index="Show" Link="NotCountUnitHeroZagaraWaveUnitCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="StormHeroPlace">
+        <NodeArray index="Use" Link="NotCountUnitAlias_HeroStormCompleteOnly"/>
+    </CRequirement>
+</Catalog>

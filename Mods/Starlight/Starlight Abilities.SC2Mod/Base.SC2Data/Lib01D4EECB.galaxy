@@ -1,0 +1,101 @@
+include "TriggerLibs/NativeLib"
+
+include "Lib01D4EECB_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Abilities Order Refresh
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib01D4EECB_InitLibraries () {
+    libNtve_InitVariables();
+}
+
+// Functions
+void lib01D4EECB_gf_StarlightAbilitiesOrderRefresh (bool lp_state) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib01D4EECB_gt_Stun, lp_state);
+    TriggerEnable(lib01D4EECB_gt_SpawnSpiders, lp_state);
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Stun
+//--------------------------------------------------------------------------------------------------
+bool lib01D4EECB_gt_Stun_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetCustomValue(EventUnit(), 0) != 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("AttackWarpPrism", 0), Point(UnitGetCustomValue(EventUnit(), 0), UnitGetCustomValue(EventUnit(), 1))), c_orderQueueReplace);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib01D4EECB_gt_Stun_Init () {
+    lib01D4EECB_gt_Stun = TriggerCreate("lib01D4EECB_gt_Stun_Func");
+    TriggerEnable(lib01D4EECB_gt_Stun, false);
+    TriggerAddEventUnitBehaviorChange(lib01D4EECB_gt_Stun, null, "EntanglingRoots", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib01D4EECB_gt_Stun, null, "Stun", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib01D4EECB_gt_Stun, null, "PurgeRoot", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Spawn Spiders
+//--------------------------------------------------------------------------------------------------
+bool lib01D4EECB_gt_SpawnSpiders_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitSource), 0) != 0.0))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitTarget), 0, UnitGetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitSource), 0));
+    UnitSetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitTarget), 1, UnitGetCustomValue(EventPlayerEffectUsedUnit(c_effectUnitSource), 1));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib01D4EECB_gt_SpawnSpiders_Init () {
+    lib01D4EECB_gt_SpawnSpiders = TriggerCreate("lib01D4EECB_gt_SpawnSpiders_Func");
+    TriggerEnable(lib01D4EECB_gt_SpawnSpiders, false);
+    TriggerAddEventPlayerEffectUsed(lib01D4EECB_gt_SpawnSpiders, c_playerAny, "SpawnSpidersSetSummon");
+}
+
+void lib01D4EECB_InitTriggers () {
+    lib01D4EECB_gt_Stun_Init();
+    lib01D4EECB_gt_SpawnSpiders_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib01D4EECB_InitLib_completed = false;
+
+void lib01D4EECB_InitLib () {
+    if (lib01D4EECB_InitLib_completed) {
+        return;
+    }
+
+    lib01D4EECB_InitLib_completed = true;
+
+    lib01D4EECB_InitLibraries();
+    lib01D4EECB_InitTriggers();
+}
+

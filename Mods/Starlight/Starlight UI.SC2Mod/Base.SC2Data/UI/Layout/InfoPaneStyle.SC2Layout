@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+    <Constant name="InfoPaneUnitNameStyleNormal" val="UnitNameLabel"/>
+    <Constant name="InfoPaneCargoCurrentCargo" val="CargoTitleText"/>
+
+    <Frame type="EquipmentIcon" name="EquipmentIconTemplate" file="EquipmentIcon">
+        <Frame type="Label" name="LevelLabel">
+            <Anchor side="Bottom" relative="$parent/EquipmentIconBorder" pos="Max" offset="10"/>
+            <Anchor side="Right" relative="$parent/EquipmentIconBorder" pos="Max" offset="20"/>
+            <Height val="32"/>
+            <Width val="64"/>
+            <Visible val="false"/>
+            <Unclipped val="true"/>
+            <IgnoreParentColor val="true"/>
+            <RenderPriority val="900"/>
+        </Frame>
+    </Frame>
+
+    <Frame type="InfoPanel" name="GameUI/UIContainer/ConsoleUIContainer/InfoPanel" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="-10"/>
+        <Height val="200"/>
+        <Width val="600"/>
+        <Batch val="false"/>
+
+        <Frame type="InfoPaneUnit" name="InfoPaneUnit">
+            <Frame type="Label" name="NameLabel">
+                <Color val="255,215,0"/>
+            </Frame>
+
+            <Frame type="Label" name="TypeLabel">
+                <Style val="EquipmentLabelGrey"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="172"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="Frame" name="UnitPanel">
+            <Frame type="Image" name="UnitPanelBackground">
+                <Texture val="@ui_observer_custom_item_container"/>
+                <TextureType val="NineSlice"/>
+                <RenderPriority val="500"/>
+                <Anchor relative="$parent"/>
+            </Frame>
+
+            <Frame type="BehaviorBar" name="BehaviorBar" template="BehaviorBar/BehaviorBarTemplate">
+                <Anchor side="Top" relative="$parent" pos="Min" offset="8"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="8"/>
+                <Height val="192"/>
+                <RenderPriority val="520"/>
+                <Unclipped val="true"/>
+            </Frame>
+
+            <Frame type="Label" name="InfoLabel">
+                <Anchor side="Bottom" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Left" relative="$parent" pos="Min" offset="0"/>
+                <Anchor side="Right" relative="$parent" pos="Max" offset="0"/>
+                <Anchor side="Top" relative="$parent" pos="Max" offset="0"/>
+                <Height val="300"/>
+            </Frame>
+
+            <Frame type="UnitWireframe" name="UnitWireframe" template="UnitWireframe/UnitWireframeTemplate">
+                <Anchor side="Top" relative="$parent/BehaviorBar" pos="Min" offset="12"/>
+                <Anchor side="Left" relative="$parent/BehaviorBar" pos="Max" offset="40"/>
+                <Width val="90"/>
+                <Height val="100"/>
+                <RenderPriority val="550"/>
+                <Unclipped val="true"/>
+                <CollapseLayout val="false"/>
+            </Frame>
+
+            <Frame type="Label" name="ShieldLabel">
+                <Style val="UnitWireframeVitalLarge"/>
+                <Width val="200"/>
+            </Frame>
+
+            <Frame type="Label" name="LifeLabel">
+                <Style val="UnitWireframeVitalLarge"/>
+                <Width val="200"/>
+            </Frame>
+
+            <Frame type="Label" name="EnergyLabel">
+                <Style val="UnitWireframeVitalLarge"/>
+                <Width val="200"/>
+            </Frame>
+        </Frame>
+
+        <Frame type="InfoPaneHero" name="InfoPaneHero">
+            <Frame type="ProgressBar" name="ExperienceBar">
+                <Color val="255,255,255"/>
+                <ColorStep val="128,0,128"/>
+                <Texture val="@@ui_observer_custom_experience_bar"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="40"/>
+                <Width val="300"/>
+                <Height val="32"/>
+            </Frame>
+
+            <Frame type="EquipmentIcon" name="WeaponIcon">
+                <Anchor side="Top" relative="$parent/ExperienceBar" pos="Max" offset="5"/>
+                <Width val="38"/>
+                <Height val="38"/>
+            </Frame>
+
+            <Frame type="EquipmentIcon" name="ArmorIcon">
+                <Width val="38"/>
+                <Height val="38"/>
+            </Frame>
+
+            <Frame type="Label" name="NameLabel">
+                <Color val="255,215,0"/>
+            </Frame>
+
+            <Frame type="Label" name="WeaponLabel">
+                <Style val="EquipmentLabelGrey"/>
+            </Frame>
+
+            <Frame type="Label" name="ArmorLabel">
+                <Style val="EquipmentLabelGrey"/>
+                <Visible val="false"/>
+            </Frame>
+
+            <Frame type="Label" name="ExperienceLabel">
+                <Style val="ExperienceLabelBold"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="43"/>
+            </Frame>
+
+            <Frame type="Label" name="InfoLabel">
+                <Style val="EquipmentLabelGrey"/>
+                <Anchor side="Left" relative="$parent/WeaponLabel" pos="Min" offset="0"/>
+                <Anchor side="Top" relative="$parent/WeaponLabel" pos="Min" offset="10"/>
+            </Frame>
+
+            <Frame type="Label" name="TypeLabel">
+                <Color val="128,128,128"/>
+                <Style val="ExperienceLabelBold"/>
+                <Anchor side="Top" relative="$parent" pos="Min" offset="171"/>
+            </Frame>
+        </Frame>
+    </Frame>
+
+    <Frame type="Label" name="GameUI/UIContainer/ConsoleUIContainer/InfoPanel/InfoPaneUnit/InfoLabel" file="GameUI">
+        <Anchor side="Bottom" relative="$parent" pos="Max" offset="0"/>
+        <Height val="160"/>
+        <Width val="400"/>
+        <Style val="@@InfoPaneUnitSubtitle"/>
+    </Frame>
+</Desc>

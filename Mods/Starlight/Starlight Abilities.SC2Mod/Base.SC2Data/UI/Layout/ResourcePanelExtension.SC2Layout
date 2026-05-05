@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="CountdownLabel" name="GameUI/UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel0" file="GameUI">
+        <Width val="110"/>
+    </Frame>
+
+    <Frame type="CountdownLabel" name="GameUI/UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel1" file="GameUI">
+        <Width val="110"/>
+    </Frame>
+
+    <Frame type="CountdownLabel" name="GameUI/UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel2" file="GameUI">
+        <Width val="110"/>
+    </Frame>
+
+    <Frame type="CountdownLabel" name="GameUI/UIContainer/FullscreenUpperContainer/ResourcePanel/ResourceFrame/ResourceLabel3" file="GameUI">
+        <Width val="110"/>
+    </Frame>
+</Desc>

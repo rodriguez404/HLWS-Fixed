@@ -1,0 +1,1912 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CActorModel default="1" id="PlaceBase" parent="ModelAnimationStyleContinuousUNIT">
+        <?token id="Model" type="CModelLink"?>
+        <?token id="Sound" type="CActorLink"?>
+        <?token id="A" type="CAbilLink" value="Bogus"?>
+        <?token id="B" type="CAbilLink" value="Bogus"?>
+        <?token id="C" type="CAbilLink" value="Bogus"?>
+        <?token id="D" type="CAbilLink" value="Bogus"?>
+        <!-- <?token id="Model" type="CModelLink"?> -->
+        <!-- <?token id="Sound" type="CActorLink"?> -->
+        <!-- <?token id="A" type="CAbilLink" value="Bogus"?> -->
+        <!-- <?token id="B" type="CAbilLink" value="Bogus"?> -->
+        <!-- <?token id="C" type="CAbilLink" value="Bogus"?> -->
+        <!-- <?token id="D" type="CAbilLink" value="Bogus"?> -->
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+        <On Terms="ActorCreation" Send="Create ##Sound##"/>
+        <On Terms="Abil.##A##.Cursor" Send="Create"/>
+        <On Terms="Abil.##B##.Cursor" Send="Create"/>
+        <On Terms="Abil.##C##.Cursor" Send="Create"/>
+        <On Terms="Abil.##D##.Cursor" Send="Create"/>
+        <On Terms="ActorCreation" Send="PhysicsTerminate"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpHeightPlacement_Default"/>
+        <Model value="##Model##"/>
+    </CActorModel>
+    <CActorSimple default="1" id="ItemBaseSimple">
+        <?token id="Buff" type="CBehaviorLink"?>
+        <!-- <?token id="Buff" type="CBehaviorLink"?> -->
+        <On Terms="Behavior.##Buff##.On" Send="Create"/>
+        <On Terms="Behavior.##Buff##.Off" Send="Signal UnitItemOff"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 UnitItemBirth"/>
+        <On Terms="Signal.*.UnitItemOff" Send="TimerSet 0.100000 UnitItemDeath"/>
+        <On Terms="TimerExpired; TimerName UnitItemDeath" Send="Destroy"/>
+    </CActorSimple>
+    <CActorModelMaterial default="1" id="ItemGlaze" parent="GlazeParent">
+        <?token id="Buff" type="CBehaviorLink"?>
+        <!-- <?token id="Buff" type="CBehaviorLink"?> -->
+        <Macros value="GlobalLoopMacro"/>
+        <Macros value="UnitItemGlazeMacro"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="Behavior.##Buff##.On" Send="Create"/>
+        <On Terms="Behavior.##Buff##.Off" Send="AnimBracketStop BSD"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorSimple default="1" id="ItemHaloSimple" parent="ItemBaseSimple">
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 UnitItemRefresh"/>
+        <On Terms="TimerExpired; TimerName UnitItemRefresh" Send="TimerSet 1.000000 UnitItemRefresh"/>
+        <On Terms="TimerExpired; TimerName UnitItemRefresh" Target="_Unit" Send="HaloStop"/>
+        <On Terms="TimerExpired; TimerName UnitItemRefresh" Target="_Unit" Send="HaloStart"/>
+        <On Terms="Signal.*.UnitItemOff" Target="_Unit" Send="HaloStop"/>
+        <On Terms="Signal.*.UnitItemOff" Target="_Unit" Send="ClearTintColor 0.350000 UnitItemTint"/>
+        <On Terms="Signal.*.UnitItemOff" Send="TimerKill UnitItemRefresh"/>
+    </CActorSimple>
+    <CActorRange default="1" id="RangeAbilSolidLine">
+        <?token id="abil" type="CAbilLink"?>
+        <!-- <?token id="abil" type="CAbilLink"?> -->
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Abil.##abil##.TargetOn" Send="Create"/>
+        <On Terms="Abil.##abil##.TargetOn" Send="StatusIncrement RangeAbilVis"/>
+        <On Terms="Abil.##abil##.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.##abil##.ButtonHoverOn" Send="StatusIncrement RangeAbilVis"/>
+        <On Terms="Abil.##abil##.TargetOff" Send="StatusDecrement RangeAbilVis"/>
+        <On Terms="Abil.##abil##.ButtonHoverOff" Send="StatusDecrement RangeAbilVis"/>
+        <On Terms="StatusOff.*.RangeAbilVis" Send="Destroy"/>
+        <Abil Link="##abil##"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+    </CActorRange>
+    <CActorSound default="1" id="DefaultCursorSound" parent="SoundOneShot">
+        <?token id="Sound" type="CSoundLink"?>
+        <!-- <?token id="Sound" type="CSoundLink"?> -->
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Actor="Create"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow"/>
+        <Sound value="##Sound##"/>
+    </CActorSound>
+    <CActorUnit default="1" id="GenericUnitWorker" parent="GenericUnitStandard">
+        <?token id="Model" type="CModelLink" value="Bogus"?>
+        <?token id="Portrait" type="CModelLink" value="Bogus"?>
+        <?token id="Sound" value="Bogus"?>
+        <On Terms="ActorCreation" Send="AnimGroupRemoveAll"/>
+        <On Terms="ActorCreation" Send="AnimClearAllBut Taunt"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStop"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStart"/>
+        <!-- <?token id="Model" type="CModelLink" value="Bogus"?> -->
+        <!-- <?token id="Portrait" type="CModelLink" value="Bogus"?> -->
+        <Model value="##Model##"/>
+        <AnimBlendTime value="0.500000"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="##Model##"/>
+        <DeathArray index="Normal" ModelLink="##Model##Death" SoundLink="##Sound##_Explode" VoiceLink="##Sound##DeathVoice"/>
+        <PlacementModel value="##Model##"/>
+        <PortraitModel value="##Portrait##"/>
+        <AbilSoundArray AbilCmd="MarinePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="MarauderPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ReaperPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="GhostPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="HellbatPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="HellionPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="MedivacPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="BansheePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="VikingFighterPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="VikingAssaultPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="RavenPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="SiegeTankPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="CyclonePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="WidowMinePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="LiberatorPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ThorPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ThorSiegePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="BattlecruiserPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ZealotPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="StalkerPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="SentryPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="AdeptPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ObserverPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="OraclePlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="DarkTemplarPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ArchonPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="DisruptorPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="PhoenixPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="HighTemplarPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ImmortalPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="VoidRayPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ColossusPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="TempestPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="CarrierPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ZerglingPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="BanelingPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="RoachPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="QueenPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="OverseerPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="HydraliskPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="MutaliskPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="LurkerPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="RavagerPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="CorruptorPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="InfestorPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="SwarmHostPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="ViperPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="UltraliskPlace,Execute" Sound="Silent"/>
+        <AbilSoundArray AbilCmd="BroodLordPlace,Execute" Sound="Silent"/>
+        <BarOffset value="66"/>
+        <BarWidth value="66"/>
+        <GroupSoundArray index="What" value="Bogus_GroupWhat"/>
+        <GroupSoundArray index="Yes" value="Bogus_GroupYes"/>
+        <GroupSoundArray index="Attack" value="Bogus_GroupAttack"/>
+        <GroupSoundArray index="Board" value="Bogus_GroupBoard"/>
+        <InfoText value="InfoText/Worker"/>
+        <SoundArray index="Birth" value="##Sound##_Birth"/>
+        <SoundArray index="Ready" value="##Sound##_Ready"/>
+        <SoundArray index="Help" value="##Sound##_Help"/>
+        <SoundArray index="What" value="##Sound##_What"/>
+        <SoundArray index="Yes" value="##Sound##_Yes"/>
+        <SoundArray index="Attack" value="##Sound##_Attack"/>
+        <SoundArray index="Pissed" value="##Sound##_Pissed"/>
+        <SoundArray index="Movement" value="##Sound##_Movement"/>
+        <SoundArray index="Turning" value="##Sound##_Turning"/>
+        <SoundArray index="Board" value="##Sound##_Board"/>
+        <SoundArray index="Click" value="##Sound##_Click"/>
+        <SoundArray index="ClickError" value="##Sound##_ClickError"/>
+        <SoundArray index="Highlight" value="##Sound##_Highlight"/>
+        <StatusBarFlags index="Shields" value="0"/>
+        <StatusBarFlags index="Life" value="0"/>
+        <StatusBarFlags index="Energy" value="0"/>
+        <StatusBarFlags index="Cargo" value="0"/>
+        <StatusBarFlags index="Magazine" value="0"/>
+        <StatusBarFlags index="Workers" value="0"/>
+        <StatusBarFlags index="Custom" value="0"/>
+        <StatusColors index="Duration">
+            <ColorArray index="0" value="255,255,0,0"/>
+        </StatusColors>
+    </CActorUnit>
+    <CActorSimple default="1" id="WorkerTransitionTerranSimple">
+        <?token id="Buff" type="CBehaviorLink"?>
+        <!-- <?token id="Buff" type="CBehaviorLink"?> -->
+        <Aliases value="_WorkerSwapSimple"/>
+        <On Terms="Behavior.##Buff##.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_WorkerSwapSimple" Send="TimerKill Morph"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Target="_Unit" Send="Create TerranPlacementWarpOut"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Target="_Unit" Send="Create WorkerTransitionTerranGlaze"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Target="_Unit" Send="Create WorkerTransitionTerranSpark"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Send="TimerSet 0.450000 Morph"/>
+        <On Terms="ActorCreation; ValidateUnit HasWorkerSwapNoTransition" Send="Signal WorkerSwap"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000 Die"/>
+        <On Terms="TimerExpired; TimerName Morph" Send="Signal WorkerSwap"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Destroy"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Create ##Buff##"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Create TerranPlacementWarpSound"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Create TerranPlacementWarpAdd"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="SetScale 0.100000 0.000000 WarpScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="SetScale 0.500000,0.500000,1.000000 0.350000 WarpScale"/>
+        <On Terms="Signal.*.WorkerSwap" Send="TimerSet 0.300000 BirthScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="SetScale 0.500000 0.000000 BirthScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="ClearScale 0.375000 BirthScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="SetTintColor {64,255,64 5.000000} 0.000000 OneShot BirthTint"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="ClearTintColor 1.250000 BirthTint"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Create WorkerTransitionTerranGlaze"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Create WorkerTransitionTerranSpark"/>
+        <On Terms="TimerExpired; TimerName BirthScale" Target="_Unit" Send="ClearScale 0.250000 WarpScale"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple default="1" id="WorkerTransitionProtossSimple">
+        <?token id="Buff" type="CBehaviorLink"?>
+        <!-- <?token id="Buff" type="CBehaviorLink"?> -->
+        <Aliases value="_WorkerSwapSimple"/>
+        <On Terms="Behavior.##Buff##.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_WorkerSwapSimple" Send="TimerKill Morph"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Target="_Unit" Send="Create WorkerTransitionProtossStart"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Send="TimerSet 0.625000 Morph"/>
+        <On Terms="ActorCreation; ValidateUnit HasWorkerSwapNoTransition" Send="Signal WorkerSwap"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000 Die"/>
+        <On Terms="TimerExpired; TimerName Morph" Send="Signal WorkerSwap"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Destroy"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Create ##Buff##"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create WorkerTransitionProtossImpact"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create WorkerTransitionProtossSparks"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create WorkerTransitionProtossSparks"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create WorkerTransitionProtossSparks"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create WorkerTransitionProtossSound"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="Create UnitBirthBlueGlaze"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="SetScale 0.800000,0.800000,1.200000 0.000000 BirthScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="ClearScale 0.750000 BirthScale"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="SetOpacity 0.000000 0.000000 BirthOpacity"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="ClearOpacity 0.750000 BirthOpacity"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="SetTintColor {0,255,255 20.000000} 0.000000 OneShot BirthTint"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Selectable" Send="ClearTintColor 0.750000 BirthTint"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Destroy"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSimple default="1" id="WorkerTransitionZergSimple">
+        <?token id="Buff" type="CBehaviorLink"?>
+        <!-- <?token id="Buff" type="CBehaviorLink"?> -->
+        <Aliases value="_WorkerSwapSimple"/>
+        <On Terms="Behavior.##Buff##.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_WorkerSwapSimple" Send="TimerKill Morph"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="Create WorkerTransitionOverlordSimple"/>
+        <On Terms="ActorCreation; ValidateUnit NoWorkerSwapNoTransition" Send="TimerSet 1.250000 Morph"/>
+        <On Terms="ActorCreation; ValidateUnit HasWorkerSwapNoTransition" Send="Signal WorkerSwap"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000 Die"/>
+        <On Terms="TimerExpired; TimerName Morph" Send="Signal WorkerSwap"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Destroy"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Create ##Buff##"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Create UpgradeEffectGreenGlazeStrong"/>
+        <On Terms="Signal.*.WorkerSwap" Target="_Unit" Send="Create UpgradeEffectGreenPulseSimple"/>
+        <On Terms="Signal.*.WorkerSwap" Send="Destroy"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+    </CActorSimple>
+    <CActorMissile default="1" id="ItemMissile" parent="GenericAttackMissile">
+        <On index="1" Terms="UnitBirth" Send="AnimBracketStart Lifetime {} Stand"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.750000 Fade"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Fade" Send="SetScale 0.100000 0.250000"/>
+        <On Terms="TimerExpired; TimerName Die" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.000000 0.000000 BirthOpacity"/>
+        <On Terms="ActorCreation" Send="ClearOpacity 0.500000 BirthOpacity"/>
+        <HostSiteOps Ops="SOp2DRotation SOpForwardSouth SOpRotator270"/>
+    </CActorMissile>
+    <CActorModel default="1" id="PlaceModel">
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Aliases value="_Selectable"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Signal.*.HidePlacement" Send="SetVisibility"/>
+        <On Terms="Signal.*.ShowPlacement" Send="SetVisibility 1"/>
+        <On Terms="ActorCreation; ValidatePlayer PlacementFacingNE" Send="Create ##id##1"/>
+        <On Terms="ActorCreation; ValidatePlayer PlacementFacingNW" Send="Create ##id##2"/>
+        <On Terms="ActorCreation; ValidatePlayer PlacementFacingSE" Send="Create ##id##3"/>
+        <On Terms="ActorCreation; ValidatePlayer PlacementFacingSW" Send="Create ##id##4"/>
+        <HostSiteOps Ops="SOpTipabilityFloorScope"/>
+        <Model value="PlacementModel"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place1" parent="PlaceBase">
+        <On index="0" Send="AnimBracketStart BSD {} Flail"/>
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingNE" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingNE" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingNE" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingNE" Send="Create"/>
+        <On Terms="ActorCreation; !AnimPlayable Flail" Send="AnimBracketStart BSD {} Walk"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScale BSD 0.700000"/>
+        <On Terms="ActorCreation" Send="AnimPlay Stand GLstand PlayForever"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOpFacingPlacement_NE SOpHeightPlacement_Default"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place2" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOpFacingPlacement_NW SOpHeightPlacement_Default"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place3" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOpFacingPlacement_SE SOpHeightPlacement_Default"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place4" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpShadow SOpFacingPlacement_SW SOpHeightPlacement_Default"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place1Air" parent="Place1">
+        <On index="10" Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.400000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRockerAir"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpShadow SOpHeightPlacement_Flyer SOpFacingPlacement_NE"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place2Air" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingNW" Send="Create"/>
+        <On index="10" Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.400000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRockerAir"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpShadow SOpHeightPlacement_Flyer SOpFacingPlacement_NW"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place3Air" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingSE" Send="Create"/>
+        <On index="10" Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.400000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRockerAir"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpShadow SOpHeightPlacement_Flyer SOpFacingPlacement_SE"/>
+    </CActorModel>
+    <CActorModel default="1" id="Place4Air" parent="Place1">
+        <On index="4" Terms="Abil.##A##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="5" Terms="Abil.##B##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="6" Terms="Abil.##C##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="7" Terms="Abil.##D##.Cursor; ValidatePlayer PlacementFacingSW" Send="Create"/>
+        <On index="10" Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.400000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRockerAir"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpShadow SOpHeightPlacement_Flyer SOpFacingPlacement_SW"/>
+    </CActorModel>
+    <CActorModel default="1" id="PlaceStructureZerg" parent="PlaceBase">
+        <On index="0" Send="AnimBracketStart BSD Birth Attack Death"/>
+        <On Terms="ActorCreation; !AnimPlayable Attack" Send="AnimBracketStart BSD {} Stand"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.300000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRocker"/>
+        <On Terms="ActorCreation" Send="Create PlaceBeamZerg"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpHeightPlacement_Flyer SOpFacingPlacement_SW"/>
+    </CActorModel>
+    <CActorModel default="1" id="PlaceStructureTerran" parent="PlaceBase">
+        <On index="0" Send="AnimBracketStart BSD Birth Attack Death"/>
+        <On Terms="ActorCreation; !AnimPlayable Attack" Send="AnimBracketStart BSD {} Walk"/>
+        <On Terms="ActorCreation; !AnimPlayable Walk" Send="AnimBracketStart BSD {} Stand,Work"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.300000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRocker"/>
+        <On Terms="ActorCreation" Send="Create PlaceBeamTerran"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpHeightPlacement_Flyer SOpFacingPlacement_SW"/>
+    </CActorModel>
+    <CActorModel default="1" id="PlaceStructureProtoss" parent="PlaceBase">
+        <On index="0" Send="AnimBracketStart BSD Birth Attack Death"/>
+        <On Terms="ActorCreation; !AnimPlayable Attack" Send="AnimBracketStart BSD {} Stand"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScale BSD 1.300000"/>
+        <On Terms="ActorCreation" Send="Create PlaceRocker"/>
+        <On Terms="ActorCreation" Send="Create PlaceBeamProtoss"/>
+        <HostSiteOps Ops="SOpBasicScopePositionFollowHoldRotation SOpHeightPlacement_Flyer SOpFacingPlacement_SW"/>
+    </CActorModel>
+    <CActorUnit default="1" id="GenericUnitItem" parent="GenericUnitMinimal">
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="Create ItemSelectionPlate"/>
+        <HostSiteOps Ops="SOpShadow SOp2DRotation SOpForwardSouth"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
+    <CActorModel default="1" id="AreaModel" parent="ModelAddition">
+        <Macros value="AreaMacroModel"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="Visibility" value="0"/>
+        <FogVisibility value="Dimmed"/>
+        <On index="1" Terms="ActorOrphan" Send="StatusSet {} 0"/>
+        <On Terms="ActorCreation" Send="PhysicsTerminate"/>
+        <AddToProximitySystem value="0"/>
+        <Host Subject="_Unit"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="IgnoreWalkables" value="1"/>
+        <ModelFlags index="UpdateVisibility" value="0"/>
+    </CActorModel>
+    <CActorSiteOpSerpentSegment default="1" id="SOpSegmentViperBase">
+        <Head value="##Head##"/>
+    </CActorSiteOpSerpentSegment>
+    <CActorAction default="1" id="MetalLightChop" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalLightChopMetal"/>
+        <ImpactMap index="Rock" Sound="MetalLightChopStone"/>
+        <ImpactMap index="Flesh" Sound="MetalLightChopFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalLightChopWood"/>
+        <ImpactMap index="Metal" Sound="MetalLightChopMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="RockHeavyBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="RockHeavyBashMetal"/>
+        <ImpactMap index="Rock" Sound="RockHeavyBashStone"/>
+        <ImpactMap index="Flesh" Sound="RockHeavyBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="RockHeavyBashWood"/>
+        <ImpactMap index="Metal" Sound="RockHeavyBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealHeavyHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalMediumBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalMediumBashMetal"/>
+        <ImpactMap index="Rock" Sound="MetalMediumBashStone"/>
+        <ImpactMap index="Flesh" Sound="MetalMediumBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalMediumBashWood"/>
+        <ImpactMap index="Metal" Sound="MetalMediumBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalLightSlice" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalLightSliceMetal"/>
+        <ImpactMap index="Rock" Sound="MetalLightSliceStone"/>
+        <ImpactMap index="Flesh" Sound="MetalLightSliceFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalLightSliceWood"/>
+        <ImpactMap index="Metal" Sound="MetalLightSliceMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalMediumSlice" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalMediumSliceMetal"/>
+        <ImpactMap index="Rock" Sound="MetalMediumSliceStone"/>
+        <ImpactMap index="Flesh" Sound="MetalMediumSliceFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalMediumSliceWood"/>
+        <ImpactMap index="Metal" Sound="MetalMediumSliceMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalHeavyChop" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalHeavyChopMetal"/>
+        <ImpactMap index="Rock" Sound="MetalHeavyChopStone"/>
+        <ImpactMap index="Flesh" Sound="MetalHeavyChopFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalHeavyChopWood"/>
+        <ImpactMap index="Metal" Sound="MetalHeavyChopMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealHeavyHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalHeavySlice" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalHeavySliceMetal"/>
+        <ImpactMap index="Rock" Sound="MetalHeavySliceStone"/>
+        <ImpactMap index="Flesh" Sound="MetalHeavySliceFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalHeavySliceWood"/>
+        <ImpactMap index="Metal" Sound="MetalHeavySliceMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealHeavyHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalHeavyBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalHeavyBashMetal"/>
+        <ImpactMap index="Rock" Sound="MetalHeavyBashStone"/>
+        <ImpactMap index="Flesh" Sound="MetalHeavyBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalHeavyBashWood"/>
+        <ImpactMap index="Metal" Sound="MetalHeavyBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealHeavyHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="MetalMediumChop" parent="GenericAttack">
+        <ImpactMap index="None" Sound="MetalMediumChopMetal"/>
+        <ImpactMap index="Rock" Sound="MetalMediumChopStone"/>
+        <ImpactMap index="Flesh" Sound="MetalMediumChopFlesh"/>
+        <ImpactMap index="LightArmor" Sound="MetalMediumChopWood"/>
+        <ImpactMap index="Metal" Sound="MetalMediumChopMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="WoodHeavyBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="WoodHeavyBashMetal"/>
+        <ImpactMap index="Rock" Sound="WoodHeavyBashStone"/>
+        <ImpactMap index="Flesh" Sound="WoodHeavyBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="WoodHeavyBashWood"/>
+        <ImpactMap index="Metal" Sound="WoodHeavyBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealHeavyHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="WoodLightBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="WoodLightBashMetal"/>
+        <ImpactMap index="Rock" Sound="WoodLightBashStone"/>
+        <ImpactMap index="Flesh" Sound="WoodLightBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="WoodLightBashWood"/>
+        <ImpactMap index="Metal" Sound="WoodLightBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorAction default="1" id="WoodMediumBash" parent="GenericAttack">
+        <ImpactMap index="None" Sound="WoodMediumBashMetal"/>
+        <ImpactMap index="Rock" Sound="WoodMediumBashStone"/>
+        <ImpactMap index="Flesh" Sound="WoodMediumBashFlesh"/>
+        <ImpactMap index="LightArmor" Sound="WoodMediumBashWood"/>
+        <ImpactMap index="Metal" Sound="WoodMediumBashMetal"/>
+        <ImpactMap index="Shield" Sound="EtherealMediumHit"/>
+        <ImpactPhysics Name="Attack" MatchKeys="Basic" Physics="War3MeleeAttackForce"/>
+    </CActorAction>
+    <CActorForceCylinder id="War3MeleeAttackForce">
+        <On Terms="ActorCreation" Send="Create War3MeleeAttackForceUp"/>
+        <Host Subject="::Main" Scope="Caster"/>
+        <HostSiteOps Ops="SOpAttachHead SOpShadow SOpForwardCasterCenterInverted SOpMoveByDot3 SOpSplashDamagePositionVariance"/>
+        <Field value="Radial"/>
+        <Duration value="0.400000"/>
+        <Magnitude value="30.000000,10.000000"/>
+        <HostEnd Subject="::Self"/>
+        <HostEndSiteOps Ops="SOpPointUpWorld SOpMoveBy1Dot5"/>
+        <Radius value="2.200000,0.300000"/>
+    </CActorForceCylinder>
+    <CActorForceSphere id="War3MeleeAttackForceUp">
+        <Host Subject="::Main" Scope="Caster"/>
+        <HostSiteOps Ops="SOpAttachHead SOpShadow SOpPointSouthWorld SOpMoveByDot3 SOpSplashDamagePositionVariance"/>
+        <Field value="Directional"/>
+        <Duration value="0.200000"/>
+        <Magnitude value="10.000000,2.500000"/>
+        <Radius value="1.900000,0.300000"/>
+    </CActorForceSphere>
+    <CActorEventMacro id="AreaMacroModel">
+        <On Terms="Signal.*.FlairDefault" Send="PhysicsTerminate"/>
+        <On Terms="Signal.*.FlairDefault" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairDefault" Send="TimerSet 0.062500 FlairDefault"/>
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairProtoss" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairProtoss" Send="TimerSet 0.062500 FlairProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairXelnaga" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairXelnaga" Send="TimerSet 0.062500 FlairXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairMansion" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairMansion" Send="TimerSet 0.062500 FlairMansion"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairPurifier" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairPurifier" Send="TimerSet 0.062500 FlairPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairVoid" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairVoid" Send="TimerSet 0.062500 FlairVoid"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairDOM" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairDOM" Send="TimerSet 0.062500 FlairDOM"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairSlayn" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairSlayn" Send="TimerSet 0.062500 FlairSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+        <On Terms="Signal.*.FlairFractured" Send="SetVisibility"/>
+        <On Terms="Signal.*.FlairFractured" Send="TimerSet 0.062500 FlairFractured"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="SetOpacity 0.000000 0.000000 FlairOpacity"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="SetOpacity 1.000000 0.500000 FlairOpacity"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroCap">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaCap"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaCapProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaCapXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaCapMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaCapPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaCapSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaCapVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaCapDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaCapFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroDecal">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaBorder"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaBorderProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaBorderXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaBorderMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaBorderPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaBorderSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaBorderVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaBorderDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaBorderFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroEdge">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaEdge"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaEdgeProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaEdgeXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaEdgeMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaEdgePurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaEdgeSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaEdgeVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaEdgeDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaEdgeFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroFrill">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaFrill"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaFrillProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaFrillXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaFrillMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaFrillPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaFrillSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaFrillVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaFrillDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaFrillFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroGrid">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaGrid"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaGridProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaGridXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaGridMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaGridPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaGridSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaGridVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaGridDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaGridFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroOuter">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaOuter"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaOuterProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaOuterXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaOuterMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaOuterPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaOuterSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaOuterVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaOuterDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaOuterFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroFlair">
+        <On Terms="Upgrade.AreaFlairDefault.Add" Target="_Snapshot" Send="Signal FlairDefault"/>
+        <On Terms="Upgrade.AreaFlairProtoss.Add" Target="_Snapshot" Send="Signal FlairProtoss"/>
+        <On Terms="Upgrade.AreaFlairXelnaga.Add" Target="_Snapshot" Send="Signal FlairXelnaga"/>
+        <On Terms="Upgrade.AreaFlairDOM.Add" Target="_Snapshot" Send="Signal FlairDOM"/>
+        <On Terms="Upgrade.AreaFlairSlayn.Add" Target="_Snapshot" Send="Signal FlairSlayn"/>
+        <On Terms="Upgrade.AreaFlairPurifier.Add" Target="_Snapshot" Send="Signal FlairPurifier"/>
+        <On Terms="Upgrade.AreaFlairMansion.Add" Target="_Snapshot" Send="Signal FlairMansion"/>
+        <On Terms="Upgrade.AreaFlairVoid.Add" Target="_Snapshot" Send="Signal FlairVoid"/>
+        <On Terms="Upgrade.AreaFlairFractured.Add" Target="_Snapshot" Send="Signal FlairFractured"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairDefault" Target="_Snapshot" Send="Signal FlairDefault"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairProtoss" Target="_Snapshot" Send="Signal FlairProtoss"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairXelnaga" Target="_Snapshot" Send="Signal FlairXelnaga"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairDOM" Target="_Snapshot" Send="Signal FlairDOM"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairSlayn" Target="_Snapshot" Send="Signal FlairSlayn"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairPurifier" Target="_Snapshot" Send="Signal FlairPurifier"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairMansion" Target="_Snapshot" Send="Signal FlairMansion"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairVoid" Target="_Snapshot" Send="Signal FlairVoid"/>
+        <On Terms="Signal.*.FlairUpdate; ValidatePlayer AreaFlairFractured" Target="_Snapshot" Send="Signal FlairFractured"/>
+    </CActorEventMacro>
+    <CActorModel id="AreaCap" parent="AreaModel">
+        <ModelMaterialGlazeDisplayLimit value="0"/>
+        <Macros value="AreaMacroCap"/>
+    </CActorModel>
+    <CActorEventMacro id="AreaMacroShape">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaShapeDefault"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaShapeProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaShapeXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaShapeMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaShapePurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaShapeSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaShapeVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaShapeDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaShapeFractured"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroShape2">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaShapeDefaultCorner"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaShapeProtossCorner"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaShapeXelnagaCorner"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaShapeMansionCorner"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaShapePurifierCorner"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaShapeSlaynCorner"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaShapeVoidCorner"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaShapeDOMCorner"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaShapeFracturedCorner"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="AreaMacroTrim">
+        <On Terms="TimerExpired; TimerName FlairDefault" Send="ModelSwap AreaTrim"/>
+        <On Terms="TimerExpired; TimerName FlairProtoss" Send="ModelSwap AreaTrimProtoss"/>
+        <On Terms="TimerExpired; TimerName FlairXelnaga" Send="ModelSwap AreaTrimXelnaga"/>
+        <On Terms="TimerExpired; TimerName FlairMansion" Send="ModelSwap AreaTrimMansion"/>
+        <On Terms="TimerExpired; TimerName FlairPurifier" Send="ModelSwap AreaTrimPurifier"/>
+        <On Terms="TimerExpired; TimerName FlairSlayn" Send="ModelSwap AreaTrimSlayn"/>
+        <On Terms="TimerExpired; TimerName FlairVoid" Send="ModelSwap AreaTrimVoid"/>
+        <On Terms="TimerExpired; TimerName FlairDOM" Send="ModelSwap AreaTrimDOM"/>
+        <On Terms="TimerExpired; TimerName FlairFractured" Send="ModelSwap AreaTrimFractured"/>
+    </CActorEventMacro>
+    <CActorModel id="AreaOuter" parent="AreaModel">
+        <Macros value="AreaMacroOuter"/>
+    </CActorModel>
+    <CActorModel id="AreaShape" parent="AreaModel">
+        <FogVisibility value="Visible"/>
+        <Macros value="AreaMacroShape"/>
+        <Model value="AreaShapeDefault"/>
+        <ModelMaterialGlazeDisplayLimit value="0"/>
+    </CActorModel>
+    <CActorModel id="AreaShapeCorner" parent="AreaModel">
+        <FogVisibility value="Visible"/>
+        <Macros value="AreaMacroShapeCorner"/>
+        <Model value="AreaShapeDefaultCorner"/>
+        <ModelMaterialGlazeDisplayLimit value="0"/>
+    </CActorModel>
+    <CActorModel id="AreaTrim" parent="AreaModel">
+        <Macros value="AreaMacroTrim"/>
+    </CActorModel>
+    <CActorModel id="AreaDecal" parent="AreaModel">
+        <Model value="AreaBorder"/>
+        <ModelMaterialGlazeDisplayLimit value="0"/>
+        <Macros value="AreaMacroDecal"/>
+    </CActorModel>
+    <CActorModel id="AreaGrid" parent="AreaModel">
+        <Model value="AreaBorder"/>
+        <ModelMaterialGlazeDisplayLimit value="0"/>
+        <Macros value="AreaMacroGrid"/>
+    </CActorModel>
+    <CActorModel id="AreaEdge" parent="AreaModel">
+        <Macros value="AreaMacroEdge"/>
+    </CActorModel>
+    <CActorModel id="AreaFrill" parent="AreaModel">
+        <Macros value="AreaMacroFrill"/>
+    </CActorModel>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_0" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_1" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_2" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_3" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_4" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_5" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_6" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_7" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace1_8" parent="SOpSegmentViperBase" Head="ViperPlace1"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_0" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_1" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_2" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_3" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_4" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_5" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_6" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_7" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace2_8" parent="SOpSegmentViperBase" Head="ViperPlace2"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_0" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_1" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_2" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_3" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_4" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_5" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_6" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_7" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace3_8" parent="SOpSegmentViperBase" Head="ViperPlace3"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_0" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_1" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_2" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_3" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_4" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_5" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_6" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_7" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorSiteOpSerpentSegment id="SOpSegmentViperPlace4_8" parent="SOpSegmentViperBase" Head="ViperPlace4"/>
+    <CActorModel id="ItemSelectionPlate" parent="ModelAnimationStyleContinuousUNIT">
+        <FogVisibility value="Visible"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation; IsInEditor" Send="Destroy"/>
+    </CActorModel>
+    <CActorSiteOpAttach id="SOpAttachTarget6"/>
+    <CActorSiteOpAttach id="SOpAttachTarget7">
+        <AttachQuery Methods="Target 7"/>
+    </CActorSiteOpAttach>
+    <CActorSiteOpRotationRandom id="SOpRotationRandomDisc90">
+        <YawHalfAngle value="90.000000"/>
+    </CActorSiteOpRotationRandom>
+    <CActorSiteOpRotator id="SOpAddRotator216">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="216.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator288">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="288.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator72">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="72.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator144">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="144.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotationRandom id="SOpRotationRandomDisc15">
+        <YawHalfAngle value="15.000000"/>
+    </CActorSiteOpRotationRandom>
+    <CActorSiteOpRotator id="SOpAddRotator60">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="60.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator300">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="300.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpRotator10">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="10.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpRotator15">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="15.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpLocalOffset id="SOpX0075">
+        <LocalOffset value="0.750000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX0125">
+        <LocalOffset value="1.250000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn0075">
+        <LocalOffset value="-0.750000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn0125">
+        <LocalOffset value="-1.250000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY0075">
+        <LocalOffset value="0.000000,0.750000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn0075">
+        <LocalOffset value="0.000000,-0.750000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn0125">
+        <LocalOffset value="0.000000,-1.250000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn0001">
+        <LocalOffset value="0.000000,0.000000,-0.010000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0015">
+        <LocalOffset value="0.000000,0.000000,0.150000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ002">
+        <LocalOffset value="0.000000,0.000000,0.200000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ003">
+        <LocalOffset value="0.000000,0.000000,0.300000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0001">
+        <LocalOffset value="0.000000,0.000000,0.010000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn0075">
+        <LocalOffset value="0.000000,0.000000,-0.750000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn0125">
+        <LocalOffset value="0.000000,0.000000,-1.250000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotator id="SOpRotator270">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="270.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpLocalOffset id="SOpZ0075">
+        <LocalOffset value="0.000000,0.000000,0.750000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0175">
+        <LocalOffset value="0.000000,0.000000,1.750000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotator id="SOpRotator20">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="20.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator240">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="240.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator270">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="270.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator90">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="90.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator180">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="180.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpLocalOffset id="SOpY0125">
+        <LocalOffset value="0.000000,1.250000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0225">
+        <LocalOffset value="0.000000,0.000000,2.250000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotationExplicit id="SOpFacingPlacement_NE">
+        <Forward value="1.000000,1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpFacingPlacement_NW">
+        <Forward value="-1.000000,1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpFacingPlacement_SE">
+        <Forward value="1.000000,-1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpFacingPlacement_SW">
+        <Forward value="-1.000000,-1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotator id="SOpRotator30">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="30.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpRotator40">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="40.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpRotator60">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="60.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpRotator120">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="120.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotationExplicit id="SOpPitch270">
+        <Forward value="0.000000,0.000000,1.000000"/>
+        <Up value="0.000000,1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpPitch90">
+        <Forward value="0.000000,0.000000,-1.000000"/>
+        <Up value="0.000000,-1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpReverse">
+        <Forward value="0.000000,1.000000,0.000000"/>
+        <Up value="0.000000,0.000000,1.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotator id="SOpRotator30CounterClockwise">
+        <LocalAxis value="0.000000,0.000000,-1.000000"/>
+        <Rate value="30.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotationExplicit id="SOpTiltBack">
+        <Forward value="0.000000,0.000000,-1.000000"/>
+        <Up value="0.000000,1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpTiltForward">
+        <Forward value="0.000000,0.000000,1.000000"/>
+        <Up value="0.000000,-1.000000,0.000000"/>
+        <IsLocal value="1"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpLocalOffset id="SOpX001">
+        <LocalOffset value="0.100000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX0001">
+        <LocalOffset value="0.010000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX0005">
+        <LocalOffset value="0.050000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX0025">
+        <LocalOffset value="0.250000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX005">
+        <LocalOffset value="0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX01">
+        <LocalOffset value="1.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX015">
+        <LocalOffset value="1.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX02">
+        <LocalOffset value="2.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX025">
+        <LocalOffset value="2.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX03">
+        <LocalOffset value="3.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX035">
+        <LocalOffset value="3.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX04">
+        <LocalOffset value="4.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX045">
+        <LocalOffset value="4.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX05">
+        <LocalOffset value="5.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX055">
+        <LocalOffset value="5.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX06">
+        <LocalOffset value="6.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX065">
+        <LocalOffset value="6.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX07">
+        <LocalOffset value="7.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX075">
+        <LocalOffset value="7.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX08">
+        <LocalOffset value="7.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX085">
+        <LocalOffset value="8.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX09">
+        <LocalOffset value="9.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX095">
+        <LocalOffset value="9.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX10">
+        <LocalOffset value="10.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX105">
+        <LocalOffset value="10.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX11">
+        <LocalOffset value="11.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX115">
+        <LocalOffset value="11.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX12">
+        <LocalOffset value="12.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX125">
+        <LocalOffset value="12.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX13">
+        <LocalOffset value="12.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX135">
+        <LocalOffset value="13.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX14">
+        <LocalOffset value="14.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX145">
+        <LocalOffset value="14.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX15">
+        <LocalOffset value="15.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX155">
+        <LocalOffset value="15.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX16">
+        <LocalOffset value="16.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX165">
+        <LocalOffset value="16.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX17">
+        <LocalOffset value="17.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX175">
+        <LocalOffset value="17.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpX18">
+        <LocalOffset value="18.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn001">
+        <LocalOffset value="-0.100000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn0001">
+        <LocalOffset value="-0.010000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn0005">
+        <LocalOffset value="-0.050000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn0025">
+        <LocalOffset value="-0.250000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn005">
+        <LocalOffset value="-0.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn01">
+        <LocalOffset value="-1.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn015">
+        <LocalOffset value="-1.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn02">
+        <LocalOffset value="-2.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn025">
+        <LocalOffset value="-2.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn03">
+        <LocalOffset value="-3.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn035">
+        <LocalOffset value="-3.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn04">
+        <LocalOffset value="-4.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn045">
+        <LocalOffset value="-4.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn05">
+        <LocalOffset value="-5.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn055">
+        <LocalOffset value="-5.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn06">
+        <LocalOffset value="-6.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn065">
+        <LocalOffset value="-6.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn07">
+        <LocalOffset value="-7.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn075">
+        <LocalOffset value="-7.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn08">
+        <LocalOffset value="-7.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn085">
+        <LocalOffset value="-8.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn09">
+        <LocalOffset value="-9.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn095">
+        <LocalOffset value="-9.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn10">
+        <LocalOffset value="-10.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn105">
+        <LocalOffset value="-10.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn11">
+        <LocalOffset value="-11.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn115">
+        <LocalOffset value="-11.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn12">
+        <LocalOffset value="-12.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn125">
+        <LocalOffset value="-12.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn13">
+        <LocalOffset value="-12.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn135">
+        <LocalOffset value="-13.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn14">
+        <LocalOffset value="-14.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn145">
+        <LocalOffset value="-14.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn15">
+        <LocalOffset value="-15.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn155">
+        <LocalOffset value="-15.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn16">
+        <LocalOffset value="-16.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn165">
+        <LocalOffset value="-16.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn17">
+        <LocalOffset value="-17.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn175">
+        <LocalOffset value="-17.500000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpXn18">
+        <LocalOffset value="-18.000000,0.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY001">
+        <LocalOffset value="0.000000,0.100000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY0025">
+        <LocalOffset value="0.000000,0.250000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY005">
+        <LocalOffset value="0.000000,0.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY0001">
+        <LocalOffset value="0.000000,0.010000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY0005">
+        <LocalOffset value="0.000000,0.050000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY01">
+        <LocalOffset value="0.000000,1.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY015">
+        <LocalOffset value="0.000000,1.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY02">
+        <LocalOffset value="0.000000,2.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY025">
+        <LocalOffset value="0.000000,2.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY03">
+        <LocalOffset value="0.000000,3.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY035">
+        <LocalOffset value="0.000000,3.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY04">
+        <LocalOffset value="0.000000,4.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY045">
+        <LocalOffset value="0.000000,4.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY05">
+        <LocalOffset value="0.000000,5.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY055">
+        <LocalOffset value="0.000000,5.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY06">
+        <LocalOffset value="0.000000,6.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY065">
+        <LocalOffset value="0.000000,6.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY07">
+        <LocalOffset value="0.000000,7.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY075">
+        <LocalOffset value="0.000000,7.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY08">
+        <LocalOffset value="0.000000,7.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY085">
+        <LocalOffset value="0.000000,8.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY09">
+        <LocalOffset value="0.000000,9.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY095">
+        <LocalOffset value="0.000000,9.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY10">
+        <LocalOffset value="0.000000,10.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY105">
+        <LocalOffset value="0.000000,10.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY11">
+        <LocalOffset value="0.000000,11.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY115">
+        <LocalOffset value="0.000000,11.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY12">
+        <LocalOffset value="0.000000,12.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY125">
+        <LocalOffset value="0.000000,12.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY13">
+        <LocalOffset value="0.000000,12.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY135">
+        <LocalOffset value="0.000000,13.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY14">
+        <LocalOffset value="0.000000,14.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY145">
+        <LocalOffset value="0.000000,14.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY15">
+        <LocalOffset value="0.000000,15.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY155">
+        <LocalOffset value="0.000000,15.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY16">
+        <LocalOffset value="0.000000,16.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY165">
+        <LocalOffset value="0.000000,16.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY17">
+        <LocalOffset value="0.000000,17.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY175">
+        <LocalOffset value="0.000000,17.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpY18">
+        <LocalOffset value="0.000000,18.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn001">
+        <LocalOffset value="0.000000,-0.100000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn0001">
+        <LocalOffset value="0.000000,-0.010000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn0005">
+        <LocalOffset value="0.000000,-0.050000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn0025">
+        <LocalOffset value="0.000000,-0.250000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn005">
+        <LocalOffset value="0.000000,-0.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn01">
+        <LocalOffset value="0.000000,-1.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn015">
+        <LocalOffset value="0.000000,-1.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn02">
+        <LocalOffset value="0.000000,-2.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn025">
+        <LocalOffset value="0.000000,-2.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn03">
+        <LocalOffset value="0.000000,-3.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn035">
+        <LocalOffset value="0.000000,-3.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn04">
+        <LocalOffset value="0.000000,-4.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn045">
+        <LocalOffset value="0.000000,-4.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn05">
+        <LocalOffset value="0.000000,-5.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn055">
+        <LocalOffset value="0.000000,-5.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn06">
+        <LocalOffset value="0.000000,-6.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn065">
+        <LocalOffset value="0.000000,-6.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn07">
+        <LocalOffset value="0.000000,-7.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn075">
+        <LocalOffset value="0.000000,-7.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn08">
+        <LocalOffset value="0.000000,-7.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn085">
+        <LocalOffset value="0.000000,-8.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn09">
+        <LocalOffset value="0.000000,-9.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn095">
+        <LocalOffset value="0.000000,-9.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn10">
+        <LocalOffset value="0.000000,-10.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn105">
+        <LocalOffset value="0.000000,-10.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn11">
+        <LocalOffset value="0.000000,-11.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn115">
+        <LocalOffset value="0.000000,-11.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn12">
+        <LocalOffset value="0.000000,-12.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn125">
+        <LocalOffset value="0.000000,-12.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn13">
+        <LocalOffset value="0.000000,-12.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn135">
+        <LocalOffset value="0.000000,-13.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn14">
+        <LocalOffset value="0.000000,-14.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn145">
+        <LocalOffset value="0.000000,-14.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn15">
+        <LocalOffset value="0.000000,-15.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn155">
+        <LocalOffset value="0.000000,-15.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn16">
+        <LocalOffset value="0.000000,-16.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn165">
+        <LocalOffset value="0.000000,-16.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn17">
+        <LocalOffset value="0.000000,-17.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn175">
+        <LocalOffset value="0.000000,-17.500000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpYn18">
+        <LocalOffset value="0.000000,-18.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ001">
+        <LocalOffset value="0.000000,0.000000,0.100000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0005">
+        <LocalOffset value="0.000000,0.000000,0.050000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ0025">
+        <LocalOffset value="0.000000,0.000000,0.250000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ005">
+        <LocalOffset value="0.000000,0.000000,0.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ01">
+        <LocalOffset value="0.000000,0.000000,1.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ015">
+        <LocalOffset value="0.000000,0.000000,1.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ02">
+        <LocalOffset value="0.000000,0.000000,2.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ025">
+        <LocalOffset value="0.000000,0.000000,2.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ03">
+        <LocalOffset value="0.000000,0.000000,3.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ035">
+        <LocalOffset value="0.000000,0.000000,3.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ04">
+        <LocalOffset value="0.000000,0.000000,4.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ045">
+        <LocalOffset value="0.000000,0.000000,4.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ05">
+        <LocalOffset value="0.000000,0.000000,5.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ055">
+        <LocalOffset value="0.000000,0.000000,5.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ06">
+        <LocalOffset value="0.000000,0.000000,6.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ065">
+        <LocalOffset value="0.000000,0.000000,6.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ07">
+        <LocalOffset value="0.000000,0.000000,7.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ075">
+        <LocalOffset value="0.000000,0.000000,7.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ08">
+        <LocalOffset value="0.000000,0.000000,7.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ085">
+        <LocalOffset value="0.000000,0.000000,8.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZ09">
+        <LocalOffset value="0.000000,0.000000,9.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn001">
+        <LocalOffset value="0.000000,0.000000,-0.100000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn0005">
+        <LocalOffset value="0.000000,0.000000,-0.050000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn0025">
+        <LocalOffset value="0.000000,0.000000,-0.250000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn005">
+        <LocalOffset value="0.000000,0.000000,-0.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn01">
+        <LocalOffset value="0.000000,0.000000,-1.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn015">
+        <LocalOffset value="0.000000,0.000000,-1.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn02">
+        <LocalOffset value="0.000000,0.000000,-2.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn025">
+        <LocalOffset value="0.000000,0.000000,-2.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn03">
+        <LocalOffset value="0.000000,0.000000,-3.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn035">
+        <LocalOffset value="0.000000,0.000000,-3.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn04">
+        <LocalOffset value="0.000000,0.000000,-4.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn045">
+        <LocalOffset value="0.000000,0.000000,-4.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn05">
+        <LocalOffset value="0.000000,0.000000,-5.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn055">
+        <LocalOffset value="0.000000,0.000000,-5.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn06">
+        <LocalOffset value="0.000000,0.000000,-6.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn065">
+        <LocalOffset value="0.000000,0.000000,-6.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn07">
+        <LocalOffset value="0.000000,0.000000,-7.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn075">
+        <LocalOffset value="0.000000,0.000000,-7.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn08">
+        <LocalOffset value="0.000000,0.000000,-7.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn085">
+        <LocalOffset value="0.000000,0.000000,-8.500000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpLocalOffset id="SOpZn09">
+        <LocalOffset value="0.000000,0.000000,-9.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpAttach id="SOpAttachChestCenter">
+        <AttachQuery Methods="" Fallback="Center"/>
+    </CActorSiteOpAttach>
+    <CActorSiteOpLocalOffset id="SOpUnitItemBirthOffset">
+        <LocalOffset value="-1.000000,1.000000,2.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotator id="SOpRotator45">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="45.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpLocalOffset id="SOpSkyMissileDefault">
+        <LocalOffset value="-6.000000,6.000000,12.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorSiteOpRotator id="SOpAddRotator120">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="120.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotationExplicit id="SOpDiagonal0">
+        <Forward value="-1.000000,-1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpDiagonal1">
+        <Forward value="1.000000,-1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpDiagonal2">
+        <Forward value="1.000000,1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpDiagonal3">
+        <Forward value="-1.000000,1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpStraight0">
+        <Forward value="-1.000000,0.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpStraight1">
+        <Forward value="0.000000,1.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotationExplicit id="SOpStraight2">
+        <Forward value="1.000000,0.000000,0.000000"/>
+    </CActorSiteOpRotationExplicit>
+    <CActorSiteOpRotator id="SOpAddRotator225">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="225.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator315">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="315.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator45">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="45.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSiteOpRotator id="SOpAddRotator135">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <InitialAngle value="135.000000"/>
+    </CActorSiteOpRotator>
+    <CActorBeamSimple id="PlaceBeamTerran" parent="BeamSimpleAnimationStyleContinuous">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.000000 Pulse"/>
+        <On Terms="TimerExpired; TimerName Pulse" Send="TimerSet 0.250000 Pulse"/>
+        <On Terms="TimerExpired; TimerName Pulse" Send="Create PlaceBeamTerranPulse"/>
+        <On Terms="ActorOrphan" Send="TimerKill Pulse"/>
+        <On Terms="ActorOrphan" Target="PlaceBeamTerranPulse" Send="Destroy Immediate"/>
+        <HostLaunch Subject="::Creator"/>
+        <HostLaunchSiteOps Ops="SOpAttachOrigin SOpForwardSouth" HoldRotation="1"/>
+        <HostImpactSiteOps Ops="SOpBasicScopeFollow SOpForwardSouth" HoldRotation="1"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="PlaceBeamProtoss" parent="BeamSimpleAnimationStyleContinuous">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="Create PlaceBeamProtossPulse"/>
+        <On Terms="ActorOrphan" Target="PlaceBeamProtossPulse" Send="Destroy Immediate"/>
+        <HostLaunch Subject="::Creator"/>
+        <HostLaunchSiteOps Ops="SOpAttachOrigin"/>
+        <HostImpactSiteOps Ops="SOpBasicScopeFollow SOpMoveUpByDot25"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorBeamSimple>
+    <CActorModel id="PlaceBeamProtossPulse" parent="ModelAnimationStyleContinuous">
+        <On Terms="ActorCreation" Send="SetTintColor {0,128,255 4.000000}"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpForwardSouth SOp2DRotation SOpMoveUpByDot25" HoldRotation="1"/>
+        <Macros value="GlobalLoopMacro"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorModel>
+    <CActorModel id="PlaceBeamTerranPulse" parent="ModelAnimationStyleOneShotNoOrphan">
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpForwardSouth SOp2DRotation" HoldRotation="1"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+    </CActorModel>
+    <CActorSiteRocker id="PlaceRocker">
+        <On Terms="ActorCreation" Target="::Main" Send="RefSetFromMsg ::Host ::Sender"/>
+        <Elevation value="1.000000"/>
+        <ElevationPeriod value="3.000000"/>
+        <Pitch value="1.9995"/>
+        <PitchPeriod value="2.000000"/>
+        <Roll value="4.9987"/>
+        <RollPeriod value="4.000000"/>
+    </CActorSiteRocker>
+    <CActorSiteRocker id="PlaceRockerAir">
+        <On Terms="ActorCreation" Target="::Main" Send="RefSetFromMsg ::Host ::Sender"/>
+        <Elevation value="1.000000"/>
+        <ElevationPeriod value="3.000000"/>
+        <Pitch value="0.9997"/>
+        <PitchPeriod value="2.000000"/>
+        <Roll value="2.494"/>
+        <RollPeriod value="4.000000"/>
+    </CActorSiteRocker>
+    <CActorModel id="PlaceBeamZergPulse" parent="ModelAnimationStyleContinuous">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <HostSiteOps Ops="SOpBasicScopeFollow SOpForwardSouth SOp2DRotation" HoldRotation="1"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorModel>
+    <CActorBeamSimple id="PlaceBeamZerg" parent="BeamSimpleAnimationStyleContinuous">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 4.000000}"/>
+        <On Terms="ActorCreation" Send="Create PlaceBeamZergPulse"/>
+        <On Terms="ActorOrphan" Target="PlaceBeamZergPulse" Send="Destroy Immediate"/>
+        <HostLaunch Subject="::Creator"/>
+        <HostLaunchSiteOps Ops="SOpAttachOrigin"/>
+        <HostImpactSiteOps Ops="SOpBasicScopeFollow"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <FogVisibility value="Dimmed"/>
+    </CActorBeamSimple>
+    <CActorEventMacro id="StormPredictiveMacro">
+        <On Terms="WeaponStart.*.AttackStart" Send="TimerKill StandReadyOutroDuration"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="TimerSet 5.000000 StandReadyOutroDuration"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="StatusSet ReadyTimer 1"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimGroupApply Ready"/>
+        <On Terms="Weapon.*.PreswingBeforeAttackStart; !HasStatus Preswing" Send="AnimClear Attack"/>
+        <On Terms="Weapon.*.PreswingBeforeAttackStart; !HasStatus Preswing" Send="AnimPlay Attack Attack DontResetOnUnhide"/>
+        <On Terms="Weapon.*.PreswingBeforeAttackStart; !HasStatus Preswing" Send="StatusSet Preswing 1"/>
+        <On Terms="Weapon.*.PreswingBeforeAttackCancel" Send="AnimClear Attack"/>
+        <On Terms="Weapon.*.PreswingBeforeAttackCancel" Send="StatusSet Preswing 0"/>
+        <On Terms="WeaponStart.*.AttackStart; !HasStatus Preswing" Send="AnimPlay Attack Attack DontResetOnUnhide"/>
+        <On Terms="WeaponStart.*.AttackStart; !HasStatus Preswing" Send="AnimSetTime Attack 1.000000"/>
+        <On Terms="WeaponStart.*.AttackStart; HasStatus Preswing; AnimPlaying Attack" Send="AnimContinue Attack {} 1.000000"/>
+        <On Terms="WeaponStart.*.AttackStart; HasStatus Preswing" Send="StatusSet Preswing 0"/>
+        <On Terms="Weapon.*.PreswingBetweenAttacksStart" Send="AnimPlay Attack Attack DontResetOnUnhide"/>
+        <On Terms="Weapon.*.PreswingBetweenAttacksStart" Send="StatusSet Preswing 1"/>
+        <On Terms="Weapon.*.PreswingBetweenAttacksCancel; HasStatus Preswing" Send="AnimClear Attack"/>
+        <On Terms="Weapon.*.PreswingBetweenAttacksCancel; HasStatus Preswing" Send="StatusSet Preswing 0"/>
+        <On Terms="UnitRevive" Target="_DeathModel" Send="SetOpacity 0.000000 0.375000"/>
+    </CActorEventMacro>
+    <CActorModel id="UnitItemRepositionStart" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.UnitItemRepositionSet.Start" Send="Create"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 3.000000}"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpShadow SOpZ005" HoldPosition="1" HoldRotation="1"/>
+        <Model value="UnitItemTeleportOut"/>
+        <Inherits index="TintColor" value="1"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+    </CActorModel>
+    <CActorModel id="UnitItemRepositionTarget" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.UnitItemRepositionTeleport.Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpShadow SOpZ005"/>
+        <Model value="UnitItemTeleportIn"/>
+        <Inherits index="TintColor" value="1"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+    </CActorModel>
+    <CActorEventMacro id="UnitItemModelAdditionMacro">
+        <On Terms="ActorCreation" Send="AnimSetPausedAll"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStop"/>
+        <On Terms="ActorCreation" Send="SetVisibility"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 BirthComplete"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="AnimSetPausedAll 0"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="SetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="AnimBaselineStart"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="SetScale 0.100000 0.000000 BirthScale"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="ClearScale 0.500000 BirthScale"/>
+        <On Terms="ActorCreation; ValidateUnit HideItemModels" Send="TimerSet 2.750000 Hide"/>
+        <On Terms="TimerExpired; TimerName Hide" Send="AnimBracketStop BSD"/>
+    </CActorEventMacro>
+    <CActorEventMacro id="UnitItemGlazeMacro">
+        <On Terms="ActorCreation" Send="AnimSetPausedAll"/>
+        <On Terms="ActorCreation" Send="AnimBaselineStop"/>
+        <On Terms="ActorCreation" Send="ModelMaterialSetVisibility"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 BirthComplete"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="AnimSetPausedAll 0"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="ModelMaterialSetVisibility 1"/>
+        <On Terms="TimerExpired; TimerName BirthComplete" Send="AnimBaselineStart"/>
+    </CActorEventMacro>
+    <CActorSimple id="UnitItemReposition">
+        <On Terms="Behavior.UnitItemReposition.On" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetScale 0.100000,0.100000,2.000000 0.500000 RepositionScale"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.500000 Reposition"/>
+        <On Terms="TimerExpired; TimerName Reposition" Target="_Unit" Send="ClearScale 0.375000 RepositionScale"/>
+        <On Terms="TimerExpired; TimerName Reposition" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="Create TechItemGlazeA"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="Create TechItemGlazeB"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="Create TechItemGlazeC"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="Create TechItemGlazeD"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="SetTintColor {128,255,255 5.000000} 0.500000 OneShot RepositionTint"/>
+        <On Terms="TimerExpired; TimerName Reposition" Target="_Unit" Send="ClearTintColor 0.375000 RepositionTint"/>
+        <On Terms="TimerExpired; TimerName Reposition" Send="Destroy"/>
+    </CActorSimple>
+    <CActorSound id="UnitItemRepositionSoundStart" parent="SoundOneShot">
+        <HostSiteOps Ops="SOpSourcePointStationary" HoldPosition="1" HoldRotation="1"/>
+        <On Terms="Effect.UnitItemRepositionSet.Start" Send="Create"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorSound id="UnitItemRepositionSoundTarget" parent="SoundOneShot">
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <On Terms="Effect.UnitItemRepositionTeleport.Target" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <Host Subject="_Unit"/>
+    </CActorSound>
+    <CActorSplat id="UnitItemRepositionSplatStart">
+        <On Terms="Effect.UnitItemRepositionSet.Start" Send="Create"/>
+        <FadeIn value="0.250000"/>
+        <FadeOut value="0.250000"/>
+        <HoldTime value="0.250000"/>
+        <HostSiteOps Ops="SOpSourcePointStationary" HoldPosition="1" HoldRotation="1"/>
+        <Model value="PylonSplat"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Host Subject="_Unit"/>
+    </CActorSplat>
+    <CActorSplat id="UnitItemRepositionSplatTarget">
+        <On Terms="Effect.UnitItemRepositionTeleport.Target" Send="Create"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <FadeIn value="0.125000"/>
+        <FadeOut value="0.375000"/>
+        <HoldTime value="0.250000"/>
+        <Model value="PylonSplat"/>
+        <Filter index="Ally" value="1"/>
+        <Filter index="Neutral" value="1"/>
+        <Filter index="Enemy" value="1"/>
+        <Host Subject="_Unit"/>
+    </CActorSplat>
+    <CActorSimple id="BasicUnitItemPassiveSimple" parent="ItemBaseSimple" Buff="BasicUnitItemPassive">
+        <On Terms="TimerExpired; TimerName UnitItemBirth" Send="Create TechItemImpact"/>
+        <On Terms="TimerExpired; TimerName UnitItemBirth" Send="Create TechItemGlazeA"/>
+        <On Terms="TimerExpired; TimerName UnitItemBirth" Send="Create TechItemGlazeB"/>
+        <On Terms="TimerExpired; TimerName UnitItemBirth" Send="Create TechItemGlazeC"/>
+    </CActorSimple>
+    <CActorMissile id="BasicUnitItemPassiveMissile" parent="ItemMissile" unitName="BasicUnitItemPassiveMissile">
+        <On Terms="ActorCreation" Send="Create TechItemBirth"/>
+        <HostSiteOps Ops="SOp2DRotation SOpForwardWest SOpRotator270"/>
+        <Model value="BasicUnitItemPassive"/>
+    </CActorMissile>
+    <CActorAction id="GenericUnitItemPassiveBirthAttack" parent="GenericAttack" effectImpact="DummyEffect" effectLaunch="BasicUnitItemPassiveLMBirth">
+        <LaunchSiteOps Ops="SOpAttachHarness SOpShadow SOpTargetPointStationary SOpUnitItemBirthOffset SOpForwardTargetPoint"/>
+        <Missile value="BasicUnitItemPassiveMissile"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOpAttachChestCenter"/>
+        <ImpactMap index="None" Sound="GenericUnitItemPassiveSoundBirth"/>
+    </CActorAction>
+    <CActorModel id="BasicUnitItemPassiveAddition" parent="ModelAddition">
+        <Macros value="GlobalLoopMacro"/>
+        <Macros value="UnitItemModelAdditionMacro"/>
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Inherits index="TintColor" value="0"/>
+        <On index="1" Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.BasicUnitItemPassive.On" Send="Create"/>
+        <On Terms="Behavior.BasicUnitItemPassive.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOpZn0025 SOp2DRotation SOpY005 SOpForwardSouth"/>
+        <Model value="BasicUnitItemPassive"/>
+        <Scale value="0.750000"/>
+    </CActorModel>
+    <CActorUnit id="BasicUnitItemPassive" parent="GenericUnitMinimal" unitName="BasicUnitItemPassive">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="Create ItemSelectionPlate"/>
+        <HostSiteOps Ops="SOpShadow SOp2DRotation SOpForwardSouth SOpRotator30"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\wireframe-terran-pickupnovamonojetpack.dds"/>
+        </GroupIcon>
+        <InfoText value="Button/Tooltip/BasicUnitItemPassive"/>
+        <SoundArray index="Ready" value="GenericUnitItemPassiveSoundBirth"/>
+        <SoundArray index="What" value="GenericUnitItemPassiveSoundBirth"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-upgrade-terran-nova-personaldefensivematrix.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\wireframe-terran-pickupnovamonojetpack.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModelMaterial id="TechItemGlazeA" parent="GlazeParent">
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="AnimBracketStop BSD"/>
+        <Model value="GlazePhaseArmor"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModelMaterial id="TechItemGlazeB" parent="GlazeParent">
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="AnimBracketStop BSD"/>
+        <Model value="GlazeHolographicDecoy"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModelMaterial id="TechItemGlazeC" parent="GlazeParent">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="AnimBracketStop BSD"/>
+        <Model value="GlazeNovaDamage"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModelMaterial id="TechItemGlazeD" parent="GlazeParent">
+        <Macros value="GlobalLoopMacro"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="AnimBracketStop BSD"/>
+        <Model value="GlazeRegenerativeBiosteel"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorModel id="TechItemBirth" parent="ModelAnimationStyleOneShotUNIT">
+        <Host Subject="::Creator"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpZn005"/>
+        <On Terms="ActorCreation" Send="Create TechItemSoundEquip"/>
+    </CActorModel>
+    <CActorModel id="TechItemImpact" parent="ModelAnimationStyleOneShotUNIT">
+        <HostSiteOps Ops="SOpAttachChestCenter SOp2DRotation SOpForwardEast SOpMoveDownByDot35"/>
+    </CActorModel>
+    <CActorSound id="TechItemSoundEquip" parent="SoundOneShot">
+        <On Terms="ActorCreation" Send="TimerSet 1.000000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+    </CActorSound>
+    <CActorModel id="StunModel" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="Visibility" value="1"/>
+        <On index="0" Terms="ActorCreation" Send="AnimBracketStart BSD {} Stand Death"/>
+        <On Terms="Behavior.Stun.On" Send="Create"/>
+        <On Terms="Behavior.Stun.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead SOp2DRotation SOpForwardNorth SOpMoveUpByDot1"/>
+    </CActorModel>
+    <CActorSimple id="UnknownActor">
+        <On Terms="Abil.HeroRecall.SourcePrepStart" Send="Create"/>
+        <On Terms="ActorCreation" Target="_Unit" Send="AnimBracketStart Spell {} Spell,Channel"/>
+        <On Terms="Abil.HeroRecall.SourcePrepStop" Target="_Unit" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.HeroRecall.SourcePrepStop" Send="Destroy"/>
+    </CActorSimple>
+</Catalog>

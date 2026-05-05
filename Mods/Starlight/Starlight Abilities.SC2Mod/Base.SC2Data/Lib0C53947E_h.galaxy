@@ -1,0 +1,22 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Mutations
+//--------------------------------------------------------------------------------------------------
+// Constants
+const fixed lib0C53947E_gv_delay = 10.0;
+
+// Function Declarations
+void lib0C53947E_gf_StarlightMutationsStartx (fixed lp_delay);
+void lib0C53947E_gf_StarlightMutationsStart ();
+void lib0C53947E_gf_SetMutations ();
+void lib0C53947E_gf_ApplyMutation (string lp_mutator);
+void lib0C53947E_gf_ApplyHeroMutationPassive (string lp_button);
+void lib0C53947E_gf_ApplyHeroMutationArea (string lp_button, string lp_ability, int lp_cooldown, fixed lp_radius);
+
+// Trigger Declarations
+trigger lib0C53947E_gt_MutatorFinalCountdown;
+
+// Library Initialization
+void lib0C53947E_InitVariables ();
+

@@ -1,0 +1,4802 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CUser default="1" id="DefaultUserType"/>
+    <CUser default="1" id="DefaultAttackWaveData">
+        <Fields>
+            <Id value="PhaseUnits"/>
+            <Type value="Unit"/>
+            <Count value="8"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="PhaseUnitsAlternate"/>
+            <Type value="Unit"/>
+            <Count value="8"/>
+            <EditorColumn value="2"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="PercentOfWaveBase"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="3"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="PercentOfWaveRandom"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="4"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="ValuePercentModifier"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="5"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Min"/>
+            <Type value="Int"/>
+            <Count value="8"/>
+            <EditorColumn value="6"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Fields>
+            <Id value="Max"/>
+            <Type value="Int"/>
+            <Count value="8"/>
+            <EditorColumn value="7"/>
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Instances Id="[Default]">
+            <Int Int="999">
+                <Field Id="Max"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="1"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="2"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="3"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="4"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="5"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="6"/>
+            </Int>
+            <Int Int="999">
+                <Field Id="Max" Index="7"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="CoopAttackWaveGateway" parent="DefaultAttackWaveData">
+        <Instances Id="ProtBuildGateway Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier02">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier03">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier04">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier05">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Archon">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier06">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Archon">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier07">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.05">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="AttackWaveDataTemplate" parent="DefaultAttackWaveData">
+        <Instances Id="1">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Int Int="1">
+                <Field Id="Min" Index="3"/>
+            </Int>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Ultralisk">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="2">
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="CoopAttackWaveHybrid" parent="DefaultAttackWaveData">
+        <Instances Id="HybridTier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="HybridNemesisStarlight">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="CoopAttackWaves" parent="DefaultAttackWaveData">
+        <Fields index="0">
+            <Id value="PhaseUnits"/>
+            <Type value="Unit"/>
+            <Count value="8"/>
+            <EditorColumn value="20"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="1">
+            <Id value="PercentOfWaveBase"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="50"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="2">
+            <Id value="PercentOfWaveRandom"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="60"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="3">
+            <Id value="PhaseUnitsAlternate"/>
+            <Type value="Unit"/>
+            <Count value="8"/>
+            <EditorColumn value="75"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="4">
+            <Id value="PhaseUnitsAlternateChance"/>
+            <Type value="Fixed"/>
+            <Count value="8"/>
+            <EditorColumn value="80"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="5" removed="1"/>
+        <Fields index="6" removed="1"/>
+        <Instances index="0" Id="[Default]">
+            <Int index="0" removed="1"/>
+            <Int index="1" removed="1"/>
+            <Int index="2" removed="1"/>
+            <Int index="3" removed="1"/>
+            <Int index="4" removed="1"/>
+            <Int index="5" removed="1"/>
+            <Int index="6" removed="1"/>
+            <Int index="7" removed="1"/>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier02">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier03">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier04">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier05">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Archon">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier06">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Archon">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildGateway Tier07">
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.05">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="HighTemplar">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier02">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier03">
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier04">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier05">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier06">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboColossus Tier07">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Colossus">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier02">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier03">
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier04">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier05">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Disruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Reaver">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Disruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Reaver">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildRoboReaver Tier07">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Disruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Reaver">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Immortal">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier02">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.6">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier03">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier04">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Scout">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier05">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="VoidRay">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier06">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Carrier">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossCarrier Tier07">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Carrier">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="VoidRay">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zealot">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier02">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.6">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Phoenix">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier03">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Phoenix">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier04">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Phoenix">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier05">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="VoidRay">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier06">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Tempest">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildSkytossTempest Tier07">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Tempest">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="VoidRay">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Oracle">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier02">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier03">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier04">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="DarkTemplar">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier05">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Phoenix">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="DarkTemplar">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Disruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="DarkTemplar">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Stalker">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ProtBuildTechy Tier07">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Disruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="DarkTemplar">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Phoenix">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Adept">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Sentry">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier02">
+            <Fixed Fixed="0.6">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier03">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier04">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="LurkerMP">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Ravager">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier05">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="LurkerMP">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Ultralisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Ravager">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildGround Tier07">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Ultralisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Ravager">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Hydralisk">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Roach">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier02">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.75">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier03">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Baneling">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier04">
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier05">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Corruptor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="BroodLord">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildMutaLing Tier07">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="BroodLord">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Corruptor">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Infestor">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier02">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Baneling">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier03">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="InfestedAbomination">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Scourge">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Viper">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier04">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="SwarmHostMP">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="InfestedAbomination">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Scourge">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier05">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="5"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="5"/>
+            </Fixed>
+            <Unit Unit="Viper">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="InfestedAbomination">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Baneling">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Scourge">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="5"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier06">
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="5"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="5"/>
+            </Fixed>
+            <Unit Unit="SwarmHostMP">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Viper">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Baneling">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Zergling">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Scourge">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="5"/>
+            </Unit>
+        </Instances>
+        <Instances Id="ZergBuildSwarmy Tier07">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="5"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom" Index="5"/>
+            </Fixed>
+            <Unit Unit="SwarmHostMP">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Viper">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="InfestedAbomination">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Baneling">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Scourge">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+            <Unit Unit="Mutalisk">
+                <Field Id="PhaseUnits" Index="5"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier01">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Medic">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier02">
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Medic">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier03">
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Firebat">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Medic">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier04">
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Ghost">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Medivac">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier05">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Medivac">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier06">
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="ScienceVessel">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Ghost">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildBioMechStar Tier07">
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Battlecruiser">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="ScienceVessel">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Ghost">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Reaper">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier02">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Reaper">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier03">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Reaper">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier04">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Cyclone">
+                <Field Id="PhaseUnitsAlternate"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Reaper">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier05">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Cyclone">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier06">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Battlecruiser">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Cyclone">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildShadowTech Tier07">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Battlecruiser">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Cyclone">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Marauder">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="Hellion">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier02">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="Goliath">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="WarHound">
+                <Field Id="PhaseUnitsAlternate"/>
+            </Unit>
+            <Unit Unit="Hellion">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier03">
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Goliath">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="WarHound">
+                <Field Id="PhaseUnitsAlternate" Index="1"/>
+            </Unit>
+            <Unit Unit="HellionTank">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier04">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Goliath">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="WarHound">
+                <Field Id="PhaseUnitsAlternate" Index="1"/>
+            </Unit>
+            <Unit Unit="HellionTank">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="WidowMine">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier05">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.25">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Goliath">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="WarHound">
+                <Field Id="PhaseUnitsAlternate" Index="1"/>
+            </Unit>
+            <Unit Unit="ScienceVessel">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="WidowMine">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier06">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Thor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Goliath">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="WarHound">
+                <Field Id="PhaseUnitsAlternate" Index="1"/>
+            </Unit>
+            <Unit Unit="ScienceVessel">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="WidowMine">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildMechStarport Tier07">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Unit Unit="Thor">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="SiegeTank">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="ScienceVessel">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier01">
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier02">
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier03">
+            <Fixed Fixed="0.7">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="1">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnitsAlternate"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier04">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance"/>
+            </Fixed>
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnitsAlternate"/>
+            </Unit>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier05">
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.1">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier06">
+            <Fixed Fixed="0.3">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveBase" Index="4"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="4"/>
+            </Fixed>
+            <Unit Unit="Battlecruiser">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnitsAlternate" Index="2"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+            <Unit Unit="Marine">
+                <Field Id="PhaseUnits" Index="4"/>
+            </Unit>
+        </Instances>
+        <Instances Id="TerrBuildSkyTerran Tier07">
+            <Fixed Fixed="0.4">
+                <Field Id="PercentOfWaveBase"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="1"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.5">
+                <Field Id="PhaseUnitsAlternateChance" Index="1"/>
+            </Fixed>
+            <Fixed Fixed="0.2">
+                <Field Id="PercentOfWaveBase" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.33">
+                <Field Id="PercentOfWaveRandom" Index="2"/>
+            </Fixed>
+            <Fixed Fixed="0.15">
+                <Field Id="PercentOfWaveBase" Index="3"/>
+            </Fixed>
+            <Fixed>
+                <Field Id="PercentOfWaveRandom" Index="3"/>
+            </Fixed>
+            <Unit Unit="Battlecruiser">
+                <Field Id="PhaseUnits"/>
+            </Unit>
+            <Unit Unit="Banshee">
+                <Field Id="PhaseUnits" Index="1"/>
+            </Unit>
+            <Unit Unit="Liberator">
+                <Field Id="PhaseUnitsAlternate" Index="1"/>
+            </Unit>
+            <Unit Unit="VikingFighter">
+                <Field Id="PhaseUnits" Index="2"/>
+            </Unit>
+            <Unit Unit="Raven">
+                <Field Id="PhaseUnits" Index="3"/>
+            </Unit>
+        </Instances>
+    </CUser>
+    <CUser id="GameAttributes" parent="DefaultUserType">
+        <Fields Id="MasteryMax" Type="Int" EditorColumn="1"/>
+        <Fields Id="MasteryStart" Type="Int" EditorColumn="2"/>
+        <Instances Id="[Default]"/>
+        <Instances Id="Default">
+            <Int Int="90">
+                <Field Id="MasteryMax"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="WorkerData" parent="DefaultUserType">
+        <Fields>
+            <Id value="Behavior"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Behavior"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Tab" Type="Int" EditorColumn="2"/>
+        <Fields>
+            <Id value="Requirement"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Upgrade"/>
+            <EditorColumn value="3"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="WorkerDefault"/>
+        <Instances Id="WorkerReplicant">
+            <GameLink GameLink="WorkerReplicant">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerMULE">
+            <GameLink GameLink="WorkerMULE">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCarbotZergling">
+            <GameLink GameLink="WorkerCarbotZergling">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkProbe">
+            <GameLink GameLink="WorkerDarkProbe">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerBlimp">
+            <GameLink GameLink="WorkerBlimp">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerChangeling">
+            <GameLink GameLink="WorkerChangeling">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerWarpPrism">
+            <GameLink GameLink="WorkerWarpPrism">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTacFighter">
+            <GameLink GameLink="WorkerTacFighter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerOverlord">
+            <GameLink GameLink="WorkerOverlord">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerLabBot">
+            <GameLink GameLink="WorkerLabBot">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDragoon">
+            <GameLink GameLink="WorkerDragoon">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerWraith">
+            <GameLink GameLink="WorkerWraith">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDefiler">
+            <GameLink GameLink="WorkerDefiler">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerArbiter">
+            <GameLink GameLink="WorkerArbiter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerValkyrie">
+            <GameLink GameLink="WorkerValkyrie">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerInfestedBanshee">
+            <GameLink GameLink="WorkerInfestedBanshee">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCorsair">
+            <GameLink GameLink="WorkerCorsair">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerGoliath">
+            <GameLink GameLink="WorkerGoliath">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerOverlordTransport">
+            <GameLink GameLink="WorkerOverlordTransport">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCrabeetle">
+            <GameLink GameLink="WorkerCrabeetle">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerOracle">
+            <GameLink GameLink="WorkerOracle">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerNovaVulture">
+            <GameLink GameLink="WorkerNovaVulture">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerBroodQueen">
+            <GameLink GameLink="WorkerBroodQueen">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkStalker">
+            <GameLink GameLink="WorkerDarkStalker">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDOMGrunt">
+            <GameLink GameLink="WorkerDOMGrunt">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerAberration">
+            <GameLink GameLink="WorkerAberration">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPurifierTempest">
+            <GameLink GameLink="WorkerPurifierTempest">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSpecialOpsDropship">
+            <GameLink GameLink="WorkerSpecialOpsDropship">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPrimalCorruptor">
+            <GameLink GameLink="WorkerPrimalCorruptor">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerUtilityBot">
+            <GameLink GameLink="WorkerUtilityBot">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerUrun">
+            <GameLink GameLink="WorkerUrun">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPredator">
+            <GameLink GameLink="WorkerPredator">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHunterling">
+            <GameLink GameLink="WorkerHunterling">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerFrigate">
+            <GameLink GameLink="WorkerFrigate">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerArchangelFighter">
+            <GameLink GameLink="WorkerArchangelFighter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerGuardian">
+            <GameLink GameLink="WorkerGuardian">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimStalker">
+            <GameLink GameLink="WorkerTaldarimStalker">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSpartanCompany">
+            <GameLink GameLink="WorkerSpartanCompany">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerInfestedDiamondback">
+            <GameLink GameLink="WorkerInfestedDiamondback">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerScantipede">
+            <GameLink GameLink="WorkerScantipede">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHybridNemesis">
+            <GameLink GameLink="WorkerHybridNemesis">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerGorgon">
+            <GameLink GameLink="WorkerGorgon">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPrimalMutalisk">
+            <GameLink GameLink="WorkerPrimalMutalisk">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkImmortal">
+            <GameLink GameLink="WorkerDarkImmortal">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDuskWings">
+            <GameLink GameLink="WorkerDuskWings">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerChoker">
+            <GameLink GameLink="WorkerChoker">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkScout">
+            <GameLink GameLink="WorkerDarkScout">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCerberus">
+            <GameLink GameLink="WorkerCerberus">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDevourer">
+            <GameLink GameLink="WorkerDevourer">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCleaningBot">
+            <GameLink GameLink="WorkerCleaningBot">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPurifierStalker">
+            <GameLink GameLink="WorkerPurifierStalker">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerWarhound">
+            <GameLink GameLink="WorkerWarhound">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerInfestedLiberator">
+            <GameLink GameLink="WorkerInfestedLiberator">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerReaver">
+            <GameLink GameLink="WorkerReaver">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTerrazineHarvester">
+            <GameLink GameLink="WorkerTerrazineHarvester">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerNydusDragon">
+            <GameLink GameLink="WorkerNydusDragon">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkWarpPrism">
+            <GameLink GameLink="WorkerDarkWarpPrism">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerUtilityTruck">
+            <GameLink GameLink="WorkerUtilityTruck">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerKaboomer">
+            <GameLink GameLink="WorkerKaboomer">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerInfestedTurkey">
+            <GameLink GameLink="WorkerInfestedTurkey">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimCarrier">
+            <GameLink GameLink="WorkerTaldarimCarrier">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHyperion">
+            <GameLink GameLink="WorkerHyperion">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerYagdra">
+            <GameLink GameLink="WorkerYagdra">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimZealot">
+            <GameLink GameLink="WorkerTaldarimZealot">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerOutbackHunter">
+            <GameLink GameLink="WorkerOutbackHunter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSpotter">
+            <GameLink GameLink="WorkerSpotter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimMothership">
+            <GameLink GameLink="WorkerTaldarimMothership">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerGriffin">
+            <GameLink GameLink="WorkerGriffin">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerVoidThrasher">
+            <GameLink GameLink="WorkerVoidThrasher">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerCardboardBox">
+            <GameLink GameLink="WorkerCardboardBox">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerVoidSeeker">
+            <GameLink GameLink="WorkerVoidSeeker">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerArchangelAssault">
+            <GameLink GameLink="WorkerArchangelAssault">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerBlightbringer">
+            <GameLink GameLink="WorkerBlightbringer">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerMohandar">
+            <GameLink GameLink="WorkerMohandar">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHERC">
+            <GameLink GameLink="WorkerHERC">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSwarmGuardian">
+            <GameLink GameLink="WorkerSwarmGuardian">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkHighTemplar">
+            <GameLink GameLink="WorkerDarkHighTemplar">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerBadger">
+            <GameLink GameLink="WorkerBadger">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerStank">
+            <GameLink GameLink="WorkerStank">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerUrsadak">
+            <GameLink GameLink="WorkerUrsadak">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPurifierDragoon">
+            <GameLink GameLink="WorkerPurifierDragoon">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSpectre">
+            <GameLink GameLink="WorkerSpectre">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerBrutalisk">
+            <GameLink GameLink="WorkerBrutalisk">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerStoneZealot">
+            <GameLink GameLink="WorkerStoneZealot">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaurenMarine">
+            <GameLink GameLink="WorkerTaurenMarine">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHybridReaver">
+            <GameLink GameLink="WorkerHybridReaver">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimTempest">
+            <GameLink GameLink="WorkerTaldarimTempest">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHelios">
+            <GameLink GameLink="WorkerHelios">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerMurvar">
+            <GameLink GameLink="WorkerMurvar">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTurkeyKing">
+            <GameLink GameLink="WorkerTurkeyKing">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPurifierVoidRay">
+            <GameLink GameLink="WorkerPurifierVoidRay">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerShredder">
+            <GameLink GameLink="WorkerShredder">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerMurlocMarine">
+            <GameLink GameLink="WorkerMurlocMarine">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTaldarimArchon">
+            <GameLink GameLink="WorkerTaldarimArchon">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerTosh">
+            <GameLink GameLink="WorkerTosh">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDakrun">
+            <GameLink GameLink="WorkerDakrun">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerDarkCarrier">
+            <GameLink GameLink="WorkerDarkCarrier">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerARES">
+            <GameLink GameLink="WorkerARES">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPrimalDrone">
+            <GameLink GameLink="WorkerPrimalDrone">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerReanimator">
+            <GameLink GameLink="WorkerReanimator">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerOdin">
+            <GameLink GameLink="WorkerOdin">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerGlevig">
+            <GameLink GameLink="WorkerGlevig">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerPurifierArbiter">
+            <GameLink GameLink="WorkerPurifierArbiter">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHercules">
+            <GameLink GameLink="WorkerHercules">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerHybridBehemoth">
+            <GameLink GameLink="WorkerHybridBehemoth">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerSelendis">
+            <GameLink GameLink="WorkerSelendis">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int>
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerJacksonsRevenge">
+            <GameLink GameLink="WorkerJacksonsRevenge">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WorkerAleksander">
+            <GameLink GameLink="WorkerAleksander">
+                <Field Id="Behavior"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+    </CUser>
+    <CUser id="StagingAreaData" parent="DefaultUserType">
+        <Fields>
+            <Id value="Upgrade"/>
+            <Type value="GameLink"/>
+            <GameLinkType value="Upgrade"/>
+            <EditorColumn value="1"/>
+        </Fields>
+        <Fields Id="Tab" Type="Int" EditorColumn="2"/>
+        <Fields Id="Index" Type="Int" EditorColumn="3">
+            <Flags index="Modifiable" value="1"/>
+        </Fields>
+        <Instances Id="[Default]"/>
+        <Instances Id="FlairDefault">
+            <GameLink GameLink="AreaFlairDefault">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairDOM">
+            <GameLink GameLink="AreaFlairDOM">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairMansion">
+            <GameLink GameLink="AreaFlairMansion">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairProtoss">
+            <GameLink GameLink="AreaFlairProtoss">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairPurifier">
+            <GameLink GameLink="AreaFlairPurifier">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairSlayn">
+            <GameLink GameLink="AreaFlairSlayn">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairVoid">
+            <GameLink GameLink="AreaFlairVoid">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <Instances Id="FlairXelnaga">
+            <GameLink GameLink="AreaFlairXelnaga">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+        <!--Instances Id="FlairFractured">
+            <GameLink GameLink="AreaFlairFractured">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances/-->
+        <Instances Id="ThemeNone">
+            <GameLink GameLink="ThemeNone">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeBelShir">
+            <GameLink GameLink="ThemeBelShir">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeChar">
+            <GameLink GameLink="ThemeChar">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeElsecaro">
+            <GameLink GameLink="ThemeElsecaro">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeKaldir">
+            <GameLink GameLink="ThemeKaldir">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeMarSara">
+            <GameLink GameLink="ThemeMarSara">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeShakuras">
+            <GameLink GameLink="ThemeShakuras">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeSlayn">
+            <GameLink GameLink="ThemeSlayn">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="ThemeZerus">
+            <GameLink GameLink="ThemeZerus">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="1">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherNone">
+            <GameLink GameLink="AreaWeatherNone">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherAcidRain">
+            <GameLink GameLink="AreaWeatherAcidRain">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherLightRain">
+            <GameLink GameLink="AreaWeatherLightRain">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherIcySnow">
+            <GameLink GameLink="AreaWeatherIcySnow">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherAshWind">
+            <GameLink GameLink="AreaWeatherAshWind">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherEnergyWind">
+            <GameLink GameLink="AreaWeatherEnergyWind">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherVoidWind">
+            <GameLink GameLink="AreaWeatherVoidWind">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherBloodshardWind">
+            <GameLink GameLink="AreaWeatherBloodshardWind">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherMineralWind">
+            <GameLink GameLink="AreaWeatherMineralWind">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="WeatherSunrays">
+            <GameLink GameLink="AreaWeatherSunrays">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="2">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinNone">
+            <GameLink GameLink="RefinerySkinNone">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinBiomass">
+            <GameLink GameLink="RefinerySkinBiomass">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinCybros">
+            <GameLink GameLink="RefinerySkinCybros">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinHologram">
+            <GameLink GameLink="RefinerySkinHologram">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinSepia">
+            <GameLink GameLink="RefinerySkinSepia">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinHighlight">
+            <GameLink GameLink="RefinerySkinHighlight">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinMineral">
+            <GameLink GameLink="RefinerySkinMineral">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinPsionic">
+            <GameLink GameLink="RefinerySkinPsionic">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinRedstone">
+            <GameLink GameLink="RefinerySkinRedstone">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinJade">
+            <GameLink GameLink="RefinerySkinJade">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinSolarite">
+            <GameLink GameLink="RefinerySkinSolarite">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinVoid">
+            <GameLink GameLink="RefinerySkinVoid">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinShadow">
+            <GameLink GameLink="RefinerySkinShadow">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="RefinerySkinSnow">
+            <GameLink GameLink="RefinerySkinSnow">
+                <Field Id="Upgrade"/>
+            </GameLink>
+            <Int Int="3">
+                <Field Id="Tab"/>
+            </Int>
+        </Instances>
+        <Instances Id="FlairFractured">
+            <GameLink GameLink="AreaFlairFractured">
+                <Field Id="Upgrade"/>
+            </GameLink>
+        </Instances>
+    </CUser>
+    <CUser id="MasteryWorker" parent="DefaultUserType">
+        <Fields Id="Upgrade" Type="Upgrade" EditorColumn="1"/>
+        <Fields Id="Set" Type="Int" EditorColumn="2"/>
+        <Fields Id="Prefix" Type="Text" EditorColumn="3"/>
+        <Fields Id="Change" Type="Fixed" EditorColumn="4"/>
+        <Fields Id="Suffix" Type="Text" EditorColumn="5"/>
+        <Fields Id="Tooltip" Type="Text" EditorColumn="6"/>
+        <Fields Id="Title" Type="Text" EditorColumn="7"/>
+        <Fields Id="Description" Type="Text" EditorColumn="8"/>
+        <Instances Id="[Default]">
+            <Upgrade Upgrade="DummyUpgrade">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryWorkerSize">
+            <Fixed Fixed="0.5">
+                <Field Id="Change"/>
+            </Fixed>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSize_Title">
+                <Field Id="Title"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSize_Description">
+                <Field Id="Description"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSize_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSize_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSize_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryWorkerSize">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasterySpraySize">
+            <Fixed Fixed="2">
+                <Field Id="Change"/>
+            </Fixed>
+            <Text Text="UserData/MasteryWorker/MasterySpraySize_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasterySpraySize_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasterySpraySize_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasterySpraySize">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryEmoteDuration">
+            <Fixed Fixed="10">
+                <Field Id="Change"/>
+            </Fixed>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteDuration_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteDuration_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteDuration_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryEmoteDuration">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryWorkerSpeed">
+            <Fixed Fixed="1">
+                <Field Id="Change"/>
+            </Fixed>
+            <Int Int="1">
+                <Field Id="Set"/>
+            </Int>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSpeed_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSpeed_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryWorkerSpeed_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryWorkerSpeed">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasterySprayCooldown">
+            <Fixed Fixed="2">
+                <Field Id="Change"/>
+            </Fixed>
+            <Int Int="1">
+                <Field Id="Set"/>
+            </Int>
+            <Text Text="UserData/MasteryWorker/MasterySprayCooldown_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasterySprayCooldown_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasterySprayCooldown_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasterySprayCooldown">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryEmoteCooldown">
+            <Fixed Fixed="1">
+                <Field Id="Change"/>
+            </Fixed>
+            <Int Int="1">
+                <Field Id="Set"/>
+            </Int>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteCooldown_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteCooldown_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryEmoteCooldown_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryEmoteCooldown">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryXPMultiplier">
+            <Fixed Fixed="1">
+                <Field Id="Change"/>
+            </Fixed>
+            <Int Int="2">
+                <Field Id="Set"/>
+            </Int>
+            <Text Text="UserData/MasteryWorker/MasteryXPMultiplier_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryXPMultiplier_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryXPMultiplier_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryXPMultiplier">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+        <Instances Id="MasteryPassiveExperience">
+            <Fixed Fixed="2">
+                <Field Id="Change"/>
+            </Fixed>
+            <Int Int="2">
+                <Field Id="Set"/>
+            </Int>
+            <Text Text="UserData/MasteryWorker/MasteryPassiveExperience_Suffix">
+                <Field Id="Suffix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryPassiveExperience_Prefix">
+                <Field Id="Prefix"/>
+            </Text>
+            <Text Text="UserData/MasteryWorker/MasteryPassiveExperience_Tooltip">
+                <Field Id="Tooltip"/>
+            </Text>
+            <Upgrade Upgrade="MasteryPassiveExperience">
+                <Field Id="Upgrade"/>
+            </Upgrade>
+        </Instances>
+    </CUser>
+    <CUser id="Tips" parent="DefaultAttackWaveData">
+        <Fields index="0">
+            <Id value="Name"/>
+            <Type value="String"/>
+            <Count value="0"/>
+            <EditorColumn value="1"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="1">
+            <Id value="Message"/>
+            <Type value="String"/>
+            <Count value="0"/>
+            <EditorColumn value="2"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="2">
+            <Id value="Amount"/>
+            <Type value="Int"/>
+            <Count value="0"/>
+            <EditorColumn value="3"/>
+            <Flags index="Modifiable" value="0"/>
+        </Fields>
+        <Fields index="3" removed="1"/>
+        <Fields index="4" removed="1"/>
+        <Fields index="5" removed="1"/>
+        <Fields index="6" removed="1"/>
+        <Instances index="0" Id="[Default]">
+            <Int index="0" removed="1"/>
+            <Int index="1" removed="1"/>
+            <Int index="2" removed="1"/>
+            <Int index="3" removed="1"/>
+            <Int index="4" removed="1"/>
+            <Int index="5" removed="1"/>
+            <Int index="6" removed="1"/>
+            <Int index="7" removed="1"/>
+        </Instances>
+        <Instances Id="17">
+            <Int Int="1">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Stefan">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="16">
+            <Int Int="2">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Hauke">
+                <Field Id="Name"/>
+            </String>
+            <String String="New team-colours in desert strike pretty please. .">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="15">
+            <Int Int="3">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Christian">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="14">
+            <Int Int="10">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Oleg">
+                <Field Id="Name"/>
+            </String>
+            <String String="I play a ton of Desert Strike HotS (EU server).">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="13">
+            <Int Int="20">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="William">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="12">
+            <Int Int="5">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Niclas">
+                <Field Id="Name"/>
+            </String>
+            <String String="(:">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="11">
+            <Int Int="5">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Mauricio">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="1">
+            <Int Int="25">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Timothy">
+                <Field Id="Name"/>
+            </String>
+            <String String="desert strike">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="2">
+            <Int Int="10">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Phi">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="3">
+            <Int Int="10">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="AS">
+                <Field Id="Name"/>
+            </String>
+            <String String="Thank you for Desert Strike. I&apos;ve been playing for years">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="4">
+            <Int Int="20">
+                <Field Id="Amount"/>
+            </Int>
+            <String String=" For the hours and hours and hours of enjoyment you&apos;ve provided. THANK YOU!">
+                <Field Id="Message"/>
+            </String>
+            <String String="Kurt">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="5">
+            <Int Int="1">
+                <Field Id="Amount"/>
+            </Int>
+            <String String=" grab a coffee on me pal i love your game.">
+                <Field Id="Message"/>
+            </String>
+            <String String="Gareth">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+        <Instances Id="6">
+            <Int Int="10">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="PS">
+                <Field Id="Name"/>
+            </String>
+            <String String="Thx">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="7">
+            <Int Int="4">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Thomas">
+                <Field Id="Name"/>
+            </String>
+            <String String="Thanks for Desert Strike!">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="8">
+            <Int Int="50">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Robert">
+                <Field Id="Name"/>
+            </String>
+            <String String="For all your work on DS - many thanks!">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="9">
+            <Int Int="50">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Philip">
+                <Field Id="Name"/>
+            </String>
+            <String String="Thanks a lot for the amazing maps!">
+                <Field Id="Message"/>
+            </String>
+        </Instances>
+        <Instances Id="10">
+            <Int Int="10">
+                <Field Id="Amount"/>
+            </Int>
+            <String String="Keep up with support on dessert strike!">
+                <Field Id="Message"/>
+            </String>
+            <String String="Koh">
+                <Field Id="Name"/>
+            </String>
+        </Instances>
+    </CUser>
+</Catalog>

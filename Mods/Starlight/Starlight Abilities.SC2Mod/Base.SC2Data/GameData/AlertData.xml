@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CAlert id="AttackTown">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTownAlly">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTownAlly_Prot">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTownAlly_Terr">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTownAlly_Zerg">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTown_Prot">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTown_Terr">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackTown_Zerg">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnit">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnitAlly">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnitAlly_Prot">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnitAlly_Terr">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnitAlly_Zerg">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnit_Prot">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnit_Terr">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="AttackUnit_Zerg">
+        <Display index="Self" value="0"/>
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Prot">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Terr">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Zerg">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ChronoBoostExpired">
+        <Flags index="Hide" value="1"/>
+    </CAlert>
+    <CAlert id="Error">
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="SpecializeComplete">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="SpecializeComplete_Prot">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="SpecializeComplete_Terr">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="SpecializeComplete_Zerg">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="TrainComplete">
+        <Flags index="Hide" value="1"/>
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainComplete_Prot">
+        <Flags index="Hide" value="1"/>
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainComplete_Terr">
+        <Flags index="Hide" value="1"/>
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainComplete_Zerg">
+        <Flags index="Hide" value="1"/>
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainWorkerComplete">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainWorkerComplete_Prot">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainWorkerComplete_Terr">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="TrainWorkerComplete_Zerg">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+    </CAlert>
+    <CAlert id="AutoreviveComplete">
+        <Icon value="Assets\Textures\btn-ability-neutral-rally_human.dds"/>
+        <Voice value="Ready"/>
+        <Peripheral value="TrainComplete"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Prot">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Terr">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Zerg">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_NightElf">
+        <Peripheral value="BuildingComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Orc">
+        <Peripheral value="BuildingComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Naga">
+        <Peripheral value="BuildingComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Undead">
+        <Peripheral value="BuildingComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="DummyAlert"/>
+    <CAlert id="HeroAlert">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="SpellbringerArgusConstructAlert"/>
+    <CAlert id="SpellbringerSolariteConstructAlert"/>
+    <CAlert id="SpellbringerPromoteAlert"/>
+    <CAlert id="HeroWarcry">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+        <SecondaryActions index="Flash" value="0"/>
+        <SecondaryActions index="Select" value="0"/>
+        <SecondaryActions index="View" value="0"/>
+        <Flags index="Hide" value="1"/>
+        <Voice value="Attack"/>
+    </CAlert>
+    <CAlert id="ItemPurchased">
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ItemPurchasedStack"/>
+    <CAlert id="PeriodicSpawningComplete">
+        <Flags index="Combine" value="0"/>
+        <Flags index="Ping" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-rally_human.dds"/>
+        <PingModel value="PingCampaignTarget"/>
+        <PingTime value="3.000000"/>
+    </CAlert>
+    <CAlert id="ResearchComplete_Naga">
+        <Sound value="Alert_NagaResearchComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="SpellbringerStunOrbAlert"/>
+    <CAlert id="SpellbringerCripplingFieldAlert"/>
+    <CAlert id="UnitPurchased">
+        <Voice value="Ready"/>
+        <Peripheral value="TrainComplete"/>
+    </CAlert>
+    <CAlert id="ReviveComplete">
+        <Flags index="Combine" value="0"/>
+        <Flags index="Hide" value="1"/>
+        <Icon value="Assets\Textures\btn-ability-neutral-revive.dds"/>
+    </CAlert>
+    <CAlert id="SummonComplete">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+        <SecondaryActions index="Select" value="0"/>
+        <SecondaryActions index="View" value="0"/>
+        <Flags index="Hide" value="1"/>
+        <Voice value="Attack"/>
+    </CAlert>
+    <CAlert id="HeroComplete">
+        <PrimaryActions index="Select" value="0"/>
+        <PrimaryActions index="View" value="0"/>
+        <SecondaryActions index="Flash" value="0"/>
+        <SecondaryActions index="Select" value="0"/>
+        <SecondaryActions index="View" value="0"/>
+        <Flags index="Hide" value="1"/>
+        <Voice value="Ready"/>
+    </CAlert>
+    <CAlert id="MercPurchased">
+        <Voice value="Ready"/>
+        <Peripheral value="TrainComplete"/>
+    </CAlert>
+    <CAlert id="TrainError">
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="TrainError_Prot">
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="TrainError_Terr">
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="TrainError_Zerg">
+        <Display index="Other" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Human">
+        <Sound value="Alert_HumanUpgradeComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ResearchComplete_Human">
+        <Sound value="Alert_HumanResearchComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ResearchComplete_NightElf">
+        <Sound value="Alert_NightElfResearchComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ResearchComplete_Orc">
+        <Sound value="Alert_OrcResearchComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="BuildComplete_Human">
+        <Peripheral value="BuildingComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Naga">
+        <Sound value="Alert_NagaUpgradeComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Undead">
+        <Sound value="Alert_UndeadUpgradeComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_Orc">
+        <Sound value="Alert_OrcUpgradeComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="UpgradeComplete_NightElf">
+        <Sound value="Alert_NightElfUpgradeComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+    <CAlert id="ResearchComplete_Undead">
+        <Sound value="Alert_UndeadResearchComplete"/>
+        <Peripheral value="UpgradeComplete"/>
+        <Flags index="Combine" value="0"/>
+    </CAlert>
+</Catalog>

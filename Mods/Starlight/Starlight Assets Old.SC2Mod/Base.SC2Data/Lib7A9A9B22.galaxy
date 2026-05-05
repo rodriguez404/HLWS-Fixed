@@ -1,0 +1,2281 @@
+include "TriggerLibs/NativeLib"
+include "LibDDE92A83_h"
+include "Lib29554E00_h"
+include "Lib8EB2E028_h"
+
+include "Lib7A9A9B22_h"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Staging Area
+//--------------------------------------------------------------------------------------------------
+// External Library Initialization
+void lib7A9A9B22_InitLibraries () {
+    libNtve_InitVariables();
+    libDDE92A83_InitVariables();
+    lib29554E00_InitVariables();
+}
+
+// Variable Initialization
+bool lib7A9A9B22_InitVariables_completed = false;
+
+void lib7A9A9B22_InitVariables () {
+    int init_i;
+
+    if (lib7A9A9B22_InitVariables_completed) {
+        return;
+    }
+
+    lib7A9A9B22_InitVariables_completed = true;
+
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lib7A9A9B22_gv_stagingAreaTeamInternal[init_i] = PlayerGroupEmpty();
+    }
+    lib7A9A9B22_gv_waypointGroup = UnitGroupEmpty();
+    lib7A9A9B22_gv__1x1MaxCountPerRow = 12;
+    lib7A9A9B22_gv__2x2MaxCountPerRow = 6;
+    lib7A9A9B22_gv_attackWaveGroup = UnitGroupEmpty();
+    lib7A9A9B22_gv_attackWaveReady = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaReady = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingArea = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaTeamColor = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaGrid = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaSpawns = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaSpawners = UnitGroupEmpty();
+    lib7A9A9B22_gv_stagingAreaPeripherals = UnitGroupEmpty();
+    for (init_i = 0; init_i <= 3; init_i += 1) {
+        lib7A9A9B22_gv_stagingAreaTeamSpawns[init_i] = UnitGroupEmpty();
+    }
+    lib7A9A9B22_gv_preparationArea = UnitGroupEmpty();
+    for (init_i = 0; init_i <= 15; init_i += 1) {
+        lib7A9A9B22_gv_playerNPC[init_i] = -1;
+    }
+    lib7A9A9B22_gv_equipmentShop = UnitGroupEmpty();
+    lib7A9A9B22_gv_refineries = UnitGroupEmpty();
+    lib7A9A9B22_gv_mineralIncomeBonus = 1.0;
+    lib7A9A9B22_gv_mineralIncomeIncrement = 0.75;
+    lib7A9A9B22_gv_mineralIncomeBase = 7.5;
+}
+
+// Functions
+void lib7A9A9B22_gf_MineralIncomeCreate (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitGroupCount(UnitGroup("MineralIncome", lp_player, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0), c_unitCountAlive) == 0)) {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "MineralIncome", c_unitCreateIgnorePlacement, lp_player, Point(0.0, 0.0));
+        UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    }
+
+}
+
+void lib7A9A9B22_gf_MineralIncomeUpdate (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    CatalogFieldValueSet(c_gameCatalogBehavior, "MineralIncome", "Period", lp_player, FixedToString((1.0 / ((lib7A9A9B22_gv_mineralIncomeBase + (lib7A9A9B22_gv_mineralIncomeIncrement * IntToFixed(TechTreeUpgradeCount(lp_player, "MineralIncome", c_techCountCompleteOnly)))) / 1.4)), 6));
+    CatalogFieldValueSet(c_gameCatalogBehavior, "MineralIncomeBonus", "Period", lp_player, FixedToString((1.0 / (((lib7A9A9B22_gv_mineralIncomeBase + lib7A9A9B22_gv_mineralIncomeBonus) + (lib7A9A9B22_gv_mineralIncomeIncrement * IntToFixed(TechTreeUpgradeCount(lp_player, "MineralIncome", c_techCountCompleteOnly)))) / 1.4)), 6));
+    CatalogFieldValueSet(c_gameCatalogEffect, "MineralIncomeDummyCurrent", "Amount", lp_player, FixedToString((lib7A9A9B22_gv_mineralIncomeBase + (lib7A9A9B22_gv_mineralIncomeIncrement * IntToFixed(TechTreeUpgradeCount(lp_player, "MineralIncome", c_techCountCompleteOnly)))), 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "MineralIncomeDummyBonus", "Amount", lp_player, FixedToString(lib7A9A9B22_gv_mineralIncomeBonus, 2));
+    CatalogFieldValueSet(c_gameCatalogEffect, "MineralIncomeDummyIncrement", "Amount", lp_player, FixedToString(lib7A9A9B22_gv_mineralIncomeIncrement, 2));
+}
+
+void lib7A9A9B22_gf_MineralIncomeSetBase (fixed lp_base) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib7A9A9B22_gv_mineralIncomeBase = lp_base;
+}
+
+void lib7A9A9B22_gf_MineralIncomeSetIncrement (fixed lp_increment) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib7A9A9B22_gv_mineralIncomeIncrement = lp_increment;
+}
+
+void lib7A9A9B22_gf_MineralIncomeSetBonus (fixed lp_bonus) {
+    // Automatic Variable Declarations
+    // Implementation
+    lib7A9A9B22_gv_mineralIncomeBonus = lp_bonus;
+}
+
+void lib7A9A9B22_gf_MineralIncomePause (bool lp_pause) {
+    // Automatic Variable Declarations
+    unitgroup auto66C3EC4A_g;
+    int auto66C3EC4A_u;
+    unit auto66C3EC4A_var;
+
+    // Implementation
+    auto66C3EC4A_g = UnitGroupFilter("MineralIncome", c_playerAny, lib7A9A9B22_gv_stagingAreaPeripherals, UnitFilter(0, 0, 0, 0), 0);
+    auto66C3EC4A_u = UnitGroupCount(auto66C3EC4A_g, c_unitCountAll);
+    for (;; auto66C3EC4A_u -= 1) {
+        auto66C3EC4A_var = UnitGroupUnitFromEnd(auto66C3EC4A_g, auto66C3EC4A_u);
+        if (auto66C3EC4A_var == null) { break; }
+        libNtve_gf_PauseUnit(auto66C3EC4A_var, lp_pause);
+    }
+}
+
+void lib7A9A9B22_gf_MineralIncomeBonusToggle (playergroup lp_players, bool lp_toggle) {
+    // Automatic Variable Declarations
+    bool auto16ACC29C_val;
+    playergroup auto07DACBD4_g;
+    int auto07DACBD4_var;
+    playergroup auto6A568523_g;
+    int auto6A568523_var;
+
+    // Implementation
+    auto16ACC29C_val = lp_toggle;
+    if (auto16ACC29C_val == true) {
+        auto07DACBD4_g = lp_players;
+        auto07DACBD4_var = -1;
+        while (true) {
+            auto07DACBD4_var = PlayerGroupNextPlayer(auto07DACBD4_g, auto07DACBD4_var);
+            if (auto07DACBD4_var < 0) { break; }
+            if ((TechTreeUpgradeCount(auto07DACBD4_var, "GameplayModAccord", c_techCountCompleteOnly) == 0)) {
+                libNtve_gf_SetUpgradeLevelForPlayer(auto07DACBD4_var, "MineralIncomeBonus", 1);
+            }
+            else {
+                libNtve_gf_SetUpgradeLevelForPlayer(auto07DACBD4_var, "MineralIncomeBonus", 0);
+            }
+        }
+    }
+    else if (auto16ACC29C_val == false) {
+        auto6A568523_g = lp_players;
+        auto6A568523_var = -1;
+        while (true) {
+            auto6A568523_var = PlayerGroupNextPlayer(auto6A568523_g, auto6A568523_var);
+            if (auto6A568523_var < 0) { break; }
+            libNtve_gf_SetUpgradeLevelForPlayer(auto6A568523_var, "MineralIncomeBonus", 0);
+        }
+    }
+    else {
+    }
+}
+
+unitgroup lib7A9A9B22_gf_StagingAreas () {
+    // Automatic Variable Declarations
+    // Implementation
+    return lib7A9A9B22_gv_stagingArea;
+}
+
+unitgroup lib7A9A9B22_gf_StagingAreaSpawns () {
+    // Automatic Variable Declarations
+    // Implementation
+    return lib7A9A9B22_gv_stagingAreaSpawns;
+}
+
+unitgroup lib7A9A9B22_gf_StagingAreaSpawners () {
+    // Automatic Variable Declarations
+    // Implementation
+    return lib7A9A9B22_gv_stagingAreaSpawners;
+}
+
+playergroup lib7A9A9B22_gf_StagingAreaTeam (int lp_team) {
+    // Automatic Variable Declarations
+    // Implementation
+    return lib7A9A9B22_gv_stagingAreaTeamInternal[lp_team];
+}
+
+unitgroup lib7A9A9B22_gf_StagingAreaTeamSpawns (int lp_team) {
+    // Automatic Variable Declarations
+    // Implementation
+    return lib7A9A9B22_gv_stagingAreaTeamSpawns[lp_team];
+}
+
+unit lib7A9A9B22_gf_StagingAreaEquipmentShop (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return UnitGroupUnit(UnitGroupFilter(null, lp_player, lib7A9A9B22_gv_equipmentShop, UnitFilter(0, 0, 0, 0), 0), 1);
+}
+
+unitgroup lib7A9A9B22_gf_StagingAreaRefineries (int lp_player) {
+    // Automatic Variable Declarations
+    // Implementation
+    return UnitGroupFilter(null, lp_player, lib7A9A9B22_gv_refineries, UnitFilter(0, 0, 0, 0), 0);
+}
+
+void lib7A9A9B22_gf_SetPlacementFacing (int lp_player, fixed lp_facing) {
+    // Automatic Variable Declarations
+    fixed autoAF35DFDB_val;
+
+    // Implementation
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingNE", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingNW", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingSE", 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingSW", 0);
+    autoAF35DFDB_val = lp_facing;
+    if (autoAF35DFDB_val == 45.0) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingNE", 1);
+    }
+    else if (autoAF35DFDB_val == 135.0) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingNW", 1);
+    }
+    else if (autoAF35DFDB_val == 315.0) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingSE", 1);
+    }
+    else {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "PlacementFacingSW", 1);
+    }
+}
+
+void lib7A9A9B22_gf_AttackWavePrepare (int lp_player, fixed lp_facing, string lp_birthEffect, string lp_userData, int lp_userDataIndex, int lp_value, int lp_attackWave1x1MaxCountPerRow, int lp_attackWave2x2MaxCountPerRow, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Variable Declarations
+    int lv_waypointCount;
+
+    // Automatic Variable Declarations
+    unitgroup autoF78BAECF_g;
+    int autoF78BAECF_u;
+    unit autoF78BAECF_var;
+
+    // Variable Initialization
+
+    // Implementation
+    lib7A9A9B22_gf_WaypointOrderControl(false);
+    lib7A9A9B22_gf_AttackWaveCreateParent(lp_player, lp_facing, lp_birthEffect, lp_userData, lp_userDataIndex, lp_value, lp_waypointSpawn);
+    lib7A9A9B22_gv__1x1MaxCountPerRow = lp_attackWave1x1MaxCountPerRow;
+    lib7A9A9B22_gv__2x2MaxCountPerRow = lp_attackWave2x2MaxCountPerRow;
+    if ((lp_waypoint1 != null)) {
+        lv_waypointCount = 0;
+        if ((lp_waypoint2 != null)) {
+            lv_waypointCount = 1;
+            if ((lp_waypoint3 != null)) {
+                lv_waypointCount = 2;
+                if ((lp_waypoint4 != null)) {
+                    lv_waypointCount = 3;
+                    if ((lp_waypoint5 != null)) {
+                        lv_waypointCount = 4;
+                        if ((lp_waypoint6 != null)) {
+                            lv_waypointCount = 5;
+                            if ((lp_waypoint7 != null)) {
+                                lv_waypointCount = 6;
+                                if ((lp_waypoint8 != null)) {
+                                    lv_waypointCount = 7;
+                                    if ((lp_waypoint9 != null)) {
+                                        lv_waypointCount = 8;
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    autoF78BAECF_g = lib7A9A9B22_gv_attackWaveGroup;
+    autoF78BAECF_u = UnitGroupCount(autoF78BAECF_g, c_unitCountAll);
+    for (;; autoF78BAECF_u -= 1) {
+        autoF78BAECF_var = UnitGroupUnitFromEnd(autoF78BAECF_g, autoF78BAECF_u);
+        if (autoF78BAECF_var == null) { break; }
+        lib7A9A9B22_gf_WaypointApply(autoF78BAECF_var, (PointGetX(UnitGetPosition(autoF78BAECF_var)) - PointGetX(lp_waypointSpawn)), (PointGetY(UnitGetPosition(autoF78BAECF_var)) - PointGetY(lp_waypointSpawn)), lv_waypointCount, lp_waypoint1, lp_waypoint2, lp_waypoint3, lp_waypoint4, lp_waypoint5, lp_waypoint6, lp_waypoint7, lp_waypoint8, lp_waypoint9);
+    }
+    UnitGroupClear(lib7A9A9B22_gv_attackWaveGroup);
+    lib7A9A9B22_gf_WaypointOrderControl(true);
+}
+
+void lib7A9A9B22_gf_AttackWaveSend (string lp_sendEffect) {
+    // Automatic Variable Declarations
+    unitgroup autoF0EFBD36_g;
+    int autoF0EFBD36_u;
+    unit autoF0EFBD36_var;
+
+    // Implementation
+    autoF0EFBD36_g = lib7A9A9B22_gv_attackWaveReady;
+    autoF0EFBD36_u = UnitGroupCount(autoF0EFBD36_g, c_unitCountAll);
+    for (;; autoF0EFBD36_u -= 1) {
+        autoF0EFBD36_var = UnitGroupUnitFromEnd(autoF0EFBD36_g, autoF0EFBD36_u);
+        if (autoF0EFBD36_var == null) { break; }
+        UnitCreateEffectUnit(autoF0EFBD36_var, lp_sendEffect, autoF0EFBD36_var);
+        lib7A9A9B22_gf_WaypointRefreshOrder(autoF0EFBD36_var);
+    }
+    UnitGroupClear(lib7A9A9B22_gv_attackWaveReady);
+}
+
+void lib7A9A9B22_gf_AttackWavePreload (string lp_userData, int lp_userDataIndex) {
+    // Variable Declarations
+    int lv_i;
+
+    // Automatic Variable Declarations
+    int auto5A763508_ae;
+    const int auto5A763508_ai = 1;
+
+    // Variable Initialization
+
+    // Implementation
+    Wait(0.0, c_timeGame);
+    auto5A763508_ae = UserDataFieldValueCount(lp_userData, UserDataField(lp_userData, 1));
+    lv_i = 1;
+    for ( ; ( (auto5A763508_ai >= 0 && lv_i <= auto5A763508_ae) || (auto5A763508_ai < 0 && lv_i >= auto5A763508_ae) ) ; lv_i += auto5A763508_ai ) {
+        Wait(0.0, c_timeGame);
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, 1), lv_i) != null)) {
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, 1), lv_i), c_unitCreateIgnorePlacement, 0, Point(1.0, 1.0));
+            UnitKill(UnitLastCreated());
+        }
+
+    }
+}
+
+void lib7A9A9B22_gf_AttackWaveCreateParent (int lp_player, fixed lp_facing, string lp_birthEffect, string lp_userData, int lp_userDataIndex, int lp_value, point lp_originPoint) {
+    // Variable Declarations
+    int lv_i;
+    int lv_x;
+    int[10] lv_attackWaveUnitCount;
+    int lv_internalValue;
+    int lv_numberofUnitTypes;
+    fixed[10] lv_attackWaveFraction;
+    fixed lv_attackWaveFractionTotal;
+    fixed lv_attackWaveFractionFinal;
+    fixed lv_attackWaveFractionMultiplier;
+    int lv_startValue;
+    int lv_endValue;
+    int lv_incrementValue;
+    bool lv_invertOrder;
+
+    // Automatic Variable Declarations
+    int auto79280C93_ae;
+    int auto79280C93_ai;
+    int auto6C5AF95B_ae;
+    int auto6C5AF95B_ai;
+    int auto5CDE5C44_ae;
+    int auto5CDE5C44_ai;
+    int auto03BF8CEF_ae;
+    int auto03BF8CEF_ai;
+    int auto4DDFC40D_ae;
+    int auto4DDFC40D_ai;
+    int auto46FDABCF_n;
+    int auto46FDABCF_i;
+    int auto85542E7A_ae;
+    int auto85542E7A_ai;
+    int auto5C138DAD_n;
+    int auto5C138DAD_i;
+    int auto6AF8A8F3_ae;
+    int auto6AF8A8F3_ai;
+    int auto7F84EC13_ae;
+    int auto7F84EC13_ai;
+    int autoED8E0306_ae;
+    int autoED8E0306_ai;
+
+    // Variable Initialization
+    lv_startValue = 1;
+    lv_endValue = UserDataFieldValueCount(lp_userData, UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits));
+    lv_incrementValue = 1;
+
+    // Implementation
+    lv_internalValue = lp_value;
+    if ((lv_invertOrder == true)) {
+        lv_startValue = UserDataFieldValueCount(lp_userData, UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits));
+        lv_endValue = 1;
+        lv_incrementValue = -1;
+    }
+
+    auto79280C93_ae = lv_endValue;
+    auto79280C93_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto79280C93_ai >= 0 && lv_i <= auto79280C93_ae) || (auto79280C93_ai < 0 && lv_i >= auto79280C93_ae) ) ; lv_i += auto79280C93_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            lv_numberofUnitTypes += 1;
+        }
+
+    }
+    auto6C5AF95B_ae = lv_endValue;
+    auto6C5AF95B_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto6C5AF95B_ai >= 0 && lv_i <= auto6C5AF95B_ae) || (auto6C5AF95B_ai < 0 && lv_i >= auto6C5AF95B_ae) ) ; lv_i += auto6C5AF95B_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null) && (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveBase), lv_i) != 0.0)) {
+            if ((UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveRandom), lv_i) != 0.0)) {
+                lv_attackWaveFraction[lv_i] = libNtve_gf_ArithmeticRealClamp((UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveBase), lv_i) + RandomFixed(0.0, UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveRandom), lv_i))), 0.0, 1.0);
+            }
+            else {
+                lv_attackWaveFraction[lv_i] = UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveBase), lv_i);
+            }
+        }
+        else {
+            if ((UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveRandom), lv_i) != 0.0)) {
+                lv_attackWaveFraction[lv_i] = libNtve_gf_ArithmeticRealClamp(((1.0 / IntToFixed(lv_numberofUnitTypes)) + RandomFixed(0.0, UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPercentOfWaveRandom), lv_i))), 0.0, 1.0);
+            }
+            else {
+                lv_attackWaveFraction[lv_i] = (1.0 / IntToFixed(lv_numberofUnitTypes));
+            }
+        }
+    }
+    auto5CDE5C44_ae = lv_endValue;
+    auto5CDE5C44_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto5CDE5C44_ai >= 0 && lv_i <= auto5CDE5C44_ae) || (auto5CDE5C44_ai < 0 && lv_i >= auto5CDE5C44_ae) ) ; lv_i += auto5CDE5C44_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            lv_attackWaveFractionTotal += lv_attackWaveFraction[lv_i];
+        }
+
+    }
+    lv_attackWaveFractionMultiplier = (1.0 / lv_attackWaveFractionTotal);
+    auto03BF8CEF_ae = lv_endValue;
+    auto03BF8CEF_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto03BF8CEF_ai >= 0 && lv_i <= auto03BF8CEF_ae) || (auto03BF8CEF_ai < 0 && lv_i >= auto03BF8CEF_ae) ) ; lv_i += auto03BF8CEF_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            lv_attackWaveFraction[lv_i] *= lv_attackWaveFractionMultiplier;
+            lv_attackWaveFractionFinal += lv_attackWaveFraction[lv_i];
+        }
+
+    }
+    auto4DDFC40D_ae = lv_endValue;
+    auto4DDFC40D_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto4DDFC40D_ai >= 0 && lv_i <= auto4DDFC40D_ae) || (auto4DDFC40D_ai < 0 && lv_i >= auto4DDFC40D_ae) ) ; lv_i += auto4DDFC40D_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            auto46FDABCF_n = UserDataGetInt(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataMin), lv_i);
+            for (auto46FDABCF_i = 1; auto46FDABCF_i <= auto46FDABCF_n; auto46FDABCF_i += 1) {
+                lv_attackWaveUnitCount[lv_i] += 1;
+                lv_internalValue -= FixedToInt((IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0)));
+            }
+        }
+
+    }
+    auto85542E7A_ae = lv_endValue;
+    auto85542E7A_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto85542E7A_ai >= 0 && lv_i <= auto85542E7A_ae) || (auto85542E7A_ai < 0 && lv_i >= auto85542E7A_ae) ) ; lv_i += auto85542E7A_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            auto5C138DAD_n = libNtve_gf_ArithmeticIntClamp(FixedToInt(((IntToFixed(lp_value) * lv_attackWaveFraction[lv_i]) / (IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, 1), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0)))), UserDataGetInt(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataMin), lv_i), UserDataGetInt(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataMax), lv_i));
+            for (auto5C138DAD_i = 1; auto5C138DAD_i <= auto5C138DAD_n; auto5C138DAD_i += 1) {
+                if ((lv_internalValue >= FixedToInt((IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0))))) {
+                    lv_attackWaveUnitCount[lv_i] += 1;
+                    lv_internalValue -= FixedToInt((IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0)));
+                }
+
+            }
+        }
+
+    }
+    auto6AF8A8F3_ae = lv_endValue;
+    auto6AF8A8F3_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto6AF8A8F3_ai >= 0 && lv_i <= auto6AF8A8F3_ae) || (auto6AF8A8F3_ai < 0 && lv_i >= auto6AF8A8F3_ae) ) ; lv_i += auto6AF8A8F3_ai ) {
+        while ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null) && (lv_attackWaveUnitCount[lv_i] < UserDataGetInt(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataMax), lv_i)) && (lv_internalValue >= FixedToInt((IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0))))) {
+            lv_attackWaveUnitCount[lv_i] += 1;
+            lv_internalValue -= FixedToInt((IntToFixed(UnitTypeGetCost(UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), c_unitCostSumMineralsVespene)) * (UserDataGetFixed(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataValuePercentModifier), lv_i) + 1.0)));
+        }
+    }
+    lib7A9A9B22_gv_attackWaveRow = 0.0;
+    auto7F84EC13_ae = lv_endValue;
+    auto7F84EC13_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (auto7F84EC13_ai >= 0 && lv_i <= auto7F84EC13_ae) || (auto7F84EC13_ai < 0 && lv_i >= auto7F84EC13_ae) ) ; lv_i += auto7F84EC13_ai ) {
+        if ((UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i) != null)) {
+            if ((libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), "Radius", lp_player) < 0.75)) {
+                lv_x = lv_attackWaveUnitCount[lv_i];
+                while ((lv_x > 0)) {
+                    lib7A9A9B22_gv_attackWaveRow += 1.0;
+                    lv_x -= lib7A9A9B22_gv__1x1MaxCountPerRow;
+                }
+            }
+            else {
+                lv_x = lv_attackWaveUnitCount[lv_i];
+                while ((lv_x > 0)) {
+                    lib7A9A9B22_gv_attackWaveRow += 2.0;
+                    lv_x -= lib7A9A9B22_gv__2x2MaxCountPerRow;
+                }
+            }
+        }
+
+    }
+    autoED8E0306_ae = lv_endValue;
+    autoED8E0306_ai = lv_incrementValue;
+    lv_i = lv_startValue;
+    for ( ; ( (autoED8E0306_ai >= 0 && lv_i <= autoED8E0306_ae) || (autoED8E0306_ai < 0 && lv_i >= autoED8E0306_ae) ) ; lv_i += autoED8E0306_ai ) {
+        lib7A9A9B22_gf_AttackWaveCreateSwitch(lp_player, lv_attackWaveUnitCount[lv_i], lp_facing, UserDataGetUnit(lp_userData, UserDataInstance(lp_userData, lp_userDataIndex), UserDataField(lp_userData, lib7A9A9B22_gv_userDataPhaseUnits), lv_i), lp_birthEffect, lp_originPoint);
+    }
+}
+
+void lib7A9A9B22_gf_AttackWaveCreateSwitch (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_unitType != null)) {
+        if ((libNtve_gf_CatalogFieldValueGetAsReal(c_gameCatalogUnit, lp_unitType, "Radius", lp_player) < 0.75)) {
+            lib7A9A9B22_gf_AttackWaveCreate1x1(lp_player, lp_count, lp_facing, lp_unitType, lp_birthEffect, lp_originPoint);
+        }
+        else {
+            lib7A9A9B22_gf_AttackWaveCreate2x2(lp_player, lp_count, lp_facing, lp_unitType, lp_birthEffect, lp_originPoint);
+        }
+    }
+
+}
+
+void lib7A9A9B22_gf_AttackWaveCreate1x1 (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint) {
+    // Variable Declarations
+    bool lv_switch;
+    fixed lv_positive;
+    fixed lv_negative;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    int autoAC96D6B3_n;
+    int autoAC96D6B3_i;
+
+    // Variable Initialization
+    lv_positive = 1.0;
+    lv_negative = -1.0;
+
+    // Implementation
+    lv_x = lp_count;
+    while ((lv_x > 0)) {
+        if ((ModI(libNtve_gf_ArithmeticIntClamp(lv_x, 0, lib7A9A9B22_gv__1x1MaxCountPerRow), 2) != 0)) {
+            lv_positive = 0;
+            lv_negative = -2.0;
+        }
+        else {
+            lv_positive = 1.0;
+            lv_negative = -1.0;
+        }
+        lib7A9A9B22_gv_attackWaveRow -= 1.0;
+        autoAC96D6B3_n = libNtve_gf_ArithmeticIntClamp(lv_x, 0, lib7A9A9B22_gv__1x1MaxCountPerRow);
+        for (autoAC96D6B3_i = 1; autoAC96D6B3_i <= autoAC96D6B3_n; autoAC96D6B3_i += 1) {
+            lv_x -= 1;
+            if ((lv_switch == false)) {
+                lv_switch = true;
+                UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_originPoint, (lib7A9A9B22_gv_attackWaveRow * SquareRoot(2.0)), (lp_facing + 180.0)), (lv_positive * (SquareRoot(2.0) / 2.0)), (lp_facing + 270.0)), lp_facing);
+                lv_positive += 2.0;
+            }
+            else {
+                lv_switch = false;
+                UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_originPoint, (lib7A9A9B22_gv_attackWaveRow * SquareRoot(2.0)), (lp_facing + 180.0)), (lv_negative * (SquareRoot(2.0) / 2.0)), (lp_facing + 270.0)), lp_facing);
+                lv_negative -= 2.0;
+            }
+            UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
+            UnitGroupAdd(lib7A9A9B22_gv_attackWaveGroup, UnitLastCreated());
+            UnitGroupAdd(lib7A9A9B22_gv_attackWaveReady, UnitLastCreated());
+            UnitCreateEffectUnit(UnitLastCreated(), lp_birthEffect, UnitLastCreated());
+        }
+    }
+}
+
+void lib7A9A9B22_gf_AttackWaveCreate2x2 (int lp_player, int lp_count, fixed lp_facing, string lp_unitType, string lp_birthEffect, point lp_originPoint) {
+    // Variable Declarations
+    bool lv_switch;
+    fixed lv_positive;
+    fixed lv_negative;
+    int lv_x;
+
+    // Automatic Variable Declarations
+    int autoE40B4199_n;
+    int autoE40B4199_i;
+
+    // Variable Initialization
+    lv_positive = 2.0;
+    lv_negative = -2.0;
+
+    // Implementation
+    lv_x = lp_count;
+    while ((lv_x > 0)) {
+        if ((ModI(libNtve_gf_ArithmeticIntClamp(lv_x, 0, lib7A9A9B22_gv__2x2MaxCountPerRow), 2) != 0)) {
+            lv_positive = 0.0;
+            lv_negative = -4.0;
+        }
+        else {
+            lv_positive = 2.0;
+            lv_negative = -2.0;
+        }
+        lib7A9A9B22_gv_attackWaveRow -= 2.0;
+        autoE40B4199_n = libNtve_gf_ArithmeticIntClamp(lv_x, 0, lib7A9A9B22_gv__2x2MaxCountPerRow);
+        for (autoE40B4199_i = 1; autoE40B4199_i <= autoE40B4199_n; autoE40B4199_i += 1) {
+            lv_x -= 1;
+            if ((lv_switch == false)) {
+                lv_switch = true;
+                UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_originPoint, (lib7A9A9B22_gv_attackWaveRow * SquareRoot(2.0)), (lp_facing + 180.0)), (lv_positive * (SquareRoot(2.0) / 2.0)), (lp_facing + 270.0)), lp_facing);
+                lv_positive += 4.0;
+            }
+            else {
+                lv_switch = false;
+                UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_originPoint, (lib7A9A9B22_gv_attackWaveRow * SquareRoot(2.0)), (lp_facing + 180.0)), (lv_negative * (SquareRoot(2.0) / 2.0)), (lp_facing + 270.0)), lp_facing);
+                lv_negative -= 4.0;
+            }
+            UnitSetPropertyFixed(UnitLastCreated(), c_unitPropEnergyPercent, 100.0);
+            UnitGroupAdd(lib7A9A9B22_gv_attackWaveGroup, UnitLastCreated());
+            UnitGroupAdd(lib7A9A9B22_gv_attackWaveReady, UnitLastCreated());
+            UnitCreateEffectUnit(UnitLastCreated(), lp_birthEffect, UnitLastCreated());
+        }
+    }
+}
+
+void lib7A9A9B22_gf_WaypointApply (unit lp_unit, fixed lp_offsetX, fixed lp_offsetY, int lp_waypointCount, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Automatic Variable Declarations
+    // Implementation
+    UnitGroupAdd(lib7A9A9B22_gv_waypointGroup, lp_unit);
+    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX, lp_offsetX);
+    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY, lp_offsetY);
+    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(lp_waypointCount));
+    if ((lp_waypointCount >= 0)) {
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint1X, (PointGetX(lp_waypoint1) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint1Y, (PointGetY(lp_waypoint1) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+        if ((lp_waypointCount >= 1)) {
+            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint2X, (PointGetX(lp_waypoint2) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint2Y, (PointGetY(lp_waypoint2) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+            if ((lp_waypointCount >= 2)) {
+                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint3X, (PointGetX(lp_waypoint3) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint3Y, (PointGetY(lp_waypoint3) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                if ((lp_waypointCount >= 3)) {
+                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint4X, (PointGetX(lp_waypoint4) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint4Y, (PointGetY(lp_waypoint4) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                    if ((lp_waypointCount >= 4)) {
+                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint5X, (PointGetX(lp_waypoint5) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint5Y, (PointGetY(lp_waypoint5) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                        if ((lp_waypointCount >= 5)) {
+                            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint6X, (PointGetX(lp_waypoint6) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint6Y, (PointGetY(lp_waypoint6) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                            if ((lp_waypointCount >= 6)) {
+                                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint7X, (PointGetX(lp_waypoint7) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint7Y, (PointGetY(lp_waypoint7) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                                if ((lp_waypointCount >= 7)) {
+                                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint8X, (PointGetX(lp_waypoint8) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint8Y, (PointGetY(lp_waypoint8) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                                    if ((lp_waypointCount >= 8)) {
+                                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint9X, (PointGetX(lp_waypoint9) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetX)));
+                                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint9Y, (PointGetY(lp_waypoint9) + UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueUnitSpawnOffsetY)));
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+void lib7A9A9B22_gf_WaypointRefreshOrder (unit lp_unit) {
+    // Automatic Variable Declarations
+    // Implementation
+    UnitIssueOrder(lp_unit, OrderTargetingPoint(AbilityCommand("attack", 0), Point(UnitGetCustomValue(lp_unit, (lib7A9A9B22_gv_customValueWaypoint1X + (FixedToInt(UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderCurrent)) * 2))), UnitGetCustomValue(lp_unit, (lib7A9A9B22_gv_customValueWaypoint1Y + (FixedToInt(UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderCurrent)) * 2))))), c_orderQueueReplace);
+    UnitIssueOrder(lp_unit, OrderTargetingPoint(AbilityCommand("AttackWarpPrism", 0), Point(UnitGetCustomValue(lp_unit, (lib7A9A9B22_gv_customValueWaypoint1X + (FixedToInt(UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderCurrent)) * 2))), UnitGetCustomValue(lp_unit, (lib7A9A9B22_gv_customValueWaypoint1Y + (FixedToInt(UnitGetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderCurrent)) * 2))))), c_orderQueueReplace);
+}
+
+void lib7A9A9B22_gf_WaypointOrderControl (bool lp_toggle) {
+    // Automatic Variable Declarations
+    // Implementation
+    TriggerEnable(lib7A9A9B22_gt_UnitIdle, lp_toggle);
+    TriggerEnable(lib7A9A9B22_gt_UnitMorph, lp_toggle);
+    TriggerEnable(lib7A9A9B22_gt_UnitStun, lp_toggle);
+    TriggerEnable(lib7A9A9B22_gt_UnitSummon, lp_toggle);
+    TriggerEnable(lib7A9A9B22_gt_NeuralParasiteOn, lp_toggle);
+    TriggerEnable(lib7A9A9B22_gt_NeuralParasiteOff, lp_toggle);
+}
+
+void lib7A9A9B22_gf_StagingAreaCreateSpawns (unitgroup lp_unitSpawners, int lp_spawnOwner, string lp_birth, fixed lp_rotationChange, point lp_centerofBuildArea, int lp_waypointMax, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Variable Declarations
+    int lv_i;
+    int lv_team;
+    unit lv_inventoryItem;
+    unitgroup lv_unitGroupSource;
+    unitgroup lv_unitGroupTarget;
+    unitgroup lv_unitGroupCreated;
+
+    // Automatic Variable Declarations
+    unitgroup autoF680F0A1_g;
+    int autoF680F0A1_u;
+    unit autoF680F0A1_var;
+    const int auto1FEB3A0F_ae = 3;
+    const int auto1FEB3A0F_ai = 1;
+    unitgroup autoB7801C96_g;
+    int autoB7801C96_u;
+    unit autoB7801C96_var;
+    unitgroup auto09FC009F_g;
+    int auto09FC009F_u;
+
+    // Variable Initialization
+    lv_team = -1;
+    lv_unitGroupSource = UnitGroupEmpty();
+    lv_unitGroupTarget = UnitGroupEmpty();
+    lv_unitGroupCreated = UnitGroupEmpty();
+
+    // Implementation
+    lib7A9A9B22_gf_WaypointOrderControl(false);
+    UnitGroupAddUnitGroup(lv_unitGroupSource, UnitGroupFilter(null, c_playerAny, lp_unitSpawners, UnitFilter(0, 0, (1 << c_targetFilterMissile) | (1 << c_targetFilterItem), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0));
+    autoF680F0A1_g = lp_unitSpawners;
+    autoF680F0A1_u = UnitGroupCount(autoF680F0A1_g, c_unitCountAll);
+    for (;; autoF680F0A1_u -= 1) {
+        autoF680F0A1_var = UnitGroupUnitFromEnd(autoF680F0A1_g, autoF680F0A1_u);
+        if (autoF680F0A1_var == null) { break; }
+        UnitBehaviorRemove(autoF680F0A1_var, "SellFull", 1);
+        UnitBehaviorRemove(autoF680F0A1_var, "UnitSpawnerMercenary", 1);
+    }
+    lv_i = 0;
+    for ( ; ( (auto1FEB3A0F_ai >= 0 && lv_i <= auto1FEB3A0F_ae) || (auto1FEB3A0F_ai < 0 && lv_i >= auto1FEB3A0F_ae) ) ; lv_i += auto1FEB3A0F_ai ) {
+        if ((PlayerGroupHasPlayer(lib7A9A9B22_gv_stagingAreaTeamInternal[lv_i], lp_spawnOwner) == true)) {
+            lv_team = lv_i;
+        }
+
+    }
+    while ((UnitGroupCount(lv_unitGroupSource, c_unitCountAlive) > 0)) {
+        UnitGroupClear(lv_unitGroupTarget);
+        UnitGroupAddUnitGroup(lv_unitGroupTarget, UnitGroupFilter(null, c_playerAny, lv_unitGroupSource, UnitFilter(0, 0, 0, 0), 20));
+        UnitGroupRemoveUnitGroup(lv_unitGroupSource, lv_unitGroupTarget);
+        autoB7801C96_g = lv_unitGroupTarget;
+        autoB7801C96_u = UnitGroupCount(autoB7801C96_g, c_unitCountAll);
+        for (;; autoB7801C96_u -= 1) {
+            autoB7801C96_var = UnitGroupUnitFromEnd(autoB7801C96_g, autoB7801C96_u);
+            if (autoB7801C96_var == null) { break; }
+            PlayerScoreValueSetFromInt(lp_spawnOwner, "WaveUnitSpawnedCount", (PlayerScoreValueGetAsInt(lp_spawnOwner, "WaveUnitSpawnedCount") + 1));
+            PlayerScoreValueSetFromInt(lp_spawnOwner, "WaveUnitSpawnedValue", (PlayerScoreValueGetAsInt(lp_spawnOwner, "WaveUnitSpawnedValue") + UnitTypeGetCost(UnitGetType(autoB7801C96_var), c_unitCostMinerals)));
+            UnitCreate(1, UnitGetType(autoB7801C96_var), c_unitCreateIgnorePlacement, lp_spawnOwner, PointWithOffsetPolar(lp_waypointSpawn, DistanceBetweenPoints(UnitGetPosition(autoB7801C96_var), lp_centerofBuildArea), (AngleBetweenPoints(lp_centerofBuildArea, UnitGetPosition(autoB7801C96_var)) + lp_rotationChange)), AngleBetweenPoints(lp_waypointSpawn, lp_waypoint1));
+            UnitGroupAdd(lv_unitGroupCreated, UnitLastCreated());
+            lib7A9A9B22_gf_WaypointApply(UnitLastCreated(), (PointGetX(PointWithOffsetPolar(lp_centerofBuildArea, DistanceBetweenPoints(UnitGetPosition(autoB7801C96_var), lp_centerofBuildArea), (AngleBetweenPoints(lp_centerofBuildArea, UnitGetPosition(autoB7801C96_var)) + lp_rotationChange))) - PointGetX(lp_centerofBuildArea)), (PointGetY(PointWithOffsetPolar(lp_centerofBuildArea, DistanceBetweenPoints(UnitGetPosition(autoB7801C96_var), lp_centerofBuildArea), (AngleBetweenPoints(lp_centerofBuildArea, UnitGetPosition(autoB7801C96_var)) + lp_rotationChange))) - PointGetY(lp_centerofBuildArea)), lp_waypointMax, lp_waypoint1, lp_waypoint2, lp_waypoint3, lp_waypoint4, lp_waypoint5, lp_waypoint6, lp_waypoint7, lp_waypoint8, lp_waypoint9);
+            lib7A9A9B22_gf_CopyAbilityAutocastSettings(autoB7801C96_var, UnitLastCreated());
+            UnitBehaviorAdd(UnitLastCreated(), lp_birth, UnitLastCreated(), 1);
+            UnitBehaviorAdd(UnitLastCreated(), "UnitSpawnerCasterTrigger", autoB7801C96_var, 1);
+            auto09FC009F_g = UnitInventoryGroup(autoB7801C96_var);
+            auto09FC009F_u = UnitGroupCount(auto09FC009F_g, c_unitCountAll);
+            for (;; auto09FC009F_u -= 1) {
+                lv_inventoryItem = UnitGroupUnitFromEnd(auto09FC009F_g, auto09FC009F_u);
+                if (lv_inventoryItem == null) { break; }
+                UnitInventoryCreate(UnitLastCreated(), UnitGetType(lv_inventoryItem));
+            }
+            UnitAbilityEnable(UnitLastCreated(), "InventoryUnit", false);
+            if ((UnitFilterMatch(UnitLastCreated(), 0, UnitFilter((1 << c_targetFilterHeroic), 0, 0, 0)) == true)) {
+                UnitCreateEffectUnit(autoB7801C96_var, "SkinRefresh", UnitLastCreated());
+            }
+
+        }
+        Wait(0.0, c_timeGame);
+    }
+    UnitGroupAddUnitGroup(lib7A9A9B22_gv_stagingAreaSpawns, lv_unitGroupCreated);
+    UnitGroupAddUnitGroup(lib7A9A9B22_gv_stagingAreaReady, lv_unitGroupCreated);
+    if ((lv_team >= 0)) {
+        UnitGroupAddUnitGroup(lib7A9A9B22_gv_stagingAreaTeamSpawns[lv_team], lv_unitGroupCreated);
+    }
+
+    lib7A9A9B22_gf_WaypointOrderControl(true);
+}
+
+void lib7A9A9B22_gf_StagingAreaSend (string lp_timedLife) {
+    // Automatic Variable Declarations
+    unitgroup auto1D15DCB7_g;
+    int auto1D15DCB7_u;
+    unit auto1D15DCB7_var;
+
+    // Implementation
+    auto1D15DCB7_g = lib7A9A9B22_gv_stagingAreaReady;
+    auto1D15DCB7_u = UnitGroupCount(auto1D15DCB7_g, c_unitCountAll);
+    for (;; auto1D15DCB7_u -= 1) {
+        auto1D15DCB7_var = UnitGroupUnitFromEnd(auto1D15DCB7_g, auto1D15DCB7_u);
+        if (auto1D15DCB7_var == null) { break; }
+        UnitBehaviorAdd(auto1D15DCB7_var, "SpeedLimitPrecursor", auto1D15DCB7_var, 1);
+        UnitBehaviorAdd(auto1D15DCB7_var, lp_timedLife, auto1D15DCB7_var, 1);
+        UnitIssueOrder(auto1D15DCB7_var, OrderTargetingPoint(AbilityCommand("attack", 0), Point(UnitGetCustomValue(auto1D15DCB7_var, lib7A9A9B22_gv_customValueWaypoint1X), UnitGetCustomValue(auto1D15DCB7_var, lib7A9A9B22_gv_customValueWaypoint1Y))), c_orderQueueReplace);
+        UnitIssueOrder(auto1D15DCB7_var, OrderTargetingPoint(AbilityCommand("AttackWarpPrism", 0), Point(UnitGetCustomValue(auto1D15DCB7_var, lib7A9A9B22_gv_customValueWaypoint1X), UnitGetCustomValue(auto1D15DCB7_var, lib7A9A9B22_gv_customValueWaypoint1Y))), c_orderQueueReplace);
+    }
+    UnitGroupClear(lib7A9A9B22_gv_stagingAreaReady);
+}
+
+void lib7A9A9B22_gf_StagingAreaPrepareManualWaypoints (unit lp_stagingArea, int lp_spawnOwner, string lp_birth, fixed lp_rotationChange, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Variable Declarations
+    int lv_waypointCount;
+
+    // Automatic Variable Declarations
+    // Variable Initialization
+
+    // Implementation
+    if ((lp_waypoint1 != null)) {
+        lv_waypointCount = 0;
+        if ((lp_waypoint2 != null)) {
+            lv_waypointCount = 1;
+            if ((lp_waypoint3 != null)) {
+                lv_waypointCount = 2;
+                if ((lp_waypoint4 != null)) {
+                    lv_waypointCount = 3;
+                    if ((lp_waypoint5 != null)) {
+                        lv_waypointCount = 4;
+                        if ((lp_waypoint6 != null)) {
+                            lv_waypointCount = 5;
+                            if ((lp_waypoint7 != null)) {
+                                lv_waypointCount = 6;
+                                if ((lp_waypoint8 != null)) {
+                                    lv_waypointCount = 7;
+                                    if ((lp_waypoint9 != null)) {
+                                        lv_waypointCount = 8;
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    lib7A9A9B22_gf_StagingAreaCreateSpawns(UnitGroupFilterRegion(lib7A9A9B22_gv_stagingAreaSpawners, RegionRect((PointGetX(UnitGetPosition(lp_stagingArea)) - UnitGetCustomValue(lp_stagingArea, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX)), (PointGetY(UnitGetPosition(lp_stagingArea)) - UnitGetCustomValue(lp_stagingArea, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY)), (PointGetX(UnitGetPosition(lp_stagingArea)) + UnitGetCustomValue(lp_stagingArea, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX)), (PointGetY(UnitGetPosition(lp_stagingArea)) + UnitGetCustomValue(lp_stagingArea, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY))), 0), lp_spawnOwner, lp_birth, lp_rotationChange, UnitGetPosition(lp_stagingArea), lv_waypointCount, lp_waypointSpawn, lp_waypoint1, lp_waypoint2, lp_waypoint3, lp_waypoint4, lp_waypoint5, lp_waypoint6, lp_waypoint7, lp_waypoint8, lp_waypoint9);
+}
+
+void lib7A9A9B22_gf_StagingAreaPrepare (unitgroup lp_stagingAreas, string lp_timedLife, string lp_birth) {
+    // Variable Declarations
+    unit lv_u;
+
+    // Automatic Variable Declarations
+    unitgroup autoBEA75FAF_g;
+    int autoBEA75FAF_u;
+
+    // Variable Initialization
+
+    // Implementation
+    autoBEA75FAF_g = lp_stagingAreas;
+    autoBEA75FAF_u = UnitGroupCount(autoBEA75FAF_g, c_unitCountAll);
+    for (;; autoBEA75FAF_u -= 1) {
+        lv_u = UnitGroupUnitFromEnd(autoBEA75FAF_g, autoBEA75FAF_u);
+        if (lv_u == null) { break; }
+        if ((TechTreeUpgradeCount(UnitGetOwner(lv_u), "StagingAreaDecalShow", c_techCountCompleteOnly) == 0)) {
+            libNtve_gf_SetUpgradeLevelForPlayer(UnitGetOwner(lv_u), "StagingAreaDecalShow", 1);
+        }
+
+        lib7A9A9B22_gf_StagingAreaCreateSpawns(UnitGroupFilterRegion(lib7A9A9B22_gv_stagingAreaSpawners, RegionRect((PointGetX(UnitGetPosition(lv_u)) - UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX)), (PointGetY(UnitGetPosition(lv_u)) - UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY)), (PointGetX(UnitGetPosition(lv_u)) + UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX)), (PointGetY(UnitGetPosition(lv_u)) + UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY))), 0), UnitGetOwner(lv_u), lp_birth, 0.0, UnitGetPosition(lv_u), FixedToInt(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueOrderMax)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypointSpawnX), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypointSpawnY)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint1X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint1Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint2X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint2Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint3X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint3Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint4X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint4Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint5X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint5Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint6X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint6Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint7X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint7Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint8X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint8Y)), Point(UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint9X), UnitGetCustomValue(lv_u, lib7A9A9B22_gv_customValueWaypoint9Y)));
+    }
+}
+
+void lib7A9A9B22_gf_StagingAreaCreate (int lp_player, fixed lp_placementFacing, point lp_createAreaAtPoint, bool lp_createMineralFields) {
+    // Variable Declarations
+    int lv_i;
+    unit lv_footprint;
+    string lv_footprintType;
+    point lv_footprintPoint;
+    int lv_footprintX;
+    int lv_footprintY;
+
+    // Automatic Variable Declarations
+    string autoAD5E8148_val;
+
+    // Variable Initialization
+
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2FootprintPlacementCheck", c_unitCreateIgnorePlacement, lp_player, lp_createAreaAtPoint);
+    lv_footprint = UnitLastCreated();
+    lv_footprintPoint = UnitGetPosition(UnitLastCreated());
+    lv_footprintType = "Area3x2Footprint";
+    lv_footprintX = 14;
+    lv_footprintY = 14;
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2TeamColor", c_unitCreateIgnorePlacement, lp_player, UnitGetPosition(lv_footprint));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaTeamColor, UnitLastCreated());
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2BorderGrid", c_unitCreateIgnorePlacement, lp_player, UnitGetPosition(lv_footprint));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaGrid, UnitLastCreated());
+    UnitCreate(1, "TrophyRiftPremium", c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(UnitGetPosition(lv_footprint), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(0))), (lp_placementFacing + 90.0)), (0.0 - ((SquareRoot(2.0) / 2.0) * IntToFixed(18))), lp_placementFacing), lp_placementFacing);
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    if ((lp_createMineralFields == true)) {
+        lib7A9A9B22_gf_StagingAreaCreateMineralFields(lp_player, lp_placementFacing, UnitGetPosition(lv_footprint), true);
+    }
+
+    if ((TechTreeUpgradeCount(lp_player, "GameplayModEquipment", c_techCountCompleteOnly) == 1)) {
+        autoAD5E8148_val = PlayerRace(lp_player);
+        if (autoAD5E8148_val == "Terr") {
+            UnitCreate(1, "EquipmentSelectTerran", 0, lp_player, PointWithOffsetPolar(lp_createAreaAtPoint, (0.0 - ((SquareRoot(2.0) / 2.0) * 9.0)), lp_placementFacing), lp_placementFacing);
+            UnitGroupAdd(lib7A9A9B22_gv_equipmentShop, UnitLastCreated());
+            UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+        }
+        else if (autoAD5E8148_val == "Zerg") {
+            UnitCreate(1, "EquipmentSelectZerg", 0, lp_player, PointWithOffsetPolar(lp_createAreaAtPoint, (0.0 - ((SquareRoot(2.0) / 2.0) * 9.0)), lp_placementFacing), lp_placementFacing);
+            UnitGroupAdd(lib7A9A9B22_gv_equipmentShop, UnitLastCreated());
+            UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+        }
+        else {
+            UnitCreate(1, "EquipmentSelectProtoss", 0, lp_player, PointWithOffsetPolar(lp_createAreaAtPoint, (0.0 - ((SquareRoot(2.0) / 2.0) * 9.0)), lp_placementFacing), lp_placementFacing);
+            UnitGroupAdd(lib7A9A9B22_gv_equipmentShop, UnitLastCreated());
+            UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+        }
+    }
+
+    UnitRemove(lv_footprint);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, lv_footprintType, c_unitCreateIgnorePlacement, lp_player, lv_footprintPoint);
+    UnitGroupAdd(lib7A9A9B22_gv_stagingArea, UnitLastCreated());
+    UnitSetCustomValue(UnitLastCreated(), lib7A9A9B22_gv_customValueUnitSpawnAreaUnitFacing, lp_placementFacing);
+    UnitSetCustomValue(UnitLastCreated(), lib7A9A9B22_gv_customValueUnitSpawnAreaSizeX, lv_footprintX);
+    UnitSetCustomValue(UnitLastCreated(), lib7A9A9B22_gv_customValueUnitSpawnAreaSizeY, lv_footprintY);
+    lib7A9A9B22_gf_SetPlacementFacing(lp_player, lp_placementFacing);
+}
+
+void lib7A9A9B22_gf_StagingAreaSetWaypoints (unit lp_unit, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_waypointSpawn != null)) {
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypointSpawnX, PointGetX(lp_waypointSpawn));
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypointSpawnY, PointGetY(lp_waypointSpawn));
+    }
+
+    if ((lp_waypoint1 != null)) {
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(0));
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint1X, PointGetX(lp_waypoint1));
+        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint1Y, PointGetY(lp_waypoint1));
+        if ((lp_waypoint2 != null)) {
+            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(1));
+            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint2X, PointGetX(lp_waypoint2));
+            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint2Y, PointGetY(lp_waypoint2));
+            if ((lp_waypoint3 != null)) {
+                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(2));
+                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint3X, PointGetX(lp_waypoint3));
+                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint3Y, PointGetY(lp_waypoint3));
+                if ((lp_waypoint4 != null)) {
+                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(3));
+                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint4X, PointGetX(lp_waypoint4));
+                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint4Y, PointGetY(lp_waypoint4));
+                    if ((lp_waypoint5 != null)) {
+                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(4));
+                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint5X, PointGetX(lp_waypoint5));
+                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint5Y, PointGetY(lp_waypoint5));
+                        if ((lp_waypoint6 != null)) {
+                            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(5));
+                            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint6X, PointGetX(lp_waypoint6));
+                            UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint6Y, PointGetY(lp_waypoint6));
+                            if ((lp_waypoint7 != null)) {
+                                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(6));
+                                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint7X, PointGetX(lp_waypoint7));
+                                UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint7Y, PointGetY(lp_waypoint7));
+                                if ((lp_waypoint8 != null)) {
+                                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(7));
+                                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint8X, PointGetX(lp_waypoint8));
+                                    UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint8Y, PointGetY(lp_waypoint8));
+                                    if ((lp_waypoint9 != null)) {
+                                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueOrderMax, IntToFixed(8));
+                                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint9X, PointGetX(lp_waypoint9));
+                                        UnitSetCustomValue(lp_unit, lib7A9A9B22_gv_customValueWaypoint9Y, PointGetY(lp_waypoint9));
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+void lib7A9A9B22_gf_StagingAreaCreateMineralFields (int lp_player, fixed lp_rotation, point lp_point, bool lp_createMineralIncomeUnit) {
+    // Variable Declarations
+    string lv_minerals;
+    string lv_unavailable;
+
+    // Automatic Variable Declarations
+    string autoF493D5D3_val;
+
+    // Variable Initialization
+    lv_minerals = "MineralFieldTerran";
+    lv_unavailable = "MineralFieldTerranUnavailable";
+
+    // Implementation
+    autoF493D5D3_val = PlayerRace(lp_player);
+    if (autoF493D5D3_val == "Prot") {
+        lv_minerals = "MineralFieldProtoss";
+        lv_unavailable = "MineralFieldProtossUnavailable";
+    }
+    else if (autoF493D5D3_val == "Zerg") {
+        lv_minerals = "MineralFieldZerg";
+        lv_unavailable = "MineralFieldZergUnavailable";
+    }
+    else {
+    }
+    UnitCreate(1, lv_minerals, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_point, (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(9))), ((lp_rotation + 180.0) + 90.0)), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(15))), (lp_rotation + 180.0)), (lp_rotation + 180.0));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    UnitGroupAdd(lib7A9A9B22_gv_refineries, UnitLastCreated());
+    UnitCreate(1, lv_minerals, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_point, (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(3))), ((lp_rotation + 180.0) + 90.0)), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(15))), (lp_rotation + 180.0)), (lp_rotation + 180.0));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    UnitGroupAdd(lib7A9A9B22_gv_refineries, UnitLastCreated());
+    UnitCreate(1, lv_minerals, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_point, (0.0 - ((SquareRoot(2.0) / 2.0) * IntToFixed(3))), ((lp_rotation + 180.0) + 90.0)), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(15))), (lp_rotation + 180.0)), (lp_rotation + 180.0));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    UnitGroupAdd(lib7A9A9B22_gv_refineries, UnitLastCreated());
+    UnitCreate(1, lv_unavailable, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(lp_point, (0.0 - ((SquareRoot(2.0) / 2.0) * IntToFixed(9))), ((lp_rotation + 180.0) + 90.0)), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(15))), (lp_rotation + 180.0)), (lp_rotation + 180.0));
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaPeripherals, UnitLastCreated());
+    UnitGroupAdd(lib7A9A9B22_gv_refineries, UnitLastCreated());
+    if ((lp_createMineralIncomeUnit == true)) {
+        lib7A9A9B22_gf_MineralIncomeCreate(lp_player);
+    }
+
+}
+
+void lib7A9A9B22_gf_StagingAreaTeamSet (playergroup lp_team0, int lp_team0NPC, point lp_team0Origin1, point lp_team0Origin2, point lp_team0Origin3, point lp_team0Origin4, point lp_team0Origin5, point lp_team0Origin6, playergroup lp_team1, int lp_team1NPC, point lp_team1Origin1, point lp_team1Origin2, point lp_team1Origin3, point lp_team1Origin4, point lp_team1Origin5, point lp_team1Origin6, playergroup lp_team2, int lp_team2NPC, point lp_team2Origin1, point lp_team2Origin2, point lp_team2Origin3, point lp_team2Origin4, point lp_team2Origin5, point lp_team2Origin6, playergroup lp_team3, int lp_team3NPC, point lp_team3Origin1, point lp_team3Origin2, point lp_team3Origin3, point lp_team3Origin4, point lp_team3Origin5, point lp_team3Origin6) {
+    int init_i;
+
+    // Variable Declarations
+    const int lv_teamCap = 3;
+    const int lv_playerCap = 5;
+    int lv_i;
+    int lv_t;
+    playergroup[lv_teamCap + 1] lv_localTeam;
+    point[lv_playerCap + 1][lv_teamCap + 1] lv_points;
+    int[lv_teamCap + 1] lv_maxTeamSize;
+    int[lv_teamCap + 1] lv_teamNPC;
+
+    // Automatic Variable Declarations
+    const int auto5DCB79FA_ae = lv_teamCap;
+    const int auto5DCB79FA_ai = 1;
+    const int autoBC6F0BF0_ae = lv_playerCap;
+    const int autoBC6F0BF0_ai = 1;
+    const int autoC39A975B_ae = lv_teamCap;
+    const int autoC39A975B_ai = 1;
+    int autoA1DC5933_ae;
+    const int autoA1DC5933_ai = 1;
+    const int auto93660F9E_n = 6;
+    int auto93660F9E_i;
+    const int autoC0DE4176_n = 6;
+    int autoC0DE4176_i;
+    const int auto934962FD_ae = lv_teamCap;
+    const int auto934962FD_ai = 1;
+    const int auto97EBAFFE_ae = lv_teamCap;
+    const int auto97EBAFFE_ai = 1;
+    const int auto4A53931A_ae = lv_teamCap;
+    const int auto4A53931A_ai = 1;
+    playergroup auto7B5EF7EC_g;
+    int auto7B5EF7EC_var;
+
+    // Variable Initialization
+    for (init_i = 0; init_i <= lv_teamCap; init_i += 1) {
+        lv_localTeam[init_i] = PlayerGroupEmpty();
+    }
+    for (init_i = 0; init_i <= lv_teamCap; init_i += 1) {
+        lv_teamNPC[init_i] = -1;
+    }
+
+    // Implementation
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_team0, lv_localTeam[0]);
+    lv_teamNPC[0] = lp_team0NPC;
+    lv_points[0][0] = lp_team0Origin1;
+    lv_points[1][0] = lp_team0Origin2;
+    lv_points[2][0] = lp_team0Origin3;
+    lv_points[3][0] = lp_team0Origin4;
+    lv_points[4][0] = lp_team0Origin5;
+    lv_points[5][0] = lp_team0Origin6;
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_team1, lv_localTeam[1]);
+    lv_teamNPC[1] = lp_team1NPC;
+    lv_points[0][1] = lp_team1Origin1;
+    lv_points[1][1] = lp_team1Origin2;
+    lv_points[2][1] = lp_team1Origin3;
+    lv_points[3][1] = lp_team1Origin4;
+    lv_points[4][1] = lp_team1Origin5;
+    lv_points[5][1] = lp_team1Origin6;
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_team2, lv_localTeam[2]);
+    lv_teamNPC[2] = lp_team2NPC;
+    lv_points[0][2] = lp_team2Origin1;
+    lv_points[1][2] = lp_team2Origin2;
+    lv_points[2][2] = lp_team2Origin3;
+    lv_points[3][2] = lp_team2Origin4;
+    lv_points[4][2] = lp_team2Origin5;
+    lv_points[5][2] = lp_team2Origin6;
+    libNtve_gf_AddPlayerGroupToPlayerGroup(lp_team3, lv_localTeam[3]);
+    lv_teamNPC[3] = lp_team3NPC;
+    lv_points[0][3] = lp_team3Origin1;
+    lv_points[1][3] = lp_team3Origin2;
+    lv_points[2][3] = lp_team3Origin3;
+    lv_points[3][3] = lp_team3Origin4;
+    lv_points[4][3] = lp_team3Origin5;
+    lv_points[5][3] = lp_team3Origin6;
+    lv_t = 0;
+    for ( ; ( (auto5DCB79FA_ai >= 0 && lv_t <= auto5DCB79FA_ae) || (auto5DCB79FA_ai < 0 && lv_t >= auto5DCB79FA_ae) ) ; lv_t += auto5DCB79FA_ai ) {
+        lv_i = 0;
+        for ( ; ( (autoBC6F0BF0_ai >= 0 && lv_i <= autoBC6F0BF0_ae) || (autoBC6F0BF0_ai < 0 && lv_i >= autoBC6F0BF0_ae) ) ; lv_i += autoBC6F0BF0_ai ) {
+            if ((lv_points[lv_i][lv_t] != null)) {
+                lv_maxTeamSize[lv_t] = (lv_i + 1);
+            }
+
+        }
+    }
+    lv_t = 0;
+    for ( ; ( (autoC39A975B_ai >= 0 && lv_t <= autoC39A975B_ae) || (autoC39A975B_ai < 0 && lv_t >= autoC39A975B_ae) ) ; lv_t += autoC39A975B_ai ) {
+        autoA1DC5933_ae = PlayerGroupCount(lv_localTeam[lv_t]);
+        lv_i = 1;
+        for ( ; ( (autoA1DC5933_ai >= 0 && lv_i <= autoA1DC5933_ae) || (autoA1DC5933_ai < 0 && lv_i >= autoA1DC5933_ae) ) ; lv_i += autoA1DC5933_ai ) {
+            if (((PlayerGroupHasPlayer(lv_localTeam[0], PlayerGroupPlayer(lv_localTeam[lv_t], lv_i)) == true) && (PlayerGroupHasPlayer(lv_localTeam[1], PlayerGroupPlayer(lv_localTeam[lv_t], lv_i)) == true))) {
+                PlayerGroupRemove(lv_localTeam[1], PlayerGroupPlayer(lv_localTeam[lv_t], lv_i));
+            }
+
+        }
+    }
+    for (auto93660F9E_i = 1; auto93660F9E_i <= auto93660F9E_n; auto93660F9E_i += 1) {
+        if ((PlayerGroupCount(lv_localTeam[0]) > lv_maxTeamSize[0])) {
+            PlayerGroupAdd(lv_localTeam[1], PlayerGroupPlayer(lv_localTeam[0], (lv_maxTeamSize[0] + 1)));
+            PlayerGroupRemove(lv_localTeam[0], PlayerGroupPlayer(lv_localTeam[0], (lv_maxTeamSize[0] + 1)));
+        }
+
+        if ((PlayerGroupCount(lv_localTeam[1]) > lv_maxTeamSize[1])) {
+            PlayerGroupAdd(lv_localTeam[0], PlayerGroupPlayer(lv_localTeam[1], (lv_maxTeamSize[1] + 1)));
+            PlayerGroupRemove(lv_localTeam[1], PlayerGroupPlayer(lv_localTeam[1], (lv_maxTeamSize[1] + 1)));
+        }
+
+    }
+    for (autoC0DE4176_i = 1; autoC0DE4176_i <= autoC0DE4176_n; autoC0DE4176_i += 1) {
+        lv_t = 0;
+        for ( ; ( (auto934962FD_ai >= 0 && lv_t <= auto934962FD_ae) || (auto934962FD_ai < 0 && lv_t >= auto934962FD_ae) ) ; lv_t += auto934962FD_ai ) {
+            if ((PlayerGroupCount(lv_localTeam[lv_t]) > lv_maxTeamSize[lv_t])) {
+                PlayerGroupRemove(lv_localTeam[lv_t], PlayerGroupPlayer(lv_localTeam[lv_t], (lv_maxTeamSize[lv_t] + 1)));
+            }
+
+        }
+    }
+    lv_t = 0;
+    for ( ; ( (auto97EBAFFE_ai >= 0 && lv_t <= auto97EBAFFE_ae) || (auto97EBAFFE_ai < 0 && lv_t >= auto97EBAFFE_ae) ) ; lv_t += auto97EBAFFE_ai ) {
+        libDDE92A83_gf_SetOriginPoints(lv_localTeam[lv_t], lv_points[0][lv_t], lv_points[1][lv_t], lv_points[2][lv_t], lv_points[3][lv_t], lv_points[4][lv_t], lv_points[5][lv_t], null, null, null, null, null, null, null, null);
+    }
+    libNtve_gf_SetAllianceBetweenTwoPlayerGroups(lv_localTeam[0], lv_localTeam[1], libNtve_ge_AllianceSetting_Enemy);
+    lv_t = 0;
+    for ( ; ( (auto4A53931A_ai >= 0 && lv_t <= auto4A53931A_ae) || (auto4A53931A_ai < 0 && lv_t >= auto4A53931A_ae) ) ; lv_t += auto4A53931A_ai ) {
+        PlayerGroupClear(lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t]);
+        libNtve_gf_AddPlayerGroupToPlayerGroup(lv_localTeam[lv_t], lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t]);
+        libNtve_gf_SetPlayerGroupAlliance(lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t], libNtve_ge_AllianceSetting_AllyWithSharedVision);
+        auto7B5EF7EC_g = lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t];
+        auto7B5EF7EC_var = -1;
+        while (true) {
+            auto7B5EF7EC_var = PlayerGroupNextPlayer(auto7B5EF7EC_g, auto7B5EF7EC_var);
+            if (auto7B5EF7EC_var < 0) { break; }
+            if ((lv_teamNPC[lv_t] >= 0)) {
+                lib7A9A9B22_gv_playerNPC[auto7B5EF7EC_var] = lv_teamNPC[lv_t];
+                libNtve_gf_SetAlliance(auto7B5EF7EC_var, lv_teamNPC[lv_t], libNtve_ge_AllianceSetting_AllyWithSharedVision);
+            }
+
+        }
+    }
+}
+
+void lib7A9A9B22_gf_StagingAreaTeamCreate (string lp_stagingAreaType, int lp_team, fixed lp_facing, bool lp_createMineralFields, point lp_waypointSpawn, point lp_waypoint1, point lp_waypoint2, point lp_waypoint3, point lp_waypoint4, point lp_waypoint5, point lp_waypoint6, point lp_waypoint7, point lp_waypoint8, point lp_waypoint9) {
+    // Automatic Variable Declarations
+    playergroup autoCBB9EEEF_g;
+    int autoCBB9EEEF_var;
+
+    // Implementation
+    autoCBB9EEEF_g = lib7A9A9B22_gv_stagingAreaTeamInternal[lp_team];
+    autoCBB9EEEF_var = -1;
+    while (true) {
+        autoCBB9EEEF_var = PlayerGroupNextPlayer(autoCBB9EEEF_g, autoCBB9EEEF_var);
+        if (autoCBB9EEEF_var < 0) { break; }
+        lib7A9A9B22_gf_StagingAreaCreate(autoCBB9EEEF_var, lp_facing, libDDE92A83_gv_playerOrigin[autoCBB9EEEF_var], lp_createMineralFields);
+        lib7A9A9B22_gf_StagingAreaSetWaypoints(UnitLastCreated(), lp_waypointSpawn, lp_waypoint1, lp_waypoint2, lp_waypoint3, lp_waypoint4, lp_waypoint5, lp_waypoint6, lp_waypoint7, lp_waypoint8, lp_waypoint9);
+    }
+}
+
+trigger auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_Trigger = null;
+int auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_lp_player;
+
+void lib7A9A9B22_gf_StagingAreaRemovePlayer (int lp_player) {
+    auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_lp_player = lp_player;
+
+    if (auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_Trigger == null) {
+        auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_Trigger = TriggerCreate("auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_Trigger, false, false);
+}
+
+bool auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib7A9A9B22_gf_StagingAreaRemovePlayer_lp_player;
+
+    // Variable Declarations
+    int lv_t;
+    int lv_localPlayer;
+    int lv_team;
+    unitgroup lv_hiddenUnits;
+    unitgroup lv_delayedRemoval;
+
+    // Automatic Variable Declarations
+    const int auto6F28BCC9_ae = 3;
+    const int auto6F28BCC9_ai = 1;
+    unitgroup autoF0D2DF49_g;
+    int autoF0D2DF49_u;
+    unit autoF0D2DF49_var;
+    unitgroup auto566E63DD_g;
+    int auto566E63DD_u;
+    unit auto566E63DD_var;
+    unitgroup auto14ED1D07_g;
+    int auto14ED1D07_u;
+    unit auto14ED1D07_var;
+    playergroup auto4C3A8647_g;
+    int auto4C3A8647_var;
+    unitgroup auto90CF3A39_g;
+    int auto90CF3A39_u;
+    unit auto90CF3A39_var;
+    playergroup autoBF6691EE_g;
+    int autoBF6691EE_var;
+    unitgroup auto5DD8C864_g;
+    int auto5DD8C864_u;
+    unit auto5DD8C864_var;
+    playergroup auto78104C15_g;
+    int auto78104C15_var;
+    unitgroup auto2D8BA7FC_g;
+    int auto2D8BA7FC_u;
+    unit auto2D8BA7FC_var;
+    unitgroup auto2DB9356F_g;
+    int auto2DB9356F_u;
+    unit auto2DB9356F_var;
+    playergroup autoEAF45AC6_g;
+    int autoEAF45AC6_var;
+    unitgroup autoB3973BD3_g;
+    int autoB3973BD3_u;
+    unit autoB3973BD3_var;
+    unitgroup autoFE68B470_g;
+    int autoFE68B470_u;
+    unit autoFE68B470_var;
+
+    // Variable Initialization
+    lv_hiddenUnits = UnitGroupEmpty();
+    lv_delayedRemoval = UnitGroupEmpty();
+
+    // Implementation
+    lv_localPlayer = libNtve_gf_ArithmeticIntClamp(lp_player, 0, 15);
+    lv_t = 0;
+    for ( ; ( (auto6F28BCC9_ai >= 0 && lv_t <= auto6F28BCC9_ae) || (auto6F28BCC9_ai < 0 && lv_t >= auto6F28BCC9_ae) ) ; lv_t += auto6F28BCC9_ai ) {
+        if ((libDDE92A83_gv_gameOver == false) && (PlayerGroupHasPlayer(lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t], lv_localPlayer) == true)) {
+            PlayerGroupRemove(lib7A9A9B22_gv_stagingAreaTeamInternal[lv_t], lv_localPlayer);
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaMarkerEast", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaMarkerNorth", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaMarkerSouth", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaMarkerWest", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaPowerVisualDummy", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaPowerSourceMedium", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("StagingAreaWeather", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaFootprintEast", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaFootprintNorth", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaFootprintSouth", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            UnitGroupAddUnitGroup(lv_hiddenUnits, UnitGroup("AreaFootprintWest", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0));
+            autoF0D2DF49_g = lv_hiddenUnits;
+            autoF0D2DF49_u = UnitGroupCount(autoF0D2DF49_g, c_unitCountAll);
+            for (;; autoF0D2DF49_u -= 1) {
+                autoF0D2DF49_var = UnitGroupUnitFromEnd(autoF0D2DF49_g, autoF0D2DF49_u);
+                if (autoF0D2DF49_var == null) { break; }
+                UnitRemove(autoF0D2DF49_var);
+            }
+            auto566E63DD_g = UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreas(), lv_localPlayer, 0);
+            auto566E63DD_u = UnitGroupCount(auto566E63DD_g, c_unitCountAll);
+            for (;; auto566E63DD_u -= 1) {
+                auto566E63DD_var = UnitGroupUnitFromEnd(auto566E63DD_g, auto566E63DD_u);
+                if (auto566E63DD_var == null) { break; }
+                UnitRemove(auto566E63DD_var);
+            }
+            auto14ED1D07_g = UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreaSpawners(), lv_localPlayer, 0);
+            auto14ED1D07_u = UnitGroupCount(auto14ED1D07_g, c_unitCountAll);
+            for (;; auto14ED1D07_u -= 1) {
+                auto14ED1D07_var = UnitGroupUnitFromEnd(auto14ED1D07_g, auto14ED1D07_u);
+                if (auto14ED1D07_var == null) { break; }
+                UnitSetOwner(auto14ED1D07_var, 0, false);
+                UnitBehaviorAdd(auto14ED1D07_var, "UnitSuicideCrystalPrecursor", auto14ED1D07_var, 1);
+                auto4C3A8647_g = PlayerGroupAll();
+                auto4C3A8647_var = -1;
+                while (true) {
+                    auto4C3A8647_var = PlayerGroupNextPlayer(auto4C3A8647_g, auto4C3A8647_var);
+                    if (auto4C3A8647_var < 0) { break; }
+                    libNtve_gf_ShareVisionofUnit(auto14ED1D07_var, true, auto4C3A8647_var);
+                }
+            }
+            auto90CF3A39_g = UnitGroupFilterPlayer(lib7A9A9B22_gv_stagingAreaPeripherals, lv_localPlayer, 0);
+            auto90CF3A39_u = UnitGroupCount(auto90CF3A39_g, c_unitCountAll);
+            for (;; auto90CF3A39_u -= 1) {
+                auto90CF3A39_var = UnitGroupUnitFromEnd(auto90CF3A39_g, auto90CF3A39_u);
+                if (auto90CF3A39_var == null) { break; }
+                UnitSetOwner(auto90CF3A39_var, 0, false);
+                UnitBehaviorAdd(auto90CF3A39_var, "UnitSuicideCrystalPrecursor", auto90CF3A39_var, 1);
+                autoBF6691EE_g = PlayerGroupAll();
+                autoBF6691EE_var = -1;
+                while (true) {
+                    autoBF6691EE_var = PlayerGroupNextPlayer(autoBF6691EE_g, autoBF6691EE_var);
+                    if (autoBF6691EE_var < 0) { break; }
+                    libNtve_gf_ShareVisionofUnit(auto90CF3A39_var, true, autoBF6691EE_var);
+                }
+            }
+            auto5DD8C864_g = UnitGroup("StagingAreaDecal", lv_localPlayer, RegionEntireMap(), UnitFilter(0, 0, 0, 0), 0);
+            auto5DD8C864_u = UnitGroupCount(auto5DD8C864_g, c_unitCountAll);
+            for (;; auto5DD8C864_u -= 1) {
+                auto5DD8C864_var = UnitGroupUnitFromEnd(auto5DD8C864_g, auto5DD8C864_u);
+                if (auto5DD8C864_var == null) { break; }
+                UnitSetOwner(auto5DD8C864_var, 0, false);
+                UnitBehaviorAdd(auto5DD8C864_var, "UnitSuicideCrystalPrecursor", auto5DD8C864_var, 1);
+                auto78104C15_g = PlayerGroupAll();
+                auto78104C15_var = -1;
+                while (true) {
+                    auto78104C15_var = PlayerGroupNextPlayer(auto78104C15_g, auto78104C15_var);
+                    if (auto78104C15_var < 0) { break; }
+                    libNtve_gf_ShareVisionofUnit(auto5DD8C864_var, true, auto78104C15_var);
+                }
+            }
+            if ((lib7A9A9B22_gv_playerNPC[lp_player] >= 0)) {
+                auto2D8BA7FC_g = UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreaSpawns(), lv_localPlayer, 0);
+                auto2D8BA7FC_u = UnitGroupCount(auto2D8BA7FC_g, c_unitCountAll);
+                for (;; auto2D8BA7FC_u -= 1) {
+                    auto2D8BA7FC_var = UnitGroupUnitFromEnd(auto2D8BA7FC_g, auto2D8BA7FC_u);
+                    if (auto2D8BA7FC_var == null) { break; }
+                    UnitSetOwner(auto2D8BA7FC_var, lib7A9A9B22_gv_playerNPC[lv_localPlayer], false);
+                }
+            }
+
+            UnitGroupAddUnitGroup(lv_delayedRemoval, UnitGroupFilterPlayer(lib7A9A9B22_gv_stagingAreaTeamColor, lv_localPlayer, 0));
+            auto2DB9356F_g = lv_delayedRemoval;
+            auto2DB9356F_u = UnitGroupCount(auto2DB9356F_g, c_unitCountAll);
+            for (;; auto2DB9356F_u -= 1) {
+                auto2DB9356F_var = UnitGroupUnitFromEnd(auto2DB9356F_g, auto2DB9356F_u);
+                if (auto2DB9356F_var == null) { break; }
+                UnitSetOwner(auto2DB9356F_var, 0, false);
+                libNtve_gf_SendActorMessageToUnit(auto2DB9356F_var, "SetOpacity 0.000000 1.500000");
+                autoEAF45AC6_g = PlayerGroupAll();
+                autoEAF45AC6_var = -1;
+                while (true) {
+                    autoEAF45AC6_var = PlayerGroupNextPlayer(autoEAF45AC6_g, autoEAF45AC6_var);
+                    if (autoEAF45AC6_var < 0) { break; }
+                    libNtve_gf_ShareVisionofUnit(auto2DB9356F_var, true, autoEAF45AC6_var);
+                }
+            }
+            autoB3973BD3_g = UnitGroupFilterPlayer(lib7A9A9B22_gv_stagingAreaGrid, lv_localPlayer, 0);
+            autoB3973BD3_u = UnitGroupCount(autoB3973BD3_g, c_unitCountAll);
+            for (;; autoB3973BD3_u -= 1) {
+                autoB3973BD3_var = UnitGroupUnitFromEnd(autoB3973BD3_g, autoB3973BD3_u);
+                if (autoB3973BD3_var == null) { break; }
+                UnitSetOwner(autoB3973BD3_var, 0, false);
+            }
+            Wait(4.0, c_timeGame);
+            autoFE68B470_g = lv_delayedRemoval;
+            autoFE68B470_u = UnitGroupCount(autoFE68B470_g, c_unitCountAll);
+            for (;; autoFE68B470_u -= 1) {
+                autoFE68B470_var = UnitGroupUnitFromEnd(autoFE68B470_g, autoFE68B470_u);
+                if (autoFE68B470_var == null) { break; }
+                UnitRemove(autoFE68B470_var);
+            }
+        }
+
+    }
+    return true;
+}
+
+void lib7A9A9B22_gf_StagingAreaRecallWorkers (playergroup lp_players) {
+    // Automatic Variable Declarations
+    playergroup auto7242EAA8_g;
+    int auto7242EAA8_var;
+    unitgroup autoEC80D441_g;
+    int autoEC80D441_u;
+    unit autoEC80D441_var;
+
+    // Implementation
+    auto7242EAA8_g = lp_players;
+    auto7242EAA8_var = -1;
+    while (true) {
+        auto7242EAA8_var = PlayerGroupNextPlayer(auto7242EAA8_g, auto7242EAA8_var);
+        if (auto7242EAA8_var < 0) { break; }
+        if ((UnitGroupCount(UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreas(), auto7242EAA8_var, 0), c_unitCountAlive) >= 1) && (UnitGroupCount(libDDE92A83_gf_PlayerWorkers(auto7242EAA8_var), c_unitCountAlive) >= 1)) {
+            autoEC80D441_g = libDDE92A83_gf_PlayerWorkers(auto7242EAA8_var);
+            autoEC80D441_u = UnitGroupCount(autoEC80D441_g, c_unitCountAll);
+            for (;; autoEC80D441_u -= 1) {
+                autoEC80D441_var = UnitGroupUnitFromEnd(autoEC80D441_g, autoEC80D441_u);
+                if (autoEC80D441_var == null) { break; }
+                UnitSetPosition(autoEC80D441_var, UnitGetPosition(UnitGroupUnit(UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreas(), auto7242EAA8_var, 0), 1)), false);
+                UnitSetFacing(autoEC80D441_var, UnitGetCustomValue(UnitGroupUnit(UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreas(), auto7242EAA8_var, 0), 1), lib7A9A9B22_gv_customValueUnitSpawnAreaUnitFacing), 0.0);
+            }
+        }
+
+    }
+}
+
+void lib7A9A9B22_gf_StagingAreaSetTerrain (int lp_player, string lp_terrain) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((lp_terrain != "Terrain_Toggle_Hide")) {
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "Terrain_Toggle_Show", 0);
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "Terrain_Toggle_Show", 1);
+        libNtve_gf_SetUpgradeLevelForPlayer(lp_player, "Terrain_Toggle_Show", 0);
+    }
+
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lp_terrain, 0);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lp_terrain, 1);
+    libNtve_gf_SetUpgradeLevelForPlayer(lp_player, lp_terrain, 0);
+}
+
+void lib7A9A9B22_gf_StagingAreaCreateTestUnits (int lp_player, string lp_unitType) {
+    // Variable Declarations
+    fixed lv_facing;
+    int lv_i;
+
+    // Automatic Variable Declarations
+    const int autoAEC3507F_ae = 12;
+    const int autoAEC3507F_ai = 2;
+
+    // Variable Initialization
+    lv_facing = 225.0;
+
+    // Implementation
+    lv_i = -12;
+    for ( ; ( (autoAEC3507F_ai >= 0 && lv_i <= autoAEC3507F_ae) || (autoAEC3507F_ai < 0 && lv_i >= autoAEC3507F_ae) ) ; lv_i += autoAEC3507F_ai ) {
+        UnitCreate(1, lp_unitType, c_unitCreateIgnorePlacement, lp_player, PointWithOffsetPolar(PointWithOffsetPolar(UnitGetPosition(UnitGroupUnit(UnitGroupFilterPlayer(lib7A9A9B22_gf_StagingAreas(), lp_player, 0), 1)), (0.0 - ((SquareRoot(2.0) / 2.0) * IntToFixed(lv_i))), (lv_facing + 90.0)), (0.0 + ((SquareRoot(2.0) / 2.0) * IntToFixed(2))), lv_facing), lv_facing);
+        UnitCreateEffectUnit(UnitLastCreated(), "UnitSpawner", UnitLastCreated());
+    }
+}
+
+void lib7A9A9B22_gf_StagingAreaFlairPreview (point lp_point, string lp_flair) {
+    // Automatic Variable Declarations
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2TeamColor", 0, 1, lp_point);
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2BorderGrid", 0, 1, lp_point);
+    CameraPan(1, PointWithOffsetPolar(lp_point, -0.5, 240.0), 0.0, -1, 10.0, false);
+    VisRevealArea(1, RegionEntireMap(), 0.0, false);
+    CameraLockInput(1, true);
+    libNtve_gf_HideGameUI(false, PlayerGroupAll());
+    CameraSetValue(1, c_cameraValueDistance, 48.0, 0.0, -1, 10.0);
+    CameraSetValue(1, c_cameraValueYaw, 240.0, 0.0, -1, 10.0);
+    libNtve_gf_SetUpgradeLevelForPlayer(1, lp_flair, 1);
+}
+
+void lib7A9A9B22_gf_PreparationAreaCreate (point lp_point, string lp_spawnTimer, int lp_index) {
+    // Automatic Variable Declarations
+    string autoA2348208_val;
+
+    // Implementation
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2TeamColor", 0, 0, lp_point);
+    UnitSetCustomValue(UnitLastCreated(), 0, IntToFixed(lp_index));
+    UnitGroupAdd(lib7A9A9B22_gv_preparationArea, UnitLastCreated());
+    libNtve_gf_CreateUnitsWithDefaultFacing(1, "Area3x2BorderDash", 0, 0, lp_point);
+    UnitSetCustomValue(UnitLastCreated(), 0, IntToFixed(lp_index));
+    UnitGroupAdd(lib7A9A9B22_gv_preparationArea, UnitLastCreated());
+    autoA2348208_val = lp_spawnTimer;
+    if (autoA2348208_val == "AreaSpawnIndicatorSW") {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaSpawnIndicatorSW", 0, 0, PointWithOffset(lp_point, 6.0, 6.0));
+        UnitSetCustomValue(UnitLastCreated(), 0, IntToFixed(lp_index));
+        UnitGroupAdd(lib7A9A9B22_gv_preparationArea, UnitLastCreated());
+    }
+    else if (autoA2348208_val == "AreaSpawnIndicatorNE") {
+        libNtve_gf_CreateUnitsWithDefaultFacing(1, "AreaSpawnIndicatorNE", 0, 0, PointWithOffset(lp_point, -6.0, -6.0));
+        UnitSetCustomValue(UnitLastCreated(), 0, IntToFixed(lp_index));
+        UnitGroupAdd(lib7A9A9B22_gv_preparationArea, UnitLastCreated());
+    }
+    else {
+    }
+}
+
+trigger auto_lib7A9A9B22_gf_PreparationAreaPrepare_Trigger = null;
+int auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_player;
+int auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_index;
+
+void lib7A9A9B22_gf_PreparationAreaPrepare (int lp_player, int lp_index) {
+    auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_player = lp_player;
+    auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_index = lp_index;
+
+    if (auto_lib7A9A9B22_gf_PreparationAreaPrepare_Trigger == null) {
+        auto_lib7A9A9B22_gf_PreparationAreaPrepare_Trigger = TriggerCreate("auto_lib7A9A9B22_gf_PreparationAreaPrepare_TriggerFunc");
+    }
+
+    TriggerExecute(auto_lib7A9A9B22_gf_PreparationAreaPrepare_Trigger, false, false);
+}
+
+bool auto_lib7A9A9B22_gf_PreparationAreaPrepare_TriggerFunc (bool testConds, bool runActions) {
+    int lp_player = auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_player;
+    int lp_index = auto_lib7A9A9B22_gf_PreparationAreaPrepare_lp_index;
+
+    // Variable Declarations
+    bool lv_flairUpdate;
+
+    // Automatic Variable Declarations
+    unitgroup auto7E05E69F_g;
+    int auto7E05E69F_u;
+    unit auto7E05E69F_var;
+    unitgroup autoF5F0A3B5_g;
+    int autoF5F0A3B5_u;
+    unit autoF5F0A3B5_var;
+    unitgroup auto257386C8_g;
+    int auto257386C8_u;
+    unit auto257386C8_var;
+
+    // Variable Initialization
+
+    // Implementation
+    Wait(0.0625, c_timeGame);
+    auto7E05E69F_g = lib7A9A9B22_gv_preparationArea;
+    auto7E05E69F_u = UnitGroupCount(auto7E05E69F_g, c_unitCountAll);
+    for (;; auto7E05E69F_u -= 1) {
+        auto7E05E69F_var = UnitGroupUnitFromEnd(auto7E05E69F_g, auto7E05E69F_u);
+        if (auto7E05E69F_var == null) { break; }
+        if ((UnitGetCustomValue(auto7E05E69F_var, 0) == lp_index)) {
+            if ((libDDE92A83_gv_gameOver == false) && (((lp_player >= 0) && (lp_player <= 15)) == true)) {
+                if ((UnitGetOwner(auto7E05E69F_var) != lp_player)) {
+                    lv_flairUpdate = true;
+                    libNtve_gf_SendActorMessageToUnit(auto7E05E69F_var, "SetOpacity 0.000000 0.500000");
+                }
+
+            }
+
+        }
+
+    }
+    Wait(0.375, c_timeGame);
+    autoF5F0A3B5_g = lib7A9A9B22_gv_preparationArea;
+    autoF5F0A3B5_u = UnitGroupCount(autoF5F0A3B5_g, c_unitCountAll);
+    for (;; autoF5F0A3B5_u -= 1) {
+        autoF5F0A3B5_var = UnitGroupUnitFromEnd(autoF5F0A3B5_g, autoF5F0A3B5_u);
+        if (autoF5F0A3B5_var == null) { break; }
+        if ((UnitGetCustomValue(autoF5F0A3B5_var, 0) == lp_index) && (libDDE92A83_gv_gameOver == false) && (((lp_player >= 0) && (lp_player <= 15)) == true)) {
+            UnitSetOwner(autoF5F0A3B5_var, lp_player, true);
+        }
+
+    }
+    Wait(0.375, c_timeGame);
+    auto257386C8_g = lib7A9A9B22_gv_preparationArea;
+    auto257386C8_u = UnitGroupCount(auto257386C8_g, c_unitCountAll);
+    for (;; auto257386C8_u -= 1) {
+        auto257386C8_var = UnitGroupUnitFromEnd(auto257386C8_g, auto257386C8_u);
+        if (auto257386C8_var == null) { break; }
+        if ((UnitGetCustomValue(auto257386C8_var, 0) == lp_index) && (libDDE92A83_gv_gameOver == false) && (lv_flairUpdate == true) && (((lp_player >= 0) && (lp_player <= 15)) == true)) {
+            libNtve_gf_SendActorMessageToUnit(auto257386C8_var, "Signal FlairUpdate");
+            libNtve_gf_SendActorMessageToUnit(auto257386C8_var, "SetOpacity 1.000000 0.500000");
+        }
+
+    }
+    return true;
+}
+
+void lib7A9A9B22_gf_CopyAbilityAutocastSettings (unit lp_source, unit lp_target) {
+    // Automatic Variable Declarations
+    string auto097A02B0_val;
+
+    // Implementation
+    auto097A02B0_val = UnitGetType(lp_target);
+    if (auto097A02B0_val == "Zealot") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Charge", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Stalker") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Blink", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Sentry") {
+        UnitCreateEffectUnit(lp_target, "CopyAutocast", lp_source);
+    }
+    else if (auto097A02B0_val == "Mothership") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("TemporalField", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "MothershipCore") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("TemporalField", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Oracle") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("OracleWeapon", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "HighTemplar") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Feedback", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("PsiStorm", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Phoenix") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("GravitonBeam", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Disruptor") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("PurificationNova", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Adept") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("AdeptPhaseShift", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Marine") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Stimpack", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Marauder") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("StimpackMarauder", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Ghost") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("ChannelSnipe", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("EMP", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("GhostCloak", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Medivac") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("MedivacSpeedBoost", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "VikingAssault") {
+        lib7A9A9B22_gf_CopyAutocastModeSeparateAbilities(AbilityCommand("VikingFighterPlaceFromVikingAssault", 0), AbilityCommand("FighterMode", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "VikingFighter") {
+        lib7A9A9B22_gf_CopyAutocastModeSeparateAbilities(AbilityCommand("VikingAssaultPlaceFromVikingFighter", 0), AbilityCommand("AssaultMode", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Banshee") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("BansheeCloak", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Raven") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("BuildAutoTurret", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("PlacePointDefenseDrone", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("SeekerMissile", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("RavenShredderMissile", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("RavenScramblerMissile", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("RavenRepairDrone", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "SiegeTank") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("SiegeMode", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Battlecruiser") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Yamato", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Cyclone") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("LockOn", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Liberator") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("LiberatorAGTarget", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Reaper") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("KD8Charge", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "VultureStarlight") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("VultureSpiderMines", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Thor") {
+        if ((UnitHasBehavior2(lp_source, "ThorAAToggle") == true)) {
+            UnitBehaviorAdd(lp_target, "ThorAAToggle", lp_source, 1);
+        }
+
+    }
+    else if (auto097A02B0_val == "Roach") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("BurrowRoachDown", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Queen") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Transfusion", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Corruptor") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Corruption", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("CausticSpray", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Ravager") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("RavagerCorrosiveBile", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Infestor") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("InfestedTerrans", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("FungalGrowth", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("FungalGrowth", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "Viper") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("Yoink", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("BlindingCloud", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("ParasiticBomb", 0), lp_source, lp_target);
+    }
+    else if (auto097A02B0_val == "HeroKerriganWaveUnit") {
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("KerriganLeapingStrike", 0), lp_source, lp_target);
+        lib7A9A9B22_gf_CopyAutocastMode(AbilityCommand("KerriganPsionicShift", 0), lp_source, lp_target);
+    }
+    else {
+    }
+}
+
+void lib7A9A9B22_gf_CopyAutocastMode (abilcmd lp_ability, unit lp_source, unit lp_target) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitCheckAbilCmdState(lp_source, lp_ability, c_cmdStateIsAutoCast) == false)) {
+        UnitIssueOrder(lp_target, OrderSetAutoCast(lp_ability, false), c_orderQueueReplace);
+    }
+
+}
+
+void lib7A9A9B22_gf_CopyAutocastModeSeparateAbilities (abilcmd lp_sourceAbility, abilcmd lp_targetAbility, unit lp_source, unit lp_target) {
+    // Automatic Variable Declarations
+    // Implementation
+    if ((UnitCheckAbilCmdState(lp_source, lp_sourceAbility, c_cmdStateIsAutoCast) == false)) {
+        UnitIssueOrder(lp_target, OrderSetAutoCast(lp_targetAbility, false), c_orderQueueReplace);
+    }
+
+}
+
+// Triggers
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Stun
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitStun_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(lib7A9A9B22_gv_waypointGroup, EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7A9A9B22_gf_WaypointRefreshOrder(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitStun_Init () {
+    lib7A9A9B22_gt_UnitStun = TriggerCreate("lib7A9A9B22_gt_UnitStun_Func");
+    TriggerEnable(lib7A9A9B22_gt_UnitStun, false);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_UnitStun, null, "GravitonBeam", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_UnitStun, null, "FungalGrowthMovement", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_UnitStun, null, "OracleStasisTrapTarget", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_UnitStun, null, "Stun", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Idle
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitIdle_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    unitgroup auto832B1061_g;
+    int auto832B1061_u;
+    unit auto832B1061_var;
+
+    // Conditions
+    if (testConds) {
+        if (!((UnitGroupHasUnit(lib7A9A9B22_gv_waypointGroup, EventUnit()) == true))) {
+            return false;
+        }
+    }
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    if ((UnitGroupHasUnit(lib7A9A9B22_gv_waypointGroup, EventUnit()) == true) && (DistanceBetweenPoints(UnitGetPosition(EventUnit()), Point(UnitGetCustomValue(EventUnit(), (lib7A9A9B22_gv_customValueWaypoint1X + (FixedToInt(UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent)) * 2))), UnitGetCustomValue(EventUnit(), (lib7A9A9B22_gv_customValueWaypoint1Y + (FixedToInt(UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent)) * 2))))) < 1.0) && (UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent) < UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderMax))) {
+        UnitSetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent, IntToFixed(libNtve_gf_ArithmeticIntClamp((FixedToInt(UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent)) + 1), 0, lib7A9A9B22_gv_waypointMax)));
+        auto832B1061_g = UnitGroup(null, UnitGetOwner(EventUnit()), RegionCircle(UnitGetPosition(EventUnit()), 8.5), UnitFilter(0, 0, (1 << c_targetFilterMissile), (1 << (c_targetFilterDead - 32)) | (1 << (c_targetFilterHidden - 32))), 0);
+        auto832B1061_u = UnitGroupCount(auto832B1061_g, c_unitCountAll);
+        for (;; auto832B1061_u -= 1) {
+            auto832B1061_var = UnitGroupUnitFromEnd(auto832B1061_g, auto832B1061_u);
+            if (auto832B1061_var == null) { break; }
+            if ((UnitGetCustomValue(auto832B1061_var, lib7A9A9B22_gv_customValueOrderCurrent) == (UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent) - 1.0)) && (UnitGroupHasUnit(lib7A9A9B22_gv_waypointGroup, auto832B1061_var) == true) && (auto832B1061_var != EventUnit())) {
+                UnitSetCustomValue(auto832B1061_var, lib7A9A9B22_gv_customValueOrderCurrent, UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueOrderCurrent));
+                lib7A9A9B22_gf_WaypointRefreshOrder(auto832B1061_var);
+            }
+
+        }
+    }
+
+    lib7A9A9B22_gf_WaypointRefreshOrder(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitIdle_Init () {
+    lib7A9A9B22_gt_UnitIdle = TriggerCreate("lib7A9A9B22_gt_UnitIdle_Func");
+    TriggerEnable(lib7A9A9B22_gt_UnitIdle, false);
+    TriggerAddEventUnitBecomesIdle(lib7A9A9B22_gt_UnitIdle, null, true);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Morph
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitMorph_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7A9A9B22_gf_WaypointRefreshOrder(EventUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitMorph_Init () {
+    lib7A9A9B22_gt_UnitMorph = TriggerCreate("lib7A9A9B22_gt_UnitMorph_Func");
+    TriggerEnable(lib7A9A9B22_gt_UnitMorph, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitMorph, null, AbilityCommand("Unsiege", 0), c_abilMorphStageMoverEnd, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitMorph, null, AbilityCommand("BurrowRoachUp", 0), c_abilMorphStageMoverEnd, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitMorph, null, AbilityCommand("WidowMineBurrow", 0), c_abilMorphStageMoverEnd, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitMorph, null, AbilityCommand("WidowMineUnburrow", 0), c_abilMorphStageMoverEnd, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitMorph, null, AbilityCommand("MorphToInfestedTerran", 0), c_unitAbilStageComplete, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Summon
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitSummon_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetCustomValue(EventUnitCreatedUnit(), lib7A9A9B22_gv_customValueWaypoint1X, UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueWaypoint1X));
+    UnitSetCustomValue(EventUnitCreatedUnit(), lib7A9A9B22_gv_customValueWaypoint1Y, UnitGetCustomValue(EventUnit(), lib7A9A9B22_gv_customValueWaypoint1Y));
+    UnitGroupAdd(lib7A9A9B22_gv_waypointGroup, EventUnitCreatedUnit());
+    lib7A9A9B22_gf_WaypointRefreshOrder(EventUnitCreatedUnit());
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitSummon_Init () {
+    lib7A9A9B22_gt_UnitSummon = TriggerCreate("lib7A9A9B22_gt_UnitSummon_Func");
+    TriggerEnable(lib7A9A9B22_gt_UnitSummon, false);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationArchon", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationColossus", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationHighTemplar", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationImmortal", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationPhoenix", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationProbe", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationStalker", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationVoidRay", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationWarpPrism", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationZealot", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "HallucinationOracle", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "InfestedTerrans", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "SwarmHostSpawnLocusts", null);
+    TriggerAddEventUnitCreated(lib7A9A9B22_gt_UnitSummon, null, "SpawnLocustsTargeted", null);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Neural Parasite On
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_NeuralParasiteOn_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorAdd(EventUnit(), "NeuralParasiteAttack", UnitBehaviorEffectUnit(EventUnit(), "NeuralParasite", c_effectUnitCaster, 0), 1);
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_NeuralParasiteOn_Init () {
+    lib7A9A9B22_gt_NeuralParasiteOn = TriggerCreate("lib7A9A9B22_gt_NeuralParasiteOn_Func");
+    TriggerEnable(lib7A9A9B22_gt_NeuralParasiteOn, false);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOn, null, "NeuralParasite", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOn, null, "DarkArchonStarlightMindControl", c_unitBehaviorChangeCreate);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOn, null, "EnergizerReclamation", c_unitBehaviorChangeCreate);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Neural Parasite Off
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_NeuralParasiteOff_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitBehaviorRemove(EventUnit(), "NeuralParasiteAttack", 1);
+    if ((UnitGroupHasUnit(lib7A9A9B22_gv_waypointGroup, EventUnit()) == true)) {
+        lib7A9A9B22_gf_WaypointRefreshOrder(EventUnit());
+    }
+    else {
+        UnitIssueOrder(EventUnit(), OrderTargetingPoint(AbilityCommand("AttackWarpPrism", 0), UnitGetPosition(EventUnit())), c_orderQueueReplace);
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_NeuralParasiteOff_Init () {
+    lib7A9A9B22_gt_NeuralParasiteOff = TriggerCreate("lib7A9A9B22_gt_NeuralParasiteOff_Func");
+    TriggerEnable(lib7A9A9B22_gt_NeuralParasiteOff, false);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOff, null, "NeuralParasite", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOff, null, "DarkArchonStarlightMindControl", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOff, null, "DarkArchonStarlightConfusion", c_unitBehaviorChangeDestroy);
+    TriggerAddEventUnitBehaviorChange(lib7A9A9B22_gt_NeuralParasiteOff, null, "EnergizerReclamation", c_unitBehaviorChangeDestroy);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Equipment Shop Birth
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_EquipmentShopBirth_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergyMax, UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergyMax, c_unitPropCurrent));
+    UnitSetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitTarget), c_unitPropEnergy, UnitGetPropertyFixed(EventPlayerEffectUsedUnit(c_effectUnitCaster), c_unitPropEnergy, c_unitPropCurrent));
+    UnitGroupAdd(lib7A9A9B22_gv_equipmentShop, EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_EquipmentShopBirth_Init () {
+    lib7A9A9B22_gt_EquipmentShopBirth = TriggerCreate("lib7A9A9B22_gt_EquipmentShopBirth_Func");
+    TriggerAddEventPlayerEffectUsed(lib7A9A9B22_gt_EquipmentShopBirth, c_playerAny, "EquipmentShopTrainSetComplete");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Mineral Income Update
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_MineralIncomeUpdate_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    lib7A9A9B22_gf_MineralIncomeUpdate(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_MineralIncomeUpdate_Init () {
+    lib7A9A9B22_gt_MineralIncomeUpdate = TriggerCreate("lib7A9A9B22_gt_MineralIncomeUpdate_Func");
+    TriggerAddEventPlayerEffectUsed(lib7A9A9B22_gt_MineralIncomeUpdate, c_playerAny, "MineralIncome");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Wave Unit Death
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_WaveUnitDeath_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    string auto8A5654E6_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    libDDE92A83_gf_ModifyMetaExperience(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), (FixedToInt((UnitTypeGetCost(UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitSource)), c_unitCostMinerals) * 0.04)) * 10));
+    auto8A5654E6_val = UnitGetType(EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    if (auto8A5654E6_val == "LocustMP") {
+        UnitSetPropertyFixed(UnitBehaviorEffectUnit(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "LocustMPTimedLife", c_effectUnitCaster, 0), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, (UnitGetPropertyFixed(UnitBehaviorEffectUnit(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "LocustMPTimedLife", c_effectUnitCaster, 0), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, c_unitPropCurrent) + 1.0));
+    }
+    else if (auto8A5654E6_val == "AutoTurret") {
+        UnitSetPropertyFixed(UnitBehaviorEffectUnit(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "AutoTurretTimedLife", c_effectUnitCaster, 0), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, (UnitGetPropertyFixed(UnitBehaviorEffectUnit(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "AutoTurretTimedLife", c_effectUnitCaster, 0), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, c_unitPropCurrent) + 1.0));
+    }
+    else {
+        UnitSetPropertyFixed(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, (UnitGetPropertyFixed(UnitBehaviorEffectUnit(EventPlayerEffectUsedUnit(c_effectUnitTarget), "UnitSpawnerCasterTrigger", c_effectUnitCaster, 0), c_unitPropKills, c_unitPropCurrent) + 1.0));
+    }
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_WaveUnitDeath_Init () {
+    lib7A9A9B22_gt_WaveUnitDeath = TriggerCreate("lib7A9A9B22_gt_WaveUnitDeath_Func");
+    TriggerAddEventPlayerEffectUsed(lib7A9A9B22_gt_WaveUnitDeath, c_playerAny, "WaveUnitDeath");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Spawner Birth
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitSpawnerBirth_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    PlayerScoreValueSetFromInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "SpawnUnitSpending", (PlayerScoreValueGetAsInt(EventPlayerEffectUsedUnitOwner(c_effectPlayerTarget), "SpawnUnitSpending") + UnitTypeGetCost(EventPlayerEffectUsedUnitType(c_effectUnitTarget), c_unitCostMinerals)));
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "attack", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "move", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "stop", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "AssaultMode", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "FighterMode", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "WreckingCrewAssaultMode", false);
+    UnitAbilityShow(EventPlayerEffectUsedUnit(c_effectUnitTarget), "WreckingCrewFighterMode", false);
+    UnitSetFacing(EventPlayerEffectUsedUnit(c_effectUnitTarget), UnitGetCustomValue(UnitGroupClosestToPoint(lib7A9A9B22_gf_StagingAreas(), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitTarget))), 20), 0.0);
+    UnitGroupAdd(lib7A9A9B22_gv_stagingAreaSpawners, EventPlayerEffectUsedUnit(c_effectUnitTarget));
+    libDDE92A83_gf_PlayerAttributesUpdate(UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)));
+    lib29554E00_gf_AFKTimerRefresh(UnitGetOwner(EventPlayerEffectUsedUnit(c_effectUnitTarget)));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitSpawnerBirth_Init () {
+    lib7A9A9B22_gt_UnitSpawnerBirth = TriggerCreate("lib7A9A9B22_gt_UnitSpawnerBirth_Func");
+    TriggerAddEventPlayerEffectUsed(lib7A9A9B22_gt_UnitSpawnerBirth, c_playerAny, "UnitSpawner");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Spawner Sell
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitSpawnerSell_Func (bool testConds, bool runActions) {
+    // Variable Declarations
+    int lv_x;
+
+    // Automatic Variable Declarations
+    unitgroup auto5180050D_g;
+    int auto5180050D_u;
+    unit auto5180050D_var;
+    abilcmd auto74DDD194_val;
+    string auto4FFFBCA5_val;
+
+    // Variable Initialization
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitGroupRemove(lib7A9A9B22_gv_stagingAreaSpawners, EventUnit());
+    libDDE92A83_gf_PlayerAttributesUpdate(UnitGetOwner(EventUnit()));
+    lib29554E00_gf_AFKTimerRefresh(UnitGetOwner(EventUnit()));
+    if ((UnitGroupCount(UnitInventoryGroup(EventUnit()), c_unitCountAlive) > 0)) {
+        auto5180050D_g = UnitInventoryGroup(EventUnit());
+        auto5180050D_u = UnitGroupCount(auto5180050D_g, c_unitCountAll);
+        for (;; auto5180050D_u -= 1) {
+            auto5180050D_var = UnitGroupUnitFromEnd(auto5180050D_g, auto5180050D_u);
+            if (auto5180050D_var == null) { break; }
+            libNtve_gf_CreateUnitsWithDefaultFacing(1, UnitGetType(auto5180050D_var), 0, UnitGetOwner(EventUnit()), UnitGetPosition(EventUnit()));
+            UnitRemove(auto5180050D_var);
+        }
+    }
+
+    if ((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostMinerals) > 0)) {
+        lv_x = CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnit()), "CostResource[" + IntToString(0) + "]", UnitGetOwner(EventUnit()));
+        auto74DDD194_val = EventUnitAbility();
+        if (auto74DDD194_val == AbilityCommand("Sell70", 0)) {
+            lv_x = FixedToInt((lv_x * 0.7));
+        }
+        else if (auto74DDD194_val == AbilityCommand("Sell60", 0)) {
+            lv_x = FixedToInt((lv_x * 0.6));
+        }
+        else if (auto74DDD194_val == AbilityCommand("Sell50", 0)) {
+            lv_x = FixedToInt((lv_x * 0.5));
+        }
+        else {
+        }
+        auto4FFFBCA5_val = UnitGetType(EventUnitTargetUnit());
+        if (auto4FFFBCA5_val == "Mothership") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/Mothership", -1.0);
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/MothershipCore", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "MothershipCore") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/MothershipCore", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "Brutalisk") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/Brutalisk", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "LeviathanStarlight") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/Leviathan", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "MothershipTaldarim") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/TaldarimMothershipPlace", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "Destroyer") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/DestroyerPlace", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "DuskWing") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/DuskWingsPlace", -1.0);
+        }
+        else if (auto4FFFBCA5_val == "HoloDecoy") {
+            PlayerAddChargeUsed(UnitGetOwner(EventUnit()), "Abil/HoloDecoyPlace", -1.0);
+        }
+        else {
+        }
+        lib8EB2E028_gf_KickerMinerals(lv_x, false, UnitGetPosition(EventUnitTargetUnit()), UnitGetOwner(EventUnit()), (1.0 + UnitGetHeight(EventUnit())), true);
+        SoundPlay(SoundLink("UI_TerranNewUnitAcquired", -1), PlayerGroupSingle(UnitGetOwner(EventUnit())), 100.0, 0.0);
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "UnitsTotalValue", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "TotalUnits") - CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnitTargetUnit()), "ScoreMake", UnitGetOwner(EventUnit()))));
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "MineralsSpent", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "MineralsSpent") - lv_x));
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "MineralsUsedTotalArmy", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "MineralsUsedTotalArmy") - UnitTypeGetCost(UnitGetType(EventUnitTargetUnit()), c_unitCostMinerals)));
+    }
+
+    if ((UnitTypeGetCost(UnitGetType(EventUnit()), c_unitCostVespene) > 0)) {
+        lv_x = UnitTypeGetCost(UnitGetType(EventUnitTargetUnit()), c_unitCostVespene);
+        lib8EB2E028_gf_KickerVespene(lv_x, false, UnitGetPosition(EventUnitTargetUnit()), UnitGetOwner(EventUnit()), (1.0 + UnitGetHeight(EventUnit())), true);
+        SoundPlay(SoundLink("UI_TerranNewUnitAcquired", -1), PlayerGroupSingle(UnitGetOwner(EventUnit())), 100.0, 0.0);
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "UnitsTotalValue", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "TotalUnits") - CatalogFieldValueGetAsInt(c_gameCatalogUnit, UnitGetType(EventUnitTargetUnit()), "ScoreMake", UnitGetOwner(EventUnit()))));
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "VespeneSpent", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "VespeneSpent") - lv_x));
+        PlayerScoreValueSetFromInt(UnitGetOwner(EventUnit()), "VespeneUsedTotalArmy", (PlayerScoreValueGetAsInt(UnitGetOwner(EventUnit()), "VespeneUsedTotalArmy") - UnitTypeGetCost(UnitGetType(EventUnitTargetUnit()), c_unitCostMinerals)));
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitSpawnerSell_Init () {
+    lib7A9A9B22_gt_UnitSpawnerSell = TriggerCreate("lib7A9A9B22_gt_UnitSpawnerSell_Func");
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitSpawnerSell, null, AbilityCommand("SellFull", 0), c_abilEffectStageCast, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitSpawnerSell, null, AbilityCommand("Sell70", 0), c_abilEffectStageCast, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitSpawnerSell, null, AbilityCommand("Sell60", 0), c_abilEffectStageCast, false);
+    TriggerAddEventUnitAbility(lib7A9A9B22_gt_UnitSpawnerSell, null, AbilityCommand("Sell50", 0), c_abilEffectStageCast, false);
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Spawner Reposition
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitSpawnerReposition_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitSetFacing(EventPlayerEffectUsedUnit(c_effectUnitCaster), UnitGetCustomValue(UnitGroupClosestToPoint(lib7A9A9B22_gf_StagingAreas(), UnitGetPosition(EventPlayerEffectUsedUnit(c_effectUnitCaster))), 20), 0.0);
+    UnitSelect(EventPlayerEffectUsedUnit(c_effectUnitCaster), EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster), false);
+    lib29554E00_gf_AFKTimerRefresh(EventPlayerEffectUsedUnitOwner(c_effectPlayerCaster));
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitSpawnerReposition_Init () {
+    lib7A9A9B22_gt_UnitSpawnerReposition = TriggerCreate("lib7A9A9B22_gt_UnitSpawnerReposition_Func");
+    TriggerAddEventPlayerEffectUsed(lib7A9A9B22_gt_UnitSpawnerReposition, c_playerAny, "RepositionTeleport");
+}
+
+//--------------------------------------------------------------------------------------------------
+// Trigger: Unit Spawner Build Switch
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_gt_UnitSpawnerBuildSwitch_Func (bool testConds, bool runActions) {
+    // Automatic Variable Declarations
+    abilcmd auto546643DF_val;
+
+    // Actions
+    if (!runActions) {
+        return true;
+    }
+
+    UnitIssueOrder(EventUnit(), OrderSetAutoCast(EventUnitAbility(), false), c_orderQueueReplace);
+    TechTreeAbilityAllow(UnitGetOwner(EventUnit()), EventUnitAbility(), false);
+    auto546643DF_val = EventUnitAbility();
+    if (auto546643DF_val == AbilityCommand("HellionPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HellbatPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("HellbatPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HellionPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("VikingFighterPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("VikingAssaultPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("VikingAssaultPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("VikingFighterPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("ThorPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ThorSiegePlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("ThorSiegePlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ThorPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("ObserverPlace", 0)) {
+        if ((UnitAbilityExists(EventUnit(), "OraclePlace") == true)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("OraclePlace", 0), true);
+        }
+        else {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), EventUnitAbility(), true);
+        }
+    }
+    else if (auto546643DF_val == AbilityCommand("OraclePlace", 0)) {
+        if ((UnitAbilityExists(EventUnit(), "ObserverPlace") == true)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ObserverPlace", 0), true);
+        }
+        else {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), EventUnitAbility(), true);
+        }
+    }
+    else if (auto546643DF_val == AbilityCommand("RoachPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("RavagerPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("RavagerPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("RoachPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("HydraliskPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("LurkerPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("LurkerPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HydraliskPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("HighTemplarPlace", 0)) {
+        if ((UnitAbilityExists(EventUnit(), "ArchonPlace") == true)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ArchonPlace", 0), true);
+        }
+        else {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), EventUnitAbility(), true);
+        }
+    }
+    else if (auto546643DF_val == AbilityCommand("ArchonPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HighTemplarPlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("CyclonePlace", 0)) {
+        if ((UnitAbilityExists(EventUnit(), "WidowMinePlace") == true)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("WidowMinePlace", 0), true);
+        }
+        else {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), EventUnitAbility(), true);
+        }
+    }
+    else if (auto546643DF_val == AbilityCommand("WidowMinePlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("CyclonePlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("ThorPlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ThorSiegePlace", 0), true);
+    }
+    else if (auto546643DF_val == AbilityCommand("ThorSiegePlace", 0)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ThorPlace", 0), true);
+    }
+    else {
+    }
+    if ((TechTreeUpgradeCount(EventPlayer(), "HighTemplarBanned", c_techCountCompleteOnly) == 1)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HighTemplarPlace", 0), false);
+        if ((TechTreeUpgradeCount(EventPlayer(), "ArchonBanned", c_techCountCompleteOnly) == 0)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ArchonPlace", 0), true);
+        }
+
+    }
+
+    if ((TechTreeUpgradeCount(EventPlayer(), "ArchonBanned", c_techCountCompleteOnly) == 1)) {
+        TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("ArchonPlace", 0), false);
+        if ((TechTreeUpgradeCount(EventPlayer(), "HighTemplarBanned", c_techCountCompleteOnly) == 0)) {
+            TechTreeAbilityAllow(UnitGetOwner(EventUnit()), AbilityCommand("HighTemplarPlace", 0), true);
+        }
+
+    }
+
+    return true;
+}
+
+//--------------------------------------------------------------------------------------------------
+void lib7A9A9B22_gt_UnitSpawnerBuildSwitch_Init () {
+    lib7A9A9B22_gt_UnitSpawnerBuildSwitch = TriggerCreate("lib7A9A9B22_gt_UnitSpawnerBuildSwitch_Func");
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("HellionPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("HellbatPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("VikingFighterPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("VikingAssaultPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("ObserverPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("OraclePlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("RoachPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("RavagerPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("HydraliskPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("LurkerPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("HighTemplarPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("ArchonPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("CyclonePlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("WidowMinePlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("ThorPlace", 0), c_unitAbilAutoCastChangeOn, false);
+    TriggerAddEventUnitAbilityAutoCastChange(lib7A9A9B22_gt_UnitSpawnerBuildSwitch, null, AbilityCommand("ThorSiegePlace", 0), c_unitAbilAutoCastChangeOn, false);
+}
+
+void lib7A9A9B22_InitTriggers () {
+    lib7A9A9B22_gt_UnitStun_Init();
+    lib7A9A9B22_gt_UnitIdle_Init();
+    lib7A9A9B22_gt_UnitMorph_Init();
+    lib7A9A9B22_gt_UnitSummon_Init();
+    lib7A9A9B22_gt_NeuralParasiteOn_Init();
+    lib7A9A9B22_gt_NeuralParasiteOff_Init();
+    lib7A9A9B22_gt_EquipmentShopBirth_Init();
+    lib7A9A9B22_gt_MineralIncomeUpdate_Init();
+    lib7A9A9B22_gt_WaveUnitDeath_Init();
+    lib7A9A9B22_gt_UnitSpawnerBirth_Init();
+    lib7A9A9B22_gt_UnitSpawnerSell_Init();
+    lib7A9A9B22_gt_UnitSpawnerReposition_Init();
+    lib7A9A9B22_gt_UnitSpawnerBuildSwitch_Init();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Library Initialization
+//--------------------------------------------------------------------------------------------------
+bool lib7A9A9B22_InitLib_completed = false;
+
+void lib7A9A9B22_InitLib () {
+    if (lib7A9A9B22_InitLib_completed) {
+        return;
+    }
+
+    lib7A9A9B22_InitLib_completed = true;
+
+    lib7A9A9B22_InitLibraries();
+    lib7A9A9B22_InitVariables();
+    lib7A9A9B22_InitTriggers();
+}
+
+include "LibDDE92A83"
+include "Lib29554E00"
+include "Lib8EB2E028"
+

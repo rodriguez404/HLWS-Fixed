@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Desc>
+
+    <Frame type="CommandPanel" name="GameUI/UIContainer/ConsoleUIContainer/CommandPanel" file="GameUI">
+
+        <Frame type="CommandTooltip" name="CommandTooltip">
+            <Anchor side="Bottom" relative="$parent" pos="Max" offset="-340"/>
+        </Frame>
+    </Frame>
+</Desc>

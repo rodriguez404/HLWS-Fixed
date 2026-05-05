@@ -1,0 +1,35 @@
+include "TriggerLibs/natives"
+
+//--------------------------------------------------------------------------------------------------
+// Library: Starlight Hero Selection
+//--------------------------------------------------------------------------------------------------
+// Variable Declarations
+playergroup lib329EF1B6_gv_playerUnselected;
+playergroup lib329EF1B6_gv_players;
+bool[16] lib329EF1B6_gv_canRepick;
+point lib329EF1B6_gv_selectCamera;
+bool[16] lib329EF1B6_gv_repickTip;
+bool lib329EF1B6_gv_spawnStructure;
+bool lib329EF1B6_gv_levelBar;
+bool lib329EF1B6_gv_repick;
+bool lib329EF1B6_gv_allRandom;
+bool lib329EF1B6_gv_birthEffects;
+bool lib329EF1B6_gv_heroIcons;
+fixed lib329EF1B6_gv_panDuration;
+
+// Function Declarations
+void lib329EF1B6_gf_StarlightHeroSelection (point lp_point, playergroup lp_playerGroup, bool lp_useSpawnBuildings, fixed lp_panDuration, bool lp_repick, bool lp_levelBar, bool lp_heroIcons, bool lp_allRandom, bool lp_birthEffects, bool lp_starCraftHeroes);
+void lib329EF1B6_gf_StarlightHeroSelectionReset ();
+void lib329EF1B6_gf_CreateHero (unit lp_hero, int lp_player);
+void lib329EF1B6_gf_SetNeutralHeroes (int lp_player);
+void lib329EF1B6_gf_ResetHero (string lp_unitType, int lp_player);
+
+// Trigger Declarations
+trigger lib329EF1B6_gt_SelectHero;
+trigger lib329EF1B6_gt_RandomHero;
+trigger lib329EF1B6_gt_ComputerPlayers;
+trigger lib329EF1B6_gt_Repick;
+
+// Library Initialization
+void lib329EF1B6_InitVariables ();
+

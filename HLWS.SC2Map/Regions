@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Regions>
+    <region id="1">
+        <name value="T0 Goal"/>
+        <shape type="circle">
+            <center value="124,116"/>
+            <radius value="1.5"/>
+        </shape>
+    </region>
+    <region id="6">
+        <name value="T1 Goal"/>
+        <shape type="circle">
+            <center value="124,44"/>
+            <radius value="1.5"/>
+        </shape>
+    </region>
+    <region id="7">
+        <name value="T0 Hero Birth"/>
+        <shape type="circle">
+            <center value="118,116"/>
+            <radius value="4"/>
+        </shape>
+    </region>
+    <region id="8">
+        <name value="T1 Hero Birth"/>
+        <shape type="circle">
+            <center value="118,44"/>
+            <radius value="4"/>
+        </shape>
+    </region>
+    <region id="2">
+        <name value="T0 Spawn Top"/>
+        <shape type="rect">
+            <quad value="27.5,123.5002,38.5,134.5"/>
+        </shape>
+    </region>
+    <region id="3">
+        <name value="T0 Spawn Bottom"/>
+        <shape type="rect">
+            <quad value="27.5,97.5002,38.5,108.5"/>
+        </shape>
+    </region>
+    <region id="4">
+        <name value="T1 Spawn Top"/>
+        <shape type="rect">
+            <quad value="27.5,51.5002,38.5,62.5"/>
+        </shape>
+    </region>
+    <region id="5">
+        <name value="T1 Spawn Bottom"/>
+        <shape type="rect">
+            <quad value="27.5,25.5002,38.5,36.5"/>
+        </shape>
+    </region>
+</Regions>

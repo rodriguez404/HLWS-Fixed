@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton default="1" id="DefaultCreep">
+        <Icon value="Assets\Textures\btn-unit-neutral-##id##.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-neutral-##id##.dds"/>
+        <EditorCategories value="Race:Creep"/>
+        <TooltipFlags index="ShowCooldown" value="0"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="BanishW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-Banish.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-Banish.dds"/>
+        <HotkeyAlias value="Banish"/>
+    </CButton>
+    <CButton id="BlackStrikeE" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-BlackStrike.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-BlackStrike.dds"/>
+        <HotkeyAlias value="BlackStrike"/>
+    </CButton>
+    <CButton id="ChronoBoostT" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-chronosurge.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-chronosurge.dds"/>
+        <HotkeyAlias value="ChronoBoost"/>
+    </CButton>
+    <CButton id="ChronoBoostE" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-chronosurge.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-chronosurge.dds"/>
+        <HotkeyAlias value="ChronoBoost"/>
+    </CButton>
+    <CButton id="FieryAuraW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-FieryAura.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-FieryAura.dds"/>
+        <HotkeyAlias value="FieryAura"/>
+    </CButton>
+    <CButton id="FrostArmorW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-FrostArmor.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-FrostArmor.dds"/>
+        <HotkeyAlias value="FrostArmor"/>
+    </CButton>
+    <CButton id="FrostMastery" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-chill.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-chill.dds"/>
+    </CButton>
+    <CButton id="CannonImage">
+        <Icon value="Assets\Textures\btn-ability-protoss-phasecannon.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-phasecannon.dds"/>
+        <HotkeyAlias value="PhaseCannon"/>
+    </CButton>
+    <CButton id="HexW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-Hex.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-Hex.dds"/>
+        <HotkeyAlias value="Hex"/>
+    </CButton>
+    <CButton id="HolyAuraW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-HolyAura.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-HolyAura.dds"/>
+        <HotkeyAlias value="HolyAura"/>
+    </CButton>
+    <CButton id="HowlofTerrorW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-HowlofTerror.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-HowlofTerror.dds"/>
+        <HotkeyAlias value="HowlofTerror"/>
+    </CButton>
+    <CButton id="LifeDrain">
+        <TooltipAppender index="0" removed="1"/>
+    </CButton>
+    <CButton id="MindBlastE" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-mindblast.dds"/>
+        <HotkeyAlias value="MindBlastHeroic"/>
+    </CButton>
+    <CButton id="PhotonOvercharge">
+        <TooltipAppender Validator="HaveAlarakImprovedOvercharge" Text="Button/Tooltip/ImprovedOverchargeAppend"/>
+        <TooltipAppender Validator="HaveMasteryAlarakOverchargeShieldsDamage" Text="Button/Tooltip/MasteryAlarakOverchargeShieldsDamageAppend"/>
+        <Icon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CButton>
+    <CButton id="Attack"/>
+    <CButton id="ArachnathidOverlordHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-ArachnathidPurple.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-ArachnathidPurple.dds"/>
+    </CButton>
+    <CButton id="BronzeDragonHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-BronzeDragon.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-BronzeDragon.dds"/>
+    </CButton>
+    <CButton id="PoisonBlast" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-bileshell.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-bileshell.dds"/>
+        <HotkeyAlias value="PoisonBolt"/>
+    </CButton>
+    <CButton id="ReconstructionBeamR" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-spearofadun-reconstructionbeam.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-spearofadun-reconstructionbeam.dds"/>
+        <HotkeyAlias value="ReconstructionBeam"/>
+    </CButton>
+    <CButton id="SearingStrikesW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-SearingStrikes.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-SearingStrikes.dds"/>
+    </CButton>
+    <CButton id="ServitorW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        <HotkeyAlias value="Servitor"/>
+    </CButton>
+    <CButton id="ShadowMastery" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <AlertIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+    </CButton>
+    <CButton id="DarkReinforcements">
+        <Icon value="Assets\Textures\btn-upgrade-vorazun-summonshadowguard.dds"/>
+        <HotkeyAlias value="DarkTemplarChampionDarkReinforcements"/>
+    </CButton>
+    <CButton id="GraniteGolemHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-RockGolem.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-RockGolem.dds"/>
+    </CButton>
+    <CButton id="SkeletalOrcChampionHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-SkeletalOrcChampion.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-SkeletalOrcChampion.dds"/>
+    </CButton>
+    <CButton id="EMPRound"/>
+    <CButton id="FelRavagerHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FelhunterPurple.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-FelhunterPurple.dds"/>
+    </CButton>
+    <CButton id="DarkWizardHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-BanditMage.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-BanditMage.dds"/>
+    </CButton>
+    <CButton id="BanditLordHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-BanditLord.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-BanditLord.dds"/>
+    </CButton>
+    <CButton id="SleepW" parent="DefaultLevelableAbility">
+        <Icon value="Assets\Textures\btn-ability-neutral-Sleep.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-Sleep.dds"/>
+        <HotkeyAlias value="Sleep"/>
+    </CButton>
+    <CButton id="SludgeMonstrosityHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-Sludge.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-Sludge.dds"/>
+    </CButton>
+    <CButton id="NetherDragonHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-NetherDragon.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-NetherDragon.dds"/>
+    </CButton>
+    <CButton id="KoboldTaskmasterHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Kobold.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Kobold.dds"/>
+    </CButton>
+    <CButton id="FrostWolfHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-TimberWolf.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-TimberWolf.dds"/>
+    </CButton>
+    <CButton id="BlizzardNeutral">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+    </CButton>
+    <CButton id="BloodforgedShieldHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-plating3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-plating3.dds"/>
+    </CButton>
+    <CButton id="Cancel"/>
+    <CButton id="ChainLightningNeutral">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+    </CButton>
+    <CButton id="Cyclone">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+    </CButton>
+    <CButton id="EnergeticBarrierHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-ability-neutral-lightningshield.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-neutral-lightningshield.dds"/>
+    </CButton>
+    <CButton id="ButchersBladeHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-cleaver2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-cleaver2.dds"/>
+    </CButton>
+    <CButton id="DragonTurtleHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-SeaTurtleRed.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-SeaTurtleRed.dds"/>
+    </CButton>
+    <CButton id="FacelessDeathbringerHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FacelessOne.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-FacelessOne.dds"/>
+    </CButton>
+    <CButton id="DeathRevenantHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Revenant.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Revenant.dds"/>
+    </CButton>
+    <CButton id="CentaurKhanHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-neutral-CentaurKhan.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-neutral-CentaurKhan.dds"/>
+    </CButton>
+    <CButton id="Tornado">
+        <TooltipAppender index="0" removed="1"/>
+    </CButton>
+    <CButton id="TuskarrSorcererHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-tuskarrbrown.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-tuskarrbrown.dds"/>
+    </CButton>
+    <CButton id="StormWyrmHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ThunderLizard.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-ThunderLizard.dds"/>
+    </CButton>
+    <CButton id="IceBarbedSpearHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-IceBarbedSpear.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-IceBarbedSpear.dds"/>
+    </CButton>
+    <CButton id="IronplateBucklerHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-buckler2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-buckler2.dds"/>
+    </CButton>
+    <CButton id="MonsoonNeutral">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+    </CButton>
+    <CButton id="Move"/>
+    <CButton id="MoveHoldPosition"/>
+    <CButton id="MovePatrol"/>
+    <CButton id="SelectShrineHLW">
+        <Icon value="Assets\Textures\btn-building-neutral-arcanetower.dds"/>
+        <AlertIcon value="Assets/Textures/btn-building-Human-ArcaneTower.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="Stop"/>
+    <CButton id="MakuraTidalLordHLW" parent="DefaultCreep">
+        <Icon value="Assets\Textures\btn-unit-neutral-makurablue.dds"/>
+        <AlertIcon value="Assets\Textures\btn-unit-neutral-makurablue.dds"/>
+    </CButton>
+    <CButton id="StormheraldHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-sword2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-sword2.dds"/>
+    </CButton>
+    <CButton id="BloodfiendHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Felguard.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Felguard.dds"/>
+    </CButton>
+    <CButton id="AssassinsBladeHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-blinkdagger.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-blinkdagger.dds"/>
+    </CButton>
+    <CButton id="FeralWildkinHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Wildkin.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Wildkin.dds"/>
+    </CButton>
+    <CButton id="Melee">
+        <Icon value="Assets\Textures\btn-item-plating1.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="RazormaneChiefHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-RazormaneChief.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-RazormaneChief.dds"/>
+    </CButton>
+    <CButton id="FirebrandHLW" parent="DefaultItem">
+        <Icon value="Assets\Textures\btn-item-sword3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-item-sword3.dds"/>
+    </CButton>
+    <CButton id="Symbiosis"/>
+    <CButton id="SymbiosisActive"/>
+    <CButton id="SatyrHellcallerHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-satyr.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-satyr.dds"/>
+    </CButton>
+    <CButton id="UpgradetoTier2HLW">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Textures\btn-menu-tier2.dds"/>
+        <AlertIcon value="Assets\Textures\btn-menu-tier2.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="UpgradetoTier3HLW">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Textures\btn-menu-tier3.dds"/>
+        <AlertIcon value="Assets\Textures\btn-menu-tier3.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="UpgradetoTier4HLW">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Textures\btn-menu-tier4.dds"/>
+        <AlertIcon value="Assets\Textures\btn-menu-tier4.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="UpgradetoTier5HLW">
+        <TooltipFlags index="ShowAutocast" value="0"/>
+        <Icon value="Assets\Textures\btn-menu-tier5.dds"/>
+        <AlertIcon value="Assets\Textures\btn-menu-tier5.dds"/>
+        <EditorCategories value="Race:Neutral"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="UrsolBearHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FrostBear.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-FrostBear.dds"/>
+    </CButton>
+    <CButton id="MurgulBloodgillHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MurgulBloodGill.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-MurgulBloodGill.dds"/>
+    </CButton>
+    <CButton id="GnollAssassinHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-GnollArcher.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-GnollArcher.dds"/>
+    </CButton>
+    <CButton id="HighborneWraithHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-HighborneGhost.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-HighborneGhost.dds"/>
+    </CButton>
+    <CButton id="JuggernautHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-InfernalFlameCannon.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-InfernalFlameCannon.dds"/>
+    </CButton>
+    <CButton id="MagnataurHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MagnataurBrown.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-MagnataurBrown.dds"/>
+    </CButton>
+    <CButton id="DireMammothHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-BlackMammoth.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-BlackMammoth.dds"/>
+    </CButton>
+    <CButton id="MurlocPlaguebearerHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MurlocMutant.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-MurlocMutant.dds"/>
+    </CButton>
+    <CButton id="NerubianQueenHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-NerubianQueen.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-NerubianQueen.dds"/>
+    </CButton>
+    <CButton id="BoulderfistOgreHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Ogre.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Ogre.dds"/>
+    </CButton>
+    <CButton id="FurbolgChampionHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-PolarFurbolg.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-PolarFurbolg.dds"/>
+    </CButton>
+    <CButton id="Volcano">
+        <TooltipAppender index="0" removed="1"/>
+    </CButton>
+    <CButton id="WarGolemHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ArmorGolem.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-ArmorGolem.dds"/>
+    </CButton>
+    <CButton id="SeaGiantHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-SeaGiantGreen.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-SeaGiantGreen.dds"/>
+    </CButton>
+    <CButton id="BroodmotherHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Spider.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Spider.dds"/>
+    </CButton>
+    <CButton id="AmaniBerserkerHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ForestTrollShadowPriest.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-ForestTrollShadowPriest.dds"/>
+    </CButton>
+    <CButton id="SkeletalMageHLW" parent="DefaultCreep">
+        <Icon value="Assets\Textures\btn-unit-neutral-skeletalmage.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Undead-SkeletalMage.dds"/>
+    </CButton>
+    <CButton id="CentaurArcherHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-CentaurArcher.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-CentaurArcher.dds"/>
+    </CButton>
+    <CButton id="SpiderCrabHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-SpiderCrab.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-SpiderCrab.dds"/>
+    </CButton>
+    <CButton id="CorruptedTreantHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-CorruptedTreant.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-CorruptedTreant.dds"/>
+    </CButton>
+    <CButton id="FurbolgShamanHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FurbolgShaman.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-FurbolgShaman.dds"/>
+    </CButton>
+    <CButton id="ZandalariPriestHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-DarkTrollShadowPriest.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-DarkTrollShadowPriest.dds"/>
+    </CButton>
+    <CButton id="ScorpidHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Arachnathid.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Arachnathid.dds"/>
+    </CButton>
+    <CButton id="BrokenVindicatorHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Broken.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Broken.dds"/>
+    </CButton>
+    <CButton id="WindfuryHarpyHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-HarpyQueen.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-HarpyQueen.dds"/>
+    </CButton>
+    <CButton id="AncientHydraHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-GreenHydra.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-GreenHydra.dds"/>
+    </CButton>
+    <CButton id="AncientSasquatchHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Sasquatch.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Sasquatch.dds"/>
+    </CButton>
+    <CButton id="BanditHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Bandit.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-Bandit.dds"/>
+    </CButton>
+    <CButton id="BlackDrakeHLW" parent="DefaultCreep">
+        <Icon value="Assets/Textures/btn-unit-Neutral-BlackDragon.dds"/>
+        <AlertIcon value="Assets/Textures/btn-unit-Neutral-BlackDragon.dds"/>
+    </CButton>
+</Catalog>

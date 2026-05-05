@@ -1,0 +1,2081 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilLearn id="AlarakExtendedLearn">
+        <InfoArray index="Learn9">
+            <Button DefaultButtonFace="MindBlastE"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="AntonidasExtendedLearn">
+        <InfoArray index="Learn4" Abil="FrozenOrb">
+            <Button DefaultButtonFace="FrozenOrb"/>
+        </InfoArray>
+        <InfoArray index="Learn10" Abil="DummyAbility">
+            <Button DefaultButtonFace="DummyAbility"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="ArtanisExtendedLearn">
+        <InfoArray index="Learn14">
+            <Button DefaultButtonFace="ServitorW"/>
+        </InfoArray>
+        <InfoArray index="Learn15">
+            <Button DefaultButtonFace="ChronoBoostE"/>
+        </InfoArray>
+        <InfoArray index="Learn16">
+            <Button DefaultButtonFace="ReconstructionBeamR"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="Assassinate">
+        <Range index="0" value="6"/>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="FrostMastery">
+        <EditorCategories value="Race:Hero,AbilityorEffectType:Units"/>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <CmdButtonArray index="On" DefaultButtonFace="FrostMastery" Requirements="FrostMastery"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Toggle" value="1"/>
+        <Flags index="ToggledOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost/>
+        <BehaviorArray value="FrostMastery"/>
+        <BehaviorArray value="FrostMastery"/>
+        <BehaviorArray value="FrostMastery"/>
+        <BehaviorArray value="FrostMastery"/>
+        <BehaviorArray value="FrostMastery"/>
+        <LearnButtonTooltip value="Button/Tooltip/FrostMasteryLearn"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="EntanglingRoots">
+        <Range index="0" value="10"/>
+        <AutoCastRange value="10"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="FeralSpirit">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="FrostmourneHungers">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="40"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="GuidedArrow">
+        <Flags index="AutoCast" value="1"/>
+        <AbilityCategories index="User3" value="1"/>
+        <Range value="8"/>
+        <AutoCastValidatorArray index="0" value="GuidedArrowAutocast"/>
+        <Cost index="0">
+            <Vital index="Energy" value="15"/>
+            <Charge CountMax="2" CountStart="2" TimeUse="7"/>
+            <Cooldown TimeUse="2.8"/>
+        </Cost>
+        <AutoCastRange value="8"/>
+    </CAbilEffectInstant>
+    <CAbilBehavior id="Immolation">
+        <Cost index="0">
+            <Vital index="Energy" value="5"/>
+        </Cost>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="Inferno">
+        <Cost index="0">
+            <Vital index="Energy" value="125"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilLearn id="KaelthasExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="BanishW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="KelThuzadExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="FrostArmorW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="LavaSurge">
+        <Cost index="0">
+            <Vital index="Energy" value="35"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="CannonImage">
+        <Effect index="0" value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Effect value="CannonImageSetCast"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+            <Charge>
+                <CountMax value="3"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SpawnCannonImage"/>
+                <TimeUse value="60"/>
+            </Charge>
+            <Cooldown Link="SpawnPhaseCannonSpawnPhaseCannon2SpawnPhaseCannonSpawnCannonImage" Location="Unit" TimeUse="2"/>
+        </Cost>
+        <Placeholder value="CannonImage"/>
+        <Range value="8"/>
+        <ProducedUnitArray value="CannonImage"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="CannonImage"/>
+        <PlaceUnit value="CannonImage"/>
+        <AbilityCategories index="User3" value="1"/>
+        <LearnButtonTooltip value="Button/Tooltip/CannonImageLearn"/>
+        <Alignment value="Positive"/>
+        <Flags index="AutoCast" value="1"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="SerpentWardAutocast"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="MalGanisExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="SleepW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="MannorothExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="HowlofTerrorW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilMorph id="PhoenixRebirth">
+        <InfoArray index="0">
+            <SectionArray index="Abils">
+                <DurationArray index="Delay" value="14"/>
+                <EffectArray index="Finish" value="PostMorphHeal"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Delay" value="14"/>
+            </SectionArray>
+            <SectionArray index="Collide">
+                <DurationArray index="Delay" value="14"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Delay" value="14"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="14"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilEffectTarget id="PhotonOvercharge">
+        <Alignment value="Positive"/>
+        <EditorCategories value="Race:Protoss,AbilityorEffectType:Units"/>
+        <AbilityCategories index="User3" value="1"/>
+        <DataCollection value="SerpentWard"/>
+        <Effect index="0" value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Effect value="PhotonOverchargeSetCast"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AllowTurningSuppressed" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="DeferCooldown" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Charge>
+                <CountMax value="2"/>
+                <CountStart value="1"/>
+                <CountUse value="1"/>
+                <TimeUse value="120"/>
+            </Charge>
+            <Cooldown TimeUse="7"/>
+        </Cost>
+        <Range value="10"/>
+        <AutoCastFilters value="Visible;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
+        <AutoCastRange value="10"/>
+        <AutoCastValidatorArray value="SerpentWardAutocast"/>
+        <AINotifyEffect value=""/>
+        <LearnButtonTooltip value="Button/Tooltip/PhotonOverchargeLearn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PhotonOvercharge"/>
+        <TargetFilters value="-;Neutral,Enemy,User1,Missile,Stasis,Dead,Hidden"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="BlessingofMight">
+        <Cost index="0">
+            <Cooldown TimeUse="28"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="BoneServants">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="16"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilBehavior id="BruteForce">
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="ChronoBoost">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ChronoBoostT"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="KaraxHeroLearn">
+        <InfoArray index="Learn1" Abil="ServitorLearnOnly">
+            <Button DefaultButtonFace="Servitor"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CannonImage">
+            <Button DefaultButtonFace="CannonImage"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ReconstructionBeam">
+            <Button DefaultButtonFace="ReconstructionBeam"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="PhotonOvercharge">
+            <Button DefaultButtonFace="PhotonOvercharge"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectInstant id="PoisonBlast">
+        <Alignment value="Negative"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <DataCollection value="GroundSlam"/>
+        <Effect index="0" value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Effect value="PoisonBlastSetCast"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="DeferCooldown" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="20"/>
+            <Cooldown TimeUse="11"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="3"/>
+        <AutoCastValidatorArray value="WarStompAutocast"/>
+        <CursorEffect value="WarStompSearch"/>
+        <AINotifyEffect value=""/>
+        <LearnButtonTooltip value="Button/Tooltip/PoisonBlastLearn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="PoisonBlast"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="PoisonBolt">
+        <AbilityCategories index="User3" value="1"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="RagnarosExtendedLearn">
+        <InfoArray index="Learn8">
+            <Button DefaultButtonFace="FieryAuraW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilBehavior id="RegenerationAura">
+        <AbilityCategories index="User4" value="1"/>
+    </CAbilBehavior>
+    <CAbilEffectInstant id="ShadowFury">
+        <Flags index="AutoCastOn" value="1"/>
+        <AutoCastValidatorArray index="0" value="ShadowFuryAutocast"/>
+    </CAbilEffectInstant>
+    <CAbilBehavior id="ShadowMastery" parent="DefaultLevelablePassive">
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <BehaviorArray index="0" value="ShadowMasteryAura1Source"/>
+        <BehaviorArray index="1" value="ShadowMasteryAura2Source"/>
+        <BehaviorArray index="2" value="ShadowMasteryAura3Source"/>
+        <BehaviorArray index="3" value="ShadowMasteryAura4Source"/>
+        <BehaviorArray index="4" value="ShadowMasteryAura5Source"/>
+        <BehaviorArray index="5" removed="1"/>
+        <BehaviorArray index="6" removed="1"/>
+        <BehaviorArray index="7" removed="1"/>
+        <BehaviorArray index="8" removed="1"/>
+        <BehaviorArray index="9" removed="1"/>
+        <ValidatorArray index="0" removed="1"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="DarkElite">
+        <Alignment value="Positive"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <AbilityCategories index="User3" value="1"/>
+        <DataCollection value="NydusDragon"/>
+        <Effect index="0" value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Effect value="DarkEliteSetCast"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AllowTurningSuppressed" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="DeferCooldown" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+            <Cooldown TimeUse="90"/>
+        </Cost>
+        <Range value="15"/>
+        <AutoCastFilters value="Visible;Ally,Neutral,Enemy"/>
+        <AutoCastRange value="5"/>
+        <AutoCastValidatorArray value="DarkEliteAutocast"/>
+        <AINotifyEffect value=""/>
+        <LearnButtonTooltip value="Button/Tooltip/DarkEliteLearn"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="DarkReinforcements"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DarkTemplarPlaceVorazun">
+        <Cost index="0">
+            <Resource index="Minerals" value="0"/>
+        </Cost>
+        <CmdButtonArray index="Execute" Requirements=""/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="ServitorLearnOnly" parent="DefaultLevelableInstant">
+        <Alignment value="Positive"/>
+        <DataCollection value="CarrionBeetles"/>
+        <Effect index="0" value="ServitorSetCast2"/>
+        <Effect index="1" value="ServitorSetCast2"/>
+        <Effect index="2" value="ServitorSetCast2"/>
+        <Effect index="3" value="ServitorSetCast2"/>
+        <Effect index="4" value="ServitorSetCast2"/>
+        <Effect index="5" value="ServitorSetCast2"/>
+        <Effect index="6" value="ServitorSetCast2"/>
+        <Effect index="7" value="ServitorSetCast2"/>
+        <Effect index="8" value="ServitorSetCast2"/>
+        <Effect index="9" value="ServitorSetCast2"/>
+        <Cost index="0">
+            <Cooldown TimeUse="15"/>
+        </Cost>
+        <AutoCastFilters value="Visible;Player,Ally"/>
+        <AutoCastRange value="0"/>
+        <AutoCastValidatorArray index="0" removed="1"/>
+        <CursorEffect index="0" value="CarrionBeetlesSearch"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Servitor" Requirements="IsHeroSpawner"/>
+    </CAbilEffectInstant>
+    <CAbilArmMagazine id="CarrionBeetlesMagazine">
+        <InfoArray index="Ammo1">
+            <Vital index="Energy" value="10"/>
+            <Charge Link="Abi/GuardianWisps"/>
+        </InfoArray>
+    </CAbilArmMagazine>
+    <CAbilArmMagazine id="ServitorMagazine">
+        <DataCollection value="CarrionBeetlesMagazine"/>
+        <Launch value="ReleaseAtSource"/>
+        <Flags index="ShowStatus" value="0"/>
+        <Leash value="6"/>
+        <InfoArray index="Ammo1" Distance="0.75" Manage="Recall" Unit="ServitorLearnOnly">
+            <Vital index="Energy" value="25"/>
+            <Charge Link="Abi/GuardianWisps"/>
+            <Cooldown Link="Abil/ServitorLearnOnly" Location="Unit" TimeUse="12"/>
+            <Button DefaultButtonFace="Servitor" Requirements="Servitor"/>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <Alert value=""/>
+        <EffectArray index="Launch" value="ServitorSetSummon"/>
+        <ExternalAngle value="217.4963"/>
+        <ExternalAngle value="225"/>
+        <ExternalAngle value="232.4926"/>
+        <ExternalAngle value="127.4963"/>
+        <ExternalAngle value="135"/>
+        <ExternalAngle value="142.4926"/>
+        <MaxCount value="6"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="CorrosiveBlast">
+        <Cost index="0">
+            <Cooldown TimeUse="7"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilMorph id="CreepTier5Morph">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UpgradetoTier5HLW"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray Unit="MercenaryCampTier5"/>
+        <Cost>
+            <Cooldown TimeStart="300"/>
+        </Cost>
+    </CAbilMorph>
+    <CAbilTrain id="CreepTier5">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/ArachnathidOverlordHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="ArachnathidOverlordHLW"/>
+            <Unit value="ArachnathidOverlordHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SludgeMonstrosityHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="SludgeMonstrosityHLW"/>
+            <Unit value="SludgeMonstrosityHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/CentaurKhanHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="CentaurKhanHLW"/>
+            <Unit value="CentaurKhanHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/DarkWizardHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="DarkWizardHLW"/>
+            <Unit value="DarkWizardHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SkeletalOrcChampionHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="SkeletalOrcChampionHLW"/>
+            <Unit value="SkeletalOrcChampionHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/BanditLordHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="BanditLordHLW"/>
+            <Unit value="BanditLordHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/BronzeDragonHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="BronzeDragonHLW"/>
+            <Unit value="BronzeDragonHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/GraniteGolemHLW"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="GraniteGolemHLW"/>
+            <Unit value="GraniteGolemHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="DarkRitual">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DisplacementBeam">
+        <Cost index="0">
+            <Cooldown TimeUse="84"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilBehavior id="DrunkenBrawler">
+        <BehaviorArray value="DrunkenBrawler"/>
+        <BehaviorArray value="DrunkenBrawler"/>
+        <BehaviorArray value="DrunkenBrawler"/>
+        <BehaviorArray value="DrunkenBrawler"/>
+        <BehaviorArray value="DrunkenBrawler"/>
+    </CAbilBehavior>
+    <CAbilEffectTarget id="Flamestrike">
+        <Cost index="0">
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="ForkedLightning">
+        <Range index="0" value="9"/>
+        <AutoCastRange value="9"/>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="GroundSlam">
+        <Cost index="0">
+            <Cooldown TimeUse="7"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectInstant id="HowlofTerror">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilAttack id="AttackWarpPrism">
+        <AbilSetId value="Attack"/>
+    </CAbilAttack>
+    <CAbilEffectTarget id="BurstofLife">
+        <Cost index="0">
+            <Vital index="Energy" value="500"/>
+            <Cooldown TimeStart="300" TimeUse="300"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilTrain id="ConsumablesShopTrain">
+        <InfoArray index="Train11">
+            <Charge TimeStart="120" TimeUse="120"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="Infection">
+        <Cost index="0">
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilLearn id="JainaHeroLearn">
+        <InfoArray index="Learn1" Abil="Blizzard">
+            <Button DefaultButtonFace="Blizzard"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="IceFortress">
+            <Button DefaultButtonFace="IceFortress"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="BrillianceAura">
+            <Button DefaultButtonFace="BrillianceAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="FrozenOrb">
+            <Button DefaultButtonFace="FrozenOrb"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="IceDagger">
+            <Button DefaultButtonFace="IceDagger"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilArmMagazine id="LocustSwarmMagazine">
+        <MaxCount value="16"/>
+    </CAbilArmMagazine>
+    <CAbilEffectInstant id="Radiance">
+        <Cost index="0">
+            <Cooldown TimeUse="21"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="SerpentWard">
+        <Cost index="0">
+            <Vital index="Energy" value="20"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SiphonPower">
+        <Cost index="0">
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="Smash">
+        <Cost index="0">
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Soulshatter">
+        <Cost index="0">
+            <Cooldown TimeUse="238"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilAugment id="StormArrowsAugment">
+        <Cost>
+            <Vital index="Energy" value="1"/>
+        </Cost>
+    </CAbilAugment>
+    <CAbilEffectTarget id="StormBolt">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SunOrb">
+        <Cost index="0">
+            <Vital index="Energy" value="25"/>
+            <Cooldown TimeUse="14"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilLearn id="SwannHeroLearn">
+        <InfoArray index="Learn1" Abil="PlasmaBolt">
+            <Button DefaultButtonFace="PlasmaBolt"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="RocketBarrage">
+            <Button DefaultButtonFace="RocketBarrage"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="MissileBattery">
+            <Button DefaultButtonFace="MissileBattery"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="DrakkenLaser">
+            <Button DefaultButtonFace="DrakkenLaser"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="ArtanisHeroLearn">
+        <InfoArray index="Learn1" Abil="LightningDash">
+            <Button DefaultButtonFace="LightningDash"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="AstralWind">
+            <Button DefaultButtonFace="AstralWind"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ForceofWill">
+            <Button DefaultButtonFace="ForceofWill"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Resurgence">
+            <Button DefaultButtonFace="Resurgence"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="PeasantHeroLearn">
+        <InfoArray index="Learn1" Abil="CallBodyguards">
+            <Button DefaultButtonFace="CallBodyguards"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="AstralWind">
+            <Button DefaultButtonFace="AstralWind"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="InterestRates">
+            <Button DefaultButtonFace="InterestRates"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Resurgence">
+            <Button DefaultButtonFace="Resurgence"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="FelguardHeroLearn">
+        <InfoArray index="Learn1" Abil="DeathStrike">
+            <Button DefaultButtonFace="DeathStrike"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Enslave">
+            <Button DefaultButtonFace="Enslave"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="VoidReflexes">
+            <Button DefaultButtonFace="VoidReflexes"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="NetherPortal">
+            <Button DefaultButtonFace="NetherPortal"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilTrain id="ArcanistHLW">
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="Train1">
+            <Cooldown Link="Abil/Tome1" TimeUse="1"/>
+            <Button DefaultButtonFace="Tome1"/>
+            <Unit value="Tome1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Cooldown Link="Abil/Tome2" TimeUse="1"/>
+            <Button DefaultButtonFace="Tome2"/>
+            <Unit value="Tome2"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Cooldown Link="Abil/Stave1" TimeUse="1"/>
+            <Button DefaultButtonFace="Stave1"/>
+            <Unit value="Stave1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Cooldown Link="Abil/Stave2" TimeUse="1"/>
+            <Button DefaultButtonFace="Stave2"/>
+            <Unit value="Stave2"/>
+        </InfoArray>
+        <Alert value="ItemPurchased"/>
+    </CAbilTrain>
+    <CAbilEffectTarget id="FrostScythe">
+        <TargetFilters index="0" value="Visible;Player,Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable,Summoned,Resistant"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Banish">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="DrunkenHaze">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Hex">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="60"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Sleep">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="RapidFire">
+        <Cost index="0">
+            <Vital index="Energy" value="0"/>
+            <Cooldown TimeUse="45"/>
+        </Cost>
+    </CAbilEffectInstant>
+    <CAbilLearn id="MountainKingHeroLearn">
+        <InfoArray index="Learn1" Abil="StormBolt">
+            <Button DefaultButtonFace="StormBolt"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="ThunderClap">
+            <Button DefaultButtonFace="ThunderClap"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Bash">
+            <Button DefaultButtonFace="Bash"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Avatar">
+            <Button DefaultButtonFace="Avatar"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="KelThuzadGhostHeroLearn">
+        <InfoArray index="Learn1" Abil="SiphonPower">
+            <Button DefaultButtonFace="SiphonPower"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="BoneServants">
+            <Button DefaultButtonFace="BoneServants"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ServitudeAura">
+            <Button DefaultButtonFace="ServitudeAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Decrepify">
+            <Button DefaultButtonFace="Decrepify"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="PaladinHeroLearn">
+        <InfoArray index="Learn1" Abil="HolyLight">
+            <Button DefaultButtonFace="HolyLight"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="BlessingofMight">
+            <Button DefaultButtonFace="BlessingofMight"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="DevotionAura">
+            <Button DefaultButtonFace="DevotionAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="RetributionAura">
+            <Button DefaultButtonFace="RetributionAura"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="BlizzardNeutral">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="300"/>
+            <Cooldown TimeStart="180" TimeUse="120"/>
+        </Cost>
+        <Range index="0" value="500"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="RevenantHeroLearn">
+        <InfoArray index="Learn1" Abil="LifeDrain">
+            <Button DefaultButtonFace="LifeDrain"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Immolation">
+            <Button DefaultButtonFace="Immolation"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SoulHarvest">
+            <Button DefaultButtonFace="SoulHarvest"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="LocustSwarm">
+            <Button DefaultButtonFace="LocustSwarm"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="ChainLightningNeutral">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="400"/>
+            <Cooldown TimeStart="180" TimeUse="120"/>
+        </Cost>
+        <TargetFilters index="0" value="Visible;Player,Ally,Heroic,Missile,Stasis,Dead,Invulnerable,Resistant"/>
+        <Range index="0" value="500"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="CreepTier4Morph">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UpgradetoTier4HLW"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray Unit="MercenaryCampTier4"/>
+    </CAbilMorph>
+    <CAbilMorph id="CreepTier2Morph">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UpgradetoTier2HLW"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray Unit="MercenaryCampTier2"/>
+    </CAbilMorph>
+    <CAbilMorph id="CreepTier3Morph">
+        <CmdButtonArray index="Execute" DefaultButtonFace="UpgradetoTier3HLW"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="IgnoreFood" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <InfoArray Unit="MercenaryCampTier3"/>
+    </CAbilMorph>
+    <CAbilTrain id="CreepTier2">
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/AmaniBerserker"/>
+                <Location value="Unit"/>
+                <TimeStart value="7"/>
+                <TimeUse value="7"/>
+            </Charge>
+            <Button DefaultButtonFace="AmaniBerserkerHLW"/>
+            <Unit value="AmaniBerserkerHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FurbolgShaman"/>
+                <Location value="Unit"/>
+                <TimeStart value="7"/>
+                <TimeUse value="7"/>
+            </Charge>
+            <Button DefaultButtonFace="FurbolgShamanHLW"/>
+            <Unit value="FurbolgShamanHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/HighborneWraith"/>
+                <Location value="Unit"/>
+                <TimeStart value="7"/>
+                <TimeUse value="7"/>
+            </Charge>
+            <Button DefaultButtonFace="HighborneWraithHLW"/>
+            <Unit value="HighborneWraithHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SeaGiant"/>
+                <Location value="Unit"/>
+                <TimeStart value="8.4"/>
+                <TimeUse value="8.4"/>
+            </Charge>
+            <Button DefaultButtonFace="SeaGiantHLW"/>
+            <Unit value="SeaGiantHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Broodmother"/>
+                <Location value="Unit"/>
+                <TimeStart value="8.4"/>
+                <TimeUse value="8.4"/>
+            </Charge>
+            <Button DefaultButtonFace="BroodmotherHLW"/>
+            <Unit value="BroodmotherHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/GnollAssassin"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="GnollAssassinHLW"/>
+            <Unit value="GnollAssassinHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/WarGolem"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="WarGolemHLW"/>
+            <Unit value="WarGolemHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/WindfuryHarpy"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="WindfuryHarpyHLW"/>
+            <Unit value="WindfuryHarpyHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/AncientHydra"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="AncientHydraHLW"/>
+            <Unit value="AncientHydraHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Juggernaut"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="JuggernautHLW"/>
+            <Unit value="JuggernautHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <Flags index="Transient" value="1"/>
+    </CAbilTrain>
+    <CAbilTrain id="CreepTier3">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Magnataur"/>
+                <Location value="Unit"/>
+                <TimeStart value="8"/>
+                <TimeUse value="8"/>
+            </Charge>
+            <Button DefaultButtonFace="MagnataurHLW"/>
+            <Unit value="MagnataurHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="IgnorePlacement" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/DireMammoth"/>
+                <Location value="Unit"/>
+                <TimeStart value="10"/>
+                <TimeUse value="10"/>
+            </Charge>
+            <Button DefaultButtonFace="DireMammothHLW"/>
+            <Unit value="DireMammothHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/MurgulBloodgill"/>
+                <Location value="Unit"/>
+                <TimeStart value="10"/>
+                <TimeUse value="10"/>
+            </Charge>
+            <Button DefaultButtonFace="MurgulBloodgillHLW"/>
+            <Unit value="MurgulBloodgillHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/MurlocPlaguebearer"/>
+                <Location value="Unit"/>
+                <TimeStart value="10"/>
+                <TimeUse value="10"/>
+            </Charge>
+            <Button DefaultButtonFace="MurlocPlaguebearerHLW"/>
+            <Unit value="MurlocPlaguebearerHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/NerubianQueen"/>
+                <Location value="Unit"/>
+                <TimeStart value="12"/>
+                <TimeUse value="12"/>
+            </Charge>
+            <Button DefaultButtonFace="NerubianQueenHLW"/>
+            <Unit value="NerubianQueenHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/BoulderfistOgre"/>
+                <Location value="Unit"/>
+                <TimeStart value="12"/>
+                <TimeUse value="12"/>
+            </Charge>
+            <Button DefaultButtonFace="BoulderfistOgreHLW"/>
+            <Unit value="BoulderfistOgreHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FeralWildkin"/>
+                <Location value="Unit"/>
+                <TimeStart value="15"/>
+                <TimeUse value="15"/>
+            </Charge>
+            <Button DefaultButtonFace="FeralWildkinHLW"/>
+            <Unit value="FeralWildkinHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/UrsolBear"/>
+                <Location value="Unit"/>
+                <TimeStart value="15"/>
+                <TimeUse value="15"/>
+            </Charge>
+            <Button DefaultButtonFace="UrsolBearHLW"/>
+            <Unit value="UrsolBearHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FurbolgChampion"/>
+                <Location value="Unit"/>
+                <TimeStart value="15"/>
+                <TimeUse value="15"/>
+            </Charge>
+            <Button DefaultButtonFace="FurbolgChampionHLW"/>
+            <Unit value="FurbolgChampionHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/RazormaneChief"/>
+                <Location value="Unit"/>
+                <TimeStart value="18"/>
+                <TimeUse value="18"/>
+            </Charge>
+            <Button DefaultButtonFace="RazormaneChiefHLW"/>
+            <Unit value="RazormaneChiefHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train11">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/AncientSasquatch"/>
+                <Location value="Unit"/>
+                <TimeStart value="18"/>
+                <TimeUse value="18"/>
+            </Charge>
+            <Button DefaultButtonFace="AncientSasquatchHLW"/>
+            <Unit value="AncientSasquatchHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilTrain id="CreepTier4">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="30"/>
+                <CountStart value="5"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FrostWolf"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="FrostWolfHLW"/>
+            <Unit value="FrostWolfHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/MakuraTidalLord"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="MakuraTidalLordHLW"/>
+            <Unit value="MakuraTidalLordHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/StormWyrm"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="StormWyrmHLW"/>
+            <Unit value="StormWyrmHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/DragonTurtle"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="DragonTurtleHLW"/>
+            <Unit value="DragonTurtleHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/KoboldTaskmaster"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="KoboldTaskmasterHLW"/>
+            <Unit value="KoboldTaskmasterHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/TuskarrSorcerer"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="TuskarrSorcererHLW"/>
+            <Unit value="TuskarrSorcererHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SatyrHellcaller"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="SatyrHellcallerHLW"/>
+            <Unit value="SatyrHellcallerHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FacelessDeathbringer"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="FacelessDeathbringerHLW"/>
+            <Unit value="FacelessDeathbringerHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/FelRavager"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="FelRavagerHLW"/>
+            <Unit value="FelRavagerHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/NetherDragon"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="NetherDragonHLW"/>
+            <Unit value="NetherDragonHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train11">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/DeathRevenant"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="DeathRevenantHLW"/>
+            <Unit value="DeathRevenantHLW"/>
+            <Flags index="AutoCast" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilEffectTarget id="Cyclone">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="20"/>
+            <Cooldown TimeUse="10"/>
+        </Cost>
+        <TargetFilters index="0" value="Ground,Visible;Player,Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <Range index="0" value="500"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="DeathKnightHeroLearn">
+        <InfoArray index="Learn1" Abil="DeathCoil">
+            <Button DefaultButtonFace="DeathCoil"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="DeathPact">
+            <Button DefaultButtonFace="DeathPact"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="FrenzyAura">
+            <Button DefaultButtonFace="FrenzyAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Soulshatter">
+            <Button DefaultButtonFace="Soulshatter"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="DreadlordHeroLearn">
+        <InfoArray index="Learn1" Abil="TearReality">
+            <Button DefaultButtonFace="TearReality"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="VoidShift">
+            <Button DefaultButtonFace="VoidShift"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SoulCharge">
+            <Button DefaultButtonFace="SoulCharge"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="RainofChaos">
+            <Button DefaultButtonFace="RainofChaos"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="AlarakHeroLearn">
+        <InfoArray index="Learn1" Abil="DestructionWave">
+            <Button DefaultButtonFace="DestructionWave"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="DeadlyCharge">
+            <Button DefaultButtonFace="DeadlyCharge"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Absorption">
+            <Button DefaultButtonFace="Absorption"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="DisplacementBeam">
+            <Button DefaultButtonFace="DisplacementBeam"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="BeastmasterHeroLearn">
+        <InfoArray index="Learn1" Abil="CallBear">
+            <Button DefaultButtonFace="CallBear"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CallQuilbeast">
+            <Button DefaultButtonFace="CallQuilbeast"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CallHawk">
+            <Button DefaultButtonFace="CallHawk"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="ThornsAura">
+            <Button DefaultButtonFace="Stampede"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="DemonHunterHeroLearn">
+        <InfoArray index="Learn1" Abil="SurgingStrike">
+            <Button DefaultButtonFace="SurgingStrike"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="ChemicalRage">
+            <Button DefaultButtonFace="ChemicalRage"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Evasion">
+            <Button DefaultButtonFace="Evasion"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Metamorphosis">
+            <Button DefaultButtonFace="Metamorphosis"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="KerriganAscendedHeroLearn">
+        <InfoArray index="Learn1" Abil="QuantumRay">
+            <Button DefaultButtonFace="QuantumRay"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CosmicShift">
+            <Button DefaultButtonFace="CosmicShift"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CelestialRadiance">
+            <Button DefaultButtonFace="CelestialRadiance"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Extinction">
+            <Button DefaultButtonFace="Extinction"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SylvanasExtendedLearn">
+        <InfoArray index="Learn3">
+            <Button DefaultButtonFace="BlackStrikeE"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="TinkerHeroLearn">
+        <InfoArray index="Learn1" Abil="Pyrocannon">
+            <Button DefaultButtonFace="Pyrocannon"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="PocketFactory">
+            <Button DefaultButtonFace="PocketFactory"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="EngineeringUpgrade">
+            <Button DefaultButtonFace="EngineeringUpgrade"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="FirestormArtillery">
+            <Button DefaultButtonFace="FirestormArtillery"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilTrain id="ItemsHLW">
+        <InfoArray index="Train1" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW1" TimeUse="1"/>
+            <Button DefaultButtonFace="AssassinsBladeHLW"/>
+            <Unit value="AssassinsBladeHLW"/>
+        </InfoArray>
+        <InfoArray index="Train2" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW2" TimeUse="1"/>
+            <Button DefaultButtonFace="StormheraldHLW"/>
+            <Unit value="StormheraldHLW"/>
+        </InfoArray>
+        <InfoArray index="Train3" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW3" TimeUse="1"/>
+            <Button DefaultButtonFace="FirebrandHLW"/>
+            <Unit value="FirebrandHLW"/>
+        </InfoArray>
+        <InfoArray index="Train4" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW4" TimeUse="120"/>
+            <Button DefaultButtonFace="IceBarbedSpearHLW"/>
+            <Unit value="IceBarbedSpearHLW"/>
+        </InfoArray>
+        <InfoArray index="Train5" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW5" TimeUse="1"/>
+            <Button DefaultButtonFace="IronplateBucklerHLW"/>
+            <Unit value="IronplateBucklerHLW"/>
+        </InfoArray>
+        <InfoArray index="Train6" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW6" TimeUse="180"/>
+            <Button DefaultButtonFace="BloodforgedShieldHLW"/>
+            <Unit value="BloodforgedShieldHLW"/>
+        </InfoArray>
+        <InfoArray index="Train7" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW7" TimeUse="180"/>
+            <Button DefaultButtonFace="EnergeticBarrierHLW"/>
+            <Unit value="EnergeticBarrierHLW"/>
+        </InfoArray>
+        <InfoArray index="Train8" Effect="ProcPurchase">
+            <Cooldown Link="Abil/ItemsHLW8" TimeUse="180"/>
+            <Button DefaultButtonFace="ButchersBladeHLW"/>
+            <Unit value="ButchersBladeHLW"/>
+        </InfoArray>
+        <SharedFlags index="DisableWhileDead" value="0"/>
+        <Flags index="Transient" value="1"/>
+        <Alert value="ItemPurchased"/>
+    </CAbilTrain>
+    <CAbilLearn id="ArchmageHeroLearn">
+        <InfoArray index="Learn1" Abil="LavaSurge">
+            <Button DefaultButtonFace="LavaSurge"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="SunOrb">
+            <Button DefaultButtonFace="SunOrb"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Radiance">
+            <Button DefaultButtonFace="Radiance"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="NydusDragon">
+            <Button DefaultButtonFace="NydusDragon"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="BansheeHeroLearn">
+        <InfoArray index="Learn1" Abil="PainSpike">
+            <Button DefaultButtonFace="PainSpike"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CurseofMending">
+            <Button DefaultButtonFace="CurseofMending"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SoulLeech">
+            <Button DefaultButtonFace="SoulLeech"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="OblivionShard">
+            <Button DefaultButtonFace="OblivionShard"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="Anathema">
+            <Button DefaultButtonFace="Anathema"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="NovaHeroLearn">
+        <InfoArray index="Learn1" Abil="RailSnipe">
+            <Button DefaultButtonFace="RailSnipe"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="EMPRound">
+            <Button DefaultButtonFace="EMPRound"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Sharpshooter">
+            <Button DefaultButtonFace="Sharpshooter"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="NuclearStrike">
+            <Button DefaultButtonFace="NuclearStrike"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="FirelordHeroLearn">
+        <InfoArray index="Learn1" Abil="Doomfire">
+            <Button DefaultButtonFace="Doomfire"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="LavaSpawn">
+            <Button DefaultButtonFace="LavaSpawn"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Incinerate">
+            <Button DefaultButtonFace="Incinerate"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Volcano">
+            <Button DefaultButtonFace="Volcano"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SatyrHeroLearn">
+        <InfoArray index="Learn1" Abil="RaiseSkeleton">
+            <Button DefaultButtonFace="RaiseSkeleton"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="DarkGift">
+            <Button DefaultButtonFace="DarkGift"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CripplingAura">
+            <Button DefaultButtonFace="CripplingAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="AnimateDead">
+            <Button DefaultButtonFace="AnimateDead"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="BrewmasterHeroLearn">
+        <InfoArray index="Learn1" Abil="BreathofFire">
+            <Button DefaultButtonFace="BreathofFire"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="WarStomp">
+            <Button DefaultButtonFace="WarStomp"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="DrunkenBrawler">
+            <Button DefaultButtonFace="DrunkenBrawler"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="StormEarthandFire">
+            <Button DefaultButtonFace="StormEarthandFire"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="CryptLordHeroLearn">
+        <InfoArray index="Learn1" Abil="Impale">
+            <Button DefaultButtonFace="Impale"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CarrionBeetles">
+            <Button DefaultButtonFace="CarrionBeetles"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SpikedCarapace">
+            <Button DefaultButtonFace="SpikedCarapace"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Earthquake">
+            <Button DefaultButtonFace="StormEarthandFire"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="CaptainHeroLearn">
+        <InfoArray index="Learn1" Abil="ShieldCharge">
+            <Button DefaultButtonFace="ShieldCharge"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="ShieldBarrier">
+            <Button DefaultButtonFace="ShieldBarrier"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Avenger">
+            <Button DefaultButtonFace="Avenger"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="RallyingCry">
+            <Button DefaultButtonFace="RallyingCry"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SorceressHeroLearn">
+        <InfoArray index="Learn1" Abil="Firebomb">
+            <Button DefaultButtonFace="Firebomb"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="FireWall">
+            <Button DefaultButtonFace="FireWall"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="FireGolem">
+            <Button DefaultButtonFace="FireGolem"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Meteor">
+            <Button DefaultButtonFace="Meteor"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="TimeBomb">
+            <Button DefaultButtonFace="TimeBomb"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SirenHeroLearn">
+        <InfoArray index="Learn1" Abil="Starsurge">
+            <Button DefaultButtonFace="Starsurge"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="RuneTrap">
+            <Button DefaultButtonFace="RuneTrap"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CelestialWrath">
+            <Button DefaultButtonFace="CelestialWrath"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="LunarStrike">
+            <Button DefaultButtonFace="LunarStrike"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="ShadowHunterHeroLearn">
+        <InfoArray index="Learn1" Abil="VirulentCloud">
+            <Button DefaultButtonFace="VirulentCloud"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="CarrionBeetles">
+            <Button DefaultButtonFace="CarrionBeetles"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SerpentWard">
+            <Button DefaultButtonFace="SerpentWard"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="HealingSwarm">
+            <Button DefaultButtonFace="HealingSwarm"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="MassEntanglement">
+            <Button DefaultButtonFace="MassEntanglement"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SuccubusHeroLearn">
+        <InfoArray index="Learn1" Abil="WaterElemental">
+            <Button DefaultButtonFace="WaterElemental"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="FeralSpirit">
+            <Button DefaultButtonFace="FeralSpirit"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CommandAura">
+            <Button DefaultButtonFace="CommandAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Inferno">
+            <Button DefaultButtonFace="Inferno"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SpellbreakerHeroLearn">
+        <InfoArray index="Learn1" Abil="DeathLingers">
+            <Button DefaultButtonFace="DeathLingers"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="DeadlyBonds">
+            <Button DefaultButtonFace="DeadlyBonds"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SoulDrain">
+            <Button DefaultButtonFace="SoulDrain"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="WraithForm">
+            <Button DefaultButtonFace="WraithForm"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="MonsoonNeutral">
+        <Flags index="AutoCast" value="0"/>
+        <Flags index="AutoCastOn" value="0"/>
+        <Cost index="0">
+            <Vital index="Energy" value="100"/>
+            <Cooldown TimeStart="180" TimeUse="90"/>
+        </Cost>
+        <Range index="0" value="500"/>
+        <Arc value="360"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="EredarLordHeroLearn">
+        <InfoArray index="Learn1" Abil="Parasite">
+            <Button DefaultButtonFace="Parasite"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="BloodBoil">
+            <Button DefaultButtonFace="BloodBoil"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="LocustNest">
+            <Button DefaultButtonFace="LocustNest"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="VoidZone">
+            <Button DefaultButtonFace="VoidZone"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="BlademasterHeroLearn">
+        <InfoArray index="Learn1" Abil="WindWalk">
+            <Button DefaultButtonFace="WindWalk"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="MirrorImage">
+            <Button DefaultButtonFace="MirrorImage"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CriticalStrike">
+            <Button DefaultButtonFace="CriticalStrike"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Bladestorm">
+            <Button DefaultButtonFace="Bladestorm"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="SeaWitchHeroLearn">
+        <InfoArray index="Learn1" Abil="ForkedLightning">
+            <Button DefaultButtonFace="ForkedLightning"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="TaintedCore">
+            <Button DefaultButtonFace="TaintedCore"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="StormArrows">
+            <Button DefaultButtonFace="StormArrows"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Tornado">
+            <Button DefaultButtonFace="Tornado"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="PriestessoftheMoonHeroLearn">
+        <InfoArray index="Learn1" Abil="Multishot">
+            <Button DefaultButtonFace="Multishot"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="ForceofNature">
+            <Button DefaultButtonFace="ForceofNature"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="SearingStrikes">
+            <Button DefaultButtonFace="SearingStrikes"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Starfall">
+            <Button DefaultButtonFace="Starfall"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="FarSeerHeroLearn">
+        <InfoArray index="Learn1" Abil="ChainLightning">
+            <Button DefaultButtonFace="ChainLightning"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="BallLightning">
+            <Button DefaultButtonFace="BallLightning"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="EnergyConduit">
+            <Button DefaultButtonFace="EnergyConduit"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Thunderstorm">
+            <Button DefaultButtonFace="Thunderstorm"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="OgreHeroLearn">
+        <InfoArray index="Learn1" Abil="Smash">
+            <Button DefaultButtonFace="Smash"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="GroundSlam">
+            <Button DefaultButtonFace="GroundSlam"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="BruteForce">
+            <Button DefaultButtonFace="BruteForce"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Carnage">
+            <Button DefaultButtonFace="Carnage"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectInstant id="ReviveHero"/>
+    <CAbilLearn id="DarkRangerHeroLearn">
+        <InfoArray index="Learn1" Abil="HauntingWave">
+            <Button DefaultButtonFace="HauntingWave"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="BlackStrike">
+            <Button DefaultButtonFace="BlackStrike"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="TrueshotAura">
+            <Button DefaultButtonFace="TrueshotAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="CharmArea">
+            <Button DefaultButtonFace="CharmArea"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="StukovHeroLearn">
+        <InfoArray index="Learn1" Abil="CorrosiveBlast">
+            <Button DefaultButtonFace="CorrosiveBlast"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="SpawnInfestedTerrans">
+            <Button DefaultButtonFace="SpawnInfestedTerrans"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="RegenerationAura">
+            <Button DefaultButtonFace="RegenerationAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="AcidNova">
+            <Button DefaultButtonFace="AcidNova"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="BarracksHumanHeroLearn">
+        <InfoArray index="Learn1" Abil="TrainFootman">
+            <Button DefaultButtonFace="TrainFootman"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="TrainRifleman">
+            <Button DefaultButtonFace="TrainRifleman"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="TrainSpellbreaker">
+            <Button DefaultButtonFace="TrainSpellbreaker"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="TrainKnight">
+            <Button DefaultButtonFace="TrainKnight"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="TrainPriest">
+            <Button DefaultButtonFace="TrainPriest"/>
+        </InfoArray>
+        <InfoArray index="Learn6" Abil="TrainSorceress">
+            <Button DefaultButtonFace="TrainSorceress"/>
+        </InfoArray>
+        <InfoArray index="Learn7" Abil="TrainMortarTeam">
+            <Button DefaultButtonFace="TrainMortarTeam"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectInstant id="SelectShrine">
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="1"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="SelectShrineHLW" Requirements="NotHeroSpawner"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Tornado">
+        <Range index="0" value="9"/>
+        <AutoCastRange value="9"/>
+        <Cost index="0">
+            <Vital index="Energy" value="75"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilEffectInstant id="TornadoCyclone">
+        <AutoCastRange value="3"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="Transformation">
+        <TargetFilters index="0" value="Visible;Neutral,Enemy,Structure,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CAbilEffectTarget>
+    <CAbilLearn id="TyrandeExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="SearingStrikesW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="UtherExtendedLearn">
+        <InfoArray index="Learn8">
+            <Button DefaultButtonFace="HolyAuraW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectTarget id="VirulentCloud">
+        <Cost index="0">
+            <Vital index="Energy" value="15"/>
+        </Cost>
+    </CAbilEffectTarget>
+    <CAbilLearn id="VoidwalkerHeroLearn">
+        <InfoArray index="Learn1" Abil="Flamestrike">
+            <Button DefaultButtonFace="Flamestrike"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Infection">
+            <Button DefaultButtonFace="Infection"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="DarkRitual">
+            <Button DefaultButtonFace="DarkRitual"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Doom">
+            <Button DefaultButtonFace="Doom"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="LichHeroLearn">
+        <InfoArray index="Learn1" Abil="FrostNova">
+            <Button DefaultButtonFace="FrostNova"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Illusion">
+            <Button DefaultButtonFace="Illusion"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="GuardianWisps">
+            <Button DefaultButtonFace="GuardianWisps"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="AncientKnowledge">
+            <Button DefaultButtonFace="AncientKnowledge"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilTrain id="CreepTier1">
+        <Flags index="Transient" value="1"/>
+        <InfoArray index="Train1">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Scorpid"/>
+                <Location value="Unit"/>
+                <TimeStart value="4.25"/>
+                <TimeUse value="4.25"/>
+            </Charge>
+            <Button DefaultButtonFace="ScorpidHLW"/>
+            <Unit value="ScorpidHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train2">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Bandit"/>
+                <Location value="Unit"/>
+                <TimeStart value="5.5"/>
+                <TimeUse value="5.5"/>
+            </Charge>
+            <Button DefaultButtonFace="BanditHLW"/>
+            <Unit value="BanditHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train3">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/CentaurArcher"/>
+                <Location value="Unit"/>
+                <TimeStart value="7"/>
+                <TimeUse value="7"/>
+            </Charge>
+            <Button DefaultButtonFace="CentaurArcherHLW"/>
+            <Unit value="CentaurArcherHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train4">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SpiderCrab"/>
+                <Location value="Unit"/>
+                <TimeStart value="11.25"/>
+                <TimeUse value="11.25"/>
+            </Charge>
+            <Button DefaultButtonFace="SpiderCrabHLW"/>
+            <Unit value="SpiderCrabHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train5">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/ZandalariPriest"/>
+                <Location value="Unit"/>
+                <TimeStart value="12.5"/>
+                <TimeUse value="12.5"/>
+            </Charge>
+            <Button DefaultButtonFace="ZandalariPriestHLW"/>
+            <Unit value="ZandalariPriestHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train6">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/BrokenVindicator"/>
+                <Location value="Unit"/>
+                <TimeStart value="14"/>
+                <TimeUse value="14"/>
+            </Charge>
+            <Button DefaultButtonFace="BrokenVindicatorHLW"/>
+            <Unit value="BrokenVindicatorHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train7">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/BlackDrake"/>
+                <Location value="Unit"/>
+                <TimeStart value="14"/>
+                <TimeUse value="14"/>
+            </Charge>
+            <Button DefaultButtonFace="BlackDrakeHLW"/>
+            <Unit value="BlackDrakeHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train8">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/SkeletalMage"/>
+                <Location value="Unit"/>
+                <TimeStart value="21"/>
+                <TimeUse value="21"/>
+            </Charge>
+            <Button DefaultButtonFace="SkeletalMageHLW"/>
+            <Unit value="SkeletalMageHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train9">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/CorruptedTreant"/>
+                <Location value="Unit"/>
+                <TimeStart value="21"/>
+                <TimeUse value="21"/>
+            </Charge>
+            <Button DefaultButtonFace="CorruptedTreantHLW"/>
+            <Unit value="CorruptedTreantHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+        <InfoArray index="Train10">
+            <Charge>
+                <CountMax value="30"/>
+                <CountUse value="1"/>
+                <Link value="Abil/Bloodfiend"/>
+                <Location value="Unit"/>
+                <TimeStart value="21"/>
+                <TimeUse value="21"/>
+            </Charge>
+            <Button DefaultButtonFace="BloodfiendHLW"/>
+            <Unit value="BloodfiendHLW"/>
+            <Flags index="AutoCast" value="1"/>
+            <Flags index="AutoCastOn" value="1"/>
+        </InfoArray>
+    </CAbilTrain>
+    <CAbilLearn id="BloodMageHeroLearn">
+        <InfoArray index="Learn1" Abil="RainofFire">
+            <Button DefaultButtonFace="RainofFire"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="LivingBomb">
+            <Button DefaultButtonFace="LivingBomb"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ElementalAura">
+            <Button DefaultButtonFace="ElementalAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="PhoenixHeroic">
+            <Button DefaultButtonFace="PhoenixHeroic"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="RoyalGuardHeroLearn">
+        <InfoArray index="Learn1" Abil="BreathofFrost">
+            <Button DefaultButtonFace="BreathofFrost"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="IceBarrier">
+            <Button DefaultButtonFace="IceBarrier"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ElementalAttendant">
+            <Button DefaultButtonFace="ElementalAttendant"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="ShieldDome">
+            <Button DefaultButtonFace="ShieldDome"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="FrostMastery">
+            <Button DefaultButtonFace="FrostMastery"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="KeeperoftheGroveHeroLearn">
+        <InfoArray index="Learn1" Abil="EntanglingRoots">
+            <Button DefaultButtonFace="EntanglingRoots"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Regrowth">
+            <Button DefaultButtonFace="Regrowth"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="EnduranceAura">
+            <Button DefaultButtonFace="EnduranceAura"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="SplittingStrikes">
+            <Button DefaultButtonFace="SplittingStrikes"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="VoljinExtendedLearn">
+        <InfoArray index="Learn2">
+            <Button DefaultButtonFace="HexW"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="VorazunHeroLearn">
+        <InfoArray index="Learn1" Abil="PoisonBlast">
+            <Button DefaultButtonFace="PoisonBlast"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="GuidedArrow">
+            <Button DefaultButtonFace="GuidedArrow"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="ShadowFury">
+            <Button DefaultButtonFace="ShadowFury"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="DarkElite">
+            <Button DefaultButtonFace="DarkReinforcements"/>
+        </InfoArray>
+        <InfoArray index="Learn5" Abil="ShadowMastery">
+            <Button DefaultButtonFace="ShadowMastery"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="WardenHeroLearn">
+        <InfoArray index="Learn1" Abil="ShadowStrike">
+            <Button DefaultButtonFace="ShadowStrike"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="Assassinate">
+            <Button DefaultButtonFace="Assassinate"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="CleavingStrikes">
+            <Button DefaultButtonFace="CleavingStrikes"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Vengeance">
+            <Button DefaultButtonFace="Vengeance"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilLearn id="WarlockHeroLearn">
+        <InfoArray index="Learn1" Abil="BlightedGround">
+            <Button DefaultButtonFace="BlightedGround"/>
+        </InfoArray>
+        <InfoArray index="Learn2" Abil="DeathMarch">
+            <Button DefaultButtonFace="DeathMarch"/>
+        </InfoArray>
+        <InfoArray index="Learn3" Abil="Desecrate">
+            <Button DefaultButtonFace="Desecrate"/>
+        </InfoArray>
+        <InfoArray index="Learn4" Abil="Transformation">
+            <Button DefaultButtonFace="Transformation"/>
+        </InfoArray>
+    </CAbilLearn>
+    <CAbilEffectInstant id="WaterElemental">
+        <Cost index="0">
+            <Vital index="Energy" value="35"/>
+        </Cost>
+    </CAbilEffectInstant>
+</Catalog>

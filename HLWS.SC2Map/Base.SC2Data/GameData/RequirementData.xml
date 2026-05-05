@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirement id="NoShadows">
+        <NodeArray index="Use" Link="AndNotCountUpgradeNoShadowsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="SlowGameSpeed">
+        <NodeArray index="Use" Link="AndNotCountUpgradeSlowGameSpeedCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="ShadowMastery">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilShadowMasteryCompleteOnlyAtUnit"/>
+        <NodeArray index="Show" Link="CountAbilShadowMasteryCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="Servitor">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="And4001198346CountAbilServitorLearnOnlyCompleteOnlyAtUnitLTCountUnitServitorCompleteOnlyAtUnit6"/>
+        <NodeArray index="Show" Link="CountAbilServitorLearnOnlyCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="NotMirrorImage">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="Not113775528CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit"/>
+    </CRequirement>
+    <CRequirement id="FrostMastery">
+        <EditorCategories value="Race:Neutral,TechType:Ability"/>
+        <NodeArray index="Use" Link="CountAbilFrostMasteryCompleteOnly"/>
+        <NodeArray index="Show" Link="CountAbilFrostMasteryCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="RemovedBuffDebuffVisuals">
+        <NodeArray index="Use" Link="AndNotCountUpgradeRemovedBuffDebuffVisualsCompleteOnly"/>
+    </CRequirement>
+    <CRequirement id="TrainKnight">
+        <NodeArray index="Use" Link="LT3872491591CountUnitTrainKnightQueuedOrBetter2"/>
+    </CRequirement>
+</Catalog>

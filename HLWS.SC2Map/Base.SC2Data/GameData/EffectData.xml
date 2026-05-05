@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectSwitch id="AcidNovaDamageSwitch">
+        <CaseArray index="1" removed="1"/>
+        <CaseDefault value="AcidNovaDamage"/>
+    </CEffectSwitch>
+    <CEffectEnumArea id="AcidNovaSearch">
+        <AreaArray index="0" Radius="11"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="AcidNovaSwitch">
+        <CaseArray index="1" removed="1"/>
+        <CaseDefault value="AcidNova"/>
+    </CEffectSwitch>
+    <CEffectDamage id="AssassinateDamage">
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="AssassinateSetCast">
+        <EffectArray index="2" value="AssassinateTeleport"/>
+        <EffectArray index="3" value="AssassinateDamage"/>
+        <EffectArray index="4" value="Assassinate"/>
+        <EffectArray index="5" value="CastOmni05"/>
+        <EffectArray value="KickerDamageTargetPoint"/>
+    </CEffectSet>
+    <CEffectEnumArea id="BanishSearch">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
+    <CEffectSet id="BanishSetCast">
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectApplyForce id="BlastWavePush">
+        <Amount value="75"/>
+    </CEffectApplyForce>
+    <CEffectDamage id="BlightedGroundDamage">
+        <Amount value="10"/>
+    </CEffectDamage>
+    <CEffectDamage id="BlightedGroundLifeMax">
+        <Amount value="150"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="BlightedGroundPersistent">
+        <PeriodCount value="15"/>
+        <PeriodicPeriodArray index="0" value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="BoneServantsPersistent">
+        <PeriodicPeriodArray index="1" value="0.125"/>
+        <PeriodicPeriodArray index="2" value="0.125"/>
+        <PeriodicPeriodArray index="3" value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectApplyBehavior id="BoneServantsTimedLife">
+        <Count value="1"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="14"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="CannonImageLifeMax" parent="DU_WEAP">
+        <Amount value="750"/>
+    </CEffectDamage>
+    <CEffectDamage id="DeathPactDamage">
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="DisplacementBeamKillSearch">
+        <SearchFilters value="-;Self,Ally,Neutral,Enemy,Heroic,Missile,Item,Dead,Hidden"/>
+        <AreaArray Radius="500" Effect="DisplacementBeamKill"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="DisplacementBeamKill">
+        <ValidatorArray value="IsDisplacementBeam"/>
+        <EditorCategories value=""/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="NoKillCredit" value="1"/>
+        <Death value="Timeout"/>
+    </CEffectDamage>
+    <CEffectSet id="DisplacementBeamSetCast">
+        <EffectArray index="2" value="DisplacementBeamKillSearch"/>
+        <EffectArray index="3" value="DisplacementBeamCreate"/>
+        <EffectArray value="CastDirected05"/>
+    </CEffectSet>
+    <CEffectSet id="ExtinctionSetCast">
+        <EffectArray index="2" value="ExtinctionDummy"/>
+    </CEffectSet>
+    <CEffectDamage id="FrostMastery">
+        <EditorCategories value=""/>
+    </CEffectDamage>
+    <CEffectSet id="FrostMasterySetCast">
+        <ValidatorArray value="NotHeroSpawner"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ChronoField">
+        <ValidatorArray value="NotMercenaryCamp"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="ChronoFieldSearch">
+        <SearchFilters value="Structure;Neutral,Enemy,Missile,Item,Stasis,Dead,Hidden"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="ExtinctionDamage">
+        <Amount value="375"/>
+        <Fraction value="2"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="ForceofWillModify">
+        <ValidatorArray index="0" value="ShieldsNotFull"/>
+        <VitalArray index="Life">
+            <Change value="15"/>
+        </VitalArray>
+        <VitalArray index="Shields">
+            <Change value="15"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectAddTrackedUnit id="GuardianWispsAddTrackedUnit">
+        <EditorCategories value=""/>
+        <BehaviorLink value="GuardianWispsUnitTracker"/>
+        <TrackedUnit Value="Target"/>
+    </CEffectAddTrackedUnit>
+    <CEffectDamage id="GuidedArrowDamage">
+        <Amount value="120"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="GuidedArrowOffset">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <Flags index="RandomOffset" value="1"/>
+        <PeriodicOffsetArray index="0" value="-0.5,0,0"/>
+        <PeriodicOffsetArray value="0.5,0,0"/>
+        <PeriodicOffsetArray value="0,-0.5,0"/>
+        <PeriodicOffsetArray value="0,0.5,0"/>
+        <PeriodicOffsetArray value="-0.5,-0.5,0"/>
+        <PeriodicOffsetArray value="0.5,-0.5,0"/>
+        <PeriodicOffsetArray value="0.5,0.5,0"/>
+        <PeriodicOffsetArray value="-0.5,0.5,0"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="GuidedArrowPersistentOrders">
+        <PeriodicPeriodArray index="1" value="0.125"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="GuidedArrowSearchTarget">
+        <AreaArray index="0" MaxCount="2"/>
+    </CEffectEnumArea>
+    <CEffectSet id="GuidedArrowSetCast">
+        <EffectArray index="2" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="GuidedArrowSetImpact">
+        <EffectArray index="2" removed="1"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="FrostMasterySlow">
+        <ValidatorArray index="0" value="NotFrenzied"/>
+        <ValidatorArray value="NotUnbuffableUnit"/>
+        <Behavior value="Chilled"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="5"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="FrostMasterySearch">
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray Radius="2" Effect="FrostMasterySlow"/>
+    </CEffectEnumArea>
+    <CEffectSet id="HealthStoneSetUse">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+    </CEffectSet>
+    <CEffectEnumArea id="LivingBombSearch">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="LivingBombSearchJump">
+        <AreaArray index="0" Radius="3"/>
+    </CEffectEnumArea>
+    <CEffectSet id="LivingBombSetCast">
+        <EffectArray index="3" value="LivingBombDamage"/>
+        <EffectArray value="CastDirected05"/>
+    </CEffectSet>
+    <CEffectCreateUnit id="CannonImage">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="CannonImageSetBirth"/>
+        <SpawnUnit value="CannonImage"/>
+    </CEffectCreateUnit>
+    <CEffectApplyBehavior id="CannonImageInitialStun"/>
+    <CEffectApplyBehavior id="CannonImageTimedLife">
+        <ValidatorArray index="0" value="PhaseCannonTimedLifeTargetFilters"/>
+    </CEffectApplyBehavior>
+    <CEffectLaunchMissile id="CannonImageLM">
+        <ValidatorArray index="0" value="PhotonCannonTargetFilters"/>
+        <ImpactEffect value="CannonImageSetLaunch"/>
+        <AmmoUnit value="PhotonCannonWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="CannonImageDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="1"/>
+        <Kind value="Spell"/>
+        <Amount value="90"/>
+        <Death value="Disintegrate"/>
+        <SearchFilters value="-;Self,Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AmountScoreArray Value="DamageDealtbyAbilities"/>
+        <AmountScoreArray Validator="IsSummonedUnitSource" Value="DamageDealtbySummons"/>
+        <AmountScoreArray Validator="IsHeroicCaster" Value="DamageDealtbyHeroes"/>
+        <AmountScoreArray Validator="IsStructureSource" Value="DamageDealtbyStructures"/>
+        <AmountScoreArray Validator="IsStructureTarget" Value="DamageDealttoStructures"/>
+    </CEffectDamage>
+    <CEffectSet id="ManaStoneSetUse">
+        <ValidatorArray index="0" value="CasterNotDead"/>
+    </CEffectSet>
+    <CEffectDamage id="NuclearStrikeDamage">
+        <Amount value="375"/>
+        <Fraction value="2"/>
+    </CEffectDamage>
+    <CEffectDamage id="PainSpikeDamage">
+        <Amount value="150"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="PoisonBlastCorrosion">
+        <ValidatorArray index="0" value="NotUnbuffableUnit"/>
+        <ValidatorArray value="TargetNotDead"/>
+        <Behavior value="Corrosion"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="10"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="PoisonBoltCreate">
+        <CreateFlags index="Birth" value="1"/>
+        <CreateFlags index="DropOff" value="1"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="PoisonBlastSetCast">
+        <ValidatorArray value="NotHeroSpawner"/>
+        <EffectArray value="ProcAbilityLaunch"/>
+        <EffectArray value="PoisonBlastSearch"/>
+        <EffectArray value="CastCustomA025"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectDamage id="PoisonBlastDamage" parent="AbilityDamage">
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="PoisonBlastSearch">
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="-;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray Radius="2.5" Effect="PoisonBlastSetImpact"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PoisonBlastSetImpact">
+        <EffectArray value="ProcAbilityImpact"/>
+        <EffectArray value="PoisonBlastDamage"/>
+        <EffectArray value="PoisonBlastCorrosion"/>
+    </CEffectSet>
+    <CEffectSet id="CannonImageSetCast">
+        <ValidatorArray value="NotHeroSpawner"/>
+        <EffectArray value="ProcAbilityLaunch"/>
+        <EffectArray value="CannonImage"/>
+        <EffectArray value="CastOmni05"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="CannonImageSetLaunch">
+        <EffectArray value="ProcWeaponLaunch"/>
+        <EffectArray value="ProcWeaponImpact"/>
+        <EffectArray value="CannonImageDamage"/>
+    </CEffectSet>
+    <CEffectSet id="CannonImageSetBirth">
+        <EffectArray value="ProcAbilityImpact"/>
+        <EffectArray value="ProcSummon"/>
+        <EffectArray value="CannonImageInitialStun"/>
+        <EffectArray value="SetSummonKillsToCasterUpdate"/>
+    </CEffectSet>
+    <CEffectCreateHealer id="RallyingCryCH">
+        <PeriodCount value="1"/>
+        <PeriodicPeriod value="1"/>
+        <RechargeVitalRate value="450"/>
+    </CEffectCreateHealer>
+    <CEffectEnumArea id="RallyingCrySearch">
+        <AreaArray index="0" Radius="11"/>
+        <ExcludeArray index="0" removed="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="RallyingCrySetCast">
+        <EffectArray index="2" value="RallyingCryCH"/>
+        <EffectArray index="3" value="RallyingCryCH"/>
+    </CEffectSet>
+    <CEffectSet id="RallyingCrySetImpact">
+        <EffectArray index="1" value="RallyingCryCH"/>
+    </CEffectSet>
+    <CEffectEnumArea id="ReconstructionBeamSearch">
+        <AreaArray index="0" Radius="24"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ReconstructionBeamSearchHeroic">
+        <AreaArray index="0" Radius="24"/>
+    </CEffectEnumArea>
+    <CEffectSet id="SafeguardSetCast">
+        <EffectArray index="2" value="CastOmni10"/>
+    </CEffectSet>
+    <CEffectTeleport id="ShadowFuryTeleport">
+        <TeleportFlags index="TestZone" value="1"/>
+    </CEffectTeleport>
+    <CEffectTeleport id="AssassinateTeleport" parent="ShadowFuryTeleport">
+        <Name value="Effect/Name/AssassinateTeleport"/>
+        <Marker Link="Effect/AssassinateTeleport"/>
+        <PlacementRange value="6"/>
+        <Range value="6"/>
+        <TargetLocation Value="TargetUnit"/>
+        <TeleportFlags index="TestFog" value="1"/>
+        <TeleportEffect value="AssassinateTeleportFacing"/>
+    </CEffectTeleport>
+    <CEffectModifyUnit id="AssassinateTeleportFacing">
+        <ImpactUnit Value="Caster"/>
+        <FacingLocation Effect="AssassinateTeleport" Value="TargetUnit"/>
+        <FacingType value="LookAt"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="ShadowMasteryAura1">
+        <ValidatorArray index="0" value="NoShadowMasteryAura2"/>
+        <ValidatorArray value="NoShadowMasteryAura3"/>
+        <ValidatorArray value="NoShadowMasteryAura4"/>
+        <ValidatorArray value="NoShadowMasteryAura5"/>
+        <ValidatorArray value="NoShadowMasteryAura6"/>
+        <ValidatorArray value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery1"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura10">
+        <ValidatorArray index="0" value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery10"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura2">
+        <ValidatorArray index="0" value="NoShadowMasteryAura3"/>
+        <ValidatorArray value="NoShadowMasteryAura4"/>
+        <ValidatorArray value="NoShadowMasteryAura5"/>
+        <ValidatorArray value="NoShadowMasteryAura6"/>
+        <ValidatorArray value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery2"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura3">
+        <ValidatorArray index="0" value="NoShadowMasteryAura4"/>
+        <ValidatorArray value="NoShadowMasteryAura5"/>
+        <ValidatorArray value="NoShadowMasteryAura6"/>
+        <ValidatorArray value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery3"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura4">
+        <ValidatorArray index="0" value="NoShadowMasteryAura5"/>
+        <ValidatorArray value="NoShadowMasteryAura6"/>
+        <ValidatorArray value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery4"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura5">
+        <ValidatorArray index="0" value="NoShadowMasteryAura6"/>
+        <ValidatorArray value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery5"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura6">
+        <ValidatorArray index="0" value="NoShadowMasteryAura7"/>
+        <ValidatorArray value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery6"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura7">
+        <ValidatorArray index="0" value="NoShadowMasteryAura8"/>
+        <ValidatorArray value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery7"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura8">
+        <ValidatorArray index="0" value="NoShadowMasteryAura9"/>
+        <ValidatorArray value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery8"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ShadowMasteryAura9">
+        <ValidatorArray index="0" value="NoShadowMasteryAura10"/>
+        <ValidatorArray value="DarkAssassinTemplarEliteVorazunNightblade"/>
+        <Behavior value="ShadowMastery9"/>
+    </CEffectApplyBehavior>
+    <CEffectEnumArea id="ShadowMasteryAura1Search" parent="SearchAuraPositive">
+        <AreaArray Radius="9" Effect="ShadowMasteryAura1"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectApplyBehavior id="PhotonOverchargeABStructure">
+        <EditorCategories value=""/>
+        <Behavior value="PhotonOvercharge"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="21"/>
+    </CEffectApplyBehavior>
+    <CEffectSwitch id="PhotonOverchargeABSwitch">
+        <EditorCategories value=""/>
+        <CaseArray Validator="IsStructureTarget" Effect="PhotonOverchargeABStructure"/>
+        <CaseDefault value="PhotonOverchargeAB"/>
+    </CEffectSwitch>
+    <CEffectDamage id="PhotonOverchargeLifeMax">
+        <Amount value="150"/>
+    </CEffectDamage>
+    <CEffectApplyBehavior id="PhotonOverchargeAB">
+        <EditorCategories value=""/>
+        <Behavior value="PhotonOvercharge"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="14"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="PhotonOverchargeDamage">
+        <EditorCategories value="Race:Protoss"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ArmorReduction value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="105"/>
+        <Death value="Disintegrate"/>
+        <AreaArray/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+        <SearchFlags index="OffsetAreaByAngle" value="1"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+        <AmountScoreArray Value="DamageDealtbyWeapons"/>
+        <AmountScoreArray Value="DamageDealtbyHeroes"/>
+        <AmountScoreArray Validator="IsSummonedUnitSource" Value="DamageDealtbySummons"/>
+        <AmountScoreArray Validator="IsStructureSource" Value="DamageDealtbyStructures"/>
+        <AmountScoreArray Validator="IsStructureTarget" Value="DamageDealttoStructures"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="PhotonOverchargeLM">
+        <EditorCategories value="Race:Protoss"/>
+        <ImpactEffect value="PhotonOverchargeDamage"/>
+        <Flags index="ValidateAbil" value="0"/>
+        <AmmoUnit value="PhotonOvercharge"/>
+        <Movers Link="MothershipCoreWeaponWeaponClose" IfRangeLTE="4"/>
+        <Movers Link="MothershipCoreWeaponWeapon" IfRangeLTE="20"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="PhotonOverchargeSearch">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="10" Effect="PhotonOverchargeLM"/>
+        <MaxCount value="1"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="AmaniBerserkerHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="140"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BanditLordHLWDamage" parent="DU_WEAP">
+        <Amount value="11000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BlightAuraSearch">
+        <SearchFilters value="-;Player,Ally,Structure,Heroic,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura10Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura1Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura2Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura3Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura4Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura5Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura6Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura7Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura8Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="BrillianceAura9Search">
+        <AreaArray index="0" Radius="100"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="BronzeDragonHLWDamage" parent="War3RangedDamage">
+        <AttributeFactor index="Structure" value="1"/>
+        <Amount value="10000"/>
+        <AreaArray Radius="0.5" Fraction="1"/>
+        <AreaArray Radius="0.75" Fraction="0.5"/>
+        <AreaArray Radius="1" Fraction="0.25"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="BurningAuraSearch">
+        <SearchFilters value="-;Player,Ally,Structure,Heroic,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CEffectEnumArea>
+    <CEffectModifyUnit id="CarnageModify">
+        <ValidatorArray index="0" removed="1"/>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="CastCustomB40Interruptible">
+        <WhichUnit Value="Source"/>
+        <Behavior value="CastCustomBInterruptible"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="4"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="DarkEliteCrit">
+        <EditorCategories value="Race:Hero"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <InitialEffect value="CritDummy"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="NotStructureAndNotResistant"/>
+        <PeriodicEffectArray value="DarkEliteSetLaunch"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="DarkEliteMultistrikeSearch" parent="SearchMultistrike">
+        <AreaArray MaxCount="0" Radius="3" Effect="DarkEliteSetImpact"/>
+    </CEffectEnumArea>
+    <CEffectSet id="DarkEliteSetImpact">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponImpact"/>
+        <EffectArray value="DarkEliteDamage"/>
+    </CEffectSet>
+    <CEffectSet id="DarkEliteSetLaunch">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponLaunch"/>
+        <EffectArray value="DarkEliteSetImpact"/>
+        <EffectArray value="DarkEliteMultistrikeSearch"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="PoisonBoltOffset">
+        <PeriodicPeriodArray index="0" value="0.0625"/>
+        <PeriodicEffectArray index="0" value="PoisonBoltSearch"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="PoisonBoltSetCast">
+        <EffectArray index="2" value="CastCustomA025"/>
+    </CEffectSet>
+    <CEffectSet id="PoisonBoltSetImpact">
+        <EffectArray index="3" removed="1"/>
+    </CEffectSet>
+    <CEffectSet id="PhotonOverchargeSetCast">
+        <EffectArray value="ProcUltimateLaunch"/>
+        <EffectArray value="ProcAbilityLaunch"/>
+        <EffectArray value="PhotonOverchargeAB"/>
+        <EffectArray value="CastDirected05"/>
+    </CEffectSet>
+    <CEffectDamage id="ResurgenceDamage">
+        <Amount value="250"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="ResurgenceSearch">
+        <AreaArray index="0" Radius="7"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ResurgenceSetImpact">
+        <EffectArray index="1" value="ResurgenceDamageDelay"/>
+        <EffectArray index="2" value="ResurgenceStunSwitch"/>
+        <EffectArray index="3" removed="1"/>
+    </CEffectSet>
+    <CEffectDamage id="ShadowMastery">
+        <EditorCategories value=""/>
+        <Amount value="15"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="DarkEliteCreate">
+        <WhichLocation Value="TargetPoint"/>
+        <CreateFlags index="Birth" value="0"/>
+        <CreateFlags index="Placement" value="0"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="DarkEliteSetSummon"/>
+        <SpawnUnit value="DarkElite"/>
+        <SpawnCount value="4"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="DarkEliteDamage" parent="War3MeleeDamage">
+        <EditorCategories value="Race:Hero"/>
+        <Amount value="29"/>
+        <AreaArray/>
+        <ExcludeArray Value="Target"/>
+        <SearchFilters value="Visible;Player,Ally,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+        <AmountScoreArray index="1" Validator="" Value="DamageDealtbyHeroes"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="DarkEliteLM">
+        <ValidatorArray index="0" value="ForceofNatureLMTargetFilters"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactOffset value="0,0,0.05"/>
+        <ImpactEffect value="DarkEliteCreate"/>
+        <AmmoUnit value="ForceofNatureLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="DarkEliteLifeMax" parent="DU_WEAP">
+        <EditorCategories value=""/>
+        <Amount value="1000"/>
+    </CEffectDamage>
+    <CEffectSet id="DarkEliteSetCast">
+        <ValidatorArray value="NotHeroSpawner"/>
+        <ValidatorArray value="TargetIsPathable"/>
+        <EffectArray value="ProcUltimateLaunch"/>
+        <EffectArray value="ProcAbilityLaunch"/>
+        <EffectArray value="DarkEliteCreate"/>
+        <EffectArray value="CastDirected05"/>
+        <TargetLocationType value="Point"/>
+    </CEffectSet>
+    <CEffectSet id="DarkEliteSetSummon">
+        <EffectArray value="SetSummonKillsToCasterUpdateLockControl"/>
+        <EffectArray value="DarkEliteTimedLife"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="DarkEliteTimedLife">
+        <Behavior value="TimedLifeSummon"/>
+        <Flags index="UseDuration" value="1"/>
+        <Duration value="30"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="QuantumRaySetCast">
+        <EffectArray index="2" value="CastCustomB40Interruptible"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ServitorPersistent">
+        <InitialEffect value="ServitorLearnOnlyDamage"/>
+        <PeriodicEffectArray index="0" value="ServitorLearnOnlyDamage"/>
+    </CEffectCreatePersistent>
+    <CEffectCreatePersistent id="ServitorSummonOffset">
+        <WhichLocation Value="SourceUnit"/>
+        <Flags index="RandomOffset" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="CarrionBeetlesSummonTeleport"/>
+        <PeriodicOffsetArray value="1.1,-1.1,0"/>
+        <PeriodicOffsetArray value="-1.1,-1.1,0"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ServitorSetBuffs">
+        <EffectArray value="CloakMinion"/>
+        <EffectArray value="ServitorBirth"/>
+        <EffectArray value="AllowMoveWar3NoDuration"/>
+    </CEffectSet>
+    <CEffectDamage id="ServitorLearnOnlyDamage" parent="War3RangedDamage">
+        <Amount value="12"/>
+        <AmountScoreArray index="0" removed="1"/>
+        <AmountScoreArray index="1" removed="1"/>
+        <AmountScoreArray index="2" removed="1"/>
+        <AmountScoreArray index="3" removed="1"/>
+        <AmountScoreArray index="4" removed="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="ServitorLearnOnlyLifeMax">
+        <Amount value="225"/>
+    </CEffectDamage>
+    <CEffectSet id="ServitorSetCast2">
+        <ValidatorArray value="NotHeroSpawner"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="CosmicShiftPersistent">
+        <ExpireDelay value="0.15"/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="CosmicShiftSearch">
+        <AreaArray index="0" Radius="2"/>
+    </CEffectEnumArea>
+    <CEffectTeleport id="CosmicShiftTeleport">
+        <PlacementRange value="500"/>
+        <Range value="12"/>
+    </CEffectTeleport>
+    <CEffectDamage id="DarkWizardHLWDamage" parent="War3RangedDamage">
+        <AttributeFactor index="Structure" value="1"/>
+        <Amount value="8000"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="DarkWizardHLWLM">
+        <EditorCategories value="Race:War3 (Ranged Weapon)"/>
+        <ImpactEffect value="DarkWizardHLWDamage"/>
+        <AmmoUnit value="FireBallLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="DeathStrikeDamage">
+        <Amount value="75"/>
+    </CEffectDamage>
+    <CEffectSet id="DesecrateSetImpact">
+        <EffectArray value="KillSource"/>
+    </CEffectSet>
+    <CEffectDamage id="FrenzyAura">
+        <Amount value="3"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="ImmolationSearch">
+        <AreaArray index="0" Radius="2.75"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="KerriganAscendedHeroDamage">
+        <Amount value="24"/>
+    </CEffectDamage>
+    <CEffectCreateUnit id="LightningDashCreate">
+        <SpawnEffect value="LightningDashCreateSet"/>
+    </CEffectCreateUnit>
+    <CEffectCreateUnit id="LightningDashCreateClosest">
+        <SpawnEffect value="LightningDashCreateSet"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="LightningDashCreateSet">
+        <EditorCategories value=""/>
+        <EffectArray value="LightningDashTimedLife"/>
+        <EffectArray value="LightningDashPersistentCreate"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="LightningDashTimedLife">
+        <EditorCategories value=""/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="MirrorImageSetCast">
+        <EffectArray index="2" value="MirrorImagePersistentA"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="ReconstructionBeamModify">
+        <VitalArray index="Life">
+            <Change value="3"/>
+        </VitalArray>
+        <ValidatorArray value="NotWaveUnit"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="ServitorSetSummon">
+        <ValidatorArray value="NotHeroSpawner"/>
+        <EffectArray index="1" value="ProcAbilityLaunch"/>
+        <EffectArray value="ServitorSummonOffset"/>
+        <EffectArray value="ServitorSetBuffs"/>
+        <EffectArray value="CastOmni05"/>
+    </CEffectSet>
+    <CEffectEnumArea id="ShadowMasteryAura2Search" parent="SearchAuraPositive">
+        <AreaArray Radius="10" Effect="ShadowMasteryAura2"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura3Search" parent="SearchAuraPositive">
+        <AreaArray Radius="11" Effect="ShadowMasteryAura3"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura4Search" parent="SearchAuraPositive">
+        <AreaArray Radius="12" Effect="ShadowMasteryAura4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura5Search" parent="SearchAuraPositive">
+        <AreaArray Radius="13" Effect="ShadowMasteryAura5"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura6Search" parent="SearchAuraPositive">
+        <AreaArray Radius="14" Effect="ShadowMasteryAura6"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura7Search" parent="SearchAuraPositive">
+        <AreaArray Radius="15" Effect="ShadowMasteryAura7"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura8Search" parent="SearchAuraPositive">
+        <AreaArray Radius="16" Effect="ShadowMasteryAura8"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura9Search" parent="SearchAuraPositive">
+        <AreaArray Radius="17" Effect="ShadowMasteryAura9"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ShadowMasteryAura10Search" parent="SearchAuraPositive">
+        <AreaArray Radius="18" Effect="ShadowMasteryAura10"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="SkeletalOrcChampionHLWDamage" parent="DU_WEAP">
+        <Amount value="10000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="BurstofLifeSetCast"/>
+    <CEffectApplyBehavior id="CycloneHeroic">
+        <Duration value="2"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="DeathCoilSetCast"/>
+    <CEffectSet id="FacelessDeathbringerHLWSet">
+        <EffectArray value="FacelessDeathbringerHLWDamage"/>
+        <EffectArray value="SlowingPoison"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Butchery">
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ButcheryDebuff"/>
+    <CEffectDamage id="DragonTurtleHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="2000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="CentaurKhanHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="9000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="HolyLightSetCast"/>
+    <CEffectApplyBehavior id="IceBoltStunHeroic">
+        <Duration value="0.5"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="KoboldTaskmasterHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="2250"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="MajorHealingPotionModify">
+        <VitalArray index="Life">
+            <Change value="15000"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="MakuraTidalLordHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="1600"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="DeathRevenantHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="6000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="FelRavagerHLWSet">
+        <EffectArray value="FelRavagerHLWDamage"/>
+        <EffectArray value="MindRot"/>
+    </CEffectSet>
+    <CEffectEnumArea id="RegenerationAuraSearch">
+        <SearchFilters value="-;Neutral,Enemy,Robotic,Structure,Missile,Stasis,Dead,Hidden,Resistant"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="ReturnWeaponDamage"/>
+    <CEffectDamage id="ArachnathidOverlordHLWDamage" parent="DU_WEAP">
+        <Amount value="8000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="SludgeMonstrosityHLWDamage" parent="War3RangedDamage">
+        <Amount value="6000"/>
+        <Death value="Freeze"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="SludgeMonstrosityHLWLM">
+        <EditorCategories value="Race:War3 (Ranged Weapon)"/>
+        <ImpactEffect value="SludgeMonstrosityHLWDamage"/>
+        <AmmoUnit value="AcidSalivaWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="SpawnInfestedTerransDamage">
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectDamage id="SpawnInfestedTerransLifeMax">
+        <Amount value="300"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="StarfallSearch">
+        <AreaArray index="0" Radius="10"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="StormWyrmHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="1900"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="CyberBlastCrit">
+        <EditorCategories value="Race:Hero"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <InitialEffect value="CritDummy"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="NotStructureAndNotResistant"/>
+        <PeriodicEffectArray value="CyberBlastSetLaunch"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="CyberBlastDamage" parent="HeroDamage">
+        <Kind value="Ranged"/>
+        <Amount value="28"/>
+        <Death value="Disintegrate"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="CyberBlastLM">
+        <ValidatorArray index="0" value="ThalassianRecurveLMTargetFilters"/>
+        <EditorCategories value="Race:Hero"/>
+        <LaunchEffect value="ProcLM"/>
+        <ImpactEffect value="CyberBlastSetImpact"/>
+    </CEffectLaunchMissile>
+    <CEffectEnumArea id="CyberBlastMultistrikeSearch" parent="SearchMultistrike">
+        <AreaArray MaxCount="0" Radius="3" Effect="CyberBlastLM"/>
+    </CEffectEnumArea>
+    <CEffectSet id="CyberBlastSetImpact">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponImpact"/>
+        <EffectArray value="CyberBlastDamage"/>
+    </CEffectSet>
+    <CEffectSet id="CyberBlastSetLaunch">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponLaunch"/>
+        <EffectArray value="CyberBlastLM"/>
+        <EffectArray value="CyberBlastMultistrikeSearch"/>
+    </CEffectSet>
+    <CEffectEnumArea id="PhotonOverchargeMultistrikeSearch" parent="SearchMultistrike">
+        <AreaArray MaxCount="0" Radius="3" Effect="PhotonOverchargeLM"/>
+    </CEffectEnumArea>
+    <CEffectSet id="PhotonOverchargeSetImpact">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponImpact"/>
+        <EffectArray value="PhotonOverchargeDamage"/>
+    </CEffectSet>
+    <CEffectSet id="PhotonOverchargeSetLaunch">
+        <EditorCategories value="Race:Hero"/>
+        <EffectArray value="ProcWeaponLaunch"/>
+        <EffectArray value="PhotonOverchargeLM"/>
+        <EffectArray value="PhotonOverchargeMultistrikeSearch"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="PhotonOverchargeCrit">
+        <EditorCategories value="Race:Hero"/>
+        <WhichLocation Value="TargetUnit"/>
+        <OffsetVectorEndLocation Value="TargetUnit"/>
+        <InitialEffect value="CritDummy"/>
+        <PeriodCount value="2"/>
+        <PeriodicValidator value="NotStructureAndNotResistant"/>
+        <PeriodicEffectArray value="PhotonOverchargeSetLaunch"/>
+        <PeriodicPeriodArray value="0"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="SurgingStrikeDamage">
+        <Amount value="150"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="TornadoCycloneSearch">
+        <TargetSorts>
+            <SortArray index="0" value="TSLifeLargestFirst"/>
+        </TargetSorts>
+    </CEffectEnumArea>
+    <CEffectCreatePersistent id="TornadoPersistent">
+        <PeriodicValidator value=""/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="TornadoSearch">
+        <AreaArray index="0" Effect="TornadoSearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="TornadoSearchSet">
+        <EditorCategories value=""/>
+        <EffectArray value="Tornado"/>
+        <EffectArray value="TornadoDamage"/>
+    </CEffectSet>
+    <CEffectSet id="TornadoSetCast">
+        <EffectArray index="2" value="TornadoCreate"/>
+        <EffectArray index="3" value="CastDirected05"/>
+        <EffectArray index="4" removed="1"/>
+    </CEffectSet>
+    <CEffectDamage id="TuskarrSorcererHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="2500"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="StormWyrmHLWLM">
+        <ImpactEffect value="StormWyrmHLWDamage"/>
+        <AmmoUnit value="FarSeerLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="SatyrHellcallerHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="3100"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="FrostWolfHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="1250"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="FleshGolemHLWDamage" parent="DU_WEAP">
+        <Amount value="2000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BlackDrakeHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="24"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BlizzardNeutralDamage">
+        <Amount value="1000"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="BlizzardNeutralRepeat">
+        <PeriodCount value="11"/>
+        <PeriodicValidator value=""/>
+    </CEffectCreatePersistent>
+    <CEffectEnumArea id="BlizzardNeutralSearch">
+        <SearchFilters value="-;Player,Ally,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="ChainLightningNeutralDamage">
+        <Amount value="100000"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="ChainLightningNeutralSearch1">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch10">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch11">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch2">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch3">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch4">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch5">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch6">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch7">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch8">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="ChainLightningNeutralSearch9">
+        <SearchFilters value="-;Player,Ally,Neutral,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+        <AreaArray index="0" Radius="20"/>
+    </CEffectEnumArea>
+    <CEffectSet id="ChainLightningNeutralSet10">
+        <EffectArray value="ChainLightningNeutralDelay10"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet11">
+        <EffectArray value="ChainLightningNeutralDelay11"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet4">
+        <EffectArray value="ChainLightningNeutralDelay4"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet5">
+        <EffectArray value="ChainLightningNeutralDelay5"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet6">
+        <EffectArray value="ChainLightningNeutralDelay6"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet7">
+        <EffectArray value="ChainLightningNeutralDelay7"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet8">
+        <EffectArray value="ChainLightningNeutralDelay8"/>
+    </CEffectSet>
+    <CEffectSet id="ChainLightningNeutralSet9">
+        <EffectArray value="ChainLightningNeutralDelay9"/>
+    </CEffectSet>
+    <CEffectDamage id="FacelessDeathbringerHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="3500"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="GreaterHealingPotionModify">
+        <VitalArray index="Life">
+            <Change value="5000"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectDamage id="LightningShieldPassiveDamage">
+        <Amount value="30"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="LightningShieldPassiveSearch">
+        <AreaArray index="0" Radius="2"/>
+    </CEffectEnumArea>
+    <CEffectDamage id="MonsoonNeutralDamage">
+        <Amount value="100"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="MonsoonNeutralSearch">
+        <SearchFilters value="-;Player,Ally,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CEffectEnumArea>
+    <CEffectSwitch id="ProcWeaponImpact">
+        <CaseArray Validator="HasButcherySource" Effect="ButcheryDebuff" FallThrough="1"/>
+    </CEffectSwitch>
+    <CEffectRemoveBehavior id="RemoveButchery">
+        <ValidatorArray index="0" value="HasButchery50"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="Butchery"/>
+        <Count value="50"/>
+    </CEffectRemoveBehavior>
+    <CEffectDamage id="FelRavagerHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="4500"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="SeaGiantHLWDamage" parent="DU_WEAP">
+        <Amount value="220"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="SeaGiantHLWSet">
+        <EffectArray value="SeaGiantHLWDamage"/>
+        <EffectArray value="MindRot"/>
+    </CEffectSet>
+    <CEffectSet id="GnollAssassinHLWSet">
+        <EffectArray value="GnollAssassinHLWDamage"/>
+        <EffectArray value="EnvenomedWeapons"/>
+    </CEffectSet>
+    <CEffectDamage id="CentaurArcherHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="8"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="BlackDrakeHLWLM">
+        <ImpactEffect value="BlackDrakeHLWDamage"/>
+        <AmmoUnit value="RedDragonLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="AmaniBerserkerHLWLM">
+        <ImpactEffect value="AmaniBerserkerHLWDamage"/>
+        <AmmoUnit value="FireBallLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="AncientSasquatchHLWDamage" parent="DU_WEAP">
+        <Amount value="600"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="CorruptedTreantHLWSet">
+        <EffectArray value="CorruptedTreantHLWDamage"/>
+        <EffectArray value="EnvenomedWeapons"/>
+    </CEffectSet>
+    <CEffectSet id="BroodmotherHLWSet">
+        <EffectArray value="BroodmotherHLWDamage"/>
+        <EffectArray value="EnvenomedWeapons"/>
+    </CEffectSet>
+    <CEffectDamage id="GnollAssassinHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="280"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="CentaurArcherHLWLM">
+        <ImpactEffect value="CentaurArcherHLWDamage"/>
+        <AmmoUnit value="SearingArrowLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="BanditHLWDamage" parent="DU_WEAP">
+        <Amount value="6"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BloodfiendHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="60"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BoulderfistOgreHLWDamage" parent="DU_WEAP">
+        <Amount value="600"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="BrokenVindicatorHLWDamage" parent="DU_WEAP">
+        <Amount value="18"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="HighborneWraithHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="180"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="GnollAssassinHLWLM">
+        <ImpactEffect value="GnollAssassinHLWSet"/>
+        <AmmoUnit value="PoisonArrowLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="BroodmotherHLWDamage" parent="DU_WEAP">
+        <Amount value="250"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="CorruptedTreantHLWDamage" parent="DU_WEAP">
+        <Amount value="50"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="DireMammothHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="500"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="FeralWildkinHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="500"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="FurbolgChampionHLWDamage" parent="DU_WEAP">
+        <Amount value="600"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="AncientHydraHLWDamage" parent="DU_WEAP">
+        <Amount value="400"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="HighborneWraithHLWLM">
+        <ImpactEffect value="HighborneWraithHLWDamage"/>
+        <AmmoUnit value="BansheeUndeadLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="FurbolgShamanHLWDamage" parent="DU_WEAP">
+        <Amount value="200"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectSet id="AncientHydraHLWSet">
+        <EffectArray value="AncientHydraHLWDamage"/>
+        <EffectArray value="SlowingPoison"/>
+    </CEffectSet>
+    <CEffectDamage id="MurgulBloodgillHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="600"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="AncientHydraHLWLM">
+        <ImpactEffect value="AncientHydraHLWSet"/>
+        <AmmoUnit value="ChimeraLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="JuggernautHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="500"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="NerubianQueenHLWDamage" parent="DU_WEAP">
+        <Amount value="500"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="MagnataurHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="400"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="MurgulBloodgillHLWLM">
+        <ImpactEffect value="MurgulBloodgillHLWDamage"/>
+        <AmmoUnit value="PriestLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectSet id="SelectShrine"/>
+    <CEffectDamage id="SkeletalMageHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="32"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="NerubianQueenHLWLM">
+        <ImpactEffect value="NerubianQueenHLWDamage"/>
+        <AmmoUnit value="CryptFiendLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectCreateUnit id="SpawnSpidersCreate">
+        <SpawnUnit value="SpiderHLW"/>
+    </CEffectCreateUnit>
+    <CEffectDamage id="SpiderHLWDamage" parent="DU_WEAP">
+        <Amount value="50"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="NetherDragonHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="5000"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="TuskarrSorcererHLWLM">
+        <ImpactEffect value="TuskarrSorcererHLWDamage"/>
+        <AmmoUnit value="TuskarrSpearLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectLaunchMissile id="NetherDragonHLWLM">
+        <ImpactEffect value="NetherDragonHLWDamage"/>
+        <AmmoUnit value="DestroyerLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="GraniteGolemHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="12000"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectCreatePersistent id="VolcanoPersistent">
+        <PeriodicValidator value=""/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="WindfuryHarpyHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="250"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="SkeletalMageHLWLM">
+        <ImpactEffect value="SkeletalMageHLWDamage"/>
+        <AmmoUnit value="SkeletalMageLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="MurlocPlaguebearerHLWDamage" parent="DU_WEAP">
+        <Amount value="600"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="RazormaneChiefHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="800"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="ZandalariPriestHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Light" value="0.5"/>
+        <Amount value="14"/>
+        <Kind value="Ranged"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="WindfuryHarpyHLWLM">
+        <ImpactEffect value="WindfuryHarpyHLWDamage"/>
+        <AmmoUnit value="GargoyleLMWeapon"/>
+    </CEffectLaunchMissile>
+    <CEffectDamage id="ScorpidHLWDamage" parent="DU_WEAP">
+        <Amount value="5"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="SpiderCrabHLWDamage" parent="DU_WEAP">
+        <Amount value="10"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="UrsolBearHLWDamage" parent="DU_WEAP">
+        <Amount value="800"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="WarGolemHLWDamage" parent="DU_WEAP">
+        <AttributeFactor index="Armored" value="0.5"/>
+        <Amount value="400"/>
+        <DisplayFlags index="CollapseBuffed" value="1"/>
+        <DisplayFlags index="DisplayRounded" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="ZandalariPriestHLWLM">
+        <ImpactEffect value="ZandalariPriestHLWDamage"/>
+        <AmmoUnit value="FireBallLMWeapon"/>
+    </CEffectLaunchMissile>
+</Catalog>

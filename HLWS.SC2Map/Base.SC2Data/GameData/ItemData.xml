@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CItem id="AssassinsBladeHLW">
+        <EquipBehaviorArray value="AssassinsBladeHLW"/>
+        <EquipBehaviorArray value="PoisonStingSource"/>
+        <EquipBehaviorArray value="SlowingPoisonSource"/>
+    </CItem>
+    <CItem id="EnergeticBarrierHLW">
+        <EquipBehaviorArray value="EnergeticBarrierHLW"/>
+        <EquipBehaviorArray value="RingofProtection"/>
+        <EquipBehaviorArray value="LightningShieldPassive"/>
+    </CItem>
+    <CItem id="ButchersBladeHLW">
+        <EquipBehaviorArray value="ButchersBladeHLW"/>
+        <EquipBehaviorArray value="ButcherySource"/>
+    </CItem>
+    <CItem id="IronplateBucklerHLW">
+        <EquipBehaviorArray value="IronplateBucklerHLW"/>
+        <EquipBehaviorArray value="RingofProtection"/>
+    </CItem>
+    <CItem id="BloodforgedShieldHLW">
+        <EquipBehaviorArray value="BloodforgedShieldHLW"/>
+        <EquipBehaviorArray value="RingofProtection"/>
+        <EquipBehaviorArray value="CommandAura1Source"/>
+    </CItem>
+    <CItem id="StormheraldHLW">
+        <EquipBehaviorArray value="StormheraldHLW"/>
+        <EquipBehaviorArray value="PurgeProcSource"/>
+    </CItem>
+    <CItem id="FirebrandHLW">
+        <EquipBehaviorArray value="FirebrandHLW"/>
+        <EquipBehaviorArray value="PermanentImmolationSource"/>
+    </CItem>
+    <CItem id="IceBarbedSpearHLW">
+        <EquipBehaviorArray value="IceBarbedSpearHLW"/>
+        <EquipBehaviorArray value="RingofProtection"/>
+    </CItem>
+    <CItemEffectInstant id="Sword1">
+        <EffectCost>
+            <Resource index="Terrazine" value="12500"/>
+        </EffectCost>
+    </CItemEffectInstant>
+</Catalog>

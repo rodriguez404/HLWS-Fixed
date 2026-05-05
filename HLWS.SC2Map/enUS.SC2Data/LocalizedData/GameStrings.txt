@@ -1,0 +1,840 @@
+﻿Abil/Name/ArcanistHLW=Arcanist HLW
+Abil/Name/CannonImage=Cannon Image
+Abil/Name/CreepTier1=Creep Tier 1
+Abil/Name/CreepTier2=Creep Tier 2
+Abil/Name/CreepTier2Morph=Creep Tier 2 Morph
+Abil/Name/CreepTier3=Creep Tier 3
+Abil/Name/CreepTier3Morph=Creep Tier 3 Morph
+Abil/Name/CreepTier4=Creep Tier 4
+Abil/Name/CreepTier4Morph=Creep Tier 4 Morph
+Abil/Name/CreepTier5=Creep Tier 5
+Abil/Name/CreepTier5Morph=Creep Tier 5 Morph
+Abil/Name/DarkElite=Dark Elite
+Abil/Name/FrostMastery=Frost Mastery
+Abil/Name/ItemsHLW=Items HLW
+Abil/Name/PhotonOvercharge=Photon Overcharge
+Abil/Name/PoisonBlast=Poison Blast
+Abil/Name/SelectShrine=Select Shrine
+Abil/Name/ServitorLearnOnly=Servitor (Learn Only)
+Abil/Name/ServitorMagazine=Servitor Magazine
+Abil/Name/ShadowMastery=Shadow Mastery
+Attribute001/Name=Mode
+Attribute001/Value001/Name=All heroes
+Attribute001/Value002/Name=Extended Heroes
+Attribute001/Value003/Name=All Random
+Attribute001/Value004/Name=All Rand Extended
+Attribute001/Value005/Name=All Rand Mirror
+Attribute002/Name=Extended Heroes
+Attribute002/Value001/Name=Normal Heroes
+Attribute002/Value002/Name=Extended Heroes
+Behavior/Name/Chilled=Chilled
+Behavior/Name/FrostMastery=Frost Mastery Aura
+Behavior/Name/GuardianWispsUnitTracker=Guardian Wisps Unit Tracker
+Behavior/Name/ShadowMastery1=Shadow Mastery
+Behavior/Name/ShadowMastery10=Shadow Mastery
+Behavior/Name/ShadowMastery2=Shadow Mastery
+Behavior/Name/ShadowMastery3=Shadow Mastery
+Behavior/Name/ShadowMastery4=Shadow Mastery
+Behavior/Name/ShadowMastery5=Shadow Mastery
+Behavior/Name/ShadowMastery6=Shadow Mastery
+Behavior/Name/ShadowMastery7=Shadow Mastery
+Behavior/Name/ShadowMastery8=Shadow Mastery
+Behavior/Name/ShadowMastery9=Shadow Mastery
+Behavior/Name/SymbiosisBuff=Dark Gift
+Behavior/Name/SymbiosisBuffPrecursor=Dark Gift
+Behavior/Tooltip/BrillianceAura10=Energy regen increased by <c val="#ColorAbilityInfo"><d ref="Behavior,BrillianceAura10,Modification.VitalRegenArray[Energy]" precision="2"/></c>.
+Behavior/Tooltip/BrillianceAura6=Energy regen increased by <c val="#ColorAbilityInfo"><d ref="Behavior,BrillianceAura6,Modification.VitalRegenArray[Energy]" precision="2"/></c>.
+Behavior/Tooltip/BrillianceAura7=Energy regen increased by <c val="#ColorAbilityInfo"><d ref="Behavior,BrillianceAura7,Modification.VitalRegenArray[Energy]" precision="2"/></c>.
+Behavior/Tooltip/BrillianceAura8=Energy regen increased by <c val="#ColorAbilityInfo"><d ref="Behavior,BrillianceAura8,Modification.VitalRegenArray[Energy]" precision="2"/></c>.
+Behavior/Tooltip/BrillianceAura9=Energy regen increased by <c val="#ColorAbilityInfo"><d ref="Behavior,BrillianceAura9,Modification.VitalRegenArray[Energy]" precision="2"/></c>.
+Behavior/Tooltip/Carnage=Increased weapon speed. Takes <d ref="1-Behavior,Carnage,DamageResponse.ModifyFraction*100"/>% less damage
+Behavior/Tooltip/Chilled=Attack and move speed reduced
+Behavior/Tooltip/EntanglingRootsNeutral=Slowed. Taking damage.
+Behavior/Tooltip/Extinction=Invulnerable.
+Behavior/Tooltip/FrostMastery=Nearby enemies are <c val="#ColorAttackInfo">Chilled</c>.
+Behavior/Tooltip/IceBarrier=Temporarily shielded. Chills attackers while the shield holds.
+Behavior/Tooltip/ShadowMastery1=Weapon damage, attack speed and chance to evade attacks increased.
+Behavior/Tooltip/VampiricAuraHeroic1=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic1,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic10=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic10,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic2=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic2,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic3=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic3,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic4=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic4,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic5=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic5,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic6=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic6,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic7=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic7,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic8=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic8,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Behavior/Tooltip/VampiricAuraHeroic9=Lifesteal increased by <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricAuraHeroic9,Modification.AttributeChangeArray[0].Points"/>%</c>.
+Button/Name/AmaniBerserkerHLW=Amani Berserker
+Button/Name/AncientHydraHLW=Ancient Hydra
+Button/Name/AncientSasquatchHLW=Ancient Sasquatch
+Button/Name/ArachnathidOverlordHLW=Arachnathid
+Button/Name/AssassinsBladeHLW=Assassin's Blade
+Button/Name/BanditHLW=Bandit
+Button/Name/BanditLordHLW=Bandit Lord
+Button/Name/BanishW=Banish
+Button/Name/BlackDrakeHLW=Black Drake
+Button/Name/BlackStrikeE=Black Strike
+Button/Name/BloodfiendHLW=Bloodfiend
+Button/Name/BloodforgedShieldHLW=Bloodforged Shield
+Button/Name/BoulderfistOgreHLW=Boulderfist Ogre
+Button/Name/BrokenVindicatorHLW=Broken Vindicator
+Button/Name/BronzeDragonHLW=Bronze Dragon
+Button/Name/BroodmotherHLW=Broodmother
+Button/Name/ButchersBladeHLW=Butcher's Blade
+Button/Name/CannonImage=Cannon Image
+Button/Name/CentaurArcherHLW=Centaur Archer
+Button/Name/CentaurKhanHLW=Centaur Khan
+Button/Name/ChronoBoostE=Chrono Boost
+Button/Name/ChronoBoostT=Chrono Boost
+Button/Name/CorruptedTreantHLW=Corrupted Treant
+Button/Name/DarkReinforcements=Dark Reinforcements
+Button/Name/DarkWizardHLW=Dark Wizard
+Button/Name/DeathRevenantHLW=Death Revenant
+Button/Name/DefaultCreep=Default Creep
+Button/Name/DireMammothHLW=Dire Mammoth
+Button/Name/DragonTurtleHLW=Dragon Turtle
+Button/Name/EMPRound=EMP Grenade
+Button/Name/EnergeticBarrierHLW=Energetic Barrier
+Button/Name/FacelessDeathbringerHLW=Faceless Deathbringer
+Button/Name/FelRavagerHLW=Fel Ravager
+Button/Name/FeralWildkinHLW=Feral Wildkin
+Button/Name/FieryAuraW=Fiery Aura
+Button/Name/FirebrandHLW=Firebrand
+Button/Name/FrostArmorW=Frost Armor
+Button/Name/FrostMastery=Frost Mastery
+Button/Name/FrostWolfHLW=Frost Wolf
+Button/Name/FurbolgChampionHLW=Furbolg Champion
+Button/Name/FurbolgShamanHLW=Furbolg Shaman
+Button/Name/GnollAssassinHLW=Gnoll Assassin
+Button/Name/GraniteGolemHLW=Granite Golem
+Button/Name/HexW=Hex
+Button/Name/HighborneWraithHLW=Highborne Wraith
+Button/Name/HolyAuraW=Holy Aura
+Button/Name/HowlofTerrorW=Howl of Terror
+Button/Name/IceBarbedSpearHLW=Ice Barbed Spear
+Button/Name/Infection=Haunt
+Button/Name/IronplateBucklerHLW=Ironplate Buckler
+Button/Name/JuggernautHLW=Juggernaut
+Button/Name/KoboldTaskmasterHLW=Kobold Taskmaster
+Button/Name/LifeGlyph=Magister Glyph
+Button/Name/MagnataurHLW=Magnataur
+Button/Name/MakuraTidalLordHLW=Makura Tidal Lord
+Button/Name/Melee=Melee
+Button/Name/MindBlastE=Mind Blast
+Button/Name/MurgulBloodgillHLW=Mur'gul Bloodgill
+Button/Name/MurlocPlaguebearerHLW=Murloc Plaguebearer
+Button/Name/NerubianQueenHLW=Nerubian Queen
+Button/Name/NetherDragonHLW=Nether Dragon
+Button/Name/PhotonOvercharge=Photon Overcharge
+Button/Name/PoisonBlast=Poison Blast
+Button/Name/RazormaneChiefHLW=Razormane Chief
+Button/Name/ReconstructionBeamR=Reconstruction Beam
+Button/Name/SatyrHellcallerHLW=Satyr Hellcaller
+Button/Name/ScorpidHLW=Scorpid
+Button/Name/SeaGiantHLW=Sea Giant
+Button/Name/SearingStrikesW=Searing Strikes
+Button/Name/SelectShrineHLW=Select Shrine
+Button/Name/ServitorW=Servitor
+Button/Name/ShadowMastery=Shadow Mastery
+Button/Name/SkeletalMageHLW=Skeletal Mage
+Button/Name/SkeletalOrcChampionHLW=Skeletal Orc Champion
+Button/Name/SleepW=Sleep
+Button/Name/SludgeMonstrosityHLW=Sludge Monstrosity
+Button/Name/SpiderCrabHLW=Spider Crab
+Button/Name/StormWyrmHLW=Storm Wyrm
+Button/Name/StormheraldHLW=Stormherald
+Button/Name/Symbiosis=Dark Gift
+Button/Name/SymbiosisActive=Dark Gift (Cancel)
+Button/Name/TuskarrSorcererHLW=Tuskarr Sorcerer
+Button/Name/UpgradetoTier2HLW=Upgrade to Tier 2
+Button/Name/UpgradetoTier3HLW=Upgrade to Tier 3
+Button/Name/UpgradetoTier4HLW=Upgrade to Tier 4
+Button/Name/UpgradetoTier5HLW=Upgrade to Tier 5
+Button/Name/UrsolBearHLW=Ursol Bear
+Button/Name/WarGolemHLW=War Golem
+Button/Name/WindfuryHarpyHLW=Windfury Harpy
+Button/Name/ZandalariPriestHLW=Zandalari Priest
+Button/Tooltip/AcidNova=Blasts nearby enemies with acid, dealing <c val="#ColorAbilityInfo"><d ref="Effect,AcidNovaDamage,Amount/Behavior,AcidNova,Period"/></c> damage per second and reducing movement speed <c val="#ColorAbilityInfo"><d ref="(1-Behavior,AcidNova,Modification.MoveSpeedMultiplier)*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Effect,AcidNova,Duration" precision="1"/></c> seconds.<n/><n/>Corroded enemies take triple damage.
+Button/Tooltip/AcidNovaLearn=Blasts nearby enemies with acid, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,AcidNovaDamage,MaxCount/Behavior,AcidNova,Period"/></c> damage per second and reducing movement speed <c val="#ColorAbilityInfo"><d ref="(1-Behavior,AcidNova,Modification.MoveSpeedMultiplier)*100"/>%</c> for <c val="#ColorAbilityUpgrade"><d ref="Effect,AcidNova,Duration+(Upgrade,AcidNova,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.<n/><n/>Corroded enemies take triple damage.
+Button/Tooltip/AlchemistHLW=A shop which sells basic items which can be upgraded twice each.<n/><n/><c val="ffff8a">Move a hero close to buy items</c>
+Button/Tooltip/AmaniBerserkerHLW=Ranged attacker.
+Button/Tooltip/AnathemaLearn=Inflicts <c val="#ColorAttackInfo">Curse</c> on enemies in an area for <c val="#ColorAbilityUpgrade"><d ref="Effect,AnathemaCurse,Duration+(Upgrade,Anathema,EffectArray[0].Value/1.4)"/></c> seconds, reducing weapon speed. Global cast range.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases area size.</c>
+Button/Tooltip/AncientHydraHLW=Ranged attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-slowingpoison.dds" height="28" width="28"/> Slowing Poison
+Button/Tooltip/AncientKnowledgeLearn=Passively increases damage dealt and ability cooldown speed by <c val="#ColorAbilityUpgrade"><d  ref="Behavior,AncientKnowledge,Modification.AttributeChangeArray[0].Points+Upgrade,AncientKnowledge,EffectArray[0].Value"/>%</c>.
+Button/Tooltip/AncientSasquatchHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-reincarnation.dds" height="28" width="28"/> Reincarnation
+Button/Tooltip/AnimateDeadLearn=Raises nearby fallen units for <c val="#ColorAbilityUpgrade"><d ref="Effect,AnimateDeadTimedLife,Duration+(Upgrade,AnimateDead,EffectArray[2].Value/1.4)"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases area size.</c>
+Button/Tooltip/ArachnathidOverlordHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-envenomedweapons.dds" height="28" width="28"/> Slowing Poison
+Button/Tooltip/ArcanistHLW=A shop which sells basic items which can be upgraded twice each.<n/><n/><c val="ffff8a">Move a hero close to buy items</c>
+Button/Tooltip/Assassinate=Teleports to an enemy, instantly killing it and grants invisiblity for <c val="#ColorAbilityInfo"><d ref="Effect,Assassinate,Duration" precision="1"/></c> seconds.
+Button/Tooltip/AssassinateLearn=Teleports to an enemy, instantly killing it and grants invisiblity for <c val="#ColorAbilityUpgrade"><d ref="Effect,Assassinate,Duration+(Upgrade,Assassinate,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/AssassinsBladeHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalWeapon"><d  ref="Behavior,AssassinsBladeHLW,Modification.AttributeChangeArray[0].Points*Effect,WeaponDamageAdjusted,Amount"/></s> Weapon Damage</s><n/><n/><img path="Assets\Textures\btn-ability-neutral-slowingpoison.dds" height="28" width="28"/> <s val="ItemStats"></c>Slowing Poison</s><n/>Weapon attacks reduce the target's move speed by <c val="FFFFFF"><d ref="(1-Behavior,SlowingPoison,Modification.MoveSpeedMultiplier)*100"/>%</c> and weapon speed by <c val="FFFFFF"><d ref="(1-Behavior,SlowingPoison,Modification.AttackSpeedMultiplier)*100"/>%</c> for <c val="FFFFFF"><d ref="Behavior,SlowingPoison,Duration"/></c> seconds.<n/><n/><img path="Assets\Textures\btn-ability-neutral-poisonsting.dds" height="28" width="28"/> <s val="ItemStats"></c>Poison Sting</s><n/>Weapon attacks deal an extra <c val="FFFFFF"><d ref="Effect,PoisonStingDamage,Amount/Behavior,EnvenomedWeapons,Period"/></c> damage per second for <c val="FFFFFF"><d ref="Behavior,PoisonSting,Duration"/></c> seconds.
+Button/Tooltip/BanditHLW=Melee attacker.
+Button/Tooltip/BanditLordHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-innerfire.dds" height="28" width="28"/> Inner Fire<n/><img path="Assets\Textures\btn-ability-neutral-devotionaura.dds" height="28" width="28"/> Devotion Aura
+Button/Tooltip/BanishW=Prevents enemies in an area from attacking and increases damage taken from abilities by <c val="#ColorAbilityInfo"><d ref="Behavior,Banish,Modification.DamageTakenFraction[Spell]*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Effect,Banish,Duration" precision="1"/></c> seconds.
+Button/Tooltip/BashLearn=Grants weapon attacks a <c val="#ColorAbilityInfo"><d ref="Effect,BashSetProc,Chance*100"/>%</c> chance to deal <c val="#ColorAbilityUpgrade"><d ref="Effect,BashDamage,MaxCount"/></c> damage to enemies within range <c val="#ColorAbilityInfo"><d ref="Effect,BashSearch,AreaArray[0].Radius" precision="2"/></c> of the target and Stun for <c val="#ColorAbilityUpgrade"><d ref="Effect,BashStun,Duration+(Upgrade,Bash,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/BehemothHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/BlackDrakeHLW=Short-ranged attacker.
+Button/Tooltip/BlackStrikeE=Reanimates slain enemies as a Dark Minion with <c val="#ColorAbilityInfo"><d ref="Effect,BlackStrikeLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,BlackStrikeDamage,Amount"/></c> damage which lasts <c val="#ColorAbilityInfo"><d ref="Effect,BlackStrikeTimedLife,Duration"/></c> seconds.<n/><n/>This effect has a <c val="#ColorAbilityInfo"><d ref="Behavior,BlackStrikeCooldown,Duration" precision="1"/></c> second cooldown.
+Button/Tooltip/BlacksmithHLW=A shop which sells basic items which can be upgraded twice each.<n/><n/><c val="ffff8a">Move a hero close to buy items</c>
+Button/Tooltip/BlightedGround=Creates blight for <c val="#ColorAbilityInfo"><d ref="Effect,BlightedGroundPersistent,PeriodCount*Effect,BlightedGroundPersistent,PeriodicPeriodArray[0]"/></c> seconds. Corpses within are raised as a zombie with <c val="#ColorAbilityInfo"><d ref="Effect,BlightedGroundLifeMax,Amount*(1+(Effect,BlightedGroundBonusLevel,Amount/100))"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,BlightedGroundDamage,Amount*(1+(Effect,BlightedGroundBonusLevel,Amount/100))"/></c> damage. Each corpse raised permanently improves zombies.
+Button/Tooltip/BlightedGroundLearn=Creates blight for <c val="#ColorAbilityUpgrade"><d ref="(Effect,BlightedGroundPersistent,PeriodCount+Upgrade,BlightedGround,EffectArray[0].Value)*Effect,BlightedGroundPersistent,PeriodicPeriodArray[0]"/></c> seconds. Corpses within are raised as a zombie with <c val="#ColorAbilityUpgrade"><d ref="Effect,BlightedGroundLifeMax,MaxCount*(1+(Effect,BlightedGroundBonusLevel,Amount/100))"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,BlightedGroundDamage,MaxCount*(1+(Effect,BlightedGroundBonusLevel,Amount/100))"/></c> damage. Each corpse raised permanently improves zombies.
+Button/Tooltip/Blizzard=Bombards an area with <c val="#ColorAbilityInfo"><d ref="Effect,BlizzardRepeat,PeriodCount"/></c> waves of ice. Each wave deals <c val="#ColorAbilityInfo"><d ref="Effect,BlizzardDamage,Amount"/></c> damage. Chills for <c val="#ColorAbilityInfo"><d ref="Effect,BlizzardNeutralChill,Duration"/></c> seconds.
+Button/Tooltip/BlizzardLearn=Bombards an area with <c val="#ColorAbilityUpgrade"><d ref="Effect,BlizzardRepeat,PeriodCount+Upgrade,Blizzard,EffectArray[0].Value"/></c> waves of ice. Each wave deals <c val="#ColorAbilityUpgrade"><d ref="Effect,BlizzardDamage,MaxCount"/></c> damage. Chills for <c val="FFFFFF"><d ref="Effect,BlizzardNeutralChill,Duration"/></c> seconds.
+Button/Tooltip/BlizzardNeutral=Bombards an area with <c val="FFFFFF"><d ref="Effect,BlizzardNeutralRepeat,PeriodCount+1"/></c> waves of ice. Each wave deals <c val="FFFFFF"><d ref="Effect,BlizzardNeutralDamage,Amount"/></c> damage. Chills for <c val="FFFFFF"><d ref="Effect,BlizzardNeutralChill,Duration" precision="1"/></c> seconds.<n/><n/><c val="ffff8a">Does not affect Heroic units.</c>
+Button/Tooltip/BloodBoil=Grants <c val="#ColorAttackInfo">Bloodlust </c>to allies in an area for <c val="#ColorAbilityInfo"><d ref="Effect,BloodBoil,Duration" precision="1"/></c> seconds. Global cast range.
+Button/Tooltip/BloodBoilLearn=Grants <c val="#ColorAttackInfo">Bloodlust </c>to allies in an area for <c val="#ColorAbilityUpgrade"><d ref="Effect,BloodBoil,Duration+(Upgrade,BloodBoil,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Global cast range.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases area size.</c>
+Button/Tooltip/BloodfiendHLW=Melee attacker.
+Button/Tooltip/BloodforgedShieldHLW=<s val="ItemStats"></c>+<s val="ItemStatsVital"><d ref="(1-Behavior,RingofProtection,DamageResponse.ModifyFraction)*100"/>%</s> Weapon Damage Resistance</s><n/><n/><img path="Assets\Textures\btn-ability-neutral-commandaura.dds" height="28" width="28"/> <s val="ItemStats"></c>Command Aura</s><n/>Allies within range <c val="FFFFFF"><d ref="Effect,CommandAura1Search,AreaArray[0].Radius"/></c> gain <c val="FFFFFF"><d ref="Behavior,CommandAura1,Modification.DamageDealtFraction[Melee]*100"/>%</c> weapon damage.
+Button/Tooltip/BoneServants=Raises four servants with <c val="#ColorAbilityInfo"><d ref="Effect,BoneServantsLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,BoneServantsDamage,Amount"/></c> damage which last for <c val="#ColorAbilityInfo"><d ref="Effect,BoneServantsTimedLife,Duration"/></c> seconds. Bone Servants detonate upon death, dealing <c val="#ColorAbilityInfo"><d ref="Effect,BoneServantsDamage,Amount*Effect,BoneServantsPersistentDetonate,PeriodCount"/></c> damage to nearby enemies.
+Button/Tooltip/BoneServantsLearn=Raises four servants with <c val="#ColorAbilityUpgrade"><d ref="Effect,BoneServantsLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,BoneServantsDamage,MaxCount"/></c> damage which last for <c val="#ColorAbilityInfo"><d ref="Effect,BoneServantsTimedLife,Duration"/></c> seconds. Bone Servants detonate upon death, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,BoneServantsDamage,MaxCount*Effect,BoneServantsPersistentDetonate,PeriodCount"/></c> damage to nearby enemies.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon speed.</c>
+Button/Tooltip/BoulderfistOgreHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/BreathofFireLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,BreathofFireDamage,MaxCount"/></c> damage to enemies in a range <c val="#ColorAbilityInfo"><d ref="Effect,BreathofFireSearch6,AreaArray[0].Radius"/></c> cone. Ignites for <c val="#ColorAbilityUpgrade"><d ref="Effect,BreathofFireIgnite,Duration+(Upgrade,BreathofFire,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/BreathofFrost=Deals <c val="#ColorAbilityInfo"><d ref="Effect,BreathofFrostDamage,Amount"/></c> damage to enemies in a cone and <c val="#ColorAttackInfo">Chills</c> for <c val="#ColorAbilityInfo"><d ref="Effect,BreathofFrostChill,Duration" precision="1"/></c> seconds.
+Button/Tooltip/BreathofFrostLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,BreathofFrostDamage,MaxCount"/></c> damage to enemies in a cone and <c val="#ColorAttackInfo">Chills</c> for <c val="#ColorAbilityUpgrade"><d ref="Effect,BreathofFrostChill,Duration+(Upgrade,BreathofFrost,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/BrillianceAura=Allies gain <c val="#ColorAbilityInfo"><d ref="Effect,BrillianceAura,Amount*1.4" precision="3"/></c> energy regen.
+Button/Tooltip/BrillianceAuraLearn=Allies gain <c val="#ColorAbilityUpgrade"><d ref="(Effect,BrillianceAura,Amount+Upgrade,BrillianceAura,EffectArray[0].Value)*1.4" precision="3"/></c> energy regen.
+Button/Tooltip/BrokenVindicatorHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/BronzeDragonHLW=Flying attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-faeriefire.dds" height="28" width="28"/> Faerie Fire<n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar<n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance<n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/BroodmotherHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-envenomedweapons.dds" height="28" width="28"/> Envenomed Weapons<n/><img path="Assets\Textures\btn-unit-neutral-spider.dds" height="28" width="28"/> Spawn Spiders
+Button/Tooltip/BruteForce=Increases life and life regen by <c val="#ColorAbilityInfo"><d ref="Behavior,BruteForceSource,Modification.AttributeChangeArray[0].Points"/>%</c>, and lifesteal by <c val="#ColorAbilityInfo"><d ref="Behavior,BruteForceSource,Modification.AttributeChangeArray[1].Points"/>%</c>. In addition, being attacked increases weapon damage by <c val="#ColorAbilityInfo"><d ref="Behavior,BruteForce,Modification.DamageDealtFraction[Melee]*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Behavior,BruteForce,Duration"/></c> seconds.
+Button/Tooltip/BruteForceLearn=Increases life and life regen by <c val="#ColorAbilityUpgrade"><d ref="Behavior,BruteForceSource,Modification.AttributeChangeArray[0].Points+Upgrade,BruteForce,EffectArray[0].Value"/>%</c>, and lifesteal by <c val="#ColorAbilityUpgrade"><d ref="Behavior,BruteForceSource,Modification.AttributeChangeArray[1].Points+Upgrade,BruteForce,EffectArray[3].Value"/>%</c>. In addition, being attacked increases weapon damage by <c val="#ColorAbilityUpgrade"><d ref=")Behavior,BruteForce,Modification.DamageDealtFraction[Melee]*100)+(Upgrade,BruteForce,EffectArray[2].Value*100)"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Behavior,BruteForce,Duration"/></c> seconds.
+Button/Tooltip/ButchersBladeHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalWeapon"><d  ref="Behavior,ButchersBladeHLW,Modification.AttributeChangeArray[0].Points*Effect,WeaponDamageAdjusted,Amount"/></s> Weapon Damage</s><n/><n/><img path="Assets\Textures\btn-item-cleaver2.dds" height="28" width="28"/> <s val="ItemStats"></c>Butchery</s><n/>Slaying <c val="FFFFFF">50</c> enemies will spawn a <c val="FFFFFF">Flesh Golem</c> on the enemy lane.
+Button/Tooltip/CannonImage=Phases in a Cannon Image with <c val="#ColorAbilityInfo"><d ref="Effect,CannonImageLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,CannonImageDamage,Amount"/></c> damage which lasts <c val="#ColorAbilityInfo"><d ref="Behavior,CannonImageTimedLife,Duration"/></c> seconds.
+Button/Tooltip/CannonImageLearn=Phases in a Cannon Image with <c val="#ColorAbilityUpgrade"><d ref="Effect,CannonImageLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,CannonImageDamage,MaxCount"/> </c>damage which lasts <c val="#ColorAbilityInfo"><d ref="Behavior,CannonImageTimedLife,Duration"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon range and speed.</c>
+Button/Tooltip/Carnage=Reduces damage taken by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,Carnage,DamageResponse.ModifyFraction)*100"/>%</c> and increases weapon speed by <c val="#ColorAbilityInfo"><d ref="(Behavior,Carnage,Modification.AttackSpeedMultiplier-1)*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Behavior,Carnage,Duration"/></c> seconds.<n/><n/>Restores <c val="#ColorAbilityInfo"><d ref="Effect,CarnageModify,VitalArray[Energy].Change"/></c> energy
+Button/Tooltip/CarnageLearn=Reduces damage taken by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,Carnage,DamageResponse.ModifyFraction)*100"/>%</c> and increases weapon speed by <c val="#ColorAbilityInfo"><d ref="(Behavior,Carnage,Modification.AttackSpeedMultiplier-1)*100"/>%</c> for <c val="#ColorAbilityUpgrade"><d ref="Behavior,Carnage,Duration+(Upgrade,Carnage,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.<n/><n/>Restores <c val="#ColorAbilityUpgrade"><d ref="Effect,CarnageModify,VitalArray[Energy].Change+Upgrade,Carnage,EffectArray[1].Value"/></c> energy
+Button/Tooltip/CausticArtilleryLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,CausticArtilleryDamage,MaxCount"/></c> damage to non-Heroic units and Corrodes for <c val="#ColorAbilityUpgrade"><d ref="Effect,CausticArtilleryCorrosion,Duration+(Upgrade,CausticArtillery,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Global cast range.
+Button/Tooltip/CentaurArcherHLW=Ranged attacker.
+Button/Tooltip/CentaurKhanHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-berserk.dds" height="28" width="28"/> Berserk
+Button/Tooltip/ChainLightningNeutral=Deals <c val="FFFFFF"><d ref="Effect,ChainLightningNeutralDamage,Amount"/></c> damage to <c val="FFFFFF">12</c> enemies.<n/><n/><c val="ffff8a">Does not affect Heroic units.</c>
+Button/Tooltip/ChronoBoost=Places a unit into an accelerated state. Increases weapon speed, ability cooldown speed, and all regeneration by <c val="#ColorAbilityInfo"><d ref="Behavior,ChronoBoostTarget,Modification.VitalRegenMultiplier[Life]*100" precision="1"/>%</c>.
+Button/Tooltip/ChronoBoostE=Places a unit into an accelerated state. Increases weapon speed, ability cooldown speed, and all regeneration by <c val="#ColorAbilityInfo"><d ref="Behavior,ChronoBoostTarget,Modification.VitalRegenMultiplier[Life]*100" precision="1"/>%</c>.
+Button/Tooltip/ChronoBoostLearn=Places a unit into an accelerated state. Increases weapon speed, ability cooldown speed, and all regeneration by <c val="#ColorAbilityUpgrade"><d ref="(Behavior,ChronoBoostTarget,Modification.VitalRegenMultiplier[Life]*100)+(Upgrade,ChronoBoost,EffectArray[0].Value*100)" precision="1"/>%</c>.
+Button/Tooltip/ChronoBoostT=Places a unit into an accelerated state. Increases weapon speed, ability cooldown speed, and all regeneration by <c val="#ColorAbilityInfo"><d ref="Behavior,ChronoBoostTarget,Modification.VitalRegenMultiplier[Life]*100" precision="1"/>%</c>.
+Button/Tooltip/ChronoField=Passively increases the attack, regeneration and production speeds of all friendly structures by <c val="ColorAbilityInfo"><d ref="(Behavior,ChronoField,Modification.TimeScale-1)*100"/>%.</c>
+Button/Tooltip/CorruptedTreantHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-envenomedweapons.dds" height="28" width="28"/> Envenomed Weapons<n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/CripplingAuraLearn=Enemies within range <c val="#ColorAbilityUpgrade"><d ref="Effect,CripplingAura1Search,AreaArray[0].Radius+Upgrade,CripplingAura,EffectArray[3].Value"/></c> have <c val="#ColorAbilityUpgrade"><d ref="(((-1)*Behavior,CripplingAura1,Modification.UnifiedAttackSpeedFactor)*100)-(Upgrade,CripplingAura,EffectArray[0].Value*100)"/>%</c> reduced weapon speed, <c val="#ColorAbilityUpgrade"><d ref="(((-1)*Behavior,CripplingAura1,Modification.UnifiedMoveSpeedFactor)*100)-(Upgrade,CripplingAura,EffectArray[1].Value*100)"/>%</c> reduced move speed, and <c val="#ColorAbilityUpgrade"><d ref="(((-1)*Behavior,CripplingAura1,Modification.DamageDealtFraction[Melee])*100)+3"/>%</c> reduced weapon damage.
+Button/Tooltip/CurseofMending=Curses an enemy's attacks to also restore <c val="#ColorAbilityInfo"><d ref="Effect,CurseofMendingModify,VitalArray[Life].Change"/></c> life to their target for <c val="#ColorAbilityInfo"><d ref="Behavior,CurseofMendingEnemy,Duration" precision="1"/></c> seconds.<n/><n/>May be cast on an ally, causing their attacks to heal themselves for <c val="#ColorAbilityInfo"><d ref="Behavior,CurseofMendingFriendly,Duration" precision="1"/></c> seconds.<n/><n/><c val="#ColorAttackInfo">Can't be dispelled.
+Button/Tooltip/CurseofMendingLearn=Curses an enemy's attacks to also restore <c val="#ColorAbilityUpgrade"><d ref="Effect,CurseofMendingModify,ResourceRestoreBonus"/></c> life to their target for <c val="#ColorAbilityInfo"><d ref="Behavior,CurseofMendingEnemy,Duration"/></c> seconds.<n/><n/>May be cast on an ally, causing their attacks to heal themselves for <c val="#ColorAbilityInfo"><d ref="Behavior,CurseofMendingFriendly,Duration"/></c> seconds.<n/><n/><c val="#ColorAttackInfo">Can't be dispelled.
+Button/Tooltip/Cyclone=Throws a ground unit into the air for <c val="FFFFFF"><d ref="Behavior,Cyclone,Duration"/></c> seconds, preventing it from attacking or using abilities.<n/><n/><c val="ffff8a">Does not affect Heroic units.</c>
+Button/Tooltip/DarkEliteLearn=Calls <c val="#ColorAbilityInfo"><d ref="Effect,DarkEliteCreate,SpawnCount"/></c> Elite Dark Templars with <c val="#ColorAbilityUpgrade"><d ref="Effect,DarkEliteLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityInfo">100%</c> damage, which have <c val="#ColorAbilityInfo">Shadow Fury</c> and will fight by your side for <c val="#ColorAbilityUpgrade"><d ref="Effect,DarkEliteTimedLife,Duration+(Upgrade,DarkElite,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/DarkElitePlace=Deadly warrior-assassin.
+Button/Tooltip/DarkReinforcements=Calls <c val="#ColorAbilityInfo"><d ref="Effect,DarkEliteCreate,SpawnCount"/></c> Elite Dark Templars with <c val="#ColorAbilityInfo"><d ref="Effect,DarkEliteLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo">100%</c> damage, which have <c val="#ColorAbilityInfo">Shadow Fury</c> and will fight by your side for <c val="#ColorAbilityInfo"><d ref="Effect,DarkEliteTimedLife,Duration" precision="1"/></c> seconds.
+Button/Tooltip/DarkWizardHLW=Ranged attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abolishmagic.dds" height="28" width="28"/> Abolish Magic<n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/DeathRevenantHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-unholyfrenzy.dds" height="28" width="28"/> Unholy Frenzy
+Button/Tooltip/DecrepifyLearn=Renders a target <c val="#ColorAttackInfo">Vulnerable</c> for <c val="#ColorAbilityUpgrade"><d ref="Effect,Decrepify,Duration+(Upgrade,Decrepify,EffectArray[0].Value/1.4)" precision="1"/></c> seconds, doubling all damage taken.
+Button/Tooltip/DemonGlyph=<s val="ItemStats"></c>+<s val="ItemStatsVitalEnergy"><d  ref="Behavior,DemonGlyph,Modification.AttributeChangeArray[0].Points"/>%</s> Energy</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalEnergy"><d  ref="Behavior,DemonGlyph,Modification.AttributeChangeArray[0].Points"/>%</s> Energy Regen</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d  ref="Behavior,DemonGlyph,Modification.AttributeChangeArray[1].Points"/>%</s> Ability Range<n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d  ref="Behavior,DemonGlyph,Modification.AttributeChangeArray[2].Points"/>%</s> Weapon Range
+Button/Tooltip/DestroyerHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/DireMammothHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/DisplacementBeam=Deploys a commandable orbital death laser which deals <c val="#ColorAbilityInfo"><d ref="Effect,DisplacementBeamDamage,Amount/Behavior,DisplacementBeam,Period"/></c> damage per second for <c val="#ColorAbilityInfo"><d ref="Behavior,DisplacementBeam,Duration" precision="1"/></c> seconds. May only have one.
+Button/Tooltip/DisplacementBeamLearn=Deploys a commandable orbital death laser which deals <c val="#ColorAbilityUpgrade"><d ref="Effect,DisplacementBeamDamage,MaxCount/Behavior,DisplacementBeam,Period"/></c> damage per second for <c val="#ColorAbilityUpgrade"><d ref="Behavior,DisplacementBeam,Duration+(Upgrade,DisplacementBeam,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. May only have one.
+Button/Tooltip/DominatorHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/DoomfireLearn=Releases a trail of living flame. Deals <c val="#ColorAbilityUpgrade"><d ref="(Effect,DoomfireDamage,MaxCount/Behavior,Doomfire,Period)*Behavior,Doomfire,Duration"/></c> damage over <c val="#ColorAbilityInfo"><d ref="Behavior,Doomfire,Duration" precision="1"/></c> seconds. Trail lasts <c val="#ColorAbilityInfo"><d ref="Behavior,DoomfireSpawnTimedLife,Duration" precision="1"/></c> seconds.
+Button/Tooltip/DragonTurtleHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/DrunkenBrawlerLearn=Grants weapon attacks a <c val="#ColorAbilityInfo"><d ref="Behavior,DrunkenBrawler,Modification.AttributeChangeArray[0].Points"/>%</c> chance to deal <c val="#ColorAbilityUpgrade"><d ref="Behavior,DrunkenBrawler,Modification.AttributeChangeArray[1].Points+3"/>x</c> damage and grants a <c val="#ColorAbilityUpgrade"><d ref="(Behavior,DrunkenBrawler,DamageResponse.Chance*100)+5"/>%</c> chance to ignore incoming weapon damage.
+Button/Tooltip/EMP=Creates an electromagnetic pulse that does <d ref="Effect,EMPDamage,ShieldBonus"/> damage to shields and <d ref="Effect,EMPModifyUnit,VitalArray[Energy].Change*(-1)"/> energy of all units in the targeted area. Cloaked units hit by EMP are revealed for a short time.
+Button/Tooltip/EMPRoundLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,EMPRoundDamage,MaxCount"/></c> damage and Stuns for <c val="#ColorAbilityUpgrade"><d ref="Effect,EMPRoundStun,Duration+(Upgrade,EMPRound,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/EnergeticBarrierHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d  ref="Behavior,EnergeticBarrierHLW,Modification.AttributeChangeArray[0].Points*Effect,LifeMax,Amount"/></s> Life</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalEnergy"><d ref="Behavior,EnergeticBarrierHLW,Modification.AttributeChangeArray[1].Points*Effect,EnergyMax,Amount"/></s> Energy</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d ref="(1-Behavior,RingofProtection,DamageResponse.ModifyFraction)*100"/>%</s> Weapon Damage Resistance</s><n/><n/><img path="Assets\Textures\btn-ability-neutral-lightningshield.dds" height="28" width="28"/> <s val="ItemStats"></c>Lightning Shield</s><n/>Deals <c val="FFFFFF"><d ref="Effect,LightningShieldPassiveDamage,Amount/Behavior,LightningShieldPassive,Period"/></c> damage per second to enemies within range <c val="FFFFFF"><d ref="Effect,LightningShieldSearch,AreaArray[0].Radius" precision="2"/></c>.
+Button/Tooltip/EntanglingRootsLearn=Roots enemies in an area and deals <c val="#ColorAbilityUpgrade"><d ref="Effect,EntanglingRootsDamage,MaxCount/Effect,EntanglingRootsPersistent,PeriodicPeriodArray[0]"/></c> damage per second (Resistant enemies are slowed instead) for <c val="#ColorAbilityUpgrade"><d ref="((Effect,EntanglingRootsPersistent,PeriodCount+Upgrade,EntanglingRoots,EffectArray[0].Value)*Effect,EntanglingRootsPersistent,PeriodicPeriodArray[0])+Effect,EntanglingRootsPersistent,ExpireDelay" precision="1"/></c> seconds.
+Button/Tooltip/Extinction=Releases a massive shockwave after channeling for <c val="#ColorAbilityInfo"><d ref="Effect,ExtinctionDelay,PeriodicPeriodArray[1]" precision="1"/></c> seconds, dealing <c val="#ColorAbilityInfo"><d ref="Effect,ExtinctionDamage,Amount*Effect,ExtinctionDamage,Fraction"/></c> damage to enemies in a huge radius.<n/>Caster is invulnerable and can't be stunned during channeling.
+Button/Tooltip/ExtinctionLearn=Releases a massive shockwave after channeling for <c val="#ColorAbilityInfo"><d ref="Effect,ExtinctionDelay,PeriodicPeriodArray[1]" precision="1"/></c> seconds, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,ExtinctionDamage,MaxCount*Effect,ExtinctionDamage,Fraction"/></c> damage to enemies in a huge radius.
+Button/Tooltip/FacelessDeathbringerHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-curse.dds" height="28" width="28"/> Curse<n/><img path="Assets\Textures\btn-ability-neutral-slowingpoison.dds" height="28" width="28"/> Slowing Poison
+Button/Tooltip/Feedback=Drains <d ref="Effect,FeedbackEnergyLoss,VitalArray[Energy].Change*(-1)"/> energy from the target. Deals 1 damage per point of energy.
+Button/Tooltip/FelRavagerHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-mindrot.dds" height="28" width="28"/> Mind Rot<n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/FeralWildkinHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-berserk.dds" height="28" width="28"/> Berserk
+Button/Tooltip/FieryAuraW=Ignites and deals <c val="#ColorAbilityInfo"><d ref="Effect,FieryAuraDamage,Amount/Behavior,FieryAura,Period"/></c> damage per second to enemies within range <c val="#ColorAbilityInfo"><d ref="Effect,FieryAuraSearch,AreaArray[0].Radius" precision="2"/></c>.
+Button/Tooltip/FireWallLearn=Lights a wall of flame which deals <c val="#ColorAbilityUpgrade"><d ref="(Effect,FireWallDamage,MaxCount*(Behavior,FireWall,Duration+Behavior,FireWallTimedLife,Duration))/Behavior,FireWallTimedLife,Period"/></c> damage over <c val="#ColorAbilityUpgrade"><d ref="Behavior,FireWall,Duration+Behavior,FireWallTimedLife,Duration+(Upgrade,FireWall,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/FirebrandHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalWeapon"><d  ref="Behavior,FirebrandHLW,Modification.AttributeChangeArray[0].Points*Effect,WeaponDamageAdjusted,Amount"/></s> Weapon Damage</s><n/><n/><img path="Assets\Textures\btn-ability-neutral-immolation.dds" height="28" width="28"/> <s val="ItemStats"></c>Permanent Immolation</s><n/>Passively deals <c val="FFFFFF"><d ref="Effect,PermanentImmolationDamage,Amount/Behavior,ImmolationSource,Period"/></c> damage per second to enemies within range <c val="FFFFFF"><d ref="Effect,PermanentImmolationSearch,AreaArray[0].Radius" precision="2"/></c>.
+Button/Tooltip/FleshGolemHLW=Melee attacker.<n/><n/><c val="ffff9a">Right-click to spawn all.</c>
+Button/Tooltip/ForceofNatureLearn=Spawns <c val="#ColorAbilityInfo"><d ref="Effect,ForceofNatureCreate,SpawnCount"/></c> melee treants with <c val="#ColorAbilityUpgrade"><d ref="Effect,ForceofNatureLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,ForceofNatureDamage,MaxCount"/></c> damage which last <c val="#ColorAbilityUpgrade"><d ref="Effect,ForceofNatureTimedLife,Duration+(Upgrade,ForceofNature,EffectArray[1].Value/1.4)"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon speed.</c>
+Button/Tooltip/FrenzyAuraLearn=Allies within range <c val="#ColorAbilityUpgrade"><d ref="Effect,FrenzyAura1Search,AreaArray[0].Radius+1"/></c> gain <c val="#ColorAbilityUpgrade"><d ref="Effect,FrenzyAura,Amount+3"/>%</c> weapon speed and ability speed.
+Button/Tooltip/FrostArmorLearn=Infuses your forces and nearby allies with frost, reducing damage taken by <c val="#ColorAbilityInfo"><d ref="(0-Behavior,FrostArmor,Modification.DamageTakenFraction[Spell])*100"/>%</c> and inflicts <c val="#ColorAttackInfo">Chill</c> on melee attackers. Lasts <c val="#ColorAbilityUpgrade"><d ref="Effect,FrostArmor,Duration+(Upgrade,FrostArmor,EffectArray[0].Value/1.4)"/></c> seconds.
+Button/Tooltip/FrostArmorW=Infuses your forces and nearby allies with frost, reducing damage taken by <c val="#ColorAbilityInfo"><d ref="(0-Behavior,FrostArmor,Modification.DamageTakenFraction[Spell])*100"/>%</c> and inflicts <c val="#ColorAttackInfo">Chill</c> on melee attackers. Lasts <c val="#ColorAbilityInfo"><d ref="Effect,FrostArmor,Duration"/></c> seconds.
+Button/Tooltip/FrostMastery=Nearby enemies are <c val="#ColorAttackInfo">Chilled</c>.<n/>Increases effect of <c val="#ColorAttackInfo">Chill</c> by <c val="#ColorAbilityInfo"><d ref="Effect,FrostMastery,Amount"/>%</c>
+Button/Tooltip/FrostMasteryLearn=Nearby enemies are <c val="#ColorAttackInfo">Chilled</c>.<n/>Increases effect of <c val="#ColorAttackInfo">Chill</c> by <c val="#ColorAbilityUpgrade"><d ref="Effect,FrostMastery,Amount+Upgrade,FrostMastery,EffectArray[0].Value"/>%</c>
+Button/Tooltip/FrostWolfHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/FurbolgChampionHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/FurbolgShamanHLW=Melee caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-rejuvenation.dds" height="28" width="28"/> Rejuvenation<n/><img path="Assets\Textures\btn-ability-neutral-faeriefire.dds" height="28" width="28"/> Faerie Fire
+Button/Tooltip/GnollAssassinHLW=Ranged attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-envenomedweapons.dds" height="28" width="28"/> Envenomed Weapons
+Button/Tooltip/GraniteGolemHLW=Melee juggernaut.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance<n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/GuidedArrow=Launches <c val="#ColorAbilityInfo"><d ref="Effect,GuidedArrowSearchTarget,AreaArray[0].MaxCount"/></c> seeking arrows which deal <c val="#ColorAbilityInfo"><d ref="Effect,GuidedArrowDamage,Amount"/></c> damage.
+Button/Tooltip/GuidedArrowLearn=Launches <c val="#ColorAbilityUpgrade"><d ref="Effect,GuidedArrowSearchTarget,AreaArray[0].MaxCount+Upgrade,GuidedArrow,EffectArray[0].Value"/></c> seeking arrows which deal <c val="#ColorAbilityUpgrade"><d ref="Effect,GuidedArrowDamage,MaxCount"/></c> damage.
+Button/Tooltip/HexW=Transforms enemies in an area into harmless critters for <c val="#ColorAbilityInfo"><d ref="Effect,Hex,Duration" precision="1"/></c> seconds.
+Button/Tooltip/HighborneWraithHLW=Short-ranged caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-curse.dds" height="28" width="28"/> Curse
+Button/Tooltip/HolyAuraW=Restores <c val="#ColorAbilityInfo"><d ref="Effect,HolyAuraModify,VitalArray[Life].Change"/></c> life per second to allies within range <c val="#ColorAbilityInfo"><d ref="Effect,UnholyAura1Search,AreaArray[0].Radius"/></c>.
+Button/Tooltip/HowlofTerrorLearn=Reduces weapon damage of nearby enemies by <c val="#ColorAbilityInfo"><d ref="((1-Behavior,HowlofTerror,Modification.DamageDealtFraction[Melee])-1)*100"/>%</c> for <c val="#ColorAbilityUpgrade"><d ref="Behavior,HowlofTerror,Duration+(Upgrade,HowlofTerror,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases radius.</c>
+Button/Tooltip/HowlofTerrorW=Reduces weapon damage of nearby enemies by <c val="#ColorAbilityInfo"><d ref="((1-Behavior,HowlofTerror,Modification.DamageDealtFraction[Melee])-1)*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Behavior,HowlofTerror,Duration" precision="1"/></c> seconds.
+Button/Tooltip/IceBarbedSpearHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalWeapon"><d  ref="Behavior,IceBarbedSpearHLW,Modification.AttributeChangeArray[0].Points*Effect,WeaponDamageAdjusted,Amount"/></s> Weapon Damage</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d ref="(1-Behavior,RingofProtection,DamageResponse.ModifyFraction)*100"/>%</s> Weapon Damage Resistance</s>
+Button/Tooltip/IceBarrier=Grants <c val="#ColorAbilityInfo"><d ref="Effect,IceBarrierShieldAmount,Amount"/></c> shields and <c val="#ColorAttackInfo">Chills</c> attackers.
+Button/Tooltip/IceBarrierLearn=Grants <c val="#ColorAbilityUpgrade"><d ref="Effect,IceBarrierShieldAmount,MaxCount"/></c> shields and <c val="#ColorAttackInfo">Chills</c> attackers.
+Button/Tooltip/ImpaleHeroicLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,ImpaleHeroicDamage,MaxCount"/></c> damage to ground enemies in a line and Stuns for <c val="#ColorAbilityUpgrade"><d ref="Effect,ImpaleHeroicStun,Duration+(Upgrade,ImpaleHeroic,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/InnervateLearn=Restores <c val="#ColorAbilityUpgrade"><d ref="Behavior,Innervate,Modification.VitalRegenArray[Energy]*(Behavior,Innervate,Duration+(Upgrade,Innervate,EffectArray[0].Value/1.4))"/></c> energy over <c val="#ColorAbilityUpgrade"><d ref="Behavior,Innervate,Duration+(Upgrade,Innervate,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/IronplateBucklerHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d  ref="Behavior,IronplateBucklerHLW,Modification.AttributeChangeArray[0].Points*Effect,LifeMax,Amount"/></s> Life</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d ref="(1-Behavior,RingofProtection,DamageResponse.ModifyFraction)*100"/>%</s> Weapon Damage Resistance</s>
+Button/Tooltip/JewelcrafterHLW=A shop which sells basic items which can be upgraded twice each.<n/><n/><c val="ffff8a">Move a hero close to buy items</c>
+Button/Tooltip/JuggernautHLW=Melee attacker.
+Button/Tooltip/KoboldTaskmasterHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-slow.dds" height="28" width="28"/> Slow
+Button/Tooltip/LifeGlyph=<s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d  ref="Behavior,LifeGlyph,Modification.AttributeChangeArray[0].Points"/>%</s> Lifesteal</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d  ref="Behavior,LifeGlyph,Modification.AttributeChangeArray[1].Points"/>%</s> Spell Vamp</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalEnergy"><d  ref="Behavior,LifeGlyph,Modification.AttributeChangeArray[2].Points"/>%</s> Energy</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalEnergy"><d  ref="Behavior,LifeGlyph,Modification.AttributeChangeArray[2].Points"/>%</s> Energy Regen</s>
+Button/Tooltip/LightningDashLearn=Charges forward, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,LightningDashDamage,MaxCount"/></c> damage to nearby enemies and Stuns for <c val="#ColorAbilityUpgrade"><d ref="Effect,LightningDashStun,Duration+(Upgrade,LightningDash,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/LocustSwarmLearn=Releases <c val="#ColorAbilityInfo"><d ref="Abil,LocustSwarmMagazine,MaxCount"/></c> locusts which deal <c val="#ColorAbilityUpgrade"><d ref="Effect,LocustSwarmDamage,MaxCount"/></c> damage and heal the caster each time they attack. Lasts <c val="#ColorAbilityUpgrade"><d ref="Behavior,LocustSwarm,Duration+(Upgrade,LocustSwarm,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/MagnataurHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-icebolt.dds" height="28" width="28"/> Ice Bolt
+Button/Tooltip/MakuraTidalLordHLW=Melee attacker.
+Button/Tooltip/MassBloodlust=Grants <c val="#ColorAbilityInfo"><d ref="((Behavior,Bloodlust,Modification.AttackSpeedMultiplier-1)+((Behavior,BloodlustIncrease,Modification.AttackSpeedMultiplier-1)*Effect,BloodlustIncrease,Count))*100"/>%</c> weapon speed and <c val="#ColorAbilityInfo"><d ref="Behavior,Bloodlust,Modification.UnifiedMoveSpeedFactor*100"/>%</c> move speed to allies within range <c val="#ColorAbilityInfo"><d ref="Effect,MassBloodlustSearch,AreaArray[0].Radius"/></c> for <c val="#ColorAbilityInfo"><d ref="Effect,MassBloodlust,Duration" precision="1"/></c> seconds.
+Button/Tooltip/MassBloodlustLearn=Grants <c val="#ColorAbilityInfo"><d ref="((Behavior,Bloodlust,Modification.AttackSpeedMultiplier-1)+((Behavior,BloodlustIncrease,Modification.AttackSpeedMultiplier-1)*Effect,BloodlustIncrease,Count))*100"/>%</c> weapon speed and <c val="#ColorAbilityInfo"><d ref="Behavior,Bloodlust,Modification.UnifiedMoveSpeedFactor*100"/>%</c> move speed to allies within range <c val="#ColorAbilityUpgrade"><d ref="Effect,MassBloodlustSearch,AreaArray[0].Radius+Upgrade,MassBloodlust,EffectArray[1].Value"/></c> for <c val="#ColorAbilityUpgrade"><d ref="Effect,MassBloodlust,Duration+(Upgrade,MassBloodlust,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/MassEntanglement=Inflicts <c val="#ColorAttackInfo">Entangling Roots</c> on enemies in an area for <c val="#ColorAbilityInfo"><d ref="Effect,MassEntanglement,Duration"/></c> seconds, reducing movement speed by <c val="#ColorAbilityInfo"><d ref="1-Behavior,EntanglingRootsNeutral,Modification.MoveSpeedMultiplier*100"/>%</c>. Global cast range.
+Button/Tooltip/MassEntanglementLearn=Inflicts <c val="#ColorAttackInfo">Entangling Roots</c> on enemies in an area for <c val="#ColorAbilityUpgrade"><d ref="Effect,MassEntanglement,Duration+2"/></c> seconds, reducing movement speed by <c val="#ColorAbilityInfo"><d ref="1-Behavior,EntanglingRootsNeutral,Modification.MoveSpeedMultiplier*100"/>%</c>. Global cast range.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases area size.</c>
+Button/Tooltip/Melee=Melee heroes take <c val="FFFFFF"><d ref="(1-Behavior,Melee,DamageResponse.ModifyFraction)*100"/>%</c> less damage.
+Button/Tooltip/Metamorphosis=Transform into a demon. Grants <c val="#ColorAbilityInfo"><d ref="Effect,LifeRegen,Amount*Behavior,Metamorphosis,Modification.AttributeChangeArray[1].Points" precision="2"/></c> life regen, <c val="#ColorAbilityInfo"><d ref="Behavior,Metamorphosis,Modification.AttributeChangeArray[0].Points"/>%</c> weapon cleave and a ranged attack which deals <c val="#ColorAbilityInfo"><d ref="1-Behavior,Metamorphosis,Modification.DamageDealtFraction[Ranged]*100"/>%</c> more damage. Lasts <c val="#ColorAbilityInfo"><d ref="Behavior,Metamorphosis,Duration"/></c> seconds.
+Button/Tooltip/MetamorphosisLearn=Transform into a demon. Grants <c val="#ColorAbilityUpgrade"><d ref="Effect,LifeRegen,Amount*(Behavior,Metamorphosis,Modification.AttributeChangeArray[1].Points+40)" precision="2"/></c> life regen, <c val="#ColorAbilityInfo"><d ref="Behavior,Metamorphosis,Modification.AttributeChangeArray[0].Points"/>%</c> weapon cleave and a ranged attack which deals <c val="#ColorAbilityInfo"><d ref="1-Behavior,Metamorphosis,Modification.DamageDealtFraction[Ranged]*100-"/>%</c> more damage. Lasts <c val="#ColorAbilityUpgrade"><d ref="Behavior,Metamorphosis,Duration+(Upgrade,Metamorphosis,EffectArray[0].Value/1.4)"/></c> seconds.
+Button/Tooltip/MindBlastE=Stuns for <c val="#ColorAbilityInfo"><d ref="Effect,MindBlastHeroicStun,Duration" precision="1"/></c> seconds and deals <c val="#ColorAbilityInfo"><d ref="Effect,MindBlastHeroicDamage,Amount"/></c> damage to an enemy unit.
+Button/Tooltip/MindBlastHeroic=Stuns for <c val="#ColorAbilityInfo"><d ref="Effect,MindBlastHeroicStun,Duration" precision="1"/></c> seconds and deals <c val="#ColorAbilityInfo"><d ref="Effect,MindBlastHeroicDamage,Amount"/></c> damage to an enemy unit.
+Button/Tooltip/MindBlastHeroicLearn=Stuns for <c val="#ColorAbilityUpgrade"><d ref="Effect,MindBlastHeroicStun,Duration+(Upgrade,MindBlastHeroic,EffectArray[0].Value/1.4)" precision="1"/></c> seconds and deals <c val="#ColorAbilityUpgrade"><d ref="Effect,MindBlastHeroicDamage,MaxCount"/></c> damage to an enemy unit.
+Button/Tooltip/MissileBattery=Deploys a flying turret with <c val="#ColorAbilityInfo"><d ref="Effect,MissileBatteryLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,MissileBatteryDamage,Amount"/></c> damage which lasts <c val="#ColorAbilityInfo"><d ref="Effect,MissileBatteryTimedLife,Duration" precision="1"/></c> seconds.
+Button/Tooltip/MissileBatteryLearn=Deploys a flying turret with <c val="#ColorAbilityUpgrade"><d ref="Effect,MissileBatteryLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,MissileBatteryDamage,MaxCount"/></c> damage which lasts <c val="#ColorAbilityUpgrade"><d ref="Effect,MissileBatteryTimedLife,Duration+(Upgrade,MissileBattery,EffectArray[3].Value/1.4)" precision="1"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon range and speed.</c>
+Button/Tooltip/MonsoonNeutral=Calls forth a lightning storm. Deals <c val="FFFFFF"><d ref="Effect,MonsoonNeutralDamage,Amount"/></c> damage to enemies each wave. Lasts <c val="FFFFFF"><d ref="Effect,MonsoonNeutralPersistent,PeriodCount"/></c> waves.<n/><n/><c val="ffff8a">Does not affect Heroic units.</c>
+Button/Tooltip/MothershipCorePlacement=Flying caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-protoss-timewarp.dds" height="28" width="28"/> Time Warp<info id="MothershipCore" types="W"/>
+Button/Tooltip/MothershipPlacement=Ultimate Protoss vessel. Replaces your Mothership Core.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-protoss-timewarp.dds" height="28" width="28"/> Time Warp<n/><img path="Assets\Textures\btn-ability-protoss-cloakfield-color.dds" height="28" width="28"/> Cloaking Field<info id="Mothership" types="W"/>
+Button/Tooltip/MurgulBloodgillHLW=Short-ranged attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/MurlocPlaguebearerHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-diseasecloud.dds" height="28" width="28"/> Disease Cloud
+Button/Tooltip/NerubianQueenHLW=Ranged attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-unholyaura.dds" height="28" width="28"/> Unholy Aura
+Button/Tooltip/NetherDragonHLW=Ranged attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/NuclearStrike=Deals <c val="#ColorAbilityInfo"><d ref="Effect,NuclearStrikeDamage,Amount*Effect,NuclearStrikeDamage,Fraction"/></c> damage over a large area.
+Button/Tooltip/NuclearStrikeLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,NuclearStrikeDamage,MaxCount*Effect,NuclearStrikeDamage,Fraction"/></c> damage over a large area.
+Button/Tooltip/ParasiteLearn=Infests an enemy. Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,ParasiteDamage,MaxCount/Behavior,Parasite,Period"/></c> damage per second. Spawns a Parasite with <c val="#ColorAbilityUpgrade"><d ref="Effect,ParasiteLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,ParasiteDamage,MaxCount"/></c> damage upon death which lasts <c val="#ColorAbilityInfo"><d ref="Behavior,ParasiteTimedLife,Duration"/></c> seconds.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon speed.</c>
+Button/Tooltip/PhaseJumpLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,PhaseJumpDamage,MaxCount"/></c> damage and Stuns nearby enemies for <c val="#ColorAbilityUpgrade"><d ref="Effect,PhaseJumpStun,Duration+(Upgrade,PhaseJump,EffectArray[0].Value/1.4)" precision="1"/></c> seconds, teleports and deals the same again.
+Button/Tooltip/PhotonOvercharge=Overcharges an ally, dealing <c val="#ColorAbilityInfo"><d ref="Effect,PhotonOverchargeDamage,Amount"/></c> damage per shot for <c val="#ColorAbilityInfo"><d ref="Effect,PhotonOverchargeAB,Duration" precision="1"/></c> seconds.<n/><n/>Has <c val="#ColorAbilityInfo">50%</c> increased duration on <c val="#ColorAbilityInfo">Structures</c>.
+Button/Tooltip/PhotonOverchargeLearn=Overcharges an ally, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,PhotonOverchargeDamage,MaxCount"/></c> damage per shot for <c val="#ColorAbilityUpgrade"><d ref="Effect,PhotonOverchargeAB,Duration+(Upgrade,PhotonOvercharge,EffectArray[1].Value/1.4)" precision="1"/></c> seconds.<n/><n/>Has <c val="#ColorAbilityInfo">50%</c> increased duration on <c val="#ColorAbilityInfo">Structures</c>.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon speed.
+Button/Tooltip/PlasmaShields=Grants shields equal to <c val="#ColorAbilityInfo"><d ref="Behavior,PlasmaShields,Modification.AttributeChangeArray[0].Points"/>%</c> of max life which rapidly recovers while not taking damage.<n/><n/>Shields have additional <c val="#ColorAbilityInfo">50%</c> damage reduction.
+Button/Tooltip/PoisonBlast=Blasts nearby enemies with poison which deals <c val="#ColorAbilityInfo"><d ref="Effect,PoisonBlastDamage,Amount"/></c> damage and Corrodes for <c val="#ColorAbilityInfo"><d ref="Effect,PoisonBlastCorrosion,Duration" precision="1"/></c> seconds.
+Button/Tooltip/PoisonBlastLearn=Blasts nearby enemies with poison which deals <c val="#ColorAbilityUpgrade"><d ref="Effect,PoisonBlastDamage,MaxCount"/></c> damage and Corrodes for <c val="#ColorAbilityUpgrade"><d ref="Effect,PoisonBlastCorrosion,Duration+(Upgrade,PoisonBlast,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/RallyingCry=Looses a rallying call, restoring <c val="#ColorAbilityInfo"><d ref="Effect,RallyingCryCH,RechargeVitalRate/1.4"/></c> life to allied heroes in range <c val="#ColorAbilityInfo"><d ref="Effect,RallyingCrySearch,AreaArray[0].Radius"/></c> and reducing damage they take by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,RallyingCry,DamageResponse.ModifyFraction)*100"/>%</c> for <c val="#ColorAbilityInfo"><d ref="Behavior,RallyingCry,Duration" precision="1"/></c> seconds. Restores thrice as much life to the caster.
+Button/Tooltip/RallyingCryLearn=Looses a rallying call, restoring <c val="#ColorAbilityUpgrade"><d ref="Effect,RallyingCryCH,DrainResourceCostFactor[0]"/></c> life to allied heroes in range <c val="#ColorAbilityInfo"><d ref="Effect,RallyingCrySearch,AreaArray[0].Radius"/></c> and reducing damage they take by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,RallyingCry,DamageResponse.ModifyFraction)*100"/>%</c> for <c val="#ColorAbilityUpgrade"><d ref="Behavior,RallyingCry,Duration+(Upgrade,RallyingCry,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Restores twice as much life to the caster.
+Button/Tooltip/RandomHero=Pick a random hero.<n/><n/><c val="ffff8a">You will get a random bonus item. The hero  will also be unpickable for other players.</c>
+Button/Tooltip/RapidFire=Increases weapon speed by <c val="#ColorAbilityInfo"><d ref="(Behavior,RapidFire,Modification.AttackSpeedMultiplier-1)*100"/>%</c> and causes attacks to hit <c val="#ColorAbilityInfo"><d ref="Behavior,RapidFire,Modification.AttributeChangeArray[0].Points"/></c> additional targets for <c val="#ColorAbilityInfo"><d ref="Behavior,RapidFire,Duration" precision="1"/></c> seconds.
+Button/Tooltip/RazormaneChiefHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-healingward.dds" height="28" width="28"/> Healing Ward
+Button/Tooltip/ReaverHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/ReconstructionBeam=Passively restores <c val="#ColorAbilityInfo"><d ref="Effect,ReconstructionBeamModify,VitalArray[Life].Change/Behavior,ReconstructionBeam,Period"/></c> life per second to <c val="#ColorAbilityInfo"><d ref="Effect,ReconstructionBeamLimit,Amount"/></c> allies in range <c val="ColorAbilityInfo"><d ref="Effect,ReconstructionBeamSearch,AreaArray[0].Radius"/></c>.
+Button/Tooltip/ReconstructionBeamLearn=Passively restores <c val="#ColorAbilityUpgrade"><d ref="Effect,ReconstructionBeamModify,ResourceRestoreBonus/Behavior,ReconstructionBeam,Period"/></c> life per second to up to <c val="#ColorAbilityInfo"><d ref="Effect,ReconstructionBeamLimit,Amount"/></c> allies in range <c val="ColorAbilityInfo"><d ref="Effect,ReconstructionBeamSearch,AreaArray[0].Radius"/></c>.
+Button/Tooltip/ReconstructionBeamR=Passively restores <c val="#ColorAbilityInfo"><d ref="Effect,ReconstructionBeamModify,VitalArray[Life].Change/Behavior,ReconstructionBeam,Period"/></c> life per second to <c val="#ColorAbilityInfo"><d ref="Effect,ReconstructionBeamLimit,Amount"/></c> allies in range <c val="ColorAbilityInfo"><d ref="Effect,ReconstructionBeamSearch,AreaArray[0].Radius"/></c>.
+Button/Tooltip/ResurgenceLearn=Charge up, releasing a burst of energy after a delay which deals <c val="#ColorAbilityUpgrade"><d ref="Effect,ResurgenceDamage,MaxCount"/></c> damage, Stuns for <c val="#ColorAbilityUpgrade"><d ref="Effect,ResurgenceStun,Duration+(Upgrade,Resurgence,EffectArray.Value/1.4)" precision="1"/></c> seconds and restores all shields.
+Button/Tooltip/RingPurple3=<s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d  ref="Effect,LifeMax,Amount*Behavior,RingPurple3,Modification.AttributeChangeArray[0].Points"/></s> Life</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVitalLife"><d ref="Effect,LifeRegen,Amount*Behavior,RingPurple3,Modification.AttributeChangeArray[1].Points" precision="2"/></s> Life Regen</s><n/><s val="ItemStats"></c>+<s val="ItemStatsVital"><d  ref="Behavior,RingPurple3,Modification.AttributeChangeArray[2].Points"/>%</s> Ability Power</s><n/><n/><img path="Assets\Textures\btn-item-blight.dds" height="28" width="28"/> <s val="ItemStatsAbility"></c>Blight Aura</s><n/>Enemies within range <c val="#ColorAbilityInfo"><d ref="Effect,BlightAuraSearch,AreaArray[0].Radius"/></c> take damage equal to <c val="#ColorAbilityInfo"><d ref="(Effect,BlightAuraDamage,VitalFractionMax[Life]/Behavior,BlightAuraSource,Period)*100" precision="1"/>%</c> of their max life per second.
+Button/Tooltip/SatyrHellcallerHLW=Melee attacker.
+Button/Tooltip/ScorpidHLW=Melee attacker.
+Button/Tooltip/SeaGiantHLW=Melee attacker<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-mindrot.dds" height="28" width="28"/> Mind Rot<n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/SearingStrikesW=Causes weapon attacks to deal <c val="#ColorAbilityInfo"><d ref="Effect,SearingStrikesDamage,Amount"/></c> bonus area damage.
+Button/Tooltip/SelectShrineHLW=This structure will accumulate energy over time and may use powerful spells.
+Button/Tooltip/Servitor=Warps in a flying sentry with <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyDamage,Amount"/></c> damage. May have six.
+Button/Tooltip/ServitorLearnOnly=Warps in a flying sentry with <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyDamage,Amount"/></c> damage. May have six.
+Button/Tooltip/ServitorLearnOnlyLearn=Warps in a flying sentry with <c val="#ColorAbilityUpgrade"><d ref="Effect,ServitorLearnOnlyLifeMax,MaxCount"/></c> life and <c val="#ColorAbilityUpgrade"><d ref="Effect,ServitorLearnOnlyDamage,MaxCount"/></c> damage. May have six.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases weapon range.</c>
+Button/Tooltip/ServitorW=Warps in a flying sentry with <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyLifeMax,Amount"/></c> life and <c val="#ColorAbilityInfo"><d ref="Effect,ServitorLearnOnlyDamage,Amount"/></c> damage. May have six.
+Button/Tooltip/ShadowFuryLearn=Grants <c val="#ColorAbilityInfo"><d ref="(Behavior,ShadowFury,Modification.AttackSpeedMultiplier-1)*100"/>%</c> weapon speed and causes weapon attacks to teleport behind the target for <c val="#ColorAbilityUpgrade"><d ref="Behavior,ShadowFury,Duration+(Upgrade,ShadowFury,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/ShadowMastery=Dark Warriors within range <c val="#ColorAbilityInfo"><d ref="Effect,ShadowMasteryAura1Search,AreaArray[0].Radius"/></c> gain <c val="#ColorAbilityInfo"><d ref="Effect,ShadowMastery,Amount"/>%</c> increased weapon damage, attack speed and <c val="#ColorAbilityInfo"><d ref="Behavior,ShadowMastery1,DamageResponse.Chance*100" precision="1"/>%</c> chance to evade attacks.
+Button/Tooltip/ShadowMasteryLearn=Dark Warriors within range <c val="#ColorAbilityUpgrade"><d ref="Effect,ShadowMasteryAura1Search,AreaArray[0].Radius+Upgrade,ShadowMastery,EffectArray[1].Value"/></c> gain <c val="#ColorAbilityUpgrade"><d ref="Effect,ShadowMastery,Amount+Upgrade,ShadowMastery,EffectArray[0].Value"/>%</c> increased weapon damage, attack speed and <c val="#ColorAbilityUpgrade"><d ref="(Behavior,ShadowMastery1,DamageResponse.Chance+Upgrade,ShadowMastery,EffectArray[3].Value)*100" precision="1"/>%</c> chance to evade attacks.
+Button/Tooltip/ShieldBarrier=Reduces damage taken by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,ShieldBarrier,DamageResponse.ModifyFraction)*100"/>%</c>, but also reduces move speed by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,ShieldBarrier,Modification.MoveSpeedMultiplier)*100"/>%</c>. Lasts until cancelled.<n/><n/>While active, being attacked has a <c val="#ColorAbilityInfo"><d ref="Behavior,ShieldBarrierProc,DamageResponse.Chance*100"/>%</c> chance to stun enemies and deal <c val="#ColorAbilityInfo"><d ref="Effect,ShieldBarrierDamage,Amount"/></c> damage.
+Button/Tooltip/SkeletalMageHLW=Ranged attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/SkeletalOrcChampionHLW=Melee attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-curse.dds" height="28" width="28"/> Curse<n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/SleepLearn=Puts enemies in an area to sleep for <c val="#ColorAbilityUpgrade"><d ref="Effect,Sleep,Duration+(Upgrade,Sleep,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Any damage will wake them. Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,SleepDamage,MaxCount"/></c> damage when Sleep ends.
+Button/Tooltip/SleepW=Puts enemies in an area to sleep for <c val="#ColorAbilityInfo"><d ref="Effect,Sleep,Duration" precision="1"/></c> seconds. Any damage will wake them. Deals <c val="#ColorAbilityInfo"><d ref="Effect,SleepDamage,Amount"/></c> damage when Sleep ends.
+Button/Tooltip/SludgeMonstrosityHLW=Short-ranged caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-slow.dds" height="28" width="28"/> Slow
+Button/Tooltip/SoulBurnLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="(Effect,SoulBurnDamage,MaxCount/Behavior,SoulBurn,Period)*(Behavior,SoulBurn,Duration+(Upgrade,SoulBurn,EffectArray[0].Value/1.4))"/></c> damage over <c val="#ColorAbilityUpgrade"><d ref="Behavior,SoulBurn,Duration+(Upgrade,SoulBurn,EffectArray[0].Value/1.4)" precision="1"/></c> seconds (<c val="#ColorAbilityUpgrade"><d ref="Effect,SoulBurnHeroic,Duration+(Upgrade,SoulBurn,EffectArray[1].Value/1.4)" precision="1"/></c> vs Heroes), prevents ability usage and reduces weapon damage by <c val="#ColorAbilityInfo"><d ref="((-1)*Behavior,SoulBurn,Modification.DamageDealtFraction[Melee])*100"/>%</c>. Global cast range.
+Button/Tooltip/SoulLeech=Weapon attacks have a <c val="#ColorAbilityInfo"><d ref="Effect,SoulLeech,Chance*100"/>%</c> chance to restore <c val="#ColorAbilityInfo"><d ref="Behavior,SoulLeech,Modification.VitalRegenArray[Energy]"/></c> energy and reduce ability cooldowns by <c val="#ColorAbilityInfo"><d ref="Behavior,SoulLeech,Duration" precision="1"/></c> second.
+Button/Tooltip/SoulLeechLearn=Weapon attacks have a <c val="#ColorAbilityUpgrade"><d ref="(Effect,SoulLeech,Chance*100)+5"/>%</c> chance to restore <c val="#ColorAbilityInfo"><d ref="Behavior,SoulLeech,Modification.VitalRegenArray[Energy]"/></c> energy and reduce ability cooldowns by <c val="#ColorAbilityInfo"><d ref="Behavior,SoulLeech,Duration" precision="1"/></c> second.
+Button/Tooltip/Soulshatter=Creates <c val="#ColorAbilityInfo"><d ref="Effect,SoulshatterPersistent,PeriodCount"/></c> shadows of a unit.
+Button/Tooltip/SoulshatterLearn=Creates <c val="#ColorAbilityUpgrade"><d ref="Effect,SoulshatterPersistent,PeriodCount+2"/></c> shadows of a unit.
+Button/Tooltip/SpiderCrabHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-abilityresistance.dds" height="28" width="28"/> Ability Resistance
+Button/Tooltip/StaffofTeleportation=Allows the hero to teleport a friendly structure.<n/><n/><c val="ffff8a">This item does not stack</c>
+Button/Tooltip/StarfallLearn=Calls <c val="#ColorAbilityUpgrade"><d ref="(Behavior,Starfall,Duration+(Upgrade,Starfall,EffectArray[0].Value/1.4))/Behavior,Starfall,Period"/></c> waves of stars down around the caster, dealing <c val="#ColorAbilityUpgrade"><d ref="Effect,StarfallDamage,MaxCount"/></c> damage per star.
+Button/Tooltip/StormEarthandFire=Split into three elemental spirits for <c val="#ColorAbilityInfo"><d ref="Behavior,StormEarthandFireActive,Duration"/></c> seconds. Each spirit has Drunken Brawler. At least one spirit must survive.<n/><n/>Storm has <c val="#ColorAbilityInfo">100%</c> life, <c val="#ColorAbilityInfo">100%</c> damage, Chain Lightning, Cyclone, and Dispel.<n/><n/>Fire has <c val="#ColorAbilityInfo">150%</c> life, <c val="#ColorAbilityInfo">150%</c> damage, and Permanent Immolation.  Takes <c val="FFFFFF"><d ref="(1-Behavior,Melee,DamageResponse.ModifyFraction)*100"/>%</c> less damage.<n/><n/>Earth has <c val="#ColorAbilityInfo">200%</c> life, <c val="#ColorAbilityInfo">100%</c> damage, and Taunt.  Takes <c val="FFFFFF"><d ref="(1-Behavior,Melee,DamageResponse.ModifyFraction)*100"/>%</c> less damage.
+Button/Tooltip/StormEarthandFireLearn=Split into three elemental spirits for <c val="#ColorAbilityUpgrade"><d ref="Behavior,StormEarthandFireActive,Duration+(Upgrade,StormEarthandFire,EffectArray[0].Value/1.4)"/></c> seconds. Each spirit has Drunken Brawler. At least one spirit must survive.<n/><n/>Storm has <c val="#ColorAbilityInfo">100%</c> life, <c val="#ColorAbilityInfo">100%</c> damage, Chain Lightning, Cyclone, and Dispel.<n/><n/>Fire has <c val="#ColorAbilityInfo">150%</c> life, <c val="#ColorAbilityInfo">150%</c> damage, and Permanent Immolation. Takes <c val="FFFFFF"><d ref="(1-Behavior,Melee,DamageResponse.ModifyFraction)*100"/>%</c> less damage.<n/><n/>Earth has <c val="#ColorAbilityInfo">200%</c> life, <c val="#ColorAbilityInfo">100%</c> damage, and Taunt.  Takes <c val="FFFFFF"><d ref="(1-Behavior,Melee,DamageResponse.ModifyFraction)*100"/>%</c> less damage.
+Button/Tooltip/StormWyrmHLW=Ranged attacker.
+Button/Tooltip/StormheraldHLW=<s val="ItemStats"></c>+<s val="ItemStatsVitalWeapon"><d  ref="Behavior,StormheraldHLW,Modification.AttributeChangeArray[0].Points*Effect,WeaponDamageAdjusted,Amount"/></s> Weapon Damage</s><n/><n/><img path="Assets\Textures\btn-ability-neutral-purge.dds" height="28" width="28"/> <s val="ItemStats"></c>Purge</s><n/>Weapon attacks have a chance to remove all buffs and root enemies for <c val="FFFFFF"><d ref="Behavior,PurgeRoot,Duration"/></c> seconds, returning to their normal speed over <c val="FFFFFF"><d ref="Behavior,Purge,Duration"/></c> seconds.
+Button/Tooltip/SunOrbLearn=Summons an orb which deals <c val="#ColorAbilityUpgrade"><d ref="Effect,SunOrbDamage,MaxCount/Behavior,SunOrbDuration,Period"/></c> damage per second and Ignites nearby enemies for <c val="#ColorAbilityUpgrade"><d ref="Behavior,SunOrbDuration,Duration+(Upgrade,SunOrb,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/TaintedCoreLearn=Expels a vile orb which Corrodes and Curses for <c val="#ColorAbilityUpgrade"><d ref="Effect,TaintedCoreCorrosion,Duration+(Upgrade,TaintedCore,EffectArray[1].Value/1.4)"/></c> seconds. Travels for <c val="#ColorAbilityUpgrade"><d ref="Behavior,TaintedCoreSource,Duration+(Upgrade,TaintedCore,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/Teleport=Teleports the caster.
+Button/Tooltip/TimeBombLearn=Inflicts <c val="#ColorAttackInfo">Slow</c> on enemies in an area for <c val="#ColorAbilityUpgrade"><d ref="Effect,TimeBombSlow,Duration+(Upgrade,TimeBomb,EffectArray[0].Value/1.4)" precision="1"/></c> seconds, reducing weapon speed and move speed. Global cast range.<n/><n/><c val="#ColorAbilityUpgrade">Each level increases area size.</c>
+Button/Tooltip/Tornado=Calls a controllable tornado which Chills and deals <c val="#ColorAbilityInfo"><d ref="Effect,TornadoDamage,Amount/Behavior,TornadoSource,Period"/></c> damage per second to nearby enemies.<n/><n/>Periodically throws a random enemy into the air for <c val="#ColorAbilityInfo"><d ref="Effect,TornadoCyclone,Duration"/></c> seconds. Lasts <c val="#ColorAbilityInfo"><d ref="Behavior,TornadoSource,Duration"/></c> seconds.
+Button/Tooltip/TornadoLearn=Calls a controllable tornado which deals <c val="#ColorAbilityUpgrade"><d ref="Effect,TornadoDamage,MaxCount/Behavior,TornadoSource,Period"/></c> damage per second to the closest structure and slows move speed of nearby enemies by <c val="#ColorAbilityInfo"><d ref="(1-Behavior,Tornado,Modification.MoveSpeedMultiplier)*100"/>%</c>.<n/><n/>Cyclones a random enemy every second for <c val="#ColorAbilityUpgrade"><d ref="Effect,TornadoCyclone,Duration+(Upgrade,Tornado,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Lasts <c val="#ColorAbilityInfo"><d ref="Behavior,TornadoSource,Duration"/></c> seconds.
+Button/Tooltip/TranquilityLearn=Restores <c val="#ColorAbilityInfo"><d ref="(Effect,TranquilityModify,VitalArray[Life].ChangeFraction/Behavior,TranquilitySource,Period)*100" precision="2"/>%</c> life per second to nearby allies for <c val="#ColorAbilityUpgrade"><d ref="Behavior,TranquilitySource,Duration+(Upgrade,Tranquility,EffectArray[0].Value/1.4)"/></c> seconds.
+Button/Tooltip/TuskarrSorcererHLW=Ranged attacker.<n/><n/><c val="ffff9a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-innerfire.dds" height="28" width="28"/> Inner Fire
+Button/Tooltip/Units=Add units to your wave. Units spawn periodicaly and attack the enemy team.
+Button/Tooltip/UpgradetoTier2HLW=Unlock stronger mercenaries.
+Button/Tooltip/UpgradetoTier3HLW=Unlock even stronger mercenaries.
+Button/Tooltip/UpgradetoTier4HLW=Unlock the strongest mercenaries.
+Button/Tooltip/UpgradetoTier5HLW=Unlock mercenaries which are completely overkill.
+Button/Tooltip/UrsolBearHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-roar.dds" height="28" width="28"/> Roar
+Button/Tooltip/VampiricPotion=Grants <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricPotion,Modification.AttributeChangeArray[0].Points"/>%</c> lifesteal for <c val="#ColorAbilityInfo"><d ref="Behavior,VampiricPotion,Duration"/></c> seconds.<n/><n/><c val="#ColorAttackInfo">Stacks to <d ref="Item,VampiricPotion,EffectCost.Charge.CountMax"/>.</c>
+Button/Tooltip/VirulentCloud=Empowers a unit to deal <c val="#ColorAbilityInfo"><d ref="Effect,VirulentCloudDamage,Amount/Behavior,VirulentCloudSource,Period"/></c> damage per second to nearby enemies for <c val="#ColorAbilityInfo"><d ref="Behavior,VirulentCloudSource,Duration"/></c> seconds.
+Button/Tooltip/VirulentCloudLearn=Empowers a unit to deal <c val="#ColorAbilityUpgrade"><d ref="Effect,VirulentCloudDamage,MaxCount/Behavior,VirulentCloudSource,Period"/></c> damage per second to nearby enemies for <c val="#ColorAbilityInfo"><d ref="Behavior,VirulentCloudSource,Duration"/></c> seconds.
+Button/Tooltip/VoidReflexesLearn=Grants a <c val="#ColorAbilityUpgrade"><d ref="(Behavior,VoidReflexes,DamageResponse.Chance+0.1)*100"/>%</c> chance to counter-attack for <c val="#ColorAbilityInfo">50%</c> weapon damage when attacked.
+Button/Tooltip/VoidZone=Creates a zone which drains <c val="#ColorAbilityInfo"><d ref="Effect,VoidZonePercentDamage,VitalFractionMax[Life]*100"/>%</c> of life and <c val="#ColorAbilityInfo"><d ref="(-1)*Effect,VoidZoneModify,VitalArray[Energy].Change"/></c> (<c val="#ColorAbilityInfo"><d ref="(-1)*Effect,VoidZoneModifyHeroic,VitalArray[Energy].Change"/></c> vs Heroic) energy per second of enemies in an area for <c val="#ColorAbilityInfo"><d ref="Behavior,VoidZoneSource,Duration" precision="1"/></c> seconds. Global cast range.
+Button/Tooltip/VoidZoneLearn=Creates a zone which drains <c val="#ColorAbilityInfo"><d ref="Effect,VoidZonePercentDamage,VitalFractionMax[Life]*100"/>%</c> of life and <c val="#ColorAbilityInfo"><d ref="(-1)*Effect,VoidZoneModify,VitalArray[Energy].Change"/></c> (<c val="#ColorAbilityInfo"><d ref="(-1)*Effect,VoidZoneModifyHeroic,VitalArray[Energy].Change"/></c> vs Heroic) energy per second of enemies in an area for <c val="#ColorAbilityUpgrade"><d ref="Behavior,VoidZoneSource,Duration+(Upgrade,VoidZone,EffectArray[0].Value/1.4)" precision="1"/></c> seconds. Global cast range.
+Button/Tooltip/WarGolemHLW=Melee attacker.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-hardenedskin.dds" height="28" width="28"/> Hardened Skin
+Button/Tooltip/WarStompLearn=Deals <c val="#ColorAbilityUpgrade"><d ref="Effect,WarStompDamage,MaxCount"/></c> damage and Stuns nearby enemies for <c val="#ColorAbilityUpgrade"><d ref="Effect,WarStompStun,Duration+(Upgrade,WarStomp,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/WindWalkLearn=Grants <c val="#ColorAbilityUpgrade"><d ref="(Behavior,WindWalk,Modification.UnifiedMoveSpeedFactor*100)+15"/>%</c> move speed, invisibility and the ability to walk through units for <c val="#ColorAbilityUpgrade"><d ref="Behavior,WindWalk,Duration+(Upgrade,WindWalk,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.<n/><n/>Next weapon attack will end the effect and deal <c val="#ColorAbilityUpgrade"><d ref="Effect,WindWalkDamage,MaxCount"/></c> damage to nearby enemies.
+Button/Tooltip/WindfuryHarpyHLW=Ranged caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-rejuvenation.dds" height="28" width="28"/> Rejuvenation
+Button/Tooltip/WraithFormLearn=Allows the caster to pass through objects, nullifies damage taken and restores <c val="#ColorAbilityUpgrade"><d ref="((Effect,WraithFormModify,VitalArray[Life].ChangeFraction*100)/Behavior,WraithForm,Period)*(Behavior,WraithForm,Duration+2)"/>%</c> life and energy over <c val="#ColorAbilityUpgrade"><d ref="Behavior,WraithForm,Duration+(Upgrade,WraithForm,EffectArray[0].Value/1.4)" precision="1"/></c> seconds.
+Button/Tooltip/ZandalariPriestHLW=Ranged caster.<n/><n/><c val="ffff8a">Abilities:</c><n/><img path="Assets\Textures\btn-ability-neutral-innerfire.dds" height="28" width="28"/> Inner Fire
+DocInfo/DescLong=Pick a hero and survive waves of enemies spawned by the enemy team. Join with one team empty to fight your own spawns.<n/><n/>This map contains bug fixes and balance changes of Tya's HLWS map. All credits go to original author. I do not own anything.
+DocInfo/DescShort=Even Teams
+DocInfo/HowToPlayAdvanced00=Spawning units increases your income, spawn frequently
+DocInfo/HowToPlayAdvanced01=Cheaper units give more income per cost, but also more experience
+DocInfo/HowToPlayAdvanced02=Make use of potions to survive early
+DocInfo/HowToPlayAdvanced03=Use your shrine to help if you get overwhelmed
+DocInfo/HowToPlayBasic00=Pick a hero
+DocInfo/HowToPlayBasic01=Spawn units at your hatchery
+DocInfo/HowToPlayBasic02=Survive units spawned by the enemy team
+DocInfo/HowToPlayWinning00=Don't let enemies reach your beacon
+DocInfo/Name=Hero Line Wars Starlight [Fixed]
+DocInfo/PatchNote001=- Added 2 new heroes
+DocInfo/PatchNote002=- Added "-gold X" command to sandbox (solo)
+DocInfo/PatchNote003=- All glyphs are unlocked until 1st Jan, 2025
+DocInfo/PatchNote004=- Removed Extended Heroes mode
+DocInfo/PatchNote005=- Fixed major bugs for: Blightbringer, Artanis, Dreadstalker, Blademaster
+DocInfo/PatchNote006=
+DocInfo/PatchNote007=- Buffed heroes: Angel, Hierarch, Ascendant, Infested, Warlord, Viromancer,
+DocInfo/PatchNote008=Emperor's Guard, Tempest, Revenant, Mountain King, Legionnaire,
+DocInfo/PatchNote009=Dawn Priest, Captain, Voidwalker, Ice Queen, Sentinel, Spectre
+DocInfo/PatchNote010=
+DocInfo/PatchNote011=- Nerfed heroes: Ebon Knight, Dark Ranger
+DocInfo/PatchNote012=
+DocInfo/PatchNote013=Read all fully detailed patch notes in discord: https://discord.gg/xRyZ4uFr8S
+DocInfo/PatchNote153= - Celestial Wrath damage increased from 90 to 150.
+DocInfo/PatchNote154=
+DocInfo/PatchNote155=SLAYER
+DocInfo/PatchNote156= - Fire Wall damage distribution redesigned to be higher.
+DocInfo/PatchNote157= - Fire Golem damage increased from 15 to 18.
+DocInfo/PatchNote158= - Fire Golem cost reduced from 50 to 25.
+DocInfo/PatchNote159=
+DocInfo/PatchNote160=WITCH
+DocInfo/PatchNote161= - Pain Spike damage increased from 60 to 75.
+DocInfo/PatchNote162= - Pain Spike jump radius increased from 5 to 6.
+DocInfo/PatchNote163= - Pain Spike cooldown reduced from 15 to 10.
+DocInfo/PatchNote164= - Oblivion Shard life reduced from 3000 to 1500.
+DocInfo/PatchNote165= - Oblivion Shard cost reduced from 100 to 75.
+DocInfo/PatchNote166= - Oblivion Shard cooldown reduced from 120 to 90.
+DocInfo/PatchNote167=
+DocInfo/PatchNote168=ITEMS
+DocInfo/PatchNote169= - Boots of Speed now also grant +6 weapon damage and +6% weapon speed.
+DocInfo/PatchNote170=
+DocInfo/PatchNote171=OTHER
+DocInfo/PatchNote172= - Fixed a bug causing Mirror Image to cause a lot of late-game lag.
+DocInfo/PatchNote173= - Replaced Summoner with her WarCraft HD model.
+DocInfo/PatchNote174= - Replaced Voidwalker with his WarCraft HD model.
+DocInfo/PatchNote175= - Fixed a bug causing Carrion Swarm to not deal damage at the end of it's effect.
+DocInfo/Screenshot01=
+DocInfo/ScreenshotHowToPlay01=Select a hero.
+DocInfo/ScreenshotHowToPlay02=Equip your hero with items to enhance his or her power if you are having trouble defending.
+DocInfo/ScreenshotHowToPlay03=Summon creeps to incease your gold income and eventually overpower the enemy team.
+Effect/Name/AmaniBerserkerHLWDamage=Amani Berserker HLW Damage
+Effect/Name/AmaniBerserkerHLWLM=Amani Berserker HLW LM
+Effect/Name/AncientHydraHLWDamage=Ancient Hydra HLW Damage
+Effect/Name/AncientHydraHLWLM=Ancient Hydra HLW LM
+Effect/Name/AncientHydraHLWSet=Ancient Hydra HLW Set
+Effect/Name/AncientSasquatchHLWDamage=Ancient Sasquatch HLW Damage
+Effect/Name/ArachnathidOverlordHLWDamage=Arachnathid Overlord HLW Damage
+Effect/Name/AssassinateTeleport=Assassinate Teleport
+Effect/Name/AssassinateTeleportFacing=Assassinate Teleport Facing
+Effect/Name/BanditHLWDamage=Bandit HLW Damage
+Effect/Name/BanditLordHLWDamage=Bandit Lord HLW Damage
+Effect/Name/BlackDrakeHLWDamage=Black Drake HLW Damage
+Effect/Name/BlackDrakeHLWLM=Black Drake HLW LM
+Effect/Name/BloodfiendHLWDamage=Bloodfiend HLW Damage
+Effect/Name/BoulderfistOgreHLWDamage=Boulderfist Ogre HLW Damage
+Effect/Name/BrokenVindicatorHLWDamage=Broken Vindicator HLW Damage
+Effect/Name/BronzeDragonHLWDamage=Bronze Dragon HLW Damage
+Effect/Name/BroodmotherHLWDamage=Broodmother HLW Damage
+Effect/Name/BroodmotherHLWSet=Broodmother HLW Set
+Effect/Name/Butchery=Butchery
+Effect/Name/ButcheryDebuff=Butchery Debuff
+Effect/Name/CannonImage=Cannon Image
+Effect/Name/CannonImageDamage=Cannon Image Damage
+Effect/Name/CannonImageInitialStun=Cannon Image Initial Stun
+Effect/Name/CannonImageLM=Cannon Image LM
+Effect/Name/CannonImageLifeMax=Cannon Image Life Max
+Effect/Name/CannonImageSetBirth=Cannon Image Set Birth
+Effect/Name/CannonImageSetCast=Cannon Image Set Cast
+Effect/Name/CannonImageSetLaunch=Cannon Image Set Launch
+Effect/Name/CannonImageTimedLife=Cannon Image Timed Life
+Effect/Name/CastCustomB40Interruptible=Cast Custom B (4.0) Interruptible
+Effect/Name/CentaurArcherHLWDamage=Centaur Archer HLW Damage
+Effect/Name/CentaurArcherHLWLM=Centaur Archer HLW LM
+Effect/Name/CentaurKhanHLWDamage=Centaur Khan HLW Damage
+Effect/Name/CorruptedTreantHLWDamage=Corrupted Treant HLW Damage
+Effect/Name/CorruptedTreantHLWSet=Corrupted Treant HLW Set
+Effect/Name/CyberBlastCrit=Cyber Blast Crit
+Effect/Name/CyberBlastDamage=Cyber Blast Damage
+Effect/Name/CyberBlastLM=Cyber Blast LM
+Effect/Name/CyberBlastMultistrikeSearch=Cyber Blast Multistrike Search
+Effect/Name/CyberBlastSetImpact=Cyber Blast Set Impact
+Effect/Name/CyberBlastSetLaunch=Cyber Blast Set Launch
+Effect/Name/DarkEliteCreate=Dark Elite Create
+Effect/Name/DarkEliteCrit=Dark Elite Crit
+Effect/Name/DarkEliteDamage=Dark Elite Damage
+Effect/Name/DarkEliteLM=Dark Elite LM
+Effect/Name/DarkEliteLifeMax=Dark Elite Life Max
+Effect/Name/DarkEliteMultistrikeSearch=Dark Elite Multistrike Search
+Effect/Name/DarkEliteSetCast=Dark Elite Set Cast
+Effect/Name/DarkEliteSetImpact=Dark Elite Set Impact
+Effect/Name/DarkEliteSetLaunch=Dark Elite Set Launch
+Effect/Name/DarkEliteSetSummon=Dark Elite Set Summon
+Effect/Name/DarkEliteTimedLife=Dark Elite Timed Life
+Effect/Name/DarkWizardHLWDamage=Dark Wizard HLW Damage
+Effect/Name/DarkWizardHLWLM=Dark Wizard HLW LM
+Effect/Name/DeathRevenantHLWDamage=Death Revenant HLW Damage
+Effect/Name/DireMammothHLWDamage=Dire Mammoth HLW Damage
+Effect/Name/DisplacementBeamKill=Displacement Beam Kill
+Effect/Name/DisplacementBeamKillSearch=Displacement Beam Kill Search
+Effect/Name/DragonTurtleHLWDamage=Dragon Turtle HLW Damage
+Effect/Name/FacelessDeathbringerHLWDamage=Faceless Deathbringer HLW Damage
+Effect/Name/FacelessDeathbringerHLWSet=Faceless Deathbringer HLW Set
+Effect/Name/FelRavagerHLWDamage=Fel Ravager HLW Damage
+Effect/Name/FelRavagerHLWSet=Fel Ravager HLW Set
+Effect/Name/FeralWildkinHLWDamage=Feral Wildkin HLW Damage
+Effect/Name/FleshGolemHLWDamage=Flesh Golem HLW Damage
+Effect/Name/FrostMastery=Frost Mastery
+Effect/Name/FrostMasterySearch=Frost Mastery Search
+Effect/Name/FrostMasterySetCast=Frost Mastery Set Cast
+Effect/Name/FrostMasterySlow=Frost Mastery Slow
+Effect/Name/FrostWolfHLWDamage=Frost Wolf HLW Damage
+Effect/Name/FurbolgChampionHLWDamage=Furbolg Champion HLW Damage
+Effect/Name/FurbolgShamanHLWDamage=Furbolg Shaman HLW Damage
+Effect/Name/GnollAssassinHLWDamage=Gnoll Assassin HLW Damage
+Effect/Name/GnollAssassinHLWLM=Gnoll Assassin HLW LM
+Effect/Name/GnollAssassinHLWSet=Gnoll Assassin HLW Set
+Effect/Name/GraniteGolemHLWDamage=Granite Golem HLW Damage
+Effect/Name/GuardianWispsAddTrackedUnit=Guardian Wisps Add Tracked Unit
+Effect/Name/HighborneWraithHLWDamage=Highborne Wraith HLW Damage
+Effect/Name/HighborneWraithHLWLM=Highborne Wraith HLW LM
+Effect/Name/JuggernautHLWDamage=Juggernaut HLW Damage
+Effect/Name/KoboldTaskmasterHLWDamage=Kobold Taskmaster HLW Damage
+Effect/Name/MagnataurHLWDamage=Magnataur HLW Damage
+Effect/Name/MakuraTidalLordHLWDamage=Makura Tidal Lord HLW Damage
+Effect/Name/MurgulBloodgillHLWDamage=Mur'gul Bloodgill HLW Damage
+Effect/Name/MurgulBloodgillHLWLM=Mur'gul Bloodgill HLW LM
+Effect/Name/MurlocPlaguebearerHLWDamage=Murloc Plaguebearer HLW Damage
+Effect/Name/NerubianQueenHLWDamage=Nerubian Queen HLW Damage
+Effect/Name/NerubianQueenHLWLM=Nerubian Queen HLW LM
+Effect/Name/NetherDragonHLWDamage=Nether Dragon HLW Damage
+Effect/Name/NetherDragonHLWLM=Nether Dragon HLW LM
+Effect/Name/PhotonOverchargeAB=Photon Overcharge AB
+Effect/Name/PhotonOverchargeABStructure=Photon Overcharge AB Structure
+Effect/Name/PhotonOverchargeABSwitch=Photon Overcharge AB Switch
+Effect/Name/PhotonOverchargeCrit=Photon Overcharge Crit
+Effect/Name/PhotonOverchargeDamage=Photon Overcharge Damage
+Effect/Name/PhotonOverchargeLM=Photon Overcharge LM
+Effect/Name/PhotonOverchargeLifeMax=Photon Overcharge Life Max
+Effect/Name/PhotonOverchargeMultistrikeSearch=Photon Overcharge Multistrike Search
+Effect/Name/PhotonOverchargeSearch=Photon Overcharge Search
+Effect/Name/PhotonOverchargeSetCast=Photon Overcharge Set Cast
+Effect/Name/PhotonOverchargeSetImpact=Photon Overcharge Set Impact
+Effect/Name/PhotonOverchargeSetLaunch=Photon Overcharge Set Launch
+Effect/Name/PoisonBlastCorrosion=Poison Blast Corrosion
+Effect/Name/PoisonBlastDamage=Poison Blast Damage
+Effect/Name/PoisonBlastSearch=Poison Blast Search
+Effect/Name/PoisonBlastSetCast=Poison Blast Set Cast
+Effect/Name/PoisonBlastSetImpact=Poison Blast Set Impact
+Effect/Name/RallyingCryCH=Rallying Cry CH
+Effect/Name/RazormaneChiefHLWDamage=Razormane Chief HLW Damage
+Effect/Name/RemoveButchery=Remove Butchery
+Effect/Name/SatyrHellcallerHLWDamage=Satyr Hellcaller HLW Damage
+Effect/Name/ScorpidHLWDamage=Scorpid HLW Damage
+Effect/Name/SeaGiantHLWDamage=Sea Giant HLW Damage
+Effect/Name/SeaGiantHLWSet=Sea Giant HLW Set
+Effect/Name/SelectShrine=Select Shrine
+Effect/Name/ServitorLearnOnlyDamage=Servitor Learn Only Damage
+Effect/Name/ServitorLearnOnlyLifeMax=Servitor Learn Only Life Max
+Effect/Name/ServitorSetBuffs=Servitor Set Buffs
+Effect/Name/ServitorSetCast2=Servitor Set Cast
+Effect/Name/ServitorSummonOffset=Servitor Summon Offset
+Effect/Name/ShadowMastery=Shadow Mastery
+Effect/Name/ShadowMasteryAura1=Shadow Mastery Aura 1
+Effect/Name/ShadowMasteryAura10=Shadow Mastery Aura 10
+Effect/Name/ShadowMasteryAura10Search=Shadow Mastery Aura 10 Search
+Effect/Name/ShadowMasteryAura1Search=Shadow Mastery Aura 1 Search
+Effect/Name/ShadowMasteryAura2=Shadow Mastery Aura 2
+Effect/Name/ShadowMasteryAura2Search=Shadow Mastery Aura 2 Search
+Effect/Name/ShadowMasteryAura3=Shadow Mastery Aura 3
+Effect/Name/ShadowMasteryAura3Search=Shadow Mastery Aura 3 Search
+Effect/Name/ShadowMasteryAura4=Shadow Mastery Aura 4
+Effect/Name/ShadowMasteryAura4Search=Shadow Mastery Aura 4 Search
+Effect/Name/ShadowMasteryAura5=Shadow Mastery Aura 5
+Effect/Name/ShadowMasteryAura5Search=Shadow Mastery Aura 5 Search
+Effect/Name/ShadowMasteryAura6=Shadow Mastery Aura 6
+Effect/Name/ShadowMasteryAura6Search=Shadow Mastery Aura 6 Search
+Effect/Name/ShadowMasteryAura7=Shadow Mastery Aura 7
+Effect/Name/ShadowMasteryAura7Search=Shadow Mastery Aura 7 Search
+Effect/Name/ShadowMasteryAura8=Shadow Mastery Aura 8
+Effect/Name/ShadowMasteryAura8Search=Shadow Mastery Aura 8 Search
+Effect/Name/ShadowMasteryAura9=Shadow Mastery Aura 9
+Effect/Name/ShadowMasteryAura9Search=Shadow Mastery Aura 9 Search
+Effect/Name/SkeletalMageHLWDamage=Skeletal Mage HLW Damage
+Effect/Name/SkeletalMageHLWLM=Skeletal Mage HLW LM
+Effect/Name/SkeletalOrcChampionHLWDamage=Skeletal Orc Champion HLW Damage
+Effect/Name/SludgeMonstrosityHLWDamage=Sludge Monstrosity HLW Damage
+Effect/Name/SludgeMonstrosityHLWLM=Sludge Monstrosity HLW LM
+Effect/Name/SpiderCrabHLWDamage=Spider Crab HLW Damage
+Effect/Name/SpiderHLWDamage=Spider HLW Damage
+Effect/Name/StormWyrmHLWDamage=Storm Wyrm HLW Damage
+Effect/Name/StormWyrmHLWLM=Storm Wyrm HLW LM
+Effect/Name/TornadoSearchSet=Tornado Search Set
+Effect/Name/TuskarrSorcererHLWDamage=Tuskarr Sorcerer HLW Damage
+Effect/Name/TuskarrSorcererHLWLM=Tuskarr Sorcerer HLW LM
+Effect/Name/UrsolBearHLWDamage=Ursol Bear HLW Damage
+Effect/Name/WarGolemHLWDamage=War Golem HLW Damage
+Effect/Name/WindfuryHarpyHLWDamage=Windfury Harpy HLW Damage
+Effect/Name/WindfuryHarpyHLWLM=Windfury Harpy HLW LM
+Effect/Name/ZandalariPriestHLWDamage=Zandalari Priest HLW Damage
+Effect/Name/ZandalariPriestHLWLM=Zandalari Priest HLW LM
+Fight your own spawns. Infinite lives.=
+IntoText/CreepSpawn=<s val="ItemStats"></c>Purchase creeps to gain <img path="Assets\Textures\icon-health-nobg.dds" height="20" width="20"/> income</c></s>
+IntoText/Shop=<c val="FFFFFF">Move a hero close to buy items</c>
+IntoText/Shrine=<s val="ItemStats"><c val="FFFFFF">Use this to help you defend</c></s>
+LoadingScreen/Help00=<s val="ChatDisplay">Hire <c val="ffff8a">mercenaries</c> and use your <c val="ffff8a">shrine</c> to help you survive</c>
+MapInfo/Player00/Name=
+MapInfo/Player01/Name=
+MapInfo/Player02/Name=
+MapInfo/Player03/Name=
+MapInfo/Player04/Name=
+MapInfo/Player05/Name=
+MapInfo/Player06/Name=
+MapInfo/Player07/Name=
+MapInfo/Player08/Name=
+MapInfo/Player09/Name=
+MapInfo/Player10/Name=
+MapInfo/Player11/Name=
+Param/Value/1B430BA1=<s val="ItemKicker"><c val="FF0000">Butchery!</c></s>
+Param/Value/2D6512E7= killed</s>
+Param/Value/2DB635FB=<s val="AlertBountyNeutral">
+Param/Value/3B1CAA7D=Damage Dealt
+Param/Value/3C747CA2=Not in this version, sorry!
+Param/Value/46C84534=</c>Your income is <c val="FFD700">
+Param/Value/55F5E0F3=<c val="FF0000">May only repick during first 4 minutes!</c>
+Param/Value/5A2D69FB=[<c val="FFD700">Executor</c>]: Sandbox mode active.
+Param/Value/6B772C6A=[<c val="FFD700">Executor</c>]: Single team mode active.
+Param/Value/8A6D50FD=<c val="FF0000">You chose a random hero and may not repick!</c>
+Param/Value/924A6685=Extended Mode
+Param/Value/CBBC2616=<s val="ItemAlert"></c>Lives</s><n/><n/>Teams lose a life if an enemy reaches their beacon.<n/><n/>Your lives are green. Enemy lives are red.
+Param/Value/DB4F70B6=Hide the console art bar<k val="HeroSelect4"/>.
+Param/Value/E152DBFD=</c> gold
+Param/Value/E6E5C778=
+RequirementNode/Tooltip/And4001198346CountAbilServitorLearnOnlyCompleteOnlyAtUnitLTCountUnitServitorCompleteOnlyAtUnit6=May have up to six
+RequirementNode/Tooltip/LT3872491591CountUnitTrainKnightQueuedOrBetter2=Limit 2
+RequirementNode/Tooltip/Not113775528CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit=Does not apply to Mirror Images
+ScoreValue/Name/CreepsSentHLW=Creeps Sent HLW
+ScoreValue/Name/LeaderboardScore=Leaderboard Score
+ScoreValue/Name/LeaderboardScoreHLW=Leaderboard Score HLW
+ScoreValue/PublishName/CreepsSentHLW=Creeps Sent
+ScoreValue/PublishName/LeaderboardScoreHLW=Income
+Terrain/Name/HLW=HLW
+Terrain/Name/HLW2=HLW 2
+UI/Lives=Lives: 
+UI/ResourceName3=Income
+UI/Yes=Yes
+Unit/LifeArmorName/Light=Light
+Unit/Name/AlarakHero=Ascendant
+Unit/Name/AlchemistHLW=Alchemist
+Unit/Name/AmaniBerserkerHLW=Amani Berserker
+Unit/Name/AncientHydraHLW=Ancient Hydra
+Unit/Name/AncientSasquatchHLW=Ancient Sasquatch
+Unit/Name/ArachnathidOverlordHLW=Arachnathid
+Unit/Name/ArcanistHLW=Arcanist
+Unit/Name/ArchmageHero=Dawn Priest
+Unit/Name/ArtanisHero=Hierarch
+Unit/Name/AssassinsBladeHLW=Assassin's Blade
+Unit/Name/BanditHLW=Bandit
+Unit/Name/BanditLordHLW=Bandit Lord
+Unit/Name/BansheeHero=Witch
+Unit/Name/BarracksHumanHero=Garrison
+Unit/Name/BeastmasterHero=Beastlord
+Unit/Name/BehemothHLW=Behemoth
+Unit/Name/BlackDrakeHLW=Black Drake
+Unit/Name/BlacksmithHLW=Legacy Shop
+Unit/Name/BloodMageHero=Phoenix Soul
+Unit/Name/BloodfiendHLW=Bloodfiend
+Unit/Name/BloodforgedShieldHLW=Bloodforged Shield
+Unit/Name/BoulderfistOgreHLW=Boulderfist Ogre
+Unit/Name/BrewmasterHero=Emperor's Guard
+Unit/Name/BrokenVindicatorHLW=Broken Vindicator
+Unit/Name/BronzeDragonHLW=Bronze Dragon
+Unit/Name/BroodmotherHLW=Broodmother
+Unit/Name/ButchersBladeHLW=Butcher's Blade
+Unit/Name/CannonImage=Cannon Image
+Unit/Name/CaptainHero=Shieldbearer
+Unit/Name/CentaurArcherHLW=Centaur Archer
+Unit/Name/CentaurKhanHLW=Centaur Khan
+Unit/Name/CorruptedTreantHLW=Corrupted Treant
+Unit/Name/CyberBlastLMWeapon=Cyber Blast LM Weapon
+Unit/Name/DarkElite=Dark Elite
+Unit/Name/DarkWizardHLW=Dark Wizard
+Unit/Name/DeathKnightHero=Ebon Knight
+Unit/Name/DeathRevenantHLW=Death Revenant
+Unit/Name/DefaultCreep=Default Creep
+Unit/Name/DemonHunterHero=Assassin
+Unit/Name/DestroyerHLW=Destroyer
+Unit/Name/DireMammothHLW=Dire Mammoth
+Unit/Name/DominatorHLW=Dominator
+Unit/Name/DragonTurtleHLW=Dragon Turtle
+Unit/Name/DreadlordHero=Dreadstalker
+Unit/Name/EnergeticBarrierHLW=Energetic Barrier
+Unit/Name/EredarLordHero=Diabolist
+Unit/Name/FacelessDeathbringerHLW=Faceless Deathbringer
+Unit/Name/FarSeerHero=Stormkeeper
+Unit/Name/FelRavagerHLW=Fel Ravager
+Unit/Name/FelguardHero=Legionnaire
+Unit/Name/FeralWildkinHLW=Feral Wildkin
+Unit/Name/FirebrandHLW=Firebrand
+Unit/Name/FirelordHero=Magma Elemental
+Unit/Name/FleshGolemHLW=Flesh Golem
+Unit/Name/FrostWolfHLW=Frost Wolf
+Unit/Name/FurbolgChampionHLW=Furbolg Champion
+Unit/Name/FurbolgShamanHLW=Furbolg Shaman
+Unit/Name/GnollAssassinHLW=Gnoll Assassin
+Unit/Name/GraniteGolemHLW=Granite Golem
+Unit/Name/HighborneWraithHLW=Highborne Wraith
+Unit/Name/IceBarbedSpearHLW=Ice Barbed Spear
+Unit/Name/IronplateBucklerHLW=Ironplate Buckler
+Unit/Name/JainaHero=Ice Queen
+Unit/Name/JewelcrafterHLW=Jewelcrafter
+Unit/Name/JuggernautHLW=Juggernaut
+Unit/Name/KaraxHero=Phase Smith
+Unit/Name/KeeperoftheGroveHero=Dryad
+Unit/Name/KelThuzadGhostHero=Spectre
+Unit/Name/KelThuzadHumanHero=Spectre
+Unit/Name/KerriganAscendedHero=Angel
+Unit/Name/KoboldTaskmasterHLW=Kobold Taskmaster
+Unit/Name/LichHero=Spirit Mage
+Unit/Name/MagnataurHLW=Magnataur
+Unit/Name/MakuraTidalLordHLW=Makura Tidal Lord
+Unit/Name/MercenaryCampTier1=Mercenary Camp
+Unit/Name/MercenaryCampTier2=Mercenary Camp
+Unit/Name/MercenaryCampTier3=Mercenary Camp
+Unit/Name/MercenaryCampTier4=Mercenary Camp
+Unit/Name/MercenaryCampTier5=Mercenary Camp
+Unit/Name/MurgulBloodgillHLW=Mur'gul Bloodgill
+Unit/Name/MurlocPlaguebearerHLW=Murloc Plaguebearer
+Unit/Name/NerubianQueenHLW=Nerubian Queen
+Unit/Name/NetherDragonHLW=Nether Dragon
+Unit/Name/NovaHero=Sniper
+Unit/Name/OgreHero=Warlord
+Unit/Name/PaladinHero=Captain
+Unit/Name/PeasantHero=Trader
+Unit/Name/PhotonOvercharge=Photon Overcharge
+Unit/Name/PriestessoftheMoonHero=Sentinel
+Unit/Name/RazormaneChiefHLW=Razormane Chief
+Unit/Name/ReaverHLW=Reaver
+Unit/Name/RoyalGuardHero=Fathom Guard
+Unit/Name/SatyrHellcallerHLW=Satyr Hellcaller
+Unit/Name/SatyrHero=Necrolyte
+Unit/Name/ScorpidHLW=Scorpid
+Unit/Name/SeaGiantHLW=Sea Giant
+Unit/Name/SeaWitchHero=Tempest
+Unit/Name/ServitorLearnOnly=Servitor
+Unit/Name/ShadowHunterHero=Viromancer
+Unit/Name/ShrineHLW=Shrine
+Unit/Name/SirenHero=Lunar Mage
+Unit/Name/SkeletalMageHLW=Skeletal Mage
+Unit/Name/SkeletalOrcChampionHLW=Skeletal Orc Champion
+Unit/Name/SludgeMonstrosityHLW=Sludge Monstrosity
+Unit/Name/SorceressHero=Slayer
+Unit/Name/SpellbreakerHero=Baron
+Unit/Name/SpiderCrabHLW=Spider Crab
+Unit/Name/SpiderHLW=Spider
+Unit/Name/StormWyrmHLW=Storm Wyrm
+Unit/Name/StormheraldHLW=Stormherald
+Unit/Name/StukovHero=Infested
+Unit/Name/SuccubusHero=Summoner
+Unit/Name/SwannHero=Engineer
+Unit/Name/TinkerHero=Pyrotech
+Unit/Name/TuskarrSorcererHLW=Tuskarr Sorcerer
+Unit/Name/UrsolBearHLW=Ursol Bear
+Unit/Name/VorazunHero=Nightblade
+Unit/Name/WarGolemHLW=War Golem
+Unit/Name/WarlockHero=Blightbringer
+Unit/Name/WindfuryHarpyHLW=Windfury Harpy
+Unit/Name/ZandalariPriestHLW=Zandalari Priest
+Upgrade/Name/CannonImage=Cannon Image
+Upgrade/Name/CreepUpgrade=Creep Upgrade
+Upgrade/Name/DarkElite=Dark Elite
+Upgrade/Name/FrostMastery=Frost Mastery
+Upgrade/Name/NoShadows=No Shadows
+Upgrade/Name/PhotonOvercharge=Photon Overcharge
+Upgrade/Name/PoisonBlast=Poison Blast
+Upgrade/Name/RemovedBuffDebuffVisuals=Removed Buff-Debuff Visuals
+Upgrade/Name/ServitorLearnOnly=Servitor Learn Only
+Upgrade/Name/ShadowMastery=Shadow Mastery
+Upgrade/Name/SlowGameSpeed=Slow Game Speed
+Variant001/ModeDesc=All settings may be customized.
+Variant001/ModeName=4V4
+Variant002/ModeDesc=All settings may be customized.
+Variant002/ModeName=3V3
+Variant003/ModeDesc=All settings may be customized.
+Variant003/ModeName=2V2
+Variant004/ModeDesc=All settings may be customized.
+Variant004/ModeName=1V1
+Variant005/ModeDesc=All settings may be customized.
+Variant005/ModeName=Extended Heroes
+Variant006/ModeDesc=All settings may be customized.
+Variant006/ModeName=All Random
+Variant007/ModeDesc=All settings may be customized.
+Variant007/ModeName=Extended Random
+Variant008/ModeDesc=All settings may be customized.
+Variant008/ModeName=Mirror Random
+Weapon/Name/AmaniBerserkerHLW=Amani Berserker
+Weapon/Name/AncientHydraHLW=Ancient Hydra
+Weapon/Name/AncientSasquatchHLW=Ancient Sasquatch
+Weapon/Name/ArachnathidOverlordHLW=Arachnathid Overlord
+Weapon/Name/BanditHLW=Bandit
+Weapon/Name/BanditLordHLW=Bandit Lord
+Weapon/Name/BlackDrakeHLW=Black Drake
+Weapon/Name/BloodfiendHLW=Bloodfiend
+Weapon/Name/BoulderfistOgreHLW=Boulderfist Ogre
+Weapon/Name/BrokenVindicatorHLW=Broken Vindicator
+Weapon/Name/BronzeDragonHLW=Bronze Dragon
+Weapon/Name/BroodmotherHLW=Broodmother
+Weapon/Name/CannonImage=Cannon Image
+Weapon/Name/CentaurArcherHLW=Centaur Archer
+Weapon/Name/CentaurKhanHLW=Centaur Khan
+Weapon/Name/CorruptedTreantHLW=Corrupted Treant
+Weapon/Name/CyberBlast=Cyber Blast
+Weapon/Name/DarkElite=Dark Elite
+Weapon/Name/DarkWizardHLW=Dark Wizard
+Weapon/Name/DeathRevenantHLW=Death Revenant
+Weapon/Name/DefaultCreep=Default Creep
+Weapon/Name/DefaultCreepHLW=Default Creep HLW
+Weapon/Name/DireMammothHLW=Dire Mammoth
+Weapon/Name/DragonTurtleHLW=Dragon Turtle
+Weapon/Name/FacelessDeathbringerHLW=Faceless Deathbringer
+Weapon/Name/FelRavagerHLW=Fel Ravager
+Weapon/Name/FeralWildkinHLW=Feral Wildkin
+Weapon/Name/FleshGolemHLW=Flesh Golem
+Weapon/Name/FrostWolfHLW=Frost Wolf
+Weapon/Name/FurbolgChampionHLW=Furbolg Champion
+Weapon/Name/FurbolgShamanHLW=Furbolg Shaman
+Weapon/Name/GnollAssassinHLW=Gnoll Assassin
+Weapon/Name/GraniteGolemHLW=Granite Golem
+Weapon/Name/HighborneWraithHLW=Highborne Wraith
+Weapon/Name/JuggernautHLW=Juggernaut
+Weapon/Name/KoboldTaskmasterHLW=Kobold Taskmaster
+Weapon/Name/MagnataurHLW=Magnataur
+Weapon/Name/MakuraTidalLordHLW=Makura Tidal Lord
+Weapon/Name/MurgulBloodgillHLW=Mur'gul Bloodgill
+Weapon/Name/MurlocPlaguebearerHLW=Murloc Plaguebearer
+Weapon/Name/NerubianQueenHLW=Nerubian Queen
+Weapon/Name/NetherDragonHLW=Nether Dragon
+Weapon/Name/PhotonOvercharge=Photon Overcharge
+Weapon/Name/RazormaneChiefHLW=Razormane Chief
+Weapon/Name/SatyrHellcallerHLW=Satyr Hellcaller
+Weapon/Name/ScorpidHLW=Scorpid
+Weapon/Name/SeaGiantHLW=Sea Giant
+Weapon/Name/SkeletalMageHLW=Skeletal Mage
+Weapon/Name/SkeletalOrcChampionHLW=Skeletal Orc Champion
+Weapon/Name/SludgeMonstrosityHLW=Sludge Monstrosity
+Weapon/Name/SpiderCrabHLW=Spider Crab
+Weapon/Name/SpiderHLW=Spider
+Weapon/Name/StormWyrmHLW=Storm Wyrm
+Weapon/Name/SymbioticSpores=Demonbolt
+Weapon/Name/TuskarrSorcererHLW=Tuskarr Sorcerer
+Weapon/Name/UrsolBearHLW=Ursol Bear
+Weapon/Name/WarGolemHLW=War Golem
+Weapon/Name/WindfuryHarpyHLW=Windfury Harpy
+Weapon/Name/ZandalariPriestHLW=Zandalari Priest
+e_unitAttributeRobotic=Attacker

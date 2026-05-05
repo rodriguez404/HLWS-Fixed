@@ -1,0 +1,3225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit default="1" id="DefaultCreep">
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+        </CardLayouts>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Response value="AcquireNoFlee"/>
+        <LifeArmorName value="Unit/LifeArmorName/Armored"/>
+        <Speed value="0.625"/>
+        <Acceleration value="1000"/>
+        <AttackTargetPriority value="20"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="stop"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <WeaponArray Link="##id##"/>
+        <BehaviorArray Link="GlobalUnitModifier"/>
+        <DeathTime value="25"/>
+        <EffectArray index="Birth" value="UnitBirthSet"/>
+        <EffectArray index="Death" value="UnitDeathSet"/>
+    </CUnit>
+    <CUnit id="AlarakExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="22" Face="DisplacementBeam" AbilCmd="DisplacementBeam,Execute" Column="3"/>
+            <LayoutButtons index="23" Face="PlasmaShields" Type="Passive" AbilCmd="" Column="4"/>
+            <LayoutButtons index="24" Face="MindBlastE" Type="AbilCmd" AbilCmd="MindBlastHeroic,Execute" Column="2"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="7" Face="DisplacementBeam" AbilCmd="AlarakExtendedLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons index="8" Face="MindBlastE" AbilCmd="AlarakExtendedLearn,Learn9" Row="1" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="AlarakHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="DestructionWave"/>
+        <AbilArray Link="DeadlyCharge"/>
+        <AbilArray Link="DeadlyChargeAugment"/>
+        <AbilArray Link="Absorption"/>
+        <AbilArray Link="DisplacementBeam"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="PlasmaShields"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="DestructionWave" Type="AbilCmd" AbilCmd="DestructionWave,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="DeadlyCharge" Type="AbilCmd" AbilCmd="DeadlyChargeAugment,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Absorption" Type="Passive" Requirements="Absorption" Row="2" Column="2"/>
+            <LayoutButtons Face="DisplacementBeam" Type="AbilCmd" AbilCmd="DisplacementBeam,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="PlasmaShields" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="DestructionWave" Type="AbilCmd" AbilCmd="AlarakHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="DeadlyCharge" Type="AbilCmd" AbilCmd="AlarakHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Absorption" Type="AbilCmd" AbilCmd="AlarakHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="DisplacementBeam" Type="AbilCmd" AbilCmd="AlarakHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <ShieldDamageRatio value="2"/>
+    </CUnit>
+    <CUnit id="CannonImage" parent="Pyrocannon">
+        <Name value="Unit/Name/CannonImage"/>
+        <Description value="Button/Tooltip/CannonImage"/>
+        <ReviveType value="CannonImage"/>
+        <Collide index="Burrow" value="0"/>
+        <Collide index="RoachBurrow" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Attributes index="Mechanical" value="0"/>
+        <LifeStart value="750"/>
+        <LifeMax value="750"/>
+        <AbilArray index="0" Link="BuildInProgress"/>
+        <AbilArray index="1" Link="stop"/>
+        <AbilArray index="2" Link="attack"/>
+        <WeaponArray index="0" Link="CannonImage" Turret="PhotonCannon"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="0" Face="CancelBuilding" Type="AbilCmd" AbilCmd="BuildInProgress,Cancel" Row="2" Column="4"/>
+            <LayoutButtons index="1" Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons index="2" Face="AttackBuilding" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+        </CardLayouts>
+        <Footprint value="Footprint2x2Contour"/>
+        <PlacementFootprint value="Footprint2x2"/>
+        <SubgroupPriority value="4"/>
+        <TacticalAI value="CannonImage"/>
+        <LeaderAlias value="CannonImage"/>
+        <HotkeyAlias value="CannonImage"/>
+        <SelectAlias value="CannonImage"/>
+        <SubgroupAlias value="CannonImage"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <AIEvaluateAlias value="CannonImage"/>
+    </CUnit>
+    <CUnit id="DisplacementBeam">
+        <Speed value="1"/>
+    </CUnit>
+    <CUnit id="PhotonOvercharge">
+        <Race value="Prot"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:FactionTaldarim"/>
+    </CUnit>
+    <CUnit id="AntonidasExtended">
+        <PushPriority value="20"/>
+        <AbilArray index="27" Link="Illusion"/>
+        <AbilArray index="28" removed="1"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="23" Face="FrozenOrb" AbilCmd="FrozenOrb,Execute"/>
+            <LayoutButtons index="24" removed="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="5" Face="WiseCouncil" AbilCmd="AntonidasExtendedLearn,Learn8" Row="1" Column="1"/>
+            <LayoutButtons index="6" Face="TimeBombE" AbilCmd="AntonidasExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="7" Face="FrozenOrb" AbilCmd="AntonidasExtendedLearn,Learn10" Row="0" Column="3"/>
+            <LayoutButtons index="8" Face="IllusionQ" AbilCmd="AntonidasExtendedLearn,Learn7" Column="0"/>
+            <LayoutButtons index="9" removed="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="AnubarakExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="ArtanisExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="22" Face="ForceofWill" Type="Passive" AbilCmd="" Requirements="ForceofWill" Column="2"/>
+            <LayoutButtons index="23" Face="AstralWindE" Type="AbilCmd" AbilCmd="AstralWind,Execute" Requirements=""/>
+            <LayoutButtons index="24" Face="Resurgence" AbilCmd="Resurgence,Execute" Column="3"/>
+            <LayoutButtons index="25" Face="ShieldDome" AbilCmd="ShieldDome,Execute" Column="3"/>
+            <LayoutButtons index="26" Face="PlasmaShields" Type="Passive" AbilCmd="" Column="4"/>
+            <LayoutButtons index="27" Face="ServitorW" AbilCmd="Servitor,Execute" Column="1"/>
+            <LayoutButtons index="28" Face="ChronoBoostE" Type="AbilCmd" AbilCmd="ChronoBoost,Execute" Requirements="" Column="2"/>
+            <LayoutButtons index="29" Face="ReconstructionBeamR" Requirements="ReconstructionBeam" Column="3"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="6" Face="ForceofWill" AbilCmd="ArtanisExtendedLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons index="7" Face="AstralWindE" AbilCmd="ArtanisExtendedLearn,Learn9" Row="1"/>
+            <LayoutButtons index="8" Face="Resurgence" AbilCmd="ArtanisExtendedLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons index="9" Face="ShieldDome" AbilCmd="ArtanisExtendedLearn,Learn10" Row="1" Column="3"/>
+            <LayoutButtons index="10" Face="ServitorW" AbilCmd="ArtanisExtendedLearn,Learn14" Row="2" Column="1"/>
+            <LayoutButtons index="11" Face="ChronoBoostE" AbilCmd="ArtanisExtendedLearn,Learn15" Row="2" Column="2"/>
+            <LayoutButtons index="12" Face="ReconstructionBeamR"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ArtanisHero">
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="LightningDash"/>
+        <AbilArray Link="AstralWind"/>
+        <AbilArray Link="ForceofWill"/>
+        <AbilArray Link="Resurgence"/>
+        <AbilArray Link="PlasmaShields"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="LightningDash" Type="AbilCmd" AbilCmd="LightningDash,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AstralWind" Type="AbilCmd" AbilCmd="AstralWind,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ForceofWill" Type="Passive" Requirements="ForceofWill" Row="2" Column="2"/>
+            <LayoutButtons Face="Resurgence" Type="AbilCmd" AbilCmd="Resurgence,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="PlasmaShields" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="LightningDash" Type="AbilCmd" AbilCmd="ArtanisHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="AstralWind" Type="AbilCmd" AbilCmd="ArtanisHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ForceofWill" Type="AbilCmd" AbilCmd="ArtanisHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Resurgence" Type="AbilCmd" AbilCmd="ArtanisHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <ShieldDamageRatio value="2"/>
+    </CUnit>
+    <CUnit id="ArthasExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="BanditLordHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="3"/>
+        <CostResource index="Terrazine" value="900000"/>
+        <CostResource index="Custom" value="-45000"/>
+        <KillXP value="2000"/>
+        <KillResource index="Terrazine" value="37000"/>
+        <ScoreMake value="74000"/>
+        <ScoreKill value="37000"/>
+        <AbilArray Link="InnerFire"/>
+        <AbilArray Link="DevotionAuraNeutral"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="InnerFire" Type="AbilCmd" AbilCmd="InnerFire,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="DevotionAuraNeutral" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ShieldsStart value="250000"/>
+        <ShieldsMax value="250000"/>
+    </CUnit>
+    <CUnit id="ArcanistHLW">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="CreateVisible" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <EditorFlags index="NeutralDefault" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <Sight value="7"/>
+        <AbilArray Link="ShopInteract"/>
+        <AbilArray Link="ShopPawn"/>
+        <AbilArray Link="InventoryShop"/>
+        <AbilArray Link="ArcanistHLW"/>
+        <BehaviorArray Link="ShopInteractSource"/>
+        <CardLayouts>
+            <LayoutButtons Face="Tome1" Type="AbilCmd" AbilCmd="ArcanistHLW,Train1" Row="1" Column="0"/>
+            <LayoutButtons Face="Tome2" Type="AbilCmd" AbilCmd="ArcanistHLW,Train2" Row="2" Column="0"/>
+            <LayoutButtons Face="Stave1" Type="AbilCmd" AbilCmd="ArcanistHLW,Train3" Row="1" Column="1"/>
+            <LayoutButtons Face="Stave2" Type="AbilCmd" AbilCmd="ArcanistHLW,Train4" Row="2" Column="1"/>
+        </CardLayouts>
+        <Radius value="1.75"/>
+        <SeparationRadius value="1.75"/>
+        <Footprint value="Footprint4x4Contour"/>
+        <PlacementFootprint value="Footprint4x4"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <KillDisplay value="Never"/>
+        <RankDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="AntiMagicPotion">
+        <CostResource index="Terrazine" value="50"/>
+    </CUnit>
+    <CUnit id="ArchmageHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="LavaSurge"/>
+        <AbilArray Link="SunOrb"/>
+        <AbilArray Link="Radiance"/>
+        <AbilArray Link="NydusDragon"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="LavaSurge" Type="AbilCmd" AbilCmd="LavaSurge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SunOrb" Type="AbilCmd" AbilCmd="SunOrb,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Radiance" Type="AbilCmd" AbilCmd="Radiance,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="NydusDragon" Type="AbilCmd" AbilCmd="NydusDragon,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="LavaSurge" Type="AbilCmd" AbilCmd="ArchmageHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="SunOrb" Type="AbilCmd" AbilCmd="ArchmageHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Radiance" Type="AbilCmd" AbilCmd="ArchmageHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="NydusDragon" Type="AbilCmd" AbilCmd="ArchmageHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="BansheeHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="PainSpike"/>
+        <AbilArray Link="CurseofMending"/>
+        <AbilArray Link="SoulLeech"/>
+        <AbilArray Link="OblivionShard"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="Anathema"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="PainSpike" Type="AbilCmd" AbilCmd="PainSpike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CurseofMending" Type="AbilCmd" AbilCmd="CurseofMending,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="SoulLeech" Type="Passive" Requirements="SoulLeech" Row="2" Column="2"/>
+            <LayoutButtons Face="OblivionShard" Type="AbilCmd" AbilCmd="OblivionShard,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Anathema" Type="AbilCmd" AbilCmd="Anathema,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="PainSpike" Type="AbilCmd" AbilCmd="BansheeHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="CurseofMending" Type="AbilCmd" AbilCmd="BansheeHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SoulLeech" Type="AbilCmd" AbilCmd="BansheeHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="OblivionShard" Type="AbilCmd" AbilCmd="BansheeHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="Anathema" Type="AbilCmd" AbilCmd="BansheeHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BarracksHumanHero">
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="TrainFootman"/>
+        <AbilArray Link="TrainRifleman"/>
+        <AbilArray Link="TrainSpellbreaker"/>
+        <AbilArray Link="TrainKnight"/>
+        <AbilArray Link="TrainPriest"/>
+        <AbilArray Link="TrainSorceress"/>
+        <AbilArray Link="TrainMortarTeam"/>
+        <AbilArray Link="HumanUnitsHeroTrain"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="3"/>
+            <LayoutButtons Face="TrainFootman" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train1" Row="2" Column="0"/>
+            <LayoutButtons Face="TrainPriest" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train4" Row="1" Column="0"/>
+            <LayoutButtons Face="TrainSorceress" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train5" Row="1" Column="1"/>
+            <LayoutButtons Face="TrainRifleman" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train2" Row="2" Column="1"/>
+            <LayoutButtons Face="TrainSpellbreaker" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train3" Row="2" Column="2"/>
+            <LayoutButtons Face="TrainKnight" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train6" Row="2" Column="3"/>
+            <LayoutButtons Face="TrainMortarTeam" Type="AbilCmd" AbilCmd="HumanUnitsHeroTrain,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="0" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="TrainFootman" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="TrainRifleman" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="TrainSpellbreaker" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="TrainKnight" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="TrainPriest" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn5" Row="1" Column="0"/>
+            <LayoutButtons Face="TrainSorceress" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn6" Row="1" Column="1"/>
+            <LayoutButtons Face="TrainMortarTeam" Type="AbilCmd" AbilCmd="BarracksHumanHeroLearn,Learn7" Row="1" Column="2"/>
+        </CardLayouts>
+        <FlagArray index="Invulnerable" value="1"/>
+    </CUnit>
+    <CUnit id="ArachnathidOverlordHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <ShieldsStart value="50000"/>
+        <ShieldsMax value="50000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="650000"/>
+        <CostResource index="Custom" value="-32500"/>
+        <KillXP value="1500"/>
+        <KillResource index="Terrazine" value="25000"/>
+        <BehaviorArray Link="SlowingPoisonSource"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SlowingPoison" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="50000"/>
+        <ScoreKill value="25000"/>
+    </CUnit>
+    <CUnit id="BehemothHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <ShieldsStart value="500000"/>
+        <ShieldsMax value="500000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="1400000"/>
+        <CostResource index="Custom" value="-70000"/>
+        <KillXP value="2500"/>
+        <KillResource index="Terrazine" value="50000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="100000"/>
+        <ScoreKill value="50000"/>
+    </CUnit>
+    <CUnit id="CairneExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="CenariusExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="DarkElite">
+        <Description value="Button/Tooltip/DarkElitePlace"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="Prot"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="PreventDestroy" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="AcquireRally" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="40"/>
+        <LifeMax value="40"/>
+        <LifeArmor value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/ProtossArmor"/>
+        <EnergyStart value="300"/>
+        <EnergyMax value="300"/>
+        <EnergyRegenRate value="1.5"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Speed value="2.8125"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="8"/>
+        <Food value="-2"/>
+        <CostCategory value="Army"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="40"/>
+        <AbilArray Link="attackProtossBuilding"/>
+        <AbilArray Link="MoveWar3"/>
+        <AbilArray Link="StopWar3"/>
+        <AbilArray Link="ShadowFury"/>
+        <BehaviorArray Link="GlobalUnitModifier"/>
+        <WeaponArray Link="DarkElite"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="MoveWar3,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="StopWar3,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="MoveWar3,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attackProtossBuilding,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="MoveWar3,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="ShadowFury" Type="AbilCmd" AbilCmd="ShadowFury,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <InnerRadius value="0.375"/>
+        <CargoSize value="2"/>
+        <PlacementFootprint value="1x1SpawnerPlacement"/>
+        <ScoreMake value="250"/>
+        <ScoreKill value="250"/>
+        <SubgroupPriority value="56"/>
+        <MinimapRadius value="0.375"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Melee"/>
+        <TechAliasArray value="Alias_AnyUnit"/>
+        <TechAliasArray value="Alias_ProtossShields"/>
+        <TechAliasArray value="Alias_ProtossGround"/>
+        <TechAliasArray value="Alias_DarkTemplar"/>
+        <HotkeyCategory value="Unit/Category/ProtossUnits"/>
+        <EffectArray index="Death" value="ProcDeathMinion"/>
+    </CUnit>
+    <CUnit id="DominatorHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <ShieldsStart value="400000"/>
+        <ShieldsMax value="400000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="1500000"/>
+        <CostResource index="Custom" value="-75000"/>
+        <KillXP value="2600"/>
+        <KillResource index="Terrazine" value="52000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="104000"/>
+        <ScoreKill value="52000"/>
+    </CUnit>
+    <CUnit id="DrekTharExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="EarthBrewmaster">
+        <BehaviorArray Link="MeleeHero"/>
+    </CUnit>
+    <CUnit id="FireBrewmaster">
+        <BehaviorArray Link="MeleeHero"/>
+    </CUnit>
+    <CUnit id="IllidanExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="KaelthasExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="20" Face="SunOrbE" AbilCmd="SunOrb,Execute" Column="2"/>
+            <LayoutButtons index="21" Face="ElementalAura" Type="Passive" AbilCmd="" Requirements="ElementalAura"/>
+            <LayoutButtons index="22" Face="PhoenixHeroic" Type="AbilCmd" AbilCmd="PhoenixHeroic,Execute" Requirements="" Column="3"/>
+            <LayoutButtons index="23" Face="Meteor" AbilCmd="Meteor,Execute"/>
+            <LayoutButtons index="24" Face="SiphonManaT" AbilCmd="SiphonMana,Execute" Column="4"/>
+            <LayoutButtons index="25" Face="BanishW" AbilCmd="Banish,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="3" Face="SunOrbE" AbilCmd="KaelthasExtendedLearn,Learn3" Column="2"/>
+            <LayoutButtons index="4" Face="PhoenixHeroic" AbilCmd="KaelthasExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="5" Face="FireWallQ" AbilCmd="KaelthasExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="LivingBomb" AbilCmd="KaelthasExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons index="7" Face="ElementalAura" AbilCmd="KaelthasExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="8" Face="Meteor" AbilCmd="KaelthasExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="9" Face="BanishW" AbilCmd="KaelthasExtendedLearn,Learn2" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="KaraxHero">
+        <PushPriority value="20"/>
+        <Attributes index="Biological" value="1"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="ServitorMagazine"/>
+        <AbilArray Link="ServitorLearnOnly"/>
+        <AbilArray Link="CannonImage"/>
+        <AbilArray Link="ReconstructionBeam"/>
+        <AbilArray Link="PhotonOvercharge"/>
+        <AbilArray Link="ChronoBoost"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <WeaponArray Link="CyberBlast"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Servitor" Type="AbilCmd" AbilCmd="ServitorMagazine,Ammo1" Row="2" Column="0"/>
+            <LayoutButtons Face="ReconstructionBeam" Type="Passive" Requirements="ReconstructionBeam" Row="2" Column="2"/>
+            <LayoutButtons Face="ChronoBoostT" Type="AbilCmd" AbilCmd="ChronoBoost,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="PhotonOvercharge" Type="AbilCmd" AbilCmd="PhotonOvercharge,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="CannonImage" Type="AbilCmd" AbilCmd="CannonImage,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Servitor" Type="AbilCmd" AbilCmd="KaraxHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="CannonImage" Type="AbilCmd" AbilCmd="KaraxHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ReconstructionBeam" Type="AbilCmd" AbilCmd="KaraxHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="PhotonOvercharge" Type="AbilCmd" AbilCmd="KaraxHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="KelThuzadExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="19" Face="FrostArmorW"/>
+            <LayoutButtons index="21" Face="DarkRitual" AbilCmd="DarkRitual,Execute" Column="2"/>
+            <LayoutButtons index="22" Face="SoulLeech" Type="Passive" AbilCmd="" Requirements="SoulLeech"/>
+            <LayoutButtons index="23" Face="DeathandDecay" Type="AbilCmd" AbilCmd="DeathandDecay,Execute" Requirements="" Column="3"/>
+            <LayoutButtons index="24" Face="WraithForm" AbilCmd="WraithForm,Execute"/>
+            <LayoutButtons index="25" Face="IceFortress" AbilCmd="IceFortress,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="3" Face="DarkRitual" AbilCmd="KelThuzadExtendedLearn,Learn3" Column="2"/>
+            <LayoutButtons index="4" Face="DeathandDecay" AbilCmd="KelThuzadExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="5" Face="CurseofMendingQ" AbilCmd="KelThuzadExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="SoulLeech" AbilCmd="KelThuzadExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="7" Face="WraithForm" AbilCmd="KelThuzadExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="8" Face="IceFortress" AbilCmd="KelThuzadExtendedLearn,Learn14" Row="2" Column="1"/>
+            <LayoutButtons index="9" Face="FrostArmorW" AbilCmd="KelThuzadExtendedLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons index="10" Face="PainSpikeW" AbilCmd="KelThuzadExtendedLearn,Learn8" Row="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="KerriganAscendedHero">
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="QuantumRay"/>
+        <AbilArray Link="CosmicShift"/>
+        <AbilArray Link="CelestialRadiance"/>
+        <AbilArray Link="Extinction"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="CelestialFury"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="QuantumRay" Type="AbilCmd" AbilCmd="QuantumRay,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CosmicShift" Type="AbilCmd" AbilCmd="CosmicShift,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="CelestialRadiance" Type="AbilCmd" AbilCmd="CelestialRadiance,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Extinction" Type="AbilCmd" AbilCmd="Extinction,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="CelestialFury" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="QuantumRay" Type="AbilCmd" AbilCmd="KerriganAscendedHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="CosmicShift" Type="AbilCmd" AbilCmd="KerriganAscendedHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CelestialRadiance" Type="AbilCmd" AbilCmd="KerriganAscendedHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Extinction" Type="AbilCmd" AbilCmd="KerriganAscendedHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MaievExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="MalGanisExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="19" Face="SleepW"/>
+            <LayoutButtons index="20" Face="VampiricAura" Type="Passive" AbilCmd="" Requirements="VampiricAura" Column="2"/>
+            <LayoutButtons index="21" Face="FrenzyAura" Requirements="FrenzyAura"/>
+            <LayoutButtons index="22" Face="Inferno" Type="AbilCmd" AbilCmd="Inferno,Execute" Requirements="" Column="3"/>
+            <LayoutButtons index="23" Face="OblivionShard" AbilCmd="OblivionShard,Execute"/>
+            <LayoutButtons index="24" Face="VoidShift" AbilCmd="VoidShift,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="3" Face="Inferno" AbilCmd="MalGanisExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="4" Face="SiphonPower" AbilCmd="MalGanisExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="5" Face="VoidShift" AbilCmd="MalGanisExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons index="6" Face="FrenzyAura" AbilCmd="MalGanisExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="7" Face="OblivionShard" AbilCmd="MalGanisExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="8" Face="SleepW" AbilCmd="MalGanisExtendedLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="VampiricAura" Type="AbilCmd" AbilCmd="MalGanisExtendedLearn,Learn3" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MannorothExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="19" Face="HowlofTerrorW"/>
+            <LayoutButtons index="20" Face="CleavingStrikes" Type="Passive" AbilCmd="" Requirements="CleavingStrikes" Column="2"/>
+            <LayoutButtons index="21" Face="VoidReflexes" Requirements="VoidReflexes"/>
+            <LayoutButtons index="22" Face="Doom" Type="AbilCmd" AbilCmd="Doom,Execute" Requirements="" Column="3"/>
+            <LayoutButtons index="23" Face="VoidZone" AbilCmd="VoidZone,Execute"/>
+            <LayoutButtons index="24" Face="BloodBoil" AbilCmd="BloodBoil,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="4" Face="BloodBoil" AbilCmd="MannorothExtendedLearn,Learn8" Row="1"/>
+            <LayoutButtons index="5" Face="CleavingStrikes" AbilCmd="MannorothExtendedLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons index="6" Face="VoidReflexes" AbilCmd="MannorothExtendedLearn,Learn9" Row="1"/>
+            <LayoutButtons index="7" Face="Doom" AbilCmd="MannorothExtendedLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons index="8" Face="VoidZone" AbilCmd="MannorothExtendedLearn,Learn10" Row="1"/>
+            <LayoutButtons index="9" Face="HowlofTerrorW" AbilCmd="MannorothExtendedLearn,Learn2" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MercenaryCampTier5">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Resistant" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <CostResource index="Terrazine" value="1305000"/>
+        <CostResource index="Custom" value="-40500"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="CreepTier5"/>
+        <EffectArray index="Create" value="StructureBirthSet"/>
+        <EffectArray index="Birth" value="StructureBirthSet"/>
+        <EffectArray index="Death" value="StructureDeathSet"/>
+        <CardLayouts>
+            <LayoutButtons Face="ArachnathidOverlordHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="SludgeMonstrosityHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="CentaurKhanHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="DarkWizardHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="SkeletalOrcChampionHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="BanditLordHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train6" Row="1" Column="1"/>
+            <LayoutButtons Face="BronzeDragonHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="GraniteGolemHLW" Type="AbilCmd" AbilCmd="CreepTier5,Train8" Row="1" Column="3"/>
+        </CardLayouts>
+        <MinimapRadius value="3.5"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="MuradinExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="NovaExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="RagnarosExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="20" Face="Incinerate" Requirements="Incinerate" Column="2"/>
+            <LayoutButtons index="21" Face="FireGolem" Type="AbilCmd" AbilCmd="FireGolem,Execute" Requirements=""/>
+            <LayoutButtons index="22" Face="Volcano" AbilCmd="Volcano,Execute" Column="3"/>
+            <LayoutButtons index="23" Face="FieryAuraW" Type="Passive" AbilCmd="" Requirements="FieryAura" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="7" Face="FireGolem" AbilCmd="RagnarosExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="8" Face="FieryAuraW" AbilCmd="RagnarosExtendedLearn,Learn8" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ReaverHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <ShieldsStart value="300000"/>
+        <ShieldsMax value="300000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="1200000"/>
+        <CostResource index="Custom" value="-60000"/>
+        <KillXP value="2300"/>
+        <KillResource index="Terrazine" value="46000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="92000"/>
+        <ScoreKill value="46000"/>
+    </CUnit>
+    <CUnit id="DestroyerHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <ShieldsStart value="200000"/>
+        <ShieldsMax value="200000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="1300000"/>
+        <CostResource index="Custom" value="-65000"/>
+        <KillXP value="2400"/>
+        <KillResource index="Terrazine" value="48000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="96000"/>
+        <ScoreKill value="48000"/>
+    </CUnit>
+    <CUnit id="SamuroExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="ServitorLearnOnly" parent="MinionDefault" Armor="Armored">
+        <PlaneArray index="Ground" value="0"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Ground" value="0"/>
+        <Collide index="Structure" value="0"/>
+        <Collide index="ForceField" value="0"/>
+        <Collide index="Flying" value="1"/>
+        <LifeStart value="225"/>
+        <LifeMax value="225"/>
+        <Mover value="Fly"/>
+        <Acceleration value="2"/>
+        <Sight value="9"/>
+        <Height value="3.5"/>
+        <AttackTargetPriority value="19"/>
+        <WeaponArray index="0" Link="Servitor"/>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <SubgroupPriority value="2"/>
+    </CUnit>
+    <CUnit id="SkeletalOrcChampionHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="850000"/>
+        <CostResource index="Custom" value="-42500"/>
+        <KillXP value="1900"/>
+        <KillResource index="Terrazine" value="35000"/>
+        <ScoreMake value="70000"/>
+        <ScoreKill value="35000"/>
+        <AbilArray Link="Curse"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Curse" Type="AbilCmd" AbilCmd="Curse,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <ShieldsStart value="150000"/>
+        <ShieldsMax value="150000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+    </CUnit>
+    <CUnit id="DarkWizardHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="3"/>
+        <CostResource index="Terrazine" value="800000"/>
+        <CostResource index="Custom" value="-40000"/>
+        <KillXP value="1800"/>
+        <KillResource index="Terrazine" value="32000"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="64000"/>
+        <ScoreKill value="32000"/>
+        <AbilArray Link="AbolishMagic"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AbolishMagic" Type="AbilCmd" AbilCmd="AbolishMagic,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <ShieldsStart value="100000"/>
+        <ShieldsMax value="100000"/>
+    </CUnit>
+    <CUnit id="SludgeMonstrosityHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="700000"/>
+        <CostResource index="Custom" value="-35000"/>
+        <KillXP value="1600"/>
+        <KillResource index="Terrazine" value="27000"/>
+        <ScoreMake value="54000"/>
+        <ScoreKill value="27000"/>
+        <AbilArray Link="Slow"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Slow" Type="AbilCmd" AbilCmd="Slow,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="MindRot" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <ShieldsStart value="25000"/>
+        <ShieldsMax value="25000"/>
+    </CUnit>
+    <CUnit id="CentaurKhanHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <Speed value="3"/>
+        <CostResource index="Terrazine" value="750000"/>
+        <CostResource index="Custom" value="-37500"/>
+        <KillXP value="1700"/>
+        <KillResource index="Terrazine" value="29000"/>
+        <ScoreMake value="58000"/>
+        <ScoreKill value="29000"/>
+        <ShieldsStart value="75000"/>
+        <ShieldsMax value="75000"/>
+        <AbilArray Link="Berserk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Berserk" Type="AbilCmd" AbilCmd="Berserk,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BronzeDragonHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="3"/>
+        <CostResource index="Terrazine" value="950000"/>
+        <CostResource index="Custom" value="-50000"/>
+        <KillXP value="2100"/>
+        <KillResource index="Terrazine" value="40000"/>
+        <ScoreMake value="80000"/>
+        <ScoreKill value="40000"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <ShieldsStart value="125000"/>
+        <ShieldsMax value="125000"/>
+        <AbilArray Link="FaerieFire"/>
+        <AbilArray Link="Roar"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Row="1" Column="0"/>
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="1" Column="1"/>
+            <LayoutButtons Face="FaerieFire" Type="AbilCmd" AbilCmd="FaerieFire,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="RoarW" Type="AbilCmd" AbilCmd="Roar,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <Height value="2"/>
+    </CUnit>
+    <CUnit id="CaptainHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="ShieldCharge"/>
+        <AbilArray Link="ShieldBarrier"/>
+        <AbilArray Link="Avenger"/>
+        <AbilArray Link="RallyingCry"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="ShieldCharge" Type="AbilCmd" AbilCmd="ShieldCharge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ShieldBarrier" Type="AbilCmd" AbilCmd="ShieldBarrier,On" Row="2" Column="1"/>
+            <LayoutButtons Face="ShieldBarrierOff" Type="AbilCmd" AbilCmd="ShieldBarrier,Off" Row="2" Column="1"/>
+            <LayoutButtons Face="Avenger" Type="Passive" Requirements="Avenger" Row="2" Column="2"/>
+            <LayoutButtons Face="RallyingCry" Type="AbilCmd" AbilCmd="RallyingCry,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="ShieldCharge" Type="AbilCmd" AbilCmd="CaptainHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="ShieldBarrier" Type="AbilCmd" AbilCmd="CaptainHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Avenger" Type="AbilCmd" AbilCmd="CaptainHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="RallyingCry" Type="AbilCmd" AbilCmd="CaptainHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="JainaHero">
+        <AbilArray Link="IceFortress"/>
+        <AbilArray Link="Teleport"/>
+        <AbilArray Link="BrillianceAura"/>
+        <AbilArray Link="Blizzard"/>
+        <AbilArray Link="FrozenOrb"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="IceDagger"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Blizzard" Type="AbilCmd" AbilCmd="Blizzard,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="IceFortress" Type="AbilCmd" AbilCmd="IceFortress,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="BrillianceAura" Type="Passive" Requirements="BrillianceAura" Row="2" Column="2"/>
+            <LayoutButtons Face="FrozenOrb" Type="AbilCmd" AbilCmd="FrozenOrb,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="IceDagger" Type="AbilCmd" AbilCmd="IceDagger,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Blizzard" Type="AbilCmd" AbilCmd="JainaHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="IceFortress" Type="AbilCmd" AbilCmd="JainaHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="BrillianceAura" Type="AbilCmd" AbilCmd="JainaHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="FrozenOrb" Type="AbilCmd" AbilCmd="JainaHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="IceDagger" Type="AbilCmd" AbilCmd="JainaHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="KelThuzadGhostHero">
+        <FlagArray index="Invulnerable" value="1"/>
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="SiphonPower"/>
+        <AbilArray Link="BoneServants"/>
+        <AbilArray Link="ServitudeAura"/>
+        <AbilArray Link="Soulshatter"/>
+        <AbilArray Link="Decrepify"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="SiphonPower" Type="AbilCmd" AbilCmd="SiphonPower,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BoneServants" Type="AbilCmd" AbilCmd="BoneServants,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ServitudeAura" Type="Passive" Requirements="ServitudeAura" Row="2" Column="2"/>
+            <LayoutButtons Face="Decrepify" Type="AbilCmd" AbilCmd="Decrepify,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AlreadyDead" Type="Passive" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="SiphonPower" Type="AbilCmd" AbilCmd="KelThuzadGhostHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="BoneServants" Type="AbilCmd" AbilCmd="KelThuzadGhostHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ServitudeAura" Type="AbilCmd" AbilCmd="KelThuzadGhostHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Decrepify" Type="AbilCmd" AbilCmd="KelThuzadGhostHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="MajorHealingPotion">
+        <CostResource index="Terrazine" value="600"/>
+    </CUnit>
+    <CUnit id="NovaHero">
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="RailSnipe"/>
+        <AbilArray Link="EMPRound"/>
+        <AbilArray Link="Sharpshooter"/>
+        <AbilArray Link="NuclearStrike"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="RailSnipe" Type="AbilCmd" AbilCmd="RailSnipe,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="EMPRound" Type="AbilCmd" AbilCmd="EMPRound,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Sharpshooter" Type="Passive" Requirements="Sharpshooter" Row="2" Column="2"/>
+            <LayoutButtons Face="NuclearStrike" Type="AbilCmd" AbilCmd="NuclearStrike,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="RailSnipe" Type="AbilCmd" AbilCmd="NovaHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="EMPRound" Type="AbilCmd" AbilCmd="NovaHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Sharpshooter" Type="AbilCmd" AbilCmd="NovaHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="NuclearStrike" Type="AbilCmd" AbilCmd="NovaHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="OgreHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Smash"/>
+        <AbilArray Link="GroundSlam"/>
+        <AbilArray Link="BruteForce"/>
+        <AbilArray Link="Carnage"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <AbilArray Link="SelectShrine"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Smash" Type="AbilCmd" AbilCmd="Smash,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GroundSlam" Type="AbilCmd" AbilCmd="GroundSlam,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="BruteForce" Type="Passive" Requirements="BruteForce" Row="2" Column="2"/>
+            <LayoutButtons Face="Carnage" Type="AbilCmd" AbilCmd="Carnage,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Smash" Type="AbilCmd" AbilCmd="OgreHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="GroundSlam" Type="AbilCmd" AbilCmd="OgreHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="BruteForce" Type="AbilCmd" AbilCmd="OgreHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Carnage" Type="AbilCmd" AbilCmd="OgreHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="PeasantHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="CallBodyguards"/>
+        <AbilArray Link="ChemicalRage"/>
+        <AbilArray Link="InterestRates"/>
+        <AbilArray Link="Metamorphosis"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="CallBodyguards" Type="AbilCmd" AbilCmd="CallBodyguards,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ChemicalRage" Type="AbilCmd" AbilCmd="ChemicalRage,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="InterestRates" Type="Passive" Requirements="InterestRates" Row="2" Column="2"/>
+            <LayoutButtons Face="Metamorphosis" Type="AbilCmd" AbilCmd="Metamorphosis,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="CallBodyguards" Type="AbilCmd" AbilCmd="PeasantHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="ChemicalRage" Type="AbilCmd" AbilCmd="PeasantHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="InterestRates" Type="AbilCmd" AbilCmd="PeasantHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Metamorphosis" Type="AbilCmd" AbilCmd="PeasantHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RoyalGuardHero">
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="BreathofFrost"/>
+        <AbilArray Link="IceBarrier"/>
+        <AbilArray Link="ElementalAttendant"/>
+        <AbilArray Link="ShieldDome"/>
+        <AbilArray Link="FrostMastery"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="BreathofFrost" Type="AbilCmd" AbilCmd="BreathofFrost,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="IceBarrier" Type="AbilCmd" AbilCmd="IceBarrier,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ElementalAttendant" Type="AbilCmd" AbilCmd="ElementalAttendant,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ShieldDome" Type="AbilCmd" AbilCmd="ShieldDome,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="FrostMastery" Type="Passive" Requirements="FrostMastery" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="BreathofFrost" Type="AbilCmd" AbilCmd="RoyalGuardHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="IceBarrier" Type="AbilCmd" AbilCmd="RoyalGuardHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ElementalAttendant" Type="AbilCmd" AbilCmd="RoyalGuardHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="ShieldDome" Type="AbilCmd" AbilCmd="RoyalGuardHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="FrostMastery" Type="AbilCmd" AbilCmd="RoyalGuardHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="BeastmasterHero">
+        <AbilArray Link="CallBear"/>
+        <AbilArray Link="CallQuilbeast"/>
+        <AbilArray Link="CallHawk"/>
+        <AbilArray Link="ThornsAura"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="SelectShrine"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="CallBear" Type="AbilCmd" AbilCmd="CallBear,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CallQuilbeast" Type="AbilCmd" AbilCmd="CallQuilbeast,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="CallHawk" Type="AbilCmd" AbilCmd="CallHawk,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="ThornsAura" Type="Passive" Requirements="ThornsAura" Row="2" Column="3"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="CallBear" Type="AbilCmd" AbilCmd="BeastmasterHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="CallQuilbeast" Type="AbilCmd" AbilCmd="BeastmasterHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CallHawk" Type="AbilCmd" AbilCmd="BeastmasterHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="ThornsAura" Type="AbilCmd" AbilCmd="BeastmasterHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="BloodMageHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="RainofFire"/>
+        <AbilArray Link="LivingBomb"/>
+        <AbilArray Link="ElementalAura"/>
+        <AbilArray Link="PhoenixHeroic"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="Banish"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="RainofFire" Type="AbilCmd" AbilCmd="RainofFire,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="LivingBomb" Type="AbilCmd" AbilCmd="LivingBomb,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="ElementalAura" Type="Passive" Requirements="ElementalAura" Row="2" Column="2"/>
+            <LayoutButtons Face="PhoenixHeroic" Type="AbilCmd" AbilCmd="PhoenixHeroic,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Banish" Type="AbilCmd" AbilCmd="Banish,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="RainofFire" Type="AbilCmd" AbilCmd="BloodMageHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="LivingBomb" Type="AbilCmd" AbilCmd="BloodMageHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ElementalAura" Type="AbilCmd" AbilCmd="BloodMageHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="PhoenixHeroic" Type="AbilCmd" AbilCmd="BloodMageHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="2.75"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="BrewmasterHero">
+        <PushPriority value="20"/>
+        <Speed value="3"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="BreathofFire"/>
+        <AbilArray Link="WarStomp"/>
+        <AbilArray Link="DrunkenBrawler"/>
+        <AbilArray Link="StormEarthandFire"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="DrunkenHaze"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="BreathofFire" Type="AbilCmd" AbilCmd="BreathofFire,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="WarStomp" Type="AbilCmd" AbilCmd="WarStomp,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DrunkenBrawler" Type="Passive" Requirements="DrunkenBrawler" Row="2" Column="2"/>
+            <LayoutButtons Face="StormEarthandFire" Type="AbilCmd" AbilCmd="StormEarthandFire,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="BreathofFire" Type="AbilCmd" AbilCmd="BrewmasterHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="WarStomp" Type="AbilCmd" AbilCmd="BrewmasterHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="DrunkenBrawler" Type="AbilCmd" AbilCmd="BrewmasterHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="StormEarthandFire" Type="AbilCmd" AbilCmd="BrewmasterHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="RevenantHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="LifeDrain"/>
+        <AbilArray Link="Immolation"/>
+        <AbilArray Link="SoulHarvest"/>
+        <AbilArray Link="LocustSwarm"/>
+        <AbilArray Link="LocustSwarmMagazine"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="LifeDrain" Type="AbilCmd" AbilCmd="LifeDrain,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Immolation" Type="AbilCmd" AbilCmd="Immolation,On" Row="2" Column="1"/>
+            <LayoutButtons Face="ImmolationOff" Type="AbilCmd" AbilCmd="Immolation,Off" Row="2" Column="1"/>
+            <LayoutButtons Face="SoulHarvest" Type="Passive" Requirements="SoulHarvest" Row="2" Column="2"/>
+            <LayoutButtons Face="LocustSwarm" Type="AbilCmd" AbilCmd="LocustSwarm,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="LifeDrain" Type="AbilCmd" AbilCmd="RevenantHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="Immolation" Type="AbilCmd" AbilCmd="RevenantHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SoulHarvest" Type="AbilCmd" AbilCmd="RevenantHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="LocustSwarm" Type="AbilCmd" AbilCmd="RevenantHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="2.5"/>
+        <PushPriority value="20"/>
+        <EnergyMax value="270"/>
+    </CUnit>
+    <CUnit id="DeathKnightHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="DeathCoil"/>
+        <AbilArray Link="DeathPact"/>
+        <AbilArray Link="FrenzyAura"/>
+        <AbilArray Link="Soulshatter"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="DeathCoil" Type="AbilCmd" AbilCmd="DeathCoil,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="DeathPact" Type="AbilCmd" AbilCmd="DeathPact,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="FrenzyAura" Type="Passive" Requirements="FrenzyAura" Row="2" Column="2"/>
+            <LayoutButtons Face="Soulshatter" Type="AbilCmd" AbilCmd="Soulshatter,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="DeathCoil" Type="AbilCmd" AbilCmd="DeathKnightHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="DeathPact" Type="AbilCmd" AbilCmd="DeathKnightHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="FrenzyAura" Type="AbilCmd" AbilCmd="DeathKnightHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Soulshatter" Type="AbilCmd" AbilCmd="DeathKnightHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+        <EnergyMax value="200"/>
+    </CUnit>
+    <CUnit id="DemonHunterHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="SurgingStrike"/>
+        <AbilArray Link="ChemicalRage"/>
+        <AbilArray Link="Evasion"/>
+        <AbilArray Link="Metamorphosis"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="SurgingStrike" Type="AbilCmd" AbilCmd="SurgingStrike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ChemicalRage" Type="AbilCmd" AbilCmd="ChemicalRage,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Evasion" Type="Passive" Requirements="Evasion" Row="2" Column="2"/>
+            <LayoutButtons Face="Metamorphosis" Type="AbilCmd" AbilCmd="Metamorphosis,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="SurgingStrike" Type="AbilCmd" AbilCmd="DemonHunterHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="ChemicalRage" Type="AbilCmd" AbilCmd="DemonHunterHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Evasion" Type="AbilCmd" AbilCmd="DemonHunterHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Metamorphosis" Type="AbilCmd" AbilCmd="DemonHunterHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="DreadlordHero">
+        <PushPriority value="20"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="VoidShift"/>
+        <AbilArray Link="SoulCharge"/>
+        <AbilArray Link="SoulChargeUse"/>
+        <AbilArray Link="TearReality"/>
+        <AbilArray Link="RainofChaos"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="TearReality" Type="AbilCmd" AbilCmd="TearReality,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SoulCharge" Type="AbilCmd" AbilCmd="SoulChargeUse,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="RainofChaos" Type="AbilCmd" AbilCmd="RainofChaos,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="VoidShift" Type="AbilCmd" AbilCmd="VoidShift,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="TearReality" Type="AbilCmd" AbilCmd="DreadlordHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="VoidShift" Type="AbilCmd" AbilCmd="DreadlordHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SoulCharge" Type="AbilCmd" AbilCmd="DreadlordHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="RainofChaos" Type="AbilCmd" AbilCmd="DreadlordHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="FelguardHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="DeathStrike"/>
+        <AbilArray Link="Enslave"/>
+        <AbilArray Link="VoidReflexes"/>
+        <AbilArray Link="NetherPortal"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="EnslaveMagazine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="DeathStrike" Type="AbilCmd" AbilCmd="DeathStrike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Enslave" Type="AbilCmd" AbilCmd="Enslave,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="VoidReflexes" Type="Passive" Requirements="VoidReflexes" Row="2" Column="2"/>
+            <LayoutButtons Face="NetherPortal" Type="AbilCmd" AbilCmd="NetherPortal,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="DeathStrike" Type="AbilCmd" AbilCmd="FelguardHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="Enslave" Type="AbilCmd" AbilCmd="FelguardHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="VoidReflexes" Type="AbilCmd" AbilCmd="FelguardHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="NetherPortal" Type="AbilCmd" AbilCmd="FelguardHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="FieryWarAxe">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="FirelordHero">
+        <PushPriority value="20"/>
+        <Speed value="3"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Doomfire"/>
+        <AbilArray Link="LavaSpawn"/>
+        <AbilArray Link="Incinerate"/>
+        <AbilArray Link="Volcano"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Doomfire" Type="AbilCmd" AbilCmd="Doomfire,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="LavaSpawn" Type="AbilCmd" AbilCmd="LavaSpawn,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Incinerate" Type="Passive" Requirements="Incinerate" Row="2" Column="2"/>
+            <LayoutButtons Face="Volcano" Type="AbilCmd" AbilCmd="Volcano,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Doomfire" Type="AbilCmd" AbilCmd="FirelordHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="LavaSpawn" Type="AbilCmd" AbilCmd="FirelordHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Incinerate" Type="AbilCmd" AbilCmd="FirelordHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Volcano" Type="AbilCmd" AbilCmd="FirelordHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="KoboldTaskmasterHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="180000"/>
+        <CostResource index="Custom" value="-10000"/>
+        <KillXP value="800"/>
+        <KillResource index="Terrazine" value="9000"/>
+        <AbilArray Link="Slow"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Slow" Type="AbilCmd" AbilCmd="Slow,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="18000"/>
+        <ScoreKill value="9000"/>
+    </CUnit>
+    <CUnit id="SatyrHero">
+        <PushPriority value="20"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="RaiseSkeleton"/>
+        <AbilArray Link="DarkGift"/>
+        <AbilArray Link="CripplingAura"/>
+        <AbilArray Link="AnimateDead"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="RaiseSkeleton" Type="AbilCmd" AbilCmd="RaiseSkeleton,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CripplingAura" Type="Passive" Requirements="CripplingAura" Row="2" Column="2"/>
+            <LayoutButtons Face="AnimateDead" Type="AbilCmd" AbilCmd="AnimateDead,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="DarkGift" Type="AbilCmd" AbilCmd="DarkGift,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="RaiseSkeleton" Type="AbilCmd" AbilCmd="SatyrHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="DarkGift" Type="AbilCmd" AbilCmd="SatyrHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CripplingAura" Type="AbilCmd" AbilCmd="SatyrHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="AnimateDead" Type="AbilCmd" AbilCmd="SatyrHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SeaWitchHero">
+        <PushPriority value="20"/>
+        <Speed value="3"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="ForkedLightning"/>
+        <AbilArray Link="TaintedCore"/>
+        <AbilArray Link="StormArrows"/>
+        <AbilArray Link="StormArrowsAugment"/>
+        <AbilArray Link="Tornado"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="ForkedLightning" Type="AbilCmd" AbilCmd="ForkedLightning,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="TaintedCore" Type="AbilCmd" AbilCmd="TaintedCore,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Tornado" Type="AbilCmd" AbilCmd="Tornado,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="StormArrows" Type="AbilCmd" AbilCmd="StormArrowsAugment,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="ForkedLightning" Type="AbilCmd" AbilCmd="SeaWitchHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="TaintedCore" Type="AbilCmd" AbilCmd="SeaWitchHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="StormArrows" Type="AbilCmd" AbilCmd="SeaWitchHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Tornado" Type="AbilCmd" AbilCmd="SeaWitchHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="ShadowHunterHero">
+        <PushPriority value="20"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="SerpentWard"/>
+        <AbilArray Link="CarrionBeetles"/>
+        <AbilArray Link="CarrionBeetlesMagazine"/>
+        <AbilArray Link="VirulentCloud"/>
+        <AbilArray Link="HealingSwarm"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="MassEntanglement"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="VirulentCloud" Type="AbilCmd" AbilCmd="VirulentCloud,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="CarrionBeetles" Type="AbilCmd" AbilCmd="CarrionBeetlesMagazine,Ammo1" Row="2" Column="1"/>
+            <LayoutButtons Face="SerpentWard" Type="AbilCmd" AbilCmd="SerpentWard,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="HealingSwarm" Type="AbilCmd" AbilCmd="HealingSwarm,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="MassEntanglement" Type="AbilCmd" AbilCmd="MassEntanglement,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="VirulentCloud" Type="AbilCmd" AbilCmd="ShadowHunterHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="CarrionBeetles" Type="AbilCmd" AbilCmd="ShadowHunterHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SerpentWard" Type="AbilCmd" AbilCmd="ShadowHunterHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="HealingSwarm" Type="AbilCmd" AbilCmd="ShadowHunterHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="MassEntanglement" Type="AbilCmd" AbilCmd="ShadowHunterHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SirenHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="CelestialWrath"/>
+        <AbilArray Link="RuneTrap"/>
+        <AbilArray Link="Starsurge"/>
+        <AbilArray Link="LunarStrike"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="Moonbeam"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="RuneTrap" Type="AbilCmd" AbilCmd="RuneTrap,Execute" Row="2" Column="1"/>
+            <LayoutButtons>
+                <Face value="CelestialWrath"/>
+                <Type value="Passive"/>
+                <Behavior value="CelestialWrathCooldown"/>
+                <Requirements value="CelestialWrath"/>
+                <Row value="2"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons Face="LunarStrike" Type="AbilCmd" AbilCmd="LunarStrike,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Moonbeam" Type="AbilCmd" AbilCmd="Moonbeam,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="Starsurge" Type="AbilCmd" AbilCmd="Starsurge,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Starsurge" Type="AbilCmd" AbilCmd="SirenHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="RuneTrap" Type="AbilCmd" AbilCmd="SirenHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CelestialWrath" Type="AbilCmd" AbilCmd="SirenHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="LunarStrike" Type="AbilCmd" AbilCmd="SirenHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="2.75"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="GraniteGolemHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="500000"/>
+        <LifeMax value="500000"/>
+        <Speed value="2.75"/>
+        <CostResource index="Terrazine" value="999999"/>
+        <CostResource index="Custom" value="-55000"/>
+        <KillXP value="2200"/>
+        <KillResource index="Terrazine" value="43000"/>
+        <BehaviorArray Link="HardenedSkin"/>
+        <BehaviorArray Link="AbilityResistance"/>
+        <ScoreMake value="86000"/>
+        <ScoreKill value="43000"/>
+        <ShieldsStart value="300000"/>
+        <ShieldsMax value="300000"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Row="1" Column="0"/>
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="1" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SorceressHero">
+        <PushPriority value="20"/>
+        <Speed value="2.5"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Firebomb"/>
+        <AbilArray Link="FireWall"/>
+        <AbilArray Link="FireGolem"/>
+        <AbilArray Link="Meteor"/>
+        <AbilArray Link="TimeBomb"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="FirebombQ" Type="AbilCmd" AbilCmd="Firebomb,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="FireWallW" Type="AbilCmd" AbilCmd="FireWall,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="FireGolem" Type="AbilCmd" AbilCmd="FireGolem,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Meteor" Type="AbilCmd" AbilCmd="Meteor,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="TimeBomb" Type="AbilCmd" AbilCmd="TimeBomb,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="FirebombQ" Type="AbilCmd" AbilCmd="SorceressHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="FireWallW" Type="AbilCmd" AbilCmd="SorceressHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="FireGolem" Type="AbilCmd" AbilCmd="SorceressHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Meteor" Type="AbilCmd" AbilCmd="SorceressHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="TimeBomb" Type="AbilCmd" AbilCmd="SorceressHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SpawnInfestedTerrans">
+        <Speed value="2"/>
+    </CUnit>
+    <CUnit id="SpellbreakerHero">
+        <PushPriority value="20"/>
+        <Speed value="3"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="DeathLingers"/>
+        <AbilArray Link="DeadlyBonds"/>
+        <AbilArray Link="SoulDrain"/>
+        <AbilArray Link="WraithForm"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="DeathLingers" Type="AbilCmd" AbilCmd="DeathLingers,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="DeadlyBonds" Type="AbilCmd" AbilCmd="DeadlyBonds,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="SoulDrain" Type="AbilCmd" AbilCmd="SoulDrain,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="WraithForm" Type="AbilCmd" AbilCmd="WraithForm,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="DeathLingers" Type="AbilCmd" AbilCmd="SpellbreakerHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="DeadlyBonds" Type="AbilCmd" AbilCmd="SpellbreakerHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SoulDrain" Type="AbilCmd" AbilCmd="SpellbreakerHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="WraithForm" Type="AbilCmd" AbilCmd="SpellbreakerHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="StormWyrmHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="120000"/>
+        <CostResource index="Custom" value="-7000"/>
+        <KillXP value="600"/>
+        <KillResource index="Terrazine" value="6000"/>
+        <ScoreMake value="12000"/>
+        <ScoreKill value="6000"/>
+    </CUnit>
+    <CUnit id="MakuraTidalLordHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="85000"/>
+        <LifeMax value="85000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="90000"/>
+        <CostResource index="Custom" value="-5000"/>
+        <KillXP value="500"/>
+        <KillResource index="Terrazine" value="4000"/>
+        <ScoreMake value="8000"/>
+        <ScoreKill value="4000"/>
+    </CUnit>
+    <CUnit id="DeathRevenantHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="600000"/>
+        <CostResource index="Custom" value="-30000"/>
+        <KillXP value="1400"/>
+        <KillResource index="Terrazine" value="22000"/>
+        <ScoreMake value="44000"/>
+        <ScoreKill value="22000"/>
+        <AbilArray Link="UnholyFrenzy"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="UnholyFrenzy" Type="AbilCmd" AbilCmd="UnholyFrenzy,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SatyrHellcallerHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="250000"/>
+        <CostResource index="Custom" value="-14000"/>
+        <KillXP value="1000"/>
+        <KillResource index="Terrazine" value="12000"/>
+        <ScoreMake value="24000"/>
+        <ScoreKill value="12000"/>
+    </CUnit>
+    <CUnit id="FrostWolfHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="75000"/>
+        <LifeMax value="75000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="70000"/>
+        <CostResource index="Custom" value="-4000"/>
+        <KillXP value="400"/>
+        <KillResource index="Terrazine" value="3500"/>
+        <AbilArray Link="Roar"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Roar" Type="AbilCmd" AbilCmd="Roar,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="7000"/>
+        <ScoreKill value="3500"/>
+    </CUnit>
+    <CUnit id="EredarLordHero">
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="Parasite"/>
+        <AbilArray Link="BloodBoil"/>
+        <AbilArray Link="LocustNest"/>
+        <AbilArray Link="Symbiosis"/>
+        <AbilArray Link="SymbiosisActive"/>
+        <AbilArray Link="VoidZone"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <WeaponArray index="0" Link="SymbioticSpores"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="BloodBoil" Type="AbilCmd" AbilCmd="BloodBoil,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="LocustNest" Type="AbilCmd" AbilCmd="LocustNest,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="SymbiosisActive" Type="AbilCmd" AbilCmd="SymbiosisActive,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="Symbiosis" Type="AbilCmd" AbilCmd="Symbiosis,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="VoidZone" Type="AbilCmd" AbilCmd="VoidZone,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="Parasite" Type="AbilCmd" AbilCmd="Parasite,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Parasite" Type="AbilCmd" AbilCmd="EredarLordHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="BloodBoil" Type="AbilCmd" AbilCmd="EredarLordHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="LocustNest" Type="AbilCmd" AbilCmd="EredarLordHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="VoidZone" Type="AbilCmd" AbilCmd="EredarLordHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="FarSeerHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="ChainLightning"/>
+        <AbilArray Link="BallLightning"/>
+        <AbilArray Link="EnergyConduit"/>
+        <AbilArray Link="Thunderstorm"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="ChainLightning" Type="AbilCmd" AbilCmd="ChainLightning,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BallLightning" Type="AbilCmd" AbilCmd="BallLightning,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="EnergyConduit" Type="Passive" Requirements="EnergyConduit" Row="2" Column="2"/>
+            <LayoutButtons Face="Thunderstorm" Type="AbilCmd" AbilCmd="Thunderstorm,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="ChainLightning" Type="AbilCmd" AbilCmd="FarSeerHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="BallLightning" Type="AbilCmd" AbilCmd="FarSeerHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="EnergyConduit" Type="AbilCmd" AbilCmd="FarSeerHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Thunderstorm" Type="AbilCmd" AbilCmd="FarSeerHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="DragonTurtleHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="150000"/>
+        <CostResource index="Custom" value="-9000"/>
+        <KillXP value="700"/>
+        <KillResource index="Terrazine" value="8000"/>
+        <ScoreMake value="16000"/>
+        <ScoreKill value="8000"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="FleshGolemHLW" parent="DefaultCreep">
+        <Collide index="Ground" value="0"/>
+        <Collide index="Colossus" value="1"/>
+        <Collide index="ForceField" value="0"/>
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <Speed value="1.75"/>
+        <ScoreMake value="3000"/>
+        <ScoreKill value="1500"/>
+    </CUnit>
+    <CUnit id="Beacon_Protoss">
+        <FlagArray index="Resistant" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <LifeRegenRate value="100000"/>
+        <EditorCategories value="ObjectType:Other,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="BlinkDagger">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="BootsofSpeed">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="CircletofNobility">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="ClawsofAttack">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="MercenaryCampTier4">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Resistant" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <CostResource index="Terrazine" value="555000"/>
+        <CostResource index="Custom" value="-18000"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="CreepTier4"/>
+        <AbilArray Link="CreepTier5Morph"/>
+        <CardLayouts>
+            <LayoutButtons Face="FrostWolfHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="MakuraTidalLordHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="StormWyrmHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="DragonTurtleHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="KoboldTaskmasterHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="TuskarrSorcererHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train6" Row="1" Column="1"/>
+            <LayoutButtons Face="SatyrHellcallerHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="FacelessDeathbringerHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train8" Row="1" Column="3"/>
+            <LayoutButtons Face="FelRavagerHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train9" Row="2" Column="0"/>
+            <LayoutButtons Face="NetherDragonHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train10" Row="2" Column="1"/>
+            <LayoutButtons Face="DeathRevenantHLW" Type="AbilCmd" AbilCmd="CreepTier4,Train11" Row="2" Column="2"/>
+            <LayoutButtons Face="UpgradetoTier5HLW" Type="AbilCmd" AbilCmd="CreepTier5Morph,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <MinimapRadius value="3.5"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <Attributes index="Structure" value="1"/>
+        <EffectArray index="Create" value="StructureBirthSet"/>
+        <EffectArray index="Birth" value="StructureBirthSet"/>
+        <EffectArray index="Death" value="StructureDeathSet"/>
+    </CUnit>
+    <CUnit id="EmberstoneStaff">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="EnergyTonic">
+        <CostResource index="Terrazine" value="40"/>
+    </CUnit>
+    <CUnit id="ButchersBladeHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="80000"/>
+    </CUnit>
+    <CUnit id="FacelessDeathbringerHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="320000"/>
+        <CostResource index="Custom" value="-17000"/>
+        <KillXP value="1100"/>
+        <KillResource index="Terrazine" value="14000"/>
+        <AbilArray Link="Curse"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Curse" Type="AbilCmd" AbilCmd="Curse,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SlowingPoison" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="28000"/>
+        <ScoreKill value="14000"/>
+    </CUnit>
+    <CUnit id="GreaterEnergyTonic">
+        <CostResource index="Terrazine" value="200"/>
+    </CUnit>
+    <CUnit id="GauntletsofOgreStrength">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="GlovesofHaste">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="HealingFountain">
+        <Footprint value="Footprint4x4"/>
+        <PlacementFootprint value="Footprint4x4"/>
+    </CUnit>
+    <CUnit id="KeeperoftheGroveHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="EntanglingRoots"/>
+        <AbilArray Link="Regrowth"/>
+        <AbilArray Link="EnduranceAura"/>
+        <AbilArray Link="SplittingStrikes"/>
+        <AbilArray Link="SplittingStrikesAugment"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="EntanglingRoots" Type="AbilCmd" AbilCmd="EntanglingRoots,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Regrowth" Type="AbilCmd" AbilCmd="Regrowth,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="EnduranceAura" Type="Passive" Requirements="EnduranceAura" Row="2" Column="2"/>
+            <LayoutButtons Face="SplittingStrikes" Type="AbilCmd" AbilCmd="SplittingStrikesAugment,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="EntanglingRoots" Type="AbilCmd" AbilCmd="KeeperoftheGroveHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="Regrowth" Type="AbilCmd" AbilCmd="KeeperoftheGroveHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="EnduranceAura" Type="AbilCmd" AbilCmd="KeeperoftheGroveHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="SplittingStrikes" Type="AbilCmd" AbilCmd="KeeperoftheGroveHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="HealingPotion"/>
+    <CUnit id="GreaterHealingPotion">
+        <CostResource index="Terrazine" value="150"/>
+    </CUnit>
+    <CUnit id="LichHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="FrostNova"/>
+        <AbilArray Link="GuardianWisps"/>
+        <AbilArray Link="GuardianWispsMagazine"/>
+        <AbilArray Link="Illusion"/>
+        <AbilArray Link="AncientKnowledge"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="MassDispel"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="FrostNova" Type="AbilCmd" AbilCmd="FrostNova,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Illusion" Type="AbilCmd" AbilCmd="Illusion,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="GuardianWisps" Type="Passive" Requirements="GuardianWisps" Row="2" Column="2"/>
+            <LayoutButtons Face="AncientKnowledge" Type="Passive" Requirements="AncientKnowledge" Row="2" Column="3"/>
+            <LayoutButtons Face="MassDispel" Type="AbilCmd" AbilCmd="MassDispel,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="FrostNova" Type="AbilCmd" AbilCmd="LichHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="Illusion" Type="AbilCmd" AbilCmd="LichHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="GuardianWisps" Type="AbilCmd" AbilCmd="LichHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="AncientKnowledge" Type="AbilCmd" AbilCmd="LichHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="2.5"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="Scourgestone">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="BlademasterHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="WindWalk"/>
+        <AbilArray Link="MirrorImage"/>
+        <AbilArray Link="CriticalStrike"/>
+        <AbilArray Link="Bladestorm"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="WindWalk" Type="AbilCmd" AbilCmd="WindWalk,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="MirrorImage" Type="AbilCmd" AbilCmd="MirrorImage,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="CriticalStrike" Type="Passive" Requirements="CriticalStrike" Row="2" Column="2"/>
+            <LayoutButtons Face="Bladestorm" Type="AbilCmd" AbilCmd="Bladestorm,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="WindWalk" Type="AbilCmd" AbilCmd="BlademasterHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="MirrorImage" Type="AbilCmd" AbilCmd="BlademasterHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CriticalStrike" Type="AbilCmd" AbilCmd="BlademasterHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Bladestorm" Type="AbilCmd" AbilCmd="BlademasterHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="PaladinHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="HolyLight"/>
+        <AbilArray Link="BlessingofMight"/>
+        <AbilArray Link="DevotionAura"/>
+        <AbilArray Link="RetributionAura"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="HolyLight" Type="AbilCmd" AbilCmd="HolyLight,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BlessingofMight" Type="AbilCmd" AbilCmd="BlessingofMight,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DevotionAura" Type="Passive" Requirements="DevotionAura" Row="2" Column="2"/>
+            <LayoutButtons Face="RetributionAura" Type="Passive" Requirements="RetributionAura" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="HolyLight" Type="AbilCmd" AbilCmd="PaladinHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="BlessingofMight" Type="AbilCmd" AbilCmd="PaladinHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="DevotionAura" Type="AbilCmd" AbilCmd="PaladinHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="RetributionAura" Type="AbilCmd" AbilCmd="PaladinHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="2.5"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="PowerCoreItem">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="PriestessoftheMoonHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Multishot"/>
+        <AbilArray Link="ForceofNature"/>
+        <AbilArray Link="SearingStrikes"/>
+        <AbilArray Link="Starfall"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Multishot" Type="AbilCmd" AbilCmd="Multishot,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ForceofNature" Type="AbilCmd" AbilCmd="ForceofNature,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="SearingStrikes" Type="Passive" Requirements="SearingStrikes" Row="2" Column="2"/>
+            <LayoutButtons Face="Starfall" Type="AbilCmd" AbilCmd="Starfall,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Multishot" Type="AbilCmd" AbilCmd="PriestessoftheMoonHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="ForceofNature" Type="AbilCmd" AbilCmd="PriestessoftheMoonHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="SearingStrikes" Type="AbilCmd" AbilCmd="PriestessoftheMoonHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Starfall" Type="AbilCmd" AbilCmd="PriestessoftheMoonHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="MountainKingHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="StormBolt"/>
+        <AbilArray Link="ThunderClap"/>
+        <AbilArray Link="Bash"/>
+        <AbilArray Link="Avatar"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="StormBolt" Type="AbilCmd" AbilCmd="StormBolt,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="ThunderClap" Type="AbilCmd" AbilCmd="ThunderClap,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Bash" Type="Passive" Requirements="Bash" Row="2" Column="2"/>
+            <LayoutButtons Face="Avatar" Type="AbilCmd" AbilCmd="Avatar,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="StormBolt" Type="AbilCmd" AbilCmd="MountainKingHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="ThunderClap" Type="AbilCmd" AbilCmd="MountainKingHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Bash" Type="AbilCmd" AbilCmd="MountainKingHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Avatar" Type="AbilCmd" AbilCmd="MountainKingHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <BehaviorArray Link="MeleeHero"/>
+        <Speed value="2.5"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="RingofProtection">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="RingofRegeneration">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="DarkRangerHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="HauntingWave"/>
+        <AbilArray Link="TrueshotAura"/>
+        <AbilArray Link="BlackStrike"/>
+        <AbilArray Link="CharmArea"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="RapidFire"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="HauntingWave" Type="AbilCmd" AbilCmd="HauntingWave,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="BlackStrike" Type="Passive" Requirements="BlackStrikeReady" Row="2" Column="1"/>
+            <LayoutButtons>
+                <Face value="BlackStrike"/>
+                <Type value="Passive"/>
+                <Behavior value="BlackStrikeCooldown"/>
+                <Requirements value="BlackStrike"/>
+                <Row value="2"/>
+                <Column value="1"/>
+            </LayoutButtons>
+            <LayoutButtons Face="CharmArea" Type="AbilCmd" AbilCmd="CharmArea,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="TrueshotAura" Type="Passive" Requirements="TrueshotAura" Row="2" Column="2"/>
+            <LayoutButtons Face="RapidFire" Type="AbilCmd" AbilCmd="RapidFire,Execute" Row="2" Column="4"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="HauntingWave" Type="AbilCmd" AbilCmd="DarkRangerHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="BlackStrike" Type="AbilCmd" AbilCmd="DarkRangerHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="TrueshotAura" Type="AbilCmd" AbilCmd="DarkRangerHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="CharmArea" Type="AbilCmd" AbilCmd="DarkRangerHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="FelRavagerHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="400000"/>
+        <CostResource index="Custom" value="-21000"/>
+        <KillXP value="1200"/>
+        <KillResource index="Terrazine" value="17000"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MindRot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="34000"/>
+        <ScoreKill value="17000"/>
+    </CUnit>
+    <CUnit id="ShrineHLW">
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <EnergyMax value="5000"/>
+        <EnergyRegenRate value="2"/>
+        <CostResource index="Terrazine" value="-100"/>
+        <CostResource index="Custom" value="30000"/>
+        <AbilArray Link="BlizzardNeutral"/>
+        <AbilArray Link="ChainLightningNeutral"/>
+        <AbilArray Link="MonsoonNeutral"/>
+        <AbilArray Link="Cyclone"/>
+        <AbilArray Link="BurstofLife"/>
+        <CardLayouts>
+            <LayoutButtons Face="MonsoonNeutral" Type="AbilCmd" AbilCmd="MonsoonNeutral,Execute" Row="0" Column="0"/>
+            <LayoutButtons Face="BlizzardNeutral" Type="AbilCmd" AbilCmd="BlizzardNeutral,Execute" Row="0" Column="1"/>
+            <LayoutButtons Face="ChainLightningNeutral" Type="AbilCmd" AbilCmd="ChainLightningNeutral,Execute" Row="0" Column="2"/>
+            <LayoutButtons Face="Cyclone" Type="AbilCmd" AbilCmd="Cyclone,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="BurstofLife" Type="AbilCmd" AbilCmd="BurstofLife,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <MinimapRadius value="1.5"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+    </CUnit>
+    <CUnit id="EnergeticBarrierHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="8000"/>
+    </CUnit>
+    <CUnit id="IronplateBucklerHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="1000"/>
+    </CUnit>
+    <CUnit id="BloodforgedShieldHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="10000"/>
+    </CUnit>
+    <CUnit id="SobiMask">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="SpiderHLW" parent="DefaultUnitWar3" Weapon1="Spider">
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="500"/>
+        <LifeMax value="500"/>
+        <LifeRegenRate value="0"/>
+        <Radius value="0.25"/>
+        <SeparationRadius value="0.25"/>
+    </CUnit>
+    <CUnit id="StukovExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="StukovHero">
+        <PushPriority value="20"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="CorrosiveBlast"/>
+        <AbilArray Link="SpawnInfestedTerrans"/>
+        <AbilArray Link="RegenerationAura"/>
+        <AbilArray Link="AcidNova"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="CorrosiveBlast" Type="AbilCmd" AbilCmd="CorrosiveBlast,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="SpawnInfestedTerrans" Type="AbilCmd" AbilCmd="SpawnInfestedTerrans,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="RegenerationAura" Type="Passive" Requirements="RegenerationAura" Row="2" Column="2"/>
+            <LayoutButtons Face="AcidNova" Type="AbilCmd" AbilCmd="AcidNova,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="CorrosiveBlast" Type="AbilCmd" AbilCmd="StukovHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="SpawnInfestedTerrans" Type="AbilCmd" AbilCmd="StukovHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="RegenerationAura" Type="AbilCmd" AbilCmd="StukovHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="AcidNova" Type="AbilCmd" AbilCmd="StukovHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="SwannExtended">
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="SwannHero">
+        <PushPriority value="20"/>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="PlasmaBolt"/>
+        <AbilArray Link="RocketBarrage"/>
+        <AbilArray Link="MissileBattery"/>
+        <AbilArray Link="DrakkenLaser"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="PlasmaBolt" Type="AbilCmd" AbilCmd="PlasmaBolt,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="RocketBarrage" Type="AbilCmd" AbilCmd="RocketBarrage,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="MissileBattery" Type="AbilCmd" AbilCmd="MissileBattery,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="DrakkenLaser" Type="AbilCmd" AbilCmd="DrakkenLaser,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="PlasmaBolt" Type="AbilCmd" AbilCmd="SwannHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="RocketBarrage" Type="AbilCmd" AbilCmd="SwannHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="MissileBattery" Type="AbilCmd" AbilCmd="SwannHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="DrakkenLaser" Type="AbilCmd" AbilCmd="SwannHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="Sword2">
+        <CostResource index="Terrazine" value="15000"/>
+    </CUnit>
+    <CUnit id="SylvanasExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="21" Face="BlackStrikeE"/>
+            <LayoutButtons index="22">
+                <Face value="CharmArea"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="CharmArea,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="23" Face="Decrepify" AbilCmd="Decrepify,Execute" Column="3"/>
+            <LayoutButtons index="24" Face="SplittingStrikes" AbilCmd="SplittingStrikesAugment,Execute"/>
+            <LayoutButtons index="25">
+                <Face value="BlackStrikeE"/>
+                <Type value="Passive"/>
+                <AbilCmd value=""/>
+                <Behavior value="BlackStrikeCooldown"/>
+                <Requirements value="BlackStrike"/>
+                <Column value="2"/>
+            </LayoutButtons>
+            <LayoutButtons index="26" Face="AnathemaE" AbilCmd="Anathema,Execute" Column="2"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="4" Face="CharmArea" AbilCmd="SylvanasExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="5" Face="HauntingWave" AbilCmd="SylvanasExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="AnathemaE" AbilCmd="SylvanasExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="7" Face="Decrepify" AbilCmd="SylvanasExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="8" Face="Enslave" AbilCmd="SylvanasExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons index="9" Face="SplittingStrikes" AbilCmd="SylvanasExtendedLearn,Learn16" Row="2" Column="3"/>
+            <LayoutButtons index="10" Face="BlackStrikeE" AbilCmd="SylvanasExtendedLearn,Learn3" Row="0" Column="2"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="CyberBlastLMWeapon" parent="MISSILE_HALFLIFE">
+        <LifeStart value="10"/>
+        <LifeMax value="10"/>
+        <Mover value="VulcanCannonWeapon"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+        <TacticalAI value="KaraxChampionWeaponMissile"/>
+        <AIEvaluateAlias value="KaraxChampionWeaponMissile"/>
+        <ReviveInfoBase>
+            <Charge Link="KaraxChampionWeaponMissile/Revive"/>
+            <Cooldown Link="KaraxChampionWeaponMissile/Revive"/>
+        </ReviveInfoBase>
+    </CUnit>
+    <CUnit id="TinkerHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Pyrocannon"/>
+        <AbilArray Link="PocketFactory"/>
+        <AbilArray Link="EngineeringUpgrade"/>
+        <AbilArray Link="EngineeringUpgradeActive"/>
+        <AbilArray Link="FirestormArtillery"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Pyrocannon" Type="AbilCmd" AbilCmd="Pyrocannon,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="PocketFactory" Type="AbilCmd" AbilCmd="PocketFactory,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="FirestormArtillery" Type="AbilCmd" AbilCmd="FirestormArtillery,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="EngineeringUpgradeActive" Type="AbilCmd" AbilCmd="EngineeringUpgradeActive,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="EngineeringUpgrade" Type="AbilCmd" AbilCmd="EngineeringUpgrade,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Pyrocannon" Type="AbilCmd" AbilCmd="TinkerHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="PocketFactory" Type="AbilCmd" AbilCmd="TinkerHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="EngineeringUpgrade" Type="AbilCmd" AbilCmd="TinkerHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="FirestormArtillery" Type="AbilCmd" AbilCmd="TinkerHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="TuskarrSorcererHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="220000"/>
+        <CostResource index="Custom" value="-12000"/>
+        <KillXP value="900"/>
+        <KillResource index="Terrazine" value="10000"/>
+        <AbilArray Link="InnerFire"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="InnerFire" Type="AbilCmd" AbilCmd="InnerFire,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="20000"/>
+        <ScoreKill value="10000"/>
+    </CUnit>
+    <CUnit id="StormheraldHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="20000"/>
+    </CUnit>
+    <CUnit id="BlackDrakeHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="250"/>
+        <LifeMax value="250"/>
+        <Speed value="0.7812"/>
+        <Height value="2"/>
+        <CostResource index="Terrazine" value="200"/>
+        <CostResource index="Custom" value="-28"/>
+        <KillXP value="14"/>
+        <KillResource index="Terrazine" value="60"/>
+        <ScoreMake value="120"/>
+        <ScoreKill value="60"/>
+    </CUnit>
+    <CUnit id="BloodfiendHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="600"/>
+        <LifeMax value="600"/>
+        <Speed value="1.25"/>
+        <CostResource index="Terrazine" value="700"/>
+        <CostResource index="Custom" value="-80"/>
+        <KillXP value="34"/>
+        <KillResource index="Terrazine" value="140"/>
+        <ScoreMake value="280"/>
+        <ScoreKill value="140"/>
+    </CUnit>
+    <CUnit id="AmaniBerserkerHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="800"/>
+        <LifeMax value="800"/>
+        <Speed value="1.7187"/>
+        <CostResource index="Terrazine" value="1000"/>
+        <CostResource index="Custom" value="-90"/>
+        <KillXP value="38"/>
+        <KillResource index="Terrazine" value="130"/>
+        <ScoreMake value="260"/>
+        <ScoreKill value="130"/>
+    </CUnit>
+    <CUnit id="AlchemistHLW">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="CreateVisible" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <EditorFlags index="NeutralDefault" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <Sight value="7"/>
+        <AbilArray Link="ShopInteract"/>
+        <AbilArray Link="ShopPawn"/>
+        <AbilArray Link="InventoryShop"/>
+        <AbilArray Link="ConsumablesShopTrain"/>
+        <BehaviorArray Link="ShopInteractSource"/>
+        <CardLayouts>
+            <LayoutButtons Face="HealingPotion" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="GreaterHealingPotion" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train2" Row="1" Column="0"/>
+            <LayoutButtons Face="VampiricPotion" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train11" Row="2" Column="0"/>
+            <LayoutButtons Face="SwiftnessPotion" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train4" Row="2" Column="1"/>
+            <LayoutButtons Face="EnergyTonic" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train6" Row="0" Column="1"/>
+            <LayoutButtons Face="GreaterEnergyTonic" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train7" Row="1" Column="1"/>
+            <LayoutButtons Face="AntiMagicPotion" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train10" Row="2" Column="2"/>
+            <LayoutButtons Face="InfusedGem" Type="AbilCmd" AbilCmd="ConsumablesShopTrain,Train13" Row="0" Column="2"/>
+        </CardLayouts>
+        <Radius value="1.75"/>
+        <SeparationRadius value="1.75"/>
+        <Footprint value="Footprint4x4Contour"/>
+        <PlacementFootprint value="Footprint4x4"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <KillDisplay value="Never"/>
+        <RankDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="AssassinsBladeHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="10000"/>
+    </CUnit>
+    <CUnit id="MercenaryCampTier1">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Resistant" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="CreepTier1"/>
+        <AbilArray Link="CreepTier2Morph"/>
+        <CardLayouts>
+            <LayoutButtons Face="ScorpidHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="BanditHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="CentaurArcherHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="SpiderCrabHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="ZandalariPriestHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="BrokenVindicatorHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train6" Row="1" Column="1"/>
+            <LayoutButtons Face="BlackDrakeHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="SkeletalMageHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train8" Row="1" Column="3"/>
+            <LayoutButtons Face="CorruptedTreantHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train9" Row="2" Column="0"/>
+            <LayoutButtons Face="BloodfiendHLW" Type="AbilCmd" AbilCmd="CreepTier1,Train10" Row="2" Column="1"/>
+            <LayoutButtons Face="UpgradetoTier2HLW" Type="AbilCmd" AbilCmd="CreepTier2Morph,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <MinimapRadius value="2"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <Attributes index="Structure" value="1"/>
+        <EffectArray index="Create" value="StructureBirthSet"/>
+        <EffectArray index="Birth" value="StructureBirthSet"/>
+        <EffectArray index="Death" value="StructureDeathSet"/>
+    </CUnit>
+    <CUnit id="MercenaryCampTier2">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Resistant" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <CostResource index="Terrazine" value="5000"/>
+        <CostResource index="Custom" value="-500"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="CreepTier2"/>
+        <AbilArray Link="CreepTier3Morph"/>
+        <CardLayouts>
+            <LayoutButtons Face="AmaniBerserkerHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="FurbolgShamanHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="HighborneWraithHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="SeaGiantHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="BroodmotherHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="GnollAssassinHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train6" Row="1" Column="1"/>
+            <LayoutButtons Face="WarGolemHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="WindfuryHarpyHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train8" Row="1" Column="3"/>
+            <LayoutButtons Face="AncientHydraHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train9" Row="2" Column="0"/>
+            <LayoutButtons Face="JuggernautHLW" Type="AbilCmd" AbilCmd="CreepTier2,Train10" Row="2" Column="1"/>
+            <LayoutButtons Face="UpgradetoTier3HLW" Type="AbilCmd" AbilCmd="CreepTier3Morph,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <MinimapRadius value="2.5"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <Attributes index="Structure" value="1"/>
+        <EffectArray index="Create" value="StructureBirthSet"/>
+        <EffectArray index="Birth" value="StructureBirthSet"/>
+        <EffectArray index="Death" value="StructureDeathSet"/>
+    </CUnit>
+    <CUnit id="MercenaryCampTier3">
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="Resistant" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <CostResource index="Terrazine" value="55000"/>
+        <CostResource index="Custom" value="-3000"/>
+        <AbilArray Link="que5Passive"/>
+        <AbilArray Link="CreepTier3"/>
+        <AbilArray Link="CreepTier4Morph"/>
+        <CardLayouts>
+            <LayoutButtons Face="MagnataurHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="DireMammothHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train2" Row="0" Column="1"/>
+            <LayoutButtons Face="MurgulBloodgillHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train3" Row="0" Column="2"/>
+            <LayoutButtons Face="MurlocPlaguebearerHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train4" Row="0" Column="3"/>
+            <LayoutButtons Face="NerubianQueenHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train5" Row="1" Column="0"/>
+            <LayoutButtons Face="BoulderfistOgreHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train6" Row="1" Column="1"/>
+            <LayoutButtons Face="FeralWildkinHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train7" Row="1" Column="2"/>
+            <LayoutButtons Face="UrsolBearHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train8" Row="1" Column="3"/>
+            <LayoutButtons Face="FurbolgChampionHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train9" Row="2" Column="0"/>
+            <LayoutButtons Face="RazormaneChiefHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train10" Row="2" Column="1"/>
+            <LayoutButtons Face="AncientSasquatchHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train11" Row="2" Column="2"/>
+            <LayoutButtons Face="AvatarHLW" Type="AbilCmd" AbilCmd="CreepTier3,Train12" Row="2" Column="3"/>
+            <LayoutButtons Face="UpgradetoTier4HLW" Type="AbilCmd" AbilCmd="CreepTier4Morph,Execute" Row="2" Column="4"/>
+        </CardLayouts>
+        <MinimapRadius value="3"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <Attributes index="Structure" value="1"/>
+        <EffectArray index="Create" value="StructureBirthSet"/>
+        <EffectArray index="Birth" value="StructureBirthSet"/>
+        <EffectArray index="Death" value="StructureDeathSet"/>
+    </CUnit>
+    <CUnit id="FeralWildkinHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="44000"/>
+        <LifeMax value="44000"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="44000"/>
+        <CostResource index="Custom" value="-2400"/>
+        <KillXP value="240"/>
+        <KillResource index="Terrazine" value="1800"/>
+        <AbilArray Link="Berserk"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Berserk" Type="AbilCmd" AbilCmd="Berserk,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="3600"/>
+        <ScoreKill value="1800"/>
+    </CUnit>
+    <CUnit id="FurbolgChampionHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="55000"/>
+        <LifeMax value="55000"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="50000"/>
+        <CostResource index="Custom" value="-2600"/>
+        <KillXP value="275"/>
+        <KillResource index="Terrazine" value="2000"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="4000"/>
+        <ScoreKill value="2000"/>
+    </CUnit>
+    <CUnit id="JewelcrafterHLW">
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="CreateVisible" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <EditorFlags index="NeutralDefault" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <Sight value="7"/>
+        <AbilArray Link="ShopInteract"/>
+        <AbilArray Link="ShopPawn"/>
+        <AbilArray Link="InventoryShop"/>
+        <AbilArray Link="JewelcrafterShopTrain"/>
+        <BehaviorArray Link="ShopInteractSource"/>
+        <CardLayouts>
+            <LayoutButtons Face="RingRed1" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train1" Row="0" Column="0"/>
+            <LayoutButtons Face="RingGreen1" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train4" Row="0" Column="1"/>
+            <LayoutButtons Face="RingBlue1" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train7" Row="0" Column="2"/>
+            <LayoutButtons Face="RingRed2" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train2" Row="1" Column="0"/>
+            <LayoutButtons Face="RingGreen2" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train5" Row="1" Column="1"/>
+            <LayoutButtons Face="RingBlue2" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train8" Row="1" Column="2"/>
+            <LayoutButtons Face="RingRed3" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train3" Row="2" Column="0"/>
+            <LayoutButtons Face="RingGreen3" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train6" Row="2" Column="1"/>
+            <LayoutButtons Face="RingBlue3" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train9" Row="2" Column="2"/>
+            <LayoutButtons Face="RingPurple1" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train10" Row="0" Column="3"/>
+            <LayoutButtons Face="RingPurple2" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train11" Row="1" Column="3"/>
+            <LayoutButtons Face="RingPurple3" Type="AbilCmd" AbilCmd="JewelcrafterShopTrain,Train12" Row="2" Column="3"/>
+        </CardLayouts>
+        <Radius value="1.75"/>
+        <SeparationRadius value="1.75"/>
+        <Footprint value="Footprint4x4Contour"/>
+        <PlacementFootprint value="Footprint4x4"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <KillDisplay value="Never"/>
+        <RankDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="RazormaneChiefHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="30000"/>
+        <LifeMax value="30000"/>
+        <EnergyStart value="400"/>
+        <EnergyMax value="400"/>
+        <EnergyRegenRate value="2"/>
+        <Speed value="2.1093"/>
+        <CostResource index="Terrazine" value="52000"/>
+        <CostResource index="Custom" value="-2700"/>
+        <KillXP value="300"/>
+        <KillResource index="Terrazine" value="2100"/>
+        <AbilArray Link="HealingWard"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HealingWard" Type="AbilCmd" AbilCmd="HealingWard,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="4200"/>
+        <ScoreKill value="2100"/>
+    </CUnit>
+    <CUnit id="AncientSasquatchHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="50000"/>
+        <LifeMax value="50000"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="53000"/>
+        <CostResource index="Custom" value="-2800"/>
+        <KillXP value="170"/>
+        <KillResource index="Terrazine" value="1100"/>
+        <AbilArray Link="Reincarnation"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Reincarnation" Type="Passive" Requirements="ReincarnationReady" Row="2" Column="3"/>
+            <LayoutButtons>
+                <Face value="Reincarnation"/>
+                <Type value="Passive"/>
+                <Behavior value="ReincarnationCooldown"/>
+                <Requirements value="Reincarnation"/>
+                <Row value="2"/>
+                <Column value="3"/>
+            </LayoutButtons>
+        </CardLayouts>
+        <ScoreMake value="2200"/>
+        <ScoreKill value="1100"/>
+    </CUnit>
+    <CUnit id="FirebrandHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="30000"/>
+    </CUnit>
+    <CUnit id="IceBarbedSpearHLW" parent="DefaultItem">
+        <CostResource index="Terrazine" value="60000"/>
+    </CUnit>
+    <CUnit id="SuccubusHero">
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="WaterElemental"/>
+        <AbilArray Link="WaterElementalMagazine"/>
+        <AbilArray Link="FeralSpirit"/>
+        <AbilArray Link="FeralSpiritMagazine"/>
+        <AbilArray Link="CommandAura"/>
+        <AbilArray Link="Inferno"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="WaterElementalQ" Type="AbilCmd" AbilCmd="WaterElemental,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="FeralSpirit" Type="AbilCmd" AbilCmd="FeralSpirit,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="CommandAura" Type="Passive" Requirements="CommandAura" Row="2" Column="2"/>
+            <LayoutButtons Face="Inferno" Type="AbilCmd" AbilCmd="Inferno,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="WaterElementalQ" Type="AbilCmd" AbilCmd="SuccubusHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="FeralSpirit" Type="AbilCmd" AbilCmd="SuccubusHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CommandAura" Type="AbilCmd" AbilCmd="SuccubusHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Inferno" Type="AbilCmd" AbilCmd="SuccubusHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="NetherDragonHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Massive" value="1"/>
+        <LifeStart value="100000"/>
+        <LifeMax value="100000"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <EnergyStart value="500"/>
+        <EnergyMax value="500"/>
+        <EnergyRegenRate value="1.25"/>
+        <Speed value="2.5"/>
+        <Height value="2"/>
+        <CostResource index="Terrazine" value="500000"/>
+        <CostResource index="Custom" value="-25000"/>
+        <KillXP value="1300"/>
+        <KillResource index="Terrazine" value="19000"/>
+        <ScoreMake value="39000"/>
+        <ScoreKill value="19000"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="TyrandeExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="19" Face="SearingStrikesW" Type="AbilCmd" AbilCmd="SearingStrikes,On" Requirements=""/>
+            <LayoutButtons index="21" Face="TrueshotAura" Type="Passive" AbilCmd="" Requirements="TrueshotAura" Column="2"/>
+            <LayoutButtons index="22" Face="CelestialWrath" Behavior="CelestialWrathCooldown" Requirements="CelestialWrath"/>
+            <LayoutButtons index="23">
+                <Face value="Starfall"/>
+                <Type value="AbilCmd"/>
+                <AbilCmd value="Starfall,Execute"/>
+                <Behavior value=""/>
+                <Requirements value=""/>
+                <Column value="3"/>
+            </LayoutButtons>
+            <LayoutButtons index="24" Face="LunarStrike" AbilCmd="LunarStrike,Execute"/>
+            <LayoutButtons index="25" Face="Moonbeam" AbilCmd="Moonbeam,Execute" Column="4"/>
+            <LayoutButtons index="26" Face="BannerofGrace" AbilCmd="BannerofGrace,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="3" Face="Starsurge" AbilCmd="TyrandeExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="4" Face="RuneTrap" AbilCmd="TyrandeExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons index="5" Face="TrueshotAura" AbilCmd="TyrandeExtendedLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons index="6" Face="Starfall" AbilCmd="TyrandeExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="7" Face="CelestialWrath" AbilCmd="TyrandeExtendedLearn,Learn9" Row="1" Column="2"/>
+            <LayoutButtons index="8" Face="LunarStrike" AbilCmd="TyrandeExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="9" Face="BannerofGrace" AbilCmd="TyrandeExtendedLearn,Learn14" Row="2" Column="1"/>
+            <LayoutButtons index="10" Face="SearingStrikesW" AbilCmd="TyrandeExtendedLearn,Learn2" Row="0"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="UtherExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="20" Face="DevotionAura" Requirements="DevotionAura" Column="2"/>
+            <LayoutButtons index="21" Face="RadianceE" Type="AbilCmd" AbilCmd="Radiance,Execute" Requirements=""/>
+            <LayoutButtons index="22" Face="Resurrection" AbilCmd="Resurrection,Execute" Column="3"/>
+            <LayoutButtons index="23" Face="HolyAuraW" Type="Passive" AbilCmd="" Requirements="HolyAura" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="6" Face="RadianceE" AbilCmd="UtherExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="7" Face="RetributionAura" AbilCmd="UtherExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="8" Face="HolyAuraW" AbilCmd="UtherExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons Face="Resurrection" Row="0" Column="3"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="VoidwalkerHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="Flamestrike"/>
+        <AbilArray Link="Infection"/>
+        <AbilArray Link="DarkRitual"/>
+        <AbilArray Link="Doom"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="Flamestrike" Type="AbilCmd" AbilCmd="Flamestrike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Infection" Type="AbilCmd" AbilCmd="Infection,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DarkRitual" Type="AbilCmd" AbilCmd="DarkRitual,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="Doom" Type="AbilCmd" AbilCmd="Doom,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="Flamestrike" Type="AbilCmd" AbilCmd="VoidwalkerHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="Infection" Type="AbilCmd" AbilCmd="VoidwalkerHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="DarkRitual" Type="AbilCmd" AbilCmd="VoidwalkerHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Doom" Type="AbilCmd" AbilCmd="VoidwalkerHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <StationaryTurningRate value="360"/>
+        <TurningRate value="360"/>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="Sunstone">
+        <BehaviorArray Link="ItemNotPawnable"/>
+    </CUnit>
+    <CUnit id="BlacksmithHLW">
+        <Facing value="315"/>
+        <Mob value="Multiplayer"/>
+        <FlagArray index="Turnable" value="0"/>
+        <FlagArray index="Movable" value="0"/>
+        <FlagArray index="CreateVisible" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FogVisibility value="Snapshot"/>
+        <EditorFlags index="NeutralDefault" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="Structure" value="1"/>
+        <Collide index="RoachBurrow" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <LifeStart value="10000"/>
+        <LifeMax value="10000"/>
+        <LifeRegenRate value="10000"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranBuildingPlating"/>
+        <Sight value="7"/>
+        <AbilArray Link="ShopInteract"/>
+        <AbilArray Link="ShopPawn"/>
+        <AbilArray Link="InventoryShop"/>
+        <AbilArray Link="ItemsHLW"/>
+        <BehaviorArray Link="ShopInteractSource"/>
+        <CardLayouts>
+            <LayoutButtons Face="IronplateBucklerHLW" Type="AbilCmd" AbilCmd="ItemsHLW,Train5" Row="0" Column="0"/>
+            <LayoutButtons Face="ButchersBladeHLW" Type="AbilCmd" AbilCmd="ItemsHLW,Train8" Row="0" Column="1"/>
+            <LayoutButtons Face="BloodforgedShieldHLW" Type="AbilCmd" AbilCmd="ItemsHLW,Train6" Row="1" Column="0"/>
+            <LayoutButtons Face="EnergeticBarrierHLW" Type="AbilCmd" AbilCmd="ItemsHLW,Train7" Row="2" Column="0"/>
+        </CardLayouts>
+        <Radius value="1.75"/>
+        <SeparationRadius value="1.75"/>
+        <Footprint value="Footprint4x4Contour"/>
+        <PlacementFootprint value="Footprint4x4"/>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="2"/>
+        <EditorCategories value="ObjectType:Structure,ObjectFamily:Melee"/>
+        <KillDisplay value="Never"/>
+        <RankDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="UrsolBearHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="50000"/>
+        <LifeMax value="50000"/>
+        <EnergyStart value="300"/>
+        <EnergyMax value="300"/>
+        <EnergyRegenRate value="0.75"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="47000"/>
+        <CostResource index="Custom" value="-2500"/>
+        <KillXP value="260"/>
+        <KillResource index="Terrazine" value="1900"/>
+        <AbilArray Link="Roar"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Roar" Type="AbilCmd" AbilCmd="Roar,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="3800"/>
+        <ScoreKill value="1900"/>
+    </CUnit>
+    <CUnit id="VoljinExtended">
+        <PushPriority value="20"/>
+        <CardLayouts index="0">
+            <LayoutButtons index="19" Face="HexW"/>
+            <LayoutButtons index="20" Face="SerpentWard" AbilCmd="SerpentWard,Execute" Column="2"/>
+            <LayoutButtons index="21" Face="SpiritMend" AbilCmd="SpiritMend,Execute"/>
+            <LayoutButtons index="22" Face="BigBadVoodoo" AbilCmd="BigBadVoodoo,Execute" Column="3"/>
+            <LayoutButtons index="23" Face="Transmute" AbilCmd="Transmute,Execute"/>
+            <LayoutButtons index="24" Face="CallHawkW" AbilCmd="CallHawk,Execute" Column="1"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons index="3" Face="SerpentWard" AbilCmd="VoljinExtendedLearn,Learn3" Column="2"/>
+            <LayoutButtons index="4" Face="BigBadVoodoo" AbilCmd="VoljinExtendedLearn,Learn4" Column="3"/>
+            <LayoutButtons index="5" Face="AcidBomb" AbilCmd="VoljinExtendedLearn,Learn7" Row="1" Column="0"/>
+            <LayoutButtons index="6" Face="CallHawkW" AbilCmd="VoljinExtendedLearn,Learn8" Column="1"/>
+            <LayoutButtons index="7" Face="SpiritMend" AbilCmd="VoljinExtendedLearn,Learn9" Column="2"/>
+            <LayoutButtons index="8" Face="Transmute" AbilCmd="VoljinExtendedLearn,Learn10" Column="3"/>
+            <LayoutButtons index="9" Face="HexW" AbilCmd="VoljinExtendedLearn,Learn2" Row="0" Column="1"/>
+        </CardLayouts>
+    </CUnit>
+    <CUnit id="VorazunHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="PoisonBlast"/>
+        <AbilArray Link="GuidedArrow"/>
+        <AbilArray Link="ShadowFury"/>
+        <AbilArray Link="DarkElite"/>
+        <AbilArray Link="ShadowMastery"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="WeaponDamageMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="PoisonBlast" Type="AbilCmd" AbilCmd="PoisonBlast,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="GuidedArrow" Type="AbilCmd" AbilCmd="GuidedArrow,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="DarkReinforcements" Type="AbilCmd" AbilCmd="DarkElite,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="ShadowFury" Type="AbilCmd" AbilCmd="ShadowFury,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="WeaponDamageMastery" Type="Passive" Row="1" Column="0"/>
+            <LayoutButtons Face="ShadowMastery" Type="Passive" Requirements="ShadowMastery" Row="2" Column="4"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="PoisonBlast" Type="AbilCmd" AbilCmd="VorazunHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="GuidedArrow" Type="AbilCmd" AbilCmd="VorazunHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="ShadowFury" Type="AbilCmd" AbilCmd="VorazunHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="DarkReinforcements" Type="AbilCmd" AbilCmd="VorazunHeroLearn,Learn4" Row="0" Column="3"/>
+            <LayoutButtons Face="ShadowMastery" Type="AbilCmd" AbilCmd="VorazunHeroLearn,Learn5" Row="1" Column="0"/>
+        </CardLayouts>
+        <BehaviorArray Link="MeleeHero"/>
+        <Speed value="2.5"/>
+        <PushPriority value="20"/>
+        <EnergyMax value="300"/>
+    </CUnit>
+    <CUnit id="WarlockHero">
+        <AbilArray Link="BlightedGround"/>
+        <AbilArray Link="Desecrate"/>
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="DeathMarch"/>
+        <AbilArray Link="Transformation"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="BlightedGround" Type="AbilCmd" AbilCmd="BlightedGround,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="DeathMarch" Type="AbilCmd" AbilCmd="DeathMarch,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Desecrate" Type="Passive" Requirements="Desecrate" Row="2" Column="2"/>
+            <LayoutButtons Face="Transformation" Type="AbilCmd" AbilCmd="Transformation,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="BlightedGround" Type="AbilCmd" AbilCmd="WarlockHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="DeathMarch" Type="AbilCmd" AbilCmd="WarlockHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="Desecrate" Type="AbilCmd" AbilCmd="WarlockHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Transformation" Type="AbilCmd" AbilCmd="WarlockHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <PushPriority value="20"/>
+    </CUnit>
+    <CUnit id="Wisp">
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+    </CUnit>
+    <CUnit id="WispDruid">
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+    </CUnit>
+    <CUnit id="WispSentinel">
+        <AbilArray index="3" removed="1"/>
+        <AbilArray index="4" removed="1"/>
+        <AbilArray index="5" removed="1"/>
+        <AbilArray index="6" removed="1"/>
+    </CUnit>
+    <CUnit id="ZandalariPriestHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="200"/>
+        <LifeMax value="200"/>
+        <EnergyStart value="200"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.5"/>
+        <Speed value="0.7812"/>
+        <CostResource index="Terrazine" value="80"/>
+        <CostResource index="Custom" value="-12"/>
+        <KillXP value="10"/>
+        <KillResource index="Terrazine" value="30"/>
+        <AbilArray Link="InnerFire"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="InnerFire" Type="AbilCmd" AbilCmd="InnerFire,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="60"/>
+        <ScoreKill value="30"/>
+    </CUnit>
+    <CUnit id="MurgulBloodgillHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="16000"/>
+        <LifeMax value="16000"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <Speed value="2.1093"/>
+        <CostResource index="Terrazine" value="27000"/>
+        <CostResource index="Custom" value="-1600"/>
+        <KillXP value="190"/>
+        <KillResource index="Terrazine" value="1400"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="2800"/>
+        <ScoreKill value="1400"/>
+    </CUnit>
+    <CUnit id="GnollAssassinHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="3500"/>
+        <LifeMax value="3500"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <Speed value="1.9531"/>
+        <CostResource index="Terrazine" value="6000"/>
+        <CostResource index="Custom" value="-440"/>
+        <KillXP value="72"/>
+        <KillResource index="Terrazine" value="480"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="EnvenomedWeapons" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="960"/>
+        <ScoreKill value="480"/>
+    </CUnit>
+    <CUnit id="HighborneWraithHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <LifeStart value="1750"/>
+        <LifeMax value="1750"/>
+        <EnergyStart value="400"/>
+        <EnergyMax value="400"/>
+        <EnergyRegenRate value="1"/>
+        <Speed value="1.7187"/>
+        <CostResource index="Terrazine" value="2500"/>
+        <CostResource index="Custom" value="-210"/>
+        <KillXP value="52"/>
+        <KillResource index="Terrazine" value="260"/>
+        <AbilArray Link="Curse"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Curse" Type="AbilCmd" AbilCmd="Curse,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="520"/>
+        <ScoreKill value="260"/>
+    </CUnit>
+    <CUnit id="JuggernautHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="12500"/>
+        <LifeMax value="12500"/>
+        <Speed value="2.3437"/>
+        <CostResource index="Terrazine" value="16000"/>
+        <CostResource index="Custom" value="-1000"/>
+        <KillXP value="130"/>
+        <KillResource index="Terrazine" value="950"/>
+        <ScoreMake value="1900"/>
+        <ScoreKill value="950"/>
+    </CUnit>
+    <CUnit id="MagnataurHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="15000"/>
+        <LifeMax value="15000"/>
+        <EnergyStart value="200"/>
+        <EnergyMax value="200"/>
+        <EnergyRegenRate value="0.879"/>
+        <Speed value="2.1875"/>
+        <CostResource index="Terrazine" value="19000"/>
+        <CostResource index="Custom" value="-1200"/>
+        <KillXP value="170"/>
+        <KillResource index="Terrazine" value="1100"/>
+        <AbilArray Link="IceBolt"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="IceBolt" Type="AbilCmd" AbilCmd="IceBolt,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="2200"/>
+        <ScoreKill value="1100"/>
+    </CUnit>
+    <CUnit id="DireMammothHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="19000"/>
+        <LifeMax value="19000"/>
+        <Speed value="2.3437"/>
+        <CostResource index="Terrazine" value="23000"/>
+        <CostResource index="Custom" value="-1400"/>
+        <KillXP value="180"/>
+        <KillResource index="Terrazine" value="1300"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="2600"/>
+        <ScoreKill value="1300"/>
+    </CUnit>
+    <CUnit id="MurlocPlaguebearerHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="17500"/>
+        <LifeMax value="17500"/>
+        <Speed value="2.1093"/>
+        <CostResource index="Terrazine" value="32000"/>
+        <CostResource index="Custom" value="-1800"/>
+        <KillXP value="200"/>
+        <KillResource index="Terrazine" value="1500"/>
+        <AbilArray Link="DiseaseCloud"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="DiseaseCloud" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="3000"/>
+        <ScoreKill value="1500"/>
+    </CUnit>
+    <CUnit id="NerubianQueenHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="26000"/>
+        <LifeMax value="26000"/>
+        <Speed value="2.5"/>
+        <CostResource index="Terrazine" value="36000"/>
+        <CostResource index="Custom" value="-2000"/>
+        <KillXP value="210"/>
+        <KillResource index="Terrazine" value="1600"/>
+        <AbilArray Link="UnholyAuraNeutral"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="UnholyAuraNeutral" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="3200"/>
+        <ScoreKill value="1600"/>
+    </CUnit>
+    <CUnit id="BoulderfistOgreHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="37000"/>
+        <LifeMax value="37000"/>
+        <Speed value="2.1093"/>
+        <CostResource index="Terrazine" value="40000"/>
+        <CostResource index="Custom" value="-2200"/>
+        <KillXP value="220"/>
+        <KillResource index="Terrazine" value="1700"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="3400"/>
+        <ScoreKill value="1700"/>
+    </CUnit>
+    <CUnit id="WarGolemHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="7500"/>
+        <LifeMax value="7500"/>
+        <Speed value="2.3437"/>
+        <CostResource index="Terrazine" value="8500"/>
+        <CostResource index="Custom" value="-600"/>
+        <KillXP value="85"/>
+        <KillResource index="Terrazine" value="640"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="1280"/>
+        <ScoreKill value="640"/>
+    </CUnit>
+    <CUnit id="SeaGiantHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="2750"/>
+        <LifeMax value="2750"/>
+        <Speed value="1.7187"/>
+        <CostResource index="Terrazine" value="3000"/>
+        <CostResource index="Custom" value="-240"/>
+        <KillXP value="58"/>
+        <KillResource index="Terrazine" value="290"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="MindRot" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="580"/>
+        <ScoreKill value="290"/>
+    </CUnit>
+    <CUnit id="BroodmotherHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="3000"/>
+        <LifeMax value="3000"/>
+        <Speed value="1.875"/>
+        <CostResource index="Terrazine" value="4500"/>
+        <CostResource index="Custom" value="-350"/>
+        <KillXP value="60"/>
+        <KillResource index="Terrazine" value="400"/>
+        <AbilArray Link="SpawnSpiders"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="EnvenomedWeapons" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="SpawnSpiders" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="800"/>
+        <ScoreKill value="400"/>
+    </CUnit>
+    <CUnit id="SpiderCrabHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="225"/>
+        <LifeMax value="225"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <Speed value="0.7812"/>
+        <CostResource index="Terrazine" value="50"/>
+        <CostResource index="Custom" value="-8"/>
+        <KillXP value="8"/>
+        <KillResource index="Terrazine" value="20"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="40"/>
+        <ScoreKill value="20"/>
+    </CUnit>
+    <CUnit id="SkeletalMageHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <Speed value="1"/>
+        <CostResource index="Terrazine" value="300"/>
+        <CostResource index="Custom" value="-38"/>
+        <KillXP value="18"/>
+        <KillResource index="Terrazine" value="70"/>
+        <AbilArray Link="AbilityResistance"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="AbilityResistance" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="140"/>
+        <ScoreKill value="70"/>
+    </CUnit>
+    <CUnit id="CentaurArcherHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="150"/>
+        <LifeMax value="150"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <Speed value="0.7031"/>
+        <CostResource index="Terrazine" value="25"/>
+        <CostResource index="Custom" value="-4"/>
+        <KillXP value="6"/>
+        <KillResource index="Terrazine" value="10"/>
+        <ScoreMake value="20"/>
+        <ScoreKill value="10"/>
+    </CUnit>
+    <CUnit id="CorruptedTreantHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="400"/>
+        <LifeMax value="400"/>
+        <Speed value="1"/>
+        <CostResource index="Terrazine" value="450"/>
+        <CostResource index="Custom" value="-55"/>
+        <KillXP value="22"/>
+        <KillResource index="Terrazine" value="100"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="EnvenomedWeapons" Type="Passive" Row="2" Column="0"/>
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="200"/>
+        <ScoreKill value="100"/>
+    </CUnit>
+    <CUnit id="FurbolgShamanHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="1250"/>
+        <LifeMax value="1250"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <EnergyStart value="300"/>
+        <EnergyMax value="300"/>
+        <EnergyRegenRate value="0.75"/>
+        <Speed value="1.7187"/>
+        <CostResource index="Terrazine" value="1500"/>
+        <CostResource index="Custom" value="-130"/>
+        <KillXP value="46"/>
+        <KillResource index="Terrazine" value="170"/>
+        <AbilArray Link="Rejuvenation"/>
+        <AbilArray Link="FaerieFire"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Rejuvenation" Type="AbilCmd" AbilCmd="Rejuvenation,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="FaerieFire" Type="AbilCmd" AbilCmd="FaerieFire,Execute" Row="2" Column="1"/>
+        </CardLayouts>
+        <ScoreMake value="340"/>
+        <ScoreKill value="170"/>
+    </CUnit>
+    <CUnit id="ScorpidHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="50"/>
+        <LifeMax value="50"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <CostResource index="Terrazine" value="5"/>
+        <CostResource index="Custom" value="-1"/>
+        <KillXP value="2"/>
+        <KillResource index="Terrazine" value="3"/>
+        <ScoreMake value="6"/>
+        <ScoreKill value="3"/>
+    </CUnit>
+    <CUnit id="BanditHLW" parent="DefaultCreep">
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="100"/>
+        <LifeMax value="100"/>
+        <LifeArmorName value="Unit/LifeArmorName/Light"/>
+        <CostResource index="Terrazine" value="10"/>
+        <CostResource index="Custom" value="-2"/>
+        <KillXP value="4"/>
+        <KillResource index="Terrazine" value="6"/>
+        <ScoreMake value="12"/>
+        <ScoreKill value="6"/>
+    </CUnit>
+    <CUnit id="BrokenVindicatorHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <Speed value="0.7812"/>
+        <CostResource index="Terrazine" value="125"/>
+        <CostResource index="Custom" value="-18"/>
+        <KillXP value="12"/>
+        <KillResource index="Terrazine" value="40"/>
+        <AbilArray Link="HardenedSkin"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="HardenedSkin" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="80"/>
+        <ScoreKill value="40"/>
+    </CUnit>
+    <CUnit id="WindfuryHarpyHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="9500"/>
+        <LifeMax value="9500"/>
+        <EnergyStart value="400"/>
+        <EnergyMax value="400"/>
+        <EnergyRegenRate value="1"/>
+        <Speed value="2.3437"/>
+        <Height value="2"/>
+        <CostResource index="Terrazine" value="10500"/>
+        <CostResource index="Custom" value="-700"/>
+        <KillXP value="100"/>
+        <KillResource index="Terrazine" value="700"/>
+        <AbilArray Link="Rejuvenation"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="Rejuvenation" Type="AbilCmd" AbilCmd="Rejuvenation,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="1400"/>
+        <ScoreKill value="700"/>
+    </CUnit>
+    <CUnit id="AncientHydraHLW" parent="DefaultCreep">
+        <Attributes index="Armored" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <LifeStart value="11000"/>
+        <LifeMax value="11000"/>
+        <Speed value="2.3437"/>
+        <CostResource index="Terrazine" value="13000"/>
+        <CostResource index="Custom" value="-850"/>
+        <KillXP value="110"/>
+        <KillResource index="Terrazine" value="850"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SlowingPoison" Type="Passive" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreMake value="1700"/>
+        <ScoreKill value="850"/>
+    </CUnit>
+    <CUnit id="WardenHero">
+        <AbilArray Link="AttributeBonus"/>
+        <AbilArray Link="ShadowStrike"/>
+        <AbilArray Link="Assassinate"/>
+        <AbilArray Link="CleavingStrikes"/>
+        <AbilArray Link="Vengeance"/>
+        <AbilArray Link="SelectShrine"/>
+        <AbilArray Link="AbilityPowerMastery"/>
+        <BehaviorArray Link="MeleeHero"/>
+        <CardLayouts index="0">
+            <LayoutButtons Face="SelectShrineHLW" Type="AbilCmd" AbilCmd="SelectShrine,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="ShadowStrike" Type="AbilCmd" AbilCmd="ShadowStrike,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="AssassinateW" Type="AbilCmd" AbilCmd="Assassinate,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="CleavingStrikes" Type="Passive" Requirements="CleavingStrikes" Row="2" Column="2"/>
+            <LayoutButtons Face="Vengeance" Type="AbilCmd" AbilCmd="Vengeance,Execute" Row="2" Column="3"/>
+            <LayoutButtons Face="AbilityPowerMastery" Type="Passive" Row="1" Column="0"/>
+        </CardLayouts>
+        <CardLayouts index="1">
+            <LayoutButtons Face="ShadowStrike" Type="AbilCmd" AbilCmd="WardenHeroLearn,Learn1" Row="0" Column="0"/>
+            <LayoutButtons Face="AssassinateW" Type="AbilCmd" AbilCmd="WardenHeroLearn,Learn2" Row="0" Column="1"/>
+            <LayoutButtons Face="CleavingStrikes" Type="AbilCmd" AbilCmd="WardenHeroLearn,Learn3" Row="0" Column="2"/>
+            <LayoutButtons Face="Vengeance" Type="AbilCmd" AbilCmd="WardenHeroLearn,Learn4" Row="0" Column="3"/>
+        </CardLayouts>
+        <Speed value="3"/>
+        <PushPriority value="20"/>
+    </CUnit>
+</Catalog>

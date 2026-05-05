@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CWater id="BelShir">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="7.750000"/>
+            <Color value="0.000000,0.501961,1.000000,0.337000"/>
+            <ColorFallOff value="0.058000"/>
+            <Specularity value="73.599998"/>
+            <SpecularScaler value="0.050000"/>
+            <UvRate value="-0.000031,-0.001000,0.000000,0.000000"/>
+            <MeshRoughness value="1.000000"/>
+            <TextureRoughness value="1.000000"/>
+            <ReflectionDistortion value="0.184000"/>
+            <RefractionDistortion value="0.020000"/>
+            <MinReflection value="0.193000"/>
+            <ReflectivityPower value="8.000000"/>
+        </State>
+        <Doodads index="0" removed="1"/>
+    </CWater>
+    <CWater id="BelShirL2">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="9.750000"/>
+            <Color value="0.000000,0.501961,1.000000,0.337000"/>
+            <ColorFallOff value="0.058000"/>
+            <Specularity value="73.599998"/>
+            <SpecularScaler value="0.050000"/>
+            <UvRate value="-0.000031,-0.001000,0.000000,0.000000"/>
+            <MeshRoughness value="1.000000"/>
+            <TextureRoughness value="1.000000"/>
+            <ReflectionDistortion value="0.184000"/>
+            <RefractionDistortion value="0.020000"/>
+            <MinReflection value="0.193000"/>
+            <ReflectivityPower value="8.000000"/>
+        </State>
+        <ReceiveShadows value="1"/>
+        <BeachShoreline value="BelShirBeachShoreline"/>
+        <CliffShoreline value="BelShirCliffShoreline"/>
+    </CWater>
+    <CWater id="BelShirL3">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="11.750000"/>
+            <Color value="0.000000,0.501961,1.000000,0.337000"/>
+            <ColorFallOff value="0.058000"/>
+            <Specularity value="73.599998"/>
+            <SpecularScaler value="0.050000"/>
+            <UvRate value="-0.000031,-0.001000,0.000000,0.000000"/>
+            <MeshRoughness value="1.000000"/>
+            <TextureRoughness value="1.000000"/>
+            <ReflectionDistortion value="0.184000"/>
+            <RefractionDistortion value="0.020000"/>
+            <MinReflection value="0.193000"/>
+            <ReflectivityPower value="8.000000"/>
+        </State>
+        <ReceiveShadows value="1"/>
+        <BeachShoreline value="BelShirBeachShoreline"/>
+        <CliffShoreline value="BelShirCliffShoreline"/>
+    </CWater>
+    <CWater id="PoolBlueL1">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="7.800000"/>
+            <Color value="0.000000,0.501961,1.000000,0.418000"/>
+            <ColorFallOff value="0.200000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.100000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <State>
+            <Name value="Alternate Setting"/>
+            <Height value="7.900000"/>
+            <Color value="0.121569,0.211765,0.000000,0.418000"/>
+            <ColorFallOff value="0.093000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.150000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <ShadowDistortion value="1.000000"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <ReceiveShadows value="1"/>
+        <BeachShoreline value="CharAcidBeachShoreline"/>
+        <CliffShoreline value="CharAcidCliffShoreline"/>
+    </CWater>
+    <CWater id="PoolBlueL2">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="9.800000"/>
+            <Color value="0.000000,0.501961,1.000000,0.418000"/>
+            <ColorFallOff value="0.200000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.100000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <State>
+            <Name value="Alternate Setting"/>
+            <Height value="7.900000"/>
+            <Color value="0.121569,0.211765,0.000000,0.418000"/>
+            <ColorFallOff value="0.093000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.150000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <ShadowDistortion value="1.000000"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <ReceiveShadows value="1"/>
+        <BeachShoreline value="CharAcidBeachShoreline"/>
+        <CliffShoreline value="CharAcidCliffShoreline"/>
+    </CWater>
+    <CWater id="PoolBlueL3">
+        <State index="0">
+            <Name value="[Default]"/>
+            <Height value="11.800000"/>
+            <Color value="0.000000,0.501961,1.000000,0.418000"/>
+            <ColorFallOff value="0.200000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.100000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <State>
+            <Name value="Alternate Setting"/>
+            <Height value="7.900000"/>
+            <Color value="0.121569,0.211765,0.000000,0.418000"/>
+            <ColorFallOff value="0.093000"/>
+            <CausticsFallOff value="4.000000"/>
+            <Specularity value="400.000000"/>
+            <SpecularScaler value="0.100000"/>
+            <UvRate value="-0.000626,-0.003951,0.000000,0.000000"/>
+            <UvRotate value="5.458517"/>
+            <MeshRoughness value="0.150000"/>
+            <TextureRoughness value="0.274000"/>
+            <ReflectionDistortion value="0.100000"/>
+            <RefractionDistortion value="0.005400"/>
+            <ShadowDistortion value="1.000000"/>
+            <MinReflection value="0.100000"/>
+            <ReflectivityPower value="2.000000"/>
+        </State>
+        <ReceiveShadows value="1"/>
+        <BeachShoreline value="CharAcidBeachShoreline"/>
+        <CliffShoreline value="CharAcidCliffShoreline"/>
+    </CWater>
+</Catalog>

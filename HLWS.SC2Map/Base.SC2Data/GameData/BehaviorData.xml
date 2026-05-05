@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff default="1" id="BuffAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AlacrityAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AntiMagicAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BlightAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAuraCoop">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAuraCoopSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BrillianceAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BurningAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CelerityAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ClarityAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CleansingAura">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CommandAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Corrosion">
+        <Modification>
+            <DamageTakenFraction index="Spell" value="0.33"/>
+            <DamageTakenFraction index="Melee" value="0.33"/>
+            <DamageTakenFraction index="Ranged" value="0.33"/>
+            <DamageTakenFraction index="Splash" value="0.33"/>
+            <DamageTakenFraction index="NoProc" value="0.33"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CripplingAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DemonGlyph">
+        <Modification>
+            <AttributeChangeArray index="0" Attribute="EnergyModifier" Points="25"/>
+            <AttributeChangeArray index="1" Attribute="AbilityRange"/>
+            <AttributeChangeArray Attribute="WeaponRange" Points="25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DevotionAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="DisplacementBeam">
+        <Period value="0.1875"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ElementalAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnduranceAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnergeticAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Extinction">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="0"/>
+        <InfoIcon value="Assets\Textures\btn-ability-zerg-extinction.dds"/>
+        <DisplayDuration index="Enemy" value="0"/>
+        <ExpireEffect value="ExtinctionPersistent"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+        <DamageResponse ModifyFraction="0" ModifyMinimumDamage="1">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FieryAura">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrostMastery">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-chill.dds"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <Period value="0.25"/>
+        <InitialEffect value="FrostMasterySearch"/>
+        <PeriodicEffect value="FrostMasterySearch"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CharmArea">
+        <Modification>
+            <BehaviorLinkDisableArray value="FireEnchant"/>
+            <BehaviorLinkDisableArray value="LightningEnchant"/>
+            <BehaviorLinkDisableArray value="PoisonEnchant"/>
+            <BehaviorLinkDisableArray value="FrostEnchant"/>
+            <BehaviorLinkDisableArray value="InnerFire"/>
+            <BehaviorLinkDisableArray value="FrostArmor"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChronoBoostTarget">
+        <Modification AttackSpeedMultiplier="1.25">
+            <VitalRegenMultiplier index="Life" value="0.25"/>
+            <VitalRegenMultiplier index="Shields" value="0.25"/>
+            <VitalRegenMultiplier index="Energy" value="0.25"/>
+            <RateMultiplierArray index="Charge" value="1.25"/>
+            <RateMultiplierArray index="Cooldown" value="1.25"/>
+            <RateMultiplierArray index="Progress" value="1"/>
+            <RateMultiplierArray index="Queueable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ChronoBoostTargetPrecursor">
+        <Modification AttackSpeedMultiplier="1.25">
+            <VitalRegenMultiplier index="Life" value="0.25"/>
+            <VitalRegenMultiplier index="Shields" value="0.25"/>
+            <VitalRegenMultiplier index="Energy" value="0.25"/>
+            <RateMultiplierArray index="Charge" value="1.25"/>
+            <RateMultiplierArray index="Cooldown" value="1.25"/>
+            <RateMultiplierArray index="Progress" value="1"/>
+            <RateMultiplierArray index="Queueable" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="GraceAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorUnitTracker id="GuardianWispsUnitTracker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <MaxTrackedUnits value="2"/>
+        <ReplacedEffect value="KillRemove"/>
+    </CBehaviorUnitTracker>
+    <CBehaviorBuff id="GuidedArrowTimedLife">
+        <Duration value="5.6"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HasteAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IceBarrier">
+        <Period value="0"/>
+        <InitialEffect value=""/>
+        <PeriodicEffect value=""/>
+        <DamageResponse Handled="IceBarrierSlow">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Kind index="NoProc" value="0"/>
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LegionAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LifeGlyph">
+        <Modification>
+            <AttributeChangeArray index="0" Attribute="Lifesteal" Points="3"/>
+            <AttributeChangeArray index="1" Attribute="SpellVamp" Points="3"/>
+            <AttributeChangeArray index="2" Attribute="EnergyModifier"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MaliceAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="MalignantAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Metamorphosis">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Splash" value="0.5"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="OppressionAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CannonImageInitialStun">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Invulnerable" value="1"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <Duration value="0.35"/>
+        <ExpireEffect value="CannonImageTimedLife"/>
+        <Modification>
+            <ModifyFlags index="DisableWeapons" value="1"/>
+            <StateFlags index="Invulnerable" value="1"/>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CannonImageTimedLife" parent="TimedLife">
+        <Duration value="40"/>
+        <ExpireEffect value="SuicideTimeout"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PoisonBoltTimedLife">
+        <Modification Detect="0"/>
+        <KillCredit Value="Unknown"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ReconstructionBeamSource">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAuraAllies">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAuraAlliesSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ResistanceAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura1Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura1Search"/>
+        <PeriodicEffect value="ShadowMasteryAura1Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PhotonOvercharge">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-protoss-purify.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <BuffFlags index="RemoveDamageResponseExhausted" value="0"/>
+        <BuffFlags index="UpdateDurationWhileDisabled" value="1"/>
+        <TimeScaleSource Value="Global"/>
+        <Duration value="10"/>
+        <Period value="0.72"/>
+        <PeriodicEffect value="PhotonOverchargeSearch"/>
+        <InfoFlags index="Hidden" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AntiMagicPotion">
+        <Duration value="60"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BruteForce">
+        <Modification>
+            <DamageDealtFraction index="Melee" value="0.02"/>
+            <DamageDealtFraction index="Ranged" value="0.02"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BruteForceSource">
+        <Modification>
+            <AttributeChangeArray index="0" Points="10"/>
+            <AttributeChangeArray Attribute="Lifesteal" Points="3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Butchery">
+        <InfoFlags index="Hidden" value="1"/>
+        <MaxStackCount value="100"/>
+        <InitialEffect value="RemoveButchery"/>
+        <RefreshEffect value="RemoveButchery"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ButcheryDebuff">
+        <InfoFlags index="Hidden" value="1"/>
+        <DamageResponse Fatal="1" Handled="Butchery">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ButcherySource">
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Carnage">
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="CastCustomBInterruptible">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-buildundead.dds"/>
+        <RemoveValidatorArray value="CasterNotStunnedBehavior"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <StateFlags index="SuppressFidgeting" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery1">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.15">
+            <DamageDealtFraction index="Melee" value="0.15"/>
+            <DamageDealtFraction index="Ranged" value="0.15"/>
+            <DamageDealtFraction index="Splash" value="0.15"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.07"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EntanglingRootsNeutral">
+        <Modification MoveSpeedMultiplier="0.25"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EyeforanEyeSource">
+        <DamageResponse>
+            <Chance value="0.25"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura1">
+        <Modification AttackSpeedMultiplier="1.03">
+            <RateMultiplierArray index="Charge" value="1.03"/>
+            <RateMultiplierArray index="Cooldown" value="1.03"/>
+            <RateMultiplierArray index="Morph" value="1.03"/>
+            <RateMultiplierArray index="Progress" value="1.03"/>
+            <RateMultiplierArray index="Queueable" value="1.03"/>
+            <RateMultiplierArray index="Spawn" value="1.03"/>
+            <RateMultiplierArray index="Creep" value="1.03"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura10">
+        <Modification AttackSpeedMultiplier="1.3">
+            <RateMultiplierArray index="Charge" value="1.3"/>
+            <RateMultiplierArray index="Cooldown" value="1.3"/>
+            <RateMultiplierArray index="Morph" value="1.3"/>
+            <RateMultiplierArray index="Progress" value="1.3"/>
+            <RateMultiplierArray index="Queueable" value="1.3"/>
+            <RateMultiplierArray index="Spawn" value="1.3"/>
+            <RateMultiplierArray index="Creep" value="1.3"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura2">
+        <Modification AttackSpeedMultiplier="1.06">
+            <RateMultiplierArray index="Charge" value="1.06"/>
+            <RateMultiplierArray index="Cooldown" value="1.06"/>
+            <RateMultiplierArray index="Morph" value="1.06"/>
+            <RateMultiplierArray index="Progress" value="1.06"/>
+            <RateMultiplierArray index="Queueable" value="1.06"/>
+            <RateMultiplierArray index="Spawn" value="1.06"/>
+            <RateMultiplierArray index="Creep" value="1.06"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura3">
+        <Modification AttackSpeedMultiplier="1.09">
+            <RateMultiplierArray index="Charge" value="1.09"/>
+            <RateMultiplierArray index="Cooldown" value="1.09"/>
+            <RateMultiplierArray index="Morph" value="1.09"/>
+            <RateMultiplierArray index="Progress" value="1.09"/>
+            <RateMultiplierArray index="Queueable" value="1.09"/>
+            <RateMultiplierArray index="Spawn" value="1.09"/>
+            <RateMultiplierArray index="Creep" value="1.09"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura4">
+        <Modification AttackSpeedMultiplier="1.12">
+            <RateMultiplierArray index="Charge" value="1.12"/>
+            <RateMultiplierArray index="Cooldown" value="1.12"/>
+            <RateMultiplierArray index="Morph" value="1.12"/>
+            <RateMultiplierArray index="Progress" value="1.12"/>
+            <RateMultiplierArray index="Queueable" value="1.12"/>
+            <RateMultiplierArray index="Spawn" value="1.12"/>
+            <RateMultiplierArray index="Creep" value="1.12"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura5">
+        <Modification AttackSpeedMultiplier="1.15">
+            <RateMultiplierArray index="Charge" value="1.15"/>
+            <RateMultiplierArray index="Cooldown" value="1.15"/>
+            <RateMultiplierArray index="Morph" value="1.15"/>
+            <RateMultiplierArray index="Progress" value="1.15"/>
+            <RateMultiplierArray index="Queueable" value="1.15"/>
+            <RateMultiplierArray index="Spawn" value="1.15"/>
+            <RateMultiplierArray index="Creep" value="1.15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura6">
+        <Modification AttackSpeedMultiplier="1.18">
+            <RateMultiplierArray index="Charge" value="1.18"/>
+            <RateMultiplierArray index="Cooldown" value="1.18"/>
+            <RateMultiplierArray index="Morph" value="1.18"/>
+            <RateMultiplierArray index="Progress" value="1.18"/>
+            <RateMultiplierArray index="Queueable" value="1.18"/>
+            <RateMultiplierArray index="Spawn" value="1.18"/>
+            <RateMultiplierArray index="Creep" value="1.18"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura7">
+        <Modification AttackSpeedMultiplier="1.21">
+            <RateMultiplierArray index="Charge" value="1.21"/>
+            <RateMultiplierArray index="Cooldown" value="1.21"/>
+            <RateMultiplierArray index="Morph" value="1.21"/>
+            <RateMultiplierArray index="Progress" value="1.21"/>
+            <RateMultiplierArray index="Queueable" value="1.21"/>
+            <RateMultiplierArray index="Spawn" value="1.21"/>
+            <RateMultiplierArray index="Creep" value="1.21"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura8">
+        <Modification AttackSpeedMultiplier="1.24">
+            <RateMultiplierArray index="Charge" value="1.24"/>
+            <RateMultiplierArray index="Cooldown" value="1.24"/>
+            <RateMultiplierArray index="Morph" value="1.24"/>
+            <RateMultiplierArray index="Progress" value="1.24"/>
+            <RateMultiplierArray index="Queueable" value="1.24"/>
+            <RateMultiplierArray index="Spawn" value="1.24"/>
+            <RateMultiplierArray index="Creep" value="1.24"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrenzyAura9">
+        <Modification AttackSpeedMultiplier="1.27">
+            <RateMultiplierArray index="Charge" value="1.27"/>
+            <RateMultiplierArray index="Cooldown" value="1.27"/>
+            <RateMultiplierArray index="Morph" value="1.27"/>
+            <RateMultiplierArray index="Progress" value="1.27"/>
+            <RateMultiplierArray index="Queueable" value="1.27"/>
+            <RateMultiplierArray index="Spawn" value="1.27"/>
+            <RateMultiplierArray index="Creep" value="1.27"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HeroSpawner">
+        <Modification>
+            <AbilLinkDisableArray value="ServitorMagazine"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Infection">
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="LightningDashTimedLife">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets/Textures/btn-unit-neutral-Quilboar.dds"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <Duration value="2"/>
+        <ExpireEffect value="SuicideRemove"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Cyclone">
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FrostArmor">
+        <Duration value="30"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HowlofTerror">
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EnergeticBarrierHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-lightningshield.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="LifeMax" Points="400"/>
+            <AttributeChangeArray Attribute="EnergyMax" Points="40"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ButchersBladeHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-cleaver2.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="WeaponDamage" Points="1250"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FaerieFire">
+        <DamageResponse ModifyFraction="1.1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IronplateBucklerHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-buckler2.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="LifeMax" Points="60"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="BloodforgedShieldHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-plating3.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="PlasmaShields">
+        <Modification>
+            <AttributeChangeArray index="0" Points="50"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="RingRed1">
+        <Modification>
+            <AttributeChangeArray Attribute="LifeMaxModifier" Points="30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery2">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.2">
+            <DamageDealtFraction index="Melee" value="0.2"/>
+            <DamageDealtFraction index="Ranged" value="0.2"/>
+            <DamageDealtFraction index="Splash" value="0.2"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.14"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery3">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.3">
+            <DamageDealtFraction index="Melee" value="0.3"/>
+            <DamageDealtFraction index="Ranged" value="0.3"/>
+            <DamageDealtFraction index="Splash" value="0.3"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.21"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery4">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.4">
+            <DamageDealtFraction index="Melee" value="0.4"/>
+            <DamageDealtFraction index="Ranged" value="0.4"/>
+            <DamageDealtFraction index="Splash" value="0.4"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.28"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery5">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.5">
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Splash" value="0.5"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.35"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery6">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.35">
+            <DamageDealtFraction index="Melee" value="0.35"/>
+            <DamageDealtFraction index="Ranged" value="0.35"/>
+            <DamageDealtFraction index="Splash" value="0.35"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.156"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery7">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.4">
+            <DamageDealtFraction index="Melee" value="0.4"/>
+            <DamageDealtFraction index="Ranged" value="0.4"/>
+            <DamageDealtFraction index="Splash" value="0.4"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.167"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery8">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.45">
+            <DamageDealtFraction index="Melee" value="0.45"/>
+            <DamageDealtFraction index="Ranged" value="0.45"/>
+            <DamageDealtFraction index="Splash" value="0.45"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.178"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery9">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.5">
+            <DamageDealtFraction index="Melee" value="0.5"/>
+            <DamageDealtFraction index="Ranged" value="0.5"/>
+            <DamageDealtFraction index="Splash" value="0.5"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.189"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMastery10">
+        <Tooltip value="Behavior/Tooltip/ShadowMastery1"/>
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <Duration value="1.125"/>
+        <InitialEffect value="UpdateStatsDummy"/>
+        <Modification AttackSpeedMultiplier="1.55">
+            <DamageDealtFraction index="Melee" value="0.55"/>
+            <DamageDealtFraction index="Ranged" value="0.55"/>
+            <DamageDealtFraction index="Splash" value="0.55"/>
+        </Modification>
+        <DamageResponse Handled="EvasionEffect" ModifyFraction="0">
+            <Kind index="Spell" value="0"/>
+            <Kind index="Splash" value="0"/>
+            <Chance value="0.2"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura2Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura2Search"/>
+        <PeriodicEffect value="ShadowMasteryAura2Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura3Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura3Search"/>
+        <PeriodicEffect value="ShadowMasteryAura3Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura4Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura4Search"/>
+        <PeriodicEffect value="ShadowMasteryAura4Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura5Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura5Search"/>
+        <PeriodicEffect value="ShadowMasteryAura5Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura6Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura6Search"/>
+        <PeriodicEffect value="ShadowMasteryAura6Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura7Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura7Search"/>
+        <PeriodicEffect value="ShadowMasteryAura7Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura8Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura8Search"/>
+        <PeriodicEffect value="ShadowMasteryAura8Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura9Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura9Search"/>
+        <PeriodicEffect value="ShadowMasteryAura9Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ShadowMasteryAura10Source" parent="BuffAuraSource">
+        <InfoIcon value="Assets\Textures\talent-vorazun-level01-shadowstalk.dds"/>
+        <InitialEffect value="ShadowMasteryAura10Search"/>
+        <PeriodicEffect value="ShadowMasteryAura10Search"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Smash">
+        <Duration value="10"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SoulLeech">
+        <MaxStackCount value="5"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SpawnInfestedTerransTimedLife">
+        <Duration value="30"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Starfall">
+        <RemoveValidatorArray index="0" value="CasterNotDead"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="StormheraldHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-sword2.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="WeaponDamage" Points="500"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="AssassinsBladeHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-blinkdagger.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="WeaponDamage" Points="150"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Detector5" parent="Detector">
+        <Alignment value="Positive"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-status-detector.dds"/>
+        <Modification Detect="5"/>
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Melee">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-item-plating1.dds"/>
+        <DamageResponse ModifyFraction="0.5">
+            <Chance value="1"/>
+        </DamageResponse>
+        <DisableValidatorArray value="NoMirrorImage"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="FirebrandHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-sword3.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="WeaponDamage" Points="700"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="IceBarbedSpearHLW" parent="DefaultItem">
+        <InfoIcon value="Assets\Textures\btn-item-IceBarbedSpear.dds"/>
+        <Modification>
+            <AttributeChangeArray Attribute="WeaponDamage" Points="1000"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Stun">
+        <Modification>
+            <AbilClassEnableArray index="CAbilArmMagazine" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ThornsAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ToxicAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Transformation">
+        <Duration value="22.4"/>
+        <InfoIcon value="Assets\Textures\btn-ability-neutral-transformation.dds"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TreacherousAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAuraCoop">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAuraCoopSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="TrueshotAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraCoop">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraCoopDummy">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraCoopSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraGlobalDummy">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="UnholyAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura10">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.55"/>
+                <KindArray index="Ranged" value="0.55"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura10Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura1Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura2">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.15"/>
+                <KindArray index="Ranged" value="0.15"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura2Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura3">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.2"/>
+                <KindArray index="Ranged" value="0.2"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura3Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura4">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.25"/>
+                <KindArray index="Ranged" value="0.25"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura4Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura5">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.3"/>
+                <KindArray index="Ranged" value="0.3"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura5Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura6">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.35"/>
+                <KindArray index="Ranged" value="0.35"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura6Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura7">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.4"/>
+                <KindArray index="Ranged" value="0.4"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura7Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura8">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.45"/>
+                <KindArray index="Ranged" value="0.45"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura8Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura9">
+        <Modification>
+            <VitalDamageLeechArray index="Life">
+                <KindArray index="Melee" value="0.5"/>
+                <KindArray index="Ranged" value="0.5"/>
+            </VitalDamageLeechArray>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAura9Source">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraGlobal">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraGlobalSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic10">
+        <Modification>
+            <AttributeChangeArray index="0" Points="55"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic2">
+        <Modification>
+            <AttributeChangeArray index="0" Points="15"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic3">
+        <Modification>
+            <AttributeChangeArray index="0" Points="20"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic4">
+        <Modification>
+            <AttributeChangeArray index="0" Points="25"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic5">
+        <Modification>
+            <AttributeChangeArray index="0" Points="30"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic6">
+        <Modification>
+            <AttributeChangeArray index="0" Points="35"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic7">
+        <Modification>
+            <AttributeChangeArray index="0" Points="40"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic8">
+        <Modification>
+            <AttributeChangeArray index="0" Points="45"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricAuraHeroic9">
+        <Modification>
+            <AttributeChangeArray index="0" Points="50"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VampiricPotion">
+        <Duration value="60"/>
+        <Modification AttackSpeedMultiplier="1"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="ViableAttacker">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <BehaviorFlags index="EnabledWhileDead" value="1"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <BehaviorCategories index="Permanent" value="1"/>
+        <Modification>
+            <StateFlags index="UnitAttrOnRobotic" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="VitalityAuraSource">
+        <BehaviorFlags index="EnabledWhileDead" value="0"/>
+    </CBehaviorBuff>
+</Catalog>

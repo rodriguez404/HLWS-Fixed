@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorCombine id="DarkAssassinTemplarEliteVorazunNightblade">
+        <CombineArray value="DarkElite"/>
+        <CombineArray value="NightbladeVorazun"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="DarkElite">
+        <Value value="DarkElite"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="DarkEliteAutocast">
+        <CombineArray value="DarkEliteTargetSearch"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="GuidedArrowAutocast">
+        <CombineArray value="GuidedArrowAutocastTargetSearch"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="GuidedArrowTargetSearch">
+        <AreaArray index="0" Radius="8"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="HasButcherySource">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GT"/>
+        <Behavior value="ButcherySource"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HasButchery50">
+        <WhichUnit Value="Caster"/>
+        <Compare value="GE"/>
+        <Value value="50"/>
+        <Behavior value="Butchery"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="IsDisplacementBeam">
+        <Value value="DisplacementBeam"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="LifeDrainPeriodicValidator">
+        <CombineArray index="1" value="NotInvulnerable"/>
+        <CombineArray index="2" removed="1"/>
+        <CombineArray index="3" removed="1"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="MercenaryCampT1">
+        <Value value="MercenaryCampTier1"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="MercenaryCampT2">
+        <Value value="MercenaryCampTier2"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="MercenaryCampT13">
+        <Value value="MercenaryCampTier3"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="MercenaryCampT14">
+        <Value value="MercenaryCampTier4"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="MercenaryCampT5">
+        <Value value="MercenaryCampTier5"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="NightbladeVorazun">
+        <Value value="VorazunHero"/>
+    </CValidatorUnitType>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura2">
+        <Behavior value="ShadowMastery2"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura3">
+        <Behavior value="ShadowMastery3"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura4">
+        <Behavior value="ShadowMastery4"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura5">
+        <Behavior value="ShadowMastery5"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura6">
+        <Behavior value="ShadowMastery6"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura7">
+        <Behavior value="ShadowMastery7"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura8">
+        <Behavior value="ShadowMastery8"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura9">
+        <Behavior value="ShadowMastery9"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="NoShadowMasteryAura10">
+        <Behavior value="ShadowMastery10"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorLocationEnumArea id="DarkEliteTargetSearch" parent="HostileSearch">
+        <AreaArray Radius="10"/>
+        <Count value="8"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorPlayerRequirement id="NoShadows">
+        <Value value="NoShadows"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorPlayerRequirement id="SlowGameSpeed">
+        <Value value="SlowGameSpeed"/>
+    </CValidatorPlayerRequirement>
+    <CValidatorCombine id="NotMercenaryCamp">
+        <Type value="And"/>
+        <CombineArray value="MercenaryCampT1"/>
+        <CombineArray value="MercenaryCampT2"/>
+        <CombineArray value="MercenaryCampT13"/>
+        <CombineArray value="MercenaryCampT14"/>
+        <CombineArray value="MercenaryCampT5"/>
+        <Negate value="1"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="PhotonOverchargeAutocast">
+        <CombineArray value="PhotonOverchargeTargetSearch"/>
+        <CombineArray value="PhotonOverchargeTargetSearchStress"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="PhotonOverchargeTargetSearch" parent="HostileSearch">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <AreaArray Radius="10"/>
+        <Count value="8"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="PhotonOverchargeTargetSearchStress" parent="HostileSearch">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <AreaArray Radius="10"/>
+        <Count value="4"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorLocationEnumArea id="GuidedArrowAutocastTargetSearch" parent="HostileSearch">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <AreaArray Radius="7"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="ShadowFuryAutocast">
+        <CombineArray index="0" value="ShadowFuryTargetSearch"/>
+        <CombineArray index="1" removed="1"/>
+    </CValidatorCombine>
+    <CValidatorLocationEnumArea id="ShadowFuryTargetSearch" parent="HostileSearch">
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <AreaArray Compare="GE" Radius="6"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Visible;Player,Ally,Neutral,Missile,Item,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorPlayerRequirement id="RemovedBuffDebuffVisuals">
+        <Value value="RemovedBuffDebuffVisuals"/>
+        <Find value="1"/>
+    </CValidatorPlayerRequirement>
+</Catalog>

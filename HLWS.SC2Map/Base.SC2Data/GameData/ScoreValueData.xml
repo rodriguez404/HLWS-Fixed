@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CScoreValueCustom id="CreepsSentHLW"/>
+    <CScoreValueCombine id="LeaderboardScore">
+        <Type value="Fixed"/>
+        <ValueTable value="UnitsKilledCount"/>
+        <ValueTable value="UnitsMadePoints"/>
+    </CScoreValueCombine>
+    <CScoreValueCustom id="LeaderboardScoreHLW"/>
+    <CScoreValueCombine id="StarlightExperience">
+        <ValueTable value="UnitsKilledCount"/>
+    </CScoreValueCombine>
+</Catalog>

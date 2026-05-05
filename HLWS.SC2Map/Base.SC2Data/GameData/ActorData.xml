@@ -1,0 +1,1921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorUnit default="1" id="GenericHeroWar3">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorRange id="AcidNovaRange">
+        <Range value="11.000000"/>
+    </CActorRange>
+    <CActorUnit id="AlarakExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ArtanisExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorSimple id="AttackAnimationPerformanceFix">
+        <On Terms="WeaponStart.*.AttackStart" Send="Create"/>
+        <On Terms="ActorCreation; !UnitWalking; AnimPlayable Attack _Unit" Target="_Unit" Send="AnimBaselineStop"/>
+        <On Terms="ActorCreation; !UnitWalking; AnimPlayable Attack _Unit" Target="_Unit" Send="AnimBaselineStart"/>
+        <On Terms="ActorCreation" Send="Destroy"/>
+    </CActorSimple>
+    <CActorUnit id="BlackStrike">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BlightedGround">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BoneServants">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CannonImage" parent="ProtossBuildingEx" unitName="CannonImage">
+        <Aliases value="_UnitLarge"/>
+        <Macros value="SnowVisualBuildingMacroMP"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit CasterIsUnpoweredAndNotUnderConstruction" Send="DeathCustomize Variation2"/>
+        <On Terms="ActorCreation" Send="Create PhotonCannonTurretLookAt"/>
+        <On Terms="Abil.attack.ReadyStart" Target="PhotonCannonTurretLookAt" Send="LookAtEngage"/>
+        <On Terms="Abil.attack.ReadyStop" Target="PhotonCannonTurretLookAt" Send="LookAtDisengage"/>
+        <On Terms="Effect.PhotonCannonTeleportBuildStartCP.Start; At Caster" Send="Create PhotonCannonTeleportOutModel"/>
+        <On Terms="Effect.PhotonCannonTeleportBuildFinishSet.Start; At Caster" Target="PhotonCannonTeleportOutModel" Send="Destroy"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit CasterIsUnpoweredAndNotUnderConstructionAndHasDarkProtoss" Send="DeathCustomize Variation3"/>
+        <On Terms="Behavior.CannonImageInitialStun.On" Send="AnimBracketStart Channel Stand,Unpowered,Start Stand,Unpowered Stand,Unpowered,End Instant 0.350000 AsDuration"/>
+        <On Terms="Behavior.CannonImageInitialStun.Off" Send="AnimBracketStop Channel"/>
+        <On Terms="ActorCreation" Send="Create CannonImageBirthFX"/>
+        <CreepHeightClass value="Tiny"/>
+        <DeathArray index="Normal" ModelLink="HallucinationColossusDeath" SoundLink="PhotonCannon_Explode"/>
+        <DeathArray index="Timeout" ModelLink="HallucinationColossusDeath"/>
+        <DeathArray index="UnderConstruction" ModelLink="PhotonCannonDeathUnderConstruction" SoundLink="PhotonCannon_Explode"/>
+        <DeathCustoms index="0" ModelLink="HallucinationColossusDeath"/>
+        <DeathCustoms index="1" ModelLink="HallucinationColossusDeath"/>
+        <DeathCustoms index="2" ModelLink="HallucinationColossusDeath"/>
+        <DeathCustoms ModelLink="HallucinationColossusDeath" SoundLink="PhotonCannon_Explode" Name="Variation2"/>
+        <DeathCustoms ModelLink="HallucinationColossusDeath" Name="DarkProtoss"/>
+        <DeathCustoms ModelLink="HallucinationColossusDeath" Name="Variation3"/>
+        <DeathActorModel value="CannonImageDeath"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PlacementActorModel value="PhotonCannonPlacementModel"/>
+        <BarOffset value="60"/>
+        <BarWidth value="75"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-building-protoss-PhotonCannon.dds"/>
+        <SoundArray index="Ready" value="PhotonCannon_Ready"/>
+        <SoundArray index="What" value="PhotonCannon_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-building-protoss-PhotonCannon.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-PhotonCannon-Shield03.dds"/>
+        </WireframeShield>
+        <DeathActorModelLow value="CannonImageDeath"/>
+    </CActorUnit>
+    <CActorAction id="CannonImageAttack" parent="GenericAttack" effectImpact="CannonImageDamage" effectLaunch="CannonImageLM">
+        <LaunchAssets Model="PhotonCannonAttackLaunch" Sound="PhotonCannon_AttackLaunch"/>
+        <Beam value="PhotonCannonAttackBeam"/>
+        <Missile value="PhotonCannonAttackMissile"/>
+        <ImpactMap index="None" Model="PhotonCannonAttackImpact" Sound="PhotonCannon_AttackImpact" ModelReaction="PhotonCannonAttackImpactReaction"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactMap index="Shield" Sound="PhotonCannonAttackImpactShield" ModelReaction="PhotonCannonAttackImpactReactionShield"/>
+        <ImpactPhysics Name="PhotonCannonImpact" MatchKeys="Basic" Physics="PhotonCannonAttackDeathForce"/>
+        <DamageMap index="None" Model="PhotonCannonAttackDamage" Sound="PhotonCannonAttackDamage" ModelReaction="PhotonCannonAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="PhotonCannonAttackDamageShield" ModelReaction="PhotonCannonAttackDamageReactionShield"/>
+    </CActorAction>
+    <CActorModel id="CannonImageBirthFX" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <On Terms="ActorCreation" Send="AnimSetTimeScaleGlobal 8.000000 Birth"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="HallucinationBirth"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorModel id="CannonImageDeath">
+        <Aliases value="_Main"/>
+        <Aliases value="_Unit"/>
+        <Aliases value="_DeathModel"/>
+        <Macros value="DeadAnimationMacro"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <AcceptedHostedPropTransfers index="TimeScale" value="0"/>
+        <On Terms="ActorCreation" Send="RefClear ::Host"/>
+        <On Terms="ActorCreation" Target="ModelPretargetGround" Send="Destroy"/>
+        <On Terms="ActorCreation" Target="GroundPreSelection" Send="Destroy"/>
+        <On Terms="Signal.*.ClearDeathModel" Send="Destroy"/>
+        <Host Subject="::Creator"/>
+        <ModelFlags index="SuppressMissingAttachErrors" value="1"/>
+        <ModelFlags index="UpdateVisibility" value="0"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorModel>
+    <CActorUnit id="CarrionBeetles">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CarrionBeetlesPassive">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ClockwerkGoblin">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="CorrosionModel">
+        <On index="3" Terms="Behavior.Corrosion.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorModel id="CurseModel">
+        <On index="3" Terms="Behavior.Curse.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="DeathMarch">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Doomguard">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="EarthBrewmaster">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ElementalAttendant">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="FaerieFireModel">
+        <On index="3" Terms="Behavior.FaerieFire.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="FelguardHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FeralSpirit">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FireBrewmaster">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FireGolem">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ForceofNature">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorAction id="ForceofNatureAttack">
+        <On Terms="Effect.ForceofNatureDamage.Stop" Send="Destroy"/>
+    </CActorAction>
+    <CActorUnit id="Infernal">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="InnerFireModel">
+        <On index="3" Terms="Behavior.InnerFire.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="LavaSpawn">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="LearnModelAura">
+        <Terms value="Cap 1"/>
+    </CActorModel>
+    <CActorSimple id="LearnModelAuraSimple">
+        <Terms value="Cap 1"/>
+    </CActorSimple>
+    <CActorUnit id="LocustNest">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="LocustSwarm">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NetherPortalA">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NetherPortalB">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NovaExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="OgreHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorRange id="CannonImageRange" abil="CannonImage">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Abil.CannonImage.TargetOn" Send="Create"/>
+        <On Terms="Abil.CannonImage.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.CannonImage.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.CannonImage.ButtonHoverOff" Send="Destroy"/>
+        <Abil Link="CannonImage"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+    </CActorRange>
+    <CActorAction id="ParasiteAttack">
+        <On Terms="Effect.ParasiteDamage.Stop" Send="Destroy"/>
+    </CActorAction>
+    <CActorUnit id="PhoenixHeroic">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RainofChaos">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RaiseSkeleton">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorRange id="RallyingCryRange">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Abil.RallyingCry.TargetOn" Send="Create"/>
+        <On Terms="Abil.RallyingCry.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.RallyingCry.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.RallyingCry.ButtonHoverOff" Send="Destroy"/>
+        <Range value="11.000000"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+    </CActorRange>
+    <CActorUnit id="AlchemistHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AntonidasExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AntonidasHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AnubarakExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AnubarakHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ArchmageHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ArthasExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ArthasUndeadHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BalnazzarHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BeastmasterHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BlademasterHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BloodMageHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BrewmasterHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CairneExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CairneHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CenariusExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CenariusHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CryptLordHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DarkRangerHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DeathKnightHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DemonHunterHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DemonHunterHeroMorph">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DetherocHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DreadlordHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DrekTharExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DrekTharHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="EredarLordHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FarSeerHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FirelordHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="GarithosHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="IllidanExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="IllidanHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="IllidanHeroMorph">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="JainaHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="JubeiThosHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KaelthasExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KaelthasHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KeeperoftheGroveHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KelThuzadExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KelThuzadHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KelThuzadHumanHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KiljaedenHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="LadyVashjHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="LichHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MaievExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MaievHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MalGanisExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MalGanisHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MalfurionHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MannorothExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MannorothHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MountainKingHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorEventMacro id="MoveSpeedAnimationTimeScaleMacro">
+        <On Terms="ActorCreation; ValidatePlayer SlowGameSpeed" Send="AnimSetTimeScaleGlobal 0.428000 Walk"/>
+        <On Terms="UnitMovementUpdate.*.Walk; ValidatePlayer SlowGameSpeed" Send="AnimSetTimeScaleGlobal 0.428000 Walk"/>
+    </CActorEventMacro>
+    <CActorUnit id="MuradinExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MuradinHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NaishaHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NajentusHero">
+        <Macros index="0" value="DissipateAnimationMacro"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorEventMacroRunnable id="NoShadowsMacro">
+        <On Terms="ActorCreation; ValidatePlayer NoShadows" Send="SetCastShadows"/>
+    </CActorEventMacroRunnable>
+    <CActorUnit id="PaladinHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="PitLordHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorQuad id="PoisonBoltGuide">
+        <Filter index="Self" value="1"/>
+        <Filter index="Ally" value="0"/>
+        <Filter index="Neutral" value="0"/>
+        <Filter index="Enemy" value="0"/>
+    </CActorQuad>
+    <CActorModel id="PoisonBlastImpact" parent="ModelAnimationStyleOneShotUNIT">
+        <On Terms="Effect.PoisonBlastSearch.Start; At Effect" Send="Create"/>
+        <HostSiteOps Ops="SOpSourcePointStationary"/>
+        <Model value="PoisonBoltImpact"/>
+    </CActorModel>
+    <CActorSound id="PoisonBlastSoundImpact" parent="SoundOneShot">
+        <On Terms="Effect.PoisonBlastSetImpact.Start" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpTargetUnit"/>
+        <Sound value="Terrorzor_AntiAir_AttackImpact"/>
+    </CActorSound>
+    <CActorRange id="PoisonBlastRange" parent="RangeAbilSolidLine">
+        <Flags index="SuppressSaveLoad" value="0"/>
+        <On index="1" Terms="Abil.PoisonBlast.TargetOn" Send="Create"/>
+        <On index="2" Terms="Abil.PoisonBlast.TargetOff" Send="Destroy"/>
+        <On index="3" Terms="Abil.PoisonBlast.ButtonHoverOn" Send="Create"/>
+        <On index="4" Terms="Abil.PoisonBlast.ButtonHoverOff" Send="Destroy"/>
+        <Range value="2.000000"/>
+    </CActorRange>
+    <CActorUnit id="PriestessoftheMoonHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="PutressHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RagnarosExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RevenantHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="RoarBuff">
+        <On index="3" Terms="Behavior.Roar.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="RokhanHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RoyalGuardHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SamuroExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SatyrHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SeaWitchHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ShadowHunterHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorRange id="ShadowMasteryAuraRange" parent="RangeAbilSolidLine" abil="ShadowMastery">
+        <Range value="9.000000"/>
+    </CActorRange>
+    <CActorModel id="ShadowMasteryAuraSource" parent="ModelAnimationStyleContinuousUNIT">
+        <Inherits index="CloakEffect" value="1"/>
+        <On Terms="Behavior.ShadowMasteryAura1Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura1Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura2Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura2Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura3Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura3Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura4Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura4Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura5Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura5Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura6Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura6Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura7Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura7Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura8Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura8Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura9Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura9Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="Behavior.ShadowMasteryAura10Source.On" Send="Create"/>
+        <On Terms="Behavior.ShadowMasteryAura10Source.Off" Send="AnimBracketStop BSD"/>
+        <On Terms="ActorCreation" Send="SetTintColor 0,128,255"/>
+        <HostSiteOps Ops="SOpAttachOrigin SOpShadow SOpForwardNorth"/>
+        <Model value="FrenzyAuraSource"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+    </CActorModel>
+    <CActorModel id="PhotonOvercharge" parent="ModelAnimationStyleContinuous">
+        <Inherits index="CloakEffect" value="1"/>
+        <On Terms="Behavior.PhotonOvercharge.Create" Send="Create"/>
+        <On Terms="Behavior.PhotonOvercharge.Destroy" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorAction id="PhotonOverchargeAttack" parent="GenericAttack" effectImpact="PhotonOverchargeDamage" effectLaunch="PhotonOverchargeLM">
+        <On Terms="ActorCreation" Send="SetTintColor {188,22,39 4.000000}"/>
+        <LaunchSiteOps Ops="SOpForwardTargetPoint SOp2DRotation SOpAttachOverhead"/>
+        <LaunchAttachQuery Methods="TurretZ"/>
+        <LaunchAssets Sound="PhotonCannon_AttackLaunch"/>
+        <ImpactMap index="None" Sound="PhotonCannon_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="PurifyImpact" MatchKeys="Basic" Physics="MothershipCoreAttackForce"/>
+    </CActorAction>
+    <CActorMissile id="PhotonOverchargeAttackMissile" parent="GenericAttackMissile" unitName="PhotonOvercharge">
+        <On Terms="UnitBirth" Send="AnimSetTimeScaleAbsolute Lifetime 1.000000"/>
+        <Model value="PhotonOverchargeWeapon"/>
+    </CActorMissile>
+    <CActorRange id="PhotonOverchargeRange" abil="PhotonOvercharge">
+        <Flags index="SuppressSaveLoad" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="Abil.PhotonOvercharge.TargetOn" Send="Create"/>
+        <On Terms="Abil.PhotonOvercharge.TargetOff" Send="Destroy"/>
+        <On Terms="Abil.PhotonOvercharge.ButtonHoverOn" Send="Create"/>
+        <On Terms="Abil.PhotonOvercharge.ButtonHoverOff" Send="Destroy"/>
+        <Abil Link="PhotonOvercharge"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+    </CActorRange>
+    <CActorAction id="BanditLordHLWAttack" parent="MetalMediumChop" effectAttack="BanditLordHLWDamage"/>
+    <CActorAction id="BronzeDragonHLWAttack" parent="GenericAttack" effectAttack="BronzeDragonHLWDamage">
+        <LaunchAttachQuery Methods="AMFilterHead" Fallback="Chest"/>
+        <LaunchAssets Sound="Archon_AttackLaunch"/>
+        <Beam value="ChimeraLightningAttackBeam"/>
+        <BeamScope value="Caster"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeNoVizEnhance VoidRaySOpForwardLaunch"/>
+        <ImpactMap index="None" Model="" Sound="Archon_AttackImpact"/>
+        <Lifetime value="2.500000"/>
+    </CActorAction>
+    <CActorAction id="CentaurKhanAttack" parent="MetalHeavyChop" effectAttack="CentaurKhanHLWDamage"/>
+    <CActorAction id="AncientHydraHLWAttack" parent="GenericAttackWar3" effectImpact="AncientHydraHLWDamage" effectLaunch="AncientHydraHLWLM" Art="Chimera"/>
+    <CActorUnit id="AncientHydra" unitName="AncientHydraHLW">
+        <On index="0" Terms="UnitBirth.AncientHydraHLW" Send="Create SoundEmitter AncientHydraHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.AncientHydraHLW"/>
+        <On index="2" Terms="UnitRevive.AncientHydraHLW"/>
+        <On index="3" Terms="UnitRevive.AncientHydraHLW"/>
+        <On index="4" Terms="UnitConstruction.AncientHydraHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.AncientHydraHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AncientSasquatch" unitName="AncientSasquatchHLW">
+        <On index="0" Terms="UnitBirth.AncientSasquatchHLW" Send="Create SoundEmitter AncientSasquatchHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.AncientSasquatchHLW"/>
+        <On index="2" Terms="UnitRevive.AncientSasquatchHLW"/>
+        <On index="3" Terms="UnitRevive.AncientSasquatchHLW"/>
+        <On index="4" Terms="UnitConstruction.AncientSasquatchHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.AncientSasquatchHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ArcaneSanctum" unitName="ArcanistHLW">
+        <On index="0" Terms="UnitBirth.ArcanistHLW" Send="Create SoundEmitter ArcanistHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.ArcanistHLW"/>
+        <On index="2" Terms="UnitRevive.ArcanistHLW"/>
+        <On index="3" Terms="UnitRevive.ArcanistHLW"/>
+        <On index="4" Terms="UnitConstruction.ArcanistHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.ArcanistHLW.Finish"/>
+        <On index="56" Terms="AbilMorph.*.Start; MorphTo ArcanistHLW" Send="Create"/>
+        <On index="57" Terms="AbilMorph.*.Start; MorphFrom ArcanistHLW" Send="Destroy"/>
+        <On index="58" Terms="UnitBirth.ArcanistHLW" Send="Create SelectionPlate"/>
+        <DeathArray index="Normal" SoundLink="ArcanistHLWDeath" VoiceLink="ArcanistHLWDeathVoice"/>
+        <InfoText value="IntoText/Shop"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_shop.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ArcaneTower" unitName="ShrineHLW">
+        <On index="0" Terms="UnitBirth.ShrineHLW" Send="Create SoundEmitter Shrine_Ambience"/>
+        <On index="1" Terms="UnitBirth.ShrineHLW"/>
+        <On index="2" Terms="UnitRevive.ShrineHLW"/>
+        <On index="3" Terms="UnitRevive.ShrineHLW"/>
+        <On index="4" Terms="UnitConstruction.ShrineHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.ShrineHLW.Finish"/>
+        <DeathArray index="Normal" ModelLink="Shrine" SoundLink="ShrineDeath" VoiceLink="ShrineDeathVoice"/>
+        <InfoText value="IntoText/Shrine"/>
+        <UnitFlags index="StandAnimBirthVariation" value="0"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="ArtanisHero">
+        <On Terms="ActorCreation" Send="Create HeroTeamColor"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-artanis.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-artanis.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" removed="1"/>
+            <Image index="1" removed="1"/>
+            <Image index="2" removed="1"/>
+        </WireframeShield>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BanditLord" unitName="BanditLordHLW">
+        <On index="0" Terms="UnitBirth.BanditLordHLW" Send="Create SoundEmitter BanditLordHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BanditLordHLW"/>
+        <On index="2" Terms="UnitRevive.BanditLordHLW"/>
+        <On index="3" Terms="UnitRevive.BanditLordHLW"/>
+        <On index="4" Terms="UnitConstruction.BanditLordHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BanditLordHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BronzeDragon" unitName="BronzeDragonHLW">
+        <On index="0" Terms="UnitBirth.BronzeDragonHLW" Send="Create SoundEmitter BronzeDragonHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BronzeDragonHLW"/>
+        <On index="2" Terms="UnitRevive.BronzeDragonHLW"/>
+        <On index="3" Terms="UnitRevive.BronzeDragonHLW"/>
+        <On index="4" Terms="UnitConstruction.BronzeDragonHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BronzeDragonHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CentaurKhan" unitName="CentaurKhanHLW">
+        <On index="0" Terms="UnitBirth.CentaurKhanHLW" Send="Create SoundEmitter CentaurKhanHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.CentaurKhanHLW"/>
+        <On index="2" Terms="UnitRevive.CentaurKhanHLW"/>
+        <On index="3" Terms="UnitRevive.CentaurKhanHLW"/>
+        <On index="4" Terms="UnitConstruction.CentaurKhanHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.CentaurKhanHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DarkElite" parent="GenericUnitStandard" unitName="DarkTemplar">
+        <Aliases value="_UnitSmall"/>
+        <Macros value="TerrainSquibAnimations"/>
+        <Macros value="PhysicsDeathsSwarmGround"/>
+        <Macros value="PhysicsDeathsVoidGround"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <On Terms="UnitPortrait.*.Customize; ModelVariation 1" Send="PortraitCustomize DarkTemplar2Portrait"/>
+        <On Terms="UnitPortrait.*.Customize; ModelVariation 0" Send="PortraitCustomize DarkTemplarPortrait"/>
+        <On Terms="UnitDeathCustomize; ModelVariation 0" Send="DeathCustomize Variation0"/>
+        <On Terms="UnitDeathCustomize; ModelVariation 1" Send="DeathCustomize Variation1"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create DarkTemplar_Land"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Templar_LandSweetener"/>
+        <On Terms="Upgrade.DarkProtoss.Add" Send="DeathCustomsEnablePhysics 0"/>
+        <On Terms="UnitBirth; ValidateUnit NoDarkProtoss" Send="DeathCustomsEnablePhysics 0"/>
+        <On Terms="Abil.DarkTemplarBlink.TargetApproachStart; ValidateUnit DarkTemplarBlinkRangeCheck; !ScopeContains DarkTemplar_BlinkRangedVO" Send="Create DarkTemplar_BlinkRangedVO"/>
+        <On Terms="UnitBirth.DarkElite" Send="Create"/>
+        <On Terms="UnitRevive.DarkElite" Send="Create"/>
+        <AnimBlendTime value="0.250000"/>
+        <ModelFlags index="UseConstSyncSeed" value="1"/>
+        <ModelFlags index="OutlineEmitter" value="1"/>
+        <BuildModel value="DarkTemplarWarpIn"/>
+        <DeathArray index="Normal" ModelLink="DarkTemplarDeath" SoundLink="DarkTemplar_DeathFX"/>
+        <DeathCustoms ModelLink="DarkTemplarDeath00" Name="Variation0"/>
+        <DeathCustoms ModelLink="DarkTemplarDeath01" Name="Variation1"/>
+        <DeathCustoms ActorModel="DarkTemplarDeathRagdoll" ModelLink="DarkTemplarDeathRagdoll" Name="RagdollBasic">
+            <BodySquibs Name="BloodReduced"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollSiegeTank" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollNuke" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollFire" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Fire"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollAcid" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollBaneling" InheritsFrom="RagdollBasic">
+            <BodySquibs Name="Acid"/>
+        </DeathCustoms>
+        <DeathCustoms Name="RagdollUltraUnburrow" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDPRH" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollOverkillDOI" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms Name="RagdollMidair" InheritsFrom="RagdollBasic"/>
+        <DeathCustoms ActorModel="SpineCrawlerHurlDeathRagdollWithTeamColor" ModelLink="DarkTemplarDeathRagdoll" Name="RagdollSpineCrawlerHurl">
+            <BodySquibs Name="None"/>
+        </DeathCustoms>
+        <PlacementModel value="Invisible"/>
+        <PlacementSound value="Protoss_BuildingPlacementSmall"/>
+        <PlacementActorModel value="DarkTemplarPlace"/>
+        <PortraitModel value="DarkTemplarPortrait"/>
+        <TerrainSquibs>
+            <MovementDistance value="0.150000,0.150000"/>
+            <IdlePeriod value="0.100000,0.250000"/>
+            <RangeUp value="0.600000"/>
+            <RangeDown value="0.600000"/>
+            <AttachQuery Methods="AMFilterCenter"/>
+            <Visuals TerrainPhysicsMaterial="Water" ActorModel="TerrainSquibHarnessContinuous" ModelLink="WaterRippleMedium"/>
+        </TerrainSquibs>
+        <AbilSoundArray AbilCmd="DarkTemplarBlink,Execute" Sound="DarkTemplar_BlinkDummyVO"/>
+        <BarOffset value="50"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </GroupIcon>
+        <GroupIconVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </GroupIconVariations>
+        <GroupIconVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </GroupIconVariations>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-darktemplar.dds"/>
+        <HighlightTooltip value="Unit/Name/DarkElite"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-groundarmorlevel0.dds"/>
+        <SoundArray index="Yes" value="DarkTemplarVoid_Yes"/>
+        <SoundArray index="Pissed" value="DarkTemplarVoid_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-darktemplar.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </Wireframe>
+        <WireframeVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds"/>
+        </WireframeVariations>
+        <WireframeVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01.dds"/>
+        </WireframeVariations>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield03.dds"/>
+        </WireframeShield>
+        <WireframeShieldVariations Number="0">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar00-Shield03.dds"/>
+        </WireframeShieldVariations>
+        <WireframeShieldVariations Number="1">
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-DarkTemplar01-Shield03.dds"/>
+        </WireframeShieldVariations>
+    </CActorUnit>
+    <CActorModel id="DarkEliteCalldownModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="ActorCreation" Send="SetTintColor 174,30,153"/>
+        <On Terms="Effect.DarkEliteCreate.Create" Send="Create"/>
+    </CActorModel>
+    <CActorUnit id="DarkWizard" unitName="DarkWizardHLW">
+        <On index="0" Terms="UnitBirth.DarkWizardHLW" Send="Create SoundEmitter DarkWizardHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.DarkWizardHLW"/>
+        <On index="2" Terms="UnitRevive.DarkWizardHLW"/>
+        <On index="3" Terms="UnitRevive.DarkWizardHLW"/>
+        <On index="4" Terms="UnitConstruction.DarkWizardHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.DarkWizardHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="DarkWizardHLWAttack" parent="GenericAttackWar3" effectImpact="DarkWizardHLWDamage" effectLaunch="DarkWizardHLWLM" Art="FireBall"/>
+    <CActorRange id="DarkEliteRange" parent="RangeAbilSolidLine" abil="DarkElite">
+        <Range value="15.000000"/>
+    </CActorRange>
+    <CActorRange id="ReconstructionBeamRange" parent="RangeAbilSolidLine" abil="ReconstructionBeam">
+        <Range value="20.000000"/>
+    </CActorRange>
+    <CActorUnit id="GraniteGolem" unitName="GraniteGolemHLW">
+        <On index="0" Terms="UnitBirth.GraniteGolemHLW" Send="Create SoundEmitter GraniteGolemHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.GraniteGolemHLW"/>
+        <On index="2" Terms="UnitRevive.GraniteGolemHLW"/>
+        <On index="3" Terms="UnitRevive.GraniteGolemHLW"/>
+        <On index="4" Terms="UnitConstruction.GraniteGolemHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.GraniteGolemHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorRange id="ImmolationRadius">
+        <Range value="2.750000"/>
+    </CActorRange>
+    <CActorRange id="ImmolationRange">
+        <Range value="2.750000"/>
+    </CActorRange>
+    <CActorAction id="CyberBlastWeaponAttack" parent="GenericAttack" effectImpact="CyberBlastDamage" effectLaunch="CyberBlastLM">
+        <LaunchAssets Model="KaraxChampionWeaponAttackLaunch" Sound="DragoonVoid_AttackLaunch"/>
+        <Beam value="KaraxChampionWeaponAttackBeam"/>
+        <Missile value="CyberBlastWeaponMissile"/>
+        <ImpactMap index="None" Model="VulcanChampionWeaponImpact" Sound="DragoonVoid_AttackImpact" ModelReaction="KaraxChampionWeaponAttackImpactReaction"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactMap index="Shield" Sound="KaraxChampionWeaponAttackImpactShield" ModelReaction="KaraxChampionWeaponAttackImpactReactionShield"/>
+        <DamageMap index="None" Model="KaraxChampionWeaponAttackDamage" Sound="KaraxChampionWeaponAttackDamage" ModelReaction="KaraxChampionWeaponAttackDamageReaction"/>
+        <DamageMap index="Shield" Sound="KaraxChampionWeaponAttackDamageShield" ModelReaction="KaraxChampionWeaponAttackDamageReactionShield"/>
+    </CActorAction>
+    <CActorMissile id="CyberBlastWeaponMissile" parent="GenericAttackMissile" unitName="CyberBlastLMWeapon">
+        <On Terms="UnitBirth" Send="AnimSetTimeScaleAbsolute Lifetime 1.000000"/>
+        <Model value="VulcanChampionWeaponMissile"/>
+    </CActorMissile>
+    <CActorUnit id="KaraxHero">
+        <On index="79" Send="AnimBracketStart Attack Spell,A"/>
+        <On index="80" Send="AnimBracketStart Attack Spell,A"/>
+        <On index="81" Send="AnimBracketStart Attack Spell,A"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-karax.dds"/>
+        </GroupIcon>
+        <UnitIcon value="Assets\Textures\btn-unit-hero-karax.dds"/>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-karax.dds"/>
+        </Wireframe>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KerriganAscendedHero">
+        <On Terms="Behavior.CastCustomBInterruptible.On" Send="AnimBracketStart Spell Stand,Work,Start Stand,Work Stand,Work,End"/>
+        <On Terms="Behavior.CastCustomBInterruptible.Off" Send="AnimBracketStop Spell"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MercenaryCampTier5" parent="GenericUnitMorph" unitName="MercenaryCampTier5">
+        <On Terms="ActorCreation" Send="AnimPlay BuildAStart Morph,B,Start"/>
+        <On Terms="AnimDone; AnimName BuildAStart" Send="AnimPlay BuildBStart Morph,B,End"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupRemove B"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation" Send="SetScale 1.300000 1.000000"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.250000 Add"/>
+        <On Terms="TimerExpired; TimerName Add" Send="Create MercenaryCampTier4Add"/>
+        <On Terms="ActorCreation" Send="SetTintColor 128,0,255"/>
+        <On Terms="ActorCreation" Send="Create ManaElementalGlaze"/>
+        <On Terms="ActorCreation" Send="Create PowerGlaze"/>
+        <Model value="Hive"/>
+        <BuildModel value="Hive"/>
+        <PlacementModel value="Hive"/>
+        <PortraitModel value="OverlordPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-menu-tier5.dds"/>
+        </GroupIcon>
+        <InfoText value="IntoText/CreepSpawn"/>
+        <SoundArray index="Ready" value="Hive_Ready"/>
+        <SoundArray index="What" value="Hive_What"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-menu-tier5.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-menu-tier5.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="NovaHero">
+        <On Terms="ActorCreation" Send="Create HeroTeamColor"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-nova.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-nova.dds"/>
+        </Wireframe>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AlarakHero">
+        <On Terms="ActorCreation" Send="Create HeroTeamColor"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-alarak.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-alarak.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" removed="1"/>
+            <Image index="1" removed="1"/>
+            <Image index="2" removed="1"/>
+        </WireframeShield>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Bandit" unitName="BanditHLW">
+        <On index="0" Terms="UnitBirth.BanditHLW" Send="Create SoundEmitter BanditHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BanditHLW"/>
+        <On index="2" Terms="UnitRevive.BanditHLW"/>
+        <On index="3" Terms="UnitRevive.BanditHLW"/>
+        <On index="4" Terms="UnitConstruction.BanditHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BanditHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BarbedArachnathid" unitName="ScorpidHLW">
+        <On index="0" Terms="UnitBirth.ScorpidHLW" Send="Create SoundEmitter ScorpidHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.ScorpidHLW"/>
+        <On index="2" Terms="UnitRevive.ScorpidHLW"/>
+        <On index="3" Terms="UnitRevive.ScorpidHLW"/>
+        <On index="4" Terms="UnitConstruction.ScorpidHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.ScorpidHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BerserkWildkin" unitName="FeralWildkinHLW">
+        <On index="0" Terms="UnitBirth.FeralWildkinHLW" Send="Create SoundEmitter FeralWildkinHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FeralWildkinHLW"/>
+        <On index="2" Terms="UnitRevive.FeralWildkinHLW"/>
+        <On index="3" Terms="UnitRevive.FeralWildkinHLW"/>
+        <On index="4" Terms="UnitConstruction.FeralWildkinHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FeralWildkinHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="BlackDragonWhelp" unitName="BlackDrakeHLW">
+        <On index="0" Terms="UnitBirth.BlackDrakeHLW" Send="Create SoundEmitter BlackDrakeHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BlackDrakeHLW"/>
+        <On index="2" Terms="UnitRevive.BlackDrakeHLW"/>
+        <On index="3" Terms="UnitRevive.BlackDrakeHLW"/>
+        <On index="4" Terms="UnitConstruction.BlackDrakeHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BlackDrakeHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorRange id="ArcanistHLWRange">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="SelectionLocalUpdate.ArcanistHLW.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.ArcanistHLW.Stop" Send="Destroy"/>
+        <Range value="5.000000"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+        <CliffLevelFlags index="Lower" value="0"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CActorRange>
+    <CActorUnit id="BrokenProtector" unitName="BrokenVindicatorHLW">
+        <On index="0" Terms="UnitBirth.BrokenVindicatorHLW" Send="Create SoundEmitter BrokenVindicatorHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BrokenVindicatorHLW"/>
+        <On index="2" Terms="UnitRevive.BrokenVindicatorHLW"/>
+        <On index="3" Terms="UnitRevive.BrokenVindicatorHLW"/>
+        <On index="4" Terms="UnitConstruction.BrokenVindicatorHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BrokenVindicatorHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Broodmother" unitName="BroodmotherHLW">
+        <On index="0" Terms="UnitBirth.BroodmotherHLW" Send="Create SoundEmitter BroodmotherHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BroodmotherHLW"/>
+        <On index="2" Terms="UnitRevive.BroodmotherHLW"/>
+        <On index="3" Terms="UnitRevive.BroodmotherHLW"/>
+        <On index="4" Terms="UnitConstruction.BroodmotherHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BroodmotherHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CentaurArcher" unitName="CentaurArcherHLW">
+        <On index="0" Terms="UnitBirth.CentaurArcherHLW" Send="Create SoundEmitter CentaurArcherHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.CentaurArcherHLW"/>
+        <On index="2" Terms="UnitRevive.CentaurArcherHLW"/>
+        <On index="3" Terms="UnitRevive.CentaurArcherHLW"/>
+        <On index="4" Terms="UnitConstruction.CentaurArcherHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.CentaurArcherHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="CorruptedTreant" unitName="CorruptedTreantHLW">
+        <On index="0" Terms="UnitBirth.CorruptedTreantHLW" Send="Create SoundEmitter CorruptedTreantHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.CorruptedTreantHLW"/>
+        <On index="2" Terms="UnitRevive.CorruptedTreantHLW"/>
+        <On index="3" Terms="UnitRevive.CorruptedTreantHLW"/>
+        <On index="4" Terms="UnitConstruction.CorruptedTreantHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.CorruptedTreantHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DarkTrollShadowPriest" unitName="ZandalariPriestHLW">
+        <On index="0" Terms="UnitBirth.ZandalariPriestHLW" Send="Create SoundEmitter ZandalariPriestHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.ZandalariPriestHLW"/>
+        <On index="2" Terms="UnitRevive.ZandalariPriestHLW"/>
+        <On index="3" Terms="UnitRevive.ZandalariPriestHLW"/>
+        <On index="4" Terms="UnitConstruction.ZandalariPriestHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.ZandalariPriestHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorModel id="DeathPactTarget">
+        <On Terms="Effect.RemoveButchery.Start; At Caster" Send="Create"/>
+    </CActorModel>
+    <CActorUnit id="DeathRevenant" unitName="DeathRevenantHLW">
+        <On index="0" Terms="UnitBirth.DeathRevenantHLW" Send="Create SoundEmitter DeathRevenantHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.DeathRevenantHLW"/>
+        <On index="2" Terms="UnitRevive.DeathRevenantHLW"/>
+        <On index="3" Terms="UnitRevive.DeathRevenantHLW"/>
+        <On index="4" Terms="UnitConstruction.DeathRevenantHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.DeathRevenantHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorModel id="DevotionAuraSource">
+        <HostSiteOps Ops="SOpAttachCenter SOpShadow SOpForwardNorth"/>
+    </CActorModel>
+    <CActorUnit id="DireMammoth" unitName="DireMammothHLW">
+        <On index="0" Terms="UnitBirth.DireMammothHLW" Send="Create SoundEmitter DireMammothHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.DireMammothHLW"/>
+        <On index="2" Terms="UnitRevive.DireMammothHLW"/>
+        <On index="3" Terms="UnitRevive.DireMammothHLW"/>
+        <On index="4" Terms="UnitConstruction.DireMammothHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.DireMammothHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="DragonTurtle" unitName="DragonTurtleHLW">
+        <On index="0" Terms="UnitBirth.DragonTurtleHLW" Send="Create SoundEmitter DragonTurtleHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.DragonTurtleHLW"/>
+        <On index="2" Terms="UnitRevive.DragonTurtleHLW"/>
+        <On index="3" Terms="UnitRevive.DragonTurtleHLW"/>
+        <On index="4" Terms="UnitConstruction.DragonTurtleHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.DragonTurtleHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FacelessDeathbringer" unitName="FacelessDeathbringerHLW">
+        <On index="0" Terms="UnitBirth.FacelessDeathbringerHLW" Send="Create SoundEmitter FacelessDeathbringerHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FacelessDeathbringerHLW"/>
+        <On index="2" Terms="UnitRevive.FacelessDeathbringerHLW"/>
+        <On index="3" Terms="UnitRevive.FacelessDeathbringerHLW"/>
+        <On index="4" Terms="UnitConstruction.FacelessDeathbringerHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FacelessDeathbringerHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="FelRavager" unitName="FelRavagerHLW">
+        <On index="0" Terms="UnitBirth.FelRavagerHLW" Send="Create SoundEmitter FelRavagerHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FelRavagerHLW"/>
+        <On index="2" Terms="UnitRevive.FelRavagerHLW"/>
+        <On index="3" Terms="UnitRevive.FelRavagerHLW"/>
+        <On index="4" Terms="UnitConstruction.FelRavagerHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FelRavagerHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="GiantFrostWolf" unitName="FrostWolfHLW">
+        <On index="0" Terms="UnitBirth.FrostWolfHLW" Send="Create SoundEmitter FrostWolfHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FrostWolfHLW"/>
+        <On index="2" Terms="UnitRevive.FrostWolfHLW"/>
+        <On index="3" Terms="UnitRevive.FrostWolfHLW"/>
+        <On index="4" Terms="UnitConstruction.FrostWolfHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FrostWolfHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="KoboldTaskmaster" unitName="KoboldTaskmasterHLW">
+        <On index="0" Terms="UnitBirth.KoboldTaskmasterHLW" Send="Create SoundEmitter KoboldTaskmasterHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.KoboldTaskmasterHLW"/>
+        <On index="2" Terms="UnitRevive.KoboldTaskmasterHLW"/>
+        <On index="3" Terms="UnitRevive.KoboldTaskmasterHLW"/>
+        <On index="4" Terms="UnitConstruction.KoboldTaskmasterHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.KoboldTaskmasterHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="KoboldTaskmasterHLWAttack" parent="GenericAttack" effectAttack="KoboldTaskmasterHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="MakuraTidalLord" unitName="MakuraTidalLordHLW">
+        <On index="0" Terms="UnitBirth.MakuraTidalLordHLW" Send="Create SoundEmitter MakuraTidalLordHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.MakuraTidalLordHLW"/>
+        <On index="2" Terms="UnitRevive.MakuraTidalLordHLW"/>
+        <On index="3" Terms="UnitRevive.MakuraTidalLordHLW"/>
+        <On index="4" Terms="UnitConstruction.MakuraTidalLordHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.MakuraTidalLordHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="MakuraTidalLordHLWAttack" parent="GenericAttack" effectAttack="MakuraTidalLordHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="DeathRevenantHLWAttack" parent="GenericAttack" effectAttack="DeathRevenantHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="JewelcrafterHLW" parent="GenericBuildingWar3" unitName="JewelcrafterHLW" Sound="Marketplace" Icon="Marketplace">
+        <InfoText value="IntoText/Shop"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_shop.dds"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
+    <CActorModel id="MercenaryCampTier4Add" parent="ModelAddition">
+        <HostSiteOps Ops="SOpAttachOverhead SOpForwardNorth SOpMoveUpByDot25 SOpPointDown"/>
+    </CActorModel>
+    <CActorUnit id="NetherDragon" unitName="NetherDragonHLW">
+        <On index="0" Terms="UnitBirth.NetherDragonHLW" Send="Create SoundEmitter NetherDragonHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.NetherDragonHLW"/>
+        <On index="2" Terms="UnitRevive.NetherDragonHLW"/>
+        <On index="3" Terms="UnitRevive.NetherDragonHLW"/>
+        <On index="4" Terms="UnitConstruction.NetherDragonHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.NetherDragonHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="OverlordArachnathid" unitName="ArachnathidOverlordHLW">
+        <On index="0" Terms="UnitBirth.ArachnathidOverlordHLW" Send="Create SoundEmitter ArachnathidOverlordHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.ArachnathidOverlordHLW"/>
+        <On index="2" Terms="UnitRevive.ArachnathidOverlordHLW"/>
+        <On index="3" Terms="UnitRevive.ArachnathidOverlordHLW"/>
+        <On index="4" Terms="UnitConstruction.ArachnathidOverlordHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.ArachnathidOverlordHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="ArachnathidOverlordAttack" parent="MetalMediumChop" effectAttack="ArachnathidOverlordHLWDamage"/>
+    <CActorRange id="ResurgenceRange">
+        <Range value="7.000000"/>
+    </CActorRange>
+    <CActorUnit id="SatyrHellcaller" unitName="SatyrHellcallerHLW">
+        <On index="0" Terms="UnitBirth.SatyrHellcallerHLW" Send="Create SoundEmitter SatyrHellcallerHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SatyrHellcallerHLW"/>
+        <On index="2" Terms="UnitRevive.SatyrHellcallerHLW"/>
+        <On index="3" Terms="UnitRevive.SatyrHellcallerHLW"/>
+        <On index="4" Terms="UnitConstruction.SatyrHellcallerHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SatyrHellcallerHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ServitorLearnOnly" parent="GenericUnitMorph" unitName="ServitorLearnOnly">
+        <On Terms="Behavior.ServitorBirth.On" Send="SetOpacity 0.000000 0.000000 BirthOpacity"/>
+        <On Terms="Behavior.ServitorBirth.On" Send="ClearOpacity 0.500000 BirthOpacity"/>
+        <On Terms="Behavior.ServitorBirth.On" Send="SetTintColor 0,128,255 0.000000 OneShot BirthTint"/>
+        <On Terms="Behavior.ServitorBirth.On" Send="ClearTintColor 0.500000 BirthTint"/>
+        <On Terms="Behavior.ServitorBirth.On" Send="SetScale 0.100000 0.000000 BirthScale"/>
+        <On Terms="Behavior.ServitorBirth.On" Send="ClearScale 0.500000 BirthScale"/>
+        <HostSiteOps Ops="SOpBankerBanshee"/>
+        <Model value="Servitor"/>
+        <AnimBlendTime value="0.500000"/>
+        <BuildModel value="Servitor"/>
+        <DeathArray index="Normal" ModelLink="ServitorDeath" SoundLink="Swann_FlamingBettyExplode" VoiceLink="FlamingBettyDeathVoice"/>
+        <PlacementModel value="Servitor"/>
+        <PlacementSound value="Terran_BuildingPlacementSmall"/>
+        <PortraitModel value="ExecutorPortrait"/>
+        <BarOffset value="15"/>
+        <BarWidth value="30"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        </GroupIcon>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-protoss-airarmorlevel0.dds"/>
+        <SoundArray index="Ready" value="PhotonCannon_Ready"/>
+        <SoundArray index="What" value="PhotonCannon_What"/>
+        <UnitFlags index="ShowBlobShadow" value="0"/>
+        <UnitIcon value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-ability-protoss-carrierrepairdrones.dds"/>
+        </Wireframe>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="ShandrisHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SirenHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SkeletalOrcChampion" unitName="SkeletalOrcChampionHLW">
+        <On index="0" Terms="UnitBirth.SkeletalOrcChampionHLW" Send="Create SoundEmitter SkeletalOrcChampionHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SkeletalOrcChampionHLW"/>
+        <On index="2" Terms="UnitRevive.SkeletalOrcChampionHLW"/>
+        <On index="3" Terms="UnitRevive.SkeletalOrcChampionHLW"/>
+        <On index="4" Terms="UnitConstruction.SkeletalOrcChampionHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SkeletalOrcChampionHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="SkeletalOrcChampionHLWAttack" parent="WoodHeavyBash" effectAttack="SkeletalOrcChampionHLWDamage"/>
+    <CActorModel id="SlowModel">
+        <On index="3" Terms="Behavior.SlowWar3.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorModel id="SlowingPoisonModel">
+        <On index="3" Terms="Behavior.SlowingPoison.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorAction id="SludgeMonstrosityHLWAttack" parent="GenericAttackWar3" effectImpact="SludgeFlingerDamage" effectLaunch="SludgeMonstrosityHLWLM" Art="Sludge">
+        <LaunchSiteOps Ops="SOpAttachHarness"/>
+        <LaunchAttachQuery Methods="AMFilterWeapon AMRandom" Fallback="Center"/>
+        <ImpactSiteOps Ops="SOpAttachHarness SOpAttachVolumeStandard SOp2DRotation"/>
+    </CActorAction>
+    <CActorUnit id="SludgeMonstrosity" unitName="SludgeMonstrosityHLW">
+        <On index="0" Terms="UnitBirth.SludgeMonstrosityHLW" Send="Create SoundEmitter SludgeMonstrosityHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SludgeMonstrosityHLW"/>
+        <On index="2" Terms="UnitRevive.SludgeMonstrosityHLW"/>
+        <On index="3" Terms="UnitRevive.SludgeMonstrosityHLW"/>
+        <On index="4" Terms="UnitConstruction.SludgeMonstrosityHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SludgeMonstrosityHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SorceressHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SpawnInfestedTerrans">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModelMaterial id="SpawnInvulnerabilityGlaze">
+        <On index="3" Terms="Behavior.SpawnInvulnerability.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModelMaterial>
+    <CActorUnit id="SpellbreakerHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorRange id="StarfallRadius">
+        <Range value="10.000000"/>
+    </CActorRange>
+    <CActorRange id="StarfallRange">
+        <Range value="10.000000"/>
+    </CActorRange>
+    <CActorUnit id="StormBrewmaster">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="StormWyrm" unitName="StormWyrmHLW">
+        <On index="0" Terms="UnitBirth.StormWyrmHLW" Send="Create SoundEmitter StormWyrmHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.StormWyrmHLW"/>
+        <On index="2" Terms="UnitRevive.StormWyrmHLW"/>
+        <On index="3" Terms="UnitRevive.StormWyrmHLW"/>
+        <On index="4" Terms="UnitConstruction.StormWyrmHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.StormWyrmHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="StormWyrmHLWAttack" parent="GenericAttackWar3" effectImpact="StormWyrmHLWDamage" effectLaunch="StormWyrmHLWLM" Art="FarSeer"/>
+    <CActorAction id="SatyrHellcallerHLWAttack" parent="GenericAttack" effectAttack="SatyrHellcallerHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="FrostWolfHLWAttack" parent="GenericAttack" effectAttack="FrostWolfHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="FelguardBloodfiend" unitName="BloodfiendHLW">
+        <On index="0" Terms="UnitBirth.BloodfiendHLW" Send="Create SoundEmitter BloodfiendHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BloodfiendHLW"/>
+        <On index="2" Terms="UnitRevive.BloodfiendHLW"/>
+        <On index="3" Terms="UnitRevive.BloodfiendHLW"/>
+        <On index="4" Terms="UnitConstruction.BloodfiendHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BloodfiendHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="DragonTurtleHLWAttack" parent="GenericAttack" effectAttack="DragonTurtleHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="FleshGolem" unitName="FleshGolemHLW">
+        <On index="0" Terms="UnitBirth.FleshGolemHLW" Send="Create SoundEmitter FleshGolemHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FleshGolemHLW"/>
+        <On index="2" Terms="UnitRevive.FleshGolemHLW"/>
+        <On index="3" Terms="UnitRevive.FleshGolemHLW"/>
+        <On index="4" Terms="UnitConstruction.FleshGolemHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FleshGolemHLW.Finish"/>
+    </CActorUnit>
+    <CActorAction id="FleshGolemHLWAttack" parent="GenericAttack" effectAttack="FleshGolemHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorDoodad id="BelShirTree">
+        <On Terms="ActorCreation" Send="SetOpacity 0.950000"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.500000,0.500000 Opacity1"/>
+        <On Terms="ActorCreation" Send="SetOpacity 0.800000 2.000000"/>
+        <On Terms="TimerExpired; TimerName Opacity1" Send="SetOpacity 0.950000 2.000000"/>
+        <On Terms="TimerExpired; TimerName Opacity1" Send="TimerSet 1.500000,0.500000 Opacity2"/>
+        <On Terms="TimerExpired; TimerName Opacity2" Send="SetOpacity 0.800000 2.000000"/>
+        <On Terms="TimerExpired; TimerName Opacity2" Send="TimerSet 1.500000,0.500000 Opacity1"/>
+    </CActorDoodad>
+    <CActorAction id="AmaniBerserkerHLWAttack" parent="GenericAttackWar3" effectImpact="AmaniBerserkerHLWDamage" effectLaunch="AmaniBerserkerHLWLM" Art="FireBall"/>
+    <CActorUnit id="MercenaryCampTier4" parent="GenericUnitMorph" unitName="MercenaryCampTier4">
+        <On Terms="ActorCreation" Send="AnimPlay BuildAStart Morph,B,Start"/>
+        <On Terms="AnimDone; AnimName BuildAStart" Send="AnimPlay BuildBStart Morph,B,End"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupRemove B"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation" Send="SetScale 1.300000 1.000000"/>
+        <On Terms="ActorCreation" Send="TimerSet 1.250000 Add"/>
+        <On Terms="TimerExpired; TimerName Add" Send="Create MercenaryCampTier4Add"/>
+        <Model value="Hive"/>
+        <BuildModel value="Hive"/>
+        <PlacementModel value="Hive"/>
+        <PortraitModel value="OverlordPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-menu-tier4.dds"/>
+        </GroupIcon>
+        <InfoText value="IntoText/CreepSpawn"/>
+        <SoundArray index="Ready" value="Hive_Ready"/>
+        <SoundArray index="What" value="Hive_What"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-menu-tier4.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-menu-tier4.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="ButchersBladeHLW" parent="DefaultItem" unitName="ButchersBladeHLW">
+        <UnitIcon value="Assets\Textures\btn-item-cleaver2.dds"/>
+    </CActorUnit>
+    <CActorUnit id="ForestTrollShadowPriest" unitName="AmaniBerserkerHLW">
+        <On index="0" Terms="UnitBirth.AmaniBerserkerHLW" Send="Create SoundEmitter AmaniBerserkerHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.AmaniBerserkerHLW"/>
+        <On index="2" Terms="UnitRevive.AmaniBerserkerHLW"/>
+        <On index="3" Terms="UnitRevive.AmaniBerserkerHLW"/>
+        <On index="4" Terms="UnitConstruction.AmaniBerserkerHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.AmaniBerserkerHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorAction id="FacelessDeathbringerHLWAttack" parent="GenericAttack" effectAttack="FacelessDeathbringerHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="FurbolgShaman" unitName="FurbolgShamanHLW">
+        <On index="0" Terms="UnitBirth.FurbolgShamanHLW" Send="Create SoundEmitter FurbolgShamanHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FurbolgShamanHLW"/>
+        <On index="2" Terms="UnitRevive.FurbolgShamanHLW"/>
+        <On index="3" Terms="UnitRevive.FurbolgShamanHLW"/>
+        <On index="4" Terms="UnitConstruction.FurbolgShamanHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FurbolgShamanHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="GiantPolarBear" unitName="UrsolBearHLW">
+        <On index="0" Terms="UnitBirth.UrsolBearHLW" Send="Create SoundEmitter UrsolBearHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.UrsolBearHLW"/>
+        <On index="2" Terms="UnitRevive.UrsolBearHLW"/>
+        <On index="3" Terms="UnitRevive.UrsolBearHLW"/>
+        <On index="4" Terms="UnitConstruction.UrsolBearHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.UrsolBearHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="GnollAssassin" unitName="GnollAssassinHLW">
+        <On index="0" Terms="UnitBirth.GnollAssassinHLW" Send="Create SoundEmitter GnollAssassinHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.GnollAssassinHLW"/>
+        <On index="2" Terms="UnitRevive.GnollAssassinHLW"/>
+        <On index="3" Terms="UnitRevive.GnollAssassinHLW"/>
+        <On index="4" Terms="UnitConstruction.GnollAssassinHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.GnollAssassinHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="HarpyQueen" unitName="WindfuryHarpyHLW">
+        <On index="0" Terms="UnitBirth.WindfuryHarpyHLW" Send="Create SoundEmitter WindfuryHarpyHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.WindfuryHarpyHLW"/>
+        <On index="2" Terms="UnitRevive.WindfuryHarpyHLW"/>
+        <On index="3" Terms="UnitRevive.WindfuryHarpyHLW"/>
+        <On index="4" Terms="UnitConstruction.WindfuryHarpyHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.WindfuryHarpyHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="HighborneWraith" unitName="HighborneWraithHLW">
+        <On index="0" Terms="UnitBirth.HighborneWraithHLW" Send="Create SoundEmitter HighborneWraithHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.HighborneWraithHLW"/>
+        <On index="2" Terms="UnitRevive.HighborneWraithHLW"/>
+        <On index="3" Terms="UnitRevive.HighborneWraithHLW"/>
+        <On index="4" Terms="UnitConstruction.HighborneWraithHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.HighborneWraithHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="InfernalJuggernaut" unitName="JuggernautHLW">
+        <On index="0" Terms="UnitBirth.JuggernautHLW" Send="Create SoundEmitter JuggernautHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.JuggernautHLW"/>
+        <On index="2" Terms="UnitRevive.JuggernautHLW"/>
+        <On index="3" Terms="UnitRevive.JuggernautHLW"/>
+        <On index="4" Terms="UnitConstruction.JuggernautHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.JuggernautHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MagnataurReaver" unitName="MagnataurHLW">
+        <On index="0" Terms="UnitBirth.MagnataurHLW" Send="Create SoundEmitter MagnataurHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.MagnataurHLW"/>
+        <On index="2" Terms="UnitRevive.MagnataurHLW"/>
+        <On index="3" Terms="UnitRevive.MagnataurHLW"/>
+        <On index="4" Terms="UnitConstruction.MagnataurHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.MagnataurHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Merchant" unitName="BlacksmithHLW">
+        <On index="0" Terms="UnitBirth.BlacksmithHLW" Send="Create SoundEmitter BlacksmithHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BlacksmithHLW"/>
+        <On index="2" Terms="UnitRevive.BlacksmithHLW"/>
+        <On index="3" Terms="UnitRevive.BlacksmithHLW"/>
+        <On index="4" Terms="UnitConstruction.BlacksmithHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BlacksmithHLW.Finish"/>
+        <DeathArray index="Normal" ModelLink="BlacksmithHLW" SoundLink="BlacksmithHLWDeath" VoiceLink="BlacksmithHLWDeathVoice"/>
+    </CActorUnit>
+    <CActorUnit id="MurgulBloodGill" unitName="MurgulBloodgillHLW">
+        <On index="0" Terms="UnitBirth.MurgulBloodgillHLW" Send="Create SoundEmitter MurgulBloodgillHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.MurgulBloodgillHLW"/>
+        <On index="2" Terms="UnitRevive.MurgulBloodgillHLW"/>
+        <On index="3" Terms="UnitRevive.MurgulBloodgillHLW"/>
+        <On index="4" Terms="UnitConstruction.MurgulBloodgillHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.MurgulBloodgillHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="MurlocPlaguebearer" unitName="MurlocPlaguebearerHLW">
+        <On index="0" Terms="UnitBirth.MurlocPlaguebearerHLW" Send="Create SoundEmitter MurlocPlaguebearerHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.MurlocPlaguebearerHLW"/>
+        <On index="2" Terms="UnitRevive.MurlocPlaguebearerHLW"/>
+        <On index="3" Terms="UnitRevive.MurlocPlaguebearerHLW"/>
+        <On index="4" Terms="UnitConstruction.MurlocPlaguebearerHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.MurlocPlaguebearerHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="NerubianQueen" unitName="NerubianQueenHLW">
+        <On index="0" Terms="UnitBirth.NerubianQueenHLW" Send="Create SoundEmitter NerubianQueenHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.NerubianQueenHLW"/>
+        <On index="2" Terms="UnitRevive.NerubianQueenHLW"/>
+        <On index="3" Terms="UnitRevive.NerubianQueenHLW"/>
+        <On index="4" Terms="UnitConstruction.NerubianQueenHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.NerubianQueenHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="OgreMauler" unitName="BoulderfistOgreHLW">
+        <On index="0" Terms="UnitBirth.BoulderfistOgreHLW" Send="Create SoundEmitter BoulderfistOgreHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.BoulderfistOgreHLW"/>
+        <On index="2" Terms="UnitRevive.BoulderfistOgreHLW"/>
+        <On index="3" Terms="UnitRevive.BoulderfistOgreHLW"/>
+        <On index="4" Terms="UnitConstruction.BoulderfistOgreHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.BoulderfistOgreHLW.Finish"/>
+        <LifeArmorIcon value="Assets\Textures\btn-armor-heavy.dds"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="PolarFurbolgChampion" unitName="FurbolgChampionHLW">
+        <On index="0" Terms="UnitBirth.FurbolgChampionHLW" Send="Create SoundEmitter FurbolgChampionHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.FurbolgChampionHLW"/>
+        <On index="2" Terms="UnitRevive.FurbolgChampionHLW"/>
+        <On index="3" Terms="UnitRevive.FurbolgChampionHLW"/>
+        <On index="4" Terms="UnitConstruction.FurbolgChampionHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.FurbolgChampionHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="RazormaneMedicineMan" unitName="RazormaneChiefHLW">
+        <On index="0" Terms="UnitBirth.RazormaneChiefHLW" Send="Create SoundEmitter RazormaneChiefHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.RazormaneChiefHLW"/>
+        <On index="2" Terms="UnitRevive.RazormaneChiefHLW"/>
+        <On index="3" Terms="UnitRevive.RazormaneChiefHLW"/>
+        <On index="4" Terms="UnitConstruction.RazormaneChiefHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.RazormaneChiefHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorMissile id="RedDragonAttackMissile">
+        <Scale value="0.700000"/>
+    </CActorMissile>
+    <CActorModel id="RetributionAuraSource">
+        <HostSiteOps Ops="SOpAttachCenter SOpShadow SOpForwardNorth"/>
+    </CActorModel>
+    <CActorUnit id="EnergeticBarrierHLW" parent="DefaultItem" unitName="EnergeticBarrierHLW">
+        <UnitIcon value="Assets\Textures\btn-ability-neutral-lightningshield.dds"/>
+    </CActorUnit>
+    <CActorUnit id="IronplateBucklerHLW" parent="DefaultItem" unitName="IronplateBucklerHLW">
+        <UnitIcon value="Assets\Textures\btn-item-buckler2.dds"/>
+    </CActorUnit>
+    <CActorUnit id="BloodforgedShieldHLW" parent="DefaultItem" unitName="BloodforgedShieldHLW">
+        <UnitIcon value="Assets\Textures\btn-item-plating3.dds"/>
+    </CActorUnit>
+    <CActorAction id="FelRavagerHLWAttack" parent="GenericAttack" effectAttack="FelRavagerHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="SeaGiantHunter" unitName="SeaGiantHLW">
+        <On index="0" Terms="UnitBirth.SeaGiantHLW" Send="Create SoundEmitter SeaGiantHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SeaGiantHLW"/>
+        <On index="2" Terms="UnitRevive.SeaGiantHLW"/>
+        <On index="3" Terms="UnitRevive.SeaGiantHLW"/>
+        <On index="4" Terms="UnitConstruction.SeaGiantHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SeaGiantHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SkeletalMage" unitName="SkeletalMageHLW">
+        <On index="0" Terms="UnitBirth.SkeletalMageHLW" Send="Create SoundEmitter SkeletalMageHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SkeletalMageHLW"/>
+        <On index="2" Terms="UnitRevive.SkeletalMageHLW"/>
+        <On index="3" Terms="UnitRevive.SkeletalMageHLW"/>
+        <On index="4" Terms="UnitConstruction.SkeletalMageHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SkeletalMageHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Spider" unitName="SpiderHLW">
+        <On index="0" Terms="UnitBirth.SpiderHLW" Send="Create SoundEmitter SpiderHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SpiderHLW"/>
+        <On index="2" Terms="UnitRevive.SpiderHLW"/>
+        <On index="3" Terms="UnitRevive.SpiderHLW"/>
+        <On index="4" Terms="UnitConstruction.SpiderHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SpiderHLW.Finish"/>
+    </CActorUnit>
+    <CActorAction id="SpiderHLWArrack" parent="WoodLightBash" effectAttack="SpiderHLWDamage"/>
+    <CActorUnit id="SpiderCrabShorecrawler" unitName="SpiderCrabHLW">
+        <On index="0" Terms="UnitBirth.SpiderCrabHLW" Send="Create SoundEmitter SpiderCrabHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.SpiderCrabHLW"/>
+        <On index="2" Terms="UnitRevive.SpiderCrabHLW"/>
+        <On index="3" Terms="UnitRevive.SpiderCrabHLW"/>
+        <On index="4" Terms="UnitConstruction.SpiderCrabHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.SpiderCrabHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="AlchemistHLW" parent="GenericBuildingWar3" unitName="AlchemistHLW" Sound="Tavern" Icon="Tavern">
+        <InfoText value="IntoText/Shop"/>
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_shop.dds"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+    </CActorUnit>
+    <CActorUnit id="StukovExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SuccubusHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SummonWaterElementals">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SylvanasExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SylvanasUndeadHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModelMaterial id="TaintedCoreGlaze">
+        <On index="6" Terms="Behavior.TaintedCoreTarget.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModelMaterial>
+    <CActorUnit id="TaurenChieftainHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TichondriusHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TinkerHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TirionHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainFootman">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainKnight">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainMortarTeam">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainPriest">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainRifleman">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainSorceress">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TrainSpellbreaker">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TuskarrSorcerer" unitName="TuskarrSorcererHLW">
+        <On index="0" Terms="UnitBirth.TuskarrSorcererHLW" Send="Create SoundEmitter TuskarrSorcererHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.TuskarrSorcererHLW"/>
+        <On index="2" Terms="UnitRevive.TuskarrSorcererHLW"/>
+        <On index="3" Terms="UnitRevive.TuskarrSorcererHLW"/>
+        <On index="4" Terms="UnitConstruction.TuskarrSorcererHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.TuskarrSorcererHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="StukovHero">
+        <On Terms="ActorCreation" Send="Create HeroTeamColor"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-stukov.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-stukov.dds"/>
+        </Wireframe>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="SwannHero">
+        <On Terms="ActorCreation" Send="Create HeroTeamColor"/>
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-swann.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-swann.dds"/>
+        </Wireframe>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorAction id="TuskarrSorcererHLWAttack" parent="GenericAttackWar3" effectImpact="TuskarrSorcererHLWDamage" effectLaunch="TuskarrSorcererHLWLM" Art="TuskarrSpear"/>
+    <CActorUnit id="StormheraldHLW" parent="DefaultItem" unitName="StormheraldHLW">
+        <UnitIcon value="Assets\Textures\btn-item-sword2.dds"/>
+    </CActorUnit>
+    <CActorAction id="BlackDrakeHLWAttack" parent="GenericAttackWar3" effectImpact="BlackDrakeHLWDamage" effectLaunch="BlackDrakeHLWLM" Art="RedDragon">
+        <LaunchAttachQuery Methods="Head 0"/>
+    </CActorAction>
+    <CActorAction id="AncientSasquatchHLWAttack" parent="GenericAttack" effectAttack="AncientSasquatchHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="BanditHLWAttack" parent="GenericAttack" effectAttack="BanditHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="AssassinsBladeHLW" parent="DefaultItem" unitName="AssassinsBladeHLW">
+        <UnitIcon value="Assets\Textures\btn-item-blinkdagger.dds"/>
+    </CActorUnit>
+    <CActorAction id="CentaurArcherHLWAttack" parent="GenericAttackWar3" effectImpact="CentaurArcherHLWDamage" effectLaunch="CentaurArcherHLWLM" Art="SearingArrow"/>
+    <CActorAction id="BloodfiendHLWAttack" parent="GenericAttack" effectAttack="BloodfiendHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="BoulderfistOgreHLWAttack" parent="GenericAttack" effectAttack="BoulderfistOgreHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="BrokenVindicatorHLWAttack" parent="GenericAttack" effectAttack="BrokenVindicatorHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="BroodmotherHLWAttack" parent="GenericAttack" effectAttack="BroodmotherHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorRange id="AlchemistHLWRange">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="SelectionLocalUpdate.AlchemistHLW.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.AlchemistHLW.Stop" Send="Destroy"/>
+        <Range value="5.000000"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+        <CliffLevelFlags index="Lower" value="0"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CActorRange>
+    <CActorRange id="JewelcrafterHLWRange">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="SelectionLocalUpdate.JewelcrafterHLW.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.JewelcrafterHLW.Stop" Send="Destroy"/>
+        <Range value="5.000000"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+        <CliffLevelFlags index="Lower" value="0"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CActorRange>
+    <CActorAction id="SeaGiantHLWAttack" parent="GenericAttack" effectAttack="SeaGiantHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="GnollAssassinHLWAttack" parent="GenericAttackWar3" effectImpact="GnollAssassinHLWDamage" effectLaunch="GnollAssassinHLWLM" Art="PoisonArrow">
+        <LaunchAttachQuery Methods="FilterHandRight"/>
+    </CActorAction>
+    <CActorAction id="CorruptedTreantHLWAttack" parent="GenericAttack" effectAttack="CorruptedTreantHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="DireMammothHLWAttack" parent="GenericAttack" effectAttack="DireMammothHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorUnit id="MercenaryCampTier1" parent="GenericUnitMorph" unitName="MercenaryCampTier1">
+        <On Terms="ActorCreation" Send="Create HLWCreepDecal1"/>
+        <On Terms="ActorCreation; PlayerHasClanDecal" Send="Create HLWClanFlag"/>
+        <On Terms="AbilMorph.CreepTier2Morph.Start" Send="Destroy"/>
+        <Model value="Hatchery"/>
+        <BuildModel value="Hatchery"/>
+        <PlacementModel value="Hatchery"/>
+        <PortraitModel value="OverlordPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-menu-tier1.dds"/>
+        </GroupIcon>
+        <InfoText value="IntoText/CreepSpawn"/>
+        <SoundArray index="Ready" value="Hatchery_Ready"/>
+        <SoundArray index="What" value="Hatchery_What"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-menu-tier1.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-menu-tier1.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="MercenaryCampTier2" parent="GenericUnitMorph" unitName="MercenaryCampTier2">
+        <On Terms="ActorCreation" Send="AnimPlay BuildAStart Morph,A,Start"/>
+        <On Terms="AnimDone; AnimName BuildAStart" Send="AnimPlay BuildBStart Morph,A,End"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupApply B"/>
+        <On Terms="AbilMorph.CreepTier3Morph.Start" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="SetScale 1.100000 1.000000"/>
+        <Model value="Lair"/>
+        <BuildModel value="Lair"/>
+        <PlacementModel value="Lair"/>
+        <PortraitModel value="OverlordPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-menu-tier2.dds"/>
+        </GroupIcon>
+        <InfoText value="IntoText/CreepSpawn"/>
+        <SoundArray index="Ready" value="Lair_Ready"/>
+        <SoundArray index="What" value="Lair_What"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-menu-tier2.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-menu-tier2.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorUnit id="MercenaryCampTier3" parent="GenericUnitMorph" unitName="MercenaryCampTier3">
+        <On Terms="ActorCreation" Send="AnimPlay BuildAStart Morph,B,Start"/>
+        <On Terms="AnimDone; AnimName BuildAStart" Send="AnimPlay BuildBStart Morph,B,End"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupRemove B"/>
+        <On Terms="AnimDone; AnimName BuildBStart" Send="AnimGroupApply C"/>
+        <On Terms="ActorCreation" Send="SetScale 1.200000 1.000000"/>
+        <Model value="Hive"/>
+        <BuildModel value="Hive"/>
+        <PlacementModel value="Hive"/>
+        <PortraitModel value="OverlordPortrait"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\btn-menu-tier3.dds"/>
+        </GroupIcon>
+        <InfoText value="IntoText/CreepSpawn"/>
+        <SoundArray index="Ready" value="Hive_Ready"/>
+        <SoundArray index="What" value="Hive_What"/>
+        <UnitFlags index="SuppressDefaultStatusBar" value="1"/>
+        <UnitIcon value="Assets\Textures\btn-menu-tier3.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\btn-menu-tier3.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorAction id="FeralWildkinHLWAttack" parent="GenericAttack" effectAttack="FeralWildkinHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="FurbolgChampionHLWAttack" parent="GenericAttack" effectAttack="FurbolgChampionHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="FurbolgShamanHLWAttack" parent="GenericAttack" effectAttack="FurbolgShamanHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="HighborneWraithHLWAttack" parent="GenericAttackWar3" effectImpact="HighborneWraithHLWDamage" effectLaunch="HighborneWraithHLWLM" Art="BansheeUndead"/>
+    <CActorAction id="JuggernautHLWAttack" parent="GenericAttack" effectAttack="JuggernautHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="MagnataurHLWAttack" parent="GenericAttack" effectAttack="MagnataurHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="NerubianQueenHLWAttack" parent="GenericAttackWar3" effectImpact="NerubianQueenHLWDamage" effectLaunch="NerubianQueenHLWLM" Art="CryptFiend"/>
+    <CActorAction id="MurgulBloodgillHLWAttack" parent="GenericAttackWar3" effectImpact="MurgulBloodgillHLWDamage" effectLaunch="MurgulBloodgillHLWLM" Art="Priest"/>
+    <CActorAction id="MurlocPlaguebearerHLWAttack" parent="GenericAttack" effectAttack="MurlocPlaguebearerHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="SkeletalMageHLWAttack" parent="GenericAttackWar3" effectImpact="SkeletalMageHLWDamage" effectLaunch="SkeletalMageHLWLM" Art="SkeletalMage"/>
+    <CActorAction id="RazormaneChiefHLWAttack" parent="GenericAttack" effectAttack="RazormaneChiefHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="ScorpidHLWAttack" parent="GenericAttack" effectAttack="ScorpidHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorRange id="BlacksmithHLWRange">
+        <Inherits index="TeamColor" value="1"/>
+        <On Terms="SelectionLocalUpdate.BlacksmithHLW.Start" Send="Create"/>
+        <On Terms="SelectionLocalUpdate.BlacksmithHLW.Stop" Send="Destroy"/>
+        <Range value="5.000000"/>
+        <Icon value="Assets\Textures\ui_rangeicon.dds"/>
+        <IconArcLength value="0.380000"/>
+        <CliffLevelFlags index="Lower" value="0"/>
+        <CliffLevelFlags index="Higher" value="0"/>
+    </CActorRange>
+    <CActorUnit id="FirebrandHLW" parent="DefaultItem" unitName="FirebrandHLW">
+        <UnitIcon value="Assets\Textures\btn-item-sword3.dds"/>
+    </CActorUnit>
+    <CActorUnit id="IceBarbedSpearHLW" parent="DefaultItem" unitName="IceBarbedSpearHLW">
+        <UnitIcon value="Assets\Textures\btn-item-IceBarbedSpear.dds"/>
+    </CActorUnit>
+    <CActorDoodad id="TerrainObjectStarshipFloraPodDoodadE">
+        <Footprint value=""/>
+    </CActorDoodad>
+    <CActorAction id="NetherDragonHLWAttack" parent="GenericAttackWar3" effectImpact="NetherDragonHLWDamage" effectLaunch="NetherDragonHLWLM" Art="Destroyer"/>
+    <CActorUnit id="TyrandeExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="TyrandeHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorDoodad id="UmojanLabHoloProjector">
+        <On index="6" Terms="ModelEvent; ModelEventName PowerOff" Target="HologramProjector_PowerLoop_AS" Send="Destroy"/>
+        <On index="7" removed="1"/>
+        <On index="8" removed="1"/>
+        <On index="9" removed="1"/>
+    </CActorDoodad>
+    <!--                                                                                         -->
+    <!-- UmojanLabHoloProjectorUnit                                                             -->
+    <!--                                                                                         -->
+    <CActorUnit id="UmojanLabHoloProjectorUnit">
+        <On index="69" Terms="ModelEvent; ModelEventName PowerOff" Target="Doodad_UmojanLabHoloProjector_PowerLoop" Send="Destroy"/>
+        <On index="70" removed="1"/>
+        <On index="71" removed="1"/>
+        <On index="72" removed="1"/>
+    </CActorUnit>
+    <CActorModel id="UnholyFrenzyModel">
+        <On index="3" Terms="Behavior.UnholyFrenzy.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="UtherExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="UtherHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VarimathrasHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="Vengeance">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VereesaHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VoidwalkerHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VoljinExtended">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VoljinHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="VorazunHero">
+        <GroupIcon>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-vorazun.dds"/>
+        </GroupIcon>
+        <Wireframe>
+            <Image index="0" value="Assets\Textures\btn-unit-hero-vorazun.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image index="0" removed="1"/>
+            <Image index="1" removed="1"/>
+            <Image index="2" removed="1"/>
+        </WireframeShield>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorModel id="VulnerableBirth">
+        <On index="3" Terms="Effect.VulnerableSetStart.Start; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorModelMaterial id="VulnerableGlaze">
+        <On index="3" Terms="Behavior.Vulnerable.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModelMaterial>
+    <CActorModel id="VulnerableModel">
+        <On index="3" Terms="Behavior.Vulnerable.On; ValidatePlayer RemovedBuffDebuffVisuals"/>
+    </CActorModel>
+    <CActorUnit id="WarGolem" unitName="WarGolemHLW">
+        <On index="0" Terms="UnitBirth.WarGolemHLW" Send="Create SoundEmitter WarGolemHLW_Ambience"/>
+        <On index="1" Terms="UnitBirth.WarGolemHLW"/>
+        <On index="2" Terms="UnitRevive.WarGolemHLW"/>
+        <On index="3" Terms="UnitRevive.WarGolemHLW"/>
+        <On index="4" Terms="UnitConstruction.WarGolemHLW.Start"/>
+        <On index="5" Terms="UnitConstruction.WarGolemHLW.Finish"/>
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+        <Macros value="NoShadowsMacro"/>
+    </CActorUnit>
+    <CActorUnit id="WardenHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="WarlockHero">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorUnit id="WaterElemental">
+        <Macros value="MoveSpeedAnimationTimeScaleMacro"/>
+    </CActorUnit>
+    <CActorAction id="WindfuryHarpyHLWAttack" parent="GenericAttackWar3" effectImpact="WindfuryHarpyHLWDamage" effectLaunch="WindfuryHarpyHLWLM" Art="Gargoyle"/>
+    <CActorAction id="SpiderCrabHLWAttack" parent="GenericAttack" effectAttack="SpiderCrabHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="UrsolBearHLWAttack" parent="GenericAttack" effectAttack="UrsolBearHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <CActorAction id="WarGolemHLWAttack" parent="GenericAttack" effectAttack="WarGolemHLWDamage">
+        <LaunchAssets Sound="InfestedAbominationAttackStart"/>
+        <ImpactMap index="None" Sound="InfestedAbominationAttackImpact"/>
+    </CActorAction>
+    <!--                                                                                         -->
+    <!-- Circle(s) Of Power(s) ................................................................. -->
+    <!--                                                                                         -->
+    <CActorUnit id="Beacon_Protoss">
+        <MinimapIcon value="Assets\Textures\ui_minimap_icon_objective_small.dds"/>
+        <MinimapIconIsTeamColored value="1"/>
+    </CActorUnit>
+    <CActorAction id="ZandalariPriestHLWAttack" parent="GenericAttackWar3" effectImpact="ZandalariPriestHLWDamage" effectLaunch="ZandalariPriestHLWLM" Art="FireBall"/>
+    <CActorModel id="UpgradeItemBeacon">
+        <On Terms="Abil.ProtossSummon.Start" Send="Create"/>
+        <On Terms="Abil.TerranSummon.Start" Send="Create"/>
+        <On Terms="Abil.ZergSummon.Start" Send="Create"/>
+    </CActorModel>
+    <CActorModel id="HLWCreepDecal1" parent="ModelAddition">
+        <Inherits index="BaseModelScale" value="0"/>
+        <Inherits index="CloakEffect" value="0"/>
+        <Inherits index="CreepEngulfment" value="0"/>
+        <Inherits index="Scale" value="0"/>
+        <Remove Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="HatcheryPlayerDecal1ForwardOffset HLWDecalOffset SOpShadow"/>
+        <Model value="HLWPlayerDecal"/>
+    </CActorModel>
+    <CActorSiteOpLocalOffset id="HLWDecalOffset">
+        <LocalOffset value="0.000000,-4.000000,0.000000"/>
+    </CActorSiteOpLocalOffset>
+    <CActorModel id="HLWClanFlag">
+        <Aliases value="_Snapshot"/>
+        <Inherits index="CastShadows" value="1"/>
+        <Inherits index="CloakEffect" value="1"/>
+        <Inherits index="CreepEngulfment" value="1"/>
+        <Inherits index="Decal" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="TeamColor" value="1"/>
+        <Inherits index="TimeScale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Inherits index="WarpGroup" value="1"/>
+        <On Terms="ActorCreation" Send="$Stand PlayForever"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 1.000000"/>
+        <On Terms="ActorOrphan" Send="Signal DestroyFlag"/>
+        <On Terms="Signal.*.DestroyFlag" Send="SetOpacity 0.000000 1.000000"/>
+        <On Terms="Signal.*.DestroyFlag" Send="TimerSet 1.000000 DelayDestroy"/>
+        <On Terms="TimerExpired; TimerName DelayDestroy" Send="Destroy"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="ZergClanFlagForward ZergClanFlagForwardOffset ZergClanFlagRotation"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+    </CActorModel>
+</Catalog>

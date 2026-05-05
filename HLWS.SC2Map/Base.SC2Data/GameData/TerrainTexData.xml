@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTerrainTex id="PurifierWorld5">
+        <Texture value="Assets\Textures\purifierworld5.dds"/>
+        <Normalmap value="Assets\Textures\purifierworld5_normal.dds"/>
+        <EditorIcon value="Assets\Textures\ui-editoricon-purifierworld5.dds"/>
+    </CTerrainTex>
+</Catalog>

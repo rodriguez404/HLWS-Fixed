@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CWeaponLegacy default="1" id="DefaultCreepHLW">
+        <EditorCategories value="Race:Creep"/>
+        <Icon value="Assets\Textures\btn-unit-neutral-##id##.dds"/>
+        <TargetFilters value="Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="8"/>
+        <Period value="1.35"/>
+        <RangeDisplayFlags index="CollapseBuffed" value="1"/>
+        <PeriodDisplayFlags index="CollapseBuffed" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy default="1" id="HeroWeapon">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AcidSpike">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AlarakHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CannonImage" parent="Pyrocannon">
+        <Name value="Weapon/Name/CannonImage"/>
+        <Tip value="Weapon/Tip/CannonImage"/>
+        <Options index="LinkedCooldown" value="1"/>
+        <Options index="RequireEnabledAttackAbil" value="1"/>
+        <DisplayEffect value="CannonImageDamage"/>
+        <DisplayName value="Weapon/Name/CannonImage"/>
+        <RangeSlop value="0"/>
+        <Marker Link="Weapon/CannonImage"/>
+        <Period value="1.25"/>
+        <Effect value="CannonImageLM"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GuidedArrow">
+        <TargetFilters value="-;Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable,Resistant"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PhotonOvercharge">
+        <EditorCategories value="Race:Protoss"/>
+        <Options index="OnlyFireWhileInAttackOrder" value="0"/>
+        <Icon value="Assets\Textures\btn-upgrade-protoss-structureovercharge.dds"/>
+        <DisplayEffect value="PhotonOverchargeDamage"/>
+        <TargetFilters value="Visible;Player,Ally,Neutral,Enemy,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="15"/>
+        <Period value="0.64"/>
+        <Effect value="PhotonOverchargeLM"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AmaniBerserkerHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ForestTrollShadowPriest.dds"/>
+        <Period value="1.8"/>
+        <Effect value="AmaniBerserkerHLWLM"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="AmaniBerserkerHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientHydraHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-GreenHydra.dds"/>
+        <Range value="4"/>
+        <Period value="1.5"/>
+        <Effect value="AncientHydraHLWLM"/>
+        <DamagePoint value="0.7"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="AncientHydraHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AncientSasquatchHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Sasquatch.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="AncientSasquatchHLWDamage"/>
+        <Effect value="AncientSasquatchHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnnihilanGlaive">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="AnubarakStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BanditLordHLW" parent="DefaultCreepHLW">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets/Textures/btn-unit-neutral-BanditLord.dds"/>
+        <DisplayEffect value="BanditLordHLWDamage"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <Range value="0.25"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+        <Effect value="BanditLordHLWDamage"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BronzeDragonHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-neutral-BronzeDragon.dds"/>
+        <DisplayEffect value="BronzeDragonHLWDamage"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <Effect value="BronzeDragonHLWDamage"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkWizardHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-neutral-BanditMage.dds"/>
+        <DisplayEffect value="DarkWizardHLWDamage"/>
+        <Range value="6"/>
+        <Period value="1.8"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.85"/>
+        <Effect value="DarkWizardHLWLM"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DarkElite" parent="War3Melee">
+        <MinScanRange value="11"/>
+        <Effect value="DarkEliteSetLaunch"/>
+        <Cost>
+            <Charge CountMax="130"/>
+        </Cost>
+    </CWeaponLegacy>
+    <CWeaponStrafe id="GuardianWisps">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponStrafe>
+    <CWeaponLegacy id="Servitor">
+        <DisplayEffect value="ServitorLearnOnlyDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalOrcChampionHLW" parent="DefaultCreepHLW">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets/Textures/btn-unit-neutral-SkeletalOrcChampion.dds"/>
+        <DisplayEffect value="SkeletalOrcChampionHLWDamage"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.44"/>
+        <Effect value="SkeletalOrcChampionHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArtanisHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArtanisStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArthasStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BanditHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-Bandit.dds"/>
+        <Range value="0.5"/>
+        <Period value="2"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="BanditHLWDamage"/>
+        <Effect value="BanditHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlackDrakeHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-BlackDragon.dds"/>
+        <Range value="4"/>
+        <Period value="1.8"/>
+        <Effect value="BlackDrakeHLWLM"/>
+        <DamagePoint value="0.94"/>
+        <Backswing value="0.56"/>
+        <DisplayEffect value="BlackDrakeHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BlessedHammer">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BloodfiendHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Felguard.dds"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="BloodfiendHLWDamage"/>
+        <Effect value="BloodfiendHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BoulderfistOgreHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Ogre.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="BoulderfistOgreHLWDamage"/>
+        <Effect value="BoulderfistOgreHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BrokenVindicatorHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Broken.dds"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.33"/>
+        <Backswing value="0.64"/>
+        <DisplayEffect value="BrokenVindicatorHLWDamage"/>
+        <Effect value="BrokenVindicatorHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="BroodmotherHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Spider.dds"/>
+        <Range value="0.5"/>
+        <Effect value="BroodmotherHLWSet"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="BroodmotherHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CarriageArm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CentaurArcherHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-CentaurArcher.dds"/>
+        <Range value="4"/>
+        <Period value="1.9"/>
+        <Effect value="CentaurArcherHLWLM"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="CentaurArcherHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ChenStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CorrosiveBolt">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CorruptedTreantHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-CorruptedTreant.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.6"/>
+        <Effect value="CorruptedTreantHLWSet"/>
+        <DamagePoint value="0.467"/>
+        <DisplayEffect value="CorruptedTreantHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DireMammothHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-BlackMammoth.dds"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.7"/>
+        <DisplayEffect value="DireMammothHLWDamage"/>
+        <Effect value="DireMammothHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DrakkenLaser">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Destructible,Stasis,Dead,Hidden,Invulnerable,Summoned"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EarthBrewmaster">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="EnergyBolt">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelBolt">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelGlaive">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FireBrewmaster">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ForestSpirit">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="7"/>
+        <Range value="7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CentaurKhanHLW" parent="DefaultCreepHLW">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets/Textures/btn-unit-neutral-CentaurKhan.dds"/>
+        <DisplayEffect value="CentaurKhanHLWDamage"/>
+        <Range value="0.5"/>
+        <Period value="1.3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="CentaurKhanHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Frostbolt">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GazloweStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GreatHalberd">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HailofLead">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="IllidanStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="JainaStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KaelthasStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KerriganAscendedHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KerriganStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="KoboldTaskmasterHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Kobold.dds"/>
+        <Range value="0.5"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="KoboldTaskmasterHLWDamage"/>
+        <Effect value="KoboldTaskmasterHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LavaBolt">
+        <Range value="7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LightningBolt">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MakuraTidalLordHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MakuraBlue.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.2"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="MakuraTidalLordHLWDamage"/>
+        <Effect value="MakuraTidalLordHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DeathRevenantHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Revenant.dds"/>
+        <Range value="0.5"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="DeathRevenantHLWDamage"/>
+        <Effect value="DeathRevenantHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MalfurionStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Mangle">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MechanoClaw">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MokNathalAxe">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MoonBlade">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Moonbolt"/>
+    <CWeaponLegacy id="MountainKingHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MuradinStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NazjatarBow">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="12"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NovaHero">
+        <Range value="8"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NovaStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PhoenixStrike">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="PoweredBlade">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RaynorHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Rend">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RexxarStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Rip">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Runeblade">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ArachnathidOverlordHLW" parent="DefaultCreepHLW">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets/Textures/btn-unit-neutral-ArachnathidPurple.dds"/>
+        <DisplayEffect value="ArachnathidOverlordHLWDamage"/>
+        <Range value="0.5"/>
+        <Period value="2"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+        <Effect value="ArachnathidOverlordHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SgtHammerStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SgtHammerStormSiege">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SludgeMonstrosityHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-neutral-Sludge.dds"/>
+        <DisplayEffect value="SludgeMonstrosityHLWDamage"/>
+        <AcquirePrioritization value="ByAngle"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="SludgeMonstrosityHLWLM"/>
+        <AllowedMovement value="Slowing"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StaffofSerenity">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SteadyShot">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormBrewmaster">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="StormWyrmHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ThunderLizard.dds"/>
+        <Range value="4"/>
+        <Period value="1.1"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+        <Effect value="StormWyrmHLWLM"/>
+        <DisplayEffect value="StormWyrmHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SatyrHellcallerHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Satyr.dds"/>
+        <Range value="0.5"/>
+        <Period value="0.9"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="SatyrHellcallerHLWDamage"/>
+        <Effect value="SatyrHellcallerHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FrostWolfHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-TimberWolf.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.3"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="FrostWolfHLWDamage"/>
+        <Effect value="FrostWolfHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FeralWildkinHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Wildkin.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="FeralWildkinHLWDamage"/>
+        <Effect value="FeralWildkinHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="DragonTurtleHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-SeaTurtleRed.dds"/>
+        <Range value="0.5"/>
+        <Period value="0.8"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="DragonTurtleHLWDamage"/>
+        <Effect value="DragonTurtleHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Fireball">
+        <Range value="7"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FleshGolemHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-fleshgolem.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="FleshGolemHLWDamage"/>
+        <Effect value="FleshGolemHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FacelessDeathbringerHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FacelessOne.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="FacelessDeathbringerHLWSet"/>
+        <DisplayEffect value="FacelessDeathbringerHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FurbolgChampionHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-PolarFurbolg.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="FurbolgChampionHLWDamage"/>
+        <Effect value="FurbolgChampionHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FurbolgShamanHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-FurbolgShaman.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.8"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="FurbolgShamanHLWDamage"/>
+        <Effect value="FurbolgShamanHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GnollAssassinHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-GnollArcher.dds"/>
+        <Range value="4"/>
+        <Period value="1.6"/>
+        <Effect value="GnollAssassinHLWLM"/>
+        <DamagePoint value="0.4"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="GnollAssassinHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="HighborneWraithHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-HighborneGhost.dds"/>
+        <Range value="2.5"/>
+        <Period value="1.8"/>
+        <Effect value="HighborneWraithHLWLM"/>
+        <DamagePoint value="0.56"/>
+        <Backswing value="0.51"/>
+        <DisplayEffect value="HighborneWraithHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="JuggernautHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-InfernalFlameCannon.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.6"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.8"/>
+        <DisplayEffect value="JuggernautHLWDamage"/>
+        <Effect value="JuggernautHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LashofPain">
+        <Range value="6"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="LunarRecurve">
+        <Range value="12"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MagnataurHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MagnataurBrown.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.84"/>
+        <DisplayEffect value="MagnataurHLWDamage"/>
+        <Effect value="MagnataurHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurgulBloodgillHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MurgulBloodGill.dds"/>
+        <Range value="4"/>
+        <Period value="1.6"/>
+        <Effect value="MurgulBloodgillHLWLM"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+        <DisplayEffect value="MurgulBloodgillHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="MurlocPlaguebearerHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-MurlocMutant.dds"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.66"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="MurlocPlaguebearerHLWDamage"/>
+        <Effect value="MurlocPlaguebearerHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NerubianQueenHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-NerubianQueen.dds"/>
+        <Period value="1.6"/>
+        <Effect value="NerubianQueenHLWLM"/>
+        <DamagePoint value="0.64"/>
+        <Backswing value="0.36"/>
+        <DisplayEffect value="NerubianQueenHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="RazormaneChiefHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-RazormaneChief.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="RazormaneChiefHLWDamage"/>
+        <Effect value="RazormaneChiefHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="FelRavagerHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FelhunterPurple.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.25"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="FelRavagerHLWSet"/>
+        <DisplayEffect value="FelRavagerHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ScorpidHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-Arachnathid.dds"/>
+        <Range value="0.5"/>
+        <Period value="2"/>
+        <DamagePoint value="0.53"/>
+        <Backswing value="0.47"/>
+        <DisplayEffect value="ScorpidHLWDamage"/>
+        <Effect value="ScorpidHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SeaGiantHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-SeaGiantGreen.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.5"/>
+        <Effect value="SeaGiantHLWSet"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.56"/>
+        <DisplayEffect value="SeaGiantHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ShadowBolt">
+        <Range value="9"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SkeletalMageHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-skeletalmage.dds"/>
+        <Period value="1.8"/>
+        <Effect value="SkeletalMageHLWLM"/>
+        <DamagePoint value="0.5"/>
+        <DisplayEffect value="SkeletalMageHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpiderHLW">
+        <EditorCategories value="Race:Creep"/>
+        <Icon value="Assets\Textures\btn-weapon-normal.dds"/>
+        <DisplayEffect value="SpiderHLWDamage"/>
+        <TargetFilters value="Ground,Visible;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <MinScanRange value="7"/>
+        <Range value="0.5"/>
+        <Period value="1.35"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+        <Effect value="SpiderHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SpiderCrabHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets\Textures\btn-unit-neutral-SpiderCrab.dds"/>
+        <Range value="0.5"/>
+        <Period value="1.9"/>
+        <DamagePoint value="0.5"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="SpiderCrabHLWDamage"/>
+        <Effect value="SpiderCrabHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SwannHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SylvanasStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="CyberBlast" parent="HeroWeapon">
+        <TargetFilters value="Visible;Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ThrallStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TuskarrSorcererHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-TuskarrBrown.dds"/>
+        <Range value="4"/>
+        <Period value="1"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+        <Effect value="TuskarrSorcererHLWLM"/>
+        <DisplayEffect value="TuskarrSorcererHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="SymbioticSpores">
+        <DamagePoint value="0.55"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ThalassianRecurve">
+        <Range value="12"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="NetherDragonHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-NetherDragon.dds"/>
+        <Range value="4"/>
+        <Period value="1.1"/>
+        <DamagePoint value="0.6"/>
+        <Backswing value="0.7"/>
+        <Effect value="NetherDragonHLWLM"/>
+        <DisplayEffect value="NetherDragonHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="TyrandeStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="UrsolBearHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-FrostBear.dds"/>
+        <Range value="0.5"/>
+        <Period value="1"/>
+        <DamagePoint value="0.63"/>
+        <Backswing value="0.67"/>
+        <DisplayEffect value="UrsolBearHLWDamage"/>
+        <Effect value="UrsolBearHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="UtherStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VoidBlade">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="VorazunHero">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WarGolemHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ArmorGolem.dds"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="WarGolemHLWDamage"/>
+        <Effect value="WarGolemHLWDamage"/>
+        <Options index="Melee" value="1"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="GraniteGolemHLW" parent="DefaultCreepHLW">
+        <Options index="Melee" value="1"/>
+        <Icon value="Assets/Textures/btn-unit-neutral-RockGolem.dds"/>
+        <DisplayEffect value="GraniteGolemHLWDamage"/>
+        <Range value="0.5"/>
+        <DamagePoint value="0.3"/>
+        <Backswing value="0.3"/>
+        <Effect value="GraniteGolemHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warblade">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="Warglaives">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="WindfuryHarpyHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-ArmorGolem.dds"/>
+        <Range value="4"/>
+        <Period value="0.7"/>
+        <Effect value="WindfuryHarpyHLWLM"/>
+        <DamagePoint value="0.35"/>
+        <Backswing value="0.3"/>
+        <DisplayEffect value="WindfuryHarpyHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ZandalariPriestHLW" parent="DefaultCreepHLW">
+        <Icon value="Assets/Textures/btn-unit-Neutral-DarkTrollShadowPriest.dds"/>
+        <Period value="1.9"/>
+        <Effect value="ZandalariPriestHLWLM"/>
+        <DamagePoint value="0.3"/>
+        <DisplayEffect value="ZandalariPriestHLWDamage"/>
+    </CWeaponLegacy>
+    <CWeaponLegacy id="ZeratulStorm">
+        <TargetFilters value="Visible;Ally,Heroic,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CWeaponLegacy>
+</Catalog>

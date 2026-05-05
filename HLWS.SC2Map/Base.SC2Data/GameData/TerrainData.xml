@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<Catalog>
+    <CTerrain id="HLW">
+        <EditorCategories value="Climate:Jungle"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="KorhalCity7"/>
+        <BlendTextures value="Starship2"/>
+        <BlendTextures value="Starship7"/>
+        <BlendTextures value="DominionLab2"/>
+        <BlendTextures value="DominionLab3"/>
+        <BlendTextures value="Starship8"/>
+        <BlendTextures value="HybridLabOuter1"/>
+        <BlendTextures value="Starship4"/>
+        <CliffSets value="StarshipCliff0"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+    </CTerrain>
+    <CTerrain id="HLW2">
+        <EditorCategories value="Climate:Jungle"/>
+        <Lighting value="HLW"/>
+        <LoadingScreen value="Assets\Textures\loading-castanar.dds"/>
+        <TextureProp value="agria"/>
+        <Ambience value="Ambience_Agria"/>
+        <ReverbAmbient value="BetaVerb"/>
+        <BlendTextures value="KorhalCity7"/>
+        <BlendTextures value="Starship2"/>
+        <BlendTextures value="Starship7"/>
+        <BlendTextures value="DominionLab2"/>
+        <BlendTextures value="DominionLab3"/>
+        <BlendTextures value="Starship8"/>
+        <BlendTextures value="PurifierWorld5"/>
+        <BlendTextures value="Starship4"/>
+        <CliffSets value="StarshipCliff0"/>
+        <FixedSkyboxModel value="BelShirSkyBox"/>
+        <FogEnabled value="1"/>
+        <FogColor value="255,45,68,86"/>
+        <FogDensity value="0.060000"/>
+        <FogFalloff value="0.200000"/>
+        <FogStartingHeight value="-0.900000"/>
+    </CTerrain>
+</Catalog>

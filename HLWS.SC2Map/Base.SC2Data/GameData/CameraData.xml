@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CCamera id="Dflt">
+        <ZoomTable index="0">
+            <Param index="FarClip" Modify="1" Value="44.000000"/>
+            <Param index="ShadowClip" Modify="1" Value="44.000000"/>
+        </ZoomTable>
+        <ZoomTable index="1">
+            <Param index="FarClip" Modify="1" Value="40.000000"/>
+            <Param index="ShadowClip" Modify="1" Value="40.000000"/>
+        </ZoomTable>
+        <ZoomTable index="2">
+            <Param index="FarClip" Modify="1" Value="36.000000"/>
+            <Param index="ShadowClip" Modify="1" Value="36.000000"/>
+        </ZoomTable>
+        <ZoomTable index="3">
+            <Param index="FarClip" Modify="1" Value="32.000000"/>
+            <Param index="ShadowClip" Modify="1" Value="32.000000"/>
+        </ZoomTable>
+        <ZoomTable index="4">
+            <Param index="FarClip" Modify="1" Value="28.000000"/>
+            <Param index="ShadowClip" Modify="1" Value="28.000000"/>
+        </ZoomTable>
+    </CCamera>
+</Catalog>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CRequirementConst id="10"/>
+    <CRequirementConst id="11">
+        <Tooltip value=""/>
+    </CRequirementConst>
+    <CRequirementConst id="14">
+        <Tooltip value=""/>
+    </CRequirementConst>
+    <CRequirementConst id="15">
+        <Tooltip value=""/>
+    </CRequirementConst>
+    <CRequirementConst id="7">
+        <Tooltip value=""/>
+    </CRequirementConst>
+    <CRequirementAnd id="And4001198346CountAbilServitorLearnOnlyCompleteOnlyAtUnitLTCountUnitServitorCompleteOnlyAtUnit6">
+        <OperandArray value="CountAbilServitorLearnOnlyCompleteOnlyAtUnit"/>
+        <OperandArray value="LTCountUnitServitorCompleteOnlyAtUnit6"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeNoShadowsCompleteOnly">
+        <OperandArray value="NotCountUpgradeNoShadowsCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeRemovedBuffDebuffVisualsCompleteOnly">
+        <OperandArray value="NotCountUpgradeRemovedBuffDebuffVisualsCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementAnd id="AndNotCountUpgradeSlowGameSpeedCompleteOnly">
+        <OperandArray value="NotCountUpgradeSlowGameSpeedCompleteOnly"/>
+    </CRequirementAnd>
+    <CRequirementCountAbil id="CountAbilFrostMasteryCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="FrostMastery" State="CompleteOnly"/>
+    </CRequirementCountAbil>
+    <CRequirementCountAbil id="CountAbilServitorLearnOnlyCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ServitorLearnOnly" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountAbil>
+    <CRequirementCountAbil id="CountAbilShadowMasteryCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="ShadowMastery" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountAbil>
+    <CRequirementCountBehavior id="CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit">
+        <Tooltip value=""/>
+    </CRequirementCountBehavior>
+    <CRequirementCountUnit id="CountUnitServitorCompleteOnlyAtUnit">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="Servitor" State="CompleteOnlyAtUnit"/>
+    </CRequirementCountUnit>
+    <CRequirementCountUpgrade id="CountUpgradeNoShadowsCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="NoShadows" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradePassiveGoldIncome2QueuedOrBetter">
+        <Count Link="PassiveTerrazineIncome"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeRemovedBuffDebuffVisualsCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="RemovedBuffDebuffVisuals" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementCountUpgrade id="CountUpgradeSlowGameSpeedCompleteOnly">
+        <Flags index="TechTreeCheat" value="0"/>
+        <Count Link="SlowGameSpeed" State="CompleteOnly"/>
+    </CRequirementCountUpgrade>
+    <CRequirementLT id="LT3872491591CountUnitTrainKnightQueuedOrBetter2">
+        <OperandArray index="0" value="CountUnitTrainKnightQueuedOrBetter"/>
+        <OperandArray index="1" value="2"/>
+    </CRequirementLT>
+    <CRequirementLT id="LTCountUnitServitorCompleteOnlyAtUnit6">
+        <OperandArray index="0" value="CountUnitServitorCompleteOnlyAtUnit"/>
+        <OperandArray index="1" value="6"/>
+    </CRequirementLT>
+    <CRequirementNot id="Not113775528CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit">
+        <OperandArray index="0" value="CountBehaviorMirrorImageTimedLifeCompleteOnlyAtUnit"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeNoShadowsCompleteOnly">
+        <OperandArray index="0" value="CountUpgradeNoShadowsCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeRemovedBuffDebuffVisualsCompleteOnly">
+        <OperandArray index="0" value="CountUpgradeRemovedBuffDebuffVisualsCompleteOnly"/>
+    </CRequirementNot>
+    <CRequirementNot id="NotCountUpgradeSlowGameSpeedCompleteOnly">
+        <OperandArray index="0" value="CountUpgradeSlowGameSpeedCompleteOnly"/>
+    </CRequirementNot>
+</Catalog>

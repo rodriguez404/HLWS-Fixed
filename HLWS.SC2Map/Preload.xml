@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preload>
+<Actor id="SYSTEM_ActorConfig"/>
+<Actor id="DecalSpace" Variations="0,3"/>
+<Actor id="ProtossWarpInPadFlat"/>
+<Actor id="SpaceDockPowerLines" Variations="0,1"/>
+<Actor id="StarshipContainers" Variations="0"/>
+<Actor id="StarshipHallTrim" Variations="0,1"/>
+<Actor id="StarshipHoldingPenLarge" Variations="1"/>
+<Actor id="StarshipOrnateElements" Variations="0"/>
+<Actor id="StarshipProtossWallpost" Variations="1"/>
+<Actor id="TerrainObjectStarshipFloraPodDoodadA"/>
+<Actor id="TerrainObjectStarshipFloraPodDoodadE"/>
+<Actor id="UmojanLabHoloProjector"/>
+<Actor id="BelShirTree" Variations="0,1,2,3,7"/>
+<Actor id="DecalProtoss" Variations="0,1,2,3,5"/>
+<Model id="DesertWorldRockMix" Variations="1,2,3,4"/>
+<Model id="DynamicGrassBelShir" Variations="1,2,3,4,5"/>
+<Model id="DynamicGrassKorhal" Variations="1,2,3,4,5"/>
+<Model id="PlantMixAgriaSmall" Variations="1,2,3,4,5,6,7,8,9,10,11,12,13,14"/>
+<Terrain id="Starlight"/>
+<TerrainObject id="TerrainObjectStarshipFloraPodA1"/>
+<TerrainObject id="TerrainObjectStarshipFloraPodE1"/>
+<Unit id="Beacon_Protoss"/>
+<Unit id="ProtossCrates" Variations="0,1,2,3,4,5,6"/>
+<Unit id="NovaHero"/>
+<Unit id="Arcanist"/>
+<Unit id="Alchemist"/>
+<Unit id="Armorsmith"/>
+<Unit id="Weaponsmith"/>
+<Unit id="Jewelcrafter"/>
+<Unit id="HealingFountain"/>
+<Unit id="BarracksHumanHero"/>
+<Unit id="WarlockHero"/>
+<Unit id="SatyrHero"/>
+<Unit id="KerriganAscendedHero"/>
+<Unit id="AlarakHero"/>
+<Unit id="JainaHero"/>
+<Unit id="RevenantHero"/>
+<Unit id="SirenHero"/>
+<Unit id="RoyalGuardHero"/>
+<Unit id="FelguardHero"/>
+<Unit id="SuccubusHero"/>
+<Unit id="EredarLordHero"/>
+<Unit id="VoidwalkerHero"/>
+<Unit id="ArchmageHero"/>
+<Unit id="BlademasterHero"/>
+<Unit id="BrewmasterHero"/>
+<Unit id="TinkerHero"/>
+<Unit id="SeaWitchHero"/>
+<Unit id="DreadlordHero"/>
+<Unit id="LichHero"/>
+<Unit id="KeeperoftheGroveHero"/>
+<Unit id="FarSeerHero"/>
+<Unit id="DemonHunterHero"/>
+<Unit id="PriestessoftheMoonHero"/>
+<Unit id="DarkRangerHero"/>
+<Unit id="FirelordHero"/>
+<Unit id="WardenHero"/>
+<Unit id="PaladinHero"/>
+<Unit id="BloodMageHero"/>
+<Unit id="MountainKingHero"/>
+<Unit id="ShadowHunterHero"/>
+<Unit id="DeathKnightHero"/>
+<Unit id="StukovHero"/>
+<Unit id="SwannHero"/>
+<Unit id="ArtanisHero"/>
+<Unit id="VorazunHero"/>
+<Unit id="KaraxHero"/>
+<Unit id="KelThuzadGhostHero"/>
+<Unit id="OgreHero"/>
+<Unit id="CaptainHero"/>
+<Unit id="SpellbreakerHero"/>
+<Unit id="BansheeHero"/>
+<Unit id="SorceressHero"/>
+<Unit id="BlacksmithHLW"/>
+</Preload>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="CannonImage" parent="PhotonCannonBase">
+        <Model value="Assets\COOP\Zeratul\Buildings\PhotonCannon_Zeratul_COOP_Projection\PhotonCannon_Zeratul_COOP_Projection.m3"/>
+        <Lighting value="PhotonCannon"/>
+    </CModel>
+    <CModel id="CannonImageBirth" parent="PhotonCannonWarpInBase">
+        <Model value="Assets\COOP\Zeratul\Buildings\PhotonCannon_Zeratul_COOP_WarpIn\PhotonCannon_Zeratul_COOP_WarpIn.m3"/>
+        <Lighting value="PhotonCannonBirth"/>
+    </CModel>
+    <CModel id="CannonImageWarpOut" parent="PhaseCannonWarpOut">
+        <Model value="Assets\Effects\Protoss\Protoss_Generic_WarpOut_MP\Protoss_Generic_WarpOut_MP.m3"/>
+    </CModel>
+    <CModel id="CannonImagePlacement" parent="PhotonCannonPlacementBase">
+        <Model value="Assets\COOP\Zeratul\Buildings\PhotonCannon_Zeratul_COOP_Placement\PhotonCannon_Zeratul_COOP_Placement.m3"/>
+        <Lighting value="PhotonCannonPlacement"/>
+    </CModel>
+    <CModel id="CannonImagePortrait" parent="ExecutorPortrait"/>
+    <CModel id="CannonImageDeath" parent="PhotonCannonDeathBase">
+        <Model value="Assets\Effects\Protoss\HallucinateColossusDeath\HallucinateColossusDeath.m3"/>
+        <Lighting value="PhotonCannonDeath"/>
+    </CModel>
+    <CModel id="ShadowMasteryAuraSource" parent="PersistentSpellFX">
+        <Model value="Assets\Abilities\Spells\Orc\War3_CommandAura\War3_CommandAura.m3"/>
+        <Flags index="CloakedUndetectedIsHidden" value="1"/>
+        <Flags index="Wait" value="1"/>
+        <Lighting value="FrenzyAuraSource"/>
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="PhotonOvercharge" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\PurifyLaunch\PurifyLaunch.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="PhotonOverchargeAttackImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Protoss\MothershipPurifyMissileImpact\MothershipPurifyMissileImpact.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Death,00"/>
+            <Name value="MotherShip_Purify_AttackImpact"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="MotherShip_Purify_AttackImpact"/>
+        </Events>
+    </CModel>
+    <CModel id="PhotonOverchargeWeapon" parent="MissileFX">
+        <Model value="Assets\Effects\Protoss\MothershipPurifyMissile\MothershipPurifyMissile.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="MotherShip_Purify_AttackLaunch"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="MotherShip_Purify_AttackLaunch"/>
+        </Events>
+    </CModel>
+    <CModel id="AlchemistHLW" parent="Building">
+        <Model value="Assets\Buildings\Terran\MercHaven\MercHaven.m3"/>
+        <Radius value="1.500000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="2.300000"/>
+        <ShadowRadius value="2.300000"/>
+        <SquibTypeDefault value="Metal"/>
+    </CModel>
+    <CModel id="AlchemistHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="ArchmageHero">
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="ArtanisVoid">
+        <ScaleMax value="1.150000,1.150000,1.150000"/>
+        <ScaleMin value="1.150000,1.150000,1.150000"/>
+    </CModel>
+    <CModel id="BeastmasterHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="BlacksmithHLW" parent="Building">
+        <Model value="Assets\Buildings\Terran\MercCompound\MercCompound.m3"/>
+        <Radius value="1.500000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="2.300000"/>
+        <ShadowRadius value="2.300000"/>
+        <SquibTypeDefault value="Metal"/>
+    </CModel>
+    <CModel id="BlademasterHero">
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="BloodMageHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="BrewmasterHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="CryptLordHero">
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+    </CModel>
+    <CModel id="DarkArchonChampion">
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModelFoliage id="DarkEliteCalldownModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Zerg\PsionicShadowImpact\PsionicShadowImpact.m3"/>
+    </CModelFoliage>
+    <CModel id="DarkRangerHero">
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+    </CModel>
+    <CModel id="DarkTemplarChampion">
+        <ScaleMax value="1.150000,1.150000,1.150000"/>
+        <ScaleMin value="1.150000,1.150000,1.150000"/>
+        <SelectionRadius value="0.600000"/>
+    </CModel>
+    <CModel id="DeathKnightHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="DecalProtoss">
+        <TextureDeclares index="0" removed="1"/>
+        <TextureDeclares index="1" removed="1"/>
+        <TextureDeclares index="2" removed="1"/>
+        <TextureDeclares index="3" removed="1"/>
+        <TextureDeclares index="4" removed="1"/>
+        <TextureDeclares index="5" removed="1"/>
+    </CModel>
+    <CModel id="DemonHunterHero">
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="DreadlordHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="EredarLordHero">
+        <ScaleMax value="1.600000,1.600000,1.600000"/>
+        <ScaleMin value="1.600000,1.600000,1.600000"/>
+    </CModel>
+    <CModel id="FarSeerHero">
+        <ScaleMax value="1.250000,1.250000,1.250000"/>
+        <ScaleMin value="1.250000,1.250000,1.250000"/>
+    </CModel>
+    <CModel id="FirelordHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="HLWClanFlag" parent="Doodad">
+        <Model value="Assets\UI\ClanGems\ClanGem_Terran\ClanGem_Terran.m3"/>
+    </CModel>
+    <CModel id="HLWPlayerDecal">
+        <Model value="Assets\Effects\Zerg\DecalTagSplat_Zerg\DecalTagSplat_Zerg.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+    </CModel>
+    <CModel id="InfestedStukov">
+        <ScaleMax value="1.100000,1.100000,1.100000"/>
+        <ScaleMin value="1.100000,1.100000,1.100000"/>
+    </CModel>
+    <CModel id="Jaina">
+        <ScaleMax value="1.300000,1.300000,1.300000"/>
+        <ScaleMin value="1.300000,1.300000,1.300000"/>
+    </CModel>
+    <CModel id="JewelcrafterHLW" parent="Building">
+        <Model value="Assets\Buildings\Terran\InfestedDominionHousing\InfestedDominionHousing_02.m3"/>
+        <Radius value="1.500000"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="2.300000"/>
+        <ShadowRadius value="2.300000"/>
+        <SquibTypeDefault value="Metal"/>
+    </CModel>
+    <CModel id="KeeperoftheGroveHero">
+        <ScaleMax value="1.300000,1.300000,1.300000"/>
+        <ScaleMin value="1.300000,1.300000,1.300000"/>
+    </CModel>
+    <CModel id="LichHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="MercenaryCampTier4Add" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Zerg\KerriganApocalypseBeam\KerriganApocalypseBeam.m3"/>
+        <EditorCategories value="Race:Neutral"/>
+        <ScaleMax value="2.000000,2.000000,2.000000"/>
+        <ScaleMin value="2.000000,2.000000,2.000000"/>
+    </CModel>
+    <CModel id="MountainKingHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="Nova">
+        <ScaleMax value="1.200000,1.200000,1.200000"/>
+        <ScaleMin value="1.200000,1.200000,1.200000"/>
+    </CModel>
+    <CModel id="PaladinHero">
+        <ScaleMax value="1.400000,1.400000,1.400000"/>
+        <ScaleMin value="1.400000,1.400000,1.400000"/>
+    </CModel>
+    <CModel id="PitLordHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="PriestessoftheMoonHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="ShadowHunterHero">
+        <ScaleMax value="1.150000,1.150000,1.150000"/>
+        <ScaleMin value="1.150000,1.150000,1.150000"/>
+    </CModel>
+    <CModel id="SuccubusHero">
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="SuccubusHeroPortrait">
+        <Model value="Assets\War3HD_Succubus_Blue_Portrait_Fixed.m3"/>
+    </CModel>
+    <CModel id="Swann">
+        <ScaleMax value="1.050000,1.050000,1.050000"/>
+        <ScaleMin value="1.050000,1.050000,1.050000"/>
+    </CModel>
+    <CModel id="TinkerHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+    <CModel id="VoidwalkerHero">
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
+    </CModel>
+    <CModel id="VulcanChampion">
+        <ScaleMax value="1.100000,1.100000,1.100000"/>
+        <ScaleMin value="1.100000,1.100000,1.100000"/>
+    </CModel>
+    <CModel id="WardenHero">
+        <ScaleMax value="1.350000,1.350000,1.350000"/>
+        <ScaleMin value="1.350000,1.350000,1.350000"/>
+    </CModel>
+</Catalog>

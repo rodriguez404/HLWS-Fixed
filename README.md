@@ -10,6 +10,8 @@ All rights go to original creator, I do not own anything.
 I am not legally and morally responsible for other people's actions if someone will decide to claim authorship for this project.
 
 <h2>Usage:</h2>
+<h3>Editor</h3>
+You can open Editor from battle.net launcher, or from SC2 installation folder.
 <h3>Mods</h3>
 "Mods" folder should be put in your SC2 Installation folder: "StarCraft II/"
 
@@ -45,3 +47,9 @@ To contribute to project, you must `Fork` it first. From that point, you will wo
 
 The project is open to community, and bug fixes / performance optimisations (that dont alter the gameplay) are very welcome.
 However, balance changes will be debated, or, possibly, declined without explanation.
+
+When making any change, dont forget to document it into "Changelog.txt", which would include the change itself and your name.
+
+Changelog is later used in #patch-notes in discord, or in game.
+
+See "Changelog.examples.txt" for some examples of writing changelog.

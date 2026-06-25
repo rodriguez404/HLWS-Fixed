@@ -198,47 +198,65 @@ bool gt_mapInitOptions_Func (bool testConds, bool runActions) {
         return true;
     }
 
-    if ((GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0001") ||
-        (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0001") ||
-        (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0001") ||
-        (GameAttributeGameValue("1") == "0001")) {
+    // [bnet:local/0.0/[mapID]x] are redundant now - fixed by manually declaring Liberty (Mod) on TOP of dependency chain (in HLWS.SC2Map)
+    // remained in code for audit / learning purposes
+    if (
+        // (GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0001") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0001") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0001") ||
+        (GameAttributeGameValue("1") == "0001")
+    ) {
         // Default is already pre-defined, line below is just a placeholder
         gv_gameMode = "Default";
     }
 
-    if ((GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0002") ||
-        (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0002") ||
-        (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0002") ||
-        (GameAttributeGameValue("1") == "0002")) {
+    if (
+        // (GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0002") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0002") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0002") ||
+        (GameAttributeGameValue("1") == "0002")
+    ) {
         gv_gameMode = "Extended";
         gv_gameHeroes = "Extended";
     }
 
-    if ((GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0003") ||
-        (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0003") ||
-        (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0003") ||
-        (GameAttributeGameValue("1") == "0003")) {
+    if (
+        // (GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0003") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0003") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0003") ||
+        (GameAttributeGameValue("1") == "0003")
+    ) {
         gv_gameMode = "AllRandom";
     }
 
-    if ((GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0004") ||
-        (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0004") ||
-        (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0004") ||
-        (GameAttributeGameValue("1") == "0004")) {
+    if (
+        // (GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0004") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0004") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0004") ||
+        (GameAttributeGameValue("1") == "0004")
+    ) {
         gv_gameMode = "AllRandomExtended";
         gv_gameHeroes = "Extended";
     }
 
-    if ((GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0005") ||
-        (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0005") ||
-        (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0005") ||
-        (GameAttributeGameValue("1") == "0005")) {
+    if (
+        // (GameAttributeGameValue("[bnet:local/0.0/327205]1") == "0005") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/326968]1") == "0005") ||
+        // (GameAttributeGameValue("[bnet:local/0.0/457956]1") == "0005") ||
+        (GameAttributeGameValue("1") == "0005")
+    ) {
         gv_gameMode = "AllRandomMirror";
     }
 
     PlayerGroupLoopBegin(PlayerGroupActive());
     for ( ; !PlayerGroupLoopDone() ; PlayerGroupLoopStep() ) {
-        if (((PlayerHandle(PlayerGroupLoopCurrent()) == "2-S2-2-1796780") || (PlayerHandle(PlayerGroupLoopCurrent()) == "2-S2-1-4620835") || (PlayerHandle(PlayerGroupLoopCurrent()) == "1-S2-1-5421277") || (PlayerHandle(PlayerGroupLoopCurrent()) == "1-S2-2-1555676"))) {
+        if (
+            (PlayerHandle(PlayerGroupLoopCurrent()) == "2-S2-2-1796780") 
+        ||  (PlayerHandle(PlayerGroupLoopCurrent()) == "2-S2-1-4620835") 
+        ||  (PlayerHandle(PlayerGroupLoopCurrent()) == "1-S2-1-5421277") 
+        ||  (PlayerHandle(PlayerGroupLoopCurrent()) == "1-S2-2-1555676")
+        ||  (PlayerHandle(PlayerGroupLoopCurrent()) == "3-S2-1-8245777")
+        ) {
             gv_isadmin[PlayerGroupLoopCurrent()] = true;
             PlayerGroupAdd(gv_admingroup, PlayerGroupLoopCurrent());
         }
